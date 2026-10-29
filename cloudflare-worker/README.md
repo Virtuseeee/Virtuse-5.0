@@ -20,6 +20,76 @@ visitor clicks "Unsubscribe" in the welcome email
      Resend's segment, and shows a plain confirmation page
 ```
 
+## Code layout
+
+```
+src/
+  index.js            entry: exports the Worker (plus handlePulse/pulseErrors for tests)
+  app.js              composition root: per-request context, adapters, route order
+  config.js           allowed origins, Worker URL, email regex, shared sign-up limit
+  http/               request helpers (IP, JSON body), JSON/CORS/HTML responses, router
+  shared/             crypto helpers (HMAC, SHA-256, constant-time compare), KV rate limiter
+  infra/              adapters to external APIs: resend.js, turnstile.js
+  features/
+    newsletter/       POST /subscribe, GET /unsubscribe, Brief list use cases, welcome emails
+    send/             POST /send            (domain.js = payload rules + email copy)
+    waitlist/         POST /waitlist        (domain.js = sources, confirmation email)
+    ecosystem/        POST /ecosystem-apply (domain.js = validation, both emails)
+    verdict/          POST /verdict         (domain.js + result.js = rubric and views,
+                                             model.js = Claude call, budget.js, limits.js)
+    pulse/            GET|PUT /pulse.json, POST /pulse/rollback (schema.js = publish rules)
+    wp-proxy/         GET /wp/...
+    version/          GET /version
+  generated/          written by build.mjs (see below); never edit by hand
+test/                 node --test suites; fixtures/
+```
+
+Each feature has a `handler.js` (HTTP in, Response out: parse, check, call
+use cases, answer) and pure modules beside it (rules, copy, rendering,
+scoring). Handlers get their adapters on `ctx.services` (`resend`,
+`limiter`, `brief`, `signupLimited`, `verdictModel`), built once per request
+in `app.js`, so a feature never constructs its own HTTP client or KV logic.
+
+Dependency rules, enforced by `test/architecture.test.mjs`:
+
+- pure modules do no I/O and import nothing from `http/`, `infra/` or a handler;
+- `config.js`, `shared/`, `http/` and `infra/` never import a feature;
+- only `index.js` imports `app.js`;
+- one adapter per external API: Resend only in `infra/resend.js`, Turnstile
+  only in `infra/turnstile.js`, the Anthropic SDK only in
+  `features/verdict/model.js`; every KV limit goes through
+  `shared/rate-limiter.js`.
+
+Route order lives in one place (`app.js`): public routes (`/version`,
+`/pulse*`, `/wp/*`, `OPTIONS`, `GET /unsubscribe`) first, then the site-origin
+gate (403), then POST-only (405), then the site routes, then 404.
+
+### Build step
+
+`node build.mjs` (run by `npm test`, `npm run dev` and `npm run deploy`)
+writes `src/generated/`:
+
+| File | From | In git |
+|---|---|---|
+| `checklists.js` | `data/partner-checklists.json` | yes |
+| `tax-facts.js` | `seo-build/data/seo-data.json` + `meta.json` | yes |
+| `waitlist-strings.js` | `email/waitlist-strings.json` + `footer-operator.json` | yes |
+| `welcome-templates.js` | `email/welcome-template*.html` | no (ignored) |
+| `build-info.js` | `BUILD_COMMIT` env, else git HEAD | no (ignored) |
+
+Wrangler bundles `src/index.js` directly (`main` in `wrangler.toml`); there
+is no `dist/` and nothing is patched into the source.
+
+## Known issues
+
+- **`POST /subscribe` with `lang: "toString"`** (or any other
+  `Object.prototype` key): `welcomeLang` uses `in`, which also matches
+  inherited keys, so the contact is created in Resend with that `lang`
+  property and the request then fails with 502 and no welcome email. Not
+  reachable from the site's own forms. Kept as is in the 2026-10-29
+  refactor (behaviour unchanged by design); the fix is `Object.hasOwn` in
+  `src/features/newsletter/welcome.js`.
+
 ## One-time setup
 
 ### 1. Install Wrangler and log in
@@ -76,8 +146,8 @@ past welcome email stops verifying. Only rotate it if you have a reason to
 npm run deploy
 ```
 
-This runs `build.mjs` (embeds the current `email/welcome-template.html`
-into the bundle — see the note below) and then `wrangler deploy`. Wrangler
+This runs `build.mjs` (writes `src/generated/`, including the current
+`email/welcome-template*.html` — see the note below) and then `wrangler deploy`. Wrangler
 prints your Worker's URL on success, something like:
 
 ```
@@ -89,26 +159,22 @@ frontend rollout can use it.
 
 ## Keeping the welcome email in sync
 
-`src/index.js` doesn't contain the welcome email's HTML directly — it has a
-placeholder that `build.mjs` fills in from `email/welcome-template.html` at
-build time (this avoids ever hand-copying HTML into a JS string, which is
-exactly the kind of thing that silently drifts out of sync or breaks on a
-stray backtick). **Whenever you edit `email/welcome-template.html`, re-run
-`npm run deploy`** to ship the updated version to the Worker. `dist/worker.js`
-is a build artifact — it's gitignored, never edit it directly, and never
-deploy `src/index.js` as-is (it still has the literal placeholder text).
+The Worker doesn't contain the welcome email's HTML in its source:
+`build.mjs` copies `email/welcome-template*.html` into
+`src/generated/welcome-templates.js` (git-ignored) as JSON strings, which
+avoids ever hand-copying HTML into a JS string. **Whenever you edit a
+welcome template, redeploy** (`deploy_worker.sh`) to ship it.
 
 Note: the template's `{{unsubscribe_url}}` placeholder is deliberately
-*not* filled in at build time — it's still literal in `dist/worker.js`.
-`sendWelcomeEmail` in `src/index.js` substitutes the real, per-recipient,
-signed URL at send time instead (see "Unsubscribe" below), because the
-link has to be different for every recipient.
+*not* filled in at build time. `src/features/newsletter/welcome.js`
+substitutes the real, per-recipient, signed URL at send time (see
+"Unsubscribe" below), because the link is different for every recipient.
 
 ## Multi-language welcome emails
 
 `POST /subscribe` accepts an optional `lang` field: `{ email, hp, lang }`.
-`sendWelcomeEmail` picks the matching template + subject from
-`WELCOME_EMAIL_TEMPLATES` in `src/index.js`; an omitted, unrecognized, or
+The Brief list picks the matching template + subject from
+`WELCOME_EMAILS` in `src/features/newsletter/welcome.js`; an omitted, unrecognized, or
 non-string `lang` (a bot sending garbage, a page that predates this field)
 falls back to `en` rather than erroring. This is deliberate — a broken or
 missing `lang` should never block someone's signup.
@@ -123,8 +189,8 @@ English ones until step 4 below is done for them too.
 **Adding another language** (e.g. once a `uk` or `cs` welcome email
 exists):
 1. Add `email/welcome-template-<lang>.html`.
-2. In `build.mjs`, add a `{ file: 'welcome-template-<lang>.html', placeholder: '"__WELCOME_EMAIL_HTML_<LANG>__"' }` row to `TEMPLATES`.
-3. In `src/index.js`, add `const WELCOME_EMAIL_HTML_<LANG> = "__WELCOME_EMAIL_HTML_<LANG>__";` near the bottom, and a matching `<lang>: { html: () => WELCOME_EMAIL_HTML_<LANG>, subject: '...' }` row to `WELCOME_EMAIL_TEMPLATES`.
+2. In `build.mjs`, add `<lang>: 'welcome-template-<lang>.html'` to `WELCOME_TEMPLATES`.
+3. In `src/features/newsletter/welcome.js`, add `<lang>: welcomeTemplate('<lang>', '<subject>')` to `WELCOME_EMAILS`.
 4. Update the language's site pages to send `lang: '<lang>'` in their form's fetch body.
 5. `npm run deploy`.
 
@@ -144,7 +210,7 @@ initial contact creation (same as `segments` above) — an already-existing
 contact's `lang` property isn't updated on a repeat signup.
 
 **One-time setup required before this works** — the `lang` property must
-exist in Resend first, or the `properties` key in `addContact`'s request
+exist in Resend first, or the `properties` key in the contact-create request
 is presumed to be silently ignored (untested; Resend doesn't document
 this):
 1. Resend dashboard -> Contacts -> Properties -> Create Property.
@@ -176,8 +242,8 @@ pre-existing list — not something this Worker created).
 This is a different mechanism from the `lang` Contact Property — that
 property is set regardless, on every contact, in whichever segment they
 land in; this decides *which* segment a new contact actually joins.
-`langSegmentId(env, lang)` in `src/index.js` is the one place both
-`addContact` (new signups) and `removeFromSegment` (unsubscribe, which
+`LANG_SEGMENT_SECRETS` in `src/features/newsletter/segments.js` is the one place both
+`segmentFor` (new signups) and `allSegments` (unsubscribe, which
 has to check every possible segment since the unsubscribe link doesn't
 carry `lang`) read this mapping from.
 
@@ -189,15 +255,14 @@ wrangler secret put RESEND_SK_SEGMENT_ID
 # Audience -> Segments -> click the segment -> its id is in the URL,
 # ?segmentId=...)
 ```
-If this secret isn't set, `langSegmentId` returns `undefined` and
-`addContact` falls back to the default segment — a missing secret fails
+If this secret isn't set, `segmentFor` falls back to the default segment — a missing secret fails
 safe (signups still work, just land in the default segment) rather than
 blocking signups.
 
 **Adding another language's dedicated segment**: add a row to
-`langSegmentId`'s returned object (e.g. `{ sk: env.RESEND_SK_SEGMENT_ID,
-uk: env.RESEND_UK_SEGMENT_ID }`) and `wrangler secret put` the matching
-secret. `removeFromSegment` picks up any language added there
+`LANG_SEGMENT_SECRETS` (e.g. `{ sk: 'RESEND_SK_SEGMENT_ID',
+uk: 'RESEND_UK_SEGMENT_ID' }`) and `wrangler secret put` the matching
+secret. `allSegments` picks up any language added there
 automatically — no separate change needed for unsubscribe to keep
 working.
 
@@ -205,8 +270,8 @@ working.
 
 One transactional email the visitor asked for, from the rollout plan
 "Rollout plan: email pred odchodom k partnerovi" (Docs artifact
-https://claude.ai/artifact/3gzTPbXu87Fsu2gb2ZnrmG). Code: `src/send.js`,
-tests: `send.test.mjs` (`npm test`).
+https://claude.ai/artifact/3gzTPbXu87Fsu2gb2ZnrmG). Code: `src/features/send/`,
+tests: `test/send.test.mjs` (`npm test`).
 
 ```
 POST /send  { email, hp, lang, kind, source, payload, brief }
@@ -218,7 +283,7 @@ POST /send  { email, hp, lang, kind, source, payload, brief }
 
 - **No free text.** Only ids from fixed lists and bounded numbers are
   accepted; unknown keys are dropped. Every word comes from `STRINGS` in
-  `src/send.js` (EN, SK, CS; other site languages get EN text with links
+  `src/features/send/domain.js` (EN, SK, CS; other site languages get EN text with links
   to their own language pages).
 - **MiCA:** the plan email lists "partners matching your criteria" in the
   Partner Finder's order. No "best", no reasons, no verdict.
@@ -227,7 +292,7 @@ POST /send  { email, hp, lang, kind, source, payload, brief }
 - Limits: the shared per-IP limit (5/hour) plus 3 emails per address per
   hour (KV key is a SHA-256 of the address).
 - Partner links: the card's tracked link + `utm_source=email&utm_medium=<kind>&utm_campaign=capture&utm_content=<partner>`.
-  `PARTNERS` in `src/send.js` must match `data/partners.json`; the test
+  `PARTNERS` in `src/features/send/domain.js` must match `data/partners.json`; the test
   fails if a host is missing there.
 - Optional secrets: `RESEND_SEND_FROM` (sender for these emails, falls back
   to `RESEND_FROM_EMAIL`) and `RESEND_REPLY_TO`.
@@ -240,7 +305,7 @@ POST /send  { email, hp, lang, kind, source, payload, brief }
 
 - Claude (`claude-opus-5-5`, structured JSON output, `fallbacks: "default"`) rates each signal 0 to 10 with one sentence; the Worker adds the sum, band (65 / 50), weakest point (ties by priority) and tool, and caps worst case at 4 without a 70% drawdown test and tax at 5 outside the 13 countries.
 - Never advice: the prompt forbids it, the output has no free text field, and `BANNED` drops any answer that still reads like advice (502). Advice requests come back as `declined` with a fixed sentence. A model refusal is shown as declined.
-- Tax facts come from `seo-build/data/seo-data.json` via `build.mjs` -> `src/tax-facts.js` (committed), so Verdict states only rules the site states.
+- Tax facts come from `seo-build/data/seo-data.json` via `build.mjs` -> `src/generated/tax-facts.js` (committed), so Verdict states only rules the site states.
 - Virtuse stores no decision text. Email, IBAN, Bitcoin addresses and xpubs are removed before it leaves the Worker (cut to 1,200 characters); it is processed by Anthropic (USA), which may retain API data under its terms unless zero data retention is agreed. Only the per-IP counter and the month's spend are kept in KV. Every result carries `aiLabel` (AI Act art. 50) and `scoreNote`.
 - Limits: 10 per IP per day; monthly spend in `RATE_LIMIT_KV` (`verdict:spend:YYYY-MM`) against `VERDICT_MONTHLY_CAP_EUR` (default 50), then 429 until the next month.
 - Closed (503) until `ANTHROPIC_API_KEY` is set **and** `VERDICT_ENABLED` = `"1"`; requests from staging.virtuse.com work without `VERDICT_ENABLED`, for testing.
@@ -265,7 +330,7 @@ Results go to `verdict-eval/results-*.json` (gitignored). Pass: band right in >=
 
 ## POST /waitlist (Virtuse CFO waitlist)
 
-`src/waitlist.js`, tests in `waitlist.test.mjs`. Body `{ email, hp, source, lang }`, where `source` is one of `cfo_page`, `cfo_plan`, `home_buy`, `home_cfo` (optional) and `lang` one of the 10 site languages (anything else: English).
+`src/features/waitlist/`, tests in `test/waitlist.test.mjs`. Body `{ email, hp, source, lang }`, where `source` is one of `cfo_page`, `cfo_plan`, `home_buy`, `home_cfo` (optional) and `lang` one of the 10 site languages (anything else: English).
 
 - **Confirmation email in 10 languages (2026-10-16):** texts in `email/waitlist-strings.json` (EN approved, the rest AI translations), operator line per language from `seo-build/data/footer-operator.json`; `node build.mjs` writes `src/waitlist-strings.js` (committed). The English email is byte-identical to the earlier one. cfo.html sends `lang` already; the homepages send `document.documentElement.lang`.
 
@@ -289,7 +354,7 @@ to a segment, and the welcome email is a transactional single-send, so it
 never would have resolved there.
 
 - `token` is `HMAC-SHA256(UNSUB_SECRET, email)`, computed once in
-  `buildUnsubscribeUrl` when the welcome email is sent, and re-verified in
+  `unsubscribeUrl` when the welcome email is sent, and re-verified in
   `handleUnsubscribe` when the link is clicked. This is what stops anyone
   from guessing or enumerating `?email=someone-else@...` links — only a
   link actually generated by the Worker (i.e. actually emailed to that
@@ -309,10 +374,11 @@ never would have resolved there.
 ## Security notes
 
 - **CORS is locked to the site's actual origins** (`staging.virtuse.com`,
-  `virtuse.com`, `www.virtuse.com`) in `src/index.js` — update
+  `virtuse.com`, `www.virtuse.com`) in `src/config.js` — update
   `ALLOWED_ORIGINS` there if that list ever changes, then redeploy.
 - **Rate limit**: 5 submissions per IP per hour, tracked in the KV
-  namespace. Adjust `RATE_LIMIT_MAX_PER_HOUR` in `src/index.js` if needed.
+  namespace, shared by `/subscribe`, `/send` and `/waitlist`. Adjust
+  `SIGNUP_LIMIT` in `src/config.js` if needed.
 - **Honeypot field**: the frontend form includes a hidden input the Worker
   rejects silently if filled — see the frontend rollout for the exact field
   name used.
@@ -349,7 +415,7 @@ curl "http://localhost:8787/unsubscribe?email=$EMAIL&token=$TOKEN"
 
 ## WordPress proxy for the Stories build (`/wp/*`)
 
-`src/wp-proxy.js`. Webglobe drops TCP connections from part of GitHub's
+`src/features/wp-proxy/handler.js`. Webglobe drops TCP connections from part of GitHub's
 runner IPs, so `stories-build/build.mjs` timed out on some runners. The
 Stories Action now fetches WordPress through this Worker
 (`https://virtuse-newsletter.virtuse-ai.workers.dev/wp/...`), and falls back
@@ -360,13 +426,13 @@ to blog.virtuse.com directly if the proxy is unreachable.
   it is not an open proxy and never reaches wp-admin or login.
 - Passes `X-WP-Total`/`X-WP-TotalPages` back (the build pages on them);
   drops cookies. Successful responses are cached ~5 minutes.
-- Tests: `npm test` (`wp-proxy.test.mjs`).
+- Tests: `npm test` (`test/wp-proxy.test.mjs`).
 - Check after a deploy:
   `curl -sI https://virtuse-newsletter.virtuse-ai.workers.dev/wp/wp-json/` → 200.
 
 ## POST /ecosystem-apply (Bitcoin Ecosystem "Get your project featured" form)
 
-Code: `src/ecosystem.js`, auto-reply texts in 10 languages `src/ecosystem-strings.js`, tests `ecosystem.test.mjs`.
+Code: `src/features/ecosystem/`, auto-reply texts in 10 languages `strings.js` there, tests `test/ecosystem.test.mjs`.
 The form lives on `/ecosystem/promote/` and `/<lang>/ecosystem/promote/` (built by `seo-build/ecosystem.mjs`).
 
 Checks, in order: allowed Origin, body ≤ 5 KB, honeypot (`company_url`), server-side validation (required fields,

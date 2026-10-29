@@ -1,0 +1,60 @@
+name: Worker tests
+
+# Read-only check, deploys nothing. Runs the Cloudflare Worker test suite
+# (including the architecture rules in cloudflare-worker/test/) and fails if
+# the committed generated data (src/generated/checklists.js, tax-facts.js,
+# waitlist-strings.js) is out of date with its sources. deploy_worker.sh runs
+# the same tests again before every deploy.
+
+on:
+  push:
+    paths:
+      - 'cloudflare-worker/**'
+      - 'email/**'
+      - 'seo-build/data/seo-data.json'
+      - 'seo-build/data/meta.json'
+      - 'seo-build/data/footer-operator.json'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/data/partner-checklists.json'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/data/partners.json'
+      - '.github/workflows/worker-test.yml'
+  pull_request:
+    paths:
+      - 'cloudflare-worker/**'
+      - 'email/**'
+      - 'seo-build/data/seo-data.json'
+      - 'seo-build/data/meta.json'
+      - 'seo-build/data/footer-operator.json'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/data/partner-checklists.json'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/data/partners.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: cloudflare-worker/package-lock.json
+      - name: Install
+        working-directory: cloudflare-worker
+        run: npm ci --no-audit --no-fund
+      - name: Test (builds src/generated/ first)
+        working-directory: cloudflare-worker
+        run: npm test
+      - name: Fail if committed generated data is out of date
+        run: |
+          changed=$(git status --porcelain -- cloudflare-worker/src/generated || true)
+          if [ -n "$changed" ]; then
+            echo "::error title=Worker generated data::Run node build.mjs in cloudflare-worker/ and commit src/generated/. Changed: $(echo "$changed" | tr '\n' ' ')"
+            exit 1
+          fi

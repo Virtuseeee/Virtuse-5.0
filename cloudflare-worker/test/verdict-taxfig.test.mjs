@@ -1,7 +1,7 @@
 // Tax figures stay out of the AI's own text until the lawyer signs off (Ras 2026-10-28).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { scoreVerdict, SIGNALS, systemPrompt, mentionsTaxFigure } from './src/verdict.js';
+import { scoreVerdict, SIGNALS, systemPrompt, mentionsTaxFigure } from '../src/features/verdict/index.js';
 
 const P = { worst_case: 3, liquidity: 7, tax: 2, custody: 2, plan_b: 1, goal: 3, horizon: 4, alternatives: 0, rule: 2, asymmetry: 5 };
 const RATE = 'Zistite, koľko dane 19–35 % a zdravotných odvodov 16 % by vznikla pri predaji.';

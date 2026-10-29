@@ -3,14 +3,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import worker from './src/index.js';
+import worker from '../src/index.js';
 import {
   scoreVerdict, freeView, reportView, cleanProfile, PROFILE, SIGNALS, BANNED, looksLikeAdvice, systemPrompt,
   AREA_COPY, PARTNER_NAMES, VERBS,
-} from './src/verdict.js';
-import { startsWithVerb } from './src/verdict-result.js';
+} from '../src/features/verdict/index.js';
+import { startsWithVerb } from '../src/features/verdict/result.js';
 
-const SITE = new URL('../Kimi_Agent_Virtuse%2520MiCA%2520Partners/', import.meta.url);
+const SITE = new URL('../../Kimi_Agent_Virtuse%2520MiCA%2520Partners/', import.meta.url);
 
 function out(points, over = {}) {
   return {
@@ -229,11 +229,13 @@ test('copy: templates start with an allowed verb, contain no advice or ranking w
     const js = readFileSync(new URL(f, SITE), 'utf8');
     assert.doesNotMatch(js, /najsilnejšia v oblasti|najslabšia v oblasti|strongest on|weakest on/);
   }
-  assert.doesNotMatch(readFileSync(new URL('src/verdict.js', import.meta.url), 'utf8'), /najsilnejšia v oblasti|strongest on /);
+  for (const f of ['domain.js', 'result.js', 'model.js', 'handler.js']) {
+    assert.doesNotMatch(readFileSync(new URL('../src/features/verdict/' + f, import.meta.url), 'utf8'), /najsilnejšia v oblasti|strongest on /);
+  }
 });
 
 test('partner names match the Partner Finder catalog', () => {
-  const ts = readFileSync(new URL('../layer2-src/src/lib/concierge.ts', import.meta.url), 'utf8');
+  const ts = readFileSync(new URL('../../layer2-src/src/lib/concierge.ts', import.meta.url), 'utf8');
   const names = [...new Set([...ts.matchAll(/^\s+name: '([^']+)'/gm)].map((m) => m[1]))].sort();
   assert.deepEqual([...PARTNER_NAMES].sort(), names);
 });

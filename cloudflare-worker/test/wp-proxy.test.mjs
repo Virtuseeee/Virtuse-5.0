@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { handleWpProxy } from './src/wp-proxy.js';
+import { handleWpProxy } from '../src/features/wp-proxy/handler.js';
 
 const BASE = 'https://virtuse-newsletter.virtuse-ai.workers.dev';
 

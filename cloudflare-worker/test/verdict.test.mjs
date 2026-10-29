@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import worker from './src/index.js';
-import { scoreVerdict, redact, looksLikeAdvice, systemPrompt, costOf, SIGNALS } from './src/verdict.js';
+import worker from '../src/index.js';
+import { scoreVerdict, redact, looksLikeAdvice, systemPrompt, costOf, SIGNALS } from '../src/features/verdict/index.js';
 
 const ORIGIN = 'https://virtuse.com';
 const STAGING = 'https://staging.virtuse.com';
@@ -196,7 +196,7 @@ test('10 a day per IP, and the monthly cap stops calls', withClaude(async (calls
 }));
 
 test('staging boost raises new verdicts per IP only on its own UTC day', async () => {
-  const { perIpPerDay } = await import('./src/verdict.js');
+  const { perIpPerDay } = await import('../src/features/verdict/index.js');
   assert.equal(perIpPerDay({}, '2026-10-27'), 10);
   assert.equal(perIpPerDay({ VERDICT_PER_IP_BOOST: '50:2026-10-27' }, '2026-10-27'), 50);
   assert.equal(perIpPerDay({ VERDICT_PER_IP_BOOST: '50:2026-10-27' }, '2026-10-28'), 10);
@@ -246,7 +246,7 @@ test('other routes are unchanged: /verdict is POST-only behind the origin check'
 }));
 
 test('legal pack: special-category words are redacted, IP hash is not the IP, V-10 words are caught', async () => {
-  const { ipHash, BANNED } = await import('./src/verdict.js');
+  const { ipHash, BANNED } = await import('../src/features/verdict/index.js');
   assert.equal(redact('Mám rakovinu, som katolík.'), 'Mám [odstránené], som [odstránené].');
   const h = await ipHash('1.2.3.4', '2026-11-01', { UNSUB_SECRET: 's' });
   assert.match(h, /^[0-9a-f]{64}$/); assert.ok(!h.includes('1.2.3.4'));
@@ -286,7 +286,7 @@ test('profile: only fixed ids pass, goes to the model as <profile>, maps to Part
 }));
 
 test('cleanProfile drops wrong types and "na"; selling maps to tax help', async () => {
-  const { cleanProfile, partnerFinderQuery } = await import('./src/verdict.js');
+  const { cleanProfile, partnerFinderQuery } = await import('../src/features/verdict/index.js');
   assert.deepEqual(cleanProfile(null), {});
   assert.deepEqual(cleanProfile(['goal']), {});
   assert.deepEqual(cleanProfile({ goal: 'na', country: 'other', keys: 5 }), { country: 'other' });
@@ -357,7 +357,7 @@ test('funnel answers guarantee minimum points; a sensible completed funnel reach
 });
 
 test('new funnel ids pass cleanProfile; Partner Finder gets hodler for sell, loan and custody', async () => {
-  const { cleanProfile, partnerFinderQuery } = await import('./src/verdict.js');
+  const { cleanProfile, partnerFinderQuery } = await import('../src/features/verdict/index.js');
   const p = cleanProfile({ goal: 'loan', ltv: 'lt30', liqprice: 'yes', heirs: 'maybe', keys: 'multisig', tax_known: 'roughly' });
   assert.deepEqual(p, { goal: 'loan', keys: 'multisig', tax_known: 'roughly', ltv: 'lt30', liqprice: 'yes' });
   assert.equal(partnerFinderQuery(p).pf_experience, 'hodler');

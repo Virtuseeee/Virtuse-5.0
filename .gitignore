@@ -3,5 +3,7 @@
 .mcp.json
 /dist/
 cloudflare-worker/dist/
+cloudflare-worker/src/generated/welcome-templates.js
+cloudflare-worker/src/generated/build-info.js
 cloudflare-worker/node_modules/
 .wrangler/

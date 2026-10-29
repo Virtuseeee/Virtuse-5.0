@@ -3,12 +3,12 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import worker from './src/index.js';
-import { PARTNERS, validatePayload, renderSendEmail } from './src/send.js';
+import worker from '../src/index.js';
+import { PARTNERS, validatePayload, renderSendEmail } from '../src/features/send/domain.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SITE_PARTNERS = JSON.parse(
-  readFileSync(path.join(HERE, '..', 'Kimi_Agent_Virtuse%20MiCA%20Partners', 'data', 'partners.json'), 'utf8')
+  readFileSync(path.join(HERE, '..', '..', 'Kimi_Agent_Virtuse%20MiCA%20Partners', 'data', 'partners.json'), 'utf8')
 ).partners;
 const ORIGIN = 'https://virtuse.com';
 
@@ -179,7 +179,7 @@ test('POST /send: at most 3 per address per hour, across IPs', withFetch(async (
 }));
 
 test('checklist: every partner has 3-5 steps and sources; unapproved ones are refused', async () => {
-  const { default: CHECKLISTS } = await import('./src/checklists.js');
+  const { default: CHECKLISTS } = await import('../src/generated/checklists.js');
   assert.deepEqual(Object.keys(CHECKLISTS).sort(), Object.keys(PARTNERS).sort());
   for (const [id, c] of Object.entries(CHECKLISTS)) {
     assert.ok(c.steps.en.length >= 3 && c.steps.en.length <= 5, id);
@@ -191,7 +191,7 @@ test('checklist: every partner has 3-5 steps and sources; unapproved ones are re
 });
 
 test('checklist email: steps, partner link, sources; SK frame falls back to EN steps', async () => {
-  const { default: CHECKLISTS } = await import('./src/checklists.js');
+  const { default: CHECKLISTS } = await import('../src/generated/checklists.js');
   const saved = CHECKLISTS.kraken.approved;
   CHECKLISTS.kraken.approved = true;
   try {

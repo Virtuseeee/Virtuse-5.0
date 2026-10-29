@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import worker from './src/index.js';
-import { renderWaitlistEmail } from './src/waitlist.js';
+import worker from '../src/index.js';
+import { renderWaitlistEmail } from '../src/features/waitlist/domain.js';
 
 const ORIGIN = 'https://virtuse.com';
 
@@ -167,7 +167,7 @@ test('confirmation email follows the form language (sk), unknown languages get E
 }));
 
 test('every waitlist language has all texts and its operator line', async () => {
-  const { WAITLIST_LANGS, waitlistSubject } = await import('./src/waitlist.js');
+  const { WAITLIST_LANGS, waitlistSubject } = await import('../src/features/waitlist/domain.js');
   assert.deepEqual([...WAITLIST_LANGS].sort(), ['cs', 'de', 'en', 'es', 'fr', 'hu', 'pl', 'ru', 'sk', 'uk']);
   for (const L of WAITLIST_LANGS) {
     for (const s of ['cfo_page', 'cfo_plan']) {
@@ -193,7 +193,7 @@ test('verdict_report: own audience when set, else the CFO audience, report email
 }));
 
 test('every waitlist language has the report email', async () => {
-  const { WAITLIST_LANGS, waitlistSubject } = await import('./src/waitlist.js');
+  const { WAITLIST_LANGS, waitlistSubject } = await import('../src/features/waitlist/domain.js');
   for (const L of WAITLIST_LANGS) {
     const h = renderWaitlistEmail('https://x/leave', 'verdict_report', L);
     assert.doesNotMatch(h, /undefined/);

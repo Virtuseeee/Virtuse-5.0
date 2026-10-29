@@ -28,7 +28,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Anthropic from '@anthropic-ai/sdk';
-import { askClaude, verdictRequest, readVerdictResponse, cleanProfile, scoreVerdict, looksLikeAdvice, redact, costOf, MAX_CHARS } from '../src/verdict.js';
+import { askClaude, verdictRequest, readVerdictResponse, cleanProfile, scoreVerdict, looksLikeAdvice, redact, costOf, MAX_CHARS } from '../src/features/verdict/index.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);

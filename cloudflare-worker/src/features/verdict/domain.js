@@ -1,5 +1,3 @@
-// POST /verdict  { text, lang, hp, profile?, report? }  (report: full view, staging preview only)
-//
 // Virtuse CFO · Verdict: scores how complete a visitor's Bitcoin decision is
 // on 10 signals (rubric approved 2026-10-15, see the "Verdict: rubrika a
 // testovacia sada" doc). Claude rates each signal 0-10 with one sentence of
@@ -13,42 +11,17 @@
 // fixed JSON shape with no free text field, and a word filter below drops any
 // answer that still reads like advice.
 //
-// Secrets: ANTHROPIC_API_KEY (no key -> 503). Vars: VERDICT_ENABLED = "1"
-// opens it (never decided by the Origin header, which any script can set; the
-// staging Worker, wrangler env "staging", sets it); VERDICT_REPORT_PREVIEW = "1"
-// returns the full report on request (staging Worker only);
-// VERDICT_TAX_MODULE = "1" shows the one-line country tax rule (lawyer sign-off
-// first, A§9); VERDICT_CHECKOUT = "1" switches the report card from the waitlist
-// to checkout (after Stripe); VERDICT_MONTHLY_CAP_EUR (default 50); VERDICT_EFFORT (default "low": as accurate as medium in the test set, faster and cheaper; Ras 2026-10-16).
-// KV: RATE_LIMIT_KV holds the per-IP counter and the month's spend.
+// This file is the domain: rubric, prompt, scoring and the views. No I/O;
+// the Claude call is in model.js, the request flow in handler.js.
 
-import Anthropic from '@anthropic-ai/sdk';
-import TAX from '../src/tax-facts.js';
+import TAX from '../../generated/tax-facts.js';
 import {
   AREA_COPY, VERBS, verdictLevel, nextSteps, areaView, toolKeyFor, tool as toolOf, pricing,
   validSummary, validFix, OWN_DECISION, asksWhetherToAct, areaLevel,
-} from './verdict-result.js';
-export { AREA_COPY, COUNTRY_LOC, verdictLevel, nextSteps, PARTNER_NAMES, VERBS, redFlags } from './verdict-result.js';
-
-export const VERDICT_MODEL = 'claude-opus-5-5';
-// USD per token for claude-opus-5-5 ($4 / $20 per million). Counted as EUR
-// against the cap, which errs on the safe side.
-const PRICE_IN = 4 / 1e6;
-const PRICE_OUT = 20 / 1e6;
+} from './result.js';
+export { AREA_COPY, COUNTRY_LOC, verdictLevel, nextSteps, PARTNER_NAMES, VERBS, redFlags } from './result.js';
 
 export const MAX_CHARS = 1200;
-const PER_IP_PER_DAY = 10;
-// "Rate my verdict again" after adding to the plan (P0.3, Ras 2026-10-27)
-// has its own counter, so fixing gaps does not use up new verdicts. The
-// monthly cost cap still covers both.
-export const PER_IP_RECALC_PER_DAY = 20;
-// A higher limit for new verdicts on one UTC day only, for testing on
-// staging (VERDICT_PER_IP_BOOST = "50:2026-10-27"). It ends by itself when the
-// date passes; production does not set it.
-export function perIpPerDay(env, day) {
-  const m = /^(\d{1,3}):(\d{4}-\d{2}-\d{2})$/.exec(env.VERDICT_PER_IP_BOOST || '');
-  return m && m[2] === day ? Math.max(PER_IP_PER_DAY, +m[1]) : PER_IP_PER_DAY;
-}
 export const LANGS = ['sk', 'en', 'ru'];
 
 // Priority 1 = most important; it breaks ties for the weakest point.
@@ -200,7 +173,7 @@ export function partnerFinderQuery(profile) {
   return q;
 }
 
-export { TOOL_PAGES as TOOLS } from './verdict-result.js';
+export { TOOL_PAGES as TOOLS } from './result.js';
 
 export const BANDS = [
   { id: 'complete', min: 65, sk: 'Úvaha je úplná', en: 'Your thinking is complete', ru: 'Размышление полное' },
@@ -208,7 +181,7 @@ export const BANDS = [
   { id: 'missing', min: 0, sk: 'Chýbajú podstatné veci', en: 'Key pieces are missing', ru: 'Не хватает важного' },
 ];
 
-const TEXT = {
+export const TEXT = {
   sk: {
     // Legal pack 2026-10-16: V-12 (declined), V-6 (scoreNote), AI Act art. 50 / 8.2.2 (aiLabel), exact wording.
     declined: 'Verdict neposkytuje odporúčania, čo urobiť. Hodnotí len, nakoľko úplne je opísaná vaša vlastná úvaha. Opíšte, prosím, svoje rozhodnutie a dôvody, ktoré k nemu vedú.',
@@ -235,19 +208,6 @@ const TEXT = {
   },
 };
 
-// Short error texts in the request language.
-const ERR = {
-  short: { sk: 'Popíšte rozhodnutie aspoň jednou vetou.', en: 'Describe your decision in at least one sentence.', ru: 'Опишите решение хотя бы одним предложением.' },
-  closed: { sk: 'Verdict sa čoskoro otvorí.', en: 'Verdict opens soon.', ru: 'Verdict скоро откроется.' },
-  busy: { sk: 'Verdict má teraz veľa požiadaviek. Skúste to neskôr.', en: 'Verdict is busy right now. Please try again later.', ru: 'Сейчас у Verdict много запросов. Попробуйте позже.' },
-  fail: { sk: 'Niečo sa pokazilo. Skúste to o chvíľu.', en: 'Something went wrong. Please try again in a moment.', ru: 'Что-то пошло не так. Попробуйте через минуту.' },
-  advice: {
-    sk: 'Verdict tentoraz nevedel napísať hodnotenie bez rady, čo urobiť. Skúste rozhodnutie opísať inými slovami.',
-    en: "Verdict couldn't word this rating without telling you what to do. Please describe your decision in other words.",
-    ru: 'На этот раз Verdict не смог сформулировать оценку без совета, что делать. Попробуйте описать решение другими словами.',
-  },
-};
-
 // Advice-like wording: an answer containing any of these is not shown.
 export const BANNED = [
   /odporúč/i, /mali? by ste (si )?(kúpiť|predať|počkať|požičať)/i, /najlepš/i, /garant/i,
@@ -265,7 +225,7 @@ export const BANNED = [
   /правильн\p{L}* решени/iu, /сейчас (самое )?время/i, /стоит (купить|продать|подождать)/i,
 ];
 
-const SCHEMA = {
+export const SCHEMA = {
   type: 'object',
   properties: {
     declined: { type: 'boolean' },
@@ -566,123 +526,4 @@ export function reportPreviewAllowed(env) {
 export function looksLikeAdvice(result) {
   const texts = [...(result.signals || []).flatMap((s) => [s.reason, s.fix || '']), ...(result.missing || []), result.summary || ''];
   return texts.some((t) => BANNED.some((re) => re.test(t)));
-}
-
-// The request for one verdict (shared by the Worker and the eval's batch mode).
-export function verdictRequest(env, text, lang, profile = {}) {
-  const prof = Object.keys(profile).length ? `\n<profile>\n${profileLines(profile)}\n</profile>` : '';
-  return {
-    model: VERDICT_MODEL,
-    max_tokens: 16000,
-    output_config: { effort: env.VERDICT_EFFORT || 'low', format: { type: 'json_schema', schema: SCHEMA } },
-    system: [{ type: 'text', text: systemPrompt(lang), cache_control: { type: 'ephemeral' } }],
-    messages: [{ role: 'user', content: `<decision>\n${text}\n</decision>${prof}` }],
-  };
-}
-
-// A Messages API response -> { out, usage } or { refused, usage }.
-export function readVerdictResponse(response) {
-  if (response.stop_reason === 'refusal') return { refused: true, usage: response.usage };
-  if (response.stop_reason === 'max_tokens') throw new Error('verdict: max_tokens');
-  const textBlock = [...response.content].reverse().find((b) => b.type === 'text');
-  if (!textBlock) throw new Error('verdict: no text block');
-  return { out: JSON.parse(textBlock.text), usage: response.usage };
-}
-
-// One call to Claude. Returns { out, usage } where out is the parsed JSON.
-export async function askClaude(env, text, lang, profile = {}) {
-  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 1, timeout: 60_000 });
-  const response = await client.beta.messages.create({
-    ...verdictRequest(env, text, lang, profile),
-    betas: ['server-side-fallback-2026-07-01'],
-    fallbacks: 'default',
-  });
-  return readVerdictResponse(response);
-}
-
-export function costOf(usage) {
-  if (!usage) return 0;
-  const input = (usage.input_tokens || 0) + (usage.cache_creation_input_tokens || 0) * 1.25 + (usage.cache_read_input_tokens || 0) * 0.1;
-  return input * PRICE_IN + (usage.output_tokens || 0) * PRICE_OUT;
-}
-
-function monthKey(now) {
-  return 'verdict:spend:' + new Date(now).toISOString().slice(0, 7);
-}
-
-// AI Act art. 50(2) / legal pack 8.2.4: machine-readable marking of AI output.
-function aiJson(json, body, origin) {
-  const r = json(200, { ...body, ai_generated: true }, origin);
-  r.headers.set('X-AI-Generated', 'true');
-  return r;
-}
-
-export async function ipHash(ip, day, env) {
-  const data = new TextEncoder().encode(`${env.UNSUB_SECRET || 'virtuse'}:${day}:${ip}`);
-  const d = await crypto.subtle.digest('SHA-256', data);
-  return [...new Uint8Array(d)].map((x) => x.toString(16).padStart(2, '0')).join('');
-}
-
-export async function handleVerdict(request, env, origin, { json }, now = Date.now()) {
-  let body;
-  try {
-    body = await request.json();
-  } catch {
-    return json(400, { error: 'Invalid JSON body' }, origin);
-  }
-  const { text, hp } = body || {};
-  const lang = LANGS.includes(body?.lang) ? body.lang : 'en';
-  if (hp) return json(200, { ok: true, declined: true, message: TEXT[lang].declined }, origin);
-  if (!text || typeof text !== 'string' || text.trim().length < 20) {
-    return json(400, { error: ERR.short[lang] }, origin);
-  }
-  const enabled = env.VERDICT_ENABLED === '1';
-  if (!env.ANTHROPIC_API_KEY || !enabled) {
-    return json(503, { error: ERR.closed[lang] }, origin);
-  }
-  const busy = ERR.busy[lang];
-  const spentKey = monthKey(now);
-  const spent = parseFloat((await env.RATE_LIMIT_KV.get(spentKey)) || '0');
-  const cap = parseFloat(env.VERDICT_MONTHLY_CAP_EUR || '50');
-  if (spent >= cap) return json(429, { error: busy }, origin);
-
-  // Privacy policy 6.2/6.3: the IP is kept only as a one-way hash, salted per day (salt = secret + date),
-  // and the counter expires after 24 hours.
-  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-  const day = new Date(now).toISOString().slice(0, 10);
-  const recalc = body.recalc === true;
-  const ipKey = `verdict:${recalc ? 'ipr' : 'ip'}:${await ipHash(ip, day, env)}`;
-  const count = parseInt((await env.RATE_LIMIT_KV.get(ipKey)) || '0', 10);
-  if (count >= (recalc ? PER_IP_RECALC_PER_DAY : perIpPerDay(env, day))) return json(429, { error: busy }, origin);
-  await env.RATE_LIMIT_KV.put(ipKey, String(count + 1), { expirationTtl: 60 * 60 * 24 });
-
-  const clean = redact(text.trim().slice(0, MAX_CHARS));
-  const profile = cleanProfile(body.profile);
-  // The model gets only what the person answered; tools, steps and partners
-  // also use the goal read from the text (effectiveProfile).
-  const eff = effectiveProfile(profile, clean);
-  const fail = ERR.fail[lang];
-  const adviceFail = ERR.advice[lang];
-  try {
-    // Advice-like wording (BANNED) is never shown; the model gets one more try.
-    let result, cost = 0;
-    for (let attempt = 0; attempt < 2; attempt++) {
-      const { out, usage, refused } = await askClaude(env, clean, lang, profile);
-      cost += costOf(usage);
-      if (refused) { result = scoreVerdict({ declined: true }, lang); break; }
-      result = scoreVerdict(out, lang, { text: clean, profile: eff });
-      if (result.declined || !looksLikeAdvice(result)) break;
-      console.error('verdict: advice-like wording dropped, attempt ' + (attempt + 1));
-      result = null;
-    }
-    await env.RATE_LIMIT_KV.put(spentKey, String(spent + cost), { expirationTtl: 60 * 60 * 24 * 40 });
-    if (!result) return json(502, { error: adviceFail }, origin);
-    if (result.declined) return aiJson(json, result, origin);
-    const report = body.report === true && reportPreviewAllowed(env);
-    const opts = { lang, taxModule: env.VERDICT_TAX_MODULE === '1', checkout: env.VERDICT_CHECKOUT === '1' };
-    return aiJson(json, report ? reportView(result, eff, opts) : freeView(result, eff, opts), origin);
-  } catch (e) {
-    console.error(e);
-    return json(502, { error: fail }, origin);
-  }
 }

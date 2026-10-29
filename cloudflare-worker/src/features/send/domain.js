@@ -1,4 +1,5 @@
-// POST /send -- one transactional email the visitor asked for: their
+// POST /send, domain part: what may be sent and what the email says. One
+// transactional email the visitor asked for: their
 // Partner Finder criteria ("plan") or a calculator result ("result").
 //
 //   { email, hp, lang, kind, source, payload, brief }
@@ -22,15 +23,13 @@
 // (bundled as src/checklists.js by build.mjs). Only partners whose entry has
 // "approved": true are accepted.
 
-import CHECKLISTS from './checklists.js';
+import CHECKLISTS from '../../generated/checklists.js';
 
 export const SEND_KINDS = ['plan', 'result', 'checklist'];
 export const SEND_SOURCES = ['concierge', 'stacking', 'loan', 'tax', 'partner_click'];
 export const SITE_LANGS = ['en', 'sk', 'uk', 'cs', 'ru', 'de', 'fr', 'es', 'pl', 'hu'];
 export const EMAIL_LANGS = ['en', 'sk', 'cs'];
 
-const SEND_LIMIT_PER_ADDRESS = 3;
-const SEND_LIMIT_WINDOW_SECONDS = 60 * 60;
 const SITE = 'https://virtuse.com';
 
 // Same 24 partners as the category pages (data/partners.json) and the
@@ -237,7 +236,7 @@ const LOCALES = { en: 'en-IE', sk: 'sk-SK', cs: 'cs-CZ' };
 
 // --- validation ------------------------------------------------------------
 
-function oneOf(list, value) {
+export function oneOf(list, value) {
   return typeof value === 'string' && list.includes(value);
 }
 
@@ -472,88 +471,4 @@ ${button(withUtm(toolUrl, kind, source), S.reopen)}`;
     subject: S.resultSubject[source],
     html: layout({ lang: emailLang, title: S.resultTitle, intro: S.resultIntro, body, footer: footerHtml(S, brief, emailLang) }),
   };
-}
-
-// --- request handler ---------------------------------------------------------
-
-async function sha256Hex(text) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
-}
-
-// Per-address limit, on top of the per-IP one. The key is a hash so the
-// KV namespace never holds plain addresses.
-async function isAddressLimited(env, email) {
-  const key = `sendlimit:${await sha256Hex(email.trim().toLowerCase())}`;
-  const current = parseInt((await env.RATE_LIMIT_KV.get(key)) || '0', 10);
-  if (current >= SEND_LIMIT_PER_ADDRESS) return true;
-  await env.RATE_LIMIT_KV.put(key, String(current + 1), { expirationTtl: SEND_LIMIT_WINDOW_SECONDS });
-  return false;
-}
-
-// deps: { json, isRateLimited, addContact, sendWelcomeEmail, emailRe, welcomeLangs }
-export async function handleSend(request, env, origin, deps) {
-  const { json } = deps;
-  let body;
-  try {
-    body = await request.json();
-  } catch {
-    return json(400, { error: 'Invalid JSON body' }, origin);
-  }
-  const { email, hp, lang: rawLang, kind, source, payload, brief } = body || {};
-
-  if (hp) return json(200, { ok: true }, origin);
-
-  if (!email || typeof email !== 'string' || email.length > 254 || !deps.emailRe.test(email)) {
-    return json(400, { error: 'Please enter a valid email address.' }, origin);
-  }
-  if (!oneOf(SEND_KINDS, kind) || !oneOf(SEND_SOURCES, source)) {
-    return json(400, { error: 'Invalid request.' }, origin);
-  }
-  const checked = validatePayload(kind, source, payload);
-  if (!checked.ok) return json(400, { error: 'Invalid request.', detail: checked.error }, origin);
-
-  const lang = oneOf(SITE_LANGS, rawLang) ? rawLang : 'en';
-  const wantsBrief = brief === true;
-
-  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-  if ((await deps.isRateLimited(env, ip)) || (await isAddressLimited(env, email))) {
-    return json(429, { error: 'Too many attempts. Please try again later.' }, origin);
-  }
-
-  const { subject, html } = renderSendEmail({ kind, source, payload: checked.value, lang, brief: wantsBrief });
-
-  try {
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from: env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL,
-        to: [email],
-        ...(env.RESEND_REPLY_TO ? { reply_to: env.RESEND_REPLY_TO } : {}),
-        subject,
-        html,
-        tags: [
-          { name: 'kind', value: kind },
-          { name: 'source', value: source },
-        ],
-      }),
-    });
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`Resend send failed (status ${res.status}): ${text.slice(0, 300)}`);
-    }
-
-    if (wantsBrief) {
-      // Same as POST /subscribe: the Brief welcome language follows the
-      // page language when there is a welcome template for it.
-      const briefLang = deps.welcomeLangs.includes(lang) ? lang : 'en';
-      const result = await deps.addContact(env, email, briefLang);
-      if (result.created) await deps.sendWelcomeEmail(env, email, briefLang);
-    }
-    return json(200, { ok: true }, origin);
-  } catch (e) {
-    console.error(e);
-    return json(502, { error: 'Something went wrong. Please try again in a moment.' }, origin);
-  }
 }
