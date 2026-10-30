@@ -655,7 +655,7 @@
       skipLabel: 'Pomiń',
       backLabel: '← Wstecz',
       resultHeadline: 'Mamy wystarczająco dużo informacji, aby przygotować rozmowę.',
-      disclaimer: 'Virtuse Wealth Management a.s. nie świadczy doradztwa inwestycyjnego i nie przechowuje aktywów klientów. Pośredniczymy w partnerstwach afiliacyjnych — decyzja o alokacji zawsze należy do Państwa.',
+      disclaimer: 'Virtuse Wealth Management, a.s. nie świadczy doradztwa inwestycyjnego i nie przechowuje aktywów klientów. Pośredniczymy w partnerstwach afiliacyjnych — decyzja o alokacji zawsze należy do Państwa.',
       riskNote: 'Wybrali Państwo tematy (kupno/sprzedaż Bitcoina, przechowywanie, treasury, automatyczne boty), w przypadku których warto od razu wiedzieć: Virtuse nie wykonuje ani nie świadczy tych usług bezpośrednio — ułatwiamy dostęp do platform partnerskich, które je świadczą. Podczas rozmowy dokładnie wyjaśnimy, kto za co odpowiada.',
       bookLabel: 'Zarezerwuj 15-minutową konsultację',
       restartLabel: 'Zacznij od nowa',
@@ -698,8 +698,8 @@
           headline: 'O jakim horyzoncie czasowym Państwo myślą?',
           options: [
             'Mniej niż 1 rok',
-            '1 – 3 lata',
-            '3 – 5 lat',
+            '1–3 lata',
+            '3–5 lat',
             '5+ lat'
           ]
         },

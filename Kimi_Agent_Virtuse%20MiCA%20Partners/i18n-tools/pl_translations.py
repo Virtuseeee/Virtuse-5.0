@@ -297,7 +297,7 @@ TEXT = {
         "Virtuse łączy ze sprawdzonymi dostawcami hostingu koparek Bitcoina w Europie: od zakupu koparek ASIC po hosting w centrach danych w krajach nordyckich.",
     "Virtuse connects you with vetted Bitcoin mining hosting providers across Europe. From ASIC procurement to data centre hosting in the Nordics — we help you earn Bitcoin through proof-of-work. Mining is not a MiCA-regulated activity; these partners operate under general business and energy regulations.":
         "Virtuse łączy ze sprawdzonymi dostawcami hostingu koparek Bitcoina w Europie. Od zakupu koparek ASIC po hosting w centrach danych w krajach nordyckich: pomagamy zarabiać Bitcoin dzięki proof-of-work. Kopanie nie jest działalnością regulowaną przez MiCA; ci partnerzy działają na podstawie ogólnych przepisów gospodarczych i energetycznych.",
-    "Choose a Host": "Wybór hosta",
+    "Choose a Host": "Wybór dostawcy hostingu",
     "Browse our vetted mining hosts. Compare electricity rates, locations, and minimum order sizes.": "Przegląd sprawdzonych hostów. Porównanie cen energii, lokalizacji i minimalnych zamówień.",
     "Procure ASICs": "Zakup koparek ASIC",
     "Buy miners directly or through our partners. We can advise on the best hardware for your budget.": "Zakup koparek bezpośrednio lub przez naszych partnerów. Doradzimy najlepszy sprzęt w ramach budżetu.",
@@ -343,7 +343,7 @@ TEXT = {
         "Bitcoin jako zabezpieczenie pożyczki w walucie fiat (EUR, CHF, CZK) lub stablecoinach (USDC). Zachowana ekspozycja na Bitcoin, uniknięcie podatku od zysków kapitałowych i płynność bez sprzedaży. LTV do 50%. Okres od 3 do 24 miesięcy. Oprocentowanie od 6% rocznie.",
     "Investors / Lenders": "Inwestorzy / pożyczkodawcy",
     "Provide fiat or stablecoins to fund Bitcoin-backed loans. Earn interest paid by borrowers. Collateral is locked in on-chain escrow — fully secured by Bitcoin. No rehypothecation. No exposure to altcoins. Minimum from EUR 800.":
-        "Finansowanie pożyczek zabezpieczonych Bitcoinem w walucie fiat lub stablecoinach. Odsetki płacone przez pożyczkobiorców. Zabezpieczenie zablokowane w escrow w łańcuchu, w pełni pokryte Bitcoinem. Bez rehipotekacji. Bez ekspozycji na altcoiny. Minimum od 800 EUR.",
+        "Finansowanie pożyczek zabezpieczonych Bitcoinem w walucie fiat lub stablecoinach. Odsetki płacone przez pożyczkobiorców. Zabezpieczenie zablokowane w escrow w łańcuchu, w pełni pokryte Bitcoinem. Bez rehipotekacji. Bez ekspozycji na altcoiny. Minimum 800 EUR.",
     "Bitcoin-only lending platforms with non-custodial multi-sig escrow": "Platformy pożyczkowe wyłącznie dla Bitcoina z niepowierniczym escrow multisig",
     "Prague, Czech Republic": "Praga, Czechy",
     "Bitcoin-only — no altcoins accepted": "Tylko Bitcoin, bez altcoinów",
@@ -498,9 +498,9 @@ TEXT = {
     "Quick Comparison": "Szybkie porównanie",
     "Feature": "Cecha",
     "Price": "Cena",
-    "EUR 39/yr": "39 EUR/rok",
-    "EUR 49+/yr": "od 49 EUR/rok",
-    "From EUR 11/mo": "Od 11 EUR/mies.",
+    "EUR 39/yr": "39 €/rok",
+    "EUR 49+/yr": "od 49 €/rok",
+    "From EUR 11/mo": "Od 11 €/mies.",
     "From $49/yr": "Od 49 $/rok",
     "Free Tier": "Darmowy pakiet",
     "No": "Nie",
@@ -615,7 +615,7 @@ TEXT = {
     "Block Height": "Wysokość bloku",
     "Blocks mined since genesis": "Bloki wydobyte od bloku genesis",
     "Transaction Fee (Fast)": "Opłata transakcyjna (szybka)",
-    "Hash Rate": "Hash rate",
+    "Hash Rate": "Hashrate",
     "3-day average": "Średnia 3-dniowa",
     "Network Difficulty": "Trudność sieci",
     "Current epoch": "Bieżąca epoka",
@@ -641,7 +641,7 @@ TEXT = {
     "fastest confirmation (sat/vB)": "najszybsze potwierdzenie (sat/vB)",
     "~30 minutes": "~30 minut",
     "~1 hour": "~1 godzina",
-    "Minimum relay": "Minimalna opłata relay",
+    "Minimum relay": "Minimalna opłata za przekazanie",
 
     # -------------------------------------------------------- btc-dominance
     "BTC Dominance — Virtuse": "Dominacja BTC | Virtuse",
@@ -671,16 +671,16 @@ TEXT = {
     # --------------------------------------------------------------- ma-200w
     "200 Week Moving Average — Virtuse": "200-tygodniowa średnia krocząca | Virtuse",
     "Bitcoin's most respected long-term floor. The 200-week moving average has historically marked the bottom of every bear market.":
-        "Najbardziej szanowane długoterminowe dno Bitcoina. 200-tygodniowa średnia krocząca historycznie wyznaczała dołek każdej bessy.",
+        "Najbardziej ceniony wskaźnik długoterminowego dna Bitcoina. 200-tygodniowa średnia krocząca historycznie wyznaczała dno każdej bessy.",
     "Bitcoin's most respected long-term floor. The 200-week moving average has historically marked the bottom of every bear market — price has rarely closed below it, and never stayed there for long.":
-        "Najbardziej szanowane długoterminowe dno Bitcoina. 200-tygodniowa średnia krocząca historycznie wyznaczała dołek każdej bessy: cena rzadko zamykała się poniżej niej i nigdy nie pozostawała tam długo.",
+        "Najbardziej ceniony wskaźnik długoterminowego dna Bitcoina. 200-tygodniowa średnia krocząca historycznie wyznaczała dno każdej bessy: cena rzadko zamykała się poniżej niej i nigdy nie pozostawała tam długo.",
     "Price as a multiple of the 200-week moving average — the closer to 1×, the closer to Bitcoin's historic floor.": "Cena jako wielokrotność 200-tygodniowej średniej kroczącej: im bliżej 1×, tym bliżej historycznego dna Bitcoina.",
     "Price vs. 200 Week Moving Average (log scale)": "Cena a 200-tygodniowa średnia krocząca (skala logarytmiczna)",
     "Weekly closes from Binance (2017 onward) joined with interpolated monthly history (2011–2017); the moving average at each week uses the trailing 200 weeks. Touches of the 200 WMA marked the bear-market bottoms of 2015, 2018, and 2022. Not investment advice.":
         "Tygodniowe zamknięcia z Binance (od 2017 roku) połączone z interpolowaną historią miesięczną (2011–2017); średnia w każdym tygodniu obejmuje poprzednie 200 tygodni. Dotknięcia 200 WMA wyznaczyły dołki bessy w latach 2015, 2018 i 2022. To nie jest porada inwestycyjna.",
 
     # ---------------------------------------------------------- rainbow-chart
-    "Bitcoin Rainbow Chart — Virtuse": "Tęczowy wykres Bitcoina | Virtuse",
+    "Bitcoin Rainbow Chart — Virtuse": "Wykres tęczowy Bitcoina | Virtuse",
     "The classic Bitcoin Rainbow — price history on a logarithmic scale, wrapped in nine color bands derived from the original 2014 log-regression.":
         "Klasyczna tęcza Bitcoina: historia ceny w skali logarytmicznej, otoczona dziewięcioma kolorowymi pasmami wyprowadzonymi z oryginalnej regresji logarytmicznej z 2014 roku.",
     "The classic Bitcoin Rainbow — price history on a logarithmic scale, wrapped in nine color bands derived from the original 2014 log-regression. A playful long-term compass: blue means fear, red means euphoria.":
@@ -879,7 +879,7 @@ TEXT = {
         "Bieżące ceny i dane sieciowe wyświetlane na tej stronie pochodzą od podmiotów trzecich, w tym CoinGecko, Binance i mempool.space, na zasadzie „w miarę dostępności”. Nie kontrolujemy tych źródeł i nie możemy zagwarantować, że dane są dokładne, kompletne lub aktualne w chwili ich przeglądania. Nie należy polegać na tych danych przy pilnych decyzjach transakcyjnych lub finansowych; przed działaniem trzeba zweryfikować aktualne ceny bezpośrednio na giełdzie lub u partnera.",
     "Blog and editorial content": "Blog i treści redakcyjne",
     "Blog articles reflect the personal views and opinions of their authors (principally Virtuse founder Ras Vasilisin) at the time of writing, and do not constitute financial, legal, or tax advice, nor do they necessarily represent the views of Virtuse Group Pte. Ltd. as a company. Macroeconomic and market commentary can age quickly — check the publication date and treat older articles as historical opinion rather than current guidance.":
-        "Artykuły blogowe odzwierciedlają osobiste poglądy i opinie ich autorów (przede wszystkim założyciela Virtuse, Rasa Vasilisina) w chwili pisania i nie stanowią porady finansowej, prawnej ani podatkowej ani niekoniecznie odzwierciedlają stanowisko Virtuse Group Pte. Ltd. jako spółki. Komentarze makroekonomiczne i rynkowe szybko się dezaktualizują: warto sprawdzać datę publikacji i traktować starsze artykuły jako historyczną opinię, a nie aktualne wskazówki.",
+        "Artykuły blogowe odzwierciedlają osobiste poglądy i opinie ich autorów (przede wszystkim założyciela Virtuse, Rasa Vasilisina) w chwili pisania i nie stanowią porady finansowej, prawnej ani podatkowej i niekoniecznie odzwierciedlają stanowisko Virtuse Group Pte. Ltd. jako spółki. Komentarze makroekonomiczne i rynkowe szybko się dezaktualizują: warto sprawdzać datę publikacji i traktować starsze artykuły jako historyczną opinię, a nie aktualne wskazówki.",
     "6. Intellectual Property": "6. Własność intelektualna",
     "Our content": "Nasze treści",
     "Your licence to use this website": "Licencja na korzystanie z tej strony",
@@ -902,7 +902,7 @@ TEXT = {
     "Severability & entire agreement": "Rozdzielność postanowień i całość umowy",
     "Changes to these Terms": "Zmiany Regulaminu",
     "We may revise these Terms as our services, the regulatory landscape, or the law evolve. Changes take effect when posted on this page with an updated effective date; material changes will be flagged prominently on the site or via the newsletter before they take effect. Continuing to use the website after a revised version is posted means you accept the changes.":
-        "Możemy zmieniać niniejszy Regulamin wraz z rozwojem naszych usług, otoczenia regulacyjnego lub przepisów. Zmiany wchodzą w życie z chwilą opublikowania na tej stronie ze zaktualizowaną datą obowiązywania; o istotnych zmianach informujemy wyraźnie na stronie lub w newsletterze, zanim wejdą w życie. Dalsze korzystanie ze strony po opublikowaniu zmienionej wersji oznacza akceptację zmian.",
+        "Możemy zmieniać niniejszy Regulamin wraz z rozwojem naszych usług, otoczenia regulacyjnego lub przepisów. Zmiany wchodzą w życie z chwilą opublikowania na tej stronie z zaktualizowaną datą obowiązywania; o istotnych zmianach informujemy wyraźnie na stronie lub w newsletterze, zanim wejdą w życie. Dalsze korzystanie ze strony po opublikowaniu zmienionej wersji oznacza akceptację zmian.",
 }
 
 
@@ -1019,7 +1019,7 @@ SNIPPETS = {
     "faq.html": [
         ('<h1>Frequently Asked <span class="highlight">Questions</span></h1>', '<h1>Najczęściej zadawane <span class="highlight">pytania</span></h1>'),
         ('<div class="faq-answer">Seven service categories, each with hand-picked partners: <strong>Buy Bitcoin</strong> (MiCA-licensed CASPs like 21bitcoin, Kraken, and ByBit EU), <strong>Mining</strong> (hosted mining with OneMiners, Abundant Mines, Power Mining), <strong>Loans</strong> (Bitcoin-backed borrowing via Firefish — keep your BTC, get cash), <strong>Custody</strong> (Trezor, Ledger, and Blockstream Jade hardware wallets), <strong>Treasury</strong> (institutional custody with Coinbase Institutional, Sygnum, BitGo), <strong>Tax</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Trading Bots</strong> (Coinrule, Cryptohopper, RevenueBot), plus free <a href="bitcoin-data.html">Bitcoin Data</a> tools — live dashboard, retirement calculator, rainbow chart, and more.</div>',
-         '<div class="faq-answer">Siedem kategorii usług, każda ze starannie wybranymi partnerami: <strong>Kup Bitcoin</strong> (dostawcy CASP z licencją MiCA, np. 21bitcoin, Kraken i ByBit EU), <strong>Kopanie</strong> (hosting koparek z OneMiners, Abundant Mines, Power Mining), <strong>Pożyczki</strong> (pożyczki pod zastaw Bitcoina przez Firefish: BTC zostaje, gotówka trafia do Państwa), <strong>Przechowywanie</strong> (portfele sprzętowe Trezor, Ledger i Blockstream Jade), <strong>Treasury</strong> (przechowywanie instytucjonalne z Coinbase Institutional, Sygnum, BitGo), <strong>Podatki</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Boty tradingowe</strong> (Coinrule, Cryptohopper, RevenueBot), a także darmowe narzędzia <a href="bitcoin-data.html">Dane o Bitcoinie</a>: dashboard na żywo, kalkulator emerytalny, wykres tęczowy i inne.</div>'),
+         '<div class="faq-answer">Siedem kategorii usług, każda ze starannie wybranymi partnerami: <strong>Kup Bitcoin</strong> (dostawcy CASP z licencją MiCA, np. 21bitcoin, Kraken i ByBit EU), <strong>Kopanie</strong> (hosting koparek u OneMiners, Abundant Mines, Power Mining), <strong>Pożyczki</strong> (pożyczki pod zastaw Bitcoina przez Firefish: BTC zostaje, gotówka trafia do Państwa), <strong>Przechowywanie</strong> (portfele sprzętowe Trezor, Ledger i Blockstream Jade), <strong>Treasury</strong> (przechowywanie instytucjonalne w Coinbase Institutional, Sygnum, BitGo), <strong>Podatki</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Boty tradingowe</strong> (Coinrule, Cryptohopper, RevenueBot), a także darmowe narzędzia <a href="bitcoin-data.html">Dane o Bitcoinie</a>: dashboard na żywo, kalkulator emerytalny, wykres tęczowy i inne.</div>'),
         ('<div class="faq-answer">For long-term holdings we recommend hardware wallets from our <a href="secure.html">custody partners</a> — Trezor (open-source, made in the EU) or Ledger (Secure Element chip, 7M+ devices sold). Your keys are generated offline and never leave the device. Larger holdings and corporate treasuries can use institutional-grade custody via our <a href="treasury.html">Treasury partners</a>.</div>',
          '<div class="faq-answer">Do długoterminowego przechowywania polecamy portfele sprzętowe od naszych <a href="secure.html">partnerów w przechowywaniu</a>: Trezor (open source, produkowany w UE) lub Ledger (układ Secure Element, ponad 7 mln sprzedanych urządzeń). Klucze są generowane offline i nigdy nie opuszczają urządzenia. Większe zasoby i firmowe treasury mogą korzystać z przechowywania klasy instytucjonalnej u naszych <a href="treasury.html">partnerów treasury</a>.</div>'),
         ('<div class="faq-answer">Trading happens on our partners\' platforms, not on Virtuse. For spot buying and selling, use a <a href="buy-bitcoin.html">Buy Bitcoin</a> partner. For automated strategies (DCA, grid, rebalancing), our <a href="bots.html">Bots partners</a> connect to your exchange account via API keys — non-custodial, so the bot never holds your coins.</div>',
@@ -1137,7 +1137,7 @@ SNIPPETS = {
         ("<div class=\"faq-answer\">The Virtuse name, logo, website design, and original text, graphics, and tools on this website are owned by or licensed to Virtuse Group Pte. Ltd. and are protected by copyright, trademark, and other intellectual property laws. Partner logos and trademarks displayed on this website remain the property of their respective owners and are used to identify those partners, not to imply endorsement by them of Virtuse beyond the referral relationship described in <a href=\"#partners\">Section 4</a>.</div>",
          "<div class=\"faq-answer\">Nazwa Virtuse, logo, projekt strony oraz oryginalne teksty, grafiki i narzędzia na tej stronie należą do Virtuse Group Pte. Ltd. lub są jej licencjonowane i są chronione prawem autorskim, prawem znaków towarowych i innymi przepisami o własności intelektualnej. Logo i znaki towarowe partnerów wyświetlane na tej stronie pozostają własnością ich właścicieli i służą do identyfikacji tych partnerów, a nie do sugerowania, że popierają oni Virtuse w zakresie wykraczającym poza relację polecającą opisaną w <a href=\"#partners\">sekcji 4</a>.</div>"),
         ("<div class=\"faq-answer\">If any provision of these Terms is found unenforceable, the remaining provisions continue in full force. These Terms, together with our <a href=\"privacy-policy.html\">Privacy Policy</a> and <a href=\"aml-compliance.html\">AML &amp; Compliance</a> page, constitute the entire agreement between you and Virtuse regarding your use of this website, and supersede any prior agreements on the same subject. Our failure to enforce any provision is not a waiver of our right to do so later.</div>",
-         "<div class=\"faq-answer\">Jeśli którekolwiek postanowienie niniejszego Regulaminu zostanie uznane za niewykonalne, pozostałe postanowienia zachowują pełną moc. Niniejszy Regulamin wraz z naszą <a href=\"privacy-policy.html\">Polityką prywatności</a> i stroną <a href=\"aml-compliance.html\">AML i zgodność</a> stanowi całość porozumienia między Państwem a Virtuse w zakresie korzystania z tej strony i zastępuje wszelkie wcześniejsze porozumienia w tej samej sprawie. Niedochodzenie przez nas egzekwowania któregokolwiek postanowienia nie oznacza zrzeczenia się prawa do jego późniejszego egzekwowania.</div>"),
+         "<div class=\"faq-answer\">Jeśli którekolwiek postanowienie niniejszego Regulaminu zostanie uznane za niewykonalne, pozostałe postanowienia zachowują pełną moc. Niniejszy Regulamin wraz z naszą <a href=\"privacy-policy.html\">Polityką prywatności</a> i stroną <a href=\"aml-compliance.html\">AML i zgodność</a> stanowi całość porozumienia między Państwem a Virtuse w zakresie korzystania z tej strony i zastępuje wszelkie wcześniejsze porozumienia w tej samej sprawie. Nieegzekwowanie przez nas któregokolwiek postanowienia nie oznacza zrzeczenia się prawa do jego późniejszego egzekwowania.</div>"),
         ("<div class=\"faq-answer\">Questions about these Terms: <a href=\"mailto:support@virtuse.com\">support@virtuse.com</a>, or Virtuse Group Pte. Ltd., Singapore.</div>",
          "<div class=\"faq-answer\">Pytania dotyczące niniejszego Regulaminu: <a href=\"mailto:support@virtuse.com\">support@virtuse.com</a> albo Virtuse Group Pte. Ltd., Singapur.</div>"),
     ],

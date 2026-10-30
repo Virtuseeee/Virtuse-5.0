@@ -45,7 +45,7 @@ def build(L):
     pills = ''.join('<a class="cpill%s" href="%s"%s>%s</a>' % (' on' if OWN.get(L) == c else '', guide(L, slugs[c]),
                     ' aria-current="true"' if OWN.get(L) == c else '', names[c]) for c in cc)
     pills += '<a class="cpill all" href="%s">%s %s</a>' % (guide(L), t('all13'), C.ARROW)
-    de_link = '' if L == 'de' else '<a class="tlink tx-de" href="%s" lang="de">%s Bitcoin-Steuern Deutschland</a>' % (guide('de', META['slugs']['de']['de']), {'sk': 'Po nemecky:', 'cs': 'Německy:'}.get(L, 'Auf Deutsch:'))
+    de_link = '' if L == 'de' else '<a class="tlink tx-de" href="%s" lang="de">%s Bitcoin-Steuern Deutschland</a>' % (guide('de', META['slugs']['de']['de']), {'sk': 'Po nemecky:', 'cs': 'Německy:', 'pl': 'Po niemiecku:'}.get(L, 'Auf Deutsch:'))
 
     rows = []
     for p in PARTNERS:

@@ -76,9 +76,9 @@
  "pr_ledger_get": "Przejście do Ledger",
  "pr_umbrel_device": "Umbrel Home",
  "pr_umbrel_made": "Brak danych",
- "pr_umbrel_feature": "Własny node Bitcoina (nie portfel)",
- "pr_umbrel_body": "Domowy serwer wielkości dłoni z umbrelOS. Własny node Bitcoina, eksplorator mempool i inne aplikacje instaluje się kilkoma kliknięciami.",
- "pr_umbrel_f1": "Własny node Bitcoina: samodzielna weryfikacja każdego bloku",
+ "pr_umbrel_feature": "Własny węzeł Bitcoina (nie portfel)",
+ "pr_umbrel_body": "Domowy serwer wielkości dłoni z umbrelOS. Własny węzeł Bitcoina, eksplorator mempool i inne aplikacje instaluje się kilkoma kliknięciami.",
+ "pr_umbrel_f1": "Własny węzeł Bitcoina: samodzielna weryfikacja każdego bloku",
  "pr_umbrel_f2": "Aplikacje mempool i Public Pool",
  "pr_umbrel_f3": "Do 4 TB pamięci SSD",
  "pr_umbrel_f4": "Od 479 € z cłem i podatkami, darmowa dostawa (według ceny dla Włoch, paź. 2026)",
@@ -88,6 +88,6 @@
  "aff_how": "Jak zarabiamy",
  "i_h2_a": "Nie chcą Państwo przechowywać kluczy samodzielnie?",
  "i_h2_b": "Regulowani powiernicy.",
- "i_lead": "U powiernika klucze w Państwa imieniu przechowuje regulowany dostawca. To nie jest samodzielne przechowywanie: polegają Państwo na dostawcy. Każdy sam decyduje, kogo przyjmuje jako klienta; warto to sprawdzić na jego stronie.",
+ "i_lead": "U powiernika klucze w Państwa imieniu przechowuje regulowany dostawca. To nie jest samodzielne przechowywanie: polegają Państwo na dostawcy. Każdy powiernik sam decyduje, kogo przyjmuje jako klienta; warto to sprawdzić na jego stronie.",
  "i_treasury": "Bitcoin dla firm: Treasury"
 }
