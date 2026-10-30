@@ -727,7 +727,7 @@ export default {
   }
  },
  "power-mining": {
-  "name": "PowerMining",
+  "name": "Power Mining",
   "approved": false,
   "as_of": "2026-10-07",
   "sources": [
@@ -747,7 +747,7 @@ export default {
     },
     {
      "title": "Pay at checkout",
-     "text": "PowerMining accepts credit cards, PayPal and Bitcoin via BTCPay. Businesses can request an invoice by providing a VAT number and company details."
+     "text": "Power Mining accepts credit cards, PayPal and Bitcoin via BTCPay. Businesses can request an invoice by providing a VAT number and company details."
     },
     {
      "title": "Receive delivery",

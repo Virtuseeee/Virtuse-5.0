@@ -68,7 +68,7 @@ POSTUP
    buy (buy-bitcoin.html): 21bitcoin (logo-21bitcoin-app.png), ByBit EU (logo-bybit.png),
      Kraken (logo-kraken.png), Crypto.com (logo-crypto-com.png), Invity (logo-invity.svg)
    custody (secure.html): Blockstream, Ledger, Trezor
-   mining (mining.html): Abundant Mines, OneMiners, PowerMining
+   mining (mining.html): Abundant Mines, OneMiners, Power Mining
    loans (lending.html): Firefish
    tax (tax.html): Koinly, Blockpit, CoinTracking, Divly
    treasury (treasury.html): BitGo, Coinbase, Sygnum

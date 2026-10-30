@@ -63,7 +63,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     gainTax: { en: '27.5 % KESt (capital gains tax)', sk: '27,5 % KESt (daň z kapitálových výnosov)', cs: '27,5 % KESt (daň z kapitálových výnosů)' },
     exemption: { en: 'Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption', sk: 'Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia', cs: 'Po 1 roce bez daně jen u kryptoměn koupených před březnem 2021; pozdější nákupy bez osvobození' },
     filing: { en: 'Annual return for gains via foreign exchanges; Austrian providers withhold the tax', sk: 'Ročné priznanie pri ziskoch cez zahraničné burzy; rakúski poskytovatelia daň zrážajú', cs: 'Přiznání pro zisky přes zahraniční burzy; rakouští poskytovatelé daň srážejí' },
-    note: { en: 'Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.', sk: 'Výmeny krypto za krypto sú daňovo neutrálne. Príjmy z požičiavania a ťažby sa zdaňujú pri prijatí, staking a airdropy až pri predaji (s nulovou obstarávacou cenou).', cs: 'Výměny kryptoměny za kryptoměnu jsou daňově neutrální. Příjmy z půjčování a těžby se daní při přijetí, staking a airdropy až při prodeji (s nulovou pořizovací cenou).' },
+    note: { en: 'Crypto-to-crypto swaps are tax-neutral. Income from lending and mining is taxed on receipt; staking rewards and airdrops are taxed only when sold, with an acquisition cost of zero.', sk: 'Výmeny krypto za krypto sú daňovo neutrálne. Príjmy z požičiavania a ťažby sa zdaňujú pri prijatí, odmeny zo stakingu a airdropy až pri predaji, s nulovou obstarávacou cenou.', cs: 'Výměny kryptoměny za kryptoměnu jsou daňově neutrální. Příjmy z půjčování a těžby se daní při přijetí, odměny ze stakingu a airdropy až při prodeji, s nulovou pořizovací cenou.' },
   },
   {
     id: 'de',
@@ -78,10 +78,10 @@ export const COUNTRY_TAX: CountryTax[] = [
     id: 'hu',
     name: { en: 'Hungary', sk: 'Maďarsko', cs: 'Maďarsko' },
     flag: '🇭🇺',
-    gainTax: { en: '15 % capital gains tax', sk: '15 % daň z kapitálových výnosov', cs: '15 % daň z kapitálových výnosů' },
+    gainTax: { en: '15% personal income tax on crypto income', sk: '15 % daň z príjmov z kryptoaktív', cs: '15 % daň z příjmů z kryptoaktiv' },
     exemption: { en: 'No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)', sk: 'Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)', cs: 'Bez osvobození podle doby držení; drobné transakce do 10 % minimální mzdy jsou bez daně (celkem nejvýše jedna minimální mzda ročně)' },
     filing: { en: 'Annual personal income tax return', sk: 'Ročné priznanie dane z príjmov fyzickej osoby', cs: 'Roční přiznání daně z příjmů fyzické osoby' },
-    note: { en: 'Documented acquisition costs are deductible, so keep every invoice.', sk: 'Doložené obstarávacie náklady sú odpočítateľné, preto uchovávajte každú faktúru.', cs: 'Doložené pořizovací náklady jsou odečitatelné, proto uchovávejte každou fakturu.' },
+    note: { en: 'Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.', sk: 'Zdaňuje sa len výmena za peniaze, tovar alebo služby; výmena krypto za krypto nie. Preukázateľné obstarávacie náklady sa dajú odpočítať a stratu možno započítať so ziskami z toho istého roka a dvoch predchádzajúcich rokov.', cs: 'Daní se jen směna za peníze, zboží nebo služby; směna kryptoměny za kryptoměnu ne. Doložené pořizovací náklady lze odečíst a ztrátu lze započíst proti ziskům téhož roku a dvou předchozích let.' },
   },
   {
     id: 'si',
@@ -89,8 +89,8 @@ export const COUNTRY_TAX: CountryTax[] = [
     flag: '🇸🇮',
     gainTax: { en: 'No tax on private disposal gains (business trading is taxed)', sk: 'Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)', cs: 'Soukromé zisky z prodeje se nedaní (podnikatelské obchodování ano)' },
     exemption: { en: 'Private gains are not taxed', sk: 'Súkromné zisky sú bez dane', cs: 'Soukromé zisky jsou bez daně' },
-    filing: { en: 'None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return', sk: 'Pri súkromných ziskoch žiadne; príjem z ťažby vyžaduje priznanie k preddavku dane do 15 dní; podnikateľské príjmy patria do daňového priznania z podnikania', cs: 'U soukromých zisků žádné; příjem z těžby vyžaduje přiznání k záloze na daň do 15 dnů; podnikatelské příjmy patří do daňového přiznání z podnikání' },
-    note: { en: 'Mining is taxed as other income. Frequent trading can count as a business activity.', sk: 'Ťažba sa zdaňuje ako iný príjem. Časté obchodovanie môže byť podnikaním.', cs: 'Těžba se daní jako jiný příjem. Časté obchodování může být podnikáním.' },
+    filing: { en: 'No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return', sk: 'Pri súkromných ziskoch žiadne; príjem z ťažby vyžaduje priznanie k preddavku dane do 15 dní; podnikateľské príjmy patria do daňového priznania z podnikania', cs: 'U soukromých zisků žádné; příjem z těžby vyžaduje přiznání k záloze na daň do 15 dnů; podnikatelské příjmy patří do daňového přiznání z podnikání' },
+    note: { en: 'Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.', sk: 'Ťažba sa zdaňuje ako ostatný príjem. Časté obchodovanie môže byť podnikaním. Daň 25 % zo ziskov z kryptoaktív bola navrhnutá v roku 2025, k októbru 2026 však nebola prijatá.', cs: 'Těžba se daní jako ostatní příjem. Časté obchodování může být podnikáním. Daň 25 % ze zisků z kryptoaktiv byla navržena v roce 2025, k říjnu 2026 však nebyla přijata.' },
   },
   {
     id: 'hr',
@@ -198,7 +198,7 @@ export const INHERITANCE_CHECKLIST: ChecklistItem[] = [
   {
     id: 'accounts',
     question: { en: 'Are exchange accounts, loans and automated plans documented?', sk: 'Sú účty na burzách, pôžičky a automatizované plány zdokumentované?', cs: 'Jsou účty na burzách, půjčky a automatizované plány zdokumentované?' },
-    detail: { en: 'Custodial balances, bitcoin-backed loans and DCA bots die with forgotten logins.', sk: 'Kustodiálne zostatky, pôžičky kryté Bitcoinom a DCA boty zanikajú so zabudnutými prihláseniami.', cs: 'Kustodiální zůstatky, půjčky kryté Bitcoinem a DCA boti zanikají se zapomenutými přihlášeními.' },
+    detail: { en: 'Custodial balances, bitcoin-backed loans and DCA bots die with forgotten logins.', sk: 'Kustodiálne zostatky, pôžičky so zábezpekou v Bitcoine a DCA boty zanikajú so zabudnutými prihláseniami.', cs: 'Kustodiální zůstatky, půjčky kryté Bitcoinem a DCA boti zanikají se zapomenutými přihlášeními.' },
     points: 15,
     action: { en: 'Maintain an inventory of platforms, account IDs and how balances should be claimed, inside your letter of instruction.', sk: 'V liste s pokynmi veďte zoznam platforiem, identifikátorov účtov a postupu na uplatnenie zostatkov.', cs: 'V dopise s pokyny veďte seznam platforem, identifikátorů účtů a postupu pro uplatnění zůstatků.' },
   },

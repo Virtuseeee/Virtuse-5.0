@@ -35,6 +35,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { pathToFileURL } from 'node:url';
 import { HERE, SITE, ORIGIN, MANIFEST, SITEMAP_START, SITEMAP_END, DESK_NAMES, decode, text, esc } from './common.mjs';
+import { CRUMBS_LABEL } from '../seo-build/lib/html.mjs';
 
 export const PER_PAGE = 24;
 export const HUBS_START = '<!-- STORIES-HUBS:START -->';
@@ -272,6 +273,7 @@ export function applyStoryExtras(html, info, template) {
   const csp = template.match(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/);
   if (csp) h = h.replace(/<meta http-equiv="Content-Security-Policy" content="[^"]*">/, () => csp[0]);
   h = widenImgSrc(h);
+  h = h.replace(/<nav class="story-crumb" aria-label="[^"]*">/, () => `<nav class="story-crumb" aria-label="${esc(CRUMBS_LABEL[lang] || 'Breadcrumb')}">`);
   h = must(h, /<a href="[^"]*" id="crumbList" data-ui="[^"]*">[^<]*<\/a>/,
     () => `<a href="${hub}" id="crumbList" data-ui="crumbStories">${esc(STRINGS[lang].crumb)}</a>`, 'crumbList');
   h = must(h, /(<a class="text-link" href=")[^"]*(" id="backLink")/, (m, a, b) => a + hub + b, 'backLink');
@@ -571,7 +573,7 @@ function hubPage(template, R, lang, n, pages, items, offset, total, hubLangs) {
       : `<span aria-current="page">${esc(S.crumb)}</span>`);
   const main = `<main id="main">
   <div class="page-inner hub-wrap">
-    <nav class="story-crumb" aria-label="Breadcrumb">${crumbHtml}</nav>
+    <nav class="story-crumb" aria-label="${esc(CRUMBS_LABEL[lang] || 'Breadcrumb')}">${crumbHtml}</nav>
     <header class="arch-head">
       <div>
         <p class="arch-kicker">${esc(S.kicker)}</p>

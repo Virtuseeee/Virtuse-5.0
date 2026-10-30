@@ -55,14 +55,14 @@ export default {
    "name": "Austria",
    "gainTax": "27.5% KESt (capital gains tax)",
    "exemption": "Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption",
-   "note": "Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.",
+   "note": "Crypto-to-crypto swaps are tax-neutral. Income from lending and mining is taxed on receipt; staking rewards and airdrops are taxed only when sold, with an acquisition cost of zero.",
    "sk": {
     "gainTax": "27,5 % KESt (daň z kapitálových výnosov)",
     "exemption": "Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia"
    },
    "ru": {
     "gainTax": "KESt 27,5% (налог на прирост капитала)",
-    "exemption": "Освобождение через 1 год только для крипты, купленной до марта 2021 года; более поздние покупки без освобождения"
+    "exemption": "Освобождение через 1 год только для криптоактивов, купленных до марта 2021 года; более поздние покупки без освобождения"
    }
   },
   {
@@ -77,22 +77,22 @@ export default {
    },
    "ru": {
     "gainTax": "Подоходный налог до 45% (прогрессивная шкала)",
-    "exemption": "0% после 1 года владения; общая прибыль менее 1000 € в год освобождена от налога"
+    "exemption": "0% после 1 года владения; общая прибыль менее 1 000 € в год освобождена от налога"
    }
   },
   {
    "id": "hu",
    "name": "Hungary",
-   "gainTax": "15% capital gains tax",
+   "gainTax": "15% personal income tax on crypto income",
    "exemption": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
-   "note": "Documented acquisition costs are deductible, so keep every invoice.",
+   "note": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.",
    "sk": {
-    "gainTax": "15 % daň z kapitálových výnosov",
+    "gainTax": "15 % daň z príjmov z kryptoaktív",
     "exemption": "Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)"
    },
    "ru": {
-    "gainTax": "Налог 15% на прирост капитала",
-    "exemption": "Без освобождения за срок владения; мелкие операции до 10% минимальной зарплаты каждая освобождены (в сумме до одной минимальной зарплаты в год)"
+    "gainTax": "Налог на доходы физических лиц 15% с дохода от криптовалют",
+    "exemption": "Без освобождения по сроку владения; мелкие операции до 10% минимальной зарплаты каждая освобождены (в сумме до одной минимальной зарплаты в год)"
    }
   },
   {
@@ -100,7 +100,7 @@ export default {
    "name": "Slovenia",
    "gainTax": "No tax on private disposal gains (business trading is taxed)",
    "exemption": "Private gains are not taxed",
-   "note": "Mining is taxed as other income. Frequent trading can count as a business activity.",
+   "note": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.",
    "sk": {
     "gainTax": "Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)",
     "exemption": "Súkromné zisky sú bez dane"
@@ -132,7 +132,7 @@ export default {
    "exemption": "No holding-period exemption",
    "note": "The rate rose from 10% to 16% for gains from 2026. Gains under 200 lei per transaction are exempt up to 600 lei a year.",
    "sk": {
-    "gainTax": "16 % daň z príjmov zo ziskov z kryptomien (do 2025: 10 %)",
+    "gainTax": "16 % daň z príjmov zo ziskov z kryptomien (do roku 2025: 10 %)",
     "exemption": "Bez oslobodenia podľa doby držby"
    },
    "ru": {
@@ -166,7 +166,7 @@ export default {
     "exemption": "Nezdaniteľná časť (59 357 € na osobu, 2026)"
    },
    "ru": {
-    "gainTax": "Налог на имущество Box 3: примерно 36% от условной доходности",
+    "gainTax": "Налог на имущество Box 3 (примерно 36% от условной доходности)",
     "exemption": "Необлагаемый минимум (59 357 € на человека, 2026)"
    }
   },

@@ -46,7 +46,7 @@
       "gainTax": "27.5% KESt (capital gains tax)",
       "exemption": "Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption",
       "filing": "Annual return for gains via foreign exchanges; Austrian providers withhold the tax",
-      "note": "Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost."
+      "note": "Crypto-to-crypto swaps are tax-neutral. Income from lending and mining is taxed on receipt; staking rewards and airdrops are taxed only when sold, with an acquisition cost of zero."
     },
     {
       "id": "de",
@@ -61,10 +61,10 @@
       "id": "hu",
       "name": "Hungary",
       "flag": "🇭🇺",
-      "gainTax": "15% capital gains tax",
+      "gainTax": "15% personal income tax on crypto income",
       "exemption": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
       "filing": "Annual personal income tax return",
-      "note": "Documented acquisition costs are deductible, so keep every invoice."
+      "note": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years."
     },
     {
       "id": "si",
@@ -72,8 +72,8 @@
       "flag": "🇸🇮",
       "gainTax": "No tax on private disposal gains (business trading is taxed)",
       "exemption": "Private gains are not taxed",
-      "filing": "None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
-      "note": "Mining is taxed as other income. Frequent trading can count as a business activity."
+      "filing": "No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
+      "note": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026."
     },
     {
       "id": "hr",

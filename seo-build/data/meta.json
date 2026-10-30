@@ -403,7 +403,7 @@
       "gainTax": "27,5 % KESt (Kapitalertragsteuer)",
       "exemption": "Nach 1 Jahr steuerfrei nur für Altvermögen (gekauft vor März 2021); spätere Käufe ohne Befreiung",
       "filing": "Steuererklärung für Gewinne über ausländische Börsen; österreichische Anbieter behalten die KESt ein",
-      "note": "Krypto-zu-Krypto-Tausch ist steuerneutral. Lending und Mining werden bei Zufluss besteuert, Staking und Airdrops erst beim Verkauf (Anschaffungskosten null)."
+      "note": "Krypto-zu-Krypto-Tausch ist steuerneutral. Einkünfte aus Verleihen (Lending) und Mining werden bei Zufluss besteuert, Staking-Erträge und Airdrops erst beim Verkauf, mit Anschaffungskosten von null."
     },
     "de": {
       "gainTax": "Bis zu 45 % Einkommensteuer (progressiv)",
@@ -412,16 +412,16 @@
       "note": "Krypto-zu-Krypto-Tausch ist innerhalb des ersten Jahres steuerpflichtig. FIFO-Aufzeichnungen sind entscheidend."
     },
     "hu": {
-      "gainTax": "15 % Kapitalertragsteuer",
+      "gainTax": "15 % Einkommensteuer auf Krypto-Einkünfte",
       "exemption": "Keine Befreiung nach Haltedauer; Kleintransaktionen bis je 10 % des Mindestlohns sind steuerfrei (insgesamt bis zu einem Mindestlohn pro Jahr)",
       "filing": "Jährliche Einkommensteuererklärung",
-      "note": "Dokumentierte Anschaffungskosten sind abzugsfähig. Bewahren Sie jede Rechnung auf."
+      "note": "Besteuert wird nur der Tausch in Geld, Waren oder Dienstleistungen, Krypto-zu-Krypto-Tausch nicht. Dokumentierte Anschaffungskosten sind abzugsfähig, und ein Verlust kann mit Gewinnen desselben Jahres und der zwei Vorjahre verrechnet werden."
     },
     "si": {
       "gainTax": "Keine Steuer auf private Veräußerungsgewinne (gewerblicher Handel ist steuerpflichtig)",
       "exemption": "Private Gewinne sind steuerfrei",
-      "filing": "Keine für private Gewinne; für Mining-Einkünfte ist binnen 15 Tagen eine Vorauszahlungserklärung abzugeben; gewerbliche Einkünfte gehören in die betriebliche Steuererklärung",
-      "note": "Mining gilt als sonstiges Einkommen. Häufiger Handel kann als gewerbliche Tätigkeit gelten."
+      "filing": "Für private Gewinne ist keine Erklärung nötig; für Mining-Einkünfte ist binnen 15 Tagen eine Vorauszahlungserklärung abzugeben; gewerbliche Einkünfte gehören in die betriebliche Steuererklärung",
+      "note": "Mining gilt als sonstiges Einkommen. Häufiger Handel kann als gewerbliche Tätigkeit gelten. Eine Steuer von 25 % auf Krypto-Gewinne wurde 2025 vorgeschlagen, war aber bis Oktober 2026 nicht beschlossen."
     },
     "hr": {
       "gainTax": "12 % auf Krypto-Gewinne (seit 2024)",
@@ -539,7 +539,7 @@
       "gainTax": "27,5 % KESt (daň z kapitálových výnosov)",
       "exemption": "Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia",
       "filing": "Ročné priznanie pri ziskoch cez zahraničné burzy; rakúski poskytovatelia daň zrážajú",
-      "note": "Výmeny krypto za krypto sú daňovo neutrálne. Príjmy z požičiavania a ťažby sa zdaňujú pri prijatí, staking a airdropy až pri predaji (s nulovou obstarávacou cenou)."
+      "note": "Výmeny krypto za krypto sú daňovo neutrálne. Príjmy z požičiavania a ťažby sa zdaňujú pri prijatí, odmeny zo stakingu a airdropy až pri predaji, s nulovou obstarávacou cenou."
     },
     "de": {
       "gainTax": "Až 45 % daň z príjmov (progresívna)",
@@ -548,16 +548,16 @@
       "note": "Výmena krypto za krypto je v prvom roku zdaniteľná. Kľúčová je evidencia metódou FIFO."
     },
     "hu": {
-      "gainTax": "15 % daň z kapitálových výnosov",
+      "gainTax": "15 % daň z príjmov z kryptoaktív",
       "exemption": "Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)",
       "filing": "Ročné priznanie k dani z príjmov fyzickej osoby",
-      "note": "Preukázateľné obstarávacie náklady sa dajú odpočítať, preto uchovávajte každú faktúru."
+      "note": "Zdaňuje sa len výmena za peniaze, tovar alebo služby; výmena krypto za krypto nie. Preukázateľné obstarávacie náklady sa dajú odpočítať a stratu možno započítať so ziskami z toho istého roka a dvoch predchádzajúcich rokov."
     },
     "si": {
       "gainTax": "Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)",
       "exemption": "Súkromné zisky sú bez dane",
       "filing": "Pri súkromných ziskoch žiadne; príjem z ťažby vyžaduje priznanie k preddavku dane do 15 dní; podnikateľské príjmy patria do daňového priznania z podnikania",
-      "note": "Ťažba sa zdaňuje ako iný príjem. Časté obchodovanie môže byť podnikaním."
+      "note": "Ťažba sa zdaňuje ako ostatný príjem. Časté obchodovanie môže byť podnikaním. Daň 25 % zo ziskov z kryptoaktív bola navrhnutá v roku 2025, k októbru 2026 však nebola prijatá."
     },
     "hr": {
       "gainTax": "12 % zo ziskov z kryptomien (od roku 2024)",
@@ -625,7 +625,7 @@
     {
       "id": "accounts",
       "name": "Zoznam účtov",
-      "text": "Zostatky na burzách, pôžičky zabezpečené Bitcoinom a DCA boty sa so zabudnutými prihlasovacími údajmi strácajú. V liste s pokynmi veďte zoznam platforiem a postup, ako zostatky uplatniť."
+      "text": "Zostatky na burzách, pôžičky so zábezpekou v Bitcoine a DCA boty sa so zabudnutými prihlasovacími údajmi strácajú. V liste s pokynmi veďte zoznam platforiem a postup, ako zostatky uplatniť."
     }
   ],
   "inCs": {
@@ -671,7 +671,7 @@
       "gainTax": "27,5 % KESt (daň z kapitálových výnosů)",
       "exemption": "Po 1 roce bez daně jen u kryptoměn koupených před březnem 2021; pozdější nákupy bez osvobození",
       "filing": "Přiznání pro zisky přes zahraniční burzy; rakouští poskytovatelé daň srážejí",
-      "note": "Výměny kryptoměny za kryptoměnu jsou daňově neutrální. Příjmy z půjčování a těžby se daní při přijetí, staking a airdropy až při prodeji (s nulovou pořizovací cenou)."
+      "note": "Výměny kryptoměny za kryptoměnu jsou daňově neutrální. Příjmy z půjčování a těžby se daní při přijetí, odměny ze stakingu a airdropy až při prodeji, s nulovou pořizovací cenou."
     },
     "de": {
       "gainTax": "Až 45 % daň z příjmů (progresivní)",
@@ -680,16 +680,16 @@
       "note": "Výměna kryptoměny za kryptoměnu je v prvním roce zdanitelná. Klíčová je evidence metodou FIFO."
     },
     "hu": {
-      "gainTax": "15 % daň z kapitálových výnosů",
+      "gainTax": "15 % daň z příjmů z kryptoaktiv",
       "exemption": "Bez osvobození podle doby držení; drobné transakce do 10 % minimální mzdy jsou bez daně (celkem nejvýše jedna minimální mzda ročně)",
       "filing": "Roční přiznání k dani z příjmů fyzických osob",
-      "note": "Doložené pořizovací náklady lze odečíst, proto uchovávejte každou fakturu."
+      "note": "Daní se jen směna za peníze, zboží nebo služby; směna kryptoměny za kryptoměnu ne. Doložené pořizovací náklady lze odečíst a ztrátu lze započíst proti ziskům téhož roku a dvou předchozích let."
     },
     "si": {
       "gainTax": "Soukromé zisky z prodeje se nedaní (podnikatelské obchodování ano)",
       "exemption": "Soukromé zisky jsou bez daně",
       "filing": "U soukromých zisků žádné; příjem z těžby vyžaduje přiznání k záloze na daň do 15 dnů; podnikatelské příjmy patří do daňového přiznání z podnikání",
-      "note": "Těžba se daní jako jiný příjem. Časté obchodování může být podnikáním."
+      "note": "Těžba se daní jako ostatní příjem. Časté obchodování může být podnikáním. Daň 25 % ze zisků z kryptoaktiv byla navržena v roce 2025, k říjnu 2026 však nebyla přijata."
     },
     "hr": {
       "gainTax": "12 % ze zisků z kryptoměn (od roku 2024)",
@@ -815,7 +815,7 @@
       "gainTax": "27,5% KESt (podatek od zysków kapitałowych)",
       "exemption": "Zwolnienie po roku tylko dla kryptowalut kupionych przed marcem 2021; późniejsze zakupy bez zwolnienia",
       "filing": "Zeznanie dla zysków z zagranicznych giełd; austriaccy dostawcy pobierają podatek",
-      "note": "Wymiana krypto na krypto jest neutralna podatkowo. Pożyczanie i kopanie są opodatkowane przy otrzymaniu, staking i airdropy dopiero przy sprzedaży (koszt zero)."
+      "note": "Wymiana krypto na krypto jest neutralna podatkowo. Dochody z pożyczania i kopania są opodatkowane przy otrzymaniu, nagrody ze stakingu i airdropy dopiero przy sprzedaży, z kosztem nabycia równym zero."
     },
     "de": {
       "gainTax": "Do 45% podatku dochodowego (progresywny)",
@@ -824,16 +824,16 @@
       "note": "Wymiana krypto na krypto jest opodatkowana w pierwszym roku. Kluczowa jest ewidencja metodą FIFO."
     },
     "hu": {
-      "gainTax": "15% podatku od zysków kapitałowych",
+      "gainTax": "15% podatku dochodowego od dochodów z kryptoaktywów",
       "exemption": "Brak zwolnienia za okres posiadania; drobne transakcje, każda do 10% płacy minimalnej, są zwolnione (łącznie do jednej płacy minimalnej rocznie)",
       "filing": "Roczne zeznanie w podatku dochodowym od osób fizycznych",
-      "note": "Udokumentowane koszty nabycia można odliczyć: warto zachować każdą fakturę."
+      "note": "Opodatkowana jest tylko wymiana na pieniądze, towary lub usługi; wymiana krypto na krypto nie. Udokumentowane koszty nabycia można odliczyć, a stratę rozliczyć z zyskami z tego samego roku i dwóch poprzednich lat."
     },
     "si": {
       "gainTax": "Brak podatku od prywatnych zysków ze zbycia (handel w ramach działalności jest opodatkowany)",
       "exemption": "Prywatne zyski są wolne od podatku",
       "filing": "Nie dotyczy prywatnych zysków; dochód z kopania wymaga deklaracji zaliczki na podatek w ciągu 15 dni; dochód z działalności wykazuje się w zeznaniu z działalności",
-      "note": "Kopanie jest opodatkowane jako inny dochód. Częsty handel może zostać uznany za działalność."
+      "note": "Kopanie jest opodatkowane jako inny dochód. Częsty handel może zostać uznany za działalność. W 2025 roku zaproponowano 25% podatek od zysków z kryptoaktywów, ale do października 2026 nie został uchwalony."
     },
     "hr": {
       "gainTax": "12% od zysków z kryptowalut (od 2024 r.)",
@@ -944,7 +944,7 @@
       "gainTax": "27,5% KESt (tőkenyereségadó)",
       "exemption": "1 év után csak a 2021 márciusa előtt vett kripto adómentes; a későbbi vételekre nincs mentesség",
       "filing": "Külföldi tőzsdei nyereséget be kell vallani; az osztrák szolgáltatók levonják az adót",
-      "note": "A kripto-kripto csere adósemleges. A kölcsönzés és a bányászat jóváíráskor adózik, a staking és az airdrop csak eladáskor (nulla bekerülési értékkel)."
+      "note": "A kripto-kripto csere adósemleges. A kölcsönzésből és a bányászatból származó jövedelem jóváíráskor adózik, a staking-jutalom és az airdrop csak eladáskor, nulla bekerülési értékkel."
     },
     "de": {
       "gainTax": "Legfeljebb 45% jövedelemadó (progresszív)",
@@ -953,16 +953,16 @@
       "note": "Az első évben a kripto-kripto csere adóköteles. A FIFO szerinti nyilvántartás kulcsfontosságú."
     },
     "hu": {
-      "gainTax": "15% tőkenyereségadó",
+      "gainTax": "15% személyi jövedelemadó a kriptojövedelemre",
       "exemption": "Nincs tartási idő utáni mentesség; a minimálbér 10%-át egyenként meg nem haladó kisértékű ügyletek adómentesek (évente összesen legfeljebb egy havi minimálbérig)",
       "filing": "Éves személyijövedelemadó-bevallás",
-      "note": "A dokumentált beszerzési költségek levonhatók: érdemes minden számlát megőrizni."
+      "note": "Csak a pénzre, árura vagy szolgáltatásra váltás adóköteles, a kripto-kripto csere nem. A dokumentált beszerzési költségek levonhatók, a veszteség pedig adókiegyenlítéssel beszámítható az adott év és az azt megelőző két év nyereségébe."
     },
     "si": {
       "gainTax": "A magánszemélyek elidegenítési nyeresége nem adózik (az üzletszerű kereskedés igen)",
       "exemption": "A magánnyereség adómentes",
       "filing": "Magánnyereségnél nincs; a bányászati jövedelemről 15 napon belül adóelőleg-bevallást kell beadni; az üzleti jövedelem a vállalkozási adóbevallásba kerül",
-      "note": "A bányászat egyéb jövedelemként adózik. A gyakori kereskedés üzleti tevékenységnek minősülhet."
+      "note": "A bányászat egyéb jövedelemként adózik. A gyakori kereskedés üzleti tevékenységnek minősülhet. 2025-ben javasoltak egy 25%-os adót a kriptonyereségre, de 2026 októberéig nem fogadták el."
     },
     "hr": {
       "gainTax": "12% a kriptonyereségre (2024 óta)",
@@ -1088,7 +1088,7 @@
       "gainTax": "27,5% KESt (податок на приріст капіталу)",
       "exemption": "Звільнення після 1 року лише для криптовалют, куплених до березня 2021 року; пізніші покупки без звільнення",
       "filing": "Щорічна декларація щодо прибутку, отриманого через іноземні біржі; австрійські провайдери утримують податок самостійно",
-      "note": "Обмін криптовалюти на криптовалюту податково нейтральний. Кредитування й майнінг оподатковуються при отриманні, а стейкінг і ейрдропи лише при продажу (з нульовою собівартістю)."
+      "note": "Обмін криптовалюти на криптовалюту податково нейтральний. Дохід від кредитування й майнінгу оподатковується при отриманні, а винагороди за стейкінг і ейрдропи лише при продажу, з нульовою вартістю придбання."
     },
     "de": {
       "gainTax": "До 45% податку на доходи (прогресивна шкала)",
@@ -1097,16 +1097,16 @@
       "note": "Обмін криптовалюти на криптовалюту оподатковується протягом першого року. Облік за методом FIFO критично важливий."
     },
     "hu": {
-      "gainTax": "15% податку на приріст капіталу",
+      "gainTax": "15% податку на доходи фізичних осіб від криптовалют",
       "exemption": "Без звільнення за строк володіння; дрібні операції, кожна з яких не перевищує 10% мінімальної зарплати, звільнені (загалом до однієї мінімальної зарплати на рік)",
       "filing": "Щорічна декларація з податку на доходи фізичних осіб",
-      "note": "Задокументовані витрати на придбання можна відрахувати: зберігайте кожен рахунок."
+      "note": "Оподатковується лише обмін на гроші, товари чи послуги; обмін криптовалюти на криптовалюту ні. Задокументовані витрати на придбання можна відрахувати, а збиток зарахувати проти прибутку того самого року та двох попередніх років."
     },
     "si": {
       "gainTax": "Приватний прибуток від продажу не оподатковується (підприємницька торгівля оподатковується)",
       "exemption": "Приватний прибуток звільнений від податку",
       "filing": "Для приватного прибутку декларація не потрібна; дохід від майнінгу потребує декларації про авансовий податок протягом 15 днів; підприємницький дохід зазначається в декларації підприємця",
-      "note": "Майнінг оподатковується як інший дохід. Часта торгівля може вважатися підприємництвом."
+      "note": "Майнінг оподатковується як інший дохід. Часта торгівля може вважатися підприємництвом. У 2025 році запропонували податок 25% на прибуток від криптовалют, але станом на жовтень 2026 року його не ухвалили."
     },
     "hr": {
       "gainTax": "12% з криптоприбутку (з 2024 року)",
@@ -1232,7 +1232,7 @@
       "gainTax": "KESt 27,5% (налог на прирост капитала)",
       "exemption": "Освобождение через 1 год только для криптоактивов, купленных до марта 2021 года; более поздние покупки без освобождения",
       "filing": "Декларация по прибыли от иностранных бирж; австрийские провайдеры удерживают налог",
-      "note": "Обмен криптовалюты на криптовалюту налогово нейтрален. Кредитование и майнинг облагаются при получении, а стейкинг и эйрдропы только при продаже (с нулевой себестоимостью)."
+      "note": "Обмен криптовалюты на криптовалюту налогово нейтрален. Доход от кредитования и майнинга облагается при получении, а вознаграждения за стейкинг и эйрдропы только при продаже, с нулевой стоимостью приобретения."
     },
     "de": {
       "gainTax": "Подоходный налог до 45% (прогрессивная шкала)",
@@ -1241,16 +1241,16 @@
       "note": "Обмен криптовалюты на криптовалюту облагается налогом в течение первого года. Учёт по методу FIFO критически важен."
     },
     "hu": {
-      "gainTax": "Налог 15% на прирост капитала",
+      "gainTax": "Налог на доходы физических лиц 15% с дохода от криптовалют",
       "exemption": "Без освобождения по сроку владения; мелкие операции до 10% минимальной зарплаты каждая освобождены (в сумме до одной минимальной зарплаты в год)",
       "filing": "Ежегодная декларация по налогу на доходы физических лиц",
-      "note": "Документально подтверждённые расходы на приобретение можно вычесть: сохраняйте каждый счёт."
+      "note": "Облагается только обмен на деньги, товары или услуги; обмен криптовалюты на криптовалюту нет. Документально подтверждённые расходы на приобретение можно вычесть, а убыток зачесть против прибыли того же года и двух предыдущих лет."
     },
     "si": {
       "gainTax": "Частная прибыль от продажи не облагается (предпринимательская торговля облагается)",
       "exemption": "Частная прибыль освобождена от налога",
       "filing": "Для частной прибыли не требуется; доход от майнинга требует декларации об авансовом налоге в течение 15 дней; предпринимательский доход указывается в декларации по предпринимательской деятельности",
-      "note": "Майнинг облагается как прочий доход. Частая торговля может считаться предпринимательством."
+      "note": "Майнинг облагается как прочий доход. Частая торговля может считаться предпринимательством. В 2025 году был предложен налог 25% на прибыль от криптовалют, но по состоянию на октябрь 2026 года он не принят."
     },
     "hr": {
       "gainTax": "12% с криптоприбыли (с 2024 года)",
@@ -1374,9 +1374,9 @@
     },
     "at": {
       "gainTax": "KESt de 27,5 % (impôt sur les plus-values)",
-      "exemption": "Exonération après 1 an uniquement pour les cryptos achetées avant mars 2021 ; aucune pour les achats ultérieurs",
+      "exemption": "Après 1 an, uniquement pour les cryptos achetées avant mars 2021 ; aucune pour les achats ultérieurs",
       "filing": "Déclaration pour les gains via des plateformes étrangères ; les prestataires autrichiens retiennent l'impôt",
-      "note": "Les échanges crypto contre crypto sont neutres. Le prêt et le minage sont imposés à la réception, le staking et les airdrops à la vente (coût nul)."
+      "note": "Les échanges crypto contre crypto sont neutres fiscalement. Les revenus du prêt et du minage sont imposés à la réception ; les récompenses de staking et les airdrops seulement à la vente, avec un prix d'acquisition nul."
     },
     "de": {
       "gainTax": "Impôt sur le revenu jusqu'à 45 % (progressif)",
@@ -1385,16 +1385,16 @@
       "note": "Les échanges crypto contre crypto sont imposables la première année. Une comptabilité FIFO est essentielle."
     },
     "hu": {
-      "gainTax": "Impôt de 15 % sur les plus-values",
-      "exemption": "Aucune exonération liée à la durée de détention ; les petites transactions jusqu'à 10 % du salaire minimum chacune sont exonérées (au total jusqu'à un salaire minimum par an)",
+      "gainTax": "Impôt sur le revenu de 15 % sur les revenus crypto",
+      "exemption": "Aucune exonération liée à la durée de détention ; les petites transactions, chacune jusqu'à 10 % du salaire minimum, sont exonérées (au total jusqu'à un salaire minimum par an)",
       "filing": "Déclaration annuelle d'impôt sur le revenu",
-      "note": "Les coûts d'acquisition documentés sont déductibles : conservez chaque facture."
+      "note": "Seuls les échanges contre de la monnaie, des biens ou des services sont imposés ; les échanges crypto contre crypto ne le sont pas. Les coûts d'acquisition documentés sont déductibles, et une perte peut être imputée sur les gains de la même année et des deux années précédentes."
     },
     "si": {
       "gainTax": "Pas d'impôt sur les plus-values des particuliers (le trading professionnel est imposé)",
       "exemption": "Les gains privés ne sont pas imposés",
       "filing": "Aucune déclaration pour les gains privés ; les revenus de minage exigent une déclaration d'acompte d'impôt sous 15 jours ; les revenus professionnels figurent dans la déclaration fiscale de l'entreprise",
-      "note": "Le minage est imposé comme autre revenu. Un trading fréquent peut être considéré comme une activité professionnelle."
+      "note": "Le minage est imposé comme autre revenu. Un trading fréquent peut être considéré comme une activité professionnelle. Un impôt de 25 % sur les plus-values crypto a été proposé en 2025, mais n'était pas adopté en octobre 2026."
     },
     "hr": {
       "gainTax": "12 % sur les gains crypto (depuis 2024)",
@@ -1507,9 +1507,9 @@
     },
     "at": {
       "gainTax": "KESt del 27,5 % (impuesto sobre las ganancias patrimoniales)",
-      "exemption": "Exención tras 1 año solo para cripto comprada antes de marzo de 2021; las compras posteriores no tienen exención",
+      "exemption": "Tras 1 año, solo para cripto comprada antes de marzo de 2021; las compras posteriores no tienen exención",
       "filing": "Declaración para ganancias en exchanges extranjeros; los proveedores austriacos retienen el impuesto",
-      "note": "Los intercambios cripto por cripto son neutros. El préstamo y la minería tributan al recibirse; el staking y los airdrops, al vender (coste cero)."
+      "note": "Los intercambios de cripto por cripto son neutros a efectos fiscales. Los ingresos por préstamo y por minería tributan al recibirse; las recompensas de staking y los airdrops, solo al vender, con un coste de adquisición cero."
     },
     "de": {
       "gainTax": "Impuesto sobre la renta de hasta el 45 % (progresivo)",
@@ -1518,16 +1518,16 @@
       "note": "Los intercambios cripto por cripto tributan durante el primer año. Llevar un registro FIFO es fundamental."
     },
     "hu": {
-      "gainTax": "Impuesto del 15 % sobre las ganancias patrimoniales",
+      "gainTax": "Impuesto sobre la renta del 15 % sobre las rentas de cripto",
       "exemption": "Sin exención por periodo de tenencia; las operaciones pequeñas de hasta el 10 % del salario mínimo cada una están exentas (hasta un salario mínimo al año en total)",
       "filing": "Declaración anual del impuesto sobre la renta de las personas físicas",
-      "note": "Los costes de adquisición documentados son deducibles: guarde todas las facturas."
+      "note": "Solo tributa el cambio por dinero, bienes o servicios; los intercambios de cripto por cripto no. Los costes de adquisición documentados son deducibles y una pérdida puede compensarse con las ganancias del mismo año y de los dos años anteriores."
     },
     "si": {
       "gainTax": "Las ganancias privadas por venta no tributan (el trading empresarial sí)",
       "exemption": "Las ganancias privadas están exentas",
       "filing": "Ninguna para ganancias privadas; las rentas de minería requieren una declaración de pago a cuenta en 15 días; las rentas empresariales van en la declaración fiscal de la actividad",
-      "note": "La minería tributa como otra renta. El trading frecuente puede considerarse actividad empresarial."
+      "note": "La minería tributa como otra renta. El trading frecuente puede considerarse actividad empresarial. En 2025 se propuso un impuesto del 25 % sobre las ganancias de cripto, pero en octubre de 2026 no se había aprobado."
     },
     "hr": {
       "gainTax": "12 % sobre las ganancias cripto (desde 2024)",

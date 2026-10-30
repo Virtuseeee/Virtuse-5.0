@@ -189,7 +189,7 @@ Full list: faq, privacy, terms, aml, asset-returns, btc-monthly-returns, btc-dom
 - **rel="sponsored":** 440 of 592 partner links (70 pages: every category page in 10 languages) carry `rel="noopener noreferrer"` without `sponsored`. The Fee Index, Stacking and Partner Finder links do use `rel="sponsored noopener"`.
 - **Brand spellings** in visible text:
   - "ByBit EU" ×170 vs "Bybit EU" ×190. buy-bitcoin uses both in the same card: "ByBit EU … Bybit EU GmbH is MiCAR-licensed".
-  - "PowerMining" ×20 vs "Power Mining" ×50.
+  - "Power Mining" ×20 vs "Power Mining" ×50.
   - "Coinbase Prime" vs "Coinbase Institutional".
 - **Disclosure wording** varies between "may pay", "Some partners pay", "earns a referral fee from partners when you sign up" (FAQ), and none at all (stacking/loan/tax-agent shells; check the apps).
 

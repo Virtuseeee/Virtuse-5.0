@@ -2360,7 +2360,7 @@ ${tableHtml(['Krajina', 'Daň zo ziskov', 'Oslobodenie'], COUNTRIES.map((c) => [
   esc(meta.taxSk[c.id].exemption)
 ]))}
 <h2>Riziko pri pôžičke</h2>
-<p>Pôžičky zabezpečené Bitcoinom poskytujú regulovaní partneri, nie Virtuse. Ponecháte si cenovú expozíciu, platíte úroky a vaša zábezpeka môže byť zlikvidovaná. Virtuse zábezpeku nikdy nedrží.</p>
+<p>Pôžičky so zábezpekou v Bitcoine poskytujú regulovaní partneri, nie Virtuse. Ponecháte si cenovú expozíciu, platíte úroky a vaša zábezpeka môže byť zlikvidovaná. Virtuse zábezpeku nikdy nedrží.</p>
 ${faqHtml(faqs, 'Časté otázky')}
 `
   });

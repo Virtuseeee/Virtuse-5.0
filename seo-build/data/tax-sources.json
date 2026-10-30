@@ -208,7 +208,7 @@
       "notes": "Matches site. The NAV page is written for the 2021/2022 returns (Szja tv. § 67/C); the rule is unchanged as far as checked but the page is not 2026-specific. Losses can be offset via 'adókiegyenlítés' over the previous 2 years.",
       "fields": {
         "gainTax": {
-          "text": "15% capital gains tax",
+          "text": "15% personal income tax on crypto income",
           "source": "https://nav.gov.hu/ado/szja/a-kriptougyletek-jovedelmenek-adozasa",
           "sourceTitle": "NAV: A kriptoügyletek jövedelmének adózása",
           "quote": "A kriptoeszközzel végrehajtott ügyletekből az adóévben elért ügyleti nyereség után 15 százalék személyi jövedelemadót kell fizetni.",
@@ -261,7 +261,7 @@
           "notes": "Text updated 2026-10-13 to the sourced facts. First part ('private gains are not taxed') verified. 'A proposed 25% tax was withdrawn in 2025' is NOT on an official page (press only: bill pulled from the December 2025 session); the FURS page was last updated 14.4.2025."
         },
         "filing": {
-          "text": "None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
+          "text": "No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
           "source": "https://www.fu.gov.si/fileadmin/Internet/Davki_in_druge_dajatve/Podrocja/Dohodnina/Drugi_dohodki/Opis/Davcna_obravnava_poslovanja_z_virtualnimi_valutami_po_ZDoh-2_ZDDPO-2_ZDDV-1_in_ZDFS.docx",
           "sourceTitle": "FURS: Davčna obravnava poslovanja z virtualnimi valutami po ZDoh-2, ZDDPO-2, ZDDV-1 in ZDFS (podrobnejši opis)",
           "quote": "Napoved za odmero akontacije dohodnine od drugih dohodkov mora vložiti davčni zavezanec pri davčnem organu v petnajstih dneh od dneva prejema dohodka.",

@@ -445,6 +445,7 @@ function ResultCards({
             ))}
           </ul>
 
+          {rec.partner.feeNote && (
           <p className="mt-3 text-[11px] text-ink-muted">
             {L(rec.partner.feeNote, lang)}
             {rec.partner.feeSource && (
@@ -457,6 +458,7 @@ function ResultCards({
               </>
             )}
           </p>
+          )}
 
           <a
             href={withUtm(rec.partner.url, rec.partner.id)}

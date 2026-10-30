@@ -15,7 +15,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, jsonLd, nbspFr, SITE_DIR_NAME, DEFAULT_ORIGIN } from './lib/util.mjs';
-import { SITE_V2, SITE_CSS_V, CF_SNIPPET } from './lib/html.mjs';
+import { SITE_V2, SITE_CSS_V, CF_SNIPPET, CRUMBS_LABEL } from './lib/html.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SITE = path.join(HERE, '..', SITE_DIR_NAME);
@@ -613,7 +613,7 @@ ${nav}
 
 <main class="wrap eco-acc-${p.accent}" id="top">
   <div class="buy-hero2 eco-hero">
-    <nav class="eco-crumbs" aria-label="${l === 'es' ? 'Ruta de navegación' : 'Breadcrumb'}">${crumbs}</nav>
+    <nav class="eco-crumbs" aria-label="${CRUMBS_LABEL[l] || 'Breadcrumb'}">${crumbs}</nav>
     ${eyebrow(p, l)}
     <h1>${heroH1(t)}</h1>
     <p class="sp-lead">${esc(t.intro)}</p>

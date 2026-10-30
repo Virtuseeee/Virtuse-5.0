@@ -58,7 +58,7 @@ export const PARTNERS = {
   revenuebot: { name: 'RevenueBot', page: 'bots.html', url: 'https://app.revenuebot.io/external/r/90928' },
   oneminers: { name: 'OneMiners', page: 'mining.html', url: 'https://oneminers.com/products/?discount=virtuse_buy' },
   'abundant-mines': { name: 'Abundant Mines', page: 'mining.html', url: 'https://abundantmines.com/ref/76/' },
-  'power-mining': { name: 'PowerMining', page: 'mining.html', url: 'https://shop.powermining.io/?ref=Virtuse' },
+  'power-mining': { name: 'Power Mining', page: 'mining.html', url: 'https://shop.powermining.io/?ref=Virtuse' },
   'solo-satoshi': { name: 'Solo Satoshi', page: 'mining.html', url: 'https://www.solosatoshi.com/aff/8822/' },
 };
 

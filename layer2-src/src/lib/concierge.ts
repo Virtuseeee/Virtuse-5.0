@@ -45,7 +45,7 @@ export interface Partner {
   goals: GoalId[];
   custody?: CustodyPref[]; // relevant custody fit
   url: string;
-  feeNote: LocalizedText;
+  feeNote?: LocalizedText;   // optional: no line is shown when a partner publishes no fee fact
   countries: string[]; // 'ALL' = all supported countries
   badge?: LocalizedText;
   // MiCA licence: shown as "MiCA licensed (<regulator>)" + source link.
@@ -63,7 +63,7 @@ export interface Recommendation {
 
 export const GOALS: GoalOption[] = [
   { id: 'buy', label: { en: 'Buy Bitcoin', sk: 'Kúpiť Bitcoin', cs: 'Koupit Bitcoin' }, hint: { en: 'First purchase or regular stacking', sk: 'Prvý nákup alebo pravidelné dokupovanie', cs: 'První nákup nebo pravidelné dokupování' } },
-  { id: 'loan', label: { en: 'Bitcoin-backed loan', sk: 'Pôžička krytá Bitcoinom', cs: 'Půjčka krytá Bitcoinem' }, hint: { en: 'Liquidity without selling', sk: 'Likvidita bez predaja', cs: 'Likvidita bez prodeje' } },
+  { id: 'loan', label: { en: 'Bitcoin-backed loan', sk: 'Pôžička so zábezpekou v Bitcoine', cs: 'Půjčka krytá Bitcoinem' }, hint: { en: 'Liquidity without selling', sk: 'Likvidita bez predaja', cs: 'Likvidita bez prodeje' } },
   { id: 'earn', label: { en: 'Automate & compound', sk: 'Automatizovať a zhodnocovať', cs: 'Automatizovat a zhodnocovat' }, hint: { en: 'Non-custodial trading & DCA bots', sk: 'Nekustodiálne obchodné a DCA boty', cs: 'Nekustodiální obchodní a DCA boti' } },
   { id: 'treasury', label: { en: 'Corporate treasury', sk: 'Firemné treasury', cs: 'Firemní treasury' }, hint: { en: 'BTC on the balance sheet', sk: 'BTC v súvahe firmy', cs: 'BTC v rozvaze firmy' } },
   { id: 'mining', label: { en: 'Mining', sk: 'Ťažba', cs: 'Těžba' }, hint: { en: 'Earn fresh sats', sk: 'Získavajte nové satoshi', cs: 'Získávejte nové satoshi' } },
@@ -235,7 +235,7 @@ export const PARTNERS: Partner[] = [
   {
     id: 'firefish',
     name: 'Firefish',
-    tagline: { en: 'Bitcoin-backed P2P loans, multisig-secured', sk: 'P2P pôžičky kryté Bitcoinom, zabezpečené multisigom', cs: 'P2P půjčky kryté Bitcoinem, zabezpečené multisigem' },
+    tagline: { en: 'Bitcoin-backed P2P loans, multisig-secured', sk: 'P2P pôžičky so zábezpekou v Bitcoine, zabezpečené multisigom', cs: 'P2P půjčky kryté Bitcoinem, zabezpečené multisigem' },
     goals: ['loan'],
     custody: ['self'],
     url: 'https://app.firefish.io/auth/sign-up?ref=virtuseloan',
@@ -343,7 +343,6 @@ export const PARTNERS: Partner[] = [
     goals: ['earn'],
     custody: ['self', 'any'],
     url: 'https://app.revenuebot.io/external/r/90928',
-    feeNote: { en: 'Referral commissions paid in BTC', sk: 'Provízie za odporúčanie vyplácané v BTC', cs: 'Provize za doporučení vyplácené v BTC' },
     countries: ['ALL'],
   },
 
@@ -465,7 +464,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
         push('firefish', 80, [
           t(lang,
             'Bitcoin-backed P2P loans, market-driven rates. Note: Firefish assumes self-custody via multisig escrow.',
-            'P2P pôžičky kryté Bitcoinom, trhové úrokové sadzby. Pozor: Firefish predpokladá vlastnú úschovu cez multisig escrow.',
+            'P2P pôžičky so zábezpekou v Bitcoine, trhové úrokové sadzby. Pozor: Firefish predpokladá vlastnú úschovu cez multisig escrow.',
             'P2P půjčky kryté Bitcoinem, tržní úrokové sazby. Pozor: Firefish předpokládá vlastní úschovu přes multisig escrow.'),
           t(lang,
             'If you prefer assisted custody, set that up first, then come back for the loan.',

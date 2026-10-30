@@ -452,12 +452,12 @@
  {
   "en": "OneMiners",
   "kind": "text",
-  "context": " Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMiners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"PowerMining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Po"
+  "context": " Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMiners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Mining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Po"
  },
  {
-  "en": "PowerMining logo",
+  "en": "Power Mining logo",
   "kind": "attr:alt",
-  "context": "ners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"PowerMining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">PowerMining</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co-"
+  "context": "ners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Mining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Power Mining</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co-"
  },
  {
   "en": "Solo Satoshi logo",
@@ -465,9 +465,9 @@
   "context": "<img src=\"logo-solosatoshi.png\" alt=\"Solo Satoshi logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Solo Satoshi</span>"
  },
  {
-  "en": "PowerMining",
+  "en": "Power Mining",
   "kind": "text",
-  "context": "rs</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"PowerMining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">PowerMining</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"\" width=\"28\" height=\"28\" loa"
+  "context": "rs</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Mining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Power Mining</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"\" width=\"28\" height=\"28\" loa"
  },
  {
   "en": "Solo Satoshi",

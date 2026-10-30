@@ -38,7 +38,7 @@
     'BitGo': 'bitgo', 'Coinbase': 'coinbase-institutional', 'Sygnum': 'sygnum', 'Firefish': 'firefish',
     'Koinly': 'koinly', 'Blockpit': 'blockpit', 'CoinTracking': 'cointracking', 'Divly': 'divly',
     'Coinrule': 'coinrule', 'Cryptohopper': 'cryptohopper', 'RevenueBot': 'revenuebot',
-    'Abundant Mines': 'abundant-mines', 'OneMiners': 'oneminers', 'PowerMining': 'power-mining'
+    'Abundant Mines': 'abundant-mines', 'OneMiners': 'oneminers', 'Power Mining': 'power-mining'
   };
 
   var T = {

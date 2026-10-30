@@ -29,7 +29,7 @@
     "proinvite.kraken.com": ["Kraken", "buy"],
     "rewards.blockstream.com": ["Blockstream", "custody"],
     "shop.ledger.com": ["Ledger", "custody"],
-    "shop.powermining.io": ["PowerMining", "mining"],
+    "shop.powermining.io": ["Power Mining", "mining"],
     "solosatoshi.com": ["Solo Satoshi", "mining"],
     "sygnum.com": ["Sygnum", "treasury"],
     "unchained.com": ["Unchained", "custody"]

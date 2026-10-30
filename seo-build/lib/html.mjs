@@ -24,7 +24,11 @@ export const CF_SNIPPET = `<!-- Cloudflare Web Analytics --><script>(function(d)
 const OPERATOR = JSON.parse(fs.readFileSync(new URL('../data/footer-operator.json', import.meta.url), 'utf8'));
 
 // Partner-link note (legal pack chapter 9.2), placed directly after every block that holds referral links.
-const CRUMBS_LABEL = { es: 'Ruta de navegación' };
+// aria-label of the breadcrumb <nav> (also used by ecosystem.mjs and stories-build/hubs.mjs)
+export const CRUMBS_LABEL = {
+  en: 'Breadcrumb', sk: 'Navigačná cesta', cs: 'Drobečková navigace', de: 'Brotkrümelnavigation', fr: "Fil d'Ariane",
+  es: 'Ruta de navegación', pl: 'Ścieżka nawigacji', hu: 'Morzsamenü', uk: 'Навігаційний ланцюжок', ru: 'Навигационная цепочка',
+};
 export const AFF_NOTE = {
   en: ['Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.', 'How we earn'],
   sk: ['Partnerský odkaz: ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.', 'Ako zarábame'],

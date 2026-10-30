@@ -533,7 +533,7 @@ export default function Loan() {
             <p>
               {t(lang,
                 'A Bitcoin-backed loan can be liquidated if the price falls. You can lose part or all of your collateral. Interest and fees apply. Not financial, tax or legal advice.',
-                'Pôžička krytá Bitcoinom môže byť zlikvidovaná, ak cena klesne. Môžete prísť o časť zábezpeky alebo o celú zábezpeku. Platia sa úroky a poplatky. Nejde o finančné, daňové ani právne poradenstvo.',
+                'Pôžička so zábezpekou v Bitcoine môže byť zlikvidovaná, ak cena klesne. Môžete prísť o časť zábezpeky alebo o celú zábezpeku. Platia sa úroky a poplatky. Nejde o finančné, daňové ani právne poradenstvo.',
                 'Půjčka krytá Bitcoinem může být zlikvidována, pokud cena klesne. Můžete přijít o část nebo celý kolaterál. Platí se úroky a poplatky. Nejde o finanční, daňové ani právní poradenství.')}
             </p>
           </div>
@@ -572,7 +572,7 @@ export default function Loan() {
             <div className={`min-w-0 rounded-2xl border border-line bg-panel p-5 ${a.loanFeasible ? '' : 'opacity-60'}`}>
               <div className="flex items-center gap-2">
                 <Landmark className="h-4 w-4 text-ink-muted" />
-                <h3 className="text-sm font-semibold text-ink">{t(lang, 'If you borrow (Bitcoin-backed loan)', 'Ak si požičiate (pôžička krytá Bitcoinom)', 'Pokud si půjčíte (půjčka krytá Bitcoinem)')}</h3>
+                <h3 className="text-sm font-semibold text-ink">{t(lang, 'If you borrow (Bitcoin-backed loan)', 'Ak si požičiate (pôžička so zábezpekou v Bitcoine)', 'Pokud si půjčíte (půjčka krytá Bitcoinem)')}</h3>
               </div>
               {a.loanFeasible && loanNetToday !== null ? (
                 <>

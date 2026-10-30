@@ -260,11 +260,11 @@ T2 = {
  },
  'sk': {
   'loan': ("Loan & Liquidity Copilot — predať alebo požičať | Virtuse",
-   "Porovnajte predaj Bitcoinu s pôžičkou krytou Bitcoinom: daň pri predaji, úroky pri pôžičke a cenu, pri ktorej sa pôžička likviduje.",
+   "Porovnajte predaj Bitcoinu s pôžičkou so zábezpekou v Bitcoine: daň pri predaji, úroky pri pôžičke a cenu, pri ktorej sa pôžička likviduje.",
    "Loan & Liquidity Copilot: predať Bitcoin, alebo si naň požičať?",
    ["Zadajte, koľko bitcoinu držíte, koľko hotovosti potrebujete, pomer úveru k hodnote (LTV) a úrokovú sadzbu. Copilot postaví obe cesty vedľa seba: daň, ktorú by ste zaplatili pri predaji, a úroky, ktoré by ste zaplatili, ak si namiesto toho požičiate s bitcoinom ako zábezpekou.",
     "Ukáže aj cenu bitcoinu, pri ktorej pôžička dosiahne margin call a môže byť likvidovaná, a tabuľku pre rôzne cenové scenáre. Čísla sú odhady, nie poradenstvo."],
-   [("Čo porovnáva?", "Predaj bitcoinu na získanie hotovosti oproti pôžičke krytej Bitcoinom: daň zo zisku pri predaji, úroky za obdobie pôžičky a koľko bitcoinu si ponecháte."),
+   [("Čo porovnáva?", "Predaj bitcoinu na získanie hotovosti oproti pôžičke so zábezpekou v Bitcoine: daň zo zisku pri predaji, úroky za obdobie pôžičky a koľko bitcoinu si ponecháte."),
     ("Čo je likvidačná cena?", "Cena bitcoinu, pri ktorej môže veriteľ predať vašu zábezpeku na splatenie pôžičky. Nižšie LTV ju posúva ďalej."),
     ("Akú daňovú sadzbu používa?", "Vyberiete si prednastavenie pre svoju krajinu alebo zadáte vlastnú sadzbu. Prednastavenia sú orientačný prehľad, nie daňové poradenstvo; overte si ich u daňového poradcu."),
     ("Je to finančné poradenstvo?", "Nie. Copilot ukáže čísla pre obe cesty. Rozhodnutie je na vás a Virtuse nikdy nedrží váš bitcoin.")]),

@@ -18,7 +18,7 @@ import build_fee_index as F
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']   # hreflang order as before
 LOGO_CLASS = {'logo-bybit.png': 'dark', 'logo-kraken.png': 'cover', 'logo-invity.svg': 'pad'}
-NAME_FIX = {'ByBit EU': 'Bybit EU', 'PowerMining': 'Power Mining'}
+NAME_FIX = {'ByBit EU': 'Bybit EU', 'Power Mining': 'Power Mining'}
 CAT_ORDER = ['buy', 'custody', 'loans', 'tax', 'bots', 'mining', 'treasury']
 
 
