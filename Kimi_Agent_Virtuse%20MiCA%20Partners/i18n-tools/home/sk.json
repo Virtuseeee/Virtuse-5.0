@@ -16,7 +16,6 @@
  "Bitcoin Data": "Bitcoin dáta",
  "Fee Index": "Index poplatkov",
  "Tools": "Nástroje",
- "Virtuse CFO · Verdict": "Virtuse CFO · Verdict",
  "Free": "Zadarmo",
  "Partner Finder": "Partner Finder",
  "Stacking Strategist": "Stacking Strategist",
@@ -124,7 +123,7 @@
  "year 10": "rok 10",
  "Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included.": "Poplatky zverejnené jednotlivými partnermi, Q4 2026. 21bitcoin účtuje počas prvých 7 dní plánu svoj bežný poplatok. Spready a poplatky za výber nie sú zahrnuté.",
  "Total cost incl. spread: Fee Index": "Celkové náklady vrátane spreadu: Index poplatkov",
- "Virtuse CFO · Free Verdict": "Virtuse CFO · Verdict zadarmo",
+ "Virtuse CFO · Free Verdict": "Verdict zadarmo",
  "Your AI CFO for Bitcoin.": "Váš AI CFO pre Bitcoin.",
  "It reads your own exports and never sees your wallet.": "Číta vaše vlastné exporty a nikdy nevidí vašu peňaženku.",
  "The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.": "Kalkulačka vyššie používa zverejnené poplatky. Virtuse CFO prečíta váš vlastný export z burzy priamo vo vašom prehliadači, ukáže, koľko ste skutočne zaplatili, a odpovedá na otázky na základe vašich vlastných čísel.",
@@ -143,7 +142,6 @@
  "You overpaid in the last 12 months": "Za posledných 12 mesiacov ste preplatili",
  "on €43,000 of buys": "pri nákupoch za 43 000 €",
  "You paid": "Zaplatili ste",
- "Cheapest route": "Najlacnejšia cesta",
  "Sample export and figures for illustration.": "Ukážkový export a čísla na ilustráciu.",
  "Every other Bitcoin need, on one shelf.": "Všetky ostatné bitcoinové potreby na jednej poličke.",
  "Each with the fact that matters most.": "Každá s faktom, na ktorom záleží najviac.",
@@ -293,5 +291,6 @@
  "Solo Satoshi": "Solo Satoshi",
  "Virtuse CFO": "Virtuse CFO",
  "Verdict": "Verdict",
- "Fees, loans and tax over time · planned": "Poplatky, pôžičky a dane v čase · pripravujeme"
+ "Fees, loans and tax over time · planned": "Poplatky, pôžičky a dane v čase · pripravujeme",
+ "Bybit EU 0.25%": "Najlacnejšia cesta"
 }

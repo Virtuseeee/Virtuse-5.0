@@ -57,72 +57,297 @@
  {
   "en": "Learn",
   "kind": "text",
-  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a hr"
+  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-learn\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\"><span class=\"nd-t\">Virtuse Brief</span><span class"
  },
  {
   "en": "Virtuse Brief",
   "kind": "text",
-  "context": "ia-expanded=\"false\" aria-controls=\"nd-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav"
+  "context": " aria-controls=\"nd-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\"><span class=\"nd-t\">Virtuse Brief</span><span class=\"nd-d\">Weekly Bitcoin news, every Monday</span></a><a href=\"/stories/\"><span class=\"nd-t\">Stories</span><span class=\"nd-d\">Long reads and ana"
+ },
+ {
+  "en": "Weekly Bitcoin news, every Monday",
+  "kind": "text",
+  "context": "> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\"><span class=\"nd-t\">Virtuse Brief</span><span class=\"nd-d\">Weekly Bitcoin news, every Monday</span></a><a href=\"/stories/\"><span class=\"nd-t\">Stories</span><span class=\"nd-d\">Long reads and analysis</span></a><a href=\"blog.html\"><span class=\"nd-t\">Blog"
+ },
+ {
+  "en": "Stories",
+  "kind": "text",
+  "context": "mp;utm_medium=nav\"><span class=\"nd-t\">Virtuse Brief</span><span class=\"nd-d\">Weekly Bitcoin news, every Monday</span></a><a href=\"/stories/\"><span class=\"nd-t\">Stories</span><span class=\"nd-d\">Long reads and analysis</span></a><a href=\"blog.html\"><span class=\"nd-t\">Blog</span><span class=\"nd-d\">Latest posts from Virtuse</span"
+ },
+ {
+  "en": "Long reads and analysis",
+  "kind": "text",
+  "context": "d-t\">Virtuse Brief</span><span class=\"nd-d\">Weekly Bitcoin news, every Monday</span></a><a href=\"/stories/\"><span class=\"nd-t\">Stories</span><span class=\"nd-d\">Long reads and analysis</span></a><a href=\"blog.html\"><span class=\"nd-t\">Blog</span><span class=\"nd-d\">Latest posts from Virtuse</span></a><a href=\"bitcoin-data.html\"><span class=\"nd-"
  },
  {
   "en": "Blog",
   "kind": "text",
-  "context": "-learn\">Learn</button> <div class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> "
+  "context": "nday</span></a><a href=\"/stories/\"><span class=\"nd-t\">Stories</span><span class=\"nd-d\">Long reads and analysis</span></a><a href=\"blog.html\"><span class=\"nd-t\">Blog</span><span class=\"nd-d\">Latest posts from Virtuse</span></a><a href=\"bitcoin-data.html\"><span class=\"nd-t\">Bitcoin Data</span><span class=\"nd-d\">Live price, n"
+ },
+ {
+  "en": "Latest posts from Virtuse",
+  "kind": "text",
+  "context": "es/\"><span class=\"nd-t\">Stories</span><span class=\"nd-d\">Long reads and analysis</span></a><a href=\"blog.html\"><span class=\"nd-t\">Blog</span><span class=\"nd-d\">Latest posts from Virtuse</span></a><a href=\"bitcoin-data.html\"><span class=\"nd-t\">Bitcoin Data</span><span class=\"nd-d\">Live price, network and charts</span></a><a href=\"/bitcoin-tax/\""
  },
  {
   "en": "Bitcoin Data",
   "kind": "text",
-  "context": "class=\"nav-drop\" id=\"nd-learn\"><a href=\"news.html?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-bt"
+  "context": "pan></a><a href=\"blog.html\"><span class=\"nd-t\">Blog</span><span class=\"nd-d\">Latest posts from Virtuse</span></a><a href=\"bitcoin-data.html\"><span class=\"nd-t\">Bitcoin Data</span><span class=\"nd-d\">Live price, network and charts</span></a><a href=\"/bitcoin-tax/\"><span class=\"nd-t\">Country tax guides</span><span class=\"nd-d\">Tax ru"
  },
  {
-  "en": "Fee Index",
+  "en": "Live price, network and charts",
   "kind": "text",
-  "context": "tml?utm_source=brief&amp;utm_medium=nav\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-fee-index/\">Fee Index</a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-"
+  "context": "s=\"nd-t\">Blog</span><span class=\"nd-d\">Latest posts from Virtuse</span></a><a href=\"bitcoin-data.html\"><span class=\"nd-t\">Bitcoin Data</span><span class=\"nd-d\">Live price, network and charts</span></a><a href=\"/bitcoin-tax/\"><span class=\"nd-t\">Country tax guides</span><span class=\"nd-d\">Tax rules in 13 EU countries</span></a><a href=\"faq.html\"><spa"
+ },
+ {
+  "en": "Country tax guides",
+  "kind": "text",
+  "context": "bitcoin-data.html\"><span class=\"nd-t\">Bitcoin Data</span><span class=\"nd-d\">Live price, network and charts</span></a><a href=\"/bitcoin-tax/\"><span class=\"nd-t\">Country tax guides</span><span class=\"nd-d\">Tax rules in 13 EU countries</span></a><a href=\"faq.html\"><span class=\"nd-t\">FAQ</span><span class=\"nd-d\">Answers about Virtuse and pa"
+ },
+ {
+  "en": "Tax rules in 13 EU countries",
+  "kind": "text",
+  "context": "n Data</span><span class=\"nd-d\">Live price, network and charts</span></a><a href=\"/bitcoin-tax/\"><span class=\"nd-t\">Country tax guides</span><span class=\"nd-d\">Tax rules in 13 EU countries</span></a><a href=\"faq.html\"><span class=\"nd-t\">FAQ</span><span class=\"nd-d\">Answers about Virtuse and partners</span></a></div> </div> <div class="
+ },
+ {
+  "en": "FAQ",
+  "kind": "text",
+  "context": "ref=\"/bitcoin-tax/\"><span class=\"nd-t\">Country tax guides</span><span class=\"nd-d\">Tax rules in 13 EU countries</span></a><a href=\"faq.html\"><span class=\"nd-t\">FAQ</span><span class=\"nd-d\">Answers about Virtuse and partners</span></a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"but"
+ },
+ {
+  "en": "Answers about Virtuse and partners",
+  "kind": "text",
+  "context": "ss=\"nd-t\">Country tax guides</span><span class=\"nd-d\">Tax rules in 13 EU countries</span></a><a href=\"faq.html\"><span class=\"nd-t\">FAQ</span><span class=\"nd-d\">Answers about Virtuse and partners</span></a></div> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-contro"
  },
  {
   "en": "Tools",
   "kind": "text",
-  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"conci"
+  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"verdict.html\" id=\"navVerdict\"><span class=\"nd-t\">Verdict <span class=\"nav-badge cfo-badge\">Free</"
  },
  {
-  "en": "Virtuse CFO · Verdict",
+  "en": "Verdict",
   "kind": "text",
-  "context": " class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Sta"
+  "context": "-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"verdict.html\" id=\"navVerdict\"><span class=\"nd-t\">Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Vir"
  },
  {
   "en": "Free",
   "kind": "text",
-  "context": "ls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\""
+  "context": ">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"verdict.html\" id=\"navVerdict\"><span class=\"nd-t\">Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO</span><span class=\"nd-d\">Fees,"
+ },
+ {
+  "en": "Rate your decision, free",
+  "kind": "text",
+  "context": "av-drop\" id=\"nd-tools\"><a href=\"verdict.html\" id=\"navVerdict\"><span class=\"nd-t\">Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO</span><span class=\"nd-d\">Fees, loans and tax over time · planned</span></a><a href=\"con"
+ },
+ {
+  "en": "Virtuse CFO",
+  "kind": "text",
+  "context": "ict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO</span><span class=\"nd-d\">Fees, loans and tax over time · planned</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">"
+ },
+ {
+  "en": "Fees, loans and tax over time · planned",
+  "kind": "text",
+  "context": ">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO</span><span class=\"nd-d\">Fees, loans and tax over time · planned</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your "
  },
  {
   "en": "Partner Finder",
   "kind": "text",
-  "context": "s\"><a href=\"cfo.html\" id=\"navCfo\">Virtuse CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><"
+  "context": "</span><span class=\"nd-d\">Fees, loans and tax over time · planned</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total c"
+ },
+ {
+  "en": "Partners that match your answers",
+  "kind": "text",
+  "context": "d tax over time · planned</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total cost of buying, compared</span></a><a href=\"stacking.html\">"
+ },
+ {
+  "en": "Fee Index",
+  "kind": "text",
+  "context": "ium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total cost of buying, compared</span></a><a href=\"stacking.html\"><span class=\"nd-t\">Stacking Strategist</span><span class=\"nd-d\">Plan "
+ },
+ {
+  "en": "Total cost of buying, compared",
+  "kind": "text",
+  "context": " Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total cost of buying, compared</span></a><a href=\"stacking.html\"><span class=\"nd-t\">Stacking Strategist</span><span class=\"nd-d\">Plan regular buys, compare fees</span></a><a href=\"loan.html\""
  },
  {
   "en": "Stacking Strategist",
   "kind": "text",
-  "context": "CFO <span class=\"nav-badge cfo-badge\">Soon</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement "
+  "context": "\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total cost of buying, compared</span></a><a href=\"stacking.html\"><span class=\"nd-t\">Stacking Strategist</span><span class=\"nd-d\">Plan regular buys, compare fees</span></a><a href=\"loan.html\"><span class=\"nd-t\">Loan &amp; Liquidity Copilot</span><span class=\"nd-d\""
+ },
+ {
+  "en": "Plan regular buys, compare fees",
+  "kind": "text",
+  "context": "Index</span><span class=\"nd-d\">Total cost of buying, compared</span></a><a href=\"stacking.html\"><span class=\"nd-t\">Stacking Strategist</span><span class=\"nd-d\">Plan regular buys, compare fees</span></a><a href=\"loan.html\"><span class=\"nd-t\">Loan &amp; Liquidity Copilot</span><span class=\"nd-d\">Sell or borrow against your Bitcoin</span></a><a href=\"t"
  },
  {
   "en": "Loan &amp; Liquidity Copilot",
   "kind": "text",
-  "context": "/span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"na"
+  "context": "stacking.html\"><span class=\"nd-t\">Stacking Strategist</span><span class=\"nd-d\">Plan regular buys, compare fees</span></a><a href=\"loan.html\"><span class=\"nd-t\">Loan &amp; Liquidity Copilot</span><span class=\"nd-d\">Sell or borrow against your Bitcoin</span></a><a href=\"tax-agent.html\"><span class=\"nd-t\">Tax &amp; Inheritance Agent</span><span clas"
+ },
+ {
+  "en": "Sell or borrow against your Bitcoin",
+  "kind": "text",
+  "context": "/span><span class=\"nd-d\">Plan regular buys, compare fees</span></a><a href=\"loan.html\"><span class=\"nd-t\">Loan &amp; Liquidity Copilot</span><span class=\"nd-d\">Sell or borrow against your Bitcoin</span></a><a href=\"tax-agent.html\"><span class=\"nd-t\">Tax &amp; Inheritance Agent</span><span class=\"nd-d\">Country rules and an inheritance check</span></a><a "
  },
  {
   "en": "Tax &amp; Inheritance Agent",
   "kind": "text",
-  "context": "p;utm_medium=nav\">Partner Finder</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div c"
+  "context": "an class=\"nd-t\">Loan &amp; Liquidity Copilot</span><span class=\"nd-d\">Sell or borrow against your Bitcoin</span></a><a href=\"tax-agent.html\"><span class=\"nd-t\">Tax &amp; Inheritance Agent</span><span class=\"nd-d\">Country rules and an inheritance check</span></a><a href=\"retirement-calculator.html\"><span class=\"nd-t\">Retirement Calculator</span><"
+ },
+ {
+  "en": "Country rules and an inheritance check",
+  "kind": "text",
+  "context": "pan class=\"nd-d\">Sell or borrow against your Bitcoin</span></a><a href=\"tax-agent.html\"><span class=\"nd-t\">Tax &amp; Inheritance Agent</span><span class=\"nd-d\">Country rules and an inheritance check</span></a><a href=\"retirement-calculator.html\"><span class=\"nd-t\">Retirement Calculator</span><span class=\"nd-d\">How much Bitcoin for retirement</span></a></di"
  },
  {
   "en": "Retirement Calculator",
   "kind": "text",
-  "context": " Strategist</a><a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" cl"
+  "context": "\">Tax &amp; Inheritance Agent</span><span class=\"nd-d\">Country rules and an inheritance check</span></a><a href=\"retirement-calculator.html\"><span class=\"nd-t\">Retirement Calculator</span><span class=\"nd-d\">How much Bitcoin for retirement</span></a></div> </div> <div class=\"nav-group\" id=\"ng-eco\"> <button type=\"button\" "
+ },
+ {
+  "en": "How much Bitcoin for retirement",
+  "kind": "text",
+  "context": "=\"nd-d\">Country rules and an inheritance check</span></a><a href=\"retirement-calculator.html\"><span class=\"nd-t\">Retirement Calculator</span><span class=\"nd-d\">How much Bitcoin for retirement</span></a></div> </div> <div class=\"nav-group\" id=\"ng-eco\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls"
+ },
+ {
+  "en": "Ecosystem",
+  "kind": "text",
+  "context": "></div> </div> <div class=\"nav-group\" id=\"ng-eco\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-eco\">Ecosystem</button> <div class=\"nav-drop\" id=\"nd-eco\"><a href=\"/ecosystem/\"><span class=\"nd-t\">Overview</span><span class=\"nd-d\">All bitcoin-only resources</span>"
+ },
+ {
+  "en": "Overview",
+  "kind": "text",
+  "context": "v-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-eco\">Ecosystem</button> <div class=\"nav-drop\" id=\"nd-eco\"><a href=\"/ecosystem/\"><span class=\"nd-t\">Overview</span><span class=\"nd-d\">All bitcoin-only resources</span></a><a href=\"/ecosystem/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d"
+ },
+ {
+  "en": "All bitcoin-only resources",
+  "kind": "text",
+  "context": " aria-controls=\"nd-eco\">Ecosystem</button> <div class=\"nav-drop\" id=\"nd-eco\"><a href=\"/ecosystem/\"><span class=\"nd-t\">Overview</span><span class=\"nd-d\">All bitcoin-only resources</span></a><a href=\"/ecosystem/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosyst"
+ },
+ {
+  "en": "What is Bitcoin?",
+  "kind": "text",
+  "context": "/ecosystem/\"><span class=\"nd-t\">Overview</span><span class=\"nd-d\">All bitcoin-only resources</span></a><a href=\"/ecosystem/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list<"
+ },
+ {
+  "en": "A plain-English primer",
+  "kind": "text",
+  "context": "span><span class=\"nd-d\">All bitcoin-only resources</span></a><a href=\"/ecosystem/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span c"
+ },
+ {
+  "en": "Books",
+  "kind": "text",
+  "context": "/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only show"
+ },
+ {
+  "en": "A curated reading list",
+  "kind": "text",
+  "context": "\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span c"
+ },
+ {
+  "en": "Podcasts",
+  "kind": "text",
+  "context": "a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentarie"
+ },
+ {
+  "en": "Bitcoin-only shows",
+  "kind": "text",
+  "context": "lass=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/"
+ },
+ {
+  "en": "Videos",
+  "kind": "text",
+  "context": "a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin"
+ },
+ {
+  "en": "Channels and documentaries",
+  "kind": "text",
+  "context": "pan class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/priv"
+ },
+ {
+  "en": "Conferences",
+  "kind": "text",
+  "context": "ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful pr"
+ },
+ {
+  "en": "Bitcoin events in Europe",
+  "kind": "text",
+  "context": ">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bi"
+ },
+ {
+  "en": "Bitcoin Privacy",
+  "kind": "text",
+  "context": "ystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, ma"
+ },
+ {
+  "en": "Lawful privacy tools",
+  "kind": "text",
+  "context": "nferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosyste"
+ },
+ {
+  "en": "Spend Bitcoin",
+  "kind": "text",
+  "context": "tem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosystem/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept "
+ },
+ {
+  "en": "Shops, maps and gift cards",
+  "kind": "text",
+  "context": "n Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosystem/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/d"
+ },
+ {
+  "en": "Store Tools",
+  "kind": "text",
+  "context": "d-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosystem/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries "
+ },
+ {
+  "en": "Accept bitcoin in your shop",
+  "kind": "text",
+  "context": "Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosystem/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span c"
+ },
+ {
+  "en": "Dev Tools",
+  "kind": "text",
+  "context": "/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fell"
+ },
+ {
+  "en": "Libraries and SDKs",
+  "kind": "text",
+  "context": "tore Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/"
+ },
+ {
+  "en": "Bitcoin Jobs",
+  "kind": "text",
+  "context": "a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bi"
+ },
+ {
+  "en": "Jobs, grants and fellowships",
+  "kind": "text",
+  "context": "lass=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/prom"
+ },
+ {
+  "en": "Bitcoin Peers",
+  "kind": "text",
+  "context": "ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/promote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your proj"
+ },
+ {
+  "en": "Fellow bitcoin-only projects",
+  "kind": "text",
+  "context": "coin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/promote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your project featured</span></a></div> </div> <a cl"
+ },
+ {
+  "en": "Promote",
+  "kind": "text",
+  "context": "ystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/promote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your project featured</span></a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class"
+ },
+ {
+  "en": "Get your project featured",
+  "kind": "text",
+  "context": "Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/promote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your project featured</span></a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"but"
  },
  {
   "en": "About",
   "kind": "text",
-  "context": "ml\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" class=\"lang-menu-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-labe"
+  "context": "romote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your project featured</span></a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" class=\"lang-menu-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-labe"
  },
  {
   "en": "Page language: English",
@@ -222,7 +447,7 @@
  {
   "en": "Book a free 15-minute call",
   "kind": "text",
-  "context": "all services</a> </div> <p class=\"alt\">Prefer to talk? <button type=\"button\" class=\"link-btn\" data-consultation-trigger data-consultation-lang=\"en\">Book a free 15-minute call</button>.</p> </div> <div class=\"hero-visual\" aria-hidden=\"true\"> <canvas id=\"cube\"></canvas> <div class=\"hero-poster\"><div class=\"cube-sta"
+  "context": "all services</a> </div> <p class=\"alt\">Prefer to talk? <button type=\"button\" class=\"link-btn\" data-consultation-trigger data-consultation-lang=\"en\">Book a free 15-minute call</button>.</p> </div> <div class=\"hero-visual\" aria-hidden=\"true\"> <img class=\"hero-cube-img\" src=\"img/hero-cube.webp\" alt=\"\" width=\"1168\" height="
  },
  {
   "en": "Partners",
@@ -307,32 +532,32 @@
  {
   "en": "Trezor logo",
   "kind": "attr:alt",
-  "context": " alt=\"Ledger logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Ledger</span></span> <span class=\"co-partner\"><img src=\"logo-trezor.png\" alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width="
- },
- {
-  "en": "Umbrel logo",
-  "kind": "attr:alt",
-  "context": "<img src=\"logo-umbrel.png\" alt=\"Umbrel logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Umbrel</span>"
+  "context": " alt=\"Ledger logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Ledger</span></span> <span class=\"co-partner\"><img src=\"logo-trezor.png\" alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-umbrel.png\" alt=\"Umbrel logo\" widt"
  },
  {
   "en": "Trezor",
   "kind": "text",
-  "context": "true\">Ledger</span></span> <span class=\"co-partner\"><img src=\"logo-trezor.png\" alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></"
+  "context": "true\">Ledger</span></span> <span class=\"co-partner\"><img src=\"logo-trezor.png\" alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-umbrel.png\" alt=\"Umbrel logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Umbrel</span"
+ },
+ {
+  "en": "Umbrel logo",
+  "kind": "attr:alt",
+  "context": " alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-umbrel.png\" alt=\"Umbrel logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Umbrel</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width="
  },
  {
   "en": "Umbrel",
   "kind": "text",
-  "context": "<span aria-hidden=\"true\">Umbrel</span>"
+  "context": "true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-umbrel.png\" alt=\"Umbrel logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Umbrel</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></"
  },
  {
   "en": "BitGo logo",
   "kind": "attr:alt",
-  "context": "\" alt=\"Trezor logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></span> <span class=\"co-partner\"><img src=\"logo-coinbase.png\" alt=\"Coinbase logo\" w"
+  "context": "\" alt=\"Umbrel logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Umbrel</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></span> <span class=\"co-partner\"><img src=\"logo-coinbase.png\" alt=\"Coinbase logo\" w"
  },
  {
   "en": "BitGo",
   "kind": "text",
-  "context": "=\"true\">Trezor</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></span> <span class=\"co-partner\"><img src=\"logo-coinbase.png\" alt=\"Coinbase logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinbase"
+  "context": "=\"true\">Umbrel</span></span> <span class=\"co-partner\"><img src=\"logo-bitgo.png\" alt=\"BitGo logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">BitGo</span></span> <span class=\"co-partner\"><img src=\"logo-coinbase.png\" alt=\"Coinbase logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Coinbase"
  },
  {
   "en": "Coinbase logo",
@@ -447,32 +672,32 @@
  {
   "en": "OneMiners logo",
   "kind": "attr:alt",
-  "context": "s logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Abundant Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMiners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"PowerMini"
+  "context": "s logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Abundant Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMiners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Min"
  },
  {
   "en": "OneMiners",
   "kind": "text",
-  "context": " Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMiners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Mining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Po"
+  "context": " Mines</span></span> <span class=\"co-partner\"><img src=\"logo-oneminers.png\" alt=\"OneMiners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Mining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">P"
  },
  {
   "en": "Power Mining logo",
   "kind": "attr:alt",
-  "context": "ners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Mining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Power Mining</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co-"
- },
- {
-  "en": "Solo Satoshi logo",
-  "kind": "attr:alt",
-  "context": "<img src=\"logo-solosatoshi.png\" alt=\"Solo Satoshi logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Solo Satoshi</span>"
+  "context": "ners logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">OneMiners</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Mining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Power Mining</span></span> <span class=\"co-partner\"><img src=\"logo-solosatoshi.png\" alt=\"Solo S"
  },
  {
   "en": "Power Mining",
   "kind": "text",
-  "context": "rs</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Mining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Power Mining</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"\" width=\"28\" height=\"28\" loa"
+  "context": "s</span></span> <span class=\"co-partner\"><img src=\"logo-powermining.png\" alt=\"Power Mining logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Power Mining</span></span> <span class=\"co-partner\"><img src=\"logo-solosatoshi.png\" alt=\"Solo Satoshi logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">S"
+ },
+ {
+  "en": "Solo Satoshi logo",
+  "kind": "attr:alt",
+  "context": "g logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Power Mining</span></span> <span class=\"co-partner\"><img src=\"logo-solosatoshi.png\" alt=\"Solo Satoshi logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Solo Satoshi</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co"
  },
  {
   "en": "Solo Satoshi",
   "kind": "text",
-  "context": "<span aria-hidden=\"true\">Solo Satoshi</span>"
+  "context": "g</span></span> <span class=\"co-partner\"><img src=\"logo-solosatoshi.png\" alt=\"Solo Satoshi logo\" width=\"28\" height=\"28\" loading=\"lazy\"><span aria-hidden=\"true\">Solo Satoshi</span></span></div> <div class=\"co-set\" aria-hidden=\"true\"><span class=\"co-partner\"><img src=\"logo-21bitcoin-app.png\" alt=\"\" width=\"28\" height=\"28\" loa"
  },
  {
   "en": "What we promise.",
@@ -532,7 +757,7 @@
  {
   "en": "Buy Bitcoin · most visitors start here",
   "kind": "text",
-  "context": "<!-- 3. FEATURED: BUY BITCOIN (firefish 'Bitcoin is your credit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by publi"
+  "context": "<!-- 3. FEATURED: BUY BITCOIN (firefish 'Bitcoin is your credit' layout) --> <section id=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin with published fees from 0%. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, "
  },
  {
   "en": "Buy Bitcoin with published fees from 0%.",
@@ -542,12 +767,12 @@
  {
   "en": "See what each route costs you.",
   "kind": "text",
-  "context": "=\"buy\"> <div class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly cost.</p> <div class=\"slider-"
+  "context": "v class=\"feature\"> <div> <span class=\"k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin with published fees from 0%. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly cost.</p> <div class=\"slider-"
  },
  {
   "en": "Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly cost.",
   "kind": "text",
-  "context": "k\">Buy Bitcoin · most visitors start here</span> <h2>Buy Bitcoin from 0% fees. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly cost.</p> <div class=\"slider-box\"> <label for=\"amt\">You buy every month</label> <div class=\"amount\">€<span id=\"amtOut\">500</span> <small>"
+  "context": "· most visitors start here</span> <h2>Buy Bitcoin with published fees from 0%. <span>See what each route costs you.</span></h2> <p class=\"lead\">Three EU-licensed routes, sorted by published fee. Move the slider to see your yearly cost.</p> <div class=\"slider-box\"> <label for=\"amt\">You buy every month</label> <div class=\"amount\">€<span id=\"amtOut\">500</span> <small>"
  },
  {
   "en": "You buy every month",
@@ -577,12 +802,12 @@
  {
   "en": "Fee",
   "kind": "text",
-  "context": "a> </div> </div> <div class=\"panel\"> <div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>Top 3 by fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin</b><small>Auto-I"
+  "context": " </div> </div> <div class=\"panel\"> <div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>By published fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin</b><small>Auto-I"
  },
  {
   "en": "Per year",
   "kind": "text",
-  "context": "div class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>Top 3 by fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin</b><small>Auto-Invest, from day 8</small></span><span class=\"pct\">0%</span><span class="
+  "context": "class=\"rows\" id=\"feeRows\"> <div class=\"row head\"><span>By published fee</span><span>Fee</span><span class=\"bar\"></span><span style=\"text-align:right\">Per year</span></div> <div class=\"row\" data-pct=\"0\"><span><b>21bitcoin</b><small>Auto-Invest, from day 8</small></span><span class=\"pct\">0%</span><span class="
  },
  {
   "en": "Auto-Invest, from day 8",
@@ -627,52 +852,52 @@
  {
   "en": "Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included.",
   "kind": "text",
-  "context": "t-anchor=\"end\">year 10</text> <text x=\"194\" y=\"8\" text-anchor=\"end\" id=\"saveEnd\">€480</text> </svg> </div> <p class=\"src\">Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Full Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage) --> <sec"
+  "context": "t-anchor=\"end\">year 10</text> <text x=\"194\" y=\"8\" text-anchor=\"end\" id=\"saveEnd\">€480</text> </svg> </div> <p class=\"src\">Fees as published by each partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Total cost incl. spread: Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stag"
  },
  {
   "en": "Total cost incl. spread: Fee Index",
   "kind": "text",
-  "context": "ach partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Total cost incl. spread: Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> "
+  "context": "ach partner, Q4 2026. 21bitcoin charges its regular fee for the first 7 days of a plan. Spreads and withdrawal fees not included. <a href=\"/bitcoin-fee-index/\">Total cost incl. spread: Fee Index</a></p> </div> </div> </section> <!-- 3b. VIRTUSE CFO (from the free-audit stage) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> <di"
  },
  {
   "en": "Virtuse CFO · Free Verdict",
   "kind": "text",
-  "context": " the free-audit stage) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> <div> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · Free Verdict</span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator abov"
+  "context": "O (from the free-audit stage) --> <section id=\"cfo\"> <div class=\"cfo-panel\"> <div> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · Free Verdict</span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator abov"
  },
  {
   "en": "Your AI CFO for Bitcoin.",
   "kind": "text",
-  "context": "yle=\"display:block;margin-bottom:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit, join the list</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator above uses published fees. Virtuse CFO reads you"
+  "context": "d=\"cfo\"> <div class=\"cfo-panel\"> <div> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · Free Verdict</span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator above uses published fees. Virtuse CFO reads you"
  },
  {
   "en": "It reads your own exports and never sees your wallet.",
   "kind": "text",
-  "context": "m:16px\">Virtuse CFO · <span class=\"only-wait\">Free audit, join the list</span><span class=\"only-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actual"
+  "context": "nel\"> <div> <span class=\"k\" style=\"display:block;margin-bottom:16px\">Virtuse CFO · Free Verdict</span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actual"
  },
  {
   "en": "The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.",
   "kind": "text",
-  "context": "y-audit\">New</span></span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.<span class=\"only-wait\"> Join the waitlist and we'll tell you when the free audit opens.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0\"> <a class=\"btn "
+  "context": " CFO · Free Verdict</span> <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"lead\">The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.<span class=\"only-wait\"> Join the waitlist and we'll tell you when the fee audit opens.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0"
  },
  {
-  "en": "Join the waitlist and we'll tell you when the free audit opens.",
+  "en": "Join the waitlist and we'll tell you when the fee audit opens.",
   "kind": "text",
-  "context": " Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.<span class=\"only-wait\"> Join the waitlist and we'll tell you when the free audit opens.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the free audit</a> "
+  "context": " Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.<span class=\"only-wait\"> Join the waitlist and we'll tell you when the fee audit opens.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the fee audit</a> "
  },
  {
-  "en": "Run the free audit",
+  "en": "Run the fee audit",
   "kind": "text",
-  "context": "free audit opens on 1 November.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the free audit</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> "
+  "context": "l you when the fee audit opens.</span></p> <div class=\"hero-ctas only-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the fee audit</a> <a class=\"btn btn-ghost\" href=\"verdict.html\">Get a free verdict</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> <"
  },
  {
   "en": "Get a free verdict",
   "kind": "text",
-  "context": "t\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the free audit</a> <a class=\"btn btn-ghost\" href=\"cfo.html#verdict\">Get a free verdict</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> "
+  "context": "-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the fee audit</a> <a class=\"btn btn-ghost\" href=\"verdict.html\">Get a free verdict</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> "
  },
  {
   "en": "How it works",
   "kind": "text",
-  "context": "nly-audit\" style=\"margin-top:0\"> <a class=\"btn btn-primary\" href=\"cfo.html\">Run the free audit</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> <label for=\"waitEmail\" style=\"position:absolute;left:-9999px\">E"
+  "context": "fo.html\">Run the fee audit</a> <a class=\"btn btn-ghost\" href=\"verdict.html\">Get a free verdict</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </div> <form class=\"cfo-wait only-wait\" id=\"waitForm\" novalidate> <label for=\"waitEmail\" style=\"position:absolute;left:-9999px\">E"
  },
  {
   "en": "Email address",
@@ -682,7 +907,7 @@
  {
   "en": "Join the waitlist",
   "kind": "text",
-  "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Join the waitlist</button> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> </form> <div class=\"wait-msg only-wait\" id=\"waitMsg\" aria-live=\"po"
+  "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Join the waitlist</button> <a class=\"btn btn-ghost\" href=\"verdict.html\">Get a free verdict</a> <a class=\"btn btn-ghost\" href=\"cfo.html\">How it works</a> "
  },
  {
   "en": "One email when the audit opens, nothing else.",
@@ -727,17 +952,17 @@
  {
   "en": "You paid",
   "kind": "text",
-  "context": "12 months</div> <div class=\"big\">€341 <small>on €43,000 of buys</small></div> <div class=\"abars\"> <div class=\"abar\"><span class=\"lbl\">You paid</span><div class=\"t\"><div class=\"f\" style=\"width:100%\"></div></div><span class=\"v\">€449</span></div> <div class=\"abar\"><span class=\"lbl\">Cheapest rou"
+  "context": "12 months</div> <div class=\"big\">€341 <small>on €43,000 of buys</small></div> <div class=\"abars\"> <div class=\"abar\"><span class=\"lbl\">You paid</span><div class=\"t\"><div class=\"f\" style=\"width:100%\"></div></div><span class=\"v\">€449</span></div> <div class=\"abar\"><span class=\"lbl\">Bybit EU 0.2"
  },
  {
-  "en": "Cheapest route",
+  "en": "Bybit EU 0.25%",
   "kind": "text",
-  "context": "bl\">You paid</span><div class=\"t\"><div class=\"f\" style=\"width:100%\"></div></div><span class=\"v\">€449</span></div> <div class=\"abar\"><span class=\"lbl\">Cheapest route</span><div class=\"t\"><div class=\"f g\" style=\"width:24%\"></div></div><span class=\"v\">€108</span></div> </div> <div class=\"sample\">Sample export "
+  "context": "bl\">You paid</span><div class=\"t\"><div class=\"f\" style=\"width:100%\"></div></div><span class=\"v\">€449</span></div> <div class=\"abar\"><span class=\"lbl\">Bybit EU 0.25%</span><div class=\"t\"><div class=\"f g\" style=\"width:24%\"></div></div><span class=\"v\">€108</span></div> </div> <div class=\"sample\">Sample export "
  },
  {
   "en": "Sample export and figures for illustration.",
   "kind": "text",
-  "context": "Cheapest route</span><div class=\"t\"><div class=\"f g\" style=\"width:24%\"></div></div><span class=\"v\">€108</span></div> </div> <div class=\"sample\">Sample export and figures for illustration.</div> </div> </div> </section> <!-- 4. SHELF: everything else --> <section id=\"shelf\"> <div class=\"sec-head one\"> <div class=\"sec-co"
+  "context": "Bybit EU 0.25%</span><div class=\"t\"><div class=\"f g\" style=\"width:24%\"></div></div><span class=\"v\">€108</span></div> </div> <div class=\"sample\">Sample export and figures for illustration.</div> </div> </div> </section> <!-- 4. SHELF: everything else --> <section id=\"shelf\"> <div class=\"sec-head one\"> <div class=\"sec-co"
  },
  {
   "en": "Every other Bitcoin need, on one shelf.",
@@ -1067,17 +1292,12 @@
  {
   "en": "Company",
   "kind": "text",
-  "context": "</a><a href=\"lending.html\">Loans</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO <span class=\"soon cfo"
+  "context": "</a><a href=\"lending.html\">Loans</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"verdict.html\">Verdict <span class=\"soon cfo"
  },
  {
   "en": "About Us",
   "kind": "text",
-  "context": "/a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO <span class=\"soon cfo-foot-badge\">Soon</span></a><a hre"
- },
- {
-  "en": "FAQ",
-  "kind": "text",
-  "context": "sury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO <span class=\"soon cfo-foot-badge\">Soon</span></a><a href=\"concierge.html\">Partner"
+  "context": "/a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"verdict.html\">Verdict <span class=\"soon cfo-foot-badge\">Free</span></a><a hre"
  },
  {
   "en": "Guides",
@@ -1092,52 +1312,67 @@
  {
   "en": "DCA calculator",
   "kind": "text",
-  "context": "a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"ter"
+  "context": "a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href="
  },
  {
   "en": "Sell vs borrow",
   "kind": "text",
-  "context": "bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a "
+  "context": "bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosyste"
  },
  {
   "en": "Inheritance",
   "kind": "text",
-  "context": "-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a"
+  "context": "-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosystem/what-is-bitcoin/\">What is Bitcoin?</a><a href"
+ },
+ {
+  "en": "Bitcoin Ecosystem",
+  "kind": "text",
+  "context": "sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosystem/what-is-bitcoin/\">What is Bitcoin?</a><a href=\"/ecosystem/books/\">Books</a><a href=\"/ecosystem/podcasts/\">Podcasts</a><a href=\"/ecosyste"
  },
  {
   "en": "Legal",
   "kind": "text",
-  "context": "lator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compl"
+  "context": "href=\"/ecosystem/jobs/\">Bitcoin Jobs</a><a href=\"/ecosystem/peers/\">Bitcoin Peers</a><a href=\"/ecosystem/promote/\">Promote</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compl"
  },
  {
   "en": "Terms &amp; Conditions",
   "kind": "text",
-  "context": "rrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\""
+  "context": "f=\"/ecosystem/peers/\">Bitcoin Peers</a><a href=\"/ecosystem/promote/\">Promote</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\""
  },
  {
   "en": "Privacy Policy",
   "kind": "text",
-  "context": "itance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All r"
+  "context": "em/promote/\">Promote</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Manag"
  },
  {
   "en": "AML &amp; Compliance",
   "kind": "text",
-  "context": "-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-bottom-brie"
+  "context": "-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-"
  },
  {
   "en": "&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.",
   "kind": "text",
-  "context": "=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"foote"
+  "context": "=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-operator\"><a href=\"operator.html\">Operator</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 3"
+ },
+ {
+  "en": "Operator",
+  "kind": "text",
+  "context": "iv class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-operator\"><a href=\"operator.html\">Operator</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Mun"
+ },
+ {
+  "en": ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com",
+  "kind": "text",
+  "context": "oter-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-operator\"><a href=\"operator.html\">Operator</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"foote"
  },
  {
   "en": "Virtuse Brief &mdash; the weekly desk from Virtuse.",
   "kind": "text",
-  "context": "></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"footer-langs\" aria-label=\"Languages\"><a href=\"index.html\" hreflang=\"en\" aria-current=\"page\">Englis"
+  "context": "2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"footer-langs\" aria-label=\"Languages\"><a href=\"index.html\" hreflang=\"en\" aria-current=\"page\">Englis"
  },
  {
   "en": "Read it &rarr;",
   "kind": "text",
-  "context": " 2018–2026 Virtuse Group. All rights reserved.</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"footer-langs\" aria-label=\"Languages\"><a href=\"index.html\" hreflang=\"en\" aria-current=\"page\">English</a><a href=\"sk/index.html\" hrefla"
+  "context": "section Sa, file No. 4452/B · info@virtuse.com</p> <p class=\"footer-bottom-brief\">Virtuse Brief &mdash; the weekly desk from Virtuse. <a href=\"news.html\">Read it &rarr;</a></p> <nav class=\"footer-langs\" aria-label=\"Languages\"><a href=\"index.html\" hreflang=\"en\" aria-current=\"page\">English</a><a href=\"sk/index.html\" hrefla"
  },
  {
   "en": "Languages",
@@ -1186,272 +1421,52 @@
  },
  {
   "en": "Close menu",
-  "kind": "js",
-  "context": "string shown by the page script"
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  },
  {
   "en": "Cover image: ",
-  "kind": "js",
-  "context": "string shown by the page script"
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  },
  {
   "en": "Please enter a valid email address.",
-  "kind": "js",
-  "context": "string shown by the page script"
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  },
  {
   "en": "You're in. Brief goes out Monday.",
-  "kind": "js",
-  "context": "string shown by the page script"
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  },
  {
   "en": "Something went wrong. Please try again.",
-  "kind": "js",
-  "context": "string shown by the page script"
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  },
  {
   "en": "Network error. Please try again.",
-  "kind": "js",
-  "context": "string shown by the page script"
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  },
  {
-  "en": "You're on the list. We'll email you once, when the free audit opens.",
-  "kind": "js",
-  "context": "string shown by the page script"
+  "en": "You're on the list. We'll email you once, when the fee audit opens.",
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  },
  {
   "en": "Sending...",
-  "kind": "js",
-  "context": "string shown by the page script"
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  },
  {
   "en": "Latest Brief · ",
-  "kind": "js",
-  "context": "string shown by the page script"
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  },
  {
   "en": " min",
-  "kind": "js",
-  "context": "string shown by the page script"
- },
- {
-  "en": "Stories",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Country tax guides",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Weekly Bitcoin news, every Monday",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Long reads and analysis",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Latest posts from Virtuse",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Live price, network and charts",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Tax rules in 13 EU countries",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Answers about Virtuse and partners",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Rate your decision, free",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Partners that match your answers",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Total cost of buying, compared",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Plan regular buys, compare fees",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Sell or borrow against your Bitcoin",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Country rules and an inheritance check",
-  "kind": "text",
-  "context": "nav menu (2.5)"
- },
- {
-  "en": "Operator",
-  "kind": "text",
-  "context": "footer operator line (legal pack 2026-10-16)"
- },
- {
-  "en": ": Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia · Company ID (IČO) 36 709 042 · VAT ID SK2022293042 · Commercial Register of the Municipal Court Bratislava III, section Sa, file No. 4452/B · info@virtuse.com",
-  "kind": "text",
-  "context": "footer operator line (legal pack 2026-10-16)"
- },
- {
-  "en": "Ecosystem",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Overview",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "All bitcoin-only resources",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin Ecosystem",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "A plain-English primer",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "What is Bitcoin?",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "A curated reading list",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Books",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin-only shows",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Podcasts",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Channels and documentaries",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Videos",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin events in Europe",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Conferences",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Lawful privacy tools",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin Privacy",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Shops, maps and gift cards",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Spend Bitcoin",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Accept bitcoin in your shop",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Store Tools",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Libraries and SDKs",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Dev Tools",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Jobs, grants and fellowships",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin Jobs",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Fellow bitcoin-only projects",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin Peers",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Get your project featured",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Promote",
-  "kind": "text",
-  "context": "Ecosystem menu"
+  "kind": "script",
+  "context": "script message (build_lang.py)"
  }
 ]

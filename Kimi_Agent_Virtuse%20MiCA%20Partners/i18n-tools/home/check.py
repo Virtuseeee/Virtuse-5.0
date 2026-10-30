@@ -22,6 +22,8 @@ for k, v in tr.items():
     if k.startswith(' ') != v.startswith(' ') or k.endswith(' ') != v.endswith(' '):
         problems.append('leading/trailing space changed for %r -> %r' % (k, v))
     for ent in ('&rarr;', '&mdash;', '&copy;'):
+        if ent == '&mdash;' and lang == 'sk':   # Slovak writes a comma instead of the dash (house rule, 2026-10-29)
+            continue
         if ent in k and ent not in v:
             problems.append('entity %s dropped in %r' % (ent, k))
     if re.search(r'\b(best|recommended|recommend)\b', v, re.I) and lang in ('de', 'fr', 'es'):
