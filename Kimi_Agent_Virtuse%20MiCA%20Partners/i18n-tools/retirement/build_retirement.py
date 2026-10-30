@@ -244,7 +244,7 @@ def build(L):
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', esc(q).replace('&#x27;', "'"), a) for i, (q, a) in enumerate(faq))
     fee = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][1])
     rel = [(page_url('stacking.html'), 'rel_stack'), (fee, 'rel_fee'), (page_url('concierge.html'), 'rel_pf'), (dca, 'rel_dca'),
-           (tax, 'rel_tax'), (page_url('cfo.html'), 'rel_cfo')]
+           (tax, 'rel_tax'), (page_url('verdict.html'), 'rel_cfo')]   # Verdict landing (own page in en/sk/ru, else /verdict.html)
     rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
 
     strings = {k: v for k, v in t.items() if k.startswith('c_')}
