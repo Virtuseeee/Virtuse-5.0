@@ -70,7 +70,7 @@ NEW = {
                netErr='Netzwerkfehler. Bitte erneut versuchen.'),
     'fr': dict(lead='À la une', by='Par', read='Lire', read_story='Lire l’article',
                nav_issues='Derniers numéros', nav_data='Données Bitcoin', nav_hub='Hub Virtuse', lang_label='Langue',
-               policy='Régulation', macro='Macro', markets='Marchés',
+               policy='Réglementation', macro='Macro', markets='Marchés',
                emailReq='Adresse e-mail requise.', sending='Envoi', subOk='C’est fait. Vérifiez votre boîte de réception.',
                subErr='Inscription impossible. Réessayez.', netErr='Erreur réseau. Réessayez.'),
     'es': dict(lead='Lo último', by='Por', read='Leer', read_story='Leer el artículo',

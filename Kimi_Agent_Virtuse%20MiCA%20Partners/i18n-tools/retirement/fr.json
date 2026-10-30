@@ -66,7 +66,7 @@
   "c_inflation": "Inflation annuelle",
   "c_inflation_src": "2 % par défaut : objectif de stabilité des prix de la BCE, vérifié le 13 oct. 2026",
   "c_price": "Prix du Bitcoin aujourd'hui (€)",
-  "c_price_loading": "Chargement du prix en direct...",
+  "c_price_loading": "Chargement du prix en direct…",
   "c_price_live": "Prix au {0}",
   "c_price_fallback": "Prix de secours au 13 oct. 2026",
   "c_price_manual": "Votre propre prix est utilisé.",

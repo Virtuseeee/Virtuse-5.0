@@ -4130,7 +4130,7 @@ function frHome(relFile) { return { name: 'Accueil', href: toRoot(relFile, 'fr/i
     { q: 'Quels pays couvre cet aperçu ?', a: `Il couvre ${N} pays de l'UE : ${COUNTRIES.map((c) => nameFr(c.id)).join(', ')}. ${guideText('fr', 'hubFaq')}` },
     { q: 'Est-ce un conseil fiscal ?', a: `Non. ${guideLine('fr')} Vérifiez les règles de l'année en cours auprès d'un conseiller local.` },
     { q: "Virtuse déclare-t-il mes avoirs à l'administration fiscale ?", a: 'Non. Virtuse ne détient jamais vos clés ni votre historique de transactions. Les partenaires effectuent eux-mêmes le KYC.' },
-    { q: 'Où vérifier aussi la succession ?', a: `Dans le module Tax & Inheritance Agent, avec les mêmes ${N} pays et une vérification de préparation au multisig.` }
+    { q: 'Où vérifier aussi la succession ?', a: `Dans le module Tax & Inheritance Agent, avec les mêmes ${N} pays et un contrôle de préparation au multisig.` }
   ];
   const answer = finalizeAnswer([
     `Cet aperçu compare la fiscalité du Bitcoin dans ${N} pays de l'UE, situation au ${asOfFr}.`,
@@ -4178,7 +4178,7 @@ for (const c of COUNTRIES) {
   ];
   const answer = finalizeAnswer([
     `Fiscalité du Bitcoin ${inN}, situation au ${asOfFr} : ${lcFr(gainFull(t))}.`,
-    /^Aucune exonération/.test(t.exemption) ? `${t.exemption}.` : `Exonération : ${lcFr(t.exemption)}.`,
+    /^Aucune exonération/.test(t.exemption) ? `${t.exemption}.` : `Exonération : ${lcFr(t.exemption.replace(/^Exonér(?:ation|ée?)\s+/, ''))}.`,
     `Modalités : ${lcFr(t.filing)}.`,
     t.note,
     guideLine('fr')
@@ -4340,10 +4340,10 @@ ${faqHtml(faqs, 'Questions fréquentes')}
     { q: "La lettre d'instructions peut-elle contenir la phrase de récupération ?", a: "Non. La lettre contient l'inventaire, les emplacements et les contacts, jamais de phrase de récupération. Conservez-la avec votre testament ou chez votre avocat." },
     { q: 'Pourquoi un multisig 2 sur 3 ?', a: 'Une seule phrase de récupération est un point de défaillance unique, pour vous comme pour vos héritiers.' },
     { q: 'Virtuse détient-elle des clés pour les héritiers ?', a: 'Non. Virtuse ne détient jamais vos clés.' },
-    { q: 'Est-ce un conseil juridique ?', a: `Non. C'est une check-list à but éducatif issue du module Tax, situation au ${asOfFr}.` }
+    { q: 'Est-ce un conseil juridique ?', a: `Non. C'est une check-list à but éducatif issue du Tax & Inheritance Agent, situation au ${asOfFr}.` }
   ];
   const answer = finalizeAnswer([
-    `Au ${asOfFr}, la check-list du module Tax compte six points : lettre d'instructions, séparation géographique des clés, héritier informé, multisig 2 sur 3, test de récupération et comptes documentés.`,
+    `Au ${asOfFr}, la check-list du Tax & Inheritance Agent compte six points : lettre d'instructions, séparation géographique des clés, héritier informé, multisig 2 sur 3, test de récupération et comptes documentés.`,
     'Une seule phrase de récupération est un point de défaillance unique. Virtuse ne détient jamais vos clés.',
     'Pas un conseil juridique.'
   ], 'fr');
@@ -4374,7 +4374,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
     moduleCta: { href: toRoot(relFile, 'fr/' + TAX_AGENT), label: 'Évaluer la check-list dans le Tax Agent →' },
     schemas: [faqLd(faqs), howto],
     bodyHtml: `
-<p>Le contenu reprend la check-list du module Tax. Pas un conseil juridique.</p>
+<p>Le contenu reprend la check-list du Tax &amp; Inheritance Agent. Pas un conseil juridique.</p>
 <h2>Marche à suivre : six étapes</h2>
 <ol>${meta.inheritanceFr.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
 ${faqHtml(faqs, 'Questions fréquentes')}

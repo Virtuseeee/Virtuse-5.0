@@ -159,7 +159,7 @@
     fr: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
       listPage: 'fr/blog.html', suffix: '&lang=fr', locale: 'fr-FR', worker: 'fr', dir: 'fr/', concierge: true,
-      desks: { mining: 'Minage', treasury: 'Treasury', custody: 'Conservation', policy: 'Régulation', macro: 'Macro', markets: 'Marchés' },
+      desks: { mining: 'Minage', treasury: 'Treasury', custody: 'Conservation', policy: 'Réglementation', macro: 'Macro', markets: 'Marchés' },
       ui: {
         navIssues: 'Derniers numéros', navBlog: 'Blog', navData: 'Données Bitcoin', navHub: 'Hub Virtuse', navGet: 'Recevoir le Brief',
         crumbList: 'Blog', by: 'Par', desk: '', block: 'Bloc', readTime: ' min',

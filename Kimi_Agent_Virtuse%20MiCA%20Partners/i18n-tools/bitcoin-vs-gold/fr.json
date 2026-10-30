@@ -1,6 +1,6 @@
 {
   "title": "Bitcoin vs or, argent, pétrole : rendements par an | Virtuse",
-  "description": "Bitcoin vs or, argent, pétrole : rendements YTD, 1, 5, 10 ans, ratio BTC/or, quotidien. Virtuse est un hub 100 % Bitcoin, pas une plateforme d'échange.",
+  "description": "Bitcoin vs or, argent, pétrole : rendements YTD, 1, 5, 10 ans, ratio BTC/or, mis à jour chaque jour. Virtuse est un hub 100 % Bitcoin, pas une plateforme d'échange.",
   "ds_name": "Bitcoin vs or, argent et matières premières : rendements et ratio BTC/or depuis 2016",
   "ds_desc": "Jeu de données quotidien : rendements totaux du Bitcoin, de l'or, de l'argent, du pétrole brut WTI, du cuivre, du platine et d'un panier de matières premières depuis 2016 (YTD, 1, 5 et 10 ans, années civiles), prix spot et ratios BTC/or et BTC/argent.",
   "crumb_home": "Accueil",
@@ -81,7 +81,7 @@
   "a4": "Non. La page présente des données de marché publiques à titre informatif uniquement. Les rendements passés ne garantissent pas les résultats futurs, et le Bitcoin, les métaux et les matières premières peuvent tous perdre de la valeur.",
   "method_h2_a": "Méthodologie",
   "method_h2_b": "et sources.",
-  "method_p1": "Rendements : rendement total à partir des prix de clôture ajustés (Yahoo Finance), en USD. La vue en EUR convertit chaque valeur au taux EUR/USD de la date correspondante, c'est-à-dire ce qu'un investisseur en euros aurait gagné en détenant l'actif sans couverture. Le rendement depuis le début de l'année part du dernier jour de bourse de l'année précédente ; les rendements sur 1, 5 et 10 ans partent du même jour civil de l'année antérieure (ou du jour de bourse précédent).",
+  "method_p1": "Rendements : rendement total à partir des prix de clôture ajustés (Yahoo Finance), en USD. La vue en EUR convertit chaque valeur au taux EUR/USD de la date correspondante, c'est-à-dire ce qu'un investisseur en euros aurait gagné en détenant l'actif sans couverture. Le rendement depuis le début de l'année part du dernier jour de bourse de l'année précédente ; les rendements sur 1, 5 et 10 ans partent du même jour civil 1, 5 ou 10 ans plus tôt (ou du jour de bourse précédent).",
   "method_p2": "Actifs : Bitcoin (BTC-USD), or (GLD), argent (SLV), pétrole brut WTI (USO), cuivre (CPER), platine (PPLT) et un large panier de matières premières (DBC, 14 matières premières). Le pétrole, le cuivre et le panier sont des ETF adossés à des contrats à terme, leurs rendements incluent donc le coût du roulement des contrats. Le Brent et le gaz naturel ne sont pas inclus.",
   "method_p3": "Le jeu de données est reconstruit chaque jour par un script public et publié en JSON ; le fichier n'est mis à jour que si toutes les vérifications passent. Les données sont différées et fournies à titre informatif uniquement ; ceci n'est pas un conseil en investissement.",
   "method_link_assets": "Toutes les classes d'actifs année par année",
@@ -89,7 +89,7 @@
   "rel_h2_a": "Pages",
   "rel_h2_b": "associées",
   "rel_assets_t": "Rendements des classes d'actifs",
-  "rel_assets_p": "Le Bitcoin face aux actions, aux obligations, à l'or et au cash, année par année.",
+  "rel_assets_p": "Le Bitcoin face aux actions, aux obligations, à l'or et aux liquidités, année par année.",
   "rel_data_t": "Données Bitcoin",
   "rel_data_p": "Prix, frais et données du réseau, en direct.",
   "rel_monthly_t": "Rendements mensuels",
@@ -100,5 +100,5 @@
   "rel_retire_p": "Votre Bitcoin peut-il financer votre retraite ?",
   "rel_buy_t": "Acheter du Bitcoin",
   "rel_buy_p": "Partenaires sélectionnés, frais dès 0 %.",
-  "disclaimer": "Données fournies à titre informatif, elles peuvent être retardées. Ceci n'est pas un conseil en investissement. Virtuse est un hub 100 % Bitcoin, pas une plateforme d'échange, et ne détient jamais vos clés ni vos fonds."
+  "disclaimer": "Données fournies à titre informatif ; elles peuvent être retardées. Ceci n'est pas un conseil en investissement. Virtuse est un hub 100 % Bitcoin, pas une plateforme d'échange, et ne détient jamais vos clés ni vos fonds."
 }

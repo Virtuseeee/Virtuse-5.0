@@ -36,7 +36,7 @@
   "s2_t": "Spread estimé",
   "s2_p": "Ce que vous payez au-dessus du cours médian du marché lorsque l'ordre est exécuté. Nous le mesurons au lieu de le supposer nul.",
   "s3_t": "Coût total",
-  "s3_p": "Frais plus spread, en part de chaque achat. Par an signifie 12 achats du montant choisi.",
+  "s3_p": "Frais plus spread, en pourcentage de chaque achat. Par an signifie 12 achats du montant choisi.",
   "method_link": "Méthodologie complète",
   "faq_h2_a": "Questions",
   "faq_h2_b": "et réponses",

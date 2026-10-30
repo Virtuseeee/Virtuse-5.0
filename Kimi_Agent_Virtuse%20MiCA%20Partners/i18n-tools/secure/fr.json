@@ -28,7 +28,7 @@
  "s1_p": "Commandez directement chez Trezor, Blockstream ou Ledger via les liens ci-dessus, et non chez un revendeur sur une place de marché.",
  "s2_t": "Notez votre phrase de récupération",
  "s2_p": "Configurez l'appareil hors ligne et notez la phrase de récupération sur papier ou sur métal. Ne la saisissez jamais sur un téléphone ou un ordinateur.",
- "s3_t": "Envoyez un petit montant test",
+ "s3_t": "Envoyez un petit montant de test",
  "s3_p": "Recevez un petit montant, vérifiez l'adresse sur l'écran de l'appareil et entraînez-vous à un retrait avant de transférer davantage.",
  "s4_t": "En option&nbsp;: phrase de passe ou multisig",
  "s4_p": "Ajoutez une phrase de passe, ou un multisig 2 sur 3 avec un second appareil. Blockstream Jade prend en charge le multisig nativement.",

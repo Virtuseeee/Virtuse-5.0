@@ -284,6 +284,14 @@ def write(rel, out):
     print('%-48s %6d bytes' % (rel, len(out)))
 
 
+# '90 d' is the English abbreviation; languages listed here get their own (others keep '90 d')
+DAYS90 = {'fr': '90 j'}
+
+
+def days90(L):
+    return DAYS90.get(L, '90 d')
+
+
 def brief_card(L, t, source='fee_index_brief', days=None):
     """Shared Brief card; its cover image comes from virtuse.com (the issue's og_image), not blog.virtuse.com."""
     b = absolutize(C.brief(L, lambda k: t[k], '', source, days), L).replace('data-root=""', 'data-root="/"')
@@ -437,7 +445,7 @@ def build_main(L, fi, s21, extra_pages):
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, mlink=t['method_link'], arrow=C.ARROW,
            qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html, psum=t['press_sum'], pintro=t['press_intro'], pbh=t['press_blurb_h'],
            blurb=blurb, eh=t['embed_h'], eintro=t['embed_intro'], embed=embed, bemb=t['btn_embed'], bprint=t['btn_print'], barch=t['btn_archive'],
-           brief=brief_card(L, t, days='90 d'),
+           brief=brief_card(L, t, days=days90(L)),
            rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], cards=cards, disclaimer=t['disclaimer'], foot=foot)
     out += body + C.scripts('/')
     check_text(out, L)

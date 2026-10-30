@@ -453,7 +453,7 @@
       skipLabel: 'Passer',
       backLabel: '← Retour',
       resultHeadline: 'Nous avons suffisamment d’informations pour préparer l’appel.',
-      disclaimer: 'Virtuse Wealth Management a.s. ne fournit pas de conseil en investissement et ne détient pas les actifs de ses clients. Nous facilitons des partenariats d’affiliation — la décision d’allocation vous appartient toujours.',
+      disclaimer: 'Virtuse Wealth Management, a.s. ne fournit pas de conseil en investissement et ne détient pas les actifs de ses clients. Nous facilitons des partenariats d’affiliation — la décision d’allocation vous appartient toujours.',
       riskNote: 'Vous avez choisi des sujets (achat/vente de Bitcoin, conservation, trésorerie, bots automatisés) pour lesquels il est important de savoir dès le départ : Virtuse n’exécute ni ne fournit directement ces services — nous facilitons l’accès à des plateformes partenaires qui les proposent. Lors de l’appel, nous vous expliquerons précisément qui fait quoi.',
       bookLabel: 'Réserver une consultation de 15 min',
       restartLabel: 'Recommencer',
@@ -495,7 +495,7 @@
           label: 'Horizon',
           headline: 'Quel horizon de placement envisagez-vous ?',
           options: [
-            'Moins d’1 an',
+            'Moins d’un an',
             '1 – 3 ans',
             '3 – 5 ans',
             '5 ans et plus'

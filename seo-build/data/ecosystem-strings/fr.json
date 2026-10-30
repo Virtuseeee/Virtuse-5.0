@@ -24,7 +24,7 @@
     "tableDates": "Dates",
     "tableLink": "Site web",
     "websiteButton": "Site web",
-    "confTbcSep2027": "Sept. 2027, à confirmer",
+    "confTbcSep2027": "sept. 2027, à confirmer",
     "confTba2027": "2027, date à annoncer",
     "cities": {
       "Amsterdam": "Amsterdam",
@@ -75,7 +75,7 @@
       "<strong>Honnête :</strong> aucune promesse de rendement et aucune conservation non divulguée."
     ],
     "paidH": "Placement payant",
-    "paid": "Certaines entrées portent la mention « Sponsorisé » ou « À la une ». Il s'agit de placements payants, et certains liens sont des liens d'affiliation. Un paiement ne modifie jamais nos critères ni notre avis, et ne garantit pas l'acceptation. Voir <a href=\"{howWeEarn}\">Comment nous sommes rémunérés</a>.",
+    "paid": "Certaines entrées portent la mention « Sponsorisé » ou « À la une ». Il s'agit de placements payants, et certains liens sont des liens d'affiliation. Un paiement ne modifie jamais nos critères ni notre avis, et ne garantit pas l'acceptation. Voir <a href=\"{howWeEarn}\">Comment nous gagnons de l'argent</a>.",
     "removalH": "Retrait",
     "removal": "Nous pouvons retirer une fiche si elle ne remplit plus les critères. Vous pouvez demander son retrait à tout moment.",
     "applyH": "Candidature",
@@ -279,11 +279,11 @@
       "title": "Confidentialité Bitcoin : outils et guides | Virtuse",
       "description": "Outils et guides pour protéger votre vie privée de bitcoiner en Europe, de la confidentialité réseau à la réutilisation d'adresses, légaux et concrets.",
       "intro": "La confidentialité vous protège du vol, du profilage et des arnaques ciblées. Ces outils et guides vous aident à garder privées votre activité Bitcoin et votre navigation quotidienne, dans le respect de la loi.",
-      "legalNote": "Cette page traite de la confidentialité légale : protéger vos informations personnelles et financières contre les criminels, les courtiers en données et toute exposition inutile. Elle n'aide personne à contourner les règles de lutte contre le blanchiment, les sanctions ou les obligations fiscales. Voir notre <a href=\"/aml-compliance.html\">page LCB-FT et conformité</a>. Vous voulez savoir comment Virtuse traite vos données ? C'est notre <a href=\"/privacy-policy.html\">politique de confidentialité</a>.",
+      "legalNote": "Cette page traite de la confidentialité légale : protéger vos informations personnelles et financières contre les criminels, les courtiers en données et toute exposition inutile. Elle n'aide personne à contourner les règles de lutte contre le blanchiment, les sanctions ou les obligations fiscales. Voir notre <a href=\"/aml-compliance.html\">page AML et conformité</a>. Vous voulez savoir comment Virtuse traite vos données ? C'est notre <a href=\"/privacy-policy.html\">politique de confidentialité</a>.",
       "related": [
         "Conservation : protéger vos bitcoins",
         "Outils pour développeurs Bitcoin",
-        "LCB-FT et conformité chez Virtuse"
+        "AML et conformité chez Virtuse"
       ],
       "h1Accent": ", dans le respect de la loi."
     },
@@ -292,20 +292,20 @@
       "navDesc": "Commerces, cartes et bons d'achat",
       "h1": "Dépenser du Bitcoin",
       "title": "Où dépenser du Bitcoin en Europe | Virtuse",
-      "description": "Trouvez les commerces qui acceptent le bitcoin en Europe, payez vos factures et achetez des cartes cadeaux en bitcoin ou via Lightning. 100 % Bitcoin.",
-      "intro": "Où dépenser du bitcoin en Europe : cartes des commerces qui l'acceptent, cartes cadeaux pour les achats du quotidien et services en ligne payables en bitcoin. Notez que dans de nombreux pays, dépenser du bitcoin est considéré comme une cession sur le plan fiscal.",
+      "description": "Trouvez les commerces qui acceptent le bitcoin en Europe, payez vos factures et achetez des cartes-cadeaux en bitcoin ou via Lightning. 100 % Bitcoin.",
+      "intro": "Où dépenser du bitcoin en Europe : cartes des commerces qui l'acceptent, cartes-cadeaux pour les achats du quotidien et services en ligne payables en bitcoin. Notez que dans de nombreux pays, dépenser du bitcoin est considéré comme une cession sur le plan fiscal.",
       "related": [
         "Accepter le bitcoin dans votre commerce",
         "Déclaration fiscale Bitcoin",
         "Guides fiscaux par pays"
       ],
-      "h1Accent": "au quotidien : commerces, cartes interactives et cartes cadeaux."
+      "h1Accent": "au quotidien : commerces, cartes interactives et cartes-cadeaux."
     },
     "store-tools": {
       "nav": "Outils marchands",
       "navDesc": "Accepter le bitcoin en boutique",
       "h1": "Outils pour commerçants",
-      "title": "Accepter le Bitcoin en boutique : outils marchands | Virtuse",
+      "title": "Accepter le bitcoin en boutique : outils marchands | Virtuse",
       "description": "Outils de paiement 100 % Bitcoin pour les commerces européens : processeurs auto-hébergés, terminaux Lightning et extensions pour boutiques en ligne.",
       "intro": "Des outils pour accepter le bitcoin dans un magasin, un café ou une boutique en ligne : processeurs auto-hébergés, terminaux de paiement Lightning et extensions pour les plateformes e-commerce courantes. Détenir du bitcoin au bilan de votre entreprise est un autre sujet, traité sur notre page Treasury.",
       "related": [
@@ -316,7 +316,7 @@
       "h1Accent": ": acceptez le bitcoin en boutique."
     },
     "dev-tools": {
-      "nav": "Outils dev",
+      "nav": "Outils pour développeurs",
       "navDesc": "Bibliothèques et SDK",
       "h1": "Outils pour développeurs Bitcoin",
       "title": "Outils et bibliothèques pour développeurs Bitcoin | Virtuse",
@@ -331,11 +331,11 @@
     },
     "jobs": {
       "nav": "Emplois",
-      "navDesc": "Emplois, bourses et fellowships",
+      "navDesc": "Emplois, bourses et programmes de recherche",
       "h1": "Emplois Bitcoin",
       "title": "Emplois Bitcoin en Europe : sociétés 100 % Bitcoin | Virtuse",
       "description": "Où trouver un emploi dans une entreprise 100 % Bitcoin en Europe ou à distance, de l'ingénierie au marketing et au support.",
-      "intro": "Où trouver du travail dans le Bitcoin : sites d'emploi des entreprises 100 % Bitcoin, ainsi que bourses, fellowships et programmes de formation pour développeurs. Nous n'hébergeons aucune offre d'emploi ; chaque lien renvoie à la source.",
+      "intro": "Où trouver du travail dans le Bitcoin : sites d'emploi des entreprises 100 % Bitcoin, ainsi que bourses, programmes de recherche et programmes de formation pour développeurs. Nous n'hébergeons aucune offre d'emploi ; chaque lien renvoie à la source.",
       "related": [
         "Outils pour développeurs Bitcoin",
         "Conférences Bitcoin en Europe",
