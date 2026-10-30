@@ -65,7 +65,7 @@
  },
  {
   "en": "Your criteria:\n{0}\nThese partners fit them. Compare and choose one: you finish onboarding on the partner’s platform, and your bitcoin never touches Virtuse.",
-  "tr": "Sus criterios:\n{0}\nEstos partners los cumplen. Compare y elija uno: completará el registro en la plataforma del partner y su bitcoin nunca pasa por Virtuse."
+  "tr": "Sus criterios:\n{0}\nEstos partners los cumplen. Compare y elija uno: completará el registro en la plataforma del partner y su bitcoin nunca pasará por Virtuse."
  },
  {
   "en": "Your answers from Verdict are already filled in.",
@@ -221,7 +221,7 @@
  },
  {
   "en": "A simpler, Bitcoin-focused cloud DCA/grid setup.",
-  "tr": "Una configuración cloud de DCA/grid más sencilla y centrada en Bitcoin."
+  "tr": "Una configuración de DCA/grid en la nube, más sencilla y centrada en Bitcoin."
  },
  {
   "en": "Institutional custodian for companies in {0}.",
@@ -365,7 +365,7 @@
  },
  {
   "en": "Keys, multisig, legacy",
-  "tr": "Claves, multifirma, legado"
+  "tr": "Claves, multifirma, herencia"
  },
  {
   "en": "Tax help",
@@ -677,7 +677,7 @@
  },
  {
   "en": "Cloud DCA and grid bots, Bitcoin-focused",
-  "tr": "Bots cloud de DCA y grid, centrados en Bitcoin"
+  "tr": "Bots de DCA y grid en la nube, centrados en Bitcoin"
  },
  {
   "en": "Referral commissions paid in BTC",
@@ -901,7 +901,7 @@
  },
  {
   "en": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
-  "tr": "Sin exención por tiempo de tenencia; cada venta y cada permuta entre criptoactivos tributa"
+  "tr": "Sin exención por periodo de tenencia; cada venta y cada permuta entre criptoactivos tributa"
  },
  {
   "en": "Annual personal tax return (type B), due 31 March",
@@ -1065,7 +1065,7 @@
  },
  {
   "en": "Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000",
-  "tr": "Declaración anual del IRPF; Modelo 721 para criptomonedas custodiadas en el extranjero por encima de 50.000 €"
+  "tr": "Declaración anual del IRPF; modelo 721 para criptomonedas custodiadas en el extranjero por encima de 50.000 €"
  },
  {
   "en": "Crypto-to-crypto swaps are taxable disposals. Use FIFO for identical coins.",
@@ -1101,7 +1101,7 @@
  },
  {
   "en": "Bitcoin discovered years late, or never, is the most common inheritance failure.",
-  "tr": "Bitcoin descubierto años tarde, o nunca: es el fallo de herencia más habitual."
+  "tr": "Que su Bitcoin se descubra años tarde, o nunca, es el fallo más habitual en una herencia."
  },
  {
   "en": "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.",
@@ -1189,7 +1189,7 @@
  },
  {
   "en": "Loan-to-value",
-  "tr": "Loan-to-value (LTV)"
+  "tr": "Relación préstamo-valor (LTV)"
  },
  {
   "en": "Interest rate (APR)",
@@ -1501,7 +1501,7 @@
  },
  {
   "en": "Orange = projected value · dashed = your total invested",
-  "tr": "Naranja = valor proyectado · discontinua = total invertido"
+  "tr": "Naranja = valor proyectado · línea discontinua = total invertido"
  },
  {
   "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",

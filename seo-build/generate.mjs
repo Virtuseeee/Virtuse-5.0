@@ -4512,7 +4512,7 @@ for (const c of COUNTRIES) {
   ];
   const answer = finalizeAnswer([
     `Impuestos sobre Bitcoin ${inN}, datos del ${asOfEs}: ${lcEs(gainFull(t))}.`,
-    /^Sin exención/.test(t.exemption) ? `${t.exemption}.` : `Exención: ${lcEs(t.exemption)}.`,
+    /^(Sin exención|Exención|Exento)/.test(t.exemption) ? `${t.exemption}.` : `Exención: ${lcEs(t.exemption)}.`,
     `Presentación: ${lcEs(t.filing)}.`,
     t.note,
     guideLine('es')

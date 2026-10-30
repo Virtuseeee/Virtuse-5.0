@@ -200,7 +200,7 @@
         nostrCopied: 'Copiado. Péguelo en su aplicación de Nostr.', openPrimal: 'Abrir Primal', back: '← Todos los artículos',
         inStory: 'En este artículo', onVirtuse: 'En Virtuse', ovAlt: '¿No está seguro? Compare partners en 60 segundos →',
         ovNote: 'Servicios de partners. No es asesoramiento financiero.',
-        capKicker: 'Reciba el Brief', capDek: 'Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.', capBtn: 'Recibir el Brief',
+        capKicker: 'Reciba el Brief', capDek: 'Virtuse Brief. Solo Bitcoin. Sin tokens. Sin publirreportajes.', capBtn: 'Recibir el Brief',
         subscribe: 'Recibir el Brief', more: 'Más artículos', moreAll: 'Todos los artículos', readMore: 'Leer',
         emailReq: 'Indique su correo electrónico.', sending: 'Enviando', subOk: 'Listo. Revise su correo.',
         subErr: 'No se pudo completar la suscripción. Inténtelo de nuevo.', netErr: 'Error de red. Inténtelo de nuevo.',
@@ -209,11 +209,11 @@
       },
       services: {
         mining: ['Mine Bitcoin con partners verificados', 'Hosting, nube y hardware comparados por costes y pagos.', 'Comparar partners de minería'],
-        treasury: ['Bitcoin en el balance de su empresa', 'Custodia, ejecución y reporting para empresas y family offices.', 'Ver partners de tesorería'],
+        treasury: ['Bitcoin en el balance de su empresa', 'Custodia, ejecución e informes para empresas y family offices.', 'Ver partners de tesorería'],
         custody: ['Guarde sus propias claves', 'Monederos de hardware y multifirma de partners verificados.', 'Comparar custodia'],
         policy: ['Declare su Bitcoin sin errores', 'Informes fiscales por país de partners de software fiscal.', 'Ver partners fiscales'],
         macro: ['Pida un préstamo en lugar de vender', 'Préstamos respaldados por Bitcoin de prestamistas verificados, desde el 5 % anual.', 'Comparar préstamos'],
-        markets: ['Dónde comprar Bitcoin', 'Plataformas reguladas y verificadas, lado a lado: comisiones, custodia y retiradas.', 'Comparar partners']
+        markets: ['Dónde comprar Bitcoin', 'Plataformas reguladas y verificadas, una junto a otra: comisiones, custodia y retiradas.', 'Comparar partners']
       }
     },
     pl: {

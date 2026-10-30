@@ -540,9 +540,12 @@ function heroH1(t) {
   return `${esc(end(t.h1))} <span class="h1-grey">${esc(line2)}</span>`;
 }
 
+const EYEBROW_STEPS = { es: ['Seleccionado a mano', 'Relevante para Europa'] };
 function eyebrow(p, l) {
   const ui = S[l].ui;
-  const text = p === INDEX ? [ui.eyebrowIndex, ui.steps[0].t, ui.steps[1].t].join(' · ') : [ui.crumbEcosystem, p.slug === 'promote' ? ui.promoteCrumb : txt(l, p).nav].join(' · ');
+  // es: the step titles agree with "entradas" (feminine plural); the eyebrow qualifies "Ecosistema".
+  const steps = EYEBROW_STEPS[l] || [ui.steps[0].t, ui.steps[1].t];
+  const text = p === INDEX ? [ui.eyebrowIndex, ...steps].join(' · ') : [ui.crumbEcosystem, p.slug === 'promote' ? ui.promoteCrumb : txt(l, p).nav].join(' · ');
   return `<div class="eyebrow ${p.accent === 'orange' ? '' : p.accent}"><i></i>${esc(text)}</div>`.replace('class="eyebrow "', 'class="eyebrow"');
 }
 

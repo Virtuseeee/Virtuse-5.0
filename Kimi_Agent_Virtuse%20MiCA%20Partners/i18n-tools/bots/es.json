@@ -25,7 +25,7 @@
  "s2_t": "Cree una clave API solo de trading",
  "s2_p": "En su exchange, con las retiradas desactivadas.",
  "s3_t": "Defina un plan de DCA o reglas",
- "s3_p": "Haga primero un backtesting o paper trading y después pase a real.",
+ "s3_p": "Haga primero un backtesting o paper trading y después opere con dinero real.",
  "s4_t": "El bot funciona",
  "s4_p": "Opera en su cuenta del exchange; puede revocar la clave en cualquier momento.",
  "w_h2_a": "DCA o reglas avanzadas.",
