@@ -1,7 +1,7 @@
 [
  {
   "en": "Sent. It should be in your inbox within a minute.",
-  "tr": "Gesendet. Die E-Mail sollte in einer Minute in Ihrem Posteingang sein."
+  "tr": "Gesendet. Die E-Mail sollte innerhalb einer Minute in Ihrem Posteingang sein."
  },
  {
   "en": "Please enter a valid email address.",
@@ -36,7 +36,7 @@
   "tr": "Dieses Ergebnis per E-Mail erhalten"
  },
  {
-  "en": "One email with your inputs and these numbers. We add you to no list unless you tick the box.",
+  "en": "One email with your inputs and these numbers. We add you to a list only if you tick the box.",
   "tr": "Eine E-Mail mit Ihren Eingaben und diesen Zahlen. Wir tragen Sie in keine Liste ein, außer Sie setzen das Häkchen."
  },
  {
@@ -88,7 +88,7 @@
   "tr": "Ein Vergleich, keine Beratung. Virtuse verwahrt nie Ihre Schlüssel. Onboarding und KYC erfolgen auf der Plattform des Partners."
  },
  {
-  "en": "MiCA licensed ({0})",
+  "en": "MiCA-licensed ({0})",
   "tr": "MiCA-lizenziert ({0})"
  },
  {
@@ -97,7 +97,7 @@
  },
  {
   "en": "Virtuse may earn a referral fee. It doesn't change the results.",
-  "tr": "Virtuse kann eine Empfehlungsprovision erhalten. Die Ergebnisse ändert das nicht."
+  "tr": "Virtuse kann eine Vermittlungsprovision erhalten. Die Ergebnisse ändert das nicht."
  },
  {
   "en": "Adjust answers",
@@ -120,12 +120,12 @@
   "tr": "Diese Liste per E-Mail erhalten"
  },
  {
-  "en": "One email with your criteria and these partners. We add you to no list unless you tick the box.",
+  "en": "One email with your criteria and these partners. We add you to a list only if you tick the box.",
   "tr": "Eine E-Mail mit Ihren Kriterien und diesen Partnern. Wir tragen Sie in keine Liste ein, außer Sie setzen das Häkchen."
  },
  {
   "en": "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.",
-  "tr": "Partnerlink – wenn Sie sich registrieren, erhält Virtuse möglicherweise eine Provision. Ihr Preis ändert sich dadurch nicht."
+  "tr": "Partnerlink – wenn Sie sich registrieren, kann Virtuse eine Provision erhalten. Ihr Preis ändert sich dadurch nicht."
  },
  {
   "en": "How we earn",
@@ -169,19 +169,19 @@
  },
  {
   "en": "Bitcoin-only app: buy once or with Auto Buy, then withdraw to your own wallet at any time or let Auto Send move it automatically.",
-  "tr": "Reine Bitcoin-App: einmalig oder per Auto Buy kaufen und jederzeit in die eigene Wallet abheben – oder Auto Send überträgt automatisch."
+  "tr": "Reine Bitcoin-App: einmalig oder per Auto Buy kaufen und jederzeit in das eigene Wallet abheben – oder Auto Send überträgt automatisch."
  },
  {
-  "en": "For larger amounts, a spot order book exchange with EUR pairs.",
+  "en": "For larger amounts, a spot order-book exchange with EUR pairs.",
   "tr": "Für größere Beträge: eine Börse mit Spot-Orderbuch und EUR-Paaren."
  },
  {
-  "en": "If you want more than spot buying: card and wider asset coverage.",
-  "tr": "Wenn Sie mehr als Spot-Käufe wollen: Karte und breiteres Angebot an Assets."
+  "en": "If you want more than spot buying: a card and an EU-regulated app.",
+  "tr": "Wenn Sie mehr als Spot-Käufe wollen: Karte und eine in der EU regulierte App."
  },
  {
   "en": "Since you want self-custody: move your Bitcoin off any exchange onto your own hardware wallet as soon as you buy.",
-  "tr": "Da Sie selbst verwahren möchten: Übertragen Sie Ihre Bitcoin direkt nach dem Kauf von der Börse auf Ihre eigene Hardware-Wallet."
+  "tr": "Da Sie selbst verwahren möchten: Übertragen Sie Ihre Bitcoin direkt nach dem Kauf von der Börse auf Ihr eigenes Hardware-Wallet."
  },
  {
   "en": "Bitcoin-backed P2P loans, market-driven rates. Note: Firefish assumes self-custody via multisig escrow.",
@@ -193,19 +193,19 @@
  },
  {
   "en": "Borrow EUR against your bitcoin and keep 100% of the upside.",
-  "tr": "Leihen Sie EUR gegen Ihre Bitcoin und behalten Sie 100 % des Kurspotenzials."
+  "tr": "Leihen Sie sich EUR gegen Ihre Bitcoin und behalten Sie 100 % des Kurspotenzials."
  },
  {
   "en": "No credit checks, no sale, no taxable event in most EU jurisdictions.",
-  "tr": "Keine Bonitätsprüfung, kein Verkauf, in den meisten EU-Ländern kein steuerpflichtiges Ereignis."
+  "tr": "Keine Bonitätsprüfung, kein Verkauf, in den meisten EU-Ländern kein steuerpflichtiger Vorgang."
  },
  {
   "en": "Works for {0} in {1} via multisig-secured P2P.",
   "tr": "Funktioniert für {0} in {1} über multisig-gesicherte P2P-Kredite."
  },
  {
-  "en": "Copy trading, paper trading and a 30-day free trial before you commit.",
-  "tr": "Copy-Trading, Paper-Trading und 30 Tage kostenlos testen, bevor Sie sich festlegen."
+  "en": "Copy trading, paper trading and a 3-day free trial before you commit.",
+  "tr": "Copy-Trading, Paper-Trading und 3 Tage kostenlos testen, bevor Sie sich festlegen."
  },
  {
   "en": "150+ ready-made strategy templates for when you want to graduate to building your own rules.",
@@ -240,7 +240,7 @@
   "tr": "ASIC-Händler mit Hosting in Norwegen, Finnland und Äthiopien: ein einfacher erster Hosting-Vertrag."
  },
  {
-  "en": "Professionally managed, renewable-energy mining infrastructure for mid-to-large scale miners.",
+  "en": "Professionally managed, renewable-energy mining infrastructure for mid- to large-scale miners.",
   "tr": "Professionell betriebene Mining-Infrastruktur mit erneuerbarer Energie für mittelgroße bis große Miner."
  },
  {
@@ -265,15 +265,15 @@
  },
  {
   "en": "Your own Bitcoin node at home: check your own transactions instead of trusting someone else's server. Works alongside any hardware wallet.",
-  "tr": "Ihr eigener Bitcoin-Node zu Hause: Prüfen Sie Ihre Transaktionen selbst, statt dem Server eines anderen zu vertrauen. Funktioniert mit jeder Hardware-Wallet."
+  "tr": "Ihr eigener Bitcoin-Node zu Hause: Prüfen Sie Ihre Transaktionen selbst, statt dem Server eines anderen zu vertrauen. Funktioniert mit jedem Hardware-Wallet."
  },
  {
-  "en": "Country-specific reports built for {0}: Austrian-built, 700+ integrations.",
+  "en": "Country-specific reports for {0}: Austrian-built, 700+ integrations.",
   "tr": "Länderspezifische Berichte für {0}: aus Österreich, über 700 Integrationen."
  },
  {
   "en": "Free portfolio tracking tier.",
-  "tr": "Kostenlose Portfolio-Verfolgung."
+  "tr": "Kostenloses Portfolio-Tracking."
  },
  {
   "en": "Covers 100+ countries including {0}, across 400+ exchanges and wallets.",
@@ -341,7 +341,7 @@
  },
  {
   "en": "Non-custodial trading & DCA bots",
-  "tr": "Non-Custodial Trading- & DCA-Bots"
+  "tr": "Non-Custodial-Trading- & DCA-Bots"
  },
  {
   "en": "Corporate treasury",
@@ -436,7 +436,7 @@
   "tr": "Ich halte bereits Bitcoin"
  },
  {
-  "en": "Looking to optimize",
+  "en": "Looking to optimise",
   "tr": "Möchte optimieren"
  },
  {
@@ -505,7 +505,7 @@
  },
  {
   "en": "Central Bank of Ireland",
-  "tr": "Central Bank of Ireland"
+  "tr": "Zentralbank von Irland"
  },
  {
   "en": "Bybit's EU exchange, based in Vienna",
@@ -517,7 +517,7 @@
  },
  {
   "en": "Bitcoin-only app with Auto Buy and Auto Send to your own wallet",
-  "tr": "Reine Bitcoin-App mit Auto Buy und Auto Send in Ihre eigene Wallet"
+  "tr": "Reine Bitcoin-App mit Auto Buy und Auto Send in Ihr eigenes Wallet"
  },
  {
   "en": "Customer Bitcoin held in BitGo institutional custody",
@@ -536,8 +536,8 @@
   "tr": "Plattform mit Spot-Käufen und der Crypto.com-Visa-Karte"
  },
  {
-  "en": "Card and wider asset coverage",
-  "tr": "Karte und breiteres Angebot an Assets"
+  "en": "Card and an EU-regulated app",
+  "tr": "Karte und eine in der EU regulierte App"
  },
  {
   "en": "MFSA Malta",
@@ -573,7 +573,7 @@
  },
  {
   "en": "Umbrel Home: your own Bitcoin node, not a wallet",
-  "tr": "Umbrel Home: Ihr eigener Bitcoin-Node, keine Wallet"
+  "tr": "Umbrel Home: Ihr eigener Bitcoin-Node, kein Wallet"
  },
  {
   "en": "Bitcoin-backed P2P loans, multisig-secured",
@@ -593,7 +593,7 @@
  },
  {
   "en": "Free portfolio tracking tier; 700+ integrations",
-  "tr": "Kostenlose Portfolio-Verfolgung; über 700 Integrationen"
+  "tr": "Kostenloses Portfolio-Tracking; über 700 Integrationen"
  },
  {
   "en": "AI-matched transfers across 400+ exchanges, 100+ countries",
@@ -672,20 +672,16 @@
   "tr": "Bot-Plattform mit Copy-Trading und Paper-Trading"
  },
  {
-  "en": "30-day free trial",
-  "tr": "30 Tage kostenlos testen"
+  "en": "3-day free trial",
+  "tr": "3 Tage kostenlos testen"
  },
  {
   "en": "Cloud DCA and grid bots, Bitcoin-focused",
   "tr": "Cloud-Bots für DCA und Grid, auf Bitcoin fokussiert"
  },
  {
-  "en": "Referral commissions paid in BTC",
-  "tr": "Empfehlungsprovisionen in BTC"
- },
- {
   "en": "ASIC reseller with EU/Nordic hosting",
-  "tr": "ASIC-Händler mit Hosting in der EU und im Norden"
+  "tr": "ASIC-Händler mit Hosting in der EU und in Nordeuropa"
  },
  {
   "en": "Hosting in Norway, Finland, and Ethiopia",
@@ -757,7 +753,7 @@
  },
  {
   "en": "15% income tax (23% on the part of the tax base above 36x the average wage); exempt if held more than 3 years, or if total crypto sale proceeds in the year do not exceed CZK 100,000.",
-  "tr": "15 % Einkommensteuer (23 % auf den Teil der Bemessungsgrundlage über dem 36-Fachen des Durchschnittslohns); steuerfrei bei Haltedauer über 3 Jahre oder wenn die gesamten Krypto-Verkaufserlöse im Jahr 100.000 CZK nicht übersteigen."
+  "tr": "15 % Einkommensteuer (23 % auf den Teil der Bemessungsgrundlage über dem 36-Fachen des Durchschnittslohns); steuerfrei bei einer Haltedauer von über 3 Jahren oder wenn die gesamten Krypto-Verkaufserlöse im Jahr 100.000 CZK nicht übersteigen."
  },
  {
   "en": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored. Plus 16% health insurance contributions on the gain (8% with a disability); the preset uses 19% + 16% = 35%.",
@@ -889,7 +885,7 @@
  },
  {
   "en": "Every disposal (incl. crypto-to-crypto) is a taxable event. Keep complete records from day one.",
-  "tr": "Jede Veräußerung (auch Krypto gegen Krypto) ist ein steuerpflichtiges Ereignis. Führen Sie vom ersten Tag an vollständige Aufzeichnungen."
+  "tr": "Jede Veräußerung (auch Krypto gegen Krypto) ist ein steuerpflichtiger Vorgang. Führen Sie vom ersten Tag an vollständige Aufzeichnungen."
  },
  {
   "en": "19 to 35% income tax",
@@ -940,8 +936,8 @@
   "tr": "Steuererklärung für Gewinne über ausländische Börsen; österreichische Anbieter behalten die KESt ein"
  },
  {
-  "en": "Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.",
-  "tr": "Krypto-zu-Krypto-Tausch ist steuerneutral. Lending und Mining werden bei Zufluss besteuert, Staking und Airdrops erst beim Verkauf (Anschaffungskosten null)."
+  "en": "Crypto-to-crypto swaps are tax-neutral. Income from lending and mining is taxed on receipt; staking rewards and airdrops are taxed only when sold, with an acquisition cost of zero.",
+  "tr": "Krypto-zu-Krypto-Tausch ist steuerneutral. Einkünfte aus Verleihen (Lending) und Mining werden bei Zufluss besteuert, Staking-Erträge und Airdrops erst beim Verkauf, mit Anschaffungskosten von null."
  },
  {
   "en": "Up to 45 % income tax (progressive)",
@@ -960,8 +956,8 @@
   "tr": "Krypto gegen Krypto ist im ersten Jahr steuerpflichtig. Eine FIFO-Buchführung ist entscheidend."
  },
  {
-  "en": "15 % capital gains tax",
-  "tr": "15 % Kapitalertragsteuer"
+  "en": "15% personal income tax on crypto income",
+  "tr": "15 % Einkommensteuer auf Krypto-Einkünfte"
  },
  {
   "en": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
@@ -972,8 +968,8 @@
   "tr": "Jährliche Einkommensteuererklärung"
  },
  {
-  "en": "Documented acquisition costs are deductible, so keep every invoice.",
-  "tr": "Belegte Anschaffungskosten sind abzugsfähig, bewahren Sie daher jede Rechnung auf."
+  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.",
+  "tr": "Besteuert wird nur der Tausch in Geld, Waren oder Dienstleistungen, Krypto-zu-Krypto-Tausch nicht. Dokumentierte Anschaffungskosten sind abzugsfähig, und ein Verlust kann mit Gewinnen desselben Jahres und der zwei Vorjahre verrechnet werden."
  },
  {
   "en": "No tax on private disposal gains (business trading is taxed)",
@@ -984,12 +980,12 @@
   "tr": "Private Gewinne sind steuerfrei"
  },
  {
-  "en": "None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
-  "tr": "Keine für private Gewinne; für Mining-Einkünfte ist binnen 15 Tagen eine Vorauszahlungserklärung abzugeben; gewerbliche Einkünfte gehören in die betriebliche Steuererklärung"
+  "en": "No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
+  "tr": "Für private Gewinne ist keine Erklärung nötig; für Mining-Einkünfte ist binnen 15 Tagen eine Vorauszahlungserklärung abzugeben; gewerbliche Einkünfte gehören in die betriebliche Steuererklärung"
  },
  {
-  "en": "Mining is taxed as other income. Frequent trading can count as a business activity.",
-  "tr": "Mining gilt als sonstiges Einkommen. Häufiger Handel kann als gewerbliche Tätigkeit gelten."
+  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.",
+  "tr": "Mining gilt als sonstiges Einkommen. Häufiger Handel kann als gewerbliche Tätigkeit gelten. Eine Steuer von 25 % auf Krypto-Gewinne wurde 2025 vorgeschlagen, war aber bis Oktober 2026 nicht beschlossen."
  },
  {
   "en": "12% on crypto gains (since 2024)",
@@ -1013,7 +1009,7 @@
  },
  {
   "en": "Annual return (income from other sources)",
-  "tr": "Jährliche Erklärung (Einkünfte aus sonstigen Quellen)"
+  "tr": "Jährliche Steuererklärung (Einkünfte aus sonstigen Quellen)"
  },
  {
   "en": "The rate rose from 10% to 16% for gains from 2026. Gains under 200 lei per transaction are exempt up to 600 lei a year.",
@@ -1053,7 +1049,7 @@
  },
  {
   "en": "Annual return with form 2086; foreign accounts on form 3916-bis",
-  "tr": "Jährliche Erklärung mit Formular 2086; Auslandskonten auf Formular 3916-bis"
+  "tr": "Jährliche Steuererklärung mit Formular 2086; Auslandskonten auf Formular 3916-bis"
  },
  {
   "en": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.",
@@ -1064,7 +1060,7 @@
   "tr": "19 bis 30 % progressive Steuer auf Kapitalerträge"
  },
  {
-  "en": "Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000",
+  "en": "Annual IRPF return; Modelo 721 for crypto worth over €50,000 held with custodians abroad",
   "tr": "Jährliche IRPF-Erklärung; Modelo 721 für Kryptowerte bei ausländischen Verwahrern über 50.000 €"
  },
  {
@@ -1096,7 +1092,7 @@
   "tr": "Bringen Sie einen Schlüssel oder ein Backup an einen zweiten Ort: Bankschließfach, vertrauenswürdige Familie oder ein professioneller Schlüsselverwahrer."
  },
  {
-  "en": "Does at least one heir know your bitcoin exists and where to start?",
+  "en": "Does at least one heir know your Bitcoin exists and where to start?",
   "tr": "Weiß mindestens ein Erbe, dass Ihre Bitcoin existieren und wo er ansetzen muss?"
  },
  {
@@ -1104,7 +1100,7 @@
   "tr": "Bitcoin, die erst Jahre später oder nie gefunden werden, sind das häufigste Scheitern im Erbfall."
  },
  {
-  "en": "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.",
+  "en": "Tell one trusted person that the plan exists and whom to contact. Full details only in the letter of instruction.",
   "tr": "Erzählen Sie einer Vertrauensperson, dass es eine Übersicht gibt und an wen sie sich wenden soll. Alle Details stehen nur im Letter of Instruction."
  },
  {
@@ -1428,8 +1424,8 @@
   "tr": "Steuerregeln Ihres Landes prüfen"
  },
  {
-  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Verwalten Sie eine größere Bitcoin-Position? Virtuse CFO · Verdict: Prüfen Sie kostenlos, was Sie bei Ihrer Entscheidung ausgelassen haben. Danach verfolgt der CFO Gebühren und Risiken. Verdict ist kostenlos; der Gebühren-Audit kommt mit Virtuse CFO. Bezahlte Pläne nach dem Start: {0}/Monat oder {1}/Jahr."
+  "en": "Managing a larger Bitcoin position? Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Verwalten Sie eine größere Bitcoin-Position? Verdict: Prüfen Sie kostenlos, was Sie bei Ihrer Entscheidung ausgelassen haben. Danach verfolgt der CFO Gebühren und Risiken. Verdict ist kostenlos; der Gebühren-Audit kommt mit Virtuse CFO. Bezahlte Tarife nach dem Start: {0}/Monat oder {1}/Jahr."
  },
  {
   "en": "Get notified",
@@ -1504,8 +1500,8 @@
   "tr": "Orange = projizierter Wert · gestrichelt = Ihr investierter Gesamtbetrag"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Planen Sie eine größere Allokation? Virtuse CFO · Verdict: Prüfen Sie kostenlos, was Sie bei Ihrer Entscheidung ausgelassen haben. Danach verfolgt der CFO Gebühren und Risiken. Verdict ist kostenlos; der Gebühren-Audit kommt mit Virtuse CFO. Bezahlte Pläne nach dem Start: {0}/Monat oder {1}/Jahr."
+  "en": "Planning a larger allocation? Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Planen Sie eine größere Allokation? Verdict: Prüfen Sie kostenlos, was Sie bei Ihrer Entscheidung ausgelassen haben. Danach verfolgt der CFO Gebühren und Risiken. Verdict ist kostenlos; der Gebühren-Audit kommt mit Virtuse CFO. Bezahlte Tarife nach dem Start: {0}/Monat oder {1}/Jahr."
  },
  {
   "en": "Fee arbitrage",
@@ -1540,12 +1536,12 @@
   "tr": "pro Jahr an Gebühren gegenüber dem Durchschnitt der anderen Wege."
  },
  {
-  "en": "Every route above costs the same or more than this one: there is nothing left to save by switching.",
+  "en": "Every route above costs the same as or more than this one: there is nothing left to save by switching.",
   "tr": "Jeder andere Weg oben kostet gleich viel oder mehr: Ein Wechsel spart hier nichts mehr."
  },
  {
   "en": "Virtuse may earn a referral fee. It doesn't change the overview.",
-  "tr": "Virtuse kann eine Empfehlungsprovision erhalten. Die Übersicht ändert das nicht."
+  "tr": "Virtuse kann eine Vermittlungsprovision erhalten. Die Übersicht ändert das nicht."
  },
  {
   "en": "Gain tax",
@@ -1561,7 +1557,7 @@
  },
  {
   "en": "Filing",
-  "tr": "Erklärung"
+  "tr": "Steuererklärung"
  },
  {
   "en": "Tax overview · 13 EU countries",
@@ -1593,11 +1589,11 @@
  },
  {
   "en": "Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Verdict ist kostenlos; der Gebühren-Audit kommt mit Virtuse CFO. Bezahlte Pläne nach dem Start: {0}/Monat oder {1}/Jahr."
+  "tr": "Verdict ist kostenlos; der Gebühren-Audit kommt mit Virtuse CFO. Bezahlte Tarife nach dem Start: {0}/Monat oder {1}/Jahr."
  },
  {
   "en": "What happens to my sats? · Readiness check",
-  "tr": "Was passiert mit meinen Sats? · Erbfall-Check"
+  "tr": "Was passiert mit meinen Sats? · Erbschafts-Check"
  },
  {
   "en": "Six yes/no questions. Answer honestly: the score shows how recoverable your bitcoin would be for your heirs tomorrow morning.",

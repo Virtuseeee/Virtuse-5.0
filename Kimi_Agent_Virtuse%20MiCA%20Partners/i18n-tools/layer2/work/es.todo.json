@@ -36,7 +36,7 @@
   "tr": "Reciba este resultado por correo electrónico"
  },
  {
-  "en": "One email with your inputs and these numbers. We add you to no list unless you tick the box.",
+  "en": "One email with your inputs and these numbers. We add you to a list only if you tick the box.",
   "tr": "Un solo correo con sus datos y estas cifras. No le añadimos a ninguna lista salvo que marque la casilla."
  },
  {
@@ -88,7 +88,7 @@
   "tr": "Una comparación, no un asesoramiento. Virtuse nunca guarda sus claves. El registro y el KYC se hacen en la plataforma del partner."
  },
  {
-  "en": "MiCA licensed ({0})",
+  "en": "MiCA-licensed ({0})",
   "tr": "Con licencia MiCA ({0})"
  },
  {
@@ -120,7 +120,7 @@
   "tr": "Reciba esta lista por correo electrónico"
  },
  {
-  "en": "One email with your criteria and these partners. We add you to no list unless you tick the box.",
+  "en": "One email with your criteria and these partners. We add you to a list only if you tick the box.",
   "tr": "Un solo correo con sus criterios y estos partners. No le añadimos a ninguna lista salvo que marque la casilla."
  },
  {
@@ -172,12 +172,12 @@
   "tr": "Aplicación solo de Bitcoin: compre de forma puntual o con Auto Buy y retire a su propio monedero en cualquier momento, o deje que Auto Send lo haga automáticamente."
  },
  {
-  "en": "For larger amounts, a spot order book exchange with EUR pairs.",
+  "en": "For larger amounts, a spot order-book exchange with EUR pairs.",
   "tr": "Para importes mayores: un exchange con libro de órdenes al contado y pares en EUR."
  },
  {
-  "en": "If you want more than spot buying: card and wider asset coverage.",
-  "tr": "Si quiere algo más que comprar al contado: tarjeta y más activos disponibles."
+  "en": "If you want more than spot buying: a card and an EU-regulated app.",
+  "tr": "Si quiere algo más que comprar al contado: tarjeta y una app regulada en la UE."
  },
  {
   "en": "Since you want self-custody: move your Bitcoin off any exchange onto your own hardware wallet as soon as you buy.",
@@ -204,8 +204,8 @@
   "tr": "Funciona para {0} en {1} mediante préstamos P2P asegurados con multifirma."
  },
  {
-  "en": "Copy trading, paper trading and a 30-day free trial before you commit.",
-  "tr": "Copy trading, paper trading y 30 días de prueba gratuita antes de comprometerse."
+  "en": "Copy trading, paper trading and a 3-day free trial before you commit.",
+  "tr": "Copy trading, paper trading y 3 días de prueba gratuita antes de comprometerse."
  },
  {
   "en": "150+ ready-made strategy templates for when you want to graduate to building your own rules.",
@@ -240,7 +240,7 @@
   "tr": "Revendedor de ASIC con hosting en Noruega, Finlandia y Etiopía: un primer contrato de hosting sencillo."
  },
  {
-  "en": "Professionally managed, renewable-energy mining infrastructure for mid-to-large scale miners.",
+  "en": "Professionally managed, renewable-energy mining infrastructure for mid- to large-scale miners.",
   "tr": "Infraestructura de minería gestionada profesionalmente y con energía renovable, para mineros medianos y grandes."
  },
  {
@@ -268,7 +268,7 @@
   "tr": "Su propio nodo de Bitcoin en casa: verifique usted mismo sus transacciones en lugar de confiar en el servidor de otro. Funciona con cualquier monedero de hardware."
  },
  {
-  "en": "Country-specific reports built for {0}: Austrian-built, 700+ integrations.",
+  "en": "Country-specific reports for {0}: Austrian-built, 700+ integrations.",
   "tr": "Informes adaptados a {0}: herramienta austriaca, más de 700 integraciones."
  },
  {
@@ -436,7 +436,7 @@
   "tr": "Ya tengo Bitcoin"
  },
  {
-  "en": "Looking to optimize",
+  "en": "Looking to optimise",
   "tr": "Quiero optimizar"
  },
  {
@@ -536,8 +536,8 @@
   "tr": "Plataforma con compra al contado y la tarjeta Crypto.com Visa"
  },
  {
-  "en": "Card and wider asset coverage",
-  "tr": "Tarjeta y más activos disponibles"
+  "en": "Card and an EU-regulated app",
+  "tr": "Tarjeta y una app regulada en la UE"
  },
  {
   "en": "MFSA Malta",
@@ -672,16 +672,12 @@
   "tr": "Plataforma de bots con copy trading y paper trading"
  },
  {
-  "en": "30-day free trial",
-  "tr": "30 días de prueba gratuita"
+  "en": "3-day free trial",
+  "tr": "3 días de prueba gratuita"
  },
  {
   "en": "Cloud DCA and grid bots, Bitcoin-focused",
   "tr": "Bots de DCA y grid en la nube, centrados en Bitcoin"
- },
- {
-  "en": "Referral commissions paid in BTC",
-  "tr": "Comisiones de referidos pagadas en BTC"
  },
  {
   "en": "ASIC reseller with EU/Nordic hosting",
@@ -940,8 +936,8 @@
   "tr": "Declaración para ganancias en exchanges extranjeros; los proveedores austriacos retienen el impuesto"
  },
  {
-  "en": "Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.",
-  "tr": "Los intercambios cripto por cripto son neutros. El préstamo y la minería tributan al recibirse; el staking y los airdrops, al vender (coste cero)."
+  "en": "Crypto-to-crypto swaps are tax-neutral. Income from lending and mining is taxed on receipt; staking rewards and airdrops are taxed only when sold, with an acquisition cost of zero.",
+  "tr": "Los intercambios de cripto por cripto son neutros a efectos fiscales. Los ingresos por préstamo y por minería tributan al recibirse; las recompensas de staking y los airdrops, solo al vender, con un coste de adquisición cero."
  },
  {
   "en": "Up to 45 % income tax (progressive)",
@@ -960,8 +956,8 @@
   "tr": "El cripto por cripto tributa durante el primer año. Llevar un registro FIFO es fundamental."
  },
  {
-  "en": "15 % capital gains tax",
-  "tr": "Impuesto del 15 % sobre las ganancias patrimoniales"
+  "en": "15% personal income tax on crypto income",
+  "tr": "Impuesto sobre la renta del 15 % sobre las rentas de cripto"
  },
  {
   "en": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
@@ -972,8 +968,8 @@
   "tr": "Declaración anual del impuesto sobre la renta de las personas físicas"
  },
  {
-  "en": "Documented acquisition costs are deductible, so keep every invoice.",
-  "tr": "Los costes de adquisición documentados son deducibles: guarde todas las facturas."
+  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.",
+  "tr": "Solo tributa el cambio por dinero, bienes o servicios; los intercambios de cripto por cripto no. Los costes de adquisición documentados son deducibles y una pérdida puede compensarse con las ganancias del mismo año y de los dos años anteriores."
  },
  {
   "en": "No tax on private disposal gains (business trading is taxed)",
@@ -984,12 +980,12 @@
   "tr": "Las ganancias privadas están exentas"
  },
  {
-  "en": "None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
+  "en": "No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
   "tr": "Ninguna para ganancias privadas; las rentas de minería requieren una declaración de pago a cuenta en 15 días; las rentas empresariales van en la declaración fiscal de la actividad"
  },
  {
-  "en": "Mining is taxed as other income. Frequent trading can count as a business activity.",
-  "tr": "La minería tributa como otra renta. El trading frecuente puede considerarse actividad empresarial."
+  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.",
+  "tr": "La minería tributa como otra renta. El trading frecuente puede considerarse actividad empresarial. En 2025 se propuso un impuesto del 25 % sobre las ganancias de cripto, pero en octubre de 2026 no se había aprobado."
  },
  {
   "en": "12% on crypto gains (since 2024)",
@@ -1064,7 +1060,7 @@
   "tr": "Impuesto progresivo del 19 al 30 % sobre la base del ahorro"
  },
  {
-  "en": "Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000",
+  "en": "Annual IRPF return; Modelo 721 for crypto worth over €50,000 held with custodians abroad",
   "tr": "Declaración anual del IRPF; modelo 721 para criptomonedas custodiadas en el extranjero por encima de 50.000 €"
  },
  {
@@ -1096,7 +1092,7 @@
   "tr": "Traslade una clave o copia a una segunda ubicación: caja de seguridad bancaria, un familiar de confianza o un custodio de claves profesional."
  },
  {
-  "en": "Does at least one heir know your bitcoin exists and where to start?",
+  "en": "Does at least one heir know your Bitcoin exists and where to start?",
   "tr": "¿Sabe al menos un heredero que su Bitcoin existe y por dónde empezar?"
  },
  {
@@ -1104,7 +1100,7 @@
   "tr": "Que su Bitcoin se descubra años tarde, o nunca, es el fallo más habitual en una herencia."
  },
  {
-  "en": "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.",
+  "en": "Tell one trusted person that the plan exists and whom to contact. Full details only in the letter of instruction.",
   "tr": "Cuéntele a una persona de confianza que existe un plan y a quién contactar. Los detalles completos, solo en la carta de instrucciones."
  },
  {
@@ -1428,8 +1424,8 @@
   "tr": "Consultar las normas fiscales de su país"
  },
  {
-  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "¿Gestiona una posición de Bitcoin mayor? Virtuse CFO · Verdict: compruebe gratis qué ha pasado por alto en su decisión. Después, el CFO sigue las comisiones y los riesgos. Verdict es gratuito; la auditoría de comisiones llegará con Virtuse CFO. Planes de pago, cuando abran: {0}/mes o {1}/año."
+  "en": "Managing a larger Bitcoin position? Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "¿Gestiona una posición de Bitcoin mayor? Verdict: compruebe gratis qué ha pasado por alto en su decisión. Después, el CFO sigue las comisiones y los riesgos. Verdict es gratuito; la auditoría de comisiones llegará con Virtuse CFO. Planes de pago, cuando abran: {0}/mes o {1}/año."
  },
  {
   "en": "Get notified",
@@ -1504,8 +1500,8 @@
   "tr": "Naranja = valor proyectado · línea discontinua = total invertido"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "¿Planea una asignación mayor? Virtuse CFO · Verdict: compruebe gratis qué ha pasado por alto en su decisión. Después, el CFO sigue las comisiones y los riesgos. Verdict es gratuito; la auditoría de comisiones llegará con Virtuse CFO. Planes de pago, cuando abran: {0}/mes o {1}/año."
+  "en": "Planning a larger allocation? Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "¿Planea una asignación mayor? Verdict: compruebe gratis qué ha pasado por alto en su decisión. Después, el CFO sigue las comisiones y los riesgos. Verdict es gratuito; la auditoría de comisiones llegará con Virtuse CFO. Planes de pago, cuando abran: {0}/mes o {1}/año."
  },
  {
   "en": "Fee arbitrage",
@@ -1540,7 +1536,7 @@
   "tr": "al año en comisiones frente a la media de las demás opciones."
  },
  {
-  "en": "Every route above costs the same or more than this one: there is nothing left to save by switching.",
+  "en": "Every route above costs the same as or more than this one: there is nothing left to save by switching.",
   "tr": "Todas las opciones anteriores cuestan lo mismo o más que esta: cambiar no le ahorraría nada."
  },
  {

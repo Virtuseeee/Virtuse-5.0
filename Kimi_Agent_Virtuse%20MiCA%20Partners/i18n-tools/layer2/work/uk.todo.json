@@ -36,7 +36,7 @@
   "tr": "Отримати цей результат електронною поштою"
  },
  {
-  "en": "One email with your inputs and these numbers. We add you to no list unless you tick the box.",
+  "en": "One email with your inputs and these numbers. We add you to a list only if you tick the box.",
   "tr": "Один лист із вашими даними та цими цифрами. Ми не додаємо вас до жодного списку, якщо ви не позначите поле."
  },
  {
@@ -88,7 +88,7 @@
   "tr": "Порівняння, а не порада. Virtuse ніколи не зберігає ваші ключі. Реєстрація та KYC відбуваються на платформі партнера."
  },
  {
-  "en": "MiCA licensed ({0})",
+  "en": "MiCA-licensed ({0})",
   "tr": "Ліцензія MiCA ({0})"
  },
  {
@@ -97,7 +97,7 @@
  },
  {
   "en": "Virtuse may earn a referral fee. It doesn't change the results.",
-  "tr": "Virtuse може отримати винагороду за рекомендацію. На результати це не впливає."
+  "tr": "Virtuse може отримати реферальну винагороду. На результати це не впливає."
  },
  {
   "en": "Adjust answers",
@@ -120,12 +120,12 @@
   "tr": "Отримати цей список електронною поштою"
  },
  {
-  "en": "One email with your criteria and these partners. We add you to no list unless you tick the box.",
+  "en": "One email with your criteria and these partners. We add you to a list only if you tick the box.",
   "tr": "Один лист із вашими критеріями та цими партнерами. Ми не додаємо вас до жодного списку, якщо ви не позначите поле."
  },
  {
   "en": "Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.",
-  "tr": "Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється."
+  "tr": "Партнерське посилання: якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється."
  },
  {
   "en": "How we earn",
@@ -172,12 +172,12 @@
   "tr": "Застосунок лише для Біткоїна: купуйте разово або через Auto Buy і виводьте на власний гаманець будь-коли, або Auto Send зробить це автоматично."
  },
  {
-  "en": "For larger amounts, a spot order book exchange with EUR pairs.",
+  "en": "For larger amounts, a spot order-book exchange with EUR pairs.",
   "tr": "Для більших сум: біржа зі спотовою книгою ордерів і парами в EUR."
  },
  {
-  "en": "If you want more than spot buying: card and wider asset coverage.",
-  "tr": "Якщо вам потрібно більше, ніж спотова купівля: картка й ширший вибір активів."
+  "en": "If you want more than spot buying: a card and an EU-regulated app.",
+  "tr": "Якщо вам потрібно більше, ніж спотова купівля: картка й застосунок, регульований в ЄС."
  },
  {
   "en": "Since you want self-custody: move your Bitcoin off any exchange onto your own hardware wallet as soon as you buy.",
@@ -189,7 +189,7 @@
  },
  {
   "en": "If you prefer assisted custody, set that up first, then come back for the loan.",
-  "tr": "Якщо ви віддаєте перевагу зберіганню з допомогою, спершу налаштуйте його, а тоді поверніться по позику."
+  "tr": "Якщо ви віддаєте перевагу зберіганню з допомогою, спершу налаштуйте його, а тоді поверніться за позикою."
  },
  {
   "en": "Borrow EUR against your bitcoin and keep 100% of the upside.",
@@ -204,8 +204,8 @@
   "tr": "Працює для суми {0} (країна: {1}) через P2P-позики, захищені мультипідписом."
  },
  {
-  "en": "Copy trading, paper trading and a 30-day free trial before you commit.",
-  "tr": "Копітрейдинг, паперова торгівля і 30 днів безкоштовно, перш ніж ви вирішите."
+  "en": "Copy trading, paper trading and a 3-day free trial before you commit.",
+  "tr": "Копітрейдинг, демо-торгівля і 3 дні безкоштовно, перш ніж ви вирішите."
  },
  {
   "en": "150+ ready-made strategy templates for when you want to graduate to building your own rules.",
@@ -213,7 +213,7 @@
  },
  {
   "en": "Explicitly non-custodial: trade-only API keys, no withdrawal permissions, your Bitcoin never leaves your exchange.",
-  "tr": "Прямо некастодіальна: API-ключі лише для торгівлі, без права на виведення; ваш Біткоїн ніколи не залишає вашу біржу."
+  "tr": "Повністю некастодіальна: API-ключі лише для торгівлі, без права на виведення; ваш Біткоїн ніколи не залишає вашу біржу."
  },
  {
   "en": "150+ strategy templates with a backtesting engine.",
@@ -221,7 +221,7 @@
  },
  {
   "en": "A simpler, Bitcoin-focused cloud DCA/grid setup.",
-  "tr": "Простіше хмарне рішення DCA/grid, орієнтоване на Біткоїн."
+  "tr": "Простіше хмарне рішення DCA/грід, орієнтоване на Біткоїн."
  },
  {
   "en": "Institutional custodian for companies in {0}.",
@@ -240,7 +240,7 @@
   "tr": "Продавець ASIC із хостингом у Норвегії, Фінляндії та Ефіопії: простий перший контракт на хостинг."
  },
  {
-  "en": "Professionally managed, renewable-energy mining infrastructure for mid-to-large scale miners.",
+  "en": "Professionally managed, renewable-energy mining infrastructure for mid- to large-scale miners.",
   "tr": "Професійно керована майнінгова інфраструктура на відновлюваній енергії для середніх і великих майнерів."
  },
  {
@@ -268,7 +268,7 @@
   "tr": "Власний вузол Біткоїна удома: перевіряйте свої транзакції самі, а не довіряйте чужому серверу. Працює з будь-яким апаратним гаманцем."
  },
  {
-  "en": "Country-specific reports built for {0}: Austrian-built, 700+ integrations.",
+  "en": "Country-specific reports for {0}: Austrian-built, 700+ integrations.",
   "tr": "Звіти для конкретної країни (країна: {0}): австрійська розробка, понад 700 інтеграцій."
  },
  {
@@ -436,7 +436,7 @@
   "tr": "У мене вже є Біткоїн"
  },
  {
-  "en": "Looking to optimize",
+  "en": "Looking to optimise",
   "tr": "Хочу оптимізувати"
  },
  {
@@ -521,7 +521,7 @@
  },
  {
   "en": "Customer Bitcoin held in BitGo institutional custody",
-  "tr": "Біткоїн клієнтів зберігається в інституційному зберіганні BitGo"
+  "tr": "Біткоїн клієнтів зберігає інституційний кастодіан BitGo"
  },
  {
   "en": "Bitcoin only",
@@ -536,8 +536,8 @@
   "tr": "Платформа зі спотовою купівлею та карткою Crypto.com Visa"
  },
  {
-  "en": "Card and wider asset coverage",
-  "tr": "Картка й ширший вибір активів"
+  "en": "Card and an EU-regulated app",
+  "tr": "Картка й застосунок, регульований в ЄС"
  },
  {
   "en": "MFSA Malta",
@@ -657,7 +657,7 @@
  },
  {
   "en": "Explicitly non-custodial, trade-only API bots",
-  "tr": "Прямо некастодіальні API-боти лише для торгівлі"
+  "tr": "Повністю некастодіальні API-боти лише для торгівлі"
  },
  {
   "en": "150+ strategy templates",
@@ -669,23 +669,19 @@
  },
  {
   "en": "Bot platform with copy trading and paper trading",
-  "tr": "Платформа ботів з копітрейдингом і паперовою торгівлею"
+  "tr": "Платформа ботів з копітрейдингом і демо-торгівлею"
  },
  {
-  "en": "30-day free trial",
-  "tr": "30 днів безкоштовно"
+  "en": "3-day free trial",
+  "tr": "3 дні безкоштовно"
  },
  {
   "en": "Cloud DCA and grid bots, Bitcoin-focused",
-  "tr": "Хмарні DCA- і grid-боти з фокусом на Біткоїн"
- },
- {
-  "en": "Referral commissions paid in BTC",
-  "tr": "Реферальні комісії виплачуються в BTC"
+  "tr": "Хмарні DCA- і грід-боти з фокусом на Біткоїн"
  },
  {
   "en": "ASIC reseller with EU/Nordic hosting",
-  "tr": "Продавець ASIC із хостингом у ЄС і Скандинавії"
+  "tr": "Продавець ASIC із хостингом у ЄС і Північній Європі"
  },
  {
   "en": "Hosting in Norway, Finland, and Ethiopia",
@@ -761,23 +757,23 @@
  },
  {
   "en": "Crypto sale = other income (§ 8(1)(t)); progressive 19% up to €43,983.32, 25% to €60,349.21, 30% to €75,010.32, 35% above (2026); no holding-period exemption; losses ignored. Plus 16% health insurance contributions on the gain (8% with a disability); the preset uses 19% + 16% = 35%.",
-  "tr": "Продаж криптовалюти = інший дохід (§ 8(1)(t)); прогресивно 19% до 43 983,32 €, 25% до 60 349,21 €, 30% до 75 010,32 €, 35% понад цю суму (2026); без звільнення за строком володіння; збитки не враховуються. Крім того, внески на медичне страхування 16% з прибутку (8% для осіб з інвалідністю); попереднє налаштування враховує 19% + 16% = 35%."
+  "tr": "Продаж криптовалюти = інший дохід (§ 8(1)(t)); прогресивно 19% до 43 983,32 €, 25% до 60 349,21 €, 30% до 75 010,32 €, 35% понад цю суму (2026); без звільнення за строк володіння; збитки не враховуються. Крім того, внески на медичне страхування 16% з прибутку (8% для осіб з інвалідністю); попереднє налаштування враховує 19% + 16% = 35%."
  },
  {
   "en": "19% on income from paid disposal of virtual currency (PIT-38); no holding-period exemption; crypto-to-crypto swaps not taxed.",
-  "tr": "19% з доходу від платного відчуження віртуальної валюти (PIT-38); без звільнення за строком володіння; обмін криптовалюти на криптовалюту не оподатковується."
+  "tr": "19% з доходу від платного відчуження віртуальної валюти (PIT-38); без звільнення за строк володіння; обмін криптовалюти на криптовалюту не оподатковується."
  },
  {
   "en": "27.5% special rate for crypto acquired after 28 February 2021 (no holding exemption); crypto acquired up to 28 Feb 2021 ('Altbestand') stays under the old regime.",
-  "tr": "Спеціальна ставка 27,5% для криптоактивів, набутих після 28 лютого 2021 року (без звільнення за строком володіння); криптоактиви, набуті до 28 лютого 2021 року («Altbestand»), залишаються у старому режимі."
+  "tr": "Спеціальна ставка 27,5% для криптоактивів, набутих після 28 лютого 2021 року (без звільнення за строк володіння); криптоактиви, набуті до 28 лютого 2021 року («Altbestand»), залишаються у старому режимі."
  },
  {
   "en": "Private sale taxed at the personal progressive rate (0–45%; 42% band for taxable income €69,879–277,825) if held 1 year or less; tax-free after more than 1 year; total private-sale gains under €1,000 a year are tax-free.",
-  "tr": "Приватний продаж оподатковується за особистою прогресивною ставкою (від 0 до 45%; ставка 42% для оподатковуваного доходу від 69 879 до 277 825 €), якщо актив утримувався 1 рік або менше; після понад 1 року звільнено; загальний прибуток від приватних продажів до 1 000 € на рік не оподатковується."
+  "tr": "Приватний продаж оподатковується за особистою прогресивною ставкою (від 0 до 45%; ставка 42% для оподатковуваного доходу від 69 879 до 277 825 €), якщо актив утримувався 1 рік або менше; після понад 1 року звільнений від податку; загальний прибуток від приватних продажів до 1 000 € на рік не оподатковується."
  },
  {
   "en": "15% personal income tax on the annual net gain from crypto transactions; no holding-period exemption; small transactions exempt under minimum-wage-linked limits.",
-  "tr": "Податок на доходи фізичних осіб 15% з річного чистого прибутку від криптотранзакцій; без звільнення за строком володіння; дрібні транзакції звільнені в межах лімітів, прив'язаних до мінімальної зарплати."
+  "tr": "Податок на доходи фізичних осіб 15% з річного чистого прибутку від криптотранзакцій; без звільнення за строк володіння; дрібні транзакції звільнені в межах лімітів, прив'язаних до мінімальної зарплати."
  },
  {
   "en": "No income tax on capital gains from selling virtual currencies by a private individual, unless trading is carried on as a business activity.",
@@ -789,11 +785,11 @@
  },
  {
   "en": "16% on the gain from transfers of virtual currency made from 1 Jan 2026 (10% before); gains under 200 lei per transaction are exempt if annual gains do not exceed 600 lei; no holding exemption.",
-  "tr": "16% з прибутку від переказів віртуальної валюти, здійснених з 1 січня 2026 року (раніше 10%); прибуток до 200 леїв на транзакцію звільнений, якщо річний прибуток не перевищує 600 леїв; без звільнення за строком володіння."
+  "tr": "16% з прибутку від переказів віртуальної валюти, здійснених з 1 січня 2026 року (раніше 10%); прибуток до 200 леїв на транзакцію звільнений, якщо річний прибуток не перевищує 600 леїв; без звільнення за строк володіння."
  },
  {
   "en": "10% tax on the annual tax base; crypto gains (net of the year's losses) are reduced by 10% deemed expenses, so the effective rate on the gain is about 9%; no holding-period exemption.",
-  "tr": "Податок 10% з річної бази оподаткування; прибуток від криптоактивів (за вирахуванням збитків за рік) зменшується на 10% нормативних витрат, тож ефективна ставка на прибуток становить близько 9%; без звільнення за строком володіння."
+  "tr": "Податок 10% з річної бази оподаткування; прибуток від криптоактивів (за вирахуванням збитків за рік) зменшується на 10% нормативних витрат, тож ефективна ставка на прибуток становить близько 9%; без звільнення за строк володіння."
  },
  {
   "en": "No tax on the sale itself; crypto is a Box 3 asset taxed at 36% on a deemed return (6.00% for 'other assets' in the 2026 provisional assessment), above a €59,357 tax-free allowance per person (2026).",
@@ -801,11 +797,11 @@
  },
  {
   "en": "Flat tax (PFU) 31.4% = 12.8% income tax + 18.6% social charges on private-wealth crypto gains; option for the progressive scale; exempt if total disposal proceeds in the year are €305 or less; no holding exemption.",
-  "tr": "Фіксований податок (PFU) 31,4% = 12,8% податку на доходи + 18,6% соціальних внесків з прибутку від криптоактивів у приватному майні; можливий вибір прогресивної шкали; звільнення, якщо загальна виручка від продажів за рік становить 305 € або менше; без звільнення за строком володіння."
+  "tr": "Фіксований податок (PFU) 31,4% = 12,8% податку на доходи + 18,6% соціальних внесків з прибутку від криптоактивів у приватному майні; можливий вибір прогресивної шкали; звільнення, якщо загальна виручка від продажів за рік становить 305 € або менше; без звільнення за строк володіння."
  },
  {
   "en": "Gains go to the savings base: combined state + regional scale 19% to €6,000, 21% €6,000–50,000, 23% €50,000–200,000, 27% €200,000–300,000, 30% above; no holding exemption.",
-  "tr": "Прибуток належить до бази заощаджень: комбінована державна та регіональна шкала 19% до 6 000 €, 21% від 6 000 до 50 000 €, 23% від 50 000 до 200 000 €, 27% від 200 000 до 300 000 €, 30% понад цю суму; без звільнення за строком володіння."
+  "tr": "Прибуток належить до бази заощаджень: комбінована державна та регіональна шкала 19% до 6 000 €, 21% від 6 000 до 50 000 €, 23% від 50 000 до 200 000 €, 27% від 200 000 до 300 000 €, 30% понад цю суму; без звільнення за строк володіння."
  },
  {
   "en": "now",
@@ -901,7 +897,7 @@
  },
  {
   "en": "No holding-period exemption; every sale or crypto-to-crypto swap is taxed",
-  "tr": "Звільнення за строком володіння немає; кожен продаж і обмін криптовалюти на криптовалюту оподатковується"
+  "tr": "Звільнення за строк володіння немає; кожен продаж і обмін криптовалюти на криптовалюту оподатковується"
  },
  {
   "en": "Annual personal tax return (type B), due 31 March",
@@ -913,7 +909,7 @@
  },
  {
   "en": "19 % flat capital gains tax",
-  "tr": "19% єдиного податку на приріст капіталу"
+  "tr": "19% фіксованого податку на приріст капіталу"
  },
  {
   "en": "No holding-period exemption",
@@ -921,7 +917,7 @@
  },
  {
   "en": "Annual PIT-38",
-  "tr": "Щорічна PIT-38"
+  "tr": "Щорічна декларація PIT-38"
  },
  {
   "en": "Crypto-to-crypto swaps are not taxed; only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.",
@@ -933,19 +929,19 @@
  },
  {
   "en": "Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption",
-  "tr": "Звільнення після 1 року лише для крипти, купленої до березня 2021 року; пізніші покупки без звільнення"
+  "tr": "Звільнення після 1 року лише для криптовалют, куплених до березня 2021 року; пізніші покупки без звільнення"
  },
  {
   "en": "Annual return for gains via foreign exchanges; Austrian providers withhold the tax",
-  "tr": "Декларація для прибутку через іноземні біржі; австрійські провайдери утримують податок"
+  "tr": "Щорічна декларація щодо прибутку, отриманого через іноземні біржі; австрійські провайдери утримують податок самостійно"
  },
  {
-  "en": "Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.",
-  "tr": "Обмін криптовалюти на криптовалюту податково нейтральний. Кредитування й майнінг оподатковуються при отриманні, стейкінг і ейрдропи лише при продажу (з нульовою собівартістю)."
+  "en": "Crypto-to-crypto swaps are tax-neutral. Income from lending and mining is taxed on receipt; staking rewards and airdrops are taxed only when sold, with an acquisition cost of zero.",
+  "tr": "Обмін криптовалюти на криптовалюту податково нейтральний. Дохід від кредитування й майнінгу оподатковується при отриманні, а винагороди за стейкінг і ейрдропи лише при продажу, з нульовою вартістю придбання."
  },
  {
   "en": "Up to 45 % income tax (progressive)",
-  "tr": "До 45% податку на доходи (прогресивний)"
+  "tr": "До 45% податку на доходи (прогресивна шкала)"
  },
  {
   "en": "0% after a 1-year holding period; total gains under €1,000 a year are tax-free",
@@ -960,20 +956,20 @@
   "tr": "Крипто на крипто оподатковується протягом першого року. Облік за методом FIFO критично важливий."
  },
  {
-  "en": "15 % capital gains tax",
-  "tr": "15% податку на приріст капіталу"
+  "en": "15% personal income tax on crypto income",
+  "tr": "15% податку на доходи фізичних осіб від криптовалют"
  },
  {
   "en": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
-  "tr": "Без звільнення за строк володіння; дрібні операції до 10% мінімальної зарплати кожна звільнені (загалом до однієї мінімальної зарплати на рік)"
+  "tr": "Без звільнення за строк володіння; дрібні операції, кожна з яких не перевищує 10% мінімальної зарплати, звільнені (загалом до однієї мінімальної зарплати на рік)"
  },
  {
   "en": "Annual personal income tax return",
   "tr": "Щорічна декларація з податку на доходи фізичних осіб"
  },
  {
-  "en": "Documented acquisition costs are deductible, so keep every invoice.",
-  "tr": "Задокументовані витрати на придбання можна відрахувати: зберігайте кожен рахунок."
+  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.",
+  "tr": "Оподатковується лише обмін на гроші, товари чи послуги; обмін криптовалюти на криптовалюту ні. Задокументовані витрати на придбання можна відрахувати, а збиток зарахувати проти прибутку того самого року та двох попередніх років."
  },
  {
   "en": "No tax on private disposal gains (business trading is taxed)",
@@ -984,12 +980,12 @@
   "tr": "Приватний прибуток звільнений від податку"
  },
  {
-  "en": "None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
-  "tr": "Для приватного прибутку немає; дохід від майнінгу потребує декларації про авансовий податок протягом 15 днів; підприємницький дохід зазначається в декларації підприємця"
+  "en": "No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
+  "tr": "Для приватного прибутку декларація не потрібна; дохід від майнінгу потребує декларації про авансовий податок протягом 15 днів; підприємницький дохід зазначається в декларації підприємця"
  },
  {
-  "en": "Mining is taxed as other income. Frequent trading can count as a business activity.",
-  "tr": "Майнінг оподатковується як інший дохід. Часта торгівля може вважатися підприємництвом."
+  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.",
+  "tr": "Майнінг оподатковується як інший дохід. Часта торгівля може вважатися підприємництвом. У 2025 році запропонували податок 25% на прибуток від криптовалют, але станом на жовтень 2026 року його не ухвалили."
  },
  {
   "en": "12% on crypto gains (since 2024)",
@@ -1049,11 +1045,11 @@
  },
  {
   "en": "No holding-period exemption; total disposals up to €305 a year are exempt",
-  "tr": "Без звільнення за строк володіння; продажі загалом до 305 € на рік звільнені"
+  "tr": "Без звільнення за строк володіння; продажі на загальну суму до 305 € на рік звільнені від податку"
  },
  {
   "en": "Annual return with form 2086; foreign accounts on form 3916-bis",
-  "tr": "Щорічна декларація з формою 2086; закордонні рахунки на формі 3916-bis"
+  "tr": "Щорічна декларація з формою 2086; закордонні рахунки декларують на формі 3916-bis"
  },
  {
   "en": "Crypto-to-crypto swaps are not taxed: only sales for euros, goods or services are.",
@@ -1064,7 +1060,7 @@
   "tr": "Від 19 до 30% прогресивного податку на доходи від заощаджень"
  },
  {
-  "en": "Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000",
+  "en": "Annual IRPF return; Modelo 721 for crypto worth over €50,000 held with custodians abroad",
   "tr": "Щорічна декларація IRPF; Modelo 721 для криптовалют у зарубіжних кастодіанів понад 50 000 €"
  },
  {
@@ -1096,15 +1092,15 @@
   "tr": "Перенесіть один ключ або копію в друге місце: банківську скриньку, до довіреного родича чи професійного зберігача ключів."
  },
  {
-  "en": "Does at least one heir know your bitcoin exists and where to start?",
+  "en": "Does at least one heir know your Bitcoin exists and where to start?",
   "tr": "Чи знає хоча б один спадкоємець, що ваш Біткоїн існує і з чого почати?"
  },
  {
   "en": "Bitcoin discovered years late, or never, is the most common inheritance failure.",
-  "tr": "Біткоїн, знайдений через роки або ніколи: найпоширеніша невдача при спадкуванні."
+  "tr": "Найпоширеніша проблема під час спадкування: Біткоїн, який знаходять через роки або не знаходять зовсім."
  },
  {
-  "en": "Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.",
+  "en": "Tell one trusted person that the plan exists and whom to contact. Full details only in the letter of instruction.",
   "tr": "Скажіть одній довіреній людині, що план існує і до кого звернутися. Повні подробиці лише в листі з інструкціями."
  },
  {
@@ -1428,8 +1424,8 @@
   "tr": "Перевірити податкові правила вашої країни"
  },
  {
-  "en": "Managing a larger Bitcoin position? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Керуєте більшою позицією в Біткоїні? Virtuse CFO · Verdict: перевірте безкоштовно, що ви пропустили у своєму рішенні. Далі CFO стежить за комісіями та ризиками. Verdict безкоштовний; аудит комісій з’явиться у Virtuse CFO. Платні плани після запуску: {0}/міс. або {1}/рік."
+  "en": "Managing a larger Bitcoin position? Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Керуєте більшою позицією в Біткоїні? Verdict: перевірте безкоштовно, що ви пропустили у своєму рішенні. Далі CFO стежить за комісіями та ризиками. Verdict безкоштовний; аудит комісій з’явиться у Virtuse CFO. Платні плани після запуску: {0}/міс. або {1}/рік."
  },
  {
   "en": "Get notified",
@@ -1501,11 +1497,11 @@
  },
  {
   "en": "Orange = projected value · dashed = your total invested",
-  "tr": "Помаранчева = прогнозована вартість · пунктир = усього інвестовано"
+  "tr": "Помаранчева лінія = прогнозована вартість · пунктир = усього інвестовано"
  },
  {
-  "en": "Planning a larger allocation? Virtuse CFO · Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
-  "tr": "Плануєте більшу алокацію? Virtuse CFO · Verdict: перевірте безкоштовно, що ви пропустили у своєму рішенні. Далі CFO стежить за комісіями та ризиками. Verdict безкоштовний; аудит комісій з’явиться у Virtuse CFO. Платні плани після запуску: {0}/міс. або {1}/рік."
+  "en": "Planning a larger allocation? Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.",
+  "tr": "Плануєте більший обсяг? Verdict: перевірте безкоштовно, що ви пропустили у своєму рішенні. Далі CFO стежить за комісіями та ризиками. Verdict безкоштовний; аудит комісій з’явиться у Virtuse CFO. Платні плани після запуску: {0}/міс. або {1}/рік."
  },
  {
   "en": "Fee arbitrage",
@@ -1540,12 +1536,12 @@
   "tr": "на рік на комісіях порівняно із середнім значенням інших шляхів."
  },
  {
-  "en": "Every route above costs the same or more than this one: there is nothing left to save by switching.",
+  "en": "Every route above costs the same as or more than this one: there is nothing left to save by switching.",
   "tr": "Кожен шлях вище коштує стільки ж або більше: перехід нічого не заощадить."
  },
  {
   "en": "Virtuse may earn a referral fee. It doesn't change the overview.",
-  "tr": "Virtuse може отримати винагороду за рекомендацію. На огляд це не впливає."
+  "tr": "Virtuse може отримати реферальну винагороду. На огляд це не впливає."
  },
  {
   "en": "Gain tax",
@@ -1557,7 +1553,7 @@
  },
  {
   "en": "Holding exemption",
-  "tr": "Звільнення за володіння"
+  "tr": "Звільнення за строк володіння"
  },
  {
   "en": "Filing",
@@ -1601,7 +1597,7 @@
  },
  {
   "en": "Six yes/no questions. Answer honestly: the score shows how recoverable your bitcoin would be for your heirs tomorrow morning.",
-  "tr": "Шість питань «так/ні». Відповідайте чесно: оцінка показує, наскільки ваші спадкоємці змогли б відновити ваш Біткоїн уже завтра вранці."
+  "tr": "Шість запитань «так/ні». Відповідайте чесно: оцінка показує, наскільки ваші спадкоємці змогли б відновити ваш Біткоїн уже завтра вранці."
  },
  {
   "en": "Priority fixes",
@@ -1613,7 +1609,7 @@
  },
  {
   "en": "{0} of {1} questions not answered yet.",
-  "tr": "Без відповіді: {0} з {1} питань."
+  "tr": "Без відповіді: {0} з {1} запитань."
  },
  {
   "en": "The 2-of-3 multisig inheritance setup",
