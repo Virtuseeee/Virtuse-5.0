@@ -743,7 +743,7 @@
         },
         "cs": {
           "title": "DAC8 v Česku: co budou burzy hlásit (2026)",
-          "description": "Česko zatím DAC8 nepřijalo, rok 2026 má být přesto prvním obdobím. Co burzy hlásí a jak se v Česku daní Bitcoin: časový a hodnotový test.",
+          "description": "Česko zatím zákon k DAC8 nepřijalo, rok 2026 má být přesto prvním obdobím. Co burzy hlásí a jak se v Česku daní Bitcoin: časový a hodnotový test.",
           "h1": "DAC8 v Česku: vaše obchody s Bitcoinem se zaznamenávají",
           "answer": "Česko zatím zákon o DAC8 nepřijalo, návrh je stále ve Sněmovně. Vláda přesto počítá s rokem 2026 jako prvním obdobím a burzy z jiných zemí EU obchody českých rezidentů už zaznamenávají. Bitcoin držený déle než tři roky nebo prodeje do 100 000 Kč ročně zůstávají osvobozené.",
           "crumbs": [
@@ -754,7 +754,7 @@
           ],
           "boxText": "DAC8: burzy zaznamenávají vaše obchody za rok 2026 pro Finanční správu.",
           "boxLink": "Co uvidí finanční úřad",
-          "cta": "Ověřit Česko v Tax Agentovi →",
+          "cta": "Zkontrolovat Česko v Tax Agentovi →",
           "related": [
             "Daně z Bitcoinu v Česku",
             "Bitcoin: prodat, nebo si půjčit",
@@ -873,7 +873,7 @@
               "a": "Ne. Zůstatek peněženky se nehlásí, převody z burzy do ní ano."
             },
             {
-              "q": "Musím danit malé prodeje?",
+              "q": "Musím malé prodeje zdaňovat?",
               "a": "Ne, pokud vaše celkové příjmy z prodeje kryptoaktiv za rok nepřesáhnou 100 000 Kč."
             }
           ]

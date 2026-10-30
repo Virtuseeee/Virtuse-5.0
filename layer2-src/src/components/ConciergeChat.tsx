@@ -99,7 +99,7 @@ function trackPartnerClick(partnerId: string) {
 }
 
 const resultText = (a: Answers, lang: Lang) =>
-  tv(lang, `Your criteria:\n{0}\nThese partners fit them. Compare and choose one: you finish onboarding on the partner’s platform, and your bitcoin never touches Virtuse.`, `Vaše kritériá:\n{0}\nTíto partneri ich spĺňajú. Porovnajte ich a vyberte si: onboarding dokončíte na platforme partnera a váš bitcoin sa Virtuse nikdy nedotkne.`, `Vaše kritéria:\n{0}\nTito partneři je splňují. Porovnejte je a vyberte si: onboarding dokončíte na platformě partnera a váš bitcoin se Virtuse nikdy nedotkne.`, [summaryLine(a, lang)]);
+  tv(lang, `Your criteria:\n{0}\nThese partners fit them. Compare and choose one: you finish onboarding on the partner’s platform, and your bitcoin never touches Virtuse.`, `Vaše kritériá:\n{0}\nTíto partneri ich spĺňajú. Porovnajte ich a vyberte si: onboarding dokončíte na platforme partnera a váš bitcoin sa Virtuse nikdy nedotkne.`, `Vaše kritéria:\n{0}\nTito partneři je splňují. Porovnejte je a vyberte si: registraci dokončíte na platformě partnera a váš bitcoin se Virtuse nikdy nedotkne.`, [summaryLine(a, lang)]);
 
 // Prefill from the URL (?pf_goal=buy&pf_country=sk&pf_experience=new&pf_custody=any&pf_amount=m),
 // sent by Verdict from the answers the visitor already gave there. Only known
@@ -338,7 +338,7 @@ export default function ConciergeChat() {
         {t(lang,
           'A comparison, not advice. Virtuse never holds your keys. Onboarding & KYC happen on the partner’s platform.',
           'Porovnanie, nie poradenstvo. Virtuse nikdy nedrží vaše kľúče. Onboarding a KYC prebiehajú na platforme partnera.',
-          'Srovnání, ne poradenství. Virtuse nikdy nedrží vaše klíče. Onboarding a KYC probíhají na platformě partnera.')}
+          'Srovnání, ne poradenství. Virtuse nikdy nedrží vaše klíče. Registrace a KYC probíhají na platformě partnera.')}
       </div>
     </div>
   );

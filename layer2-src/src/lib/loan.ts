@@ -354,7 +354,7 @@ export function loanFacts(inp: LoanInputs, a: LoanAnalysis, lang: Lang = 'en'): 
       tv(lang,
         'Borrowing: {0} interest over {1} years ({2} % p.a.), with {3} BTC locked as collateral.',
         'Pôžička: úrok {0} za {1} r. ({2} % p.a.), {3} BTC uzamknutých ako kolaterál.',
-        'Půjčka: úrok {0} za {1} r. ({2} % p.a.), {3} BTC uzamčených jako kolaterál.',
+        'Půjčka: úrok {0} za {1} r. ({2} % p. a.), {3} BTC uzamčených jako kolaterál.',
         [eur(a.interestTotal), years, fmtNumShort(apr * 100, 1, lang), fmtNum(a.collateralBtc, 4, lang)]),
     );
   }

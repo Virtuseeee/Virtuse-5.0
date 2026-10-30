@@ -100,7 +100,7 @@ NEWSLETTER_FOOTER = [
     ("<h4>Legal</h4>", "<h4>Informace</h4>"),  # matches SK's post-review "Právne" -> "Informácie", not a literal "Legal" translation
     (">Terms &amp; Conditions<", ">Obchodní podmínky<"),
     (">Privacy Policy<", ">Ochrana osobních údajů<"),
-    (">AML &amp; Compliance<", ">AML a Compliance<"),
+    (">AML &amp; Compliance<", ">AML a compliance<"),
     ("<p>&copy;2018 - 2026 Virtuse Wealth Management, a.s., All Rights Reserved.</p>",
      "<p>&copy;2018 – 2026 Virtuse Wealth Management, a.s., všechna práva vyhrazena.</p>"),
 ]

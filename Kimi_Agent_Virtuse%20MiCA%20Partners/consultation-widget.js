@@ -248,17 +248,17 @@
       skipLabel: 'Přeskočit',
       backLabel: '← Zpět',
       resultHeadline: 'Máme dost na to, abychom hovor připravili.',
-      disclaimer: 'Virtuse Wealth Management a.s. neposkytuje investiční poradenství ani nedrží klientská aktiva. Zprostředkováváme partnerské (provizní) vztahy. Rozhodnutí o alokaci je vždy na tobě.',
-      riskNote: 'Vybral(a) sis témata (nákup/prodej Bitcoinu, úschova, treasury, automatizovaní boti), u kterých je důležité předem vědět: Virtuse tyto služby přímo neprovádí ani nezajišťuje — zprostředkováváme přístup k partnerským platformám, které je poskytují. Na hovoru ti transparentně vysvětlíme, kdo a jak to reálně dělá.',
-      bookLabel: 'Rezervovat 15min konzultaci',
+      disclaimer: 'Virtuse Wealth Management, a.s. neposkytuje investiční poradenství ani nedrží klientská aktiva. Zprostředkováváme partnerské (provizní) vztahy. Rozhodnutí o alokaci je vždy na tobě.',
+      riskNote: 'Vybral(a) sis témata (nákup/prodej Bitcoinu, úschova, treasury, automatizovaní boti), u kterých je důležité předem vědět: Virtuse tyto služby přímo neprovádí ani nezajišťuje — zprostředkováváme přístup k partnerským platformám, které je poskytují. Během hovoru ti transparentně vysvětlíme, kdo a jak to reálně dělá.',
+      bookLabel: 'Rezervovat 15minutovou konzultaci',
       restartLabel: 'Vyplnit znovu',
       closeLabel: 'Zavřít',
-      dialogLabel: 'Virtuse Konzultace',
+      dialogLabel: 'Konzultace Virtuse',
       stepOf: function (n, total, label) { return n + ' / ' + total + ' — ' + label; },
       questions: [
         {
           label: 'Cíl',
-          headline: 'Co je tvým hlavním důvodem zájmu o krypto-aktiva?',
+          headline: 'Co je tvým hlavním důvodem zájmu o kryptoaktiva?',
           options: [
             'Jen se chci informovat / rozumět tomu',
             'Chci diverzifikovat mimo tradiční aktiva',
@@ -268,7 +268,7 @@
         },
         {
           label: 'Zkušenost',
-          headline: 'Jaká je tvoje současná zkušenost s krypto-aktivy?',
+          headline: 'Jaká je tvoje současná zkušenost s kryptoaktivy?',
           options: [
             'Žádná, jsem úplný začátečník',
             'Základní — vlastním něco, ale nerozumím detailům',

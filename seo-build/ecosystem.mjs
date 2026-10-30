@@ -191,6 +191,10 @@ const entryGrid = (entries, p, l) => `<div class="eco-grid">\n      ${entries.ma
 
 function confDates(e, l) {
   if (!e.start) return /Sep/.test(e.dates) ? S[l].ui.confTbcSep2027 : S[l].ui.confTba2027;
+  if (l === 'cs') {
+    const cz = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${d}. ${m}. ${y}`; };
+    return `${cz(e.start)} – ${cz(e.end)}`;
+  }
   const f = new Intl.DateTimeFormat(LOCALE[l], { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
   return f.formatRange(new Date(e.start + 'T12:00:00Z'), new Date(e.end + 'T12:00:00Z'));
 }

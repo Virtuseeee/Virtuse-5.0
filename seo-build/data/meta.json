@@ -657,7 +657,7 @@
       "gainTax": "19 až 35 % daň z příjmů",
       "healthLevy": "Zdravotní pojištění 16 % ze zisku (8 % při zdravotním postižení), vyúčtuje ho zdravotní pojišťovna v ročním zúčtování",
       "healthLevyShort": "16 % zdravotní pojištění",
-      "exemption": "Bez osvobození podle doby držení; každý prodej i směna krypto za krypto se daní",
+      "exemption": "Bez osvobození podle doby držení; každý prodej i směna kryptoměny za kryptoměnu se daní",
       "filing": "Daňové přiznání fyzické osoby typu B, do 31. března",
       "note": "Sazbu 7 % a osvobození po 1 roce zrušili dříve, než nabyly účinnosti. Celková ztráta z kryptoměn nesnižuje jiné příjmy."
     },
@@ -665,7 +665,7 @@
       "gainTax": "19 % jednotná daň z kapitálových výnosů",
       "exemption": "Bez osvobození podle doby držení",
       "filing": "Roční přiznání PIT-38",
-      "note": "Výměny kryptoměny za kryptoměnu se nedaní; daní se jen prodej za peníze, zboží nebo služby. U každého prodeje vypočítejte zisk v PLN."
+      "note": "Výměny kryptoměny za kryptoměnu se nedaní; daní se jen prodej za peníze, zboží nebo služby. U každého prodeje vypočítejte zisk nebo ztrátu v PLN."
     },
     "at": {
       "gainTax": "27,5 % KESt (daň z kapitálových výnosů)",

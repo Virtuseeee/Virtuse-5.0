@@ -95,7 +95,7 @@ export const EXPERIENCE: ChipOption[] = [
 export const CUSTODY: ChipOption[] = [
   { id: 'self', label: { en: 'Self-custody', sk: 'Vlastná úschova', cs: 'Vlastní úschova' }, hint: { en: 'My keys, my coins', sk: 'Moje kľúče, moje mince', cs: 'Moje klíče, moje mince' } },
   { id: 'assisted', label: { en: 'Assisted custody', sk: 'Asistovaná úschova', cs: 'Asistovaná úschova' }, hint: { en: 'Help with keys & recovery', sk: 'Pomoc s kľúčmi a obnovou', cs: 'Pomoc s klíči a obnovou' } },
-  { id: 'any', label: { en: 'No preference yet', sk: 'Zatiaľ bez preferencie', cs: 'Zatím bez preference' }, hint: { en: 'Show all options', sk: 'Ukážte všetky možnosti', cs: 'Ukažte všechny možnosti' } },
+  { id: 'any', label: { en: 'No preference yet', sk: 'Zatiaľ bez preferencie', cs: 'Zatím bez preference' }, hint: { en: 'Show all options', sk: 'Ukážte všetky možnosti', cs: 'Zobrazit všechny možnosti' } },
 ];
 
 export const AMOUNTS: ChipOption[] = [
@@ -440,7 +440,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
           t(lang,
             'For larger amounts, a spot order book exchange with EUR pairs.',
             'Pri väčších sumách burza so spotovým orderbookom a pármi v EUR.',
-            'U větších částek burza se spotovým orderbookem a páry v EUR.'),
+            'U větších částek burza se spotovou knihou objednávek a páry v EUR.'),
         ]);
       } else if (a.custody !== 'self') {
         push('crypto-com', 78, [
@@ -588,7 +588,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
         t(lang,
           'Your own Bitcoin node at home: check your own transactions instead of trusting someone else\'s server. Works alongside any hardware wallet.',
           'Vlastný Bitcoin uzol doma: overujte si vlastné transakcie namiesto dôvery v cudzí server. Funguje s akoukoľvek hardvérovou peňaženkou.',
-          'Vlastní Bitcoin uzel doma: ověřujte si vlastní transakce místo důvěry v cizí server. Funguje s jakoukoli hardwarovou peněženkou.'),
+          'Vlastní bitcoinový uzel doma: ověřujte si vlastní transakce místo důvěry v cizí server. Funguje s jakoukoli hardwarovou peněženkou.'),
       ]);
       break;
     }

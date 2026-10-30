@@ -147,7 +147,7 @@ const GUIDE = {
   en: { src: 'Source', checked: 'checked', line: 'As of {a}, checked {d}. Not tax advice.', notAdvice: 'Not tax advice', pad: 'Figures come from official sources linked in the country guides.', intro: 'The figures below come from the official sources linked in the table, as of {a} (checked {d}).', hubSrc: 'Rates, exemptions and filing notes come from official sources, linked on each country page.', hubFaq: 'Figures are as of {a}; each country page links its official sources (checked {d}).' },
   de: { src: 'Quelle', checked: 'geprüft am', line: 'Stand {a}, geprüft am {d}. Keine Steuerberatung.', notAdvice: 'Keine Steuerberatung', pad: 'Die Angaben stammen aus offiziellen Quellen, die auf den Länderseiten verlinkt sind.', intro: 'Zahlen Stand {a} aus den in der Tabelle verlinkten offiziellen Quellen, geprüft am {d}.', hubSrc: 'Sätze, Befreiungen und Hinweise zur Steuererklärung stammen aus offiziellen Quellen, verlinkt auf jeder Länderseite.', hubFaq: 'Stand {a}; jede Länderseite verlinkt ihre offiziellen Quellen (geprüft am {d}).' },
   sk: { src: 'Zdroj', checked: 'overené', line: 'Stav {a}, overené {d}. Nejde o daňové poradenstvo.', notAdvice: 'Nejde o daňové poradenstvo', pad: 'Údaje pochádzajú z oficiálnych zdrojov, ktoré sú uvedené na stránkach krajín.', intro: 'Údaje so stavom {a} pochádzajú z oficiálnych zdrojov uvedených v tabuľke, overené {d}.', hubSrc: 'Sadzby, oslobodenia a poznámky k daňovému priznaniu pochádzajú z oficiálnych zdrojov, uvedených na stránke každej krajiny.', hubFaq: 'Stav {a}; stránka každej krajiny uvádza oficiálne zdroje (overené {d}).' },
-  cs: { src: 'Zdroj', checked: 'ověřeno', line: 'Stav {a}, ověřeno {d}. Nejde o daňové poradenství.', notAdvice: 'Nejde o daňové poradenství', pad: 'Údaje pocházejí z oficiálních zdrojů, které jsou uvedené na stránkách zemí.', intro: 'Údaje ke stavu {a} pocházejí z oficiálních zdrojů uvedených v tabulce, ověřeno {d}.', hubSrc: 'Sazby, osvobození a poznámky k daňovému přiznání pocházejí z oficiálních zdrojů, uvedených na stránce každé země.', hubFaq: 'Stav {a}; stránka každé země uvádí oficiální zdroje (ověřeno {d}).' },
+  cs: { src: 'Zdroj', checked: 'ověřeno', line: 'Stav {a}, ověřeno {d}. Nejde o daňové poradenství.', notAdvice: 'Nejde o daňové poradenství', pad: 'Údaje pocházejí z oficiálních zdrojů, které jsou uvedené na stránkách zemí.', intro: 'Údaje ke stavu {a} pocházejí z oficiálních zdrojů uvedených v tabulce, ověřeno {d}.', hubSrc: 'Sazby, osvobození a poznámky k daňovému přiznání pocházejí z oficiálních zdrojů uvedených na stránce každé země.', hubFaq: 'Stav {a}; stránka každé země uvádí oficiální zdroje (ověřeno {d}).' },
   pl: { src: 'Źródło', checked: 'sprawdzono', line: 'Stan na {a}, sprawdzono {d}. To nie jest porada podatkowa.', notAdvice: 'To nie jest porada podatkowa', pad: 'Dane pochodzą z oficjalnych źródeł podlinkowanych na stronach krajów.', intro: 'Dane według stanu na {a} pochodzą z oficjalnych źródeł podanych w tabeli, sprawdzono {d}.', hubSrc: 'Stawki, zwolnienia i uwagi dotyczące zeznania pochodzą z oficjalnych źródeł, podlinkowanych na stronie każdego kraju.', hubFaq: 'Stan na {a}; strona każdego kraju podaje oficjalne źródła (sprawdzono {d}).' },
   hu: { src: 'Forrás', checked: 'ellenőrizve', line: '{a} állapot szerint, ellenőrizve {d} Nem adótanácsadás.', notAdvice: 'Nem adótanácsadás', pad: 'Az adatok az országoldalakon linkelt hivatalos forrásokból származnak.', intro: 'Adatok {a} állapot szerint, a táblázatban linkelt hivatalos forrásokból, ellenőrizve {d}', hubSrc: 'Az adókulcsok, a mentességek és a bevallási tudnivalók hivatalos forrásokból származnak, minden országoldalon linkelve.', hubFaq: '{a} állapot szerint; minden országoldal linkeli a hivatalos forrásokat (ellenőrizve {d}).' },
   uk: { src: 'Джерело', checked: 'перевірено', line: 'Станом на {a}, перевірено {d}. Це не податкова консультація.', notAdvice: 'Це не податкова консультація', pad: 'Дані взято з офіційних джерел, посилання на які є на сторінках країн.', intro: 'Дані станом на {a} взято з офіційних джерел, наведених у таблиці; перевірено {d}.', hubSrc: 'Ставки, звільнення і примітки щодо декларування взято з офіційних джерел, посилання на які є на сторінці кожної країни.', hubFaq: 'Станом на {a}; сторінка кожної країни містить посилання на офіційні джерела (перевірено {d}).' },
@@ -2486,7 +2486,7 @@ function csHome(relFile) { return { name: 'Domů', href: toRoot(relFile, 'cs/ind
   const faqs = [
     { q: 'Které země tento přehled pokrývá?', a: `${N} zemí EU: ${COUNTRIES.map((c) => nameCs(c.id)).join(', ')}. ${guideText('cs', 'hubFaq')}` },
     { q: 'Jde o daňové poradenství?', a: `Ne. ${guideLine('cs')} Pravidla pro aktuální rok si ověřte u místního poradce.` },
-    { q: 'Hlásí Virtuse moje držby finančnímu úřadu?', a: 'Ne. Virtuse nikdy nedrží vaše klíče ani historii vašich transakcí. KYC provádějí partneři sami.' },
+    { q: 'Hlásí Virtuse můj Bitcoin finančnímu úřadu?', a: 'Ne. Virtuse nikdy nedrží vaše klíče ani historii vašich transakcí. KYC provádějí partneři sami.' },
     { q: 'Kde si kromě daní prověřím i dědění?', a: `V modulu Tax & Inheritance Agent (živý modul) se stejnými ${N} zeměmi a kontrolou připravenosti na multisig.` }
   ];
   const answer = finalizeAnswer([
@@ -2531,7 +2531,7 @@ for (const c of COUNTRIES) {
     { q: `Jaká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfCs}: ${lcCs(gainFull(t))}. ${checkedSentence('cs')} ${GUIDE.cs.notAdvice}.` },
     { q: `Existuje ${inN} osvobození podle doby držení?`, a: `${t.exemption}. Před podáním přiznání si pravidla pro aktuální rok ověřte u místního daňového poradce.` },
     { q: `Jak se ${inN} podává daňové přiznání?`, a: `${t.filing}. ${t.note}` },
-    { q: 'Drží Virtuse můj Bitcoin nebo podává moje daňové přiznání?', a: `Ne. Virtuse nikdy nedrží vaše klíče. KYC a registrace probíhají u partnera. Tax Agent porovná přehled ${N} zemí; daňové přiznání připraví kvalifikovaný daňový poradce.` }
+    { q: 'Drží Virtuse můj Bitcoin nebo podává moje daňové přiznání?', a: `Ne. Virtuse nikdy nedrží vaše klíče. KYC a registrace probíhají u partnera. V Tax Agentovi porovnáte přehled ${N} zemí; daňové přiznání připraví kvalifikovaný daňový poradce.` }
   ];
   const answer = finalizeAnswer([
     `Daně z Bitcoinu ${inN}, stav ${asOfCs}: ${lcCs(gainFull(t))}.`,
@@ -2641,7 +2641,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
     { q: `Vzniká při prodeji v těchto ${N} zemích daň?`, a: `Zpravidla ano, při prodeji za peníze. Směna kryptoměny za kryptoměnu se v některých zemích daní (Německo, Česko, Španělsko), v jiných ne (Polsko, Francie, Rakousko, Maďarsko). Osvobození se liší: Německo 0 % po 1 roce držení, Česko 3letý časový test, Polsko bez osvobození. Stav ${asOfCs}. Nejde o daňové poradenství.` },
-    { q: 'Je půjčka stejná daňová událost jako prodej?', a: 'V tomto přehledu ne. Úroky, riziko likvidace a KYC u partnera však platí. Konkrétní čísla spočítá Loan & Liquidity Copilot.' },
+    { q: 'Je půjčka stejná daňová událost jako prodej?', a: 'V tomto přehledu ne. Úroky, riziko likvidace a KYC u partnera však zůstávají. Konkrétní čísla spočítá Loan & Liquidity Copilot.' },
     { q: 'Co je riziko likvidace?', a: 'Pokud hodnota zajištění klesne na hranici partnera, partner může zajištění prodat a splatit jím půjčku. Virtuse nikdy nedrží vaše klíče ani zajištění.' },
     { q: 'Kde si přepočítám konkrétní částku?', a: 'V živém modulu Loan & Liquidity Copilot. Tato stránka vysvětluje jen rozdíl mezi daní a rizikem na základě zveřejněných daňových sazeb.' }
   ];
@@ -2656,7 +2656,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
     description: assertDescription(`Prodat Bitcoin a zaplatit daň, nebo si půjčit se zajištěním Bitcoinem a zůstat investovaný? Sazby ${N} zemí EU, stav ${asOfCs}.`),
     h1: 'Prodat Bitcoin, nebo si půjčit se zajištěním?',
     answerHtml: esc(answer),
-    breadcrumbs: [csHome(relFile), { name: 'Prodat, nebo půjčit', abs: abs(relFile) }],
+    breadcrumbs: [csHome(relFile), { name: 'Prodat, nebo si půjčit', abs: abs(relFile) }],
     hreflang: hrefLangPair(enFile, deFile),
     related: [
       { href: toRoot(relFile, 'cs/bitcoin-dane/cesko/'), label: 'Daně z Bitcoinu v Česku' },
@@ -2698,10 +2698,10 @@ ${faqHtml(faqs, 'Časté dotazy')}
     { q: 'Může být v dopise s pokyny seed fráze?', a: 'Ne. Dopis uvádí seznam, umístění a kontakty – nikdy ne seed fráze. Uložte ho spolu se závětí nebo u právníka.' },
     { q: 'Proč multisig 2 ze 3?', a: 'Jediná seed fráze je jediný bod selhání pro vás i pro vaše dědice.' },
     { q: 'Drží Virtuse klíče pro dědice?', a: 'Ne. Virtuse nikdy nedrží vaše klíče.' },
-    { q: 'Jde o právní poradenství?', a: `Ne. Je to kontrolní seznam ke vzdělávacím účelům z modulu Tax, stav ${asOfCs}.` }
+    { q: 'Jde o právní poradenství?', a: `Ne. Je to kontrolní seznam ke vzdělávacím účelům z modulu Tax & Inheritance Agent, stav ${asOfCs}.` }
   ];
   const answer = finalizeAnswer([
-    `Ke stavu ${asOfCs} má kontrolní seznam modulu Tax šest bodů: dopis s pokyny, geografické rozdělení klíčů, informovaný dědic, multisig 2 ze 3, test obnovy a zdokumentované účty.`,
+    `Ke stavu ${asOfCs} má kontrolní seznam modulu Tax & Inheritance Agent šest bodů: dopis s pokyny, geografické rozdělení klíčů, informovaný dědic, multisig 2 ze 3, test obnovy a zdokumentované účty.`,
     'Jediná seed fráze je jediný bod selhání. Virtuse nikdy nedrží vaše klíče.',
     'Nejde o právní poradenství.'
   ], 'cs');
@@ -2732,7 +2732,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
     moduleCta: { href: toRoot(relFile, 'cs/' + TAX_AGENT), label: 'Ohodnotit seznam v Tax Agentovi →' },
     schemas: [faqLd(faqs), howto],
     bodyHtml: `
-<p>Obsah odpovídá kontrolnímu seznamu modulu Tax. Nejde o právní poradenství.</p>
+<p>Obsah odpovídá kontrolnímu seznamu modulu Tax & Inheritance Agent. Nejde o právní poradenství.</p>
 <h2>Návod: šest kroků</h2>
 <ol>${meta.inheritanceCs.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
 ${faqHtml(faqs, 'Časté dotazy')}

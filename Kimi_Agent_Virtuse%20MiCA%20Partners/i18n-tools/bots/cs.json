@@ -70,7 +70,7 @@
  "q_h2_b": "Přečtěte si je dřív, než připojíte bota.",
  "q1": "Může bot vybrat můj Bitcoin?",
  "a1": "S API klíčem jen pro obchodování ne. Botovi nikdy nepovolujte oprávnění k výběrům. Vaše mince zůstávají na vašem účtu na burze a bot nikdy nedrží vaše prostředky.",
- "q2": "Můžu s botem přijít o peníze?",
+ "q2": "Mohu s botem přijít o peníze?",
  "a2": "Ano. Automatizace neodstraňuje tržní riziko a backtesty nezaručují budoucí výsledky. Začněte s malou částkou a nejdřív vyzkoušejte paper trading.",
  "q3": "Je DCA přes bota zdaněné?",
  "a3": "Nákup obvykle není zdanitelnou událostí; prodej nebo směna být mohou. Naše daňové přehledy shrnují pravidla ve 13 zemích EU. Jde o obecné informace, nikoli daňové poradenství.",
