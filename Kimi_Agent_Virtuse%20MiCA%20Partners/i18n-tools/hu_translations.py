@@ -26,7 +26,7 @@ TEXT = {
     "About Us": "Rólunk",
     "Bitcoin Data": "Bitcoin-adatok",
     "Bots": "Botok",
-    "Buy Bitcoin": "Bitcoin vásárlás",
+    "Buy Bitcoin": "Bitcoin-vásárlás",
     "Company": "Cég",
     "Custody": "Letétkezelés",
     "Email address": "E-mail-cím",
@@ -242,7 +242,7 @@ TEXT = {
     "Insights from our CEO": "Vezérigazgatónk elemzései",
 
     # ---------------------------------------------------------- buy-bitcoin
-    "Buy Bitcoin — Virtuse": "Bitcoin vásárlás | Virtuse",
+    "Buy Bitcoin — Virtuse": "Bitcoin-vásárlás | Virtuse",
     "Virtuse partners with fully licensed EU crypto-asset service providers to give you access to the best Bitcoin buying services in Europe. We never hold your funds or keys.":
         "A Virtuse teljes körűen engedélyezett uniós kriptoeszköz-szolgáltatókkal működik együtt, hogy Európa legjobb Bitcoin-vásárlási szolgáltatásai elérhetők legyenek. Soha nem kezeljük az ügyfelek pénzét vagy kulcsait.",
     "Virtuse partners with fully licensed EU crypto-asset service providers (CASPs) to give you access to the best Bitcoin buying services in Europe. We never hold your funds or keys — your transactions are executed directly on regulated partner platforms. We earn a referral fee when you sign up, at no extra cost to you.":
@@ -456,7 +456,7 @@ TEXT = {
     "Bitcoin-only tax tools designed for European tax systems. Auto-import transactions from wallets and exchanges. Generate country-specific tax reports in minutes — not days. No KYC required for tax software.":
         "Kizárólag Bitcoinra szabott adóeszközök az európai adórendszerekhez. Tranzakciók automatikus importja tárcákból és tőzsdékről. Országspecifikus adókimutatás percek, nem napok alatt. Az adószoftverekhez nem kell KYC.",
     "Connect Wallets": "Tárcák csatlakoztatása",
-    "Import xPubs or CSV exports from your wallets and exchanges": "xPub kulcsok vagy CSV-exportok importja tárcákból és tőzsdékről",
+    "Import xPubs or CSV exports from your wallets and exchanges": "xPub-kulcsok vagy CSV-exportok importja tárcákból és tőzsdékről",
     "Auto-Classify": "Automatikus besorolás",
     "Software categorizes transactions (buy, sell, transfer, mining)": "A szoftver kategorizálja a tranzakciókat (vétel, eladás, átutalás, bányászat)",
     "Review": "Ellenőrzés",
@@ -503,9 +503,9 @@ TEXT = {
     "Feature": "Jellemző",
     "Price": "Ár",
     "EUR 39/yr": "39 EUR/év",
-    "EUR 49+/yr": "49 EUR-tól/év",
-    "From EUR 11/mo": "11 EUR-tól/hó",
-    "From $49/yr": "49 $-tól/év",
+    "EUR 49+/yr": "évi 49 EUR-tól",
+    "From EUR 11/mo": "havi 11 EUR-tól",
+    "From $49/yr": "évi 49 $-tól",
     "Free Tier": "Ingyenes csomag",
     "No": "Nem",
     "Yes (tracking)": "Igen (követés)",
@@ -684,7 +684,7 @@ TEXT = {
         "Heti záróárak a Binance-ről (2017-től) interpolált havi történeti adatokkal (2011–2017) összekapcsolva; a mozgóátlag minden héten az előző 200 hetet veszi figyelembe. A 200 WMA érintései jelölték a 2015-ös, 2018-as és 2022-es medvepiaci mélypontokat. Nem befektetési tanács.",
 
     # ---------------------------------------------------------- rainbow-chart
-    "Bitcoin Rainbow Chart — Virtuse": "Bitcoin szivárványgrafikon | Virtuse",
+    "Bitcoin Rainbow Chart — Virtuse": "Bitcoin-szivárványgrafikon | Virtuse",
     "The classic Bitcoin Rainbow — price history on a logarithmic scale, wrapped in nine color bands derived from the original 2014 log-regression.":
         "A klasszikus Bitcoin-szivárvány: az árfolyam-történet logaritmikus skálán, az eredeti 2014-es logaritmikus regresszióból származó kilenc színsávval.",
     "The classic Bitcoin Rainbow — price history on a logarithmic scale, wrapped in nine color bands derived from the original 2014 log-regression. A playful long-term compass: blue means fear, red means euphoria.":
@@ -696,7 +696,7 @@ TEXT = {
     "The Nine Bands": "A kilenc sáv",
 
     # -------------------------------------------------- retirement-calculator
-    "Bitcoin Retirement Calculator — Virtuse": "Bitcoin nyugdíjkalkulátor | Virtuse",
+    "Bitcoin Retirement Calculator — Virtuse": "Bitcoin-nyugdíjkalkulátor | Virtuse",
     "Model your path to retiring on Bitcoin. Set your stack, savings rate, and growth assumptions, then see if your Bitcoin can fund your retirement for life.":
         "A Bitcoinra épülő nyugdíj útjának modellezése. Készlet, megtakarítási ütem és növekedési feltevések megadása, majd annak ellenőrzése, hogy a Bitcoin egész életre fedezi-e a nyugdíjas éveket.",
     "Model your path to retiring on Bitcoin. Set your stack, savings rate, and growth assumptions — the calculator projects your accumulation years, then stress-tests whether your Bitcoin can fund your retirement spending for life.":
@@ -746,7 +746,7 @@ TEXT = {
         "A PL0 a modell központi hatványtörvény-illesztése; a felette és alatta lévő PL és W sávok a történeti túl- és alulértékeltségi tartományokat jelölik, amelyeken belül az egyes ciklusok mozogtak.",
 
     # --------------------------------------------------------- trading-volume
-    "Bitcoin Trading Volume — Virtuse": "Bitcoin kereskedési volumen | Virtuse",
+    "Bitcoin Trading Volume — Virtuse": "Bitcoin-kereskedési volumen | Virtuse",
     "Bitcoin's 24-hour trading volume over the past year, live from CoinGecko — how much capital is actively moving, not just how much exists.":
         "A Bitcoin 24 órás kereskedési volumene az elmúlt évben, élőben a CoinGeckótól: mennyi tőke mozog ténylegesen, nem csak mennyi létezik.",
     "Bitcoin's 24-hour trading volume across tracked exchanges. Volume spikes on both sharp rallies and sharp sell-offs: it measures how much capital is actively moving, not which way conviction points.":
@@ -888,7 +888,7 @@ TEXT = {
     "Our content": "Tartalmaink",
     "Your licence to use this website": "A weboldal használatára szóló licenc",
     "We grant you a limited, revocable, non-exclusive, non-transferable licence to access and use this website for your own personal, non-commercial use, subject to these Terms. You may not copy, reproduce, republish, frame, or distribute any part of this website, or use our content to build a competing product or service, without our prior written permission.":
-        "E feltételek szerint korlátozott, visszavonható, nem kizárólagos és át nem ruházható licencet adunk a weboldal saját, személyes, nem kereskedelmi célú elérésére és használatára. Előzetes írásos engedélyünk nélkül tilos a weboldal bármely részét másolni, sokszorosítani, újra közzétenni, keretbe ágyazni vagy terjeszteni, illetve tartalmainkat versengő termék vagy szolgáltatás létrehozására használni.",
+        "E Feltételek szerint korlátozott, visszavonható, nem kizárólagos és át nem ruházható licencet adunk a weboldal saját, személyes, nem kereskedelmi célú elérésére és használatára. Előzetes írásos engedélyünk nélkül tilos a weboldal bármely részét másolni, sokszorosítani, újra közzétenni, keretbe ágyazni vagy terjeszteni, illetve tartalmainkat versengő termék vagy szolgáltatás létrehozására használni.",
     "7. Disclaimers & Limitation of Liability": "7. Kizárások és a felelősség korlátozása",
     "The website is provided \"as is\"": "A weboldal „jelenlegi állapotában” érhető el",
     "To the maximum extent permitted by applicable law, this website, its tools, and its content are provided \"as is\" and \"as available\", without warranties of any kind, whether express or implied, including any implied warranty of merchantability, fitness for a particular purpose, non-infringement, or that the website will be uninterrupted, secure, or error-free. Bitcoin and crypto-asset markets are inherently volatile and speculative; nothing on this website removes that risk.":
@@ -898,7 +898,7 @@ TEXT = {
         "Az alkalmazandó jog által megengedett legteljesebb mértékben a Virtuse Group Pte. Ltd., annak vezető tisztségviselői, munkavállalói és kapcsolt vállalkozásai nem felelnek semmilyen közvetett, járulékos, különleges, következményi vagy büntető jellegű kárért, illetve elmaradt haszonért, bevételért, adat- vagy pénzveszteségért, amely a weboldal vagy bármely partnerszolgáltatás használatából vagy azzal összefüggésben keletkezik, még akkor sem, ha az ilyen károk lehetőségéről tájékoztattak minket. Ez korlátozás nélkül kiterjed a partner cselekményéből vagy mulasztásából, a piaci ingadozásból, illetve a weboldalon elérhető piaci adatokra vagy eszközökre való hagyatkozásból eredő veszteségekre is. Ahol felelősségünk az alkalmazandó jog szerint nem zárható ki (például halál, személyi sérülés, csalás vagy súlyos gondatlanság esetén, vagy az Önre vonatkozó kógens fogyasztóvédelmi jogszabályok alapján), e feltételek semmi sem korlátozza ezt a felelősséget.",
     "Indemnity": "Kártalanítás",
     "You agree to indemnify and hold Virtuse Group Pte. Ltd. harmless from any claim, loss, or expense (including reasonable legal fees) arising from your breach of these Terms, your misuse of this website, or your violation of any applicable law or third party's rights.":
-        "A felhasználó vállalja, hogy kártalanítja és mentesíti a Virtuse Group Pte. Ltd.-t minden olyan követelés, veszteség vagy költség (ideértve az indokolt jogi költségeket) alól, amely e feltételek megszegéséből, a weboldal visszaélésszerű használatából, illetve bármely alkalmazandó jogszabály vagy harmadik fél jogainak megsértéséből ered.",
+        "A felhasználó vállalja, hogy kártalanítja és mentesíti a Virtuse Group Pte. Ltd.-t minden olyan követelés, veszteség vagy költség (ideértve az indokolt jogi költségeket) alól, amely e Feltételek megszegéséből, a weboldal visszaélésszerű használatából, illetve bármely alkalmazandó jogszabály vagy harmadik fél jogainak megsértéséből ered.",
     "8. Governing Law, Changes & Contact": "8. Irányadó jog, változások és kapcsolat",
     "Governing law": "Irányadó jog",
     "These Terms are governed by the laws of the Republic of Singapore, without regard to conflict-of-law principles, and any dispute arising from them will be subject to the exclusive jurisdiction of the courts of Singapore. If you are a consumer resident in the European Union or European Economic Area, this choice of law does not deprive you of the protection afforded by any mandatory provisions of the law of your country of residence that cannot be excluded by agreement.":
@@ -906,7 +906,7 @@ TEXT = {
     "Severability & entire agreement": "Részleges érvénytelenség és teljes megállapodás",
     "Changes to these Terms": "A feltételek módosítása",
     "We may revise these Terms as our services, the regulatory landscape, or the law evolve. Changes take effect when posted on this page with an updated effective date; material changes will be flagged prominently on the site or via the newsletter before they take effect. Continuing to use the website after a revised version is posted means you accept the changes.":
-        "E feltételeket szolgáltatásaink, a szabályozási környezet vagy a jogszabályok változásával módosíthatjuk. A módosítások az ezen az oldalon, frissített hatálybalépési dátummal történő közzététellel lépnek hatályba; a lényeges változásokat hatálybalépésük előtt jól láthatóan jelezzük az oldalon vagy a hírlevélben. A módosított változat közzététele utáni további használat a változások elfogadását jelenti.",
+        "E Feltételeket szolgáltatásaink, a szabályozási környezet vagy a jogszabályok változásával módosíthatjuk. A módosítások az ezen az oldalon, frissített hatálybalépési dátummal történő közzététellel lépnek hatályba; a lényeges változásokat hatálybalépésük előtt jól láthatóan jelezzük az oldalon vagy a hírlevélben. A módosított változat közzététele utáni további használat a változások elfogadását jelenti.",
 }
 
 
@@ -945,7 +945,7 @@ SNIPPETS = {
     ],
     "buy-bitcoin.html": [
         ('<h1>Buy Bitcoin Through<br><span class="highlight">MiCA-Licensed Partners</span></h1>',
-         '<h1>Bitcoin vásárlás<br><span class="highlight">MiCA-engedélyes partnereknél</span></h1>'),
+         '<h1>Bitcoin-vásárlás<br><span class="highlight">MiCA-engedélyes partnereknél</span></h1>'),
         ("<h2>Our <span>CASP Partners</span></h2>", "<h2>CASP <span>partnereink</span></h2>"),
         ("<p>The <strong>leading European Bitcoin-only app</strong> regulated by the Austrian FMA under MiCAR. 100,000+ users across Europe with insured Bitcoin custody. Auto-Invest savings plan with 0% fees. Bank transfer and card supported.</p>",
          "<p><strong>Vezető európai, kizárólag Bitcoinos alkalmazás</strong>, az osztrák FMA felügyelete alatt, MiCAR szerint. Több mint 100 000 felhasználó Európában, biztosított Bitcoin-letétkezeléssel. Auto-Invest megtakarítási terv 0% díjjal. Banki átutalás és kártya is használható.</p>"),
@@ -1003,7 +1003,7 @@ SNIPPETS = {
         (" <strong>CHF 4B+</strong> AuA</li>", " <strong>Több mint 4 milliárd CHF</strong> AuA</li>"),
         (" Active management <span>(rebalancing, staking, hedging)</span></li>", " Aktív kezelés <span>(újrasúlyozás, staking, fedezés)</span></li>"),
         ("<p><strong>Leading institutional custodian with MiCA CASP license</strong> via BaFin Germany. $250M insurance coverage. ETP-grade custody serving Virtune and others. Strongest API for integration. Already serves 21bitcoin &mdash; proven European infrastructure.</p>",
-         "<p><strong>Vezető intézményi letétkezelő MiCA CASP-engedéllyel</strong> a német BaFin-től. 250 millió dolláros biztosítási fedezet. ETP-szintű letétkezelés, amelyet többek között a Virtune is használ. A legerősebb API az integrációhoz. Már a 21bitcoint is kiszolgálja: bevált európai infrastruktúra.</p>"),
+         "<p><strong>Vezető intézményi letétkezelő MiCA CASP-engedéllyel</strong> a német BaFintől. 250 millió dolláros biztosítási fedezet. ETP-szintű letétkezelés, amelyet többek között a Virtune is használ. A legerősebb API az integrációhoz. Már a 21bitcoint is kiszolgálja: bevált európai infrastruktúra.</p>"),
         (" MiCA via <strong>BaFin (Germany)</strong></li>", " MiCA a <strong>BaFin (Németország)</strong> révén</li>"),
         ('<span class="tag tag-gray">DISCRETIONARY</span>', ''),
         ('<span class="tag tag-gray">API</span>', ''),
@@ -1021,11 +1021,11 @@ SNIPPETS = {
     "faq.html": [
         ('<h1>Frequently Asked <span class="highlight">Questions</span></h1>', '<h1>Gyakran ismételt <span class="highlight">kérdések</span></h1>'),
         ('<div class="faq-answer">Seven service categories, each with hand-picked partners: <strong>Buy Bitcoin</strong> (MiCA-licensed CASPs like 21bitcoin, Kraken, and ByBit EU), <strong>Mining</strong> (hosted mining with OneMiners, Abundant Mines, Power Mining), <strong>Loans</strong> (Bitcoin-backed borrowing via Firefish — keep your BTC, get cash), <strong>Custody</strong> (Trezor, Ledger, and Blockstream Jade hardware wallets), <strong>Treasury</strong> (institutional custody with Coinbase Institutional, Sygnum, BitGo), <strong>Tax</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Trading Bots</strong> (Coinrule, Cryptohopper, RevenueBot), plus free <a href="bitcoin-data.html">Bitcoin Data</a> tools — live dashboard, retirement calculator, rainbow chart, and more.</div>',
-         '<div class="faq-answer">Hét szolgáltatási kategória, mindegyikben gondosan kiválasztott partnerekkel: <strong>Bitcoin vásárlás</strong> (MiCA-engedélyes CASP-szolgáltatók, pl. 21bitcoin, Kraken és ByBit EU), <strong>Bányászat</strong> (hosztolt bányászat a OneMiners, az Abundant Mines és a Power Mining révén), <strong>Hitelek</strong> (Bitcoin-fedezetű hitel a Firefishen keresztül: a BTC megmarad, a készpénz megérkezik), <strong>Letétkezelés</strong> (Trezor, Ledger és Blockstream Jade hardvertárcák), <strong>Treasury</strong> (intézményi letétkezelés: Coinbase Institutional, Sygnum, BitGo), <strong>Adózás</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Kereskedési botok</strong> (Coinrule, Cryptohopper, RevenueBot), valamint ingyenes <a href="bitcoin-data.html">Bitcoin-adateszközök</a>: élő dashboard, nyugdíjkalkulátor, szivárványgrafikon és egyebek.</div>'),
+         '<div class="faq-answer">Hét szolgáltatási kategória, mindegyikben gondosan kiválasztott partnerekkel: <strong>Bitcoin-vásárlás</strong> (MiCA-engedélyes CASP-szolgáltatók, pl. 21bitcoin, Kraken és ByBit EU), <strong>Bányászat</strong> (hosztolt bányászat a OneMiners, az Abundant Mines és a Power Mining révén), <strong>Hitelek</strong> (Bitcoin-fedezetű hitel a Firefishen keresztül: a BTC megmarad, a készpénz megérkezik), <strong>Letétkezelés</strong> (Trezor, Ledger és Blockstream Jade hardvertárcák), <strong>Treasury</strong> (intézményi letétkezelés: Coinbase Institutional, Sygnum, BitGo), <strong>Adózás</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Kereskedési botok</strong> (Coinrule, Cryptohopper, RevenueBot), valamint ingyenes <a href="bitcoin-data.html">Bitcoin-adateszközök</a>: élő dashboard, nyugdíjkalkulátor, szivárványgrafikon és egyebek.</div>'),
         ('<div class="faq-answer">For long-term holdings we recommend hardware wallets from our <a href="secure.html">custody partners</a> — Trezor (open-source, made in the EU) or Ledger (Secure Element chip, 7M+ devices sold). Your keys are generated offline and never leave the device. Larger holdings and corporate treasuries can use institutional-grade custody via our <a href="treasury.html">Treasury partners</a>.</div>',
          '<div class="faq-answer">Hosszú távú tartáshoz <a href="secure.html">letétkezelési partnereink</a> hardvertárcáit ajánljuk: Trezor (nyílt forráskódú, az EU-ban gyártva) vagy Ledger (Secure Element chip, több mint 7 millió eladott eszköz). A kulcsok offline jönnek létre, és soha nem hagyják el az eszközt. Nagyobb állományokhoz és vállalati treasury-khez intézményi szintű letétkezelés is elérhető <a href="treasury.html">treasury partnereinknél</a>.</div>'),
         ('<div class="faq-answer">Trading happens on our partners\' platforms, not on Virtuse. For spot buying and selling, use a <a href="buy-bitcoin.html">Buy Bitcoin</a> partner. For automated strategies (DCA, grid, rebalancing), our <a href="bots.html">Bots partners</a> connect to your exchange account via API keys — non-custodial, so the bot never holds your coins.</div>',
-         '<div class="faq-answer">A kereskedés partnereink platformjain zajlik, nem a Virtuse-on. Spot vételhez és eladáshoz a <a href="buy-bitcoin.html">Bitcoin vásárlás</a> kategória partnerei valók. Automatizált stratégiákhoz (DCA, grid, újrasúlyozás) <a href="bots.html">bot partnereink</a> API-kulcsokkal kapcsolódnak a tőzsdei fiókhoz, letétkezelés nélkül, így a bot soha nem tartja magánál a coinokat.</div>'),
+         '<div class="faq-answer">A kereskedés partnereink platformjain zajlik, nem a Virtuse-on. Spot vételhez és eladáshoz a <a href="buy-bitcoin.html">Bitcoin-vásárlás</a> kategória partnerei valók. Automatizált stratégiákhoz (DCA, grid, újrasúlyozás) <a href="bots.html">botpartnereink</a> API-kulcsokkal kapcsolódnak a tőzsdei fiókhoz, letétkezelés nélkül, így a bot soha nem tartja magánál az érméket.</div>'),
         ('<div class="faq-answer">Yes — tools that never touch your money don\'t need it: hardware wallets (Trezor, Ledger), tax software (Divly is explicitly privacy-first with no KYC), and all our free <a href="bitcoin-data.html">Bitcoin Data</a> tools work without any account at all.</div>',
          '<div class="faq-answer">Igen. Azoknak az eszközöknek, amelyek soha nem férnek hozzá a pénzhez, nincs rá szükségük: a hardvertárcák (Trezor, Ledger), az adószoftverek (a Divly kifejezetten az adatvédelemre épít, KYC nélkül) és ingyenes <a href="bitcoin-data.html">Bitcoin-adateszközeink</a> mind fiók nélkül működnek.</div>'),
     ],
@@ -1079,7 +1079,7 @@ SNIPPETS = {
         ("<div class=\"faq-answer\">The EU's <strong>2024 AML package</strong> is superseding the old directive chain: the <strong>AMLR</strong> (Regulation (EU) 2024/1624) — a directly applicable single rulebook applying from July 2027; <strong>AMLD6</strong> (Directive (EU) 2024/1640) on national supervision and mechanisms; and <strong>AMLA</strong>, the new EU Anti-Money-Laundering Authority in Frankfurt. Until the AMLR applies, national laws implementing AMLD4/5 continue to govern.</div>",
          "<div class=\"faq-answer\">Az EU <strong>2024-es AML-csomagja</strong> váltja fel a korábbi irányelvek sorát: az <strong>AMLR</strong> ((EU) 2024/1624 rendelet), közvetlenül alkalmazandó egységes szabálykönyv 2027 júliusától; az <strong>AMLD6</strong> ((EU) 2024/1640 irányelv) a nemzeti felügyeletről és mechanizmusokról; valamint az <strong>AMLA</strong>, az új uniós Pénzmosás Elleni Hatóság Frankfurtban. Az AMLR alkalmazásáig az AMLD4/5-öt átültető nemzeti jogszabályok maradnak irányadók.</div>"),
         ("<div class=\"faq-answer\">The recast <strong>Transfer of Funds Regulation</strong> (Regulation (EU) 2023/1113) has applied since December 2024 alongside MiCA. It extends the \"travel rule\" to crypto: originator and beneficiary information must accompany crypto-asset transfers handled by CASPs. This is why licensed platforms ask about the destination of withdrawals to self-custody wallets.</div>",
-         "<div class=\"faq-answer\">Az átdolgozott <strong>pénzátutalási rendelet</strong> ((EU) 2023/1113 rendelet) 2024 decembere óta a MiCA-val párhuzamosan alkalmazandó. Az „utazási szabályt” (travel rule) a kriptoeszközökre is kiterjeszti: a CASP-szolgáltatók által kezelt kriptoeszköz-átutalásokat a megbízóra és a kedvezményezettre vonatkozó adatoknak kell kísérniük. Ezért kérdeznek rá az engedélyes platformok a saját őrzésű tárcákba történő kivételek céljára.</div>"),
+         "<div class=\"faq-answer\">Az átdolgozott <strong>pénzátutalási rendelet</strong> ((EU) 2023/1113 rendelet) 2024 decembere óta a MiCA-val párhuzamosan alkalmazandó. Az „utazási szabályt” (travel rule) a kriptoeszközökre is kiterjeszti: a CASP-szolgáltatók által kezelt kriptoeszköz-átutalásokat a megbízóra és a kedvezményezettre vonatkozó adatoknak kell kísérniük. Ezért kérdeznek rá az engedélyes platformok a saját őrzésű tárcákba történő kivételek célcímére.</div>"),
         ("<div class=\"faq-answer\">Every regulated service reachable through this hub — buying and selling Bitcoin, custody with institutions, lending — is provided by partners who hold their own licences and carry the corresponding AML obligations as obliged entities: for example <strong>Kraken</strong> (MiCA CASP via the Central Bank of Ireland), <strong>ByBit EU</strong> and <strong>21bitcoin</strong> (MiCAR-licensed by the Austrian FMA), and institutional custodians such as <strong>Sygnum</strong> (Swiss banking licence) and <strong>BitGo</strong>. They perform customer due diligence (KYC), transaction monitoring, sanctions screening, travel-rule compliance, and suspicious-activity reporting on their own platforms, under the supervision of their home regulators.</div>",
          "<div class=\"faq-answer\">A hubon keresztül elérhető minden szabályozott szolgáltatást (Bitcoin vétele és eladása, intézményi letétkezelés, hitelezés) olyan partnerek nyújtanak, amelyek saját engedéllyel rendelkeznek, és kötelezett szolgáltatóként viselik a megfelelő AML-kötelezettségeket, például a <strong>Kraken</strong> (MiCA CASP a Central Bank of Irelandtől), a <strong>ByBit EU</strong> és a <strong>21bitcoin</strong> (az osztrák FMA MiCAR-engedélyével), valamint olyan intézményi letétkezelők, mint a <strong>Sygnum</strong> (svájci banki engedély) és a <strong>BitGo</strong>. Saját platformjukon, a székhelyük szerinti felügyeleti hatóság ellenőrzése alatt végzik az ügyfél-átvilágítást (KYC), a tranzakciók monitorozását, a szankciós szűrést, az utazási szabály betartását és a gyanús tevékenységek bejelentését.</div>"),
         ("<div class=\"faq-answer\">Products that never touch your money fall outside AML obligations entirely: hardware wallets (Trezor, Ledger), tax reporting software, and our free <a href=\"bitcoin-data.html\">Bitcoin Data</a> tools. Self-custody of your own Bitcoin is not a regulated activity in the EU.</div>",
@@ -1091,7 +1091,7 @@ SNIPPETS = {
         ("<div class=\"faq-answer\">You will complete <strong>identity verification once per partner platform</strong> — typically a government ID and a selfie check, taking a few minutes — before trading or withdrawing. Larger transactions may trigger source-of-funds questions, and transfers between platforms carry travel-rule information. None of this data passes through Virtuse; see our <a href=\"privacy-policy.html\">Privacy Policy</a>.</div>",
          "<div class=\"faq-answer\">Kereskedés vagy kivétel előtt <strong>partnerplatformonként egyszer kell személyazonosítást végezni</strong>, jellemzően személyazonosító okmánnyal és szelfis ellenőrzéssel, néhány perc alatt. Nagyobb tranzakcióknál a pénzeszközök forrására vonatkozó kérdések merülhetnek fel, a platformok közötti átutalásokat pedig az utazási szabály szerinti adatok kísérik. Ezen adatok egyike sem megy át a Virtuse-on; lásd <a href=\"privacy-policy.html\">adatvédelmi tájékoztatónkat</a>.</div>"),
         ("<div class=\"faq-answer\">See the <a href=\"faq.html\">FAQ</a> for how the hub works, each partner's own compliance pages for their licensing details, and the EUR-Lex texts of MiCA (2023/1114), the AMLR (2024/1624), AMLD6 (2024/1640), and the Transfer of Funds Regulation (2023/1113) for the underlying law.</div>",
-         "<div class=\"faq-answer\">A hub működéséről a <a href=\"faq.html\">GYIK</a> szól, az engedélyek részleteiről az egyes partnerek megfelelési oldalai, a háttérjogszabályokról pedig a EUR-Lex szövegei: MiCA (2023/1114), AMLR (2024/1624), AMLD6 (2024/1640) és a pénzátutalási rendelet (2023/1113).</div>"),
+         "<div class=\"faq-answer\">A hub működéséről a <a href=\"faq.html\">GYIK</a> szól, az engedélyek részleteiről az egyes partnerek megfelelési oldalai, a háttérjogszabályokról pedig az EUR-Lex szövegei: MiCA (2023/1114), AMLR (2024/1624), AMLD6 (2024/1640) és a pénzátutalási rendelet (2023/1113).</div>"),
     ],
     "privacy-policy.html": [
         ('<h1>Privacy <span class="highlight">Policy</span></h1>', '<h1>Adatvédelmi <span class="highlight">tájékoztató</span></h1>'),

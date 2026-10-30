@@ -923,7 +923,7 @@
     "cz": {
       "gainTax": "15% jövedelemadó (a küszöb felett 23%)",
       "exemption": "3 év tartás után adómentes (évi 40 millió CZK-ig), vagy ha a kriptoeladások éves bevétele összesen legfeljebb 100 000 CZK",
-      "filing": "Éves személyi jövedelemadó-bevallás",
+      "filing": "Éves személyijövedelemadó-bevallás",
       "note": "Minden elidegenítés (a kripto-kripto csere is) adóköteles esemény: érdemes az első naptól teljes nyilvántartást vezetni."
     },
     "sk": {
@@ -931,14 +931,14 @@
       "healthLevy": "16% egészségbiztosítási járulék a nyereség után (fogyatékosság esetén 8%), az egészségbiztosító évente számolja el",
       "healthLevyShort": "16% egészségbiztosítási járulék",
       "exemption": "Nincs tartási idő utáni mentesség; minden eladás és kripto-kripto csere adóköteles",
-      "filing": "Éves személyi jövedelemadó-bevallás (B típus), március 31-ig",
+      "filing": "Éves személyijövedelemadó-bevallás (B típus), március 31-ig",
       "note": "A 7%-os kulcsot és az 1 év utáni mentességet hatálybalépés előtt eltörölték. A kriptóból származó nettó veszteség nem csökkenti az egyéb jövedelmet."
     },
     "pl": {
       "gainTax": "19% egykulcsos tőkenyereségadó",
       "exemption": "Nincs tartási idő utáni mentesség",
       "filing": "Éves PIT-38",
-      "note": "A kripto-kripto csere nem adóköteles; csak a pénzért, áruért vagy szolgáltatásért történő eladás az. Minden eladásnál ki kell számolni a PLN-ben mért nyereséget."
+      "note": "A kripto-kripto csere nem adóköteles; csak a pénzért, áruért vagy szolgáltatásért történő eladás adóköteles. Minden eladásnál ki kell számolni a PLN-ben mért nyereséget."
     },
     "at": {
       "gainTax": "27,5% KESt (tőkenyereségadó)",
@@ -948,14 +948,14 @@
     },
     "de": {
       "gainTax": "Legfeljebb 45% jövedelemadó (progresszív)",
-      "exemption": "0% 1 év tartás után; az évi összesen 1000 € alatti nyereség adómentes",
+      "exemption": "0% 1 év tartás után; az évi összesen 1 000 € alatti nyereség adómentes",
       "filing": "Éves adóbevallás",
       "note": "Az első évben a kripto-kripto csere adóköteles. A FIFO szerinti nyilvántartás kulcsfontosságú."
     },
     "hu": {
       "gainTax": "15% tőkenyereségadó",
       "exemption": "Nincs tartási idő utáni mentesség; a minimálbér 10%-át egyenként meg nem haladó kisértékű ügyletek adómentesek (évente összesen legfeljebb egy havi minimálbérig)",
-      "filing": "Éves személyi jövedelemadó-bevallás",
+      "filing": "Éves személyijövedelemadó-bevallás",
       "note": "A dokumentált beszerzési költségek levonhatók: érdemes minden számlát megőrizni."
     },
     "si": {
@@ -968,7 +968,7 @@
       "gainTax": "12% a kriptonyereségre (2024 óta)",
       "exemption": "2 év tartás után adómentes",
       "filing": "JOPPD nyomtatvány február végéig (nem az éves bevallás)",
-      "note": "JOPPD-t mentes eladásnál is be kell adni. A veszteség csak ugyanabban az évben számolható el."
+      "note": "A JOPPD-t adómentes eladásnál is be kell adni. A veszteség csak ugyanabban az évben számolható el."
     },
     "ro": {
       "gainTax": "16% jövedelemadó a kriptonyereségre (2025-ig 10%)",
@@ -983,16 +983,16 @@
       "note": "Alacsony egykulcsos adó; a tőzsdei kivonatokat érdemes megőrizni egy esetleges ellenőrzésre."
     },
     "nl": {
-      "gainTax": "Box 3 vagyonadó a vélelmezett hozam után (a fiktív hozam kb. 36%-a)",
+      "gainTax": "Box 3 vagyonadó a vélelmezett hozam után (a vélelmezett hozam kb. 36%-a)",
       "exemption": "Adómentes keret (59 357 € személyenként, 2026)",
-      "filing": "Éves Box 3 bevallás",
+      "filing": "Éves Box 3-bevallás",
       "note": "Tőkenyereségadó mint olyan nincs: a vagyon vélelmezett hozama után kell adózni. A Box 3 reform alatt áll, érdemes ellenőrizni a tárgyévi szabályokat."
     },
     "fr": {
       "gainTax": "31,4% egykulcsos adó (PFU: 12,8% jövedelemadó + 18,6% szociális hozzájárulás, 2026)",
       "exemption": "Nincs tartási idő utáni mentesség; az évi összesen 305 €-ig terjedő eladások adómentesek",
       "filing": "Éves bevallás a 2086-os nyomtatványon; külföldi számlák a 3916-bis nyomtatványon",
-      "note": "A kripto-kripto csere nem adóköteles: csak az euróért, árukért vagy szolgáltatásokért történő eladás az."
+      "note": "A kripto-kripto csere nem adóköteles: csak az euróért, árukért vagy szolgáltatásokért történő eladás adóköteles."
     },
     "es": {
       "gainTax": "19 és 30% közötti progresszív adó a megtakarítási jövedelemre",

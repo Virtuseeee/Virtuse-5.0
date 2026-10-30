@@ -230,7 +230,7 @@
   ],
   "lending": [
    "Bitcoin-fedezetű hitel az EU-ban évi 5%-tól | Virtuse",
-   "EUR, CHF, CZK vagy USDC hitel Bitcoin-fedezettel a Firefish-en. Kamat évi 5%-tól, LTV max. 50%, futamidő 3–24 hónap. Eladás nélkül."
+   "EUR, CHF, CZK vagy USDC hitel Bitcoin-fedezettel a Firefishen. Kamat évi 5%-tól, LTV max. 50%, futamidő 3–24 hónap. Eladás nélkül."
   ],
   "secure": [
    "Bitcoin hardvertárcák 49 €-tól | Virtuse",
@@ -241,16 +241,16 @@
    "Vállalati Bitcoin-letétkezelés: Coinbase Institutional (CSSF, 320 millió $ fedezet), Sygnum (FINMA) és BitGo (BaFin, 250 millió $ fedezet)."
   ],
   "tax": [
-   "Bitcoin adószoftverek évi 39 €-tól | Virtuse",
+   "Bitcoin-adószoftverek évi 39 €-tól | Virtuse",
    "Bitcoin-adóeszközök az EU-ban: Divly évi 39 €-tól, Blockpit, CoinTracking és Koinly. A szoftverhez nincs KYC. Nem adótanácsadás."
   ],
   "bots": [
-   "Nem letétkezelő Bitcoin kereskedési botok | Virtuse",
+   "Nem letétkezelő Bitcoin-kereskedési botok | Virtuse",
    "Csak kereskedési API-kulcsos botok: Coinrule (410 ezer+ kereskedő), Cryptohopper és RevenueBot. Kivételi jog nélkül."
   ],
   "bitcoin-data": [
    "Élő Bitcoin-adatok: árfolyam, díjak, hashrate | Virtuse",
-   "Ingyenes Bitcoin-hálózati adatok: árfolyam, piaci kapitalizáció, díjak, hashrate és a legutóbbi blokk. Fiók nélkül. 21 millió BTC limit."
+   "Ingyenes Bitcoin-hálózati adatok: árfolyam, piaci kapitalizáció, díjak, hashrate és a legutóbbi blokk. Fiók nélkül. 21 millió BTC-s korlát."
   ],
   "faq": [
    "Bitcoin GYIK: díjak, őrzés, KYC, partnerek | Virtuse",
@@ -266,7 +266,7 @@
   ],
   "btc-dominance": [
    "Bitcoin-dominancia grafikon 2013 óta | Virtuse",
-   "A Bitcoin részesedése a teljes kriptopiaci kapitalizációból 2013 óta. A növekvő dominancia tőkebeáramlást jelez, a csökkenő altcoin-rotációt."
+   "A Bitcoin részesedése a teljes kriptopiaci kapitalizációból 2013 óta. A növekvő dominancia tőkebeáramlást jelez, a csökkenő pedig altcoin-rotációt."
   ]
  },
  "uk": {

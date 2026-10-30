@@ -86,7 +86,7 @@
     hu: {
       title: 'Sütik a Virtuse oldalon',
       text: 'Az Ön hozzájárulásával sütiket használunk a látogatottság (Google Analytics) és a hirdetések (Google Ads) mérésére. A szükséges tárolás, például a nyelv, mindig működik. Döntését bármikor módosíthatja.',
-      policy: 'Adatvédelmi szabályzat', accept: 'Összes elfogadása', reject: 'Összes elutasítása', settings: 'Beállítások', save: 'Választás mentése',
+      policy: 'Adatvédelmi tájékoztató', accept: 'Összes elfogadása', reject: 'Összes elutasítása', settings: 'Beállítások', save: 'Választás mentése',
       nec: 'Szükséges', necD: 'Nyelv, megjelenés és a sütikre vonatkozó döntése.', on: 'Mindig aktív',
       ana: 'Analitika', anaD: 'A Google Analytics megmutatja, mely oldalak hasznosak. Adatot soha nem értékesítünk.',
       mkt: 'Marketing', mktD: 'Google Ads mérés és remarketing.',
