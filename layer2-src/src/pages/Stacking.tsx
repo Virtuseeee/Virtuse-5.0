@@ -282,7 +282,7 @@ export default function Stacking() {
   const showCfo = initial > 100_000 || contribution * periodsPerYear > 100_000 || final.value >= 1_000_000;
 
   const freqLabel = L(FREQUENCIES.find((f) => f.id === frequency)!.label, lang).toLowerCase();
-  const colRoute = t(lang, 'Route', 'Trasa', 'Trasa');
+  const colRoute = t(lang, 'Route', 'Trasa', 'Cesta');
   const colFee = t(lang, 'Fee / purchase', 'Poplatok / nákup', 'Poplatek / nákup');
   const colEff = t(lang, 'Effective', 'Efektívny', 'Efektivní');
   const colDrag = t(lang, 'Annual drag', 'Ročná záťaž', 'Roční zátěž');

@@ -1,6 +1,6 @@
 {
   "_note": "Texty stránky O nás. Zástupné symboly doplňuje builder: {n} = počet partnerů z data/partners.json, {date} = datum AS_OF naformátované pro jazyk. Žádné dlouhé ani střední pomlčky. Význam bia zakladatele zachovat přesně (schválil Ras 13. 10. 2026). Názvy značek a produktů zůstávají anglicky: Virtuse, Virtuse Brief, Virtuse CFO, Partner Finder, Stacking Strategist, Loan & Liquidity Copilot, Tax & Inheritance Agent, Ras Vasilisin's Take, HackerNoon, LinkedIn, X, Virtuse Wealth Management, a.s.",
-  "title": "O nás: nezávislý Bitcoin hub od roku 2018 | Virtuse",
+  "title": "O nás: nezávislý bitcoinový hub od roku 2018 | Virtuse",
   "og_title": "O Virtuse: nezávislý hub pro bitcoinové služby",
   "description": "Nezávislý srovnávací hub pro bitcoinové služby, který v roce 2018 založil Rastislav Vasilisin. Jen Bitcoin. Nedržíme prostředky ani klíče klientů.",
   "crumb_home": "Domů",
@@ -8,7 +8,7 @@
   "eyebrow": "O Virtuse",
   "h1": "Nezávislý hub",
   "h1_or": "pro bitcoinové služby.",
-  "lead": "Virtuse porovnává bitcoinové služby partnerů a přesměruje vás k nim. Nakupujete, uschováváte a půjčujete si na vlastní platformě partnera, v rámci jeho licence. Virtuse provozuje společnost Virtuse Wealth Management, a.s.",
+  "lead": "Virtuse porovnává bitcoinové služby partnerů a přesměrovává vás k nim. Nakupujete, uschováváte a půjčujete si na vlastní platformě partnera, v rámci jeho licence. Virtuse provozuje společnost Virtuse Wealth Management, a.s.",
   "stat_founded_n": "2018",
   "stat_founded": "Založeno",
   "stat_partners": "partnerů, stav k {date}",

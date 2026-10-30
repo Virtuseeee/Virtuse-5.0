@@ -548,7 +548,7 @@ export const CHROME: Record<Lang, Chrome> = {
           },
           {
             "href": "aml-compliance.html",
-            "label": "AML a Compliance"
+            "label": "AML a compliance"
           }
         ]
       }

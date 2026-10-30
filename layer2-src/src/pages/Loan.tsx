@@ -304,7 +304,7 @@ export default function Loan() {
   const cashLabel = t(lang, 'Cash needed', 'Potrebná hotovosť', 'Potřebná hotovost');
   const btcLabel = t(lang, 'Your BTC holdings', 'Vaše BTC', 'Vaše BTC');
   const priceLabel = t(lang, 'BTC price', 'Cena BTC', 'Cena BTC');
-  const ltvLabel = t(lang, 'Loan-to-value', 'Loan-to-value', 'Loan-to-value');
+  const ltvLabel = t(lang, 'Loan-to-value', 'Loan-to-value', 'Poměr LTV');
   const aprLabel = t(lang, 'Interest rate (APR)', 'Úroková sadzba (APR)', 'Úroková sazba (APR)');
   const yearsLabel = t(lang, 'Horizon in years', 'Horizont v rokoch', 'Horizont v letech');
   const thresholdLabel = t(lang, 'Margin-call threshold (LTV)', 'Prah margin callu (LTV)', 'Práh margin callu (LTV)');
@@ -583,7 +583,7 @@ export default function Loan() {
                     <Bullet>{tv(lang, '{0} locked as collateral at {1} % LTV', '{0} uzamknutých ako kolaterál pri LTV {1} %', '{0} uzamčených jako kolaterál při LTV {1} %', [btcFmt(a.collateralBtc, 4), ltvPct])}</Bullet>
                     <Bullet>{t(lang, 'No sale, so no tax on a sale now', 'Žiadny predaj, teda teraz žiadna daň z predaja', 'Žádný prodej, tedy teď žádná daň z prodeje')}</Bullet>
                     <Bullet>{tv(lang, 'Interest: {0} per year, {1} in total', 'Úrok: {0} ročne, spolu {1}', 'Úrok: {0} ročně, celkem {1}', [eur(a.interestPerYear), eur(a.interestTotal)])}</Bullet>
-                    <Bullet>{tv(lang, 'To repay at the end: {0}', 'Na splatenie na konci: {0}', 'K splacení na konci: {0}', [eur(cashNeeded + a.interestTotal)])}</Bullet>
+                    <Bullet>{tv(lang, 'To repay at the end: {0}', 'Na splatenie na konci: {0}', 'Ke splacení na konci: {0}', [eur(cashNeeded + a.interestTotal)])}</Bullet>
                     <Bullet color={riskColor}>{tv(lang, 'Margin call if BTC falls to {0}', 'Margin call pri poklese BTC na {0}', 'Margin call při poklesu BTC na {0}', [eur(a.liquidationPrice)])}</Bullet>
                   </ul>
                 </>

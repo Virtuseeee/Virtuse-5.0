@@ -138,7 +138,7 @@ export default function Tax() {
   const fieldLabel: Record<TaxField | TaxOptionalField, string> = {
     gainTax: t(lang, 'Gain tax', 'Daň zo zisku', 'Daň ze zisku'),
     healthLevy: t(lang, 'Health insurance', 'Zdravotné odvody', 'Zdravotní pojištění'),
-    exemption: t(lang, 'Holding exemption', 'Oslobodenie podľa držania', 'Osvobození podle držení'),
+    exemption: t(lang, 'Holding exemption', 'Oslobodenie podľa držania', 'Osvobození podle doby držení'),
     filing: t(lang, 'Filing', 'Priznanie', 'Přiznání'),
   };
 
@@ -206,7 +206,7 @@ export default function Tax() {
             {t(lang,
               'Tax rules change fast and your situation is individual, so verify with a local tax advisor. For crypto tax reports, Lukka is one option.',
               'Daňové pravidlá sa menia rýchlo a vaša situácia je individuálna, preto si to overte u miestneho daňového poradcu. Pre krypto daňové výkazy je jednou z možností Lukka.',
-              'Daňová pravidla se mění rychle a vaše situace je individuální, proto si to ověřte u místního daňového poradce. Pro krypto daňové výkazy je jednou z možností Lukka.')}
+              'Daňová pravidla se mění rychle a vaše situace je individuální, proto si to ověřte u místního daňového poradce. Pro daňové výkazy z kryptoměn je jednou z možností Lukka.')}
           </p>
           <div className="min-w-0">
             <a

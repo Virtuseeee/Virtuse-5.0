@@ -32,10 +32,10 @@ export const COUNTRY_TAX: CountryTax[] = [
     id: 'cz',
     name: { en: 'Czechia', sk: 'Česko', cs: 'Česko' },
     flag: '🇨🇿',
-    gainTax: { en: '15 % income tax (23 % above threshold)', sk: '15 % daň z príjmu (23 % nad prahovou hodnotou)', cs: '15 % daň z příjmu (23 % nad prahovou hodnotou)' },
+    gainTax: { en: '15 % income tax (23 % above threshold)', sk: '15 % daň z príjmu (23 % nad prahovou hodnotou)', cs: '15 % daň z příjmů (23 % nad prahovou hodnotou)' },
     exemption: { en: 'Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000', sk: 'Bez dane po 3 rokoch držby (do 40 miliónov Kč ročne) alebo ak úhrn príjmov z predaja kryptoaktív v roku nepresiahne 100 000 Kč', cs: 'Bez daně po 3 letech držení (do 40 milionů Kč ročně) nebo pokud úhrn příjmů z prodeje kryptoaktiv v roce nepřesáhne 100 000 Kč' },
     filing: { en: 'Annual personal tax return', sk: 'Ročné daňové priznanie fyzickej osoby', cs: 'Roční daňové přiznání fyzické osoby' },
-    note: { en: 'Every disposal (incl. crypto-to-crypto) is a taxable event. Keep complete records from day one.', sk: 'Každý predaj alebo výmena (vrátane krypto za krypto) je zdaniteľná udalosť. Veďte si kompletnú evidenciu od prvého dňa.', cs: 'Každý prodej nebo směna (včetně krypto za krypto) je zdanitelná událost. Veďte si kompletní evidenci od prvního dne.' },
+    note: { en: 'Every disposal (incl. crypto-to-crypto) is a taxable event. Keep complete records from day one.', sk: 'Každý predaj alebo výmena (vrátane krypto za krypto) je zdaniteľná udalosť. Veďte si kompletnú evidenciu od prvého dňa.', cs: 'Každý prodej nebo směna (včetně směny kryptoměny za kryptoměnu) je zdanitelná událost. Veďte si kompletní evidenci od prvního dne.' },
   },
   {
     id: 'sk',
@@ -43,9 +43,9 @@ export const COUNTRY_TAX: CountryTax[] = [
     flag: '🇸🇰',
     gainTax: { en: '19 to 35% income tax', sk: '19 až 35 % daň z príjmov', cs: '19 až 35 % daň z příjmů' },
     healthLevy: { en: '16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer', sk: 'Zdravotné odvody 16 % zo zisku (8 % pri zdravotnom postihnutí), zúčtuje ich zdravotná poisťovňa v ročnom zúčtovaní', cs: 'Zdravotní pojištění 16 % ze zisku (8 % při zdravotním postižení), vyúčtuje ho zdravotní pojišťovna v ročním zúčtování' },
-    exemption: { en: 'No holding-period exemption; every sale or crypto-to-crypto swap is taxed', sk: 'Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje', cs: 'Bez osvobození podle doby držení; každý prodej i směna krypto za krypto se daní' },
+    exemption: { en: 'No holding-period exemption; every sale or crypto-to-crypto swap is taxed', sk: 'Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje', cs: 'Bez osvobození podle doby držení; každý prodej i směna kryptoměny za kryptoměnu se daní' },
     filing: { en: 'Annual personal tax return (type B), due 31 March', sk: 'Daňové priznanie fyzickej osoby typu B, do 31. marca', cs: 'Daňové přiznání fyzické osoby typu B, do 31. března' },
-    note: { en: 'Every disposal (incl. crypto-to-crypto) is taxable. A planned 7 % rate and 1-year exemption were cancelled before taking effect.', sk: 'Každý predaj aj výmena krypto za krypto sa zdaňuje. Plánovanú sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť.', cs: 'Každý prodej i směna krypto za krypto se daní. Plánovanou sazbu 7 % a osvobození po 1 roce zrušili dříve, než nabyly účinnosti.' },
+    note: { en: 'Every disposal (incl. crypto-to-crypto) is taxable. A planned 7 % rate and 1-year exemption were cancelled before taking effect.', sk: 'Každý predaj aj výmena krypto za krypto sa zdaňuje. Plánovanú sadzbu 7 % a oslobodenie po 1 roku zrušili skôr, než nadobudli účinnosť.', cs: 'Každý prodej i směna kryptoměny za kryptoměnu se daní. Plánovanou sazbu 7 % a osvobození po 1 roce zrušili dříve, než nabyly účinnosti.' },
   },
   {
     id: 'pl',
@@ -54,7 +54,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     gainTax: { en: '19 % flat capital gains tax', sk: '19 % jednotná daň z kapitálových výnosov', cs: '19 % jednotná daň z kapitálových výnosů' },
     exemption: { en: 'No holding-period exemption', sk: 'Bez oslobodenia podľa doby držania', cs: 'Bez osvobození podle doby držení' },
     filing: { en: 'Annual PIT-38', sk: 'Ročné priznanie PIT-38', cs: 'Roční přiznání PIT-38' },
-    note: { en: 'Crypto-to-crypto swaps are not taxed; only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.', sk: 'Výmeny krypto za krypto sa nezdaňujú; zdaňuje sa len predaj za peniaze, tovar alebo služby. Pri každom predaji vypočítajte zisk v PLN.', cs: 'Výměny kryptoměny za kryptoměnu se nedaní; daní se jen prodej za peníze, zboží nebo služby. U každého prodeje vypočítejte zisk v PLN.' },
+    note: { en: 'Crypto-to-crypto swaps are not taxed; only sales for money, goods or services are. Calculate each sale’s PLN gain or loss.', sk: 'Výmeny krypto za krypto sa nezdaňujú; zdaňuje sa len predaj za peniaze, tovar alebo služby. Pri každom predaji vypočítajte zisk v PLN.', cs: 'Výměny kryptoměny za kryptoměnu se nedaní; daní se jen prodej za peníze, zboží nebo služby. U každého prodeje vypočítejte zisk nebo ztrátu v PLN.' },
   },
   {
     id: 'at',
@@ -69,7 +69,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     id: 'de',
     name: { en: 'Germany', sk: 'Nemecko', cs: 'Německo' },
     flag: '🇩🇪',
-    gainTax: { en: 'Up to 45 % income tax (progressive)', sk: 'Až 45 % daň z príjmu (progresívna)', cs: 'Až 45 % daň z příjmu (progresivní)' },
+    gainTax: { en: 'Up to 45 % income tax (progressive)', sk: 'Až 45 % daň z príjmu (progresívna)', cs: 'Až 45 % daň z příjmů (progresivní)' },
     exemption: { en: '0% after a 1-year holding period; total gains under €1,000 a year are tax-free', sk: '0 % po 1-ročnej dobe držby; zisky spolu pod 1 000 € ročne sú bez dane', cs: '0 % po roční době držení; zisky celkem pod 1 000 € ročně jsou bez daně' },
     filing: { en: 'Annual tax return', sk: 'Ročné daňové priznanie', cs: 'Roční daňové přiznání' },
     note: { en: 'Crypto-to-crypto is taxable within the first year. FIFO record-keeping is critical.', sk: 'Krypto-krypto je zdaniteľné počas prvého roka. Evidencia metódou FIFO je kľúčová.', cs: 'Krypto-krypto je zdanitelné během prvního roku. Evidence metodou FIFO je klíčová.' },
@@ -80,7 +80,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     flag: '🇭🇺',
     gainTax: { en: '15 % capital gains tax', sk: '15 % daň z kapitálových výnosov', cs: '15 % daň z kapitálových výnosů' },
     exemption: { en: 'No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)', sk: 'Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)', cs: 'Bez osvobození podle doby držení; drobné transakce do 10 % minimální mzdy jsou bez daně (celkem nejvýše jedna minimální mzda ročně)' },
-    filing: { en: 'Annual personal income tax return', sk: 'Ročné priznanie dane z príjmu fyzickej osoby', cs: 'Roční přiznání daně z příjmu fyzické osoby' },
+    filing: { en: 'Annual personal income tax return', sk: 'Ročné priznanie dane z príjmu fyzickej osoby', cs: 'Roční přiznání daně z příjmů fyzické osoby' },
     note: { en: 'Documented acquisition costs are deductible, so keep every invoice.', sk: 'Doložené obstarávacie náklady sú odpočítateľné, preto uchovávajte každú faktúru.', cs: 'Doložené pořizovací náklady jsou odečitatelné, proto uchovávejte každou fakturu.' },
   },
   {
@@ -162,7 +162,7 @@ export interface ChecklistItem {
 export const INHERITANCE_CHECKLIST: ChecklistItem[] = [
   {
     id: 'letter',
-    question: { en: 'Do your heirs have written instructions (a "letter of instruction")?', sk: 'Majú vaši dedičia písomné pokyny („list s pokynmi")?', cs: 'Mají vaši dědicové písemné pokyny („dopis s pokyny")?' },
+    question: { en: 'Do your heirs have written instructions (a "letter of instruction")?', sk: 'Majú vaši dedičia písomné pokyny („list s pokynmi")?', cs: 'Mají vaši dědicové písemné pokyny („dopis s pokyny“)?' },
     detail: { en: 'A document that says what exists, where things are and what to do, without containing any seed words itself.', sk: 'Dokument, ktorý hovorí, čo existuje, kde sa to nachádza a čo robiť, bez toho, aby sám obsahoval seed frázu.', cs: 'Dokument, který říká, co existuje, kde se to nachází a co dělat, aniž by sám obsahoval seed frázi.' },
     points: 20,
     action: { en: 'Write a letter of instruction: inventory, locations, contacts, never seed phrases. Store it with your will or attorney.', sk: 'Napíšte list s pokynmi: zoznam, umiestnenia, kontakty, nikdy nie seed frázy. Uložte ho spolu so závetom alebo u právnika.', cs: 'Napište dopis s pokyny: seznam, umístění, kontakty, nikdy ne seed fráze. Uložte ho spolu se závětí nebo u právníka.' },
@@ -172,7 +172,7 @@ export const INHERITANCE_CHECKLIST: ChecklistItem[] = [
     question: { en: 'Are your keys geographically separated?', sk: 'Sú vaše kľúče geograficky rozdelené?', cs: 'Jsou vaše klíče geograficky rozdělené?' },
     detail: { en: 'Never all backups in one home. Fire, theft or flood should never be able to destroy access.', sk: 'Nikdy nemajte všetky zálohy na jednom mieste. Požiar, krádež ani povodeň by nikdy nemali zničiť prístup.', cs: 'Nikdy nemějte všechny zálohy na jednom místě. Požár, krádež ani povodeň by nikdy neměly zničit přístup.' },
     points: 20,
-    action: { en: 'Move one key/backup to a second location: bank vault, trusted family, or a professional key agent.', sk: 'Presuňte jeden kľúč/zálohu na druhé miesto: bankový trezor, dôveryhodná rodina alebo profesionálny správca kľúčov.', cs: 'Přesuňte jeden klíč/zálohu na druhé místo: bankovní trezor, důvěryhodná rodina nebo profesionální správce klíčů.' },
+    action: { en: 'Move one key/backup to a second location: bank vault, trusted family, or a professional key agent.', sk: 'Presuňte jeden kľúč/zálohu na druhé miesto: bankový trezor, dôveryhodná rodina alebo profesionálny správca kľúčov.', cs: 'Přesuňte jeden klíč/zálohu na druhé místo: bankovní trezor, důvěryhodný člen rodiny nebo profesionální správce klíčů.' },
   },
   {
     id: 'heir-aware',

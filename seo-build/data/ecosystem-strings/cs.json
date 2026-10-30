@@ -8,7 +8,7 @@
     "howWePick": "Jak vybíráme",
     "howWePickText": "Každou položku vybíráme ručně. Musí být zaměřená jen na Bitcoin, relevantní pro Evropu, aktivní a poctivá. Každé hodnocení píšeme sami. Placená umístění jsou vždy označena „Sponzorováno“ a naše hodnocení nikdy nemění.",
     "criteriaLink": "Přečtěte si naše kritéria pro zařazení",
-    "related": "Související na Virtuse",
+    "related": "Související obsah",
     "reviewed": "Naposledy zkontrolováno:",
     "notAdvice": "Položky mají informativní charakter a nejsou investičním poradenstvím.",
     "privacyFootNote": "Zajímá vás, jak Virtuse nakládá s vašimi údaji? Přečtěte si naše <a href=\"{privacy}\">zásady ochrany osobních údajů</a>.",
@@ -75,7 +75,7 @@
       "<strong>Poctivost:</strong> žádné sliby výnosů a žádná nezveřejněná úschova."
     ],
     "paidH": "Placené umístění",
-    "paid": "Některé položky jsou označeny „Sponzorováno“ nebo „Zvýrazněno“. Jde o placená umístění a některé odkazy jsou affiliate odkazy. Platba nikdy nemění naše kritéria ani naše hodnocení a nezaručuje přijetí. Viz <a href=\"{howWeEarn}\">Jak vyděláváme</a>.",
+    "paid": "Některé položky jsou označeny „Sponzorováno“ nebo „Zvýrazněno“. Jde o placená umístění a některé odkazy jsou partnerské odkazy. Platba nikdy nemění naše kritéria ani naše hodnocení a nezaručuje přijetí. Viz <a href=\"{howWeEarn}\">Jak vyděláváme</a>.",
     "removalH": "Odstranění",
     "removal": "Položku můžeme odstranit, pokud přestane splňovat kritéria. O odstranění můžete kdykoli požádat.",
     "applyH": "Žádost",
@@ -222,7 +222,7 @@
       "h1": "Knihy o Bitcoinu",
       "title": "Nejlepší knihy o Bitcoinu: seznam četby | Virtuse",
       "description": "Základní knihy o Bitcoinu, od prvních kroků po historii peněz, každá s krátkým hodnocením, pro koho je určena.",
-      "intro": "Knihy, které doporučujeme nejčastěji, od historie peněz po fungování protokolu. Ke každé přidáváme hodnocení na jeden řádek, pro koho je, abyste si snadno vybrali další četbu.",
+      "intro": "Knihy, které doporučujeme nejčastěji, od historie peněz po fungování protokolu. Ke každé přidáváme jednořádkové hodnocení, pro koho je určena, abyste si snadno vybrali další četbu.",
       "related": [
         "Co je Bitcoin? Srozumitelný úvod",
         "Blog Virtuse",
@@ -236,7 +236,7 @@
       "h1": "Bitcoinové podcasty",
       "title": "Nejlepší bitcoinové podcasty (jen Bitcoin) | Virtuse",
       "description": "Podcasty jen o Bitcoinu o ekonomii, technologii a svobodě, včetně evropských hlasů, každý s krátkým hodnocením.",
-      "intro": "Pořady jen o Bitcoinu, které stojí za cestu do práce, od dlouhých rozhovorů po technické rozbory, včetně evropských hlasů. Ke každému přidáváme hodnocení na jeden řádek, abyste věděli, co čekat.",
+      "intro": "Pořady jen o Bitcoinu, které se hodí na cestu do práce, od dlouhých rozhovorů po technické rozbory, včetně evropských hlasů. Ke každému přidáváme jednořádkové hodnocení, abyste věděli, co čekat.",
       "related": [
         "Virtuse Brief: týdenní zprávy o Bitcoinu",
         "Bitcoinová videa a kanály",
@@ -250,7 +250,7 @@
       "h1": "Bitcoinová videa",
       "title": "Nejlepší bitcoinová videa a YouTube kanály | Virtuse",
       "description": "Vybrané YouTube kanály, dokumenty a přednášky jen o Bitcoinu, od vysvětlení pro začátečníky po technické rozbory.",
-      "intro": "YouTube kanály, přednášky z konferencí a dokumenty, které doporučujeme, od vysvětlení pro začátečníky po technické návody. Vše jen o Bitcoinu, každé s krátkým hodnocením.",
+      "intro": "YouTube kanály, přednášky z konferencí a dokumenty, které doporučujeme, od vysvětlení pro začátečníky po technické návody. Vše jen o Bitcoinu, ke každé položce krátké hodnocení.",
       "related": [
         "Bitcoinové podcasty",
         "Co je Bitcoin? Srozumitelný úvod",
@@ -296,7 +296,7 @@
       "intro": "Kde v Evropě platit bitcoinem: mapy obchodů, které ho přijímají, dárkové karty pro běžné nákupy a online služby, které můžete zaplatit bitcoinem. Pamatujte, že v mnoha zemích se platba bitcoinem pro daňové účely považuje za zcizení.",
       "related": [
         "Přijímejte bitcoin ve svém obchodě",
-        "Daňové výkazy pro Bitcoin",
+        "Daňové přehledy pro Bitcoin",
         "Daňoví průvodci podle zemí"
       ],
       "h1Accent": ": obchody, mapy a dárkové karty."
@@ -310,7 +310,7 @@
       "intro": "Nástroje pro přijímání bitcoinu v obchodě, kavárně nebo e-shopu: platební brány na vlastním serveru, pokladní terminály s Lightningem a pluginy pro běžné e-commerce platformy. Držení bitcoinu v rozvaze firmy je samostatné téma, kterému se věnujeme na stránce Treasury.",
       "related": [
         "Bitcoin treasury pro firmy",
-        "Daňové výkazy pro Bitcoin",
+        "Daňové přehledy pro Bitcoin",
         "Kde platit bitcoinem"
       ],
       "h1Accent": ": přijímejte bitcoin ve svém obchodě."
@@ -349,7 +349,7 @@
       "h1": "Spřátelené bitcoinové projekty",
       "title": "Spřátelené bitcoinové projekty | Virtuse",
       "description": "Nezávislé projekty, adresáře a vzdělavatelé zaměření jen na Bitcoin, kterých si vážíme a které doporučujeme. Nekomerční, ručně vybrané.",
-      "intro": "Nezávislé, nekomerční projekty zaměřené jen na Bitcoin, kterých si vážíme: adresáře, vzdělavatelé a komunity, které s námi sdílejí názor, že Bitcoin stačí. Komerční partneři zde nejsou; najdete je pouze v Partner Finder.",
+      "intro": "Nezávislé, nekomerční projekty zaměřené jen na Bitcoin, kterých si vážíme: adresáře, vzdělavatelé a komunity, které s námi sdílejí názor, že Bitcoin stačí. Komerční partneři zde nejsou; najdete je pouze v Partner Finderu.",
       "partnerNote": "Hledáte regulované partnery pro nákup, úschovu nebo půjčku? Použijte <a href=\"/concierge.html?utm_source=concierge&amp;utm_medium=ecosystem\">Partner Finder</a>.",
       "related": [
         "Hledáte regulované partnery? Použijte Partner Finder",
@@ -364,7 +364,7 @@
       "h1": "Zařazení do ekosystému",
       "title": "Zařazení do bitcoinového ekosystému | Virtuse",
       "description": "Jak mohou projekty zaměřené jen na Bitcoin požádat o zařazení do ekosystému Virtuse. Ruční kontrola, jasná kritéria, placená umístění označena.",
-      "intro": "Adresář Bitcoinový ekosystém Virtuse sestavujeme ručně. Automatické přihlášky nepřijímáme. Pokud si myslíte, že sem váš projekt patří, napište nám e-mail nebo odešlete formulář níže. Každou žádost posuzujeme osobně a můžeme ji odmítnout bez udání důvodu.",
+      "intro": "Adresář „Bitcoinový ekosystém Virtuse“ sestavujeme ručně. Automatické přihlášky nepřijímáme. Pokud si myslíte, že sem váš projekt patří, napište nám e-mail nebo odešlete formulář níže. Každou žádost posuzujeme osobně a můžeme ji odmítnout bez udání důvodu.",
       "h1Accent": ": představte svůj projekt."
     }
   },

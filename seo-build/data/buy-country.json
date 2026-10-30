@@ -139,7 +139,7 @@
         "Automated": "Automaticky",
         "Same day": "Ve stejný den"
       },
-      "tableNote": "Poplatky jsou převzaty z ceníků partnerů, stav {asof}. 21bitcoin účtuje 0 % v plánu Auto-Invest od 8. dne; prvních 7 dní platí běžný poplatek. Spread, převod CZK na EUR, poplatky sítě Bitcoin a výběr nejsou zahrnuty; celkové náklady včetně spreadu ukazuje",
+      "tableNote": "Poplatky jsou převzaty z ceníků partnerů, stav {asof}. 21bitcoin účtuje 0 % v plánu Auto-Invest od 8. dne; prvních 7 dní platí běžný poplatek. Spread, převod CZK na EUR, poplatky sítě Bitcoin a za výběr nejsou zahrnuty; celkové náklady včetně spreadu ukazuje",
       "tableNoteLink": "index poplatků",
       "stepsHeading": "Jak koupit Bitcoin v Česku ve 4 krocích",
       "steps": [
@@ -157,7 +157,7 @@
         ],
         [
           "Výběr do vlastní peněženky",
-          "Bitcoin převeďte do vlastní peněženky, ke které klíče máte jen vy."
+          "Bitcoin převeďte do vlastní peněženky, ke které máte klíče jen vy."
         ]
       ],
       "walletLink": "Hardwarové peněženky a úschova",
