@@ -180,7 +180,7 @@ export function ResultCaptureForm(props: {
         kind="result"
         title={t(lang, 'Get this result by email', 'Pošlite mi tento výsledok emailom', 'Pošlete mi tento výsledek emailem')}
         intro={t(lang,
-          'One email with your inputs and these numbers. We add you to no list unless you tick the box.',
+          'One email with your inputs and these numbers. We add you to a list only if you tick the box.',
           'Jeden email s vašimi vstupmi a týmito číslami. Do žiadneho zoznamu vás nepridáme, ak nezaškrtnete políčko.',
           'Jeden email s vašimi vstupy a těmito čísly. Do žádného seznamu vás nepřidáme, pokud nezaškrtnete políčko.')}
       />

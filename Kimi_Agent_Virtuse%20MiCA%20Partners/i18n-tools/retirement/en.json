@@ -66,7 +66,7 @@
   "c_inflation": "Inflation per year",
   "c_inflation_src": "Default 2%: ECB price stability target, checked 13 Oct 2026",
   "c_price": "Bitcoin price today (€)",
-  "c_price_loading": "Loading the live price...",
+  "c_price_loading": "Loading the live price…",
   "c_price_live": "Price as of {0}",
   "c_price_fallback": "Fallback price as of 13 Oct 2026",
   "c_price_manual": "Your own price is used.",

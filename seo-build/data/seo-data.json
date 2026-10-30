@@ -142,7 +142,7 @@
       "flag": "🇪🇸",
       "gainTax": "19 to 30% progressive tax on savings income",
       "exemption": "No holding-period exemption",
-      "filing": "Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000",
+      "filing": "Annual IRPF return; Modelo 721 for crypto worth over €50,000 held with custodians abroad",
       "note": "Crypto-to-crypto swaps are taxable disposals. Use FIFO for identical coins."
     }
   ],

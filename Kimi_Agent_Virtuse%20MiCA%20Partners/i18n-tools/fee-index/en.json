@@ -23,7 +23,7 @@
   "source": "Source",
   "checked": "checked {date}",
   "open": "Open {name}",
-  "disclosure": "Virtuse may earn a referral fee. It doesn't change the ranking.",
+  "disclosure": "Virtuse may receive a commission. It doesn't change the ranking.",
   "spread_note": "Est. spread: for Bybit EU and Kraken Pro, a market buy of that amount against the public BTC/EUR order book (average fill against the mid price), measured {date}. For 21bitcoin, which has no public order book, its buy price in the app against Kraken's mid price at the same minute, measured {date}.",
   "excluded": "Not included: network and withdrawal fees, and currency conversion if you don't pay in euros. 21bitcoin charges its regular fee (0.99%, 0.79% with a referral code) for the first 7 days of a plan.",
   "finding_label": "Key finding:",

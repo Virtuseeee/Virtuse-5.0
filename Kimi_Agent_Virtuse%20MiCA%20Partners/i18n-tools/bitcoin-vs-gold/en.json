@@ -76,7 +76,7 @@
   "q2": "Where does the data come from?",
   "a2": "Prices come from Yahoo Finance: the ETFs GLD, SLV, USO, CPER, PPLT and DBC for returns, the front-month futures GC=F, SI=F, CL=F, HG=F and PL=F for prices and ratios, and BTC-USD for Bitcoin. A script rebuilds the dataset every day after the US close; if a source fails, the page keeps the last good data and shows its date.",
   "q3": "Why ETFs for returns and futures for the ratio?",
-  "a3": "An ETF's adjusted price is a total return an investor could actually have earned, including fees and distributions, so it compares fairly with holding Bitcoin. Front-month futures jump when a contract rolls, which distorts multi-year returns, but they are the cleanest daily price for a ratio like BTC/gold.",
+  "a3": "An ETF's adjusted price reflects the total return an investor could actually have earned, after fees and with distributions reinvested, so it compares fairly with holding Bitcoin. Front-month futures jump when a contract rolls, which distorts multi-year returns, but they are the cleanest daily price for a ratio like BTC/gold.",
   "q4": "Is this investment advice?",
   "a4": "No. The page shows public market data for information only. Past returns do not guarantee future results, and Bitcoin, metals and commodities can all fall in value.",
   "q5": "What are crypto gold tokens and gold futures?",

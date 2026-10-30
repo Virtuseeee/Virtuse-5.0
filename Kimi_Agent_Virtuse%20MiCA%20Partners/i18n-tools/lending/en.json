@@ -44,7 +44,7 @@
  "w_b_p": "Use your Bitcoin as collateral to borrow fiat (EUR, CHF, CZK) or stablecoins (USDC). Keep your Bitcoin exposure and access liquidity without selling. LTV up to 50%, terms from 3 to 24 months, rates from 5% p.a.",
  "w_b_cta": "Borrow at Firefish",
  "w_i_t": "Investors",
- "w_i_p": "Provide fiat or stablecoins to fund Bitcoin-backed loans and earn the interest paid by borrowers. Collateral is locked in on-chain escrow. No rehypothecation, no altcoins. Minimum from EUR 800.",
+ "w_i_p": "Provide fiat or stablecoins to fund Bitcoin-backed loans and earn the interest paid by borrowers. Collateral is locked in on-chain escrow. No rehypothecation, no altcoins. Minimum EUR 800.",
  "w_i_cta": "Sign up at Firefish",
  "f_h2_a": "Risks and questions.",
  "f_h2_b": "Read these before you borrow.",

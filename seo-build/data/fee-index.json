@@ -28,7 +28,7 @@
       "logo": "logo-kraken.png",
       "logo_class": "cover",
       "fee_pct": 0.8,
-      "fee_fact": "Kraken Pro spot, Tier 1 ($0+ 30-day volume): 0.40% maker, 0.80% taker. Instant Buy in the Kraken app is a separate 1% fee plus a spread.",
+      "fee_fact": "Kraken Pro spot, Tier 1 ($0+ 30-day volume): 0.40% maker, 0.80% taker. Instant Buy in the Kraken app is a separate route: a 1% fee plus a spread.",
       "url": "https://proinvite.kraken.com/9f1e/lj72d37e",
       "source": "https://www.kraken.com/features/fee-schedule"
     }

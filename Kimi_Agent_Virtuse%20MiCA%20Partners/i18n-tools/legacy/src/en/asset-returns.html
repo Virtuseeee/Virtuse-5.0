@@ -17,7 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
 <title>Asset Class Returns — Virtuse</title>
-<meta name="description" content="Calendar-year total returns of Bitcoin, US and European stocks and bonds, gold, commodities and cash over the last 10 years, updated every day. Best and worst asset each year, cumulative and annualized.">
+<meta name="description" content="Calendar-year total returns of Bitcoin, US and European stocks and bonds, gold, commodities and cash over the last 10 years, updated every day. Best and worst asset each year, cumulative and annualised.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -37,7 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Asset Class Returns — Virtuse">
-<meta property="og:description" content="Calendar-year total returns of Bitcoin, US and European stocks and bonds, gold, commodities and cash over the last 10 years, updated every day. Best and worst asset each year, cumulative and annualized.">
+<meta property="og:description" content="Calendar-year total returns of Bitcoin, US and European stocks and bonds, gold, commodities and cash over the last 10 years, updated every day. Best and worst asset each year, cumulative and annualised.">
 <link rel="canonical" href="https://virtuse.com/asset-returns.html">
 <meta property="og:url" content="https://virtuse.com/asset-returns.html">
 <meta property="og:image" content="https://virtuse.com/og/asset-returns.jpg">
@@ -46,7 +46,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Asset Class Returns — Virtuse">
-<meta name="twitter:description" content="Calendar-year total returns of Bitcoin, US and European stocks and bonds, gold, commodities and cash over the last 10 years, updated every day. Best and worst asset each year, cumulative and annualized.">
+<meta name="twitter:description" content="Calendar-year total returns of Bitcoin, US and European stocks and bonds, gold, commodities and cash over the last 10 years, updated every day. Best and worst asset each year, cumulative and annualised.">
 <meta name="twitter:image" content="https://virtuse.com/og/asset-returns.jpg">
 <link rel="stylesheet" href="styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1045,7 +1045,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     <div class="ar-sort" role="group" aria-label="Sort rows">
       <span>Sort by</span>
       <button type="button" data-sort="ytd" class="active">YTD</button>
-      <button type="button" data-sort="ann">Annualized</button>
+      <button type="button" data-sort="ann">Annualised</button>
       <button type="button" data-sort="fixed">Default</button>
     </div>
     </div>
@@ -1244,7 +1244,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     var startY = years[0];
     var h = '<thead><tr><th class="ar-asset">Asset</th>';
     years.forEach(function (y, i) { h += '<th class="' + (i === last ? 'ar-cur' : '') + '">' + (i === last ? y + ' YTD' : y) + '</th>'; });
-    h += '<th class="ar-gap">' + startY + '–' + String(years[last]).slice(2) + ' cumul.</th><th>Annualized</th></tr></thead><tbody>';
+    h += '<th class="ar-gap">' + startY + '–' + String(years[last]).slice(2) + ' cumul.</th><th>Annualised</th></tr></thead><tbody>';
     rows.forEach(function (r) {
       h += '<tr class="' + (r.ticker === 'BTC' ? 'ar-btc' : '') + '"><td class="ar-asset"><b>' + r.ticker + '</b><span>' + r.name + (r.region === 'eu' ? ' <i class="ar-eu">EU</i>' : '') + '</span></td>';
       r.returns.forEach(function (v, i) { h += cell(v, i === last ? 'ar-cur' : ''); });

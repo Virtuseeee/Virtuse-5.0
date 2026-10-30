@@ -418,7 +418,7 @@ function ResultCards({
               <p className="mt-0.5 text-xs text-ink-muted">{L(rec.partner.tagline, lang)}</p>
               {rec.partner.licence && (
                 <p className="mt-1.5 text-xs text-ink">
-                  {tv(lang, 'MiCA licensed ({0})', 'Licencia MiCA ({0})', 'Licence MiCA ({0})', [L(rec.partner.licence.regulator, lang)])}{' '}
+                  {tv(lang, 'MiCA-licensed ({0})', 'Licencia MiCA ({0})', 'Licence MiCA ({0})', [L(rec.partner.licence.regulator, lang)])}{' '}
                   <span className="text-ink-muted">
                     ·{' '}
                     <a
@@ -532,7 +532,7 @@ function PlanEmailForm({ recs, answers, lang }: { recs: Recommendation[]; answer
       className="w-full max-w-sm sm:w-96"
       title={t(lang, 'Get this list by email', 'Pošlite mi tento zoznam emailom', 'Pošlete mi tento seznam emailem')}
       intro={t(lang,
-        'One email with your criteria and these partners. We add you to no list unless you tick the box.',
+        'One email with your criteria and these partners. We add you to a list only if you tick the box.',
         'Jeden email s vašimi kritériami a týmito partnermi. Do žiadneho zoznamu vás nepridáme, ak nezaškrtnete políčko.',
         'Jeden email s vašimi kritérii a těmito partnery. Do žádného seznamu vás nepřidáme, pokud nezaškrtnete políčko.')}
       buildPayload={() => {

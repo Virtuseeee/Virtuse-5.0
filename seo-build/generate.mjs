@@ -372,8 +372,11 @@ function gainSentenceEn(c) {
 function exemptionAnswerEn(c) {
   if (c.id === 'nl') return `No. Box 3 has no holding period; instead there is a ${lcFirst(c.exemption)}.`;
   if (c.id === 'si' && /^Private gains are not taxed/.test(c.exemption)) return `No holding period is needed: ${lcFirst(c.exemption)} at all.`;
+  if (c.exemption === 'No holding-period exemption') return 'No, there is no holding-period exemption.';
   return `${c.exemption}.`;
 }
+/** "Bulgaria has no holding-period exemption." when that is the whole exemption field, else ''. */
+function noHoldEn(c, cap) { return c.exemption === 'No holding-period exemption' ? `${cap ? TheEn(c) : theEn(c)} has no holding-period exemption.` : ''; }
 /** "(about 36% of the assumed yield)" from the NL gain-tax field. */
 function nlRateEn(c) { const m = /\(([^)]+)\)\s*$/.exec(gainFull(c)); return m ? m[1] : gainFull(c); }
 // Lowercase the first word of a data value that follows a colon ("Exemption: tax-free…"), keeping acronyms (KESt, PIT-38),
@@ -664,7 +667,7 @@ function buyAnswerEn(c, winner) {
   const cur = meta.currency[c.id];
   const extra = c.id === 'nl'
     ? `In the Netherlands, Box 3 still applies to holdings after you buy, because tax is on a deemed return rather than on disposal gains.`
-    : `Tax usually arises only when you sell or swap later; exemption in ${theEn(c)}: ${lcFirst(c.exemption)}.`;
+    : `Tax usually arises only when you sell or swap later; ${noHoldEn(c, false) || `exemption in ${theEn(c)}: ${lcFirst(c.exemption)}.`}`;
   return finalizeAnswer([
     `As of ${feeAsOfEn}, the lowest published fee at €100/month is ${winner.partner} (${winner.method}): ${formatPct(winner.pct)} variable fee, ${formatEur(winner.annualDrag)} annual fee drag.`,
     `The lowest total cost incl. spread on the Virtuse Bitcoin Fee Index is ${FI_TOP.name} (${formatPct(FI_TOP.pct)}).`,
@@ -741,7 +744,7 @@ function buyFaqsEn(c, winner) {
       q: `Does buying Bitcoin trigger tax in ${theEn(c)}?`,
       a: c.id === 'nl'
         ? `No. The Netherlands does not use a classic capital gains tax, but Box 3 wealth tax on a deemed return still applies to your holdings (${nlRateEn(c)}, as of ${asOfEn}).`
-        : `No. In this overview, tax can arise only when you sell or swap (a disposal), not when you buy. Exemption in ${theEn(c)}: ${lcFirst(c.exemption)}. Indicative 2026 overview, not tax advice.`
+        : `No. In this overview, tax can arise only when you sell or swap (a disposal), not when you buy. ${noHoldEn(c, true) || `Exemption in ${theEn(c)}: ${lcFirst(c.exemption)}.`} Indicative 2026 overview, not tax advice.`
     },
     {
       q: 'Are these fees the full cost of buying?',
@@ -751,7 +754,7 @@ function buyFaqsEn(c, winner) {
     },
     {
       q: 'Does Virtuse execute the buy?',
-      a: 'No. Virtuse never holds your keys. You complete KYC on the partner platform and buy there.'
+      a: 'No. Virtuse never holds your keys. You complete KYC on the partner’s platform and buy there.'
     }
   ];
 }
@@ -874,7 +877,7 @@ function pushPage(spec) {
     asOfLabel: spec.asOfLabel || (isFeePage(spec.relFile)
       ? (spec.lang === 'fr' ? feeAsOfFr : spec.lang === 'es' ? feeAsOfEs : spec.lang === 'de' ? feeAsOfDe : feeAsOfEn)
       : (spec.lang === 'fr' ? asOfFr : spec.lang === 'es' ? asOfEs : spec.lang === 'de' ? asOfDe : asOfEn)),
-    chrome: spec.guide ? guideChrome(spec.lang) : CHROME[spec.lang]
+    chrome: { ...(spec.guide ? guideChrome(spec.lang) : CHROME[spec.lang]), ...(spec.chrome || {}) }
   });
   generated.push({ relFile: spec.relFile, html, lang: spec.lang, noindex: !!spec.noindex, title: spec.title });
 }
@@ -898,10 +901,10 @@ function dac8Box(id, lang, relFile) {
     esc(c.exemption)
   ]);
   const faqs = [
-    { q: 'Which EU countries does this Bitcoin tax overview cover?', a: `${N} EU countries: ${COUNTRIES.map((c) => theEn(c)).join(', ')}. ${guideText('en', 'hubFaq')}` },
-    { q: 'Is this tax advice?', a: `No. ${guideLine('en')} Confirm current-year rules with a local advisor.` },
+    { q: 'Which EU countries does this Bitcoin tax overview cover?', a: `${N} EU countries: ${COUNTRIES.map((c) => theEn(c)).join(', ').replace(/, ([^,]+)$/, ' and $1')}. ${guideText('en', 'hubFaq')}` },
+    { q: 'Is this tax advice?', a: `No. ${gfill('It is an indicative overview as of {a} (checked {d}).', 'en')} Confirm current-year rules with a local advisor.` },
     { q: 'Does Virtuse report my holdings to tax authorities?', a: 'No. Virtuse never holds your keys or your transaction history. Partners complete their own KYC.' },
-    { q: 'Where can I model inheritance as well as tax?', a: `Use the Tax & Inheritance Agent (live module) for the same ${N} countries plus a multisig readiness check.` }
+    { q: 'Where can I model inheritance as well as tax?', a: `Use the Tax & Inheritance Agent (live module) for the same ${N} countries plus an inheritance readiness check.` }
   ];
   const answer = finalizeAnswer([
     `This hub compares Bitcoin tax treatment across ${N} EU countries as of ${asOfEn}.`,
@@ -930,7 +933,7 @@ function dac8Box(id, lang, relFile) {
     bodyHtml: `
 <p>Each country page gives the tax on gains, any holding-period exemption and the filing requirements as of ${esc(asOfEn)}. The live Tax & Inheritance Agent uses the same data and adds an inheritance readiness score.</p>
 <h2>Country comparison</h2>
-${tableHtml(['Country', 'Gain tax', 'Exemption'], rows)}
+${tableHtml(['Country', 'Tax on gains', 'Exemption'], rows)}
 ${faqHtml(faqs, 'FAQ')}
 `
   });
@@ -994,7 +997,7 @@ for (const c of COUNTRIES) {
 <p>${esc(c.flag)} <strong>${esc(TheEn(c))}</strong> is one of the ${N} EU countries in this overview. ${esc(guideText('en', 'intro'))}</p>
 <h2>Rates and filing</h2>
 ${tableHtml(['Field', 'As of ' + asOfEn], [
-  ['Gain tax', esc(c.gainTax) + srcTag(c.id, 'gainTax', 'en')],
+  ['Tax on gains', esc(c.gainTax) + srcTag(c.id, 'gainTax', 'en')],
   ...healthRows(c.id, c, 'en'),
   ['Exemption', esc(c.exemption) + srcTag(c.id, 'exemption', 'en')],
   ['Filing', esc(c.filing) + srcTag(c.id, 'filing', 'en')],
@@ -1113,7 +1116,7 @@ for (const c of COUNTRIES) {
 ${tableHtml(['Rank', 'Partner', 'Method', 'Variable fee', 'Annual fee drag', 'Speed'], rows)}
 <p class="muted">Annual fee drag uses the live Stacking Strategist formula: a percentage of each purchase plus any listed monthly subscription.${ranked.some((r) => r.illustrative) ? ' RevenueBot’s percentage is marked as illustrative in the source schedule.' : ''} Total cost incl. spread: <a href="${esc(toRoot(relFile, 'bitcoin-fee-index/'))}">Bitcoin Fee Index</a> (lowest: ${esc(FI_TOP.name)}, ${esc(formatPct(FI_TOP.pct))}).</p>
 <h2>Tax in ${esc(theEn(c))}</h2>
-<p>Gain tax: ${esc(lcEn(gainFull(c)))}. Exemption: ${esc(lcEn(c.exemption))}.</p>
+<p>Tax on gains: ${esc(lcEn(gainFull(c)))}. Exemption: ${esc(lcEn(c.exemption))}.</p>
 <p>Read the dedicated guide: <a href="${esc(toRoot(relFile, `bitcoin-tax/${slugEn(c.id)}/`))}">Bitcoin tax in ${esc(theEn(c))}</a>.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
@@ -1137,12 +1140,12 @@ ${faqHtml(faqs, 'FAQ')}
   const faqs = [
     { q: 'Does this calculator forecast Bitcoin’s price?', a: 'No. It isolates partner fees from the published fee schedule. Price returns are not modelled.' },
     { q: `What default plan is shown as of ${feeAsOfEn}?`, a: `€${initial} upfront plus €${monthly}/month for 12 months (${formatEur(invested)} invested), ranked by first-year fees using the Stacking Strategist formula.` },
-    { q: 'Which route has the lowest published fee on that plan?', a: `${win.partner} (${win.method}) with a ${formatPct(win.pct)} variable fee: about ${formatEur(win.yearOneFees)} in first-year fees in this fee-only example. Lowest total cost incl. spread on the Bitcoin Fee Index: ${FI_TOP.name} (${formatPct(FI_TOP.pct)}) at €100/month.` },
-    { q: 'Is this financial advice?', a: 'No. It is for educational purposes only. KYC happens on the partner platform. Virtuse never holds your keys.' }
+    { q: 'Which route has the lowest published fee on that plan?', a: `${win.partner} (${win.method}) with a ${formatPct(win.pct)} variable fee: ${Math.round(win.yearOneFees) === 0 ? '' : 'about '}${formatEur(win.yearOneFees)} in first-year fees in this fee-only example. Lowest total cost incl. spread on the Bitcoin Fee Index: ${FI_TOP.name} (${formatPct(FI_TOP.pct)}) at €100/month.` },
+    { q: 'Is this financial advice?', a: 'No. It is for educational purposes only. KYC happens on the partner’s platform. Virtuse never holds your keys.' }
   ];
   const answer = finalizeAnswer([
     `As of ${feeAsOfEn}, a fee-only DCA example of €${initial} plus €${monthly} per month for 12 months (${formatEur(invested)} invested) ranks ${win.partner} first by published fee.`,
-    `Variable fee: ${formatPct(win.pct)}; first-year fees about ${formatEur(win.yearOneFees)}, using the live Stacking Strategist formula.`,
+    `Variable fee: ${formatPct(win.pct)}; first-year fees ${Math.round(win.yearOneFees) === 0 ? '' : 'about '}${formatEur(win.yearOneFees)}, using the live Stacking Strategist formula.`,
     'This is not a return forecast. Indicative 2026 overview.'
   ], 'en', 'fee');
   const rows = ranked.map((r, i) => [
@@ -1158,6 +1161,7 @@ ${faqHtml(faqs, 'FAQ')}
   })));
   pushPage({
     relFile, lang: 'en',
+    chrome: { disclaimerTax: 'Indicative 2026 overview – not investment advice.' },
     title: assertTitle('Bitcoin DCA calculator (EU fees 2026)'),
     description: assertDescription(`Fee-only Bitcoin DCA calculator using Q4 2026 partner fees. Lowest published fee on €500 + €100/month: ${win.partner}. Not a return forecast.`),
     h1: 'Bitcoin DCA calculator',
@@ -1292,7 +1296,7 @@ ${faqHtml(faqs, 'FAQ')}
     { q: 'Where do I compare a specific cash amount?', a: 'Use the live Loan & Liquidity Copilot. This page explains the trade-off between tax and risk using only the published country tax rates.' }
   ];
   const answer = finalizeAnswer([
-    `As of ${asOfEn}, selling Bitcoin can trigger tax (for example, up to 45% in Germany within the 1-year holding period, or Spekulationsfrist; 16% in Romania from 2026).`,
+    `As of ${asOfEn}, selling Bitcoin can trigger tax (for example, up to 45% in Germany within the 1-year holding period (Spekulationsfrist); 16% in Romania from 2026).`,
     'Borrowing against your Bitcoin keeps your market exposure but adds interest and liquidation risk on a partner platform.',
     'Indicative 2026 overview, not tax or credit advice. Virtuse never holds your keys.'
   ], 'en');
@@ -1317,7 +1321,7 @@ ${faqHtml(faqs, 'FAQ')}
       { href: toRoot(relFile, 'bitcoin-dca-calculator/'), label: 'DCA calculator' },
       { href: toRoot(relFile, 'bitcoin-inheritance/'), label: 'Inheritance checklist' }
     ],
-    moduleCta: { href: toRoot(relFile, CTAS.loan.replace(/^\//, '')), label: 'Compare sell vs borrow in the copilot →' },
+    moduleCta: { href: toRoot(relFile, CTAS.loan.replace(/^\//, '')), label: 'Compare sell vs borrow in the Loan Copilot →' },
     schemas: [
       faqLd(faqs),
       {
@@ -1332,7 +1336,7 @@ ${faqHtml(faqs, 'FAQ')}
     bodyHtml: `
 <h2>Tax if you sell</h2>
 <p>The rates below are the same as in the country tax guides (Tax &amp; Inheritance Agent, ${esc(asOfEn)}). Selling shortly before a holding period ends can cost you an exemption you were about to qualify for.</p>
-${tableHtml(['Country', 'Gain tax', 'Exemption'], rows)}
+${tableHtml(['Country', 'Tax on gains', 'Exemption'], rows)}
 <h2>Risk if you borrow</h2>
 <p>Bitcoin-backed loans are offered by regulated partners, not by Virtuse. You keep your price exposure and pay interest, and your collateral can be liquidated. Virtuse never holds the collateral. The live Loan & Liquidity Copilot runs the scenarios; this page stays qualitative and quotes no interest rates.</p>
 <h2>How to choose a next step</h2>
@@ -4988,7 +4992,7 @@ ${Object.values(BUY_COUNTRY).map((pg) => `${pg.h1} (${pg.lang.toUpperCase()}): $
 
 function llmsFull() {
   const tax = COUNTRIES.map((c) => `### ${c.flag} ${c.name} (\`${c.id}\`)
-- Gain tax: ${gainFull(c)}
+- Tax on gains: ${gainFull(c)}
 - Exemption: ${c.exemption}
 - Filing: ${c.filing}
 - Note: ${c.note}

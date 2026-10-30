@@ -30,7 +30,7 @@
       "pages": {
         "en": {
           "title": "DAC8 in Germany: what your exchange reports (2026)",
-          "description": "Since 2026 EU exchanges record your trades for the tax office under DAC8. What is reported, when, and what German Bitcoin holders should do now.",
+          "description": "Since 2026, EU exchanges record your trades for the tax office under DAC8. What is reported, when, and what German Bitcoin holders should do now.",
           "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Germany",
           "answer": "Since 1 January 2026, crypto exchanges serving EU residents record your identity, tax ID and trades under DAC8. German providers report 2026 data to the Federal Central Tax Office (BZSt) by 31 July 2027; data from exchanges in other EU countries reaches Germany by 30 September 2027. Bitcoin held over one year stays tax-free.",
           "crumbs": [
@@ -316,7 +316,7 @@
       "pages": {
         "en": {
           "title": "DAC8 in Slovakia: what your exchange reports (2026)",
-          "description": "Since 2026 exchanges record Slovak residents' crypto trades under DAC8. What is reported, the 2027 deadlines and how Bitcoin is taxed in Slovakia.",
+          "description": "Since 2026, exchanges record Slovak residents' crypto trades under DAC8. What is reported, the 2027 deadlines and how Bitcoin is taxed in Slovakia.",
           "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Slovakia",
           "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of Slovak residents under DAC8. Your 2026 tax return is due on 31 March 2027, but data from all EU exchanges reaches the Financial Administration by 30 September 2027, after you file. Slovakia has no holding-period exemption: every Bitcoin sale or swap is taxable.",
           "crumbs": [
@@ -608,7 +608,7 @@
           "title": "DAC8 in Czechia: what exchanges will report (2026)",
           "description": "Czechia has not passed its DAC8 law yet, but 2026 is meant to be the first reporting year. What exchanges report and how Bitcoin is taxed in Czechia.",
           "h1": "DAC8 in Czechia: your Bitcoin trades are being recorded",
-          "answer": "Czechia has not yet passed its DAC8 law: the bill is still in Parliament. The government intends 2026 as the first reporting year anyway, and exchanges in other EU countries already record Czech residents' trades. Bitcoin held over three years, or sales under CZK 100,000 a year, stay tax-free.",
+          "answer": "Czechia has not yet passed its DAC8 law: the bill is still in Parliament. The government intends 2026 as the first reporting year anyway, and exchanges in other EU countries already record Czech residents' trades. Bitcoin held over three years, or total sales of CZK 100,000 or less a year, stay tax-free.",
           "crumbs": [
             "Home",
             "Bitcoin tax",
@@ -645,7 +645,7 @@
                     "Name, address, date of birth and tax identification number"
                   ],
                   [
-                    "Crypto to money",
+                    "Crypto to euro or other money",
                     "Total amounts bought and sold per crypto-asset and year"
                   ],
                   [
@@ -736,7 +736,7 @@
               "a": "No. Your wallet's balance is not reported, but transfers from an exchange to it are."
             },
             {
-              "q": "Do small sales need to be taxed?",
+              "q": "Are small sales taxed?",
               "a": "No, if your total crypto sale proceeds in the year are CZK 100,000 or less."
             }
           ]
@@ -890,7 +890,7 @@
       "pages": {
         "en": {
           "title": "DAC8 in Poland: what your exchange reports (2026)",
-          "description": "Since 2026 exchanges record Polish residents' crypto trades under DAC8. What is reported to KAS, the 2027 deadlines and how PIT-38 taxes Bitcoin.",
+          "description": "Since 2026, exchanges record Polish residents' crypto trades under DAC8. What is reported to KAS, the 2027 deadlines and how PIT-38 taxes Bitcoin.",
           "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Poland",
           "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of Polish residents under DAC8. Your PIT-38 for 2026 is due on 30 April 2027, but providers report to KAS by 30 June 2027. Gains are taxed at 19%; swapping one crypto-asset for another is not taxed in Poland.",
           "crumbs": [
@@ -928,7 +928,7 @@
                     "Name, address, date of birth and tax identification number"
                   ],
                   [
-                    "Crypto to money",
+                    "Crypto to euro or other money",
                     "Total amounts bought and sold per crypto-asset and year"
                   ],
                   [
@@ -992,7 +992,7 @@
               "h2": "What to do now",
               "ol": [
                 "Export your full trade history from every exchange you have used, including closed accounts.",
-                "Separate sales for money from crypto-to-crypto swaps; only the first are taxed.",
+                "Separate sales for money from crypto-to-crypto swaps; only the former are taxed.",
                 "Collect proof of every purchase cost, including years in which you sold nothing.",
                 "If you did not declare gains in earlier years, talk to a tax advisor about a corrected return and voluntary disclosure (czynny żal).",
                 "When you withdraw to your own wallet, keep proof that the address belongs to you."
@@ -1174,9 +1174,9 @@
       "pages": {
         "en": {
           "title": "DAC8 in Austria: what your exchange reports (2026)",
-          "description": "Since 2026 exchanges record Austrian residents' crypto trades under the Krypto-MPfG. What is reported, the 2027 deadlines and how the 27.5% rate applies.",
+          "description": "Since 2026, exchanges record Austrian residents' crypto trades under the Krypto-MPfG. What is reported, the 2027 deadlines and how the 27.5% rate applies.",
           "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Austria",
-          "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of Austrian residents under DAC8. Austrian providers report 2026 data by 31 July 2027. Gains on Bitcoin bought after February 2021 are taxed at 27.5% however long you hold it; only coins bought earlier and held over a year are tax-free.",
+          "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of Austrian residents under DAC8. Austrian providers report 2026 data by 31 July 2027. Gains on Bitcoin bought after February 2021 are taxed at 27.5%, however long you hold it; only coins bought earlier and held over a year are tax-free.",
           "crumbs": [
             "Home",
             "Bitcoin tax",
@@ -1212,7 +1212,7 @@
                     "Name, address, date of birth and tax identification number"
                   ],
                   [
-                    "Crypto to money",
+                    "Crypto to euro or other money",
                     "Total amounts bought and sold per crypto-asset and year"
                   ],
                   [
@@ -1454,7 +1454,7 @@
       "pages": {
         "en": {
           "title": "DAC8 in Hungary: what your exchange reports (2026)",
-          "description": "Since 2026 exchanges record Hungarian residents' crypto trades under DAC8 for NAV. What is reported, the 2027 deadlines and how the 15% crypto tax works.",
+          "description": "Since 2026, exchanges record Hungarian residents' crypto trades under DAC8 for NAV. What is reported, the 2027 deadlines and how the 15% crypto tax works.",
           "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Hungary",
           "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of Hungarian residents under DAC8 for NAV. Your 2026 return is due on 20 May 2027, and NAV's draft return will not include crypto. Gains are taxed at 15%; swapping one crypto-asset for another is not taxed.",
           "crumbs": [
@@ -1492,7 +1492,7 @@
                     "Name, address, date of birth and tax identification number"
                   ],
                   [
-                    "Crypto to money",
+                    "Crypto to euro or other money",
                     "Total amounts bought and sold per crypto-asset and year"
                   ],
                   [
@@ -1733,7 +1733,7 @@
       "pages": {
         "en": {
           "title": "DAC8 in Slovenia: what your exchange reports (2026)",
-          "description": "Since 2026 exchanges report Slovenian residents' crypto to FURS under DAC8. What is reported, 2027 deadlines, and why private Bitcoin gains are untaxed.",
+          "description": "Since 2026, exchanges report Slovenian residents' crypto to FURS under DAC8. What is reported, 2027 deadlines, and why private Bitcoin gains are untaxed.",
           "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Slovenia",
           "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of Slovenian residents under DAC8, and Slovenian providers report to FURS by 31 May 2027. For now, private gains from selling Bitcoin are not taxed in Slovenia; a proposed 25% tax was withdrawn in 2025. Business trading and mining are taxed.",
           "crumbs": [
@@ -1771,7 +1771,7 @@
                     "Name, address, date of birth and tax identification number"
                   ],
                   [
-                    "Crypto to money",
+                    "Crypto to euro or other money",
                     "Total amounts bought and sold per crypto-asset and year"
                   ],
                   [
@@ -1871,7 +1871,7 @@
       "pages": {
         "en": {
           "title": "DAC8 in Croatia: what your exchange reports (2026)",
-          "description": "Since 2026 exchanges record Croatian residents' crypto for the Tax Administration under DAC8. What is reported, 2027 deadlines and the 2-year exemption.",
+          "description": "Since 2026, exchanges record Croatian residents' crypto for the Tax Administration under DAC8. What is reported, 2027 deadlines and the 2-year exemption.",
           "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Croatia",
           "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of Croatian residents under DAC8. Croatian providers report 2026 data to the Tax Administration by 30 June 2027. Gains are taxed at 12%, but Bitcoin sold more than two years after purchase is tax-free. Gains are reported on the JOPPD form.",
           "crumbs": [
@@ -1909,7 +1909,7 @@
                     "Name, address, date of birth and tax identification number"
                   ],
                   [
-                    "Crypto to money",
+                    "Crypto to euro or other money",
                     "Total amounts bought and sold per crypto-asset and year"
                   ],
                   [
@@ -2015,7 +2015,7 @@
       "pages": {
         "en": {
           "title": "DAC8 in Romania: what your exchange reports (2026)",
-          "description": "Since 2026 exchanges record Romanian residents' crypto trades under DAC8. What is reported, the 2027 deadlines and the new 16% rate on crypto gains.",
+          "description": "Since 2026, exchanges record Romanian residents' crypto trades under DAC8. What is reported, the 2027 deadlines and the new 16% rate on crypto gains.",
           "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in Romania",
           "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of Romanian residents under DAC8. Your declarația unică for 2026 is due on 25 May 2027; data from other EU exchanges reaches ANAF by 30 September 2027. Gains realised from 2026 are taxed at 16%, up from 10%.",
           "crumbs": [
@@ -2460,7 +2460,7 @@
       "pages": {
         "en": {
           "title": "DAC8 in France: what your exchange reports (2026)",
-          "description": "Since 2026 exchanges record French residents' crypto trades for the DGFiP under DAC8. What is reported, the 2027 deadlines and the 31.4% flat tax.",
+          "description": "Since 2026, exchanges record French residents' crypto trades for the DGFiP under DAC8. What is reported, the 2027 deadlines and the 31.4% flat tax.",
           "h1": "Your exchange is reporting your Bitcoin trades: DAC8 in France",
           "answer": "Since 1 January 2026, crypto exchanges record the identity, tax ID and trades of French residents under DAC8. French providers report 2026 data to the DGFiP before 15 June 2027, around the deadline for your return. Gains on sales for euros are taxed at a 31.4% flat rate in 2026; crypto-to-crypto swaps are not taxed.",
           "crumbs": [
@@ -2498,7 +2498,7 @@
                     "Name, address, date of birth and tax identification number"
                   ],
                   [
-                    "Crypto to money",
+                    "Crypto to euro or other money",
                     "Total amounts bought and sold per crypto-asset and year"
                   ],
                   [
@@ -2783,7 +2783,7 @@
                     "Name, address, date of birth and tax identification number"
                   ],
                   [
-                    "Crypto to money",
+                    "Crypto to euro or other money",
                     "Total amounts bought and sold per crypto-asset and year"
                   ],
                   [
