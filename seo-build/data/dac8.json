@@ -1593,7 +1593,7 @@
           "h1": "A tőzsde jelenti Bitcoin-ügyleteit: DAC8 Magyarországon",
           "answer": "2026. január 1-jétől a kriptotőzsdék a DAC8 alapján rögzítik a magyar ügyfelek adatait, adóazonosító jelét és ügyleteit a NAV számára. A 2026-os bevallás határideje 2027. május 20., és a NAV-tervezet nem tartalmazza a kriptojövedelmet. Az adó 15%; a kripto kriptóra cserélése nem adóköteles.",
           "crumbs": [
-            "Kezdőlap",
+            "Főoldal",
             "Bitcoin-adózás",
             "Magyarország",
             "DAC8"
@@ -1623,7 +1623,7 @@
                 ],
                 "rows": [
                   [
-                    "Kicsoda Ön",
+                    "Személyazonosság",
                     "Név, cím, születési dátum és adóazonosító jel"
                   ],
                   [
@@ -1713,7 +1713,7 @@
               "a": "Nem. A tárca egyenlegét nem jelentik, de a tőzsdéről oda történő kiutalásokat igen."
             },
             {
-              "q": "Kell szochót fizetni a kriptonyereség után?",
+              "q": "Kell szociális hozzájárulási adót (szochót) fizetni a kriptonyereség után?",
               "a": "Nem. 2022 óta a kriptojövedelmet csak 15% személyi jövedelemadó terheli."
             },
             {

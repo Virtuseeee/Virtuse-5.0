@@ -756,7 +756,7 @@
       skipLabel: 'Kihagyás',
       backLabel: '← Vissza',
       resultHeadline: 'Elegendő információnk van a hívás előkészítéséhez.',
-      disclaimer: 'A Virtuse Wealth Management a.s. nem nyújt befektetési tanácsadást, és nem tart ügyfélvagyont. Affiliate partnerségeket közvetítünk — az allokációról mindig Ön dönt.',
+      disclaimer: 'A Virtuse Wealth Management a.s. nem nyújt befektetési tanácsadást, és nem tart ügyfélvagyont. Ajánlói partnerkapcsolatokon keresztül dolgozunk — az allokációról mindig Ön dönt.',
       riskNote: 'Olyan témákat választott (Bitcoin vétele/eladása, letétkezelés, treasury, automatizált botok), amelyeknél fontos előre tudni: a Virtuse ezeket a szolgáltatásokat nem közvetlenül végzi vagy nyújtja — a hozzáférést közvetítjük olyan partnerplatformokhoz, amelyek nyújtják őket. A hívás során pontosan elmagyarázzuk, ki mit végez.',
       bookLabel: '15 perces konzultáció foglalása',
       restartLabel: 'Újrakezdés',
@@ -840,7 +840,7 @@
         'DCA (recurring investing)'
       ],
       segments: {
-        handsoff: { tag: 'Gondosan előkészített konzultáció', note: 'Pontosan bemutatjuk, hogyan működik az affiliate modellünk — a Virtuse nem kezel vagyont az Ön nevében.' },
+        handsoff: { tag: 'Gondosan előkészített konzultáció', note: 'Pontosan bemutatjuk, hogyan működik az ajánlói modellünk — a Virtuse nem kezel vagyont az Ön nevében.' },
         intro: { tag: 'Bevezető / oktató jellegű konzultáció', note: 'Az alapokra koncentrálunk — semmilyen döntési kényszer nélkül.' },
         experienced: { tag: 'Konzultáció tapasztalt ügyfeleknek', note: 'Mélyebben áttekintjük az elérhető lehetőségek kategóriáit.' },
         tailored: { tag: 'Személyre szabott konzultáció', note: 'A válaszai alapján készítjük elő a kontextust.' }

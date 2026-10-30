@@ -385,6 +385,7 @@ function lcAfterColon(s, lang) {
   const w = s.split(/[\s,.:(]/)[0];
   if (lang === 'de') return LC_DE.has(w) ? s[0].toLowerCase() + s.slice(1) : s;
   if (LC_KEEP.has(w)) return s;
+  if (lang === 'hu' && /^Az? /.test(s)) return s[0].toLowerCase() + s.slice(1);
   return /^[A-ZÁÄČĎÉĚÍĹĽŇÓÔÖŐŔŘŠŤÚÜŮŰÝŽĄĆĘŁŃŚŹŻ][a-záäčďéěíĺľňóôöőŕřšťúüůűýžąćęłńśźżß]/.test(s) || /^[А-ЯЁІЇЄҐ][а-яёіїєґ]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s;
 }
 const lcEn = (s) => lcAfterColon(s, 'en'), lcSk = (s) => lcAfterColon(s, 'sk'), lcCs = (s) => lcAfterColon(s, 'cs'), lcDe = (s) => lcAfterColon(s, 'de'),
@@ -3143,7 +3144,7 @@ function huHome(relFile) { return { name: 'Főoldal', href: toRoot(relFile, 'hu/
   const faqs = [
     { q: 'Mely országokra terjed ki az áttekintés?', a: `${N} EU-ország: ${COUNTRIES.map((c) => nameHu(c.id)).join(', ')}. ${guideText('hu', 'hubFaq')}` },
     { q: 'Adótanácsadásnak számít ez?', a: `Nem. ${guideLine('hu')} A tárgyévi szabályokat érdemes helyi tanácsadóval egyeztetni.` },
-    { q: 'Jelenti a Virtuse az eszközeimet az adóhatóságnak?', a: 'Nem. A Virtuse soha nem kezeli az Ön kulcsait és a tranzakciós előzményeit sem. A KYC-t a partnerek végzik.' },
+    { q: 'Jelenti a Virtuse az eszközeimet az adóhatóságnak?', a: 'Nem. A Virtuse soha nem kezeli sem az Ön kulcsait, sem a tranzakciós előzményeit. A KYC-t a partnerek végzik.' },
     { q: 'Hol nézhetem meg az adók mellett az öröklést is?', a: `A Tax & Inheritance Agent modulban, ugyanazzal a ${N} országgal és multisig-felkészültségi ellenőrzéssel.` }
   ];
   const answer = finalizeAnswer([
@@ -3243,12 +3244,12 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Előre jelzi a kalkulátor a Bitcoin árfolyamát?', a: 'Nem. Csak a partnerek díjait hasonlítja össze a közzétett díjtáblázat alapján. A Bitcoin árfolyamából származó hozamot nem modellezi.' },
-    { q: `Mi az alapterv, ${feeAsOfHu} állapot szerint?`, a: 'Egyszer 500 €, majd havi 100 € 12 hónapon át. A sorrend az első év díjai alapján.' },
+    { q: `Mi az alapterv, ${feeAsOfHu} állapot szerint?`, a: 'Egyszer 500 €, majd havi 100 € 12 hónapon át. A sorrend az első év díjain alapul.' },
     { q: 'Melyik útnak a legalacsonyabb a közzétett díja ebben a tervben?', a: `${win.partner} (${methodHu(win.method)}), ${formatPctPl(win.pct)} változó díjjal a Stacking Strategist képlete szerint. A legalacsonyabb teljes költség spreaddel együtt a Bitcoin-díjindexben: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) havi 100 € esetén.` },
     { q: 'Befektetési tanácsadásnak számít ez?', a: 'Nem. Kizárólag oktatási célt szolgál. A KYC a partnernél történik. A Virtuse soha nem kezeli az Ön kulcsait.' }
   ];
   const answer = finalizeAnswer([
-    `${feeAsOfHu} állapot szerint a csak díjakkal számoló DCA-példában (500 €, majd havi 100 € 12 hónapon át) a közzétett díj alapján ${win.partner} áll az első helyen.`,
+    `${feeAsOfHu} állapot szerint a csak díjakkal számoló DCA-példában (500 €, majd havi 100 € 12 hónapon át) a közzétett díj alapján a ${win.partner} áll az első helyen.`,
     `Változó díj: ${formatPctPl(win.pct)}. Ez nem árfolyam-előrejelzés.`,
     'A díjak a Stacking Strategist modul díjtáblázatából származnak, ugyanazzal a képlettel számolva. Tájékoztató áttekintés 2026.'
   ], 'hu', 'fee');
@@ -3296,9 +3297,9 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Keletkezik adó eladáskor ebben a ${N} országban?`, a: `Általában igen, pénzért történő eladáskor. A kripto-kripto csere egyes országokban adóköteles (Németország, Csehország, Spanyolország), másokban nem (Lengyelország, Franciaország, Ausztria, Magyarország). A mentességek eltérnek: Németország 0% 1 év tartás után, Csehország 3 éves időteszt, Lengyelország mentesség nélkül. ${asOfHu} állapot szerint. Nem adótanácsadás.` },
+    { q: `Keletkezik adó eladáskor ebben a ${N} országban?`, a: `Általában igen, pénzért történő eladáskor. A kripto-kripto csere egyes országokban adóköteles (Németország, Csehország, Spanyolország), másokban nem (Lengyelország, Franciaország, Ausztria, Magyarország). A mentességek eltérnek: Németország 0% 1 év tartás után, Csehország 3 év tartás után, Lengyelország mentesség nélkül. ${asOfHu} állapot szerint. Nem adótanácsadás.` },
     { q: 'Ugyanolyan adóesemény a hitel, mint az eladás?', a: 'Ebben az áttekintésben nem. A kamat, a likvidálási kockázat és a partnernél végzett KYC azonban megmarad. A konkrét számokat a Loan & Liquidity Copilot számolja ki.' },
-    { q: 'Mi a likvidálási kockázat?', a: 'Ha a fedezet értéke a partner küszöbére esik, a partner eladhatja a fedezetet, és abból törleszti a hitelt. A Virtuse soha nem kezeli az Ön kulcsait és a fedezetet sem.' },
+    { q: 'Mi a likvidálási kockázat?', a: 'Ha a fedezet értéke a partner küszöbére esik, a partner eladhatja a fedezetet, és abból törleszti a hitelt. A Virtuse soha nem kezeli sem az Ön kulcsait, sem a fedezetet.' },
     { q: 'Hol számolhatok konkrét összeggel?', a: 'A Loan & Liquidity Copilot modulban. Ez az oldal csak az adó és a kockázat közti különbséget mutatja be a közzétett adókulcsok alapján.' }
   ];
   const answer = finalizeAnswer([

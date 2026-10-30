@@ -300,10 +300,10 @@
       services: {
         mining: ['Bitcoin-bányászat ellenőrzött partnerekkel', 'Hosting, felhő és hardver költség és kifizetés szerint összevetve.', 'Partnerek összehasonlítása'],
         treasury: ['Bitcoin a cég mérlegében', 'Letétkezelés, végrehajtás és riportolás cégeknek és family office-oknak.', 'Treasury-partnerek'],
-        custody: ['Saját kulcsok, saját kézben', 'Hardveres tárcák és multisig megoldások ellenőrzött partnerektől.', 'Letétkezelők összehasonlítása'],
+        custody: ['Saját kulcsok, saját kézben', 'Hardvertárcák és multisig megoldások ellenőrzött partnerektől.', 'Letétkezelők összehasonlítása'],
         policy: ['Adózza helyesen a Bitcoint', 'Országonkénti adójelentések adószoftver-partnerektől.', 'Adópartnerek'],
         macro: ['Eladás helyett hitel', 'Bitcoin-fedezetű hitelek ellenőrzött hitelezőktől, évi 5%-tól.', 'Hitelek összehasonlítása'],
-        markets: ['Hol vásároljon Bitcoint', 'Ellenőrzött, szabályozott platformok egymás mellett: díjak, letét, kifizetés.', 'Partnerek összehasonlítása']
+        markets: ['Hol vásároljon Bitcoint', 'Ellenőrzött, szabályozott platformok egymás mellett: díjak, őrzés, kivétel.', 'Partnerek összehasonlítása']
       }
     }
   };

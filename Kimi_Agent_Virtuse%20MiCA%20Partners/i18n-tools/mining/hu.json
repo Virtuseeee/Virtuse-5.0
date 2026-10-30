@@ -95,14 +95,14 @@
  "pr_powermining_cta": "Tovább: Power Mining",
  "aff_note": "Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.",
  "aff_how": "Hogyan szerzünk bevételt",
- "pr_solosatoshi_type": "Nyílt forráskódú otthoni bányászgépek",
+ "pr_solosatoshi_type": "Nyílt forráskódú otthoni bányagépek",
  "pr_solosatoshi_loc": "USA (Conroe, Texas)",
  "pr_solosatoshi_fact": "Bitaxe és NerdQaxe; szállítás világszerte",
  "pr_solosatoshi_base": "USA (Conroe, Texas)",
- "pr_solosatoshi_body": "Nyílt forráskódú otthoni bányászgépek (Bitaxe, NerdQaxe) amerikai forgalmazója, világszerte szállít a texasi Conroe-ból.",
- "pr_solosatoshi_f1": "Bitaxe és NerdQaxe nyílt forráskódú bányászgépek",
+ "pr_solosatoshi_body": "Nyílt forráskódú otthoni bányagépek (Bitaxe, NerdQaxe) amerikai forgalmazója, világszerte szállít a texasi Conroe-ból.",
+ "pr_solosatoshi_f1": "Bitaxe és NerdQaxe nyílt forráskódú bányagépek",
  "pr_solosatoshi_f2": "Szállítás világszerte Texasból (USA)",
  "pr_solosatoshi_f3": "Több mint 60 000 eladott eszköz (a forgalmazó szerint)",
- "pr_solosatoshi_f4": "Az USA-n kívül import-áfa és vám merülhet fel",
+ "pr_solosatoshi_f4": "Az USA-n kívül importáfa és vám merülhet fel",
  "pr_solosatoshi_cta": "Tovább: Solo Satoshi"
 }

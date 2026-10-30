@@ -72,7 +72,7 @@
   "faq_h2_a": "Kérdések",
   "faq_h2_b": "és válaszok",
   "q1": "Vásárolhatok aranyat a Virtuse-on?",
-  "a1": "Nem. A Virtuse csak Bitcoinnal foglalkozó hub, nem tőzsde, és nem árul aranyat, ezüstöt, árucikkeket vagy bármilyen más eszközt. Ez az oldal csak a hozamokat hasonlítja össze. Ha Bitcoint szeretne vásárolni, a <a href=\"buy-bitcoin.html\">Bitcoin vásárlás</a> oldalon ellenőrzött partnereket talál.",
+  "a1": "Nem. A Virtuse csak Bitcoinnal foglalkozó hub, nem tőzsde, és nem árul aranyat, ezüstöt, árucikkeket vagy bármilyen más eszközt. Ez az oldal csak a hozamokat hasonlítja össze. Ha Bitcoint szeretne vásárolni, a <a href=\"buy-bitcoin.html\">Bitcoin-vásárlás</a> oldalon ellenőrzött partnereket talál.",
   "q2": "Honnan származnak az adatok?",
   "a2": "Az árak a Yahoo Finance-től származnak: a hozamokhoz a GLD, SLV, USO, CPER, PPLT és DBC ETF-ek, az árakhoz és az arányokhoz a GC=F, SI=F, CL=F, HG=F és PL=F legközelebbi lejáratú határidős kontraktusok, a Bitcoinhoz a BTC-USD. Egy szkript minden nap az amerikai zárás után újraépíti az adatkészletet; ha egy forrás hibázik, az oldal megtartja az utolsó jó adatokat, és mutatja azok dátumát.",
   "q3": "Miért ETF-ek a hozamokhoz és határidős árak az arányhoz?",
@@ -81,7 +81,7 @@
   "a4": "Nem. Az oldal nyilvános piaci adatokat mutat, kizárólag tájékoztatásul. A múltbeli hozamok nem garantálják a jövőbeli eredményeket, és a Bitcoin, a nemesfémek és az árucikkek értéke egyaránt csökkenhet.",
   "method_h2_a": "Módszertan",
   "method_h2_b": "és források.",
-  "method_p1": "Hozamok: teljes hozam módosított záróárakból (Yahoo Finance), USD-ben. Az EUR-nézet minden értéket az adott napi EUR/USD árfolyammal vált át, azaz azt mutatja, amit egy euróalapú befektető az eszközt fedezetlenül tartva elért volna. Az év elejétől számított hozam az előző év utolsó kereskedési napjától indul; az 1, 5 és 10 éves hozamok a korábbi év ugyanazon naptári napján (vagy az azt megelőző kereskedési napon) kezdődnek.",
+  "method_p1": "Hozamok: teljes hozam módosított záróárakból (Yahoo Finance), USD-ben. Az EUR-nézet minden értéket az adott napi EUR/USD árfolyammal vált át, azaz azt mutatja, amit egy euróalapú befektető az eszközt fedezetlenül tartva elért volna. Az év elejétől számított hozam az előző év utolsó kereskedési napjától indul; az 1, 5 és 10 éves hozamok az 1, 5, illetve 10 évvel korábbi ugyanazon naptári napon (vagy az azt megelőző kereskedési napon) kezdődnek.",
   "method_p2": "Eszközök: Bitcoin (BTC-USD), arany (GLD), ezüst (SLV), WTI nyersolaj (USO), réz (CPER), platina (PPLT) és egy széles árukosár (DBC, 14 árucikk). Az olaj, a réz és a kosár határidős alapú ETF, így a hozamuk tartalmazza a kontraktusok görgetésének költségét. A Brent és a földgáz nem szerepel.",
   "method_p3": "Az adatkészletet egy nyilvános szkript naponta újraépíti, és JSON formában teszi közzé; a fájl csak akkor frissül, ha minden ellenőrzés sikeres. Az adatok késleltetettek és csak tájékoztató jellegűek; nem befektetési tanács.",
   "method_link_assets": "Minden eszközosztály évről évre",
@@ -98,7 +98,7 @@
   "rel_stack_p": "Tervezzen rendszeres vásárlást, és hasonlítsa össze a díjakat.",
   "rel_retire_t": "Nyugdíjkalkulátor",
   "rel_retire_p": "Fedezheti a Bitcoinja a nyugdíját?",
-  "rel_buy_t": "Bitcoin vásárlás",
+  "rel_buy_t": "Bitcoin-vásárlás",
   "rel_buy_p": "Ellenőrzött partnerek, 0% díjtól.",
   "disclaimer": "Az adatok csak tájékoztató jellegűek és késhetnek. Nem befektetési tanács. A Virtuse csak Bitcoinnal foglalkozó hub, nem tőzsde, és soha nem őrzi a kulcsait vagy a pénzét."
 }

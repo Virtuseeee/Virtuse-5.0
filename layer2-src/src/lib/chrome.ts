@@ -1654,7 +1654,7 @@ export const CHROME: Record<Lang, Chrome> = {
     "nav": [
       {
         "href": "buy-bitcoin.html",
-        "label": "Bitcoin vásárlás"
+        "label": "Bitcoin-vásárlás"
       },
       {
         "href": "mining.html",
@@ -1706,7 +1706,7 @@ export const CHROME: Record<Lang, Chrome> = {
         "links": [
           {
             "href": "buy-bitcoin.html",
-            "label": "Bitcoin vásárlás"
+            "label": "Bitcoin-vásárlás"
           },
           {
             "href": "secure.html",
