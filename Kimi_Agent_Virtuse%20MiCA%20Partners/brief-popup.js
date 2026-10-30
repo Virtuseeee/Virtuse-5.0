@@ -34,7 +34,7 @@
     pl: { title: 'Podoba się Brief?', dek: 'W każdy poniedziałek cotygodniowe wydanie w skrzynce. Tylko Bitcoin. Bez tokenów. Bez PR-u. Za darmo.', email: 'Adres e-mail', btn: 'Zapisuję się', fine: 'Rezygnacja w dowolnym momencie.', no: 'Nie, dziękuję', close: 'Zamknij' },
     hu: { title: 'Tetszik a Brief?', dek: 'Minden hétfőn a heti szám a postafiókjában. Csak Bitcoin. Nincsenek tokenek. Nincs PR. Ingyenes.', email: 'E-mail-cím', btn: 'Feliratkozás', fine: 'Bármikor leiratkozhat.', no: 'Köszönöm, nem', close: 'Bezárás' },
     uk: { title: 'Подобається Brief?', dek: 'Щопонеділка щотижневий випуск у вашій поштовій скриньці. Лише Біткоїн. Жодних токенів. Жодного PR. Безкоштовно.', email: 'Електронна пошта', btn: 'Підписатися', fine: 'Відписатися можна будь-коли.', no: 'Ні, дякую', close: 'Закрити' },
-    ru: { title: 'Нравится Brief?', dek: 'Каждый понедельник еженедельный выпуск на вашу почту. Только Биткоин. Никаких токенов. Никакого PR. Бесплатно.', email: 'Электронная почта', btn: 'Подписаться', fine: 'Отписаться можно в любой момент.', no: 'Нет, спасибо', close: 'Закрыть' }
+    ru: { title: 'Нравится Brief?', dek: 'Каждый понедельник новый выпуск на вашу почту. Только Биткоин. Без токенов. Без пиара. Бесплатно.', email: 'Электронная почта', btn: 'Подписаться', fine: 'Отписаться можно в любой момент.', no: 'Нет, спасибо', close: 'Закрыть' }
   };
 
   var params = new URLSearchParams(location.search);

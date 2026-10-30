@@ -437,7 +437,7 @@ def build_main(L, fi, s21, extra_pages):
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, mlink=t['method_link'], arrow=C.ARROW,
            qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html, psum=t['press_sum'], pintro=t['press_intro'], pbh=t['press_blurb_h'],
            blurb=blurb, eh=t['embed_h'], eintro=t['embed_intro'], embed=embed, bemb=t['btn_embed'], bprint=t['btn_print'], barch=t['btn_archive'],
-           brief=brief_card(L, t, days='90 d'),
+           brief=brief_card(L, t, days=t.get('brief_days', '90 d')),
            rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], cards=cards, disclaimer=t['disclaimer'], foot=foot)
     out += body + C.scripts('/')
     check_text(out, L)
