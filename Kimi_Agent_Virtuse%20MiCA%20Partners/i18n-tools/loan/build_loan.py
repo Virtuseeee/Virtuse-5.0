@@ -64,7 +64,7 @@ def build(L):
     tax = '/bitcoin-tax/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][0])
     svb = '/sell-vs-borrow-bitcoin/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][3])
     rel = [(page_url('lending.html'), 'rel_lend'), (tax, 'rel_tax'), (svb, 'rel_svb'), (page_url('stacking.html'), 'rel_stack'),
-           (page_url('concierge.html'), 'rel_pf'), (page_url('cfo.html'), 'rel_cfo')]
+           (page_url('concierge.html'), 'rel_pf'), (page_url('verdict.html'), 'rel_cfo')]   # Verdict landing (own page in en/sk/ru, else /verdict.html)
     rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
 
     out += '''<body class="page-buy page-fee page-pf page-loan no-split">

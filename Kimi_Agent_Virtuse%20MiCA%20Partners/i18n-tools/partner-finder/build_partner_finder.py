@@ -85,7 +85,7 @@ def build(L, n, c, k, partners):
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(faq))
     fee = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][1])
     rel = [(page_url('stacking.html'), 'rel_stack'), (page_url('retirement-calculator.html'), 'rel_ret'), (fee, 'rel_fee'), (page_url('buy-bitcoin.html'), 'rel_buy'),
-           (page_url('loan.html'), 'rel_loan'), (page_url('cfo.html'), 'rel_cfo')]
+           (page_url('loan.html'), 'rel_loan'), (page_url('verdict.html'), 'rel_cfo')]   # Verdict landing (own page in en/sk/ru, else /verdict.html)
     rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
 
     out += '''<body class="page-buy page-fee page-pf no-split">
