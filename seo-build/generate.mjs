@@ -145,7 +145,7 @@ const asOfByLang = (lang) => formatAsOf(AS_OF, lang);
 // Localized strings for the guide pages. {a} = as-of quarter, {d} = check date.
 const GUIDE = {
   en: { src: 'Source', checked: 'checked', line: 'As of {a}, checked {d}. Not tax advice.', notAdvice: 'Not tax advice', pad: 'Figures come from official sources linked in the country guides.', intro: 'The figures below come from the official sources linked in the table, as of {a} (checked {d}).', hubSrc: 'Rates, exemptions and filing notes come from official sources, linked on each country page.', hubFaq: 'Figures are as of {a}; each country page links its official sources (checked {d}).' },
-  de: { src: 'Quelle', checked: 'geprüft am', line: 'Stand {a}, geprüft am {d}. Keine Steuerberatung.', notAdvice: 'Keine Steuerberatung', pad: 'Die Angaben stammen aus offiziellen Quellen, die auf den Länderseiten verlinkt sind.', intro: 'Zahlen Stand {a} aus den in der Tabelle verlinkten offiziellen Quellen, geprüft am {d}.', hubSrc: 'Sätze, Befreiungen und Hinweise zur Steuererklärung stammen aus offiziellen Quellen, verlinkt auf jeder Länderseite.', hubFaq: 'Stand {a}; jede Länderseite verlinkt ihre offiziellen Quellen (geprüft am {d}).' },
+  de: { src: 'Quelle', checked: 'geprüft am', line: 'Stand {a}, geprüft am {d}. Keine Steuerberatung.', notAdvice: 'Keine Steuerberatung', pad: 'Die Angaben stammen aus offiziellen Quellen, die auf dieser Seite verlinkt sind.', intro: 'Zahlen Stand {a} aus den in der Tabelle verlinkten offiziellen Quellen, geprüft am {d}.', hubSrc: 'Sätze, Befreiungen und Hinweise zur Steuererklärung stammen aus offiziellen Quellen, verlinkt auf jeder Länderseite.', hubFaq: 'Stand {a}; jede Länderseite verlinkt ihre offiziellen Quellen (geprüft am {d}).' },
   sk: { src: 'Zdroj', checked: 'overené', line: 'Stav {a}, overené {d}. Nejde o daňové poradenstvo.', notAdvice: 'Nejde o daňové poradenstvo', pad: 'Údaje pochádzajú z oficiálnych zdrojov, ktoré sú uvedené na stránkach krajín.', intro: 'Údaje so stavom {a} pochádzajú z oficiálnych zdrojov uvedených v tabuľke, overené {d}.', hubSrc: 'Sadzby, oslobodenia a poznámky k daňovému priznaniu pochádzajú z oficiálnych zdrojov, uvedených na stránke každej krajiny.', hubFaq: 'Stav {a}; stránka každej krajiny uvádza oficiálne zdroje (overené {d}).' },
   cs: { src: 'Zdroj', checked: 'ověřeno', line: 'Stav {a}, ověřeno {d}. Nejde o daňové poradenství.', notAdvice: 'Nejde o daňové poradenství', pad: 'Údaje pocházejí z oficiálních zdrojů, které jsou uvedené na stránkách zemí.', intro: 'Údaje ke stavu {a} pocházejí z oficiálních zdrojů uvedených v tabulce, ověřeno {d}.', hubSrc: 'Sazby, osvobození a poznámky k daňovému přiznání pocházejí z oficiálních zdrojů uvedených na stránce každé země.', hubFaq: 'Stav {a}; stránka každé země uvádí oficiální zdroje (ověřeno {d}).' },
   pl: { src: 'Źródło', checked: 'sprawdzono', line: 'Stan na {a}, sprawdzono {d}. To nie jest porada podatkowa.', notAdvice: 'To nie jest porada podatkowa', pad: 'Dane pochodzą z oficjalnych źródeł podlinkowanych na stronach krajów.', intro: 'Dane według stanu na {a} pochodzą z oficjalnych źródeł podanych w tabeli, sprawdzono {d}.', hubSrc: 'Stawki, zwolnienia i uwagi dotyczące zeznania pochodzą z oficjalnych źródeł, podlinkowanych na stronie każdego kraju.', hubFaq: 'Stan na {a}; strona każdego kraju podaje oficjalne źródła (sprawdzono {d}).' },
@@ -1038,7 +1038,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile: deRel, lang: 'de', guide: true,
     title: assertTitle(`Bitcoin-Steuern ${nameDe(c.id)} (${asOfDe})`),
-    description: assertDescription(`Bitcoin-Steuern ${inDe(c.id)} (${asOfDe}): ${gainFull(d)}. Keine Steuerberatung.`),
+    description: assertDescription(`Bitcoin-Steuern ${inDe(c.id)} (${asOfDe}): ${lcDe(gainFull(d))}. Keine Steuerberatung.`),
     h1: `Bitcoin-Steuern ${inDe(c.id)}`,
     answerHtml: esc(answerDe),
     breadcrumbs: [
@@ -1232,7 +1232,7 @@ ${faqHtml(faqs, 'FAQ')}
   const faqs = [
     { q: 'Prognostiziert dieser Rechner den Bitcoin-Preis?', a: 'Nein. Er isoliert die Partnergebühren laut Gebührenplan. Keine Renditeannahme.' },
     { q: `Was ist der Standardplan Stand ${feeAsOfDe}?`, a: '500 € Einmalbetrag plus 100 €/Monat über 12 Monate. Sortierung nach Gebührenlast im ersten Jahr.' },
-    { q: 'Welche Route hat in diesem Plan die niedrigste veröffentlichte Gebühr?', a: `${win.partner} (${methodDe(win.method)}) mit ${formatPctDe(win.pct)} variabler Gebühr laut Stacking-Formel. Niedrigste Gesamtkosten inkl. Spread im Bitcoin-Gebührenindex: ${FI_TOP.name} (${formatPctDe(FI_TOP.pct)}) bei 100 €/Monat.` },
+    { q: 'Welcher Kaufweg hat in diesem Plan die niedrigste veröffentlichte Gebühr?', a: `${win.partner} (${methodDe(win.method)}) mit ${formatPctDe(win.pct)} variabler Gebühr laut Stacking-Formel. Niedrigste Gesamtkosten inkl. Spread im Bitcoin-Gebührenindex: ${FI_TOP.name} (${formatPctDe(FI_TOP.pct)}) bei 100 €/Monat.` },
     { q: 'Ist das eine Anlageberatung?', a: 'Nein. Nur eine Orientierung zu Bildungszwecken. KYC erfolgt beim Partner. Virtuse verwahrt niemals Ihre Schlüssel.' }
   ];
   const answer = finalizeAnswer([
@@ -1351,7 +1351,7 @@ ${faqHtml(faqs, 'FAQ')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const faqs = [
     { q: `Löst ein Verkauf in diesen ${N} Ländern Steuer aus?`, a: `In der Regel ja, beim Verkauf gegen Geld. Krypto-zu-Krypto-Tausch ist in manchen Ländern steuerpflichtig (Deutschland, Tschechien, Spanien), in anderen nicht (Polen, Frankreich, Österreich, Ungarn). Deutschland: 0 % nach 1-jähriger Spekulationsfrist. Tschechien: steuerfrei nach 3 Jahren Haltedauer. Polen: keine Haltedauer-Befreiung. Stand ${asOfDe}. Keine Steuerberatung.` },
-    { q: 'Ist ein Kredit dasselbe steuerliche Ereignis wie ein Verkauf?', a: 'In diesem Überblick nicht. Zinsen, Liquidationsrisiko und das KYC beim Partner bleiben. Konkrete Zinssätze zeigt der Loan Copilot.' },
+    { q: 'Ist ein Kredit steuerlich derselbe Vorgang wie ein Verkauf?', a: 'In diesem Überblick nicht. Zinsen, Liquidationsrisiko und das KYC beim Partner bleiben. Konkrete Zinssätze zeigt der Loan Copilot.' },
     { q: 'Was ist Liquidationsrisiko?', a: 'Fällt der Wert der Sicherheit (Collateral) auf die Schwelle des Partners, kann die Sicherheit zwangsverkauft werden. Virtuse verwahrt weder Schlüssel noch Sicherheiten.' },
     { q: 'Wo berechne ich einen konkreten Betrag?', a: 'Im Live-Modul Loan & Liquidity Copilot. Diese Seite erklärt nur die Abwägung anhand der veröffentlichten Steuerangaben.' }
   ];
@@ -1488,7 +1488,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile, lang: 'de',
     title: assertTitle('Bitcoin und Erbrecht: Checkliste (2026)'),
-    description: assertDescription(`Sechs-Punkte-Checkliste für Bitcoin-Erbfolge, Stand ${asOfDe}: Anweisungsschreiben, Schlüsseltrennung, Multisig 2-von-3. Keine Rechtsberatung.`),
+    description: assertDescription(`Sechs-Punkte-Checkliste für die Bitcoin-Erbfolge, Stand ${asOfDe}: Schreiben mit Anweisungen, Schlüsseltrennung, Multisig 2-von-3. Keine Rechtsberatung.`),
     h1: 'Bitcoin-Erbfolge: Checkliste',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -4791,7 +4791,7 @@ for (const pg of Object.values(BUY_COUNTRY)) {
     .replaceAll('{drag}', L.eur(winner.annualDrag))
     .replaceAll('{fi}', FI_TOP.name)
     .replaceAll('{fipct}', L.pct(FI_TOP.pct))
-    .replaceAll('{gain}', gainFull(t))
+    .replaceAll('{gain}', pg.lang === 'de' ? lcDe(gainFull(t)) : gainFull(t))
     .replaceAll('{exemption}', t.exemption);
   const faqs = pg.faqs.map(([q, a]) => ({ q: fill(q), a: fill(a) }));
   const answer = finalizeAnswer(pg.answer.map(fill), pg.lang, 'fee');
@@ -4830,7 +4830,7 @@ ${affNote(relFile, pg.lang)}
 <h2>${esc(pg.stepsHeading)}</h2>
 <ol>${pg.steps.map(([h, p], i) => `<li><strong>${esc(h)}.</strong> ${esc(p)}${i === pg.steps.length - 1 ? ` <a href="${esc(toRoot(relFile, pg.paths.secure))}">${esc(pg.walletLink)}</a>.` : ''}</li>`).join('')}</ol>
 <h2>${esc(pg.taxHeading)}</h2>
-<p>${esc(pg.taxIntro)} ${esc(gainFull(t))}. ${esc(t.exemption)}. <a href="${esc(toRoot(relFile, pg.paths.taxGuide))}">${esc(pg.taxGuideLink)}</a>.</p>
+<p>${esc(pg.taxIntro)} ${esc(pg.lang === 'de' ? lcDe(gainFull(t)) : gainFull(t))}. ${esc(t.exemption)}. <a href="${esc(toRoot(relFile, pg.paths.taxGuide))}">${esc(pg.taxGuideLink)}</a>.</p>
 ${dac8Html}
 ${faqHtml(faqs, pg.faqHeading)}
 `

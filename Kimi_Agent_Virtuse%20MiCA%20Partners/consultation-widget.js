@@ -352,7 +352,7 @@
       skipLabel: 'Überspringen',
       backLabel: '← Zurück',
       resultHeadline: 'Wir haben genug Informationen, um das Gespräch vorzubereiten.',
-      disclaimer: 'Virtuse Wealth Management a.s. erbringt keine Anlageberatung und hält keine Kundenvermögenswerte. Wir vermitteln Affiliate-Partnerschaften — die Allokationsentscheidung liegt immer bei Ihnen.',
+      disclaimer: 'Virtuse Wealth Management, a.s. erbringt keine Anlageberatung und hält keine Kundenvermögenswerte. Wir vermitteln Affiliate-Partnerschaften — die Allokationsentscheidung liegt immer bei Ihnen.',
       riskNote: 'Sie haben Themen gewählt (Kauf/Verkauf von Bitcoin, Verwahrung, Treasury, automatisierte Bots), bei denen Sie vorab Folgendes wissen sollten: Virtuse erbringt diese Leistungen nicht und bietet sie nicht direkt an — wir vermitteln den Zugang zu Partnerplattformen, die dies tun. Im Gespräch erklären wir Ihnen genau, wer was übernimmt.',
       bookLabel: '15-minütige Beratung buchen',
       restartLabel: 'Neu beginnen',
@@ -397,7 +397,7 @@
             'Weniger als 1 Jahr',
             '1 – 3 Jahre',
             '3 – 5 Jahre',
-            '5+ Jahre'
+            'Mehr als 5 Jahre'
           ]
         },
         {

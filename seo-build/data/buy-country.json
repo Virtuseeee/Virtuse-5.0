@@ -223,7 +223,7 @@
         "Die niedrigste veröffentlichte Gebühr bei 100 € im Monat hat {partner} ({method}): {pct}, {drag} im Jahr, Stand {asof}.",
         "Die niedrigsten Gesamtkosten inklusive Spread hat laut Gebührenindex {fi} ({fipct}).",
         "Der Kauf selbst löst in Deutschland keine Steuer aus; besteuert werden Verkauf und Tausch.",
-        "Virtuse hält nie Ihre Schlüssel."
+        "Virtuse verwahrt nie Ihre Schlüssel."
       ],
       "intro": "Diese Übersicht richtet sich an Menschen mit Wohnsitz in Deutschland, die in Euro zahlen. Wir listen Partner nach Ihren Kriterien und veröffentlichten Gebühren, nicht als Empfehlung.",
       "tableHeading": "Partner und Gebühren bei 100 € im Monat",
@@ -268,7 +268,7 @@
       "faqs": [
         [
           "Wo kauft man Bitcoin in Deutschland am günstigsten?",
-          "Bei 100 € im Monat hat {partner} ({method}) die niedrigste veröffentlichte Gebühr, {pct}, Stand {asof}. Inklusive geschätztem Spread hat {fi} die niedrigsten Gesamtkosten ({fipct}). Die Reihenfolge folgt den Preislisten, nicht der Provision."
+          "Bei 100 € im Monat hat {partner} ({method}) die niedrigste veröffentlichte Gebühr, {pct}, Stand {asof}. Inklusive des geschätzten Spreads hat {fi} die niedrigsten Gesamtkosten ({fipct}). Die Reihenfolge folgt den Preislisten, nicht der Provision."
         ],
         [
           "Muss ich mich beim Bitcoin-Kauf ausweisen?",
@@ -279,8 +279,8 @@
           "Nein. Der Kauf selbst löst keine Steuer aus. Besteuert werden Verkauf und Krypto-zu-Krypto-Tausch: {gain}. {exemption}. Keine Steuerberatung."
         ],
         [
-          "Hält Virtuse meinen Bitcoin?",
-          "Nein. Virtuse hält nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrem eigenen Wallet."
+          "Verwahrt Virtuse meinen Bitcoin?",
+          "Nein. Virtuse verwahrt nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrem eigenen Wallet."
         ]
       ],
       "related": [
@@ -323,7 +323,7 @@
         "Die niedrigste veröffentlichte Gebühr bei 100 € im Monat hat {partner} ({method}): {pct}, {drag} im Jahr, Stand {asof}.",
         "Die niedrigsten Gesamtkosten inklusive Spread hat laut Gebührenindex {fi} ({fipct}).",
         "Der Kauf selbst löst in Österreich keine Steuer aus; besteuert wird der Verkauf gegen Euro, Krypto-zu-Krypto-Tausch ist steuerneutral.",
-        "Virtuse hält nie Ihre Schlüssel."
+        "Virtuse verwahrt nie Ihre Schlüssel."
       ],
       "intro": "Diese Übersicht richtet sich an Menschen mit Wohnsitz in Österreich, die in Euro zahlen. Wir listen Partner nach Ihren Kriterien und veröffentlichten Gebühren, nicht als Empfehlung.",
       "tableHeading": "Partner und Gebühren bei 100 € im Monat",
@@ -368,7 +368,7 @@
       "faqs": [
         [
           "Wo kauft man Bitcoin in Österreich am günstigsten?",
-          "Bei 100 € im Monat hat {partner} ({method}) die niedrigste veröffentlichte Gebühr, {pct}, Stand {asof}. Inklusive geschätztem Spread hat {fi} die niedrigsten Gesamtkosten ({fipct}). Die Reihenfolge folgt den Preislisten, nicht der Provision."
+          "Bei 100 € im Monat hat {partner} ({method}) die niedrigste veröffentlichte Gebühr, {pct}, Stand {asof}. Inklusive des geschätzten Spreads hat {fi} die niedrigsten Gesamtkosten ({fipct}). Die Reihenfolge folgt den Preislisten, nicht der Provision."
         ],
         [
           "Muss ich mich beim Bitcoin-Kauf ausweisen?",
@@ -379,8 +379,8 @@
           "Nein. Der Kauf selbst löst keine Steuer aus. Besteuert wird der Verkauf gegen Euro: {gain}. {exemption}. Keine Steuerberatung."
         ],
         [
-          "Hält Virtuse meinen Bitcoin?",
-          "Nein. Virtuse hält nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrem eigenen Wallet."
+          "Verwahrt Virtuse meinen Bitcoin?",
+          "Nein. Virtuse verwahrt nie Ihre Schlüssel oder Ihr Geld. Kauf und Verwahrung laufen beim Partner oder in Ihrem eigenen Wallet."
         ]
       ],
       "related": [
