@@ -867,7 +867,7 @@
   <div class="ar-wrap">
     <table class="ar-table hm-table" id="hmTable"></table>
   </div>
-  <div class="hm-legend" aria-hidden="true"><span>−30%</span><i class="hm-scale"></i><span>+30%</span></div>
+  <div class="hm-legend" aria-hidden="true"><span>−30&nbsp;%</span><i class="hm-scale"></i><span>+30&nbsp;%</span></div>
   <p class="ar-note">Rendite vom letzten Schluss des Vormonats (oder -quartals) bis zum letzten Schluss des Monats, basierend auf dem täglichen Bitcoin-Referenzkurs von CoinMetrics. Der laufende Monat nutzt den aktuellsten Kurs und ist aus den Zeilen Durchschnitt, Median und positiver Anteil ausgeschlossen. 2010 beginnt im August (der erste vollständige Monat der Kursdaten). Die EUR-Ansicht rechnet mit dem EUR/USD-Kurs der EZB an jedem Monatsende um. Vergangene Renditen garantieren keine zukünftigen. Keine Anlageberatung. Den Marktanteil von Bitcoin im selben Zeitraum zeigt die <a href="btc-dominance.html">Bitcoin-Dominanz</a>.</p>
 </section>
   </div>
@@ -977,12 +977,13 @@
       .catch(function () {});
   }
 
+  var PCT = '\u00a0%';   // decimal comma and % spacing as on the pages
   function fmt(v) {
     if (v == null) return '';
     var p = v * 100, a = Math.abs(p);
-    if (a < 0.05) return '0.0%';
-    var s = a >= 1000 ? Math.round(a).toLocaleString('de-DE') : a >= 100 ? Math.round(a).toString() : a.toFixed(1);
-    return (p > 0 ? '+' : '−') + s + '%';
+    if (a < 0.05) return '0,0' + PCT;
+    var s = a >= 1000 ? Math.round(a).toLocaleString('de-DE') : a >= 100 ? Math.round(a).toString() : a.toFixed(1).replace('.', ',');
+    return (p > 0 ? '+' : '−') + s + PCT;
   }
   // Tint by sign; intensity grows with size and saturates at ±30% for months
   // and quarters, ±150% for whole years.

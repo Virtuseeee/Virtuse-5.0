@@ -56,7 +56,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - Tax on gains: 27.5% KESt (capital gains tax)
 - Exemption: Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption
 - Filing: Annual return for gains via foreign exchanges; Austrian providers withhold the tax
-- Note: Crypto-to-crypto swaps are tax-neutral. Lending and mining are taxed on receipt; staking rewards and airdrops are taxed when sold, at zero cost.
+- Note: Crypto-to-crypto swaps are tax-neutral. Income from lending and mining is taxed on receipt; staking rewards and airdrops are taxed only when sold, with an acquisition cost of zero.
 - EN: https://virtuse.com/bitcoin-tax/austria/
 - DE: https://virtuse.com/de/bitcoin-steuern/oesterreich/
 - SK: https://virtuse.com/sk/bitcoin-dane/rakusko/
@@ -85,10 +85,10 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - ES: https://virtuse.com/es/bitcoin-impuestos/alemania/
 
 ### 🇭🇺 Hungary (`hu`)
-- Tax on gains: 15% capital gains tax
+- Tax on gains: 15% personal income tax on crypto income
 - Exemption: No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)
 - Filing: Annual personal income tax return
-- Note: Documented acquisition costs are deductible, so keep every invoice.
+- Note: Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.
 - EN: https://virtuse.com/bitcoin-tax/hungary/
 - DE: https://virtuse.com/de/bitcoin-steuern/ungarn/
 - SK: https://virtuse.com/sk/bitcoin-dane/madarsko/
@@ -103,8 +103,8 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 ### 🇸🇮 Slovenia (`si`)
 - Tax on gains: No tax on private disposal gains (business trading is taxed)
 - Exemption: Private gains are not taxed
-- Filing: None for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return
-- Note: Mining is taxed as other income. Frequent trading can count as a business activity.
+- Filing: No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return
+- Note: Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.
 - EN: https://virtuse.com/bitcoin-tax/slovenia/
 - DE: https://virtuse.com/de/bitcoin-steuern/slowenien/
 - SK: https://virtuse.com/sk/bitcoin-dane/slovinsko/

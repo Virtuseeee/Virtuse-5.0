@@ -867,7 +867,7 @@
   <div class="ar-wrap">
     <table class="ar-table hm-table" id="hmTable"></table>
   </div>
-  <div class="hm-legend" aria-hidden="true"><span>−30%</span><i class="hm-scale"></i><span>+30%</span></div>
+  <div class="hm-legend" aria-hidden="true"><span>−30&nbsp;%</span><i class="hm-scale"></i><span>+30&nbsp;%</span></div>
   <p class="ar-note">Výnos od posledního uzavření předchozího měsíce (nebo čtvrtletí) po poslední uzavření měsíce podle denního referenčního kurzu Bitcoinu od CoinMetrics. Aktuální měsíc používá nejnovější cenu a nezapočítává se do řádků průměru, mediánu a podílu pozitivních. Rok 2010 začíná srpnem (první úplný měsíc cenových údajů). Zobrazení v EUR přepočítává kurzem EUR/USD ECB na konci každého měsíce. Minulý výnos nezaručuje budoucí. Není to investiční doporučení.</p>
 </section>
   </div>
@@ -977,12 +977,13 @@
       .catch(function () {});
   }
 
+  var PCT = '\u00a0%';   // decimal comma and % spacing as on the pages
   function fmt(v) {
     if (v == null) return '';
     var p = v * 100, a = Math.abs(p);
-    if (a < 0.05) return '0.0%';
-    var s = a >= 1000 ? Math.round(a).toLocaleString('cs-CZ') : a >= 100 ? Math.round(a).toString() : a.toFixed(1);
-    return (p > 0 ? '+' : '−') + s + '%';
+    if (a < 0.05) return '0,0' + PCT;
+    var s = a >= 1000 ? Math.round(a).toLocaleString('cs-CZ') : a >= 100 ? Math.round(a).toString() : a.toFixed(1).replace('.', ',');
+    return (p > 0 ? '+' : '−') + s + PCT;
   }
   // Tint by sign; intensity grows with size and saturates at ±30% for months
   // and quarters, ±150% for whole years.
