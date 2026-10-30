@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.join(TOOLS, 'fee-index'))
 import build_fee_index as F
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']   # hreflang order as before
-JS_V = '2'
+JS_V = '3'
 FALLBACK_PRICE = 74649          # BTC/EUR, 13 Oct 2026 (CoinGecko); the JS replaces it with the live price
 
 # typed limits (data-min/max) and the smaller slider ranges
@@ -123,9 +123,11 @@ def calculator(L, t, links):
       </div>
 '''.format(k=key, lab=lab, lo=lo, hi=hi, v=v)
 
+    pc = '&nbsp;%' if L in ('sk', 'cs', 'de', 'fr', 'es') else '%'   # same rule as v2common.PCT_SPACE
+
     def scen(key, rate, on):
-        return '<button type="button" class="rc-btn" data-g="%s" aria-pressed="%s" aria-label="%s %d%% %s">%s %d%%<small>%s</small></button>' % (
-            rate, 'true' if on else 'false', esc(t['c_' + key]), rate, esc(t['c_hypothetical']), t['c_' + key], rate, t['c_hypothetical'])
+        return '<button type="button" class="rc-btn" data-g="%s" aria-pressed="%s" aria-label="%s %d%s %s">%s %d%s<small>%s</small></button>' % (
+            rate, 'true' if on else 'false', esc(t['c_' + key]), rate, pc, esc(t['c_hypothetical']), t['c_' + key], rate, pc, t['c_hypothetical'])
     scen_btns = scen('conservative', 10, False) + scen('base', 20, True) + scen('optimistic', 30, False) + \
         '<button type="button" class="rc-btn" data-g="custom" aria-pressed="false" aria-controls="rc-custom">%s<small>%s</small></button>' % (t['c_custom'], t['custom_range'])
 
@@ -133,7 +135,7 @@ def calculator(L, t, links):
     <form class="rc-panel" id="rc-form" novalidate onsubmit="return false">
       <h2>{plan}</h2>
 {age}{ret}{life}{stack}{lump}{dca}{spend}      <div class="rc-field">
-        <div class="rc-head"><span class="rc-lbl" id="rc-g-lbl">{growth}</span><output id="rc-g-v">20%</output></div>
+        <div class="rc-head"><span class="rc-lbl" id="rc-g-lbl">{growth}</span><output id="rc-g-v">20{pc}</output></div>
         <div class="rc-btns" role="group" aria-labelledby="rc-g-lbl">{scen}</div>
         <div class="rc-custom" id="rc-custom" hidden>
           <div class="rc-head"><label for="rc-gc">{custom_lbl}</label><input class="rc-num" id="rc-gc" type="text" inputmode="decimal" autocomplete="off" value="20" data-kind="pct" data-min="0" data-max="30" aria-label="{custom_lbl}"></div>
@@ -181,7 +183,7 @@ def calculator(L, t, links):
            age=age('age', 'c_age', 18, 75, 30), ret=age('ret', 'c_ret_age', 18, 85, 50), life=age('life', 'c_life', 60, 100, 85),
            stack=money('stack', 'c_stack'), lump=money('lump', 'c_lump', '<p class="rc-hint">%s</p>\n        ' % t['c_lump_note']),
            dca=money('dca', 'c_dca'), spend=money('spend', 'c_spend'),
-           growth=t['c_growth'], scen=scen_btns, custom_lbl=t['c_custom_label'], inf=t['c_inflation'], inf_src=t['c_inflation_src'],
+           growth=t['c_growth'], scen=scen_btns, pc=pc, custom_lbl=t['c_custom_label'], inf=t['c_inflation'], inf_src=t['c_inflation_src'],
            price=t['c_price'], fb=FALLBACK_PRICE, loading=t['c_price_loading'],
            r_btc=t['c_res_btc'], r_val=t['c_res_value'], r_val_s=t['c_res_value_sub'], r_sp=t['c_res_spend'],
            r_need=t['c_res_needed'].replace('{0}', '50'),

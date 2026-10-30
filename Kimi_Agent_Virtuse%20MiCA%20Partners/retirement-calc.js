@@ -121,7 +121,8 @@
     var d = kind === 'btc' ? 8 : kind === 'pct' ? 1 : 0;
     return nf({ maximumFractionDigits: d }).format(n);
   }
-  function pct(n) { return nf({ maximumFractionDigits: 1 }).format(n) + '%'; }
+  var PCT = /^(sk|cs|de|fr|es)\b/.test(lang) ? '\u00a0%' : '%';   // space before % as on the pages
+  function pct(n) { return nf({ maximumFractionDigits: 1 }).format(n) + PCT; }
 
   var st = { age: 30, ret: 50, life: 85, stack: 0.1, lump: 0, dca: 250, spend: 60000, growth: 20, inf: 2, price: +$('rc-price').value || 74649 };
   var custom = false, manualPrice = false, livePrice = null, liveTime = null;

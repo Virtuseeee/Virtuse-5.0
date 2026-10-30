@@ -977,12 +977,13 @@
       .catch(function () {});
   }
 
+  var PCT = '\u00a0%';   // decimal comma and % spacing as on the pages
   function fmt(v) {
     if (v == null) return '';
     var p = v * 100, a = Math.abs(p);
-    if (a < 0.05) return '0.0%';
-    var s = a >= 1000 ? Math.round(a).toLocaleString('fr-FR') : a >= 100 ? Math.round(a).toString() : a.toFixed(1);
-    return (p > 0 ? '+' : '−') + s + '%';
+    if (a < 0.05) return '0,0' + PCT;
+    var s = a >= 1000 ? Math.round(a).toLocaleString('fr-FR') : a >= 100 ? Math.round(a).toString() : a.toFixed(1).replace('.', ',');
+    return (p > 0 ? '+' : '−') + s + PCT;
   }
   // Tint by sign; intensity grows with size and saturates at ±30% for months
   // and quarters, ±150% for whole years.

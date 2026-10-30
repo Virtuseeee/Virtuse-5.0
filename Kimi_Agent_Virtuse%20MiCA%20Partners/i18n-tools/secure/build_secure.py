@@ -29,7 +29,7 @@ CUSTODIANS = [
 def price(d, L, t):
     if d['cur'] == 'EUR':
         return C.eur(d['price'], L)
-    return '$%d' % d['price']
+    return '$%d' % d['price'] if L == 'en' else '%d&nbsp;$' % d['price']
 
 
 def build(L):
