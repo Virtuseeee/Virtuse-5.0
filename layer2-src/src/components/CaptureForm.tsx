@@ -91,7 +91,7 @@ export function CaptureForm({
 
   const message: Partial<Record<SendState, string>> = {
     sent: t(lang, 'Sent. It should be in your inbox within a minute.', 'Odoslané. Do minúty by mal byť vo vašej schránke.', 'Odesláno. Do minuty by měl být ve vaší schránce.'),
-    invalid: t(lang, 'Please enter a valid email address.', 'Zadajte platnú emailovú adresu.', 'Zadejte platnou emailovou adresu.'),
+    invalid: t(lang, 'Please enter a valid email address.', 'Zadajte platnú e-mailovú adresu.', 'Zadejte platnou emailovou adresu.'),
     limited: t(lang, 'Too many attempts. Please try again later.', 'Príliš veľa pokusov. Skúste to neskôr.', 'Příliš mnoho pokusů. Zkuste to později.'),
     error: t(lang, 'Something went wrong. Please try again.', 'Niečo sa pokazilo. Skúste to znova.', 'Něco se pokazilo. Zkuste to znovu.'),
   };
@@ -120,8 +120,8 @@ export function CaptureForm({
                 setEmail(e.target.value);
                 if (state !== 'sending') setState('idle');
               }}
-              placeholder={t(lang, 'Your email', 'Váš email', 'Váš email')}
-              aria-label={t(lang, 'Your email', 'Váš email', 'Váš email')}
+              placeholder={t(lang, 'Your email', 'Váš e-mail', 'Váš email')}
+              aria-label={t(lang, 'Your email', 'Váš e-mail', 'Váš email')}
               className="min-w-[160px] flex-1 rounded-[10px] border border-line-strong bg-canvas px-3 py-2 text-sm text-ink placeholder:text-ink-muted focus:border-white/40 focus:outline-none"
             />
             <button
@@ -178,10 +178,10 @@ export function ResultCaptureForm(props: {
       <CaptureForm
         {...props}
         kind="result"
-        title={t(lang, 'Get this result by email', 'Pošlite mi tento výsledok emailom', 'Pošlete mi tento výsledek emailem')}
+        title={t(lang, 'Get this result by email', 'Pošlite mi tento výsledok e-mailom', 'Pošlete mi tento výsledek emailem')}
         intro={t(lang,
           'One email with your inputs and these numbers. We add you to no list unless you tick the box.',
-          'Jeden email s vašimi vstupmi a týmito číslami. Do žiadneho zoznamu vás nepridáme, ak nezaškrtnete políčko.',
+          'Jeden e-mail s vašimi vstupmi a týmito číslami. Do žiadneho zoznamu vás nepridáme, ak nezaškrtnete políčko.',
           'Jeden email s vašimi vstupy a těmito čísly. Do žádného seznamu vás nepřidáme, pokud nezaškrtnete políčko.')}
       />
     </div>

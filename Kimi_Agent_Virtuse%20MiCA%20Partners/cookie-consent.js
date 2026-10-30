@@ -32,7 +32,7 @@
     sk: {
       title: 'Cookies na Virtuse',
       text: 'S vaším súhlasom používame cookies na meranie návštevnosti (Google Analytics) a reklamy (Google Ads). Nevyhnutné úložisko, napríklad jazyk stránky, funguje vždy. Voľbu môžete kedykoľvek zmeniť.',
-      policy: 'Ochrana súkromia', accept: 'Prijať všetko', reject: 'Odmietnuť všetko', settings: 'Nastavenia', save: 'Uložiť voľbu',
+      policy: 'Ochrana osobných údajov', accept: 'Prijať všetko', reject: 'Odmietnuť všetko', settings: 'Nastavenia', save: 'Uložiť voľbu',
       nec: 'Nevyhnutné', necD: 'Jazyk, vzhľad a vaša voľba cookies.', on: 'Vždy zapnuté',
       ana: 'Analytika', anaD: 'Google Analytics nám ukazuje, ktoré stránky sú užitočné. Údaje nikdy nepredávame.',
       mkt: 'Marketing', mktD: 'Meranie a remarketing Google Ads.',

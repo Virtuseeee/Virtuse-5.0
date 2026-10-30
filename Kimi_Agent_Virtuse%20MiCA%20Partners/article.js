@@ -57,7 +57,7 @@
         mining: ['Ťažte Bitcoin s overenými partnermi', 'Hosting, cloud a hardvér porovnané podľa nákladov a výplat.', 'Porovnať partnerov'],
         treasury: ['Bitcoin v súvahe firmy', 'Úschova, vykonávanie obchodov a reporting pre firmy a family offices.', 'Treasury partneri'],
         custody: ['Majte vlastné kľúče', 'Hardvérové peňaženky a multi-sig od overených partnerov.', 'Porovnať úschovu'],
-        policy: ['Zdaňte Bitcoin správne', 'Daňové prehľady podľa krajiny od softvérových partnerov.', 'Daňoví partneri'],
+        policy: ['Priznajte dane z Bitcoinu správne', 'Daňové prehľady podľa krajiny od softvérových partnerov.', 'Daňoví partneri'],
         macro: ['Požičajte si namiesto predaja', 'Pôžičky so zábezpekou v Bitcoine od 5 % p. a.', 'Porovnať pôžičky'],
         markets: ['Kde kúpiť Bitcoin', 'Overené regulované platformy vedľa seba: poplatky, úschova, výplata.', 'Porovnať partnerov']
       }

@@ -538,7 +538,7 @@
     "at": {
       "gainTax": "27,5 % KESt (daň z kapitálových výnosov)",
       "exemption": "Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia",
-      "filing": "Priznanie pre zisky cez zahraničné burzy; rakúski poskytovatelia daň zrážajú",
+      "filing": "Ročné priznanie pri ziskoch cez zahraničné burzy; rakúski poskytovatelia daň zrážajú",
       "note": "Výmeny krypto za krypto sú daňovo neutrálne. Príjmy z požičiavania a ťažby sa zdaňujú pri prijatí, staking a airdropy až pri predaji (s nulovou obstarávacou cenou)."
     },
     "de": {
@@ -566,7 +566,7 @@
       "note": "JOPPD podajte aj pri oslobodených predajoch. Straty sa započítavajú len v rámci toho istého roka."
     },
     "ro": {
-      "gainTax": "16 % daň z príjmov zo ziskov z kryptomien (do 2025: 10 %)",
+      "gainTax": "16 % daň z príjmov zo ziskov z kryptomien (do roku 2025: 10 %)",
       "exemption": "Bez oslobodenia podľa doby držby",
       "filing": "Ročné priznanie (príjem z iných zdrojov)",
       "note": "Sadzba pre zisky od roku 2026 stúpla z 10 % na 16 %. Zisky pod 200 lei za transakciu sú oslobodené do 600 lei ročne."
@@ -581,7 +581,7 @@
       "gainTax": "Majetková daň Box 3 (približne 36 % z predpokladaného výnosu)",
       "exemption": "Nezdaniteľná časť (59 357 € na osobu, 2026)",
       "filing": "Ročné priznanie Box 3",
-      "note": "Klasická daň z kapitálových výnosov sa neuplatňuje: zdaňuje sa predpokladaný výnos z vášho majetku. Box 3 prechádza reformou, overte si pravidlá pre aktuálny rok."
+      "note": "Klasická daň z kapitálových výnosov sa neuplatňuje: zdaňuje sa predpokladaný výnos z vášho majetku. Box 3 prechádza reformou; overte si pravidlá pre aktuálny rok."
     },
     "fr": {
       "gainTax": "31,4 % paušálna daň (PFU: 12,8 % daň z príjmov + 18,6 % sociálne odvody, 2026)",

@@ -2102,7 +2102,7 @@ for (const c of COUNTRIES) {
     { q: `Aká je daň z Bitcoinu ${inN}?`, a: `Stav ${asOfSk}: ${lcSk(gainFull(t))}. ${checkedSentence('sk')} ${GUIDE.sk.notAdvice}.` },
     { q: `Existuje ${inN} oslobodenie podľa doby držby?`, a: `${t.exemption}. Pred podaním priznania si pravidlá pre aktuálny rok overte u miestneho daňového poradcu.` },
     { q: `Ako sa ${inN} podáva daňové priznanie?`, a: `${t.filing}. ${t.note}` },
-    { q: 'Drží Virtuse môj Bitcoin alebo podáva moje daňové priznanie?', a: `Nie. Virtuse nikdy nedrží vaše kľúče. KYC a registrácia prebiehajú u partnera. Tax Agent porovná prehľad ${N} krajín; daňové priznanie pripraví kvalifikovaný daňový poradca.` }
+    { q: 'Drží Virtuse môj Bitcoin alebo podáva moje daňové priznanie?', a: `Nie. Virtuse nikdy nedrží vaše kľúče. KYC a registrácia prebiehajú u partnera. V Tax Agentovi porovnáte prehľad ${N} krajín; daňové priznanie podajte s kvalifikovaným daňovým poradcom.` }
   ];
   const answer = finalizeAnswer([
     `Dane z Bitcoinu ${inN}, stav ${asOfSk}: ${lcSk(gainFull(t))}.`,
@@ -2259,7 +2259,7 @@ ${faqHtml(faqs, 'Časté otázky')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Predpovedá táto kalkulačka cenu Bitcoinu?', a: 'Nie. Porovnáva len poplatky partnerov podľa zverejneného cenníka. Výnos z ceny Bitcoinu nemodeluje.' },
-    { q: `Aký je štandardný plán, stav ${feeAsOfSk}?`, a: 'Jednorazovo 500 € a potom 100 € mesačne počas 12 mesiacov. Poradie podľa poplatkov za prvý rok.' },
+    { q: `Aký štandardný plán kalkulačka používa (stav ${feeAsOfSk})?`, a: 'Jednorazovo 500 € a potom 100 € mesačne počas 12 mesiacov. Poradie podľa poplatkov za prvý rok.' },
     { q: 'Ktorá cesta má v tomto pláne najnižší zverejnený poplatok?', a: `${win.partner} (${methodSk(win.method)}) s variabilným poplatkom ${formatPctSk(win.pct)} podľa vzorca Stacking Strategist. Najnižšie celkové náklady vrátane spreadu podľa Indexu poplatkov za Bitcoin: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) pri 100 € mesačne.` },
     { q: 'Ide o investičné poradenstvo?', a: 'Nie. Slúži len na vzdelávacie účely. KYC prebieha u partnera. Virtuse nikdy nedrží vaše kľúče.' }
   ];
@@ -2370,10 +2370,10 @@ ${faqHtml(faqs, 'Časté otázky')}
     { q: 'Môže byť v liste s pokynmi seed fráza?', a: 'Nie. List uvádza zoznam, umiestnenia a kontakty, nikdy nie seed frázy. Uložte ho spolu so závetom alebo u právnika.' },
     { q: 'Prečo multisig 2 z 3?', a: 'Jediná seed fráza je jediný bod zlyhania pre vás aj pre vašich dedičov.' },
     { q: 'Drží Virtuse kľúče pre dedičov?', a: 'Nie. Virtuse nikdy nedrží vaše kľúče.' },
-    { q: 'Ide o právne poradenstvo?', a: `Nie. Je to kontrolný zoznam na vzdelávacie účely z modulu Tax, stav ${asOfSk}.` }
+    { q: 'Ide o právne poradenstvo?', a: `Nie. Je to kontrolný zoznam na vzdelávacie účely z modulu Tax & Inheritance Agent, stav ${asOfSk}.` }
   ];
   const answer = finalizeAnswer([
-    `K stavu ${asOfSk} má kontrolný zoznam modulu Tax šesť bodov: list s pokynmi, geografické rozdelenie kľúčov, informovaný dedič, multisig 2 z 3, test obnovy a zdokumentované účty.`,
+    `K stavu ${asOfSk} má kontrolný zoznam modulu Tax & Inheritance Agent šesť bodov: list s pokynmi, geografické rozdelenie kľúčov, informovaný dedič, multisig 2 z 3, test obnovy a zdokumentované účty.`,
     'Jediná seed fráza je jediný bod zlyhania. Virtuse nikdy nedrží vaše kľúče.',
     'Nejde o právne poradenstvo.'
   ], 'sk');
@@ -2404,7 +2404,7 @@ ${faqHtml(faqs, 'Časté otázky')}
     moduleCta: { href: toRoot(relFile, 'sk/' + TAX_AGENT), label: 'Ohodnotiť zoznam v Tax Agentovi →' },
     schemas: [faqLd(faqs), howto],
     bodyHtml: `
-<p>Obsah zodpovedá kontrolnému zoznamu modulu Tax. Nejde o právne poradenstvo.</p>
+<p>Obsah zodpovedá kontrolnému zoznamu modulu Tax &amp; Inheritance Agent. Nejde o právne poradenstvo.</p>
 <h2>Návod: šesť krokov</h2>
 <ol>${meta.inheritanceSk.map((it) => `<li><h3>${esc(it.name)}</h3><p>${esc(it.text)}</p></li>`).join('')}</ol>
 ${faqHtml(faqs, 'Časté otázky')}

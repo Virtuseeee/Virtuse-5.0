@@ -145,7 +145,7 @@
       skipLabel: 'Preskočiť',
       backLabel: '← Späť',
       resultHeadline: 'Máme dosť na to, aby sme hovor pripravili.',
-      disclaimer: 'Virtuse Wealth Management a.s. neposkytuje investičné poradenstvo ani nedrží klientske aktíva. Sprostredkúvame partnerské (provízne) vzťahy. Rozhodnutie o alokácii je vždy na tebe.',
+      disclaimer: 'Virtuse Wealth Management, a.s. neposkytuje investičné poradenstvo ani nedrží klientske aktíva. Sprostredkúvame partnerské (provízne) vzťahy. Rozhodnutie o alokácii je vždy na tebe.',
       riskNote: 'Vybral(a) si témy (nákup/predaj Bitcoinu, úschova, treasury, automatizované boty), pri ktorých je dôležité vopred vedieť: Virtuse tieto služby priamo nevykonáva ani nezabezpečuje — sprostredkúva prístup k partnerským platformám, ktoré ich poskytujú. Na hovore ti transparentne vysvetlíme, kto a ako to reálne robí.',
       bookLabel: 'Rezervovať 15-min konzultáciu',
       restartLabel: 'Vyplniť znova',

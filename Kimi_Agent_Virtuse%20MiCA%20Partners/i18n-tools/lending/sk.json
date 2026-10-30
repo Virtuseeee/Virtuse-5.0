@@ -1,11 +1,11 @@
 {
- "eyebrow": "Pôžičky zabezpečené Bitcoinom · Nekustodiálny escrow · Od 5&nbsp;%&nbsp;p.a.",
+ "eyebrow": "Pôžičky zabezpečené Bitcoinom · Nekustodiálny escrow · Od 5&nbsp;%&nbsp;p.&nbsp;a.",
  "h1": "Ponechajte si svoj Bitcoin.",
  "h1_grey": "Požičajte si s ním ako so zábezpekou, od 5 % p. a.",
  "widget_title": "Kalkulačka pôžičky Firefish",
  "d_title": "Parametre pôžičky v skratke",
  "d_rate": "Úroková sadzba",
- "d_rate_v": "5–15 % p.a.",
+ "d_rate_v": "5–15 % p. a.",
  "d_ltv": "Pomer LTV",
  "d_ltv_v": "Až do 50 %",
  "d_dur": "Dĺžka splácania",
@@ -41,7 +41,7 @@
  "w_h2_a": "Dva spôsoby, ako sa zapojiť.",
  "w_h2_b": "Požičajte si oproti Bitcoinu, alebo financujte pôžičky ním zabezpečené.",
  "w_b_t": "Dlžníci",
- "w_b_p": "Použite svoj Bitcoin ako zábezpeku na požičanie fiatu (EUR, CHF, CZK) alebo stablecoinov (USDC). Zachovajte si expozíciu voči Bitcoinu a získajte likviditu bez predaja. LTV až do 50 %, splatnosť od 3 do 24 mesiacov, sadzby od 5 % p.a.",
+ "w_b_p": "Použite svoj Bitcoin ako zábezpeku na požičanie fiatu (EUR, CHF, CZK) alebo stablecoinov (USDC). Zachovajte si expozíciu voči Bitcoinu a získajte likviditu bez predaja. LTV až do 50 %, splatnosť od 3 do 24 mesiacov, sadzby od 5 % p. a.",
  "w_b_cta": "Požičať si na Firefish",
  "w_i_t": "Investori",
  "w_i_p": "Poskytnite fiat alebo stablecoiny na financovanie pôžičiek zabezpečených Bitcoinom a zarábajte úrok platený dlžníkmi. Zábezpeka je uzamknutá v on-chain escrow. Žiadna rehypotekácia, žiadne altcoiny. Minimum od 800 EUR.",
@@ -68,6 +68,6 @@
  "b_btn": "Získať Brief",
  "b_fine": "Odhlásiť sa môžete kedykoľvek. Nie je to poradenstvo.",
  "b_img_alt": "Kuriér Virtuse Brief na skútri doručuje vydanie z 5. 10. 2026",
- "aff_note": "Partnerský odkaz – ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.",
+ "aff_note": "Partnerský odkaz: ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.",
  "aff_how": "Ako zarábame"
 }

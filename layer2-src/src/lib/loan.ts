@@ -326,7 +326,7 @@ export function loanFacts(inp: LoanInputs, a: LoanAnalysis, lang: Lang = 'en'): 
     facts.push(
       tv(lang,
         'Headroom to the margin call is only {0} %. A moderate price drop puts the collateral at risk. A lower LTV or amount increases the headroom.',
-        'Rezerva do margin callu je len {0} %. Mierny pokles ceny ohrozí kolaterál. Nižšie LTV alebo nižšia suma rezervu zväčší.',
+        'Rezerva do margin callu je len {0} %. Mierny pokles ceny ohrozí zábezpeku. Nižšie LTV alebo nižšia suma rezervu zväčší.',
         'Rezerva do margin callu je jen {0} %. Mírný pokles ceny ohrozí kolaterál. Nižší LTV nebo nižší částka rezervu zvětší.',
         [Math.max(0, a.distanceToLiquidation * 100).toFixed(0)]),
     );
@@ -353,7 +353,7 @@ export function loanFacts(inp: LoanInputs, a: LoanAnalysis, lang: Lang = 'en'): 
     facts.push(
       tv(lang,
         'Borrowing: {0} interest over {1} years ({2} % p.a.), with {3} BTC locked as collateral.',
-        'Pôžička: úrok {0} za {1} r. ({2} % p.a.), {3} BTC uzamknutých ako kolaterál.',
+        'Pôžička: úrok {0} za {1} r. ({2} % p. a.), {3} BTC uzamknutých ako zábezpeka.',
         'Půjčka: úrok {0} za {1} r. ({2} % p. a.), {3} BTC uzamčených jako kolaterál.',
         [eur(a.interestTotal), years, fmtNumShort(apr * 100, 1, lang), fmtNum(a.collateralBtc, 4, lang)]),
     );

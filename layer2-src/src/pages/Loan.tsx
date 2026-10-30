@@ -304,7 +304,7 @@ export default function Loan() {
   const cashLabel = t(lang, 'Cash needed', 'Potrebná hotovosť', 'Potřebná hotovost');
   const btcLabel = t(lang, 'Your BTC holdings', 'Vaše BTC', 'Vaše BTC');
   const priceLabel = t(lang, 'BTC price', 'Cena BTC', 'Cena BTC');
-  const ltvLabel = t(lang, 'Loan-to-value', 'Loan-to-value', 'Poměr LTV');
+  const ltvLabel = t(lang, 'Loan-to-value', 'Pomer LTV', 'Poměr LTV');
   const aprLabel = t(lang, 'Interest rate (APR)', 'Úroková sadzba (APR)', 'Úroková sazba (APR)');
   const yearsLabel = t(lang, 'Horizon in years', 'Horizont v rokoch', 'Horizont v letech');
   const thresholdLabel = t(lang, 'Margin-call threshold (LTV)', 'Prah margin callu (LTV)', 'Práh margin callu (LTV)');
@@ -533,7 +533,7 @@ export default function Loan() {
             <p>
               {t(lang,
                 'A Bitcoin-backed loan can be liquidated if the price falls. You can lose part or all of your collateral. Interest and fees apply. Not financial, tax or legal advice.',
-                'Pôžička krytá Bitcoinom môže byť zlikvidovaná, ak cena klesne. Môžete prísť o časť alebo celý kolaterál. Platia sa úroky a poplatky. Nejde o finančné, daňové ani právne poradenstvo.',
+                'Pôžička krytá Bitcoinom môže byť zlikvidovaná, ak cena klesne. Môžete prísť o časť zábezpeky alebo o celú zábezpeku. Platia sa úroky a poplatky. Nejde o finančné, daňové ani právne poradenstvo.',
                 'Půjčka krytá Bitcoinem může být zlikvidována, pokud cena klesne. Můžete přijít o část nebo celý kolaterál. Platí se úroky a poplatky. Nejde o finanční, daňové ani právní poradenství.')}
             </p>
           </div>
@@ -580,7 +580,7 @@ export default function Loan() {
                   <div className="mt-1 break-words text-xl font-bold text-ink" title={eur(loanNetToday)}>{eurStat(loanNetToday)}</div>
                   <ul className="mt-3 space-y-2 text-xs leading-relaxed text-ink">
                     <Bullet>{tv(lang, 'Receive {0} and keep all {1}', 'Dostanete {0} a ponecháte si všetkých {1}', 'Dostanete {0} a ponecháte si všech {1}', [eur(cashNeeded), btcFmt(btcHoldings)])}</Bullet>
-                    <Bullet>{tv(lang, '{0} locked as collateral at {1} % LTV', '{0} uzamknutých ako kolaterál pri LTV {1} %', '{0} uzamčených jako kolaterál při LTV {1} %', [btcFmt(a.collateralBtc, 4), ltvPct])}</Bullet>
+                    <Bullet>{tv(lang, '{0} locked as collateral at {1} % LTV', '{0} uzamknutých ako zábezpeka pri LTV {1} %', '{0} uzamčených jako kolaterál při LTV {1} %', [btcFmt(a.collateralBtc, 4), ltvPct])}</Bullet>
                     <Bullet>{t(lang, 'No sale, so no tax on a sale now', 'Žiadny predaj, teda teraz žiadna daň z predaja', 'Žádný prodej, tedy teď žádná daň z prodeje')}</Bullet>
                     <Bullet>{tv(lang, 'Interest: {0} per year, {1} in total', 'Úrok: {0} ročne, spolu {1}', 'Úrok: {0} ročně, celkem {1}', [eur(a.interestPerYear), eur(a.interestTotal)])}</Bullet>
                     <Bullet>{tv(lang, 'To repay at the end: {0}', 'Na splatenie na konci: {0}', 'Ke splacení na konci: {0}', [eur(cashNeeded + a.interestTotal)])}</Bullet>
@@ -601,7 +601,7 @@ export default function Loan() {
               </h2>
               <div className="mt-4 grid gap-4 sm:grid-cols-3">
                 <div className="min-w-0 rounded-xl border border-line bg-white/5 p-4">
-                  <div className="text-[11px] uppercase tracking-wide text-ink-muted">{t(lang, 'Collateral', 'Kolaterál', 'Kolaterál')}</div>
+                  <div className="text-[11px] uppercase tracking-wide text-ink-muted">{t(lang, 'Collateral', 'Zábezpeka', 'Kolaterál')}</div>
                   <div className="mt-1 break-words text-lg font-bold text-ink">{btcFmt(a.collateralBtc, 4)}</div>
                   <div className="text-[11px] text-ink-muted">{tv(lang, 'locked at {0} % LTV', 'uzamknuté pri {0} % LTV', 'uzamčené při {0} % LTV', [ltvPct])}</div>
                 </div>

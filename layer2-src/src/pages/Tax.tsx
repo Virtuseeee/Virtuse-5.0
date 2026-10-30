@@ -138,7 +138,7 @@ export default function Tax() {
   const fieldLabel: Record<TaxField | TaxOptionalField, string> = {
     gainTax: t(lang, 'Gain tax', 'Daň zo zisku', 'Daň ze zisku'),
     healthLevy: t(lang, 'Health insurance', 'Zdravotné odvody', 'Zdravotní pojištění'),
-    exemption: t(lang, 'Holding exemption', 'Oslobodenie podľa držania', 'Osvobození podle doby držení'),
+    exemption: t(lang, 'Holding exemption', 'Oslobodenie podľa doby držby', 'Osvobození podle doby držení'),
     filing: t(lang, 'Filing', 'Priznanie', 'Přiznání'),
   };
 

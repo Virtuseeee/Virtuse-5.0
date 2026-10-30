@@ -11,7 +11,7 @@ export function PartnerLinkNote({ lang, className = '' }: { lang: Lang; classNam
     <p className={`text-[11px] leading-relaxed text-ink-muted ${className}`}>
       {t(lang,
         'Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.',
-        'Partnerský odkaz – ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.',
+        'Partnerský odkaz: ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.',
         'Partnerský odkaz – pokud se zaregistrujete, Virtuse může získat provizi. Vaše cena se tím nemění.')}{' '}
       <a href="how-we-earn.html" className="underline underline-offset-2 hover:text-ink">
         {t(lang, 'How we earn', 'Ako zarábame', 'Jak vyděláváme')}
