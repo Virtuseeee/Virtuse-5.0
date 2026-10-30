@@ -383,7 +383,7 @@
       "gainTax": "15 % Einkommensteuer (23 % oberhalb der Schwelle)",
       "exemption": "Steuerfrei nach 3 Jahren Haltedauer (bis 40 Mio. CZK pro Jahr) oder wenn die gesamten Krypto-Veräußerungserlöse im Jahr höchstens 100.000 CZK betragen",
       "filing": "Jährliche Einkommensteuererklärung",
-      "note": "Jede Veräußerung (einschließlich Krypto-zu-Krypto) ist ein steuerpflichtiges Ereignis. Führen Sie vollständige Aufzeichnungen ab dem ersten Tag."
+      "note": "Jede Veräußerung (einschließlich Krypto-zu-Krypto) ist ein steuerpflichtiger Vorgang. Führen Sie vollständige Aufzeichnungen ab dem ersten Tag."
     },
     "sk": {
       "gainTax": "19 bis 35 % Einkommensteuer",
@@ -490,7 +490,7 @@
     {
       "id": "accounts",
       "name": "Konten inventarisieren",
-      "text": "Börsenkonten, bitcoinbesicherte Kredite und Sparpläne gehen mit vergessenen Zugangsdaten verloren. Führen Sie im Schreiben ein Inventar der Plattformen und halten Sie fest, wie Guthaben geltend gemacht werden."
+      "text": "Börsenkonten, Bitcoin-besicherte Kredite und Sparpläne gehen mit vergessenen Zugangsdaten verloren. Führen Sie im Schreiben ein Inventar der Plattformen und halten Sie fest, wie Guthaben geltend gemacht werden."
     }
   ],
   "inDe": {

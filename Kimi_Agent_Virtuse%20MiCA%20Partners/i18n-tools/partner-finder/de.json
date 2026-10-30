@@ -15,7 +15,7 @@
   "how_h2_b": "funktioniert Partner Finder",
   "step": "Schritt",
   "s1_t": "Kriterien festlegen",
-  "s1_p": "Kaufen, leihen, automatisieren, minen, sichern oder Steuern erledigen: Wählen Sie ein Ziel, Ihr Land, wie Sie Ihre Schlüssel halten und ungefähr welchen Betrag.",
+  "s1_p": "Kaufen, beleihen, automatisieren, minen, sichern oder Steuern erledigen: Wählen Sie ein Ziel, Ihr Land, wie Sie Ihre Schlüssel halten und ungefähr welchen Betrag.",
   "s2_t": "Passende Partner vergleichen",
   "s2_p": "Sie sehen bis zu drei der {n} Partner, die zu Ihren Antworten passen, mit Gebühren und Fakten direkt nebeneinander.",
   "s3_t": "Auf deren Plattform abschließen",
@@ -54,7 +54,7 @@
   "rel_cfo_p": "Prüfen Sie kostenlos, was Sie bei Ihrer Entscheidung ausgelassen haben. Danach verfolgt der CFO Gebühren und Risiken.",
   "rel_data_t": "Bitcoin-Daten",
   "rel_data_p": "Preis-, Gebühren- und Netzwerkdaten, live.",
-  "rel_ret_t": "Bitcoin Rentenrechner",
+  "rel_ret_t": "Bitcoin-Ruhestandsrechner",
   "rel_ret_p": "Wann Bitcoin-Ersparnisse Ihren Ruhestand finanzieren können.",
   "disclaimer": "Keine Anlageberatung. Virtuse verwahrt nie Ihre Schlüssel oder Gelder. KYC und Onboarding erfolgen auf der Plattform des jeweiligen Partners."
 }

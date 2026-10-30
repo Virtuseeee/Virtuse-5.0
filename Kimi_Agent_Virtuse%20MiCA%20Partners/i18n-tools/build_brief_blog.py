@@ -32,7 +32,7 @@ ORDER = [('en', 'EN'), ('sk', 'SK'), ('uk', 'UA'), ('cs', 'CS'), ('ru', 'RU'), (
 
 # Date order for the live feed (fmtDate in the template): Hungarian is
 # year-first, Slovak/Czech put a dot after the day.
-DATE_STYLE = {'hu': 'ymd', 'sk': 'dot', 'cs': 'dot'}
+DATE_STYLE = {'hu': 'ymd', 'sk': 'dot', 'cs': 'dot', 'de': 'dot'}
 
 # Strings that are new to the Brief layout. Mining / custody / treasury desk
 # names are taken from each page's own nav, so they match the site's terms.

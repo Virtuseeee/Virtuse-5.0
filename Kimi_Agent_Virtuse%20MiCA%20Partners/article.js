@@ -145,14 +145,14 @@
         emailReq: 'Bitte geben Sie Ihre E-Mail-Adresse ein.', sending: 'Wird gesendet', subOk: 'Geschafft. Bitte prüfen Sie Ihr Postfach.',
         subErr: 'Anmeldung fehlgeschlagen. Bitte erneut versuchen.', netErr: 'Netzwerkfehler. Bitte erneut versuchen.',
         footAbout: 'Über uns', footTerms: 'AGB', footPrivacy: 'Datenschutzerklärung', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Alle Rechte vorbehalten.', footOpLabel: 'Betreiber', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slowakei · Firmennummer (IČO) 36 709 042 · USt-IdNr. SK2022293042 · eingetragen im Handelsregister des Stadtgerichts Bratislava III, Abteilung Sa, Einlage Nr. 4452/B · info@virtuse.com',
-        errTitle: 'Artikel nicht gefunden', errText: 'Dieser Artikel wurde möglicherweise verschoben oder depubliziert. Durchsuchen Sie das Archiv.', errCta: 'Alle Artikel'
+        errTitle: 'Artikel nicht gefunden', errText: 'Dieser Artikel wurde möglicherweise verschoben oder entfernt. Durchsuchen Sie das Archiv.', errCta: 'Alle Artikel'
       },
       services: {
         mining: ['Bitcoin-Mining mit geprüften Partnern', 'Hosting-, Cloud- und Hardware-Partner nach Kosten und Auszahlung verglichen.', 'Mining-Partner vergleichen'],
         treasury: ['Bitcoin in der Unternehmensbilanz', 'Verwahrung, Ausführung und Reporting für Unternehmen und Family Offices.', 'Treasury-Partner ansehen'],
         custody: ['Behalten Sie Ihre eigenen Schlüssel', 'Hardware-Wallets und Multi-Sig-Lösungen von geprüften Partnern.', 'Verwahrung vergleichen'],
-        policy: ['Bitcoin-Steuern richtig erledigen', 'Länderspezifische Berichte von Steuersoftware-Partnern.', 'Steuer-Partner ansehen'],
-        macro: ['Bitcoin beleihen statt verkaufen', 'Bitcoin-besicherte Kredite geprüfter Anbieter, ab 5 % p. a.', 'Kredit-Partner vergleichen'],
+        policy: ['Bitcoin-Steuern richtig erledigen', 'Länderspezifische Berichte von Steuersoftware-Partnern.', 'Steuerpartner ansehen'],
+        macro: ['Bitcoin beleihen statt verkaufen', 'Bitcoin-besicherte Kredite geprüfter Anbieter, ab 5 % p. a.', 'Kreditpartner vergleichen'],
         markets: ['Wo Sie Bitcoin kaufen', 'Geprüfte, regulierte Plattformen im Vergleich: Gebühren, Verwahrung, Auszahlung.', 'Partner vergleichen']
       }
     },

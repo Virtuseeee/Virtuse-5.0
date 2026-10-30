@@ -73,7 +73,7 @@
  "q2": "Kann ich mit einem Bot Geld verlieren?",
  "a2": "Ja. Automatisierung beseitigt nicht das Marktrisiko, und Backtests garantieren keine zukünftigen Ergebnisse. Fangen Sie klein an und testen Sie zuerst mit Paper-Trading.",
  "q3": "Ist DCA mit einem Bot steuerpflichtig?",
- "a3": "Der Kauf ist in der Regel kein steuerpflichtiges Ereignis; Verkauf oder Tausch können es sein. Unsere Steuerratgeber fassen die Regeln für 13 EU-Länder zusammen. Dies ist eine allgemeine Information, keine Steuerberatung.",
+ "a3": "Der Kauf ist in der Regel kein steuerpflichtiger Vorgang; Verkauf oder Tausch können es sein. Unsere Steuerratgeber fassen die Regeln für 13 EU-Länder zusammen. Dies ist eine allgemeine Information, keine Steuerberatung.",
  "a3_link": "Bitcoin-Steuerratgeber",
  "q4": "Ist mein Bitcoin auf der Börse sicher?",
  "a4": "Der Bot verwahrt nie Ihre Gelder, die Börse aber schon: Sie verwahrt Ihre Coins und Schlüssel. Lassen Sie nur das auf der Börse, womit Sie handeln, und übertragen Sie den Rest in die Selbstverwahrung.",
