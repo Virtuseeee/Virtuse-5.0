@@ -25,6 +25,9 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = open(os.path.join(HERE, 'brief_blog_template.html'), encoding='utf-8').read()
+# screen-reader label of the two email fields (same words as on the live blog pages)
+EMAIL_LABEL = {'en': 'Email', 'sk': 'E-mail', 'de': 'E-Mail-Adresse', 'fr': 'Adresse e-mail', 'es': 'Correo electrónico',
+               'pl': 'Adres e-mail', 'hu': 'E-mail-cím', 'uk': 'Електронна пошта', 'ru': 'Электронная почта', 'cs': 'E-mail'}
 
 # Language switcher: fixed order and labels (targets come from the page).
 ORDER = [('en', 'EN'), ('sk', 'SK'), ('uk', 'UA'), ('cs', 'CS'), ('ru', 'RU'), ('de', 'DE'),
@@ -200,7 +203,7 @@ def build(lang, src_path, out_path):
         '{{F_DATE}}': f['date'], '{{CARDS}}': '\n'.join(card_html(c, n['read']) for c in d['cards']),
         '{{LOAD_MORE}}': cfg['strings']['loadMore'],
         '{{CAP_KICKER}}': d['cap_kicker'], '{{CAP_DEK}}': d['cap_dek'], '{{CAP_BTN}}': d['cap_btn'],
-        '{{CAP_PH}}': d['cap_ph'], '{{SUBSCRIBE}}': d['cap_btn'],
+        '{{CAP_PH}}': d['cap_ph'], '{{EMAIL_LABEL}}': EMAIL_LABEL[lang], '{{SUBSCRIBE}}': d['cap_btn'],
         '{{NAV_ISSUES}}': n['nav_issues'], '{{NAV_BLOG}}': d['nav']['blog'], '{{NAV_DATA}}': n['nav_data'],
         '{{NAV_HUB}}': n['nav_hub'], '{{NAV_GET}}': d['cap_btn'],
         '{{ABOUT}}': d['about'], '{{ABOUT_HREF}}': d['about_href'], '{{TERMS}}': d['terms'], '{{TERMS_HREF}}': d['terms_href'],
