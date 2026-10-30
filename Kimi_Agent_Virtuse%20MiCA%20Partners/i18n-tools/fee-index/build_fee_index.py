@@ -284,9 +284,9 @@ def write(rel, out):
     print('%-48s %6d bytes' % (rel, len(out)))
 
 
-# '90 d' is the English abbreviation; the other languages use the same words as their homepage chart label
-DAYS90 = {'sk': '90 dní', 'cs': '90 dní', 'de': '90 Tage', 'fr': '90 jours', 'es': '90 días',
-          'pl': '90 dni', 'hu': '90 nap', 'uk': '90 днів', 'ru': '90 дней'}
+# Same labels as v2common.DAYS90 (the static pages' BTC chart)
+DAYS90 = {'en': '90 d', 'sk': '90 dní', 'cs': '90 dní', 'de': '90 Tage', 'fr': '90 j', 'es': '90 d', 'pl': '90 dni', 'hu': '90 nap',
+          'uk': '90 дн.', 'ru': '90 дн.'}
 
 
 def days90(L):

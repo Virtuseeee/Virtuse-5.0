@@ -180,7 +180,7 @@ export const PARTNERS: Partner[] = [
     goals: ['buy'],
     custody: ['any'],
     url: 'https://cryptocom.sjv.io/c/7490229/2051372/25666',
-    feeNote: { en: 'Card and an EU-regulated app', sk: 'Karta a širšia ponuka aktív', cs: 'Karta a širší nabídka aktiv' },
+    feeNote: { en: 'Card and an EU-regulated app', sk: 'Karta a aplikácia regulovaná v EÚ', cs: 'Karta a aplikace regulovaná v EU' },
     countries: ['ALL'],
     licence: lic({ en: 'MFSA Malta', sk: 'MFSA Malta', cs: 'MFSA Malta' }),
   },
@@ -446,8 +446,8 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
         push('crypto-com', 78, [
           t(lang,
             'If you want more than spot buying: a card and an EU-regulated app.',
-            'Ak chcete viac než len spotový nákup: karta a širšia ponuka aktív.',
-            'Pokud chcete víc než jen spotový nákup: karta a širší nabídka aktiv.'),
+            'Ak chcete viac než len spotový nákup: karta a aplikácia regulovaná v EÚ.',
+            'Pokud chcete víc než jen spotový nákup: karta a aplikace regulovaná v EU.'),
         ]);
       }
       if (a.custody === 'self' && a.experience !== 'new') {
