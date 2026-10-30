@@ -530,7 +530,7 @@ def build_methodology(fi, s21):
     </ul>
     {table}
   </section>
-'''.format(src=src, times=esc(times), method=esc(m['method']), t21=('Samples: %s (UTC).' % esc(t21)) if t21 else 'Not measured yet: until then 21bitcoin is listed without a rank.',
+'''.format(src=src, times=esc(times), method=esc(m['method']), t21=('Samples: %s (UTC).' % esc(t21)) if t21 else 'Until it is measured, 21bitcoin is listed without a rank.',
            table=table(['Amount', 'Rank', 'Partner', 'Fee', 'Est. spread', 'Total cost', 'Per year'], all_amount_rows(fi, s21)))
     simple_page('bitcoin-fee-index/methodology/index.html', 'Bitcoin Fee Index methodology: fees and spreads',
                 'How the Virtuse Bitcoin Fee Index ranks EU buy routes by total cost: listed fee plus estimated spread. Sources and check dates.',

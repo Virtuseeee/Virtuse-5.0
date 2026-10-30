@@ -89,7 +89,7 @@ export const COUNTRIES: ChipOption[] = [
 
 export const EXPERIENCE: ChipOption[] = [
   { id: 'new', label: { en: 'New to Bitcoin', sk: 'Nový v Bitcoine', cs: 'Nový v Bitcoinu' }, hint: { en: 'First purchase, learning the ropes', sk: 'Prvý nákup, zoznamovanie sa', cs: 'První nákup, seznamování se' } },
-  { id: 'hodler', label: { en: 'I already hold Bitcoin', sk: 'Už vlastním Bitcoin', cs: 'Už vlastním Bitcoin' }, hint: { en: 'Looking to optimize', sk: 'Chcem to optimalizovať', cs: 'Chci to optimalizovat' } },
+  { id: 'hodler', label: { en: 'I already hold Bitcoin', sk: 'Už vlastním Bitcoin', cs: 'Už vlastním Bitcoin' }, hint: { en: 'Looking to optimise', sk: 'Chcem to optimalizovať', cs: 'Chci to optimalizovat' } },
 ];
 
 export const CUSTODY: ChipOption[] = [
@@ -180,7 +180,7 @@ export const PARTNERS: Partner[] = [
     goals: ['buy'],
     custody: ['any'],
     url: 'https://cryptocom.sjv.io/c/7490229/2051372/25666',
-    feeNote: { en: 'Card and wider asset coverage', sk: 'Karta a širšia ponuka aktív', cs: 'Karta a širší nabídka aktiv' },
+    feeNote: { en: 'Card and an EU-regulated app', sk: 'Karta a širšia ponuka aktív', cs: 'Karta a širší nabídka aktiv' },
     countries: ['ALL'],
     licence: lic({ en: 'MFSA Malta', sk: 'MFSA Malta', cs: 'MFSA Malta' }),
   },
@@ -438,14 +438,14 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       if (a.amount === 'l' || a.amount === 'xl') {
         push('bybit-eu', 84, [
           t(lang,
-            'For larger amounts, a spot order book exchange with EUR pairs.',
+            'For larger amounts, a spot order-book exchange with EUR pairs.',
             'Pri väčších sumách burza so spotovou knihou objednávok a pármi v EUR.',
             'U větších částek burza se spotovou knihou objednávek a páry v EUR.'),
         ]);
       } else if (a.custody !== 'self') {
         push('crypto-com', 78, [
           t(lang,
-            'If you want more than spot buying: card and wider asset coverage.',
+            'If you want more than spot buying: a card and an EU-regulated app.',
             'Ak chcete viac než len spotový nákup: karta a širšia ponuka aktív.',
             'Pokud chcete víc než jen spotový nákup: karta a širší nabídka aktiv.'),
         ]);
@@ -543,7 +543,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       } else {
         push('abundant-mines', 90, [
           t(lang,
-            'Professionally managed, renewable-energy mining infrastructure for mid-to-large scale miners.',
+            'Professionally managed, renewable-energy mining infrastructure for mid- to large-scale miners.',
             'Profesionálne spravovaná ťažobná infraštruktúra na obnoviteľnú energiu pre stredných a veľkých ťažiarov.',
             'Profesionálně spravovaná těžební infrastruktura na obnovitelnou energii pro střední a velké těžaře.'),
         ]);
@@ -595,7 +595,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
     case 'tax': {
       if (['de', 'at', 'nl', 'es'].includes(a.country ?? '')) {
         push('blockpit', 95, [
-          tv(lang, `Country-specific reports built for {0}: Austrian-built, 700+ integrations.`, `Výkazy šité na mieru pre {0}: rakúsky nástroj, 700+ integrácií.`, `Výkazy šité na míru pro {0}: rakouský nástroj, 700+ integrací.`, [countryName(lang, a.country)]),
+          tv(lang, `Country-specific reports for {0}: Austrian-built, 700+ integrations.`, `Výkazy šité na mieru pre {0}: rakúsky nástroj, 700+ integrácií.`, `Výkazy šité na míru pro {0}: rakouský nástroj, 700+ integrací.`, [countryName(lang, a.country)]),
           t(lang, 'Free portfolio tracking tier.', 'Bezplatná úroveň sledovania portfólia.', 'Bezplatná úroveň sledování portfolia.'),
         ]);
       } else {

@@ -590,7 +590,7 @@ export default function Stacking() {
             ) : (
               <>
                 {t(lang,
-                  'Every route above costs the same or more than this one: there is nothing left to save by switching.',
+                  'Every route above costs the same as or more than this one: there is nothing left to save by switching.',
                   'Každá trasa vyššie stojí rovnako alebo viac než táto: zmenou už nič neušetríte.',
                   'Každá trasa výše stojí stejně nebo víc než tato: změnou už nic neušetříte.')}
               </>

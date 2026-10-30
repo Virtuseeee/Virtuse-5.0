@@ -733,7 +733,7 @@ export default function Loan() {
             </div>
             <PartnerLinkNote lang={lang} className="mt-2" />
             <p className="mt-2 text-[11px] leading-relaxed text-ink-muted">
-              <span className="text-ink">Firefish: {tv(lang, 'MiCA licensed ({0})', 'Licencia MiCA ({0})', 'Licence MiCA ({0})', [L(FIREFISH_REGULATOR, lang)])}</span>{' '}
+              <span className="text-ink">Firefish: {tv(lang, 'MiCA-licensed ({0})', 'Licencia MiCA ({0})', 'Licence MiCA ({0})', [L(FIREFISH_REGULATOR, lang)])}</span>{' '}
               ·{' '}
               <a href={ESMA_MICA_URL} target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-ink">
                 {t(lang, 'Source', 'Zdroj', 'Zdroj')}

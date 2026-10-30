@@ -8,7 +8,7 @@ WEAK = 4
 GROUPS = [(0, 3, 'var(--blue)'), (3, 7, 'var(--orange)'), (7, 10, 'var(--teal)')]
 TXT = {
   'en': {'groups': [('Intent', 'Do you know why?'), ('Survival', 'Does it survive?'), ('Discipline', 'Will you stick to it?')],
-         'names': ['Goal', 'Time horizon', 'Alternatives', 'Worst case', 'Liquidity', 'Custody & inheritance', 'Tax', 'Rule not emotion', 'Plan B', 'Asymmetry'],
+         'names': ['Goal', 'Time horizon', 'Alternatives', 'Worst case', 'Liquidity', 'Custody & inheritance', 'Tax', 'Rule, not emotion', 'Plan B', 'Asymmetry'],
          'short': ['Goal', 'Horizon', 'Alternatives', 'Worst case', 'Liquidity', 'Custody', 'Tax', 'Rule', 'Plan B', 'Asymmetry'],
          'q': ['Do you know what this Bitcoin move is for?', 'When do you need the money again?', 'What else did you consider before this plan?',
                'What happens if BTC falls about 70%?', 'Do you know your liquidation price and cash need?', 'Who holds the keys, and who gets them?',

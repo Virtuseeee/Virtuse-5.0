@@ -54,7 +54,7 @@
       skipLabel: 'Skip',
       backLabel: '← Back',
       resultHeadline: 'We have enough to prepare the call.',
-      disclaimer: 'Virtuse Wealth Management a.s. does not provide investment advice and does not hold client assets. We facilitate affiliate partnerships — the allocation decision is always yours.',
+      disclaimer: 'Virtuse Wealth Management, a.s. does not provide investment advice and does not hold client assets. We facilitate affiliate partnerships — the allocation decision is always yours.',
       riskNote: "You picked topics (buying/selling Bitcoin, custody, treasury, automated bots) where it's important to know upfront: Virtuse doesn't perform or provide these services directly — we facilitate access to partner platforms that do. We'll walk you through exactly who does what on the call.",
       bookLabel: 'Book a 15-min consultation',
       restartLabel: 'Start over',

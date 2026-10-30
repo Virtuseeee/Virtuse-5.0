@@ -146,7 +146,7 @@
         {
           "name": "The Price of Tomorrow (Jeff Booth)",
           "url": "https://www.thepriceoftomorrow.com",
-          "verdict": "Why technology pushes prices down while the monetary system fights it. Not a Bitcoin book first, but a strong argument for one.",
+          "verdict": "Why technology pushes prices down while the monetary system fights it. Not primarily a Bitcoin book, but a strong argument for Bitcoin.",
           "tags": [
             "Economics",
             "Technology"
@@ -461,7 +461,7 @@
           "countryName": "Latvia",
           "start": null,
           "end": null,
-          "dates": "2027, date to be announced",
+          "dates": "2027, to be confirmed",
           "bitcoinOnly": true,
           "verdict": "One of Europe's longest-running bitcoin-only conferences, known for technical depth and a hacker spirit.",
           "tags": [
@@ -676,7 +676,7 @@
         {
           "name": "Swiss Bitcoin Pay",
           "url": "https://swiss-bitcoin-pay.ch",
-          "verdict": "Lightning payments for shops and restaurants from Switzerland, with a simple point-of-sale app.",
+          "verdict": "Swiss Lightning payments for shops and restaurants, with a simple point-of-sale app.",
           "tags": [
             "POS",
             "Switzerland",
@@ -723,7 +723,7 @@
         {
           "name": "LNbits",
           "url": "https://lnbits.com",
-          "verdict": "Free, open-source Lightning accounts and extensions, including point-of-sale and paywalls.",
+          "verdict": "Free, open-source Lightning accounts and extensions, including point-of-sale apps and paywalls.",
           "tags": [
             "Open source",
             "Lightning"
@@ -782,7 +782,7 @@
         {
           "name": "Bitcoin Core",
           "url": "https://bitcoincore.org",
-          "verdict": "The reference implementation. Its RPC interface and documentation are the base of most Bitcoin software.",
+          "verdict": "The reference implementation. Its RPC interface and documentation are the basis of most Bitcoin software.",
           "tags": [
             "Reference",
             "C++",
@@ -870,7 +870,7 @@
         {
           "name": "Brink",
           "url": "https://brink.dev",
-          "verdict": "London-based non-profit that funds and mentors Bitcoin Core developers through grants and fellowships.",
+          "verdict": "A London-based non-profit that funds and mentors Bitcoin Core developers through grants and fellowships.",
           "tags": [
             "Grants",
             "UK",
@@ -963,7 +963,7 @@
         {
           "name": "Plan ₿ Network",
           "url": "https://planb.network",
-          "verdict": "Swiss-based open education platform translating Bitcoin courses into dozens of languages.",
+          "verdict": "A Swiss-based open education platform translating Bitcoin courses into dozens of languages.",
           "tags": [
             "Education",
             "Multilingual"

@@ -143,7 +143,7 @@ export const COUNTRY_TAX: CountryTax[] = [
     flag: '🇪🇸',
     gainTax: { en: '19 to 30% progressive tax on savings income', sk: '19 až 30 % progresívna daň z kapitálových príjmov', cs: '19 až 30 % progresivní daň z kapitálových příjmů' },
     exemption: { en: 'No holding-period exemption', sk: 'Bez oslobodenia podľa doby držby', cs: 'Bez osvobození podle doby držení' },
-    filing: { en: 'Annual IRPF return; Modelo 721 for crypto held with custodians abroad over €50,000', sk: 'Ročné priznanie IRPF; Modelo 721 pre kryptoaktíva u zahraničných správcov nad 50 000 €', cs: 'Roční přiznání IRPF; Modelo 721 pro kryptoaktiva u zahraničních správců nad 50 000 €' },
+    filing: { en: 'Annual IRPF return; Modelo 721 for crypto worth over €50,000 held with custodians abroad', sk: 'Ročné priznanie IRPF; Modelo 721 pre kryptoaktíva u zahraničných správcov nad 50 000 €', cs: 'Roční přiznání IRPF; Modelo 721 pro kryptoaktiva u zahraničních správců nad 50 000 €' },
     note: { en: 'Crypto-to-crypto swaps are taxable disposals. Use FIFO for identical coins.', sk: 'Výmeny krypto-krypto sú zdaniteľné prevody. Pre rovnaké mince použite FIFO.', cs: 'Výměny krypto-krypto jsou zdanitelné převody. Pro stejné mince použijte FIFO.' },
   },
 ];
@@ -179,7 +179,7 @@ export const INHERITANCE_CHECKLIST: ChecklistItem[] = [
     question: { en: 'Does at least one heir know your Bitcoin exists and where to start?', sk: 'Vie aspoň jeden dedič, že váš bitcoin existuje a kde začať?', cs: 'Ví alespoň jeden dědic, že váš bitcoin existuje a kde začít?' },
     detail: { en: 'Bitcoin discovered years late, or never, is the most common inheritance failure.', sk: 'Bitcoin objavený o roky neskôr, alebo vôbec, je najčastejšie zlyhanie dedičstva.', cs: 'Bitcoin, který dědicové najdou až po letech nebo vůbec ne, je nejčastějším selháním při dědění.' },
     points: 15,
-    action: { en: 'Tell one trusted person the outline exists and who to contact. Full details only in the letter of instruction.', sk: 'Povedzte jednej dôveryhodnej osobe, že prehľad existuje a koho kontaktovať. Všetky detaily len v liste s pokynmi.', cs: 'Řekněte jedné důvěryhodné osobě, že přehled existuje a koho kontaktovat. Všechny detaily jen v dopise s pokyny.' },
+    action: { en: 'Tell one trusted person that the plan exists and whom to contact. Full details only in the letter of instruction.', sk: 'Povedzte jednej dôveryhodnej osobe, že prehľad existuje a koho kontaktovať. Všetky detaily len v liste s pokynmi.', cs: 'Řekněte jedné důvěryhodné osobě, že přehled existuje a koho kontaktovat. Všechny detaily jen v dopise s pokyny.' },
   },
   {
     id: 'multisig',

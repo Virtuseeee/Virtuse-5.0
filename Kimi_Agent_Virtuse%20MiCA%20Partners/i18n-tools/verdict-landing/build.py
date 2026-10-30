@@ -18,10 +18,10 @@ V = '20261028a'
 LANGS = {
   'en': {'page': 'verdict.html', 'cfo': 'cfo.html',
          'title': 'Verdict: empower investors to make smart decisions | Virtuse',
-         'desc': 'Verdict scores how complete your Bitcoin plan is on 10 signals, names the weakest point and gives one next step. Free. Not investment advice.',
+         'desc': 'Verdict scores how complete your Bitcoin plan is on 10 signals, names the weakest point and gives three next steps. Free. Not investment advice.',
          'pricing_eyebrow': 'Pricing', 'pricing_h2': 'Three levels. <span>Start with a free Verdict.</span>',
          'cta': 'Get your free Verdict', 'back': '← About Verdict', 'free_items': ['Score 0–100 and band', 'Executive summary', 'The bottleneck: the signal that decides the score', 'What holds / what breaks, assumptions (headline)', 'Next steps, with the tool to check them'],
-         'report_items': ['All 10 signals with scores and reasons', 'Type 1 vs Type 2: reversible or not?', "Regret minimizer: what you'd wish you knew", 'Risks &amp; Plan B', 'What holds / what breaks and assumptions in full', 'Next steps with owner and deadline', 'A PDF to keep, no subscription']},
+         'report_items': ['All 10 signals with scores and reasons', 'Type 1 vs Type 2: reversible or not?', "Regret minimiser: what you'd wish you had known", 'Risks &amp; Plan B', 'What holds / what breaks and assumptions in full', 'Next steps with owner and deadline', 'A PDF to keep, no subscription']},
   'sk': {'page': 'sk/verdict.html', 'cfo': 'sk/cfo.html',
          'title': 'Verdict: pomáhame investorom robiť múdre rozhodnutia | Virtuse',
          'desc': 'Verdict ohodnotí úplnosť vášho bitcoinového plánu na 10 signáloch, pomenuje najslabšie miesto a dá jeden ďalší krok. Zadarmo. Nie je to investičné poradenstvo.',

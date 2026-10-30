@@ -29,7 +29,7 @@
  "data_k": "Data",
  "data_title": "How Bitcoin compares with 22 asset classes over 10 years",
  "data_p": "Calendar-year total returns of Bitcoin, stocks, bonds, gold, commodities and cash, side by side.",
- "data_label": "Bitcoin, annualized return since 2016 (USD) · rank {rank} of {n}",
+ "data_label": "Bitcoin, annualised return since 2016 (USD) · rank {rank} of {n}",
  "data_src": "Source: Virtuse asset returns, updated daily",
  "data_cta": "See asset class returns",
  "w_foot": "Past performance is not a reliable indicator of future results. Bitcoin is volatile.",

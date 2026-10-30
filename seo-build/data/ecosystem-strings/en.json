@@ -25,7 +25,7 @@
     "tableLink": "Website",
     "websiteButton": "Website",
     "confTbcSep2027": "Sep 2027, to be confirmed",
-    "confTba2027": "2027, date to be announced",
+    "confTba2027": "2027, to be confirmed",
     "cities": {
       "Amsterdam": "Amsterdam",
       "Kreuzlingen": "Kreuzlingen",
@@ -138,7 +138,7 @@
       ],
       "primer": [
         "<h2>Money without an issuer</h2>",
-        "<p>Bitcoin is a digital money that runs on an open network rather than on a bank's ledger. Nobody issues it on demand and nobody can freeze the network or rewrite its history. You hold bitcoin by holding a secret key, and whoever controls that key can move the coins. Since the first block in January 2009, the network has kept running without a central operator, a company or a board.</p>",
+        "<p>Bitcoin is digital money that runs on an open network rather than on a bank's ledger. Nobody issues it on demand and nobody can freeze the network or rewrite its history. You hold bitcoin by holding a secret key, and whoever controls that key can move the coins. Since the first block in January 2009, the network has kept running without a central operator, a company or a board.</p>",
         "<p>Most money you use is a promise recorded by an institution: your bank balance is a liability of your bank, and the currency itself is managed by a central bank that can create more of it. Bitcoin works differently. The ledger is public, the rules are written in open-source software, and anyone can check that the rules are being followed.</p>",
         "<p>That design was a response to a specific problem. Before Bitcoin, every digital payment system needed a trusted middleman to stop people from spending the same money twice. Bitcoin solved this without a middleman by letting the whole network agree on a single history of transactions. The result is a payment network and a savings asset that anyone with an internet connection can use, without asking permission and without opening an account.</p>",
         "<h2>Why people use Bitcoin</h2>",
@@ -146,7 +146,7 @@
         "<p>None of these uses requires you to trade. Many Europeans buy a small fixed amount every month (dollar-cost averaging) and hold for years, which smooths out the effect of short-term price swings. Our <a href=\"/bitcoin-dca-calculator/\">DCA calculator</a> shows how that has worked historically, with real fees included.</p>",
         "<h2>Scarcity: the 21 million limit</h2>",
         "<p>The total number of bitcoin that will ever exist is capped at 21 million. New coins are issued to miners as a reward for securing the network, and that reward halves roughly every four years (every 210,000 blocks). Most of the supply has already been issued; the remaining coins arrive ever more slowly until around the year 2140.</p>",
-        "<p>This fixed, predictable schedule is the main reason people compare Bitcoin to gold. You cannot print more because demand rises, and no central bank can decide to dilute existing holders. Whether that makes Bitcoin a good store of value over your own time horizon is a judgement you have to make yourself; history shows long periods of strong growth and deep drawdowns of 70 % or more.</p>",
+        "<p>This fixed, predictable schedule is the main reason people compare Bitcoin to gold. You cannot print more because demand rises, and no central bank can decide to dilute existing holders. Whether that makes Bitcoin a good store of value over your own time horizon is a judgement you have to make yourself; history shows long periods of strong growth and deep drawdowns of 70% or more.</p>",
         "<h2>Bitcoin is not \"crypto\"</h2>",
         "<p>Thousands of other tokens have copied parts of Bitcoin's code, but most of them have a company, a foundation or a small group of insiders that can change the rules, issue more units or pause the network. That is a different risk profile. Virtuse is bitcoin-only for this reason: Bitcoin's value comes from having no issuer and no one in charge, and that is very hard to replicate once a project has founders, a pre-sale or a marketing budget. When someone pitches you a new coin with promised returns, treat it as a sales offer, not as Bitcoin.</p>",
         "<h2>How it works</h2>",
@@ -221,7 +221,7 @@
       "navDesc": "A curated reading list",
       "h1": "Bitcoin Books",
       "title": "Best Bitcoin Books: A Curated Reading List | Virtuse",
-      "description": "The essential bitcoin books, from first steps to monetary history, each with a short verdict on who it is for.",
+      "description": "The essential Bitcoin books, from first steps to monetary history, each with a short verdict on who it is for.",
       "intro": "The books we recommend most often, from monetary history to how the protocol works. Each comes with a one-line verdict on who it is for, so you can pick the right next read.",
       "related": [
         "What is Bitcoin? A plain-English primer",
@@ -263,7 +263,7 @@
       "navDesc": "Bitcoin events in Europe",
       "h1": "Bitcoin Conferences in Europe",
       "title": "Bitcoin Conferences in Europe 2026–2027 | Virtuse",
-      "description": "Upcoming bitcoin conferences in Europe with dates, cities and links: Prague, Amsterdam, Kreuzlingen, Riga, Warsaw and more.",
+      "description": "Upcoming Bitcoin conferences in Europe with dates, cities and links: Prague, Amsterdam, Kreuzlingen, Riga, Warsaw and more.",
       "intro": "Upcoming Bitcoin conferences across Europe, with dates, cities and a link to each official website. All listed events are bitcoin-only. Past events are removed after they end; dates marked \"to be confirmed\" have not yet been published by the organisers.",
       "related": [
         "Bitcoin peers: fellow bitcoin-only projects",
@@ -334,7 +334,7 @@
       "navDesc": "Jobs, grants and fellowships",
       "h1": "Bitcoin Jobs",
       "title": "Bitcoin Jobs in Europe: Bitcoin-Only Companies | Virtuse",
-      "description": "Where to find jobs at bitcoin-only companies in Europe and remote, from engineering to marketing and support.",
+      "description": "Where to find jobs at bitcoin-only companies in Europe and in remote roles, from engineering to marketing and support.",
       "intro": "Where to find work in Bitcoin: job boards for bitcoin-only companies, plus grants, fellowships and training programmes for developers. We do not host job posts; every link goes to the source.",
       "related": [
         "Bitcoin developer tools",
@@ -364,7 +364,7 @@
       "h1": "Get your project featured",
       "title": "Get Featured in the Bitcoin Ecosystem | Virtuse",
       "description": "How bitcoin-only projects can apply to be listed or featured in the Virtuse Bitcoin Ecosystem. Manual review, clear criteria, paid placements disclosed.",
-      "intro": "The Virtuse Bitcoin Ecosystem directory is curated by hand. We do not accept automatic submissions. If you believe your project belongs here, please email us or send the application form below. We review every application personally and may decline any application without giving a reason.",
+      "intro": "The Virtuse Bitcoin Ecosystem directory is curated by hand. We do not accept automatic submissions. If you believe your project belongs here, please email us or submit the application form below. We review every application personally and may decline any application without giving a reason.",
       "h1Accent": "in the Bitcoin Ecosystem."
     }
   },

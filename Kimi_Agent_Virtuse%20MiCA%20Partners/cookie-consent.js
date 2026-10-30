@@ -23,7 +23,7 @@
     en: {
       title: 'Cookies on Virtuse',
       text: 'With your consent, we use cookies to measure traffic (Google Analytics) and advertising (Google Ads). Necessary storage, such as your language, always works. You can change your choice at any time.',
-      policy: 'Privacy policy', accept: 'Accept all', reject: 'Reject all', settings: 'Settings', save: 'Save choices',
+      policy: 'Privacy Policy', accept: 'Accept all', reject: 'Reject all', settings: 'Settings', save: 'Save choices',
       nec: 'Necessary', necD: 'Language, theme and your cookie choice.', on: 'Always on',
       ana: 'Analytics', anaD: 'Google Analytics shows us which pages are useful. We never sell data.',
       mkt: 'Marketing', mktD: 'Google Ads measurement and remarketing.',
