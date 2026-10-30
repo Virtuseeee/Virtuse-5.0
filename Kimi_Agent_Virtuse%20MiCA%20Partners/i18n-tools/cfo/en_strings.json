@@ -122,32 +122,42 @@
  {
   "en": "Tools",
   "kind": "text",
-  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">"
+  "context": "iv> </div> <div class=\"nav-group\" id=\"ng-tools\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"verdict.html\" id=\"navVerdict\"><span class=\"nd-t\">Verdict <span class=\"nav-badge cfo-badge\">Free</"
  },
  {
-  "en": "Virtuse CFO · Verdict",
+  "en": "Verdict",
   "kind": "text",
-  "context": "tn\" aria-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"concierge.html?utm_source"
+  "context": "-expanded=\"false\" aria-controls=\"nd-tools\">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"verdict.html\" id=\"navVerdict\"><span class=\"nd-t\">Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Vir"
  },
  {
   "en": "Free",
   "kind": "text",
-  "context": "</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span cl"
+  "context": ">Tools</button> <div class=\"nav-drop\" id=\"nd-tools\"><a href=\"verdict.html\" id=\"navVerdict\"><span class=\"nd-t\">Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO</span><span class=\"nd-d\">Fees,"
  },
  {
   "en": "Rate your decision, free",
   "kind": "text",
-  "context": "p\" id=\"nd-tools\"><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO · Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your "
+  "context": "av-drop\" id=\"nd-tools\"><a href=\"verdict.html\" id=\"navVerdict\"><span class=\"nd-t\">Verdict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO</span><span class=\"nd-d\">Fees, loans and tax over time · planned</span></a><a href=\"con"
+ },
+ {
+  "en": "Virtuse CFO",
+  "kind": "text",
+  "context": "ict <span class=\"nav-badge cfo-badge\">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO</span><span class=\"nd-d\">Fees, loans and tax over time · planned</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">"
+ },
+ {
+  "en": "Fees, loans and tax over time · planned",
+  "kind": "text",
+  "context": ">Free</span></span><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"cfo.html\" id=\"navCfo\"><span class=\"nd-t\">Virtuse CFO</span><span class=\"nd-d\">Fees, loans and tax over time · planned</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your "
  },
  {
   "en": "Partner Finder",
   "kind": "text",
-  "context": "an><span class=\"nd-d\">Rate your decision, free</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total c"
+  "context": "</span><span class=\"nd-d\">Fees, loans and tax over time · planned</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total c"
  },
  {
   "en": "Partners that match your answers",
   "kind": "text",
-  "context": "dit, free from 1 November</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total cost of buying, compared</span></a><a href=\"stacking.html\">"
+  "context": "d tax over time · planned</span></a><a href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\"><span class=\"nd-t\">Partner Finder</span><span class=\"nd-d\">Partners that match your answers</span></a><a href=\"/bitcoin-fee-index/\"><span class=\"nd-t\">Fee Index</span><span class=\"nd-d\">Total cost of buying, compared</span></a><a href=\"stacking.html\">"
  },
  {
   "en": "Fee Index",
@@ -192,17 +202,152 @@
  {
   "en": "Retirement Calculator",
   "kind": "text",
-  "context": "\">Tax &amp; Inheritance Agent</span><span class=\"nd-d\">Country rules and an inheritance check</span></a><a href=\"retirement-calculator.html\"><span class=\"nd-t\">Retirement Calculator</span><span class=\"nd-d\">How much Bitcoin for retirement</span></a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div"
+  "context": "\">Tax &amp; Inheritance Agent</span><span class=\"nd-d\">Country rules and an inheritance check</span></a><a href=\"retirement-calculator.html\"><span class=\"nd-t\">Retirement Calculator</span><span class=\"nd-d\">How much Bitcoin for retirement</span></a></div> </div> <div class=\"nav-group\" id=\"ng-eco\"> <button type=\"button\" "
  },
  {
   "en": "How much Bitcoin for retirement",
   "kind": "text",
-  "context": "=\"nd-d\">Country rules and an inheritance check</span></a><a href=\"retirement-calculator.html\"><span class=\"nd-t\">Retirement Calculator</span><span class=\"nd-d\">How much Bitcoin for retirement</span></a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"but"
+  "context": "=\"nd-d\">Country rules and an inheritance check</span></a><a href=\"retirement-calculator.html\"><span class=\"nd-t\">Retirement Calculator</span><span class=\"nd-d\">How much Bitcoin for retirement</span></a></div> </div> <div class=\"nav-group\" id=\"ng-eco\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls"
+ },
+ {
+  "en": "Ecosystem",
+  "kind": "text",
+  "context": "></div> </div> <div class=\"nav-group\" id=\"ng-eco\"> <button type=\"button\" class=\"nav-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-eco\">Ecosystem</button> <div class=\"nav-drop\" id=\"nd-eco\"><a href=\"/ecosystem/\"><span class=\"nd-t\">Overview</span><span class=\"nd-d\">All bitcoin-only resources</span>"
+ },
+ {
+  "en": "Overview",
+  "kind": "text",
+  "context": "v-group-btn\" aria-expanded=\"false\" aria-controls=\"nd-eco\">Ecosystem</button> <div class=\"nav-drop\" id=\"nd-eco\"><a href=\"/ecosystem/\"><span class=\"nd-t\">Overview</span><span class=\"nd-d\">All bitcoin-only resources</span></a><a href=\"/ecosystem/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d"
+ },
+ {
+  "en": "All bitcoin-only resources",
+  "kind": "text",
+  "context": " aria-controls=\"nd-eco\">Ecosystem</button> <div class=\"nav-drop\" id=\"nd-eco\"><a href=\"/ecosystem/\"><span class=\"nd-t\">Overview</span><span class=\"nd-d\">All bitcoin-only resources</span></a><a href=\"/ecosystem/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosyst"
+ },
+ {
+  "en": "What is Bitcoin?",
+  "kind": "text",
+  "context": "/ecosystem/\"><span class=\"nd-t\">Overview</span><span class=\"nd-d\">All bitcoin-only resources</span></a><a href=\"/ecosystem/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list<"
+ },
+ {
+  "en": "A plain-English primer",
+  "kind": "text",
+  "context": "span><span class=\"nd-d\">All bitcoin-only resources</span></a><a href=\"/ecosystem/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span c"
+ },
+ {
+  "en": "Books",
+  "kind": "text",
+  "context": "/what-is-bitcoin/\"><span class=\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only show"
+ },
+ {
+  "en": "A curated reading list",
+  "kind": "text",
+  "context": "\"nd-t\">What is Bitcoin?</span><span class=\"nd-d\">A plain-English primer</span></a><a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span c"
+ },
+ {
+  "en": "Podcasts",
+  "kind": "text",
+  "context": "a href=\"/ecosystem/books/\"><span class=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentarie"
+ },
+ {
+  "en": "Bitcoin-only shows",
+  "kind": "text",
+  "context": "lass=\"nd-t\">Books</span><span class=\"nd-d\">A curated reading list</span></a><a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/"
+ },
+ {
+  "en": "Videos",
+  "kind": "text",
+  "context": "a href=\"/ecosystem/podcasts/\"><span class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin"
+ },
+ {
+  "en": "Channels and documentaries",
+  "kind": "text",
+  "context": "pan class=\"nd-t\">Podcasts</span><span class=\"nd-d\">Bitcoin-only shows</span></a><a href=\"/ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/priv"
+ },
+ {
+  "en": "Conferences",
+  "kind": "text",
+  "context": "ecosystem/videos/\"><span class=\"nd-t\">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful pr"
+ },
+ {
+  "en": "Bitcoin events in Europe",
+  "kind": "text",
+  "context": ">Videos</span><span class=\"nd-d\">Channels and documentaries</span></a><a href=\"/ecosystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bi"
+ },
+ {
+  "en": "Bitcoin Privacy",
+  "kind": "text",
+  "context": "ystem/conferences/\"><span class=\"nd-t\">Conferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, ma"
+ },
+ {
+  "en": "Lawful privacy tools",
+  "kind": "text",
+  "context": "nferences</span><span class=\"nd-d\">Bitcoin events in Europe</span></a><a href=\"/ecosystem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosyste"
+ },
+ {
+  "en": "Spend Bitcoin",
+  "kind": "text",
+  "context": "tem/privacy/\"><span class=\"nd-t\">Bitcoin Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosystem/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept "
+ },
+ {
+  "en": "Shops, maps and gift cards",
+  "kind": "text",
+  "context": "n Privacy</span><span class=\"nd-d\">Lawful privacy tools</span></a><a href=\"/ecosystem/spend-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosystem/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/d"
+ },
+ {
+  "en": "Store Tools",
+  "kind": "text",
+  "context": "d-bitcoin/\"><span class=\"nd-t\">Spend Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosystem/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries "
+ },
+ {
+  "en": "Accept bitcoin in your shop",
+  "kind": "text",
+  "context": "Bitcoin</span><span class=\"nd-d\">Shops, maps and gift cards</span></a><a href=\"/ecosystem/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span c"
+ },
+ {
+  "en": "Dev Tools",
+  "kind": "text",
+  "context": "/store-tools/\"><span class=\"nd-t\">Store Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fell"
+ },
+ {
+  "en": "Libraries and SDKs",
+  "kind": "text",
+  "context": "tore Tools</span><span class=\"nd-d\">Accept bitcoin in your shop</span></a><a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/"
+ },
+ {
+  "en": "Bitcoin Jobs",
+  "kind": "text",
+  "context": "a href=\"/ecosystem/dev-tools/\"><span class=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bi"
+ },
+ {
+  "en": "Jobs, grants and fellowships",
+  "kind": "text",
+  "context": "lass=\"nd-t\">Dev Tools</span><span class=\"nd-d\">Libraries and SDKs</span></a><a href=\"/ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/prom"
+ },
+ {
+  "en": "Bitcoin Peers",
+  "kind": "text",
+  "context": "ecosystem/jobs/\"><span class=\"nd-t\">Bitcoin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/promote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your proj"
+ },
+ {
+  "en": "Fellow bitcoin-only projects",
+  "kind": "text",
+  "context": "coin Jobs</span><span class=\"nd-d\">Jobs, grants and fellowships</span></a><a href=\"/ecosystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/promote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your project featured</span></a></div> </div> <a cl"
+ },
+ {
+  "en": "Promote",
+  "kind": "text",
+  "context": "ystem/peers/\"><span class=\"nd-t\">Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/promote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your project featured</span></a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class"
+ },
+ {
+  "en": "Get your project featured",
+  "kind": "text",
+  "context": "Bitcoin Peers</span><span class=\"nd-d\">Fellow bitcoin-only projects</span></a><a href=\"/ecosystem/promote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your project featured</span></a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"but"
  },
  {
   "en": "About",
   "kind": "text",
-  "context": "=\"nd-t\">Retirement Calculator</span><span class=\"nd-d\">How much Bitcoin for retirement</span></a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" class=\"lang-menu-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-labe"
+  "context": "romote/\"><span class=\"nd-t\">Promote</span><span class=\"nd-d\">Get your project featured</span></a></div> </div> <a class=\"nav-top\" href=\"about.html\">About</a> </nav> <div class=\"lang-menu\" id=\"langMenu\"> <button type=\"button\" class=\"lang-menu-btn\" aria-haspopup=\"true\" aria-expanded=\"false\" aria-labe"
  },
  {
   "en": "Page language: English",
@@ -262,322 +407,72 @@
  {
   "en": "Find partners",
   "kind": "text",
-  "context": "\" y2=\"7\"/><line class=\"m2\" x1=\"3\" y1=\"13\" x2=\"17\" y2=\"13\"/></svg></button> <a class=\"nav-cta\" href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Find partners</a> </div> </header> <main class=\"wrap\" id=\"top\"> <!-- 1. HERO = VERDICT, the free entry into Virtuse CFO --> <div class=\"c-hero vd-hero\" id=\"verdict\">"
- },
- {
-  "en": "Virtuse CFO · Verdict · free",
-  "kind": "text",
-  "context": "wrap\" id=\"top\"> <!-- 1. HERO = VERDICT, the free entry into Virtuse CFO --> <div class=\"c-hero vd-hero\" id=\"verdict\"> <div> <div class=\"eyebrow\">Virtuse CFO · Verdict · free</div> <h1>Check what you left out of your Bitcoin decision. <span>Then your <span class=\"grad\">CFO</span> keeps track of it.</span></h1> <p class=\""
- },
- {
-  "en": "Check what you left out of your Bitcoin decision.",
-  "kind": "text",
-  "context": "o Virtuse CFO --> <div class=\"c-hero vd-hero\" id=\"verdict\"> <div> <div class=\"eyebrow\">Virtuse CFO · Verdict · free</div> <h1>Check what you left out of your Bitcoin decision. <span>Then your <span class=\"grad\">CFO</span> keeps track of it.</span></h1> <p class=\"sub\">Describe what you plan to do. Verdict scores your thinking on"
- },
- {
-  "en": "Then your",
-  "kind": "text",
-  "context": "ict\"> <div> <div class=\"eyebrow\">Virtuse CFO · Verdict · free</div> <h1>Check what you left out of your Bitcoin decision. <span>Then your <span class=\"grad\">CFO</span> keeps track of it.</span></h1> <p class=\"sub\">Describe what you plan to do. Verdict scores your thinking on 10 signals and "
- },
- {
-  "en": "CFO",
-  "kind": "text",
-  "context": "ass=\"eyebrow\">Virtuse CFO · Verdict · free</div> <h1>Check what you left out of your Bitcoin decision. <span>Then your <span class=\"grad\">CFO</span> keeps track of it.</span></h1> <p class=\"sub\">Describe what you plan to do. Verdict scores your thinking on 10 signals and shows its weakest point"
- },
- {
-  "en": "keeps track of it.",
-  "kind": "text",
-  "context": "w\">Virtuse CFO · Verdict · free</div> <h1>Check what you left out of your Bitcoin decision. <span>Then your <span class=\"grad\">CFO</span> keeps track of it.</span></h1> <p class=\"sub\">Describe what you plan to do. Verdict scores your thinking on 10 signals and shows its weakest point. It doesn't rate Bitcoin "
- },
- {
-  "en": "Describe what you plan to do. Verdict scores your thinking on 10 signals and shows its weakest point. It doesn't rate Bitcoin or our partners. It rates whether you've thought it through.",
-  "kind": "text",
-  "context": "> <h1>Check what you left out of your Bitcoin decision. <span>Then your <span class=\"grad\">CFO</span> keeps track of it.</span></h1> <p class=\"sub\">Describe what you plan to do. Verdict scores your thinking on 10 signals and shows its weakest point. It doesn't rate Bitcoin or our partners. It rates whether you've thought it through.</p> <form class=\"vd-form\" id=\"vdForm\" hidden novalidate> <label for=\"vdText\">Your decision</label> <textarea id=\"vdText\" name=\"text\" rows"
- },
- {
-  "en": "Your decision",
-  "kind": "text",
-  "context": "Bitcoin or our partners. It rates whether you've thought it through.</p> <form class=\"vd-form\" id=\"vdForm\" hidden novalidate> <label for=\"vdText\">Your decision</label> <textarea id=\"vdText\" name=\"text\" rows=\"4\" maxlength=\"1200\" placeholder=\"For example: I want to put 20% of my company's cash into Bitcoin and h"
- },
- {
-  "en": "For example: I want to put 20% of my company's cash into Bitcoin and hold it for 5 years.",
-  "kind": "attr:placeholder",
-  "context": "=\"vdForm\" hidden novalidate> <label for=\"vdText\">Your decision</label> <textarea id=\"vdText\" name=\"text\" rows=\"4\" maxlength=\"1200\" placeholder=\"For example: I want to put 20% of my company's cash into Bitcoin and hold it for 5 years.\"></textarea> <div class=\"vd-count\"><span id=\"vdCount\">0</span> / 1200</div> <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomp"
- },
- {
-  "en": "Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.",
-  "kind": "text",
-  "context": "unt\">0</span> / 1200</div> <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <p class=\"vd-warn\">Don't write names, contact details, account numbers, wallet addresses or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.</p> <div class=\"row\"><span class=\"vd-ai\">This assessment is generated by artificial intelligence (a language model by Anthropic). It may be wrong. It i"
- },
- {
-  "en": "This assessment is generated by artificial intelligence (a language model by Anthropic). It may be wrong. It is not investment, tax or legal advice.",
-  "kind": "text",
-  "context": "or health details. We don't store the text in the Virtuse database; Anthropic (USA) processes it to assess it.</p> <div class=\"row\"><span class=\"vd-ai\">This assessment is generated by artificial intelligence (a language model by Anthropic). It may be wrong. It is not investment, tax or legal advice.</span><button class=\"btn btn-primary\" type=\"submit\">Get my free verdict</button></div> <div class=\"vd-msg\" id=\"vdMsg\" aria-live=\"polite\"></div> <"
- },
- {
-  "en": "Get my free verdict",
-  "kind": "text",
-  "context": "l intelligence (a language model by Anthropic). It may be wrong. It is not investment, tax or legal advice.</span><button class=\"btn btn-primary\" type=\"submit\">Get my free verdict</button></div> <div class=\"vd-msg\" id=\"vdMsg\" aria-live=\"polite\"></div> </form> <template id=\"vdStrings\"><span data-k=\"your\">Your verdict</"
- },
- {
-  "en": "Your verdict",
-  "kind": "text",
-  "context": "y free verdict</button></div> <div class=\"vd-msg\" id=\"vdMsg\" aria-live=\"polite\"></div> </form> <template id=\"vdStrings\"><span data-k=\"your\">Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your th"
- },
- {
-  "en": "AI assessment",
-  "kind": "text",
-  "context": " <div class=\"vd-msg\" id=\"vdMsg\" aria-live=\"polite\"></div> </form> <template id=\"vdStrings\"><span data-k=\"your\">Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\""
- },
- {
-  "en": "Weakest point:",
-  "kind": "text",
-  "context": "e=\"polite\"></div> </form> <template id=\"vdStrings\"><span data-k=\"your\">Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span "
- },
- {
-  "en": "Check it in",
-  "kind": "text",
-  "context": "plate id=\"vdStrings\"><span data-k=\"your\">Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking"
- },
- {
-  "en": "What your thinking is missing",
-  "kind": "text",
-  "context": "Your verdict</span><span data-k=\"ai\">AI assessment</span><span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"s"
- },
- {
-  "en": "Rate another decision",
-  "kind": "text",
-  "context": "<span data-k=\"weak\">Weakest point:</span><span data-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"short\">Describe your decision in at least one sent"
- },
- {
-  "en": "Checking your thinking. This usually takes 5 to 15 seconds.",
-  "kind": "text",
-  "context": "-k=\"check\">Check it in</span><span data-k=\"missing\">What your thinking is missing</span><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"short\">Describe your decision in at least one sentence.</span><span data-k=\"error\">Something went wrong. Please try again in a moment.</spa"
- },
- {
-  "en": "Describe your decision in at least one sentence.",
-  "kind": "text",
-  "context": "><span data-k=\"again\">Rate another decision</span><span data-k=\"loading\">Checking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"short\">Describe your decision in at least one sentence.</span><span data-k=\"error\">Something went wrong. Please try again in a moment.</span><span data-k=\"network\">Network error. Please try again.</span><span data-k"
- },
- {
-  "en": "Something went wrong. Please try again in a moment.",
-  "kind": "text",
-  "context": "cking your thinking. This usually takes 5 to 15 seconds.</span><span data-k=\"short\">Describe your decision in at least one sentence.</span><span data-k=\"error\">Something went wrong. Please try again in a moment.</span><span data-k=\"network\">Network error. Please try again.</span><span data-k=\"declined\">Verdict can't rate this</span></template> <form class=\"wait\" "
- },
- {
-  "en": "Network error. Please try again.",
-  "kind": "text",
-  "context": "t\">Describe your decision in at least one sentence.</span><span data-k=\"error\">Something went wrong. Please try again in a moment.</span><span data-k=\"network\">Network error. Please try again.</span><span data-k=\"declined\">Verdict can't rate this</span></template> <form class=\"wait\" id=\"waitForm\" novalidate> <input type=\"email\" name=\"em"
- },
- {
-  "en": "Verdict can't rate this",
-  "kind": "text",
-  "context": " data-k=\"error\">Something went wrong. Please try again in a moment.</span><span data-k=\"network\">Network error. Please try again.</span><span data-k=\"declined\">Verdict can't rate this</span></template> <form class=\"wait\" id=\"waitForm\" novalidate> <input type=\"email\" name=\"email\" placeholder=\"Email address\" aria-label=\"Email add"
- },
- {
-  "en": "Email address",
-  "kind": "attr:placeholder",
-  "context": "k=\"declined\">Verdict can't rate this</span></template> <form class=\"wait\" id=\"waitForm\" novalidate> <input type=\"email\" name=\"email\" placeholder=\"Email address\" aria-label=\"Email address\" autocomplete=\"email\" required> <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"t"
- },
- {
-  "en": "Join the waitlist",
-  "kind": "text",
-  "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Join the waitlist</button> <div class=\"wait-msg\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email on 1 November, when Verdict and the free f"
- },
- {
-  "en": "One email when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email.",
-  "kind": "text",
-  "context": " class=\"btn btn-primary\" type=\"submit\">Join the waitlist</button> <div class=\"wait-msg\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> </div> <div class=\"vd-card\" id=\"vdCard\" aria-live=\"polite\" aria-label"
- },
- {
-  "en": "Privacy",
-  "kind": "text",
-  "context": "mail on 1 November, when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> </div> <div class=\"vd-card\" id=\"vdCard\" aria-live=\"polite\" aria-label=\"Sample verdict\"> <div class=\"top\"><span>Sample verdi"
- },
- {
-  "en": "Sample verdict",
-  "kind": "attr:aria-label",
-  "context": "a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> </div> <div class=\"vd-card\" id=\"vdCard\" aria-live=\"polite\" aria-label=\"Sample verdict\"> <div class=\"top\"><span>Sample verdict</span><span>illustrative figures</span></div> <p class=\"q\">\"I want to borrow against my BTC to buy a flat.\""
- },
- {
-  "en": "illustrative figures",
-  "kind": "text",
-  "context": "</form> </div> <div class=\"vd-card\" id=\"vdCard\" aria-live=\"polite\" aria-label=\"Sample verdict\"> <div class=\"top\"><span>Sample verdict</span><span>illustrative figures</span></div> <p class=\"q\">\"I want to borrow against my BTC to buy a flat.\"</p> <div class=\"vd-score\"><b>55<small>/100</small></b><span class=\"vd-pi"
- },
- {
-  "en": "\"I want to borrow against my BTC to buy a flat.\"",
-  "kind": "text",
-  "context": "d\" aria-live=\"polite\" aria-label=\"Sample verdict\"> <div class=\"top\"><span>Sample verdict</span><span>illustrative figures</span></div> <p class=\"q\">\"I want to borrow against my BTC to buy a flat.\"</p> <div class=\"vd-score\"><b>55<small>/100</small></b><span class=\"vd-pill\">Add 2 or 3 assumptions</span></div> <p class=\"vd-explain\">The score fro"
- },
- {
-  "en": "Add 2 or 3 assumptions",
-  "kind": "text",
-  "context": "an></div> <p class=\"q\">\"I want to borrow against my BTC to buy a flat.\"</p> <div class=\"vd-score\"><b>55<small>/100</small></b><span class=\"vd-pill\">Add 2 or 3 assumptions</span></div> <p class=\"vd-explain\">The score from 0 to 100 is calculated by artificial intelligence from 10 areas of your thinking (for example the worst"
- },
- {
-  "en": "The score from 0 to 100 is calculated by artificial intelligence from 10 areas of your thinking (for example the worst case, liquidity, tax). It measures how completely your thinking is described, not whether the decision is right or worthwhile. The same text can get a slightly different score when repeated. You decide. It is not investment, tax or legal advice.",
-  "kind": "text",
-  "context": " buy a flat.\"</p> <div class=\"vd-score\"><b>55<small>/100</small></b><span class=\"vd-pill\">Add 2 or 3 assumptions</span></div> <p class=\"vd-explain\">The score from 0 to 100 is calculated by artificial intelligence from 10 areas of your thinking (for example the worst case, liquidity, tax). It measures how completely your thinking is described, not whether the decision is right or worthwhile. The same text can get a slightly different score when repeated. You decide. It is not investment, tax or legal advice.</p> <div class=\"vd-sigs\"> <div class=\"vd-sig\"><span>Goal</span><span class=\"bar\"><i style=\"width:80%;background:var(--text)\"></i></span><span cla"
- },
- {
-  "en": "Goal",
-  "kind": "text",
-  "context": "lightly different score when repeated. You decide. It is not investment, tax or legal advice.</p> <div class=\"vd-sigs\"> <div class=\"vd-sig\"><span>Goal</span><span class=\"bar\"><i style=\"width:80%;background:var(--text)\"></i></span><span class=\"v\">8</span></div> <div class=\"vd-sig\"><span>Time horizon</s"
- },
- {
-  "en": "Time horizon",
-  "kind": "text",
-  "context": "sig\"><span>Goal</span><span class=\"bar\"><i style=\"width:80%;background:var(--text)\"></i></span><span class=\"v\">8</span></div> <div class=\"vd-sig\"><span>Time horizon</span><span class=\"bar\"><i style=\"width:70%;background:var(--text)\"></i></span><span class=\"v\">7</span></div> <div class=\"vd-sig\"><span>Alternatives</s"
- },
- {
-  "en": "Alternatives",
-  "kind": "text",
-  "context": "an>Time horizon</span><span class=\"bar\"><i style=\"width:70%;background:var(--text)\"></i></span><span class=\"v\">7</span></div> <div class=\"vd-sig\"><span>Alternatives</span><span class=\"bar\"><i style=\"width:50%;background:var(--muted)\"></i></span><span class=\"v\">5</span></div> <div class=\"vd-sig\"><span>Worst case</sp"
- },
- {
-  "en": "Worst case",
-  "kind": "text",
-  "context": "n>Alternatives</span><span class=\"bar\"><i style=\"width:50%;background:var(--muted)\"></i></span><span class=\"v\">5</span></div> <div class=\"vd-sig\"><span>Worst case</span><span class=\"bar\"><i style=\"width:40%;background:var(--orange)\"></i></span><span class=\"v\">4</span></div> <div class=\"vd-sig\"><span>Liquidity</sp"
- },
- {
-  "en": "Liquidity",
-  "kind": "text",
-  "context": "an>Worst case</span><span class=\"bar\"><i style=\"width:40%;background:var(--orange)\"></i></span><span class=\"v\">4</span></div> <div class=\"vd-sig\"><span>Liquidity</span><span class=\"bar\"><i style=\"width:50%;background:var(--muted)\"></i></span><span class=\"v\">5</span></div> <div class=\"vd-sig\"><span>Custody and in"
- },
- {
-  "en": "Custody and inheritance",
-  "kind": "text",
-  "context": "span>Liquidity</span><span class=\"bar\"><i style=\"width:50%;background:var(--muted)\"></i></span><span class=\"v\">5</span></div> <div class=\"vd-sig\"><span>Custody and inheritance</span><span class=\"bar\"><i style=\"width:60%;background:var(--muted)\"></i></span><span class=\"v\">6</span></div> <div class=\"vd-sig\"><span>Tax</span><spa"
- },
- {
-  "en": "Rule, not emotion",
-  "kind": "text",
-  "context": "ig\"><span>Tax</span><span class=\"bar\"><i style=\"width:30%;background:var(--orange)\"></i></span><span class=\"v\">3</span></div> <div class=\"vd-sig\"><span>Rule, not emotion</span><span class=\"bar\"><i style=\"width:70%;background:var(--text)\"></i></span><span class=\"v\">7</span></div> <div class=\"vd-sig\"><span>Plan B</span><s"
- },
- {
-  "en": "Plan B",
-  "kind": "text",
-  "context": "le, not emotion</span><span class=\"bar\"><i style=\"width:70%;background:var(--text)\"></i></span><span class=\"v\">7</span></div> <div class=\"vd-sig\"><span>Plan B</span><span class=\"bar\"><i style=\"width:40%;background:var(--orange)\"></i></span><span class=\"v\">4</span></div> <div class=\"vd-sig\"><span>Asymmetry</sp"
- },
- {
-  "en": "Asymmetry",
-  "kind": "text",
-  "context": "><span>Plan B</span><span class=\"bar\"><i style=\"width:40%;background:var(--orange)\"></i></span><span class=\"v\">4</span></div> <div class=\"vd-sig\"><span>Asymmetry</span><span class=\"bar\"><i style=\"width:60%;background:var(--muted)\"></i></span><span class=\"v\">6</span></div> </div> <p class=\"vd-weak\">Weakest po"
- },
- {
-  "en": "Weakest point: you don't know at what price the lender would sell your collateral.",
-  "kind": "text",
-  "context": ">Asymmetry</span><span class=\"bar\"><i style=\"width:60%;background:var(--muted)\"></i></span><span class=\"v\">6</span></div> </div> <p class=\"vd-weak\">Weakest point: you don't know at what price the lender would sell your collateral. <a href=\"loan.html\">Check it in Loan Copilot</a></p> </div> </div> <section id=\"verdict-how\"> <div class=\"sec-head\"> <h2>The score is about "
- },
- {
-  "en": "Check it in Loan Copilot",
-  "kind": "text",
-  "context": "\"v\">6</span></div> </div> <p class=\"vd-weak\">Weakest point: you don't know at what price the lender would sell your collateral. <a href=\"loan.html\">Check it in Loan Copilot</a></p> </div> </div> <section id=\"verdict-how\"> <div class=\"sec-head\"> <h2>The score is about your thinking. <span>Not about whether to buy"
- },
- {
-  "en": "The score is about your thinking.",
-  "kind": "text",
-  "context": "ll your collateral. <a href=\"loan.html\">Check it in Loan Copilot</a></p> </div> </div> <section id=\"verdict-how\"> <div class=\"sec-head\"> <h2>The score is about your thinking. <span>Not about whether to buy.</span></h2> <p class=\"sec-sub\">Every plan also gets a 70% drawdown test. If it can't survive one, you know before you sta"
- },
- {
-  "en": "Not about whether to buy.",
-  "kind": "text",
-  "context": "Check it in Loan Copilot</a></p> </div> </div> <section id=\"verdict-how\"> <div class=\"sec-head\"> <h2>The score is about your thinking. <span>Not about whether to buy.</span></h2> <p class=\"sec-sub\">Every plan also gets a 70% drawdown test. If it can't survive one, you know before you start.</p> </div> <div clas"
- },
- {
-  "en": "Every plan also gets a 70% drawdown test. If it can't survive one, you know before you start.",
-  "kind": "text",
-  "context": "n id=\"verdict-how\"> <div class=\"sec-head\"> <h2>The score is about your thinking. <span>Not about whether to buy.</span></h2> <p class=\"sec-sub\">Every plan also gets a 70% drawdown test. If it can't survive one, you know before you start.</p> </div> <div class=\"vd-bands\"> <div class=\"vd-band\"><b>Your thinking is complete</b><span>65 to 100</span><p>You've covered what matters. The "
- },
- {
-  "en": "Your thinking is complete",
-  "kind": "text",
-  "context": "plan also gets a 70% drawdown test. If it can't survive one, you know before you start.</p> </div> <div class=\"vd-bands\"> <div class=\"vd-band\"><b>Your thinking is complete</b><span>65 to 100</span><p>You've covered what matters. The next step is yours.</p></div> <div class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 "
- },
- {
-  "en": "65 to 100",
-  "kind": "text",
-  "context": " If it can't survive one, you know before you start.</p> </div> <div class=\"vd-bands\"> <div class=\"vd-band\"><b>Your thinking is complete</b><span>65 to 100</span><p>You've covered what matters. The next step is yours.</p></div> <div class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 60</span><p>Chec"
- },
- {
-  "en": "You've covered what matters. The next step is yours.",
-  "kind": "text",
-  "context": "e one, you know before you start.</p> </div> <div class=\"vd-bands\"> <div class=\"vd-band\"><b>Your thinking is complete</b><span>65 to 100</span><p>You've covered what matters. The next step is yours.</p></div> <div class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 60</span><p>Check them with the tools below, then decide.</p></div> <div"
- },
- {
-  "en": "50 to 60",
-  "kind": "text",
-  "context": "ete</b><span>65 to 100</span><p>You've covered what matters. The next step is yours.</p></div> <div class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 60</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names t"
- },
- {
-  "en": "Check them with the tools below, then decide.",
-  "kind": "text",
-  "context": " 100</span><p>You've covered what matters. The next step is yours.</p></div> <div class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 60</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names them and why they can be costly.</p></div> </div> "
- },
- {
-  "en": "Key pieces are missing",
-  "kind": "text",
-  "context": "v class=\"vd-band hl\"><b>Add 2 or 3 assumptions</b><span>50 to 60</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names them and why they can be costly.</p></div> </div> <div class=\"vd-tools\" aria-label=\"Tools to check your assumpt"
- },
- {
-  "en": "0 to 45",
-  "kind": "text",
-  "context": " 3 assumptions</b><span>50 to 60</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names them and why they can be costly.</p></div> </div> <div class=\"vd-tools\" aria-label=\"Tools to check your assumptions\"> <a h"
- },
- {
-  "en": "Verdict names them and why they can be costly.",
-  "kind": "text",
-  "context": "><span>50 to 60</span><p>Check them with the tools below, then decide.</p></div> <div class=\"vd-band\"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names them and why they can be costly.</p></div> </div> <div class=\"vd-tools\" aria-label=\"Tools to check your assumptions\"> <a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href="
- },
- {
-  "en": "Tools to check your assumptions",
-  "kind": "attr:aria-label",
-  "context": "\"><b>Key pieces are missing</b><span>0 to 45</span><p>Verdict names them and why they can be costly.</p></div> </div> <div class=\"vd-tools\" aria-label=\"Tools to check your assumptions\"> <a href=\"loan.html\">Loan &amp; Liquidity Copilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"stacking.html\">Stacking Strategist"
- },
- {
-  "en": "How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict itself does not rate partners. If you want, Partner Finder filters partners that match your criteria; you compare and choose.",
-  "kind": "text",
-  "context": "ce Agent</a><a href=\"stacking.html\">Stacking Strategist</a><a href=\"retirement-calculator.html\">Retirement Calculator</a> </div> <p class=\"vd-how-note\">How the score is made: AI rates each of the 10 signals from 0 to 10, the score is their sum, shown rounded to 5. Verdict links only to Virtuse tools, never to a partner.</p> </section> <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> "
+  "context": "\" y2=\"7\"/><line class=\"m2\" x1=\"3\" y1=\"13\" x2=\"17\" y2=\"13\"/></svg></button> <a class=\"nav-cta\" href=\"concierge.html?utm_source=concierge&amp;utm_medium=nav\">Find partners</a> </div> </header> <main class=\"wrap\" id=\"top\"> <!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> "
  },
  {
   "en": "Virtuse CFO · fee audit, coming soon",
   "kind": "text",
-  "context": "!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> <div class=\"eyebrow\">Virtuse CFO · fee audit, coming soon</div> <h2 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> "
+  "context": "!-- 2. VIRTUSE CFO: after the decision, starting with the free fee audit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> <div class=\"eyebrow\">Virtuse CFO · fee audit, coming soon</div> <h1 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h1> "
  },
  {
   "en": "After the decision, Virtuse CFO tracks your numbers.",
   "kind": "text",
-  "context": " <section id=\"audit\"> <div class=\"c-hero\"> <div> <div class=\"eyebrow\">Virtuse CFO · fee audit, coming soon</div> <h2 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"sub\">Start with the number most holders have never seen: what your buyi"
+  "context": "dit --> <section id=\"audit\"> <div class=\"c-hero\"> <div> <div class=\"eyebrow\">Virtuse CFO · fee audit, coming soon</div> <h1 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h1> <p class=\"sub\">Start with the number most holders have never seen: what your buyi"
  },
  {
   "en": "It reads your own exports and never sees your wallet.",
   "kind": "text",
-  "context": " <div class=\"eyebrow\">Virtuse CFO · fee audit, coming soon</div> <h2 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"sub\">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export i"
+  "context": "div> <div class=\"eyebrow\">Virtuse CFO · fee audit, coming soon</div> <h1 class=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h1> <p class=\"sub\">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export i"
  },
  {
   "en": "Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.",
   "kind": "text",
-  "context": "ass=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h2> <p class=\"sub\">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.</p> <div class=\"only-audit\"> <div class=\"hero-ctas\"><button class=\"btn btn-primary\" type=\"button\" id=\"heroRun\">Try it with a sample export</butto"
+  "context": "ass=\"audit-h\">After the decision, Virtuse CFO tracks your numbers. <span>It reads your own exports and never sees your wallet.</span></h1> <p class=\"sub\">Start with the number most holders have never seen: what your buying really cost you. Virtuse CFO reads your exchange export in your browser, finds every fee, and answers questions from your own numbers.</p> <div class=\"only-audit\"> <div class=\"hero-ctas\"><button class=\"btn btn-primary\" type=\"button\" id=\"heroRun\">Try it with a sample export</butto"
  },
  {
   "en": "Try it with a sample export",
   "kind": "text",
-  "context": "s questions from your own numbers.</p> <div class=\"only-audit\"> <div class=\"hero-ctas\"><button class=\"btn btn-primary\" type=\"button\" id=\"heroRun\">Try it with a sample export</button></div> </div> <div class=\"hero-ctas only-wait\"><a class=\"btn btn-primary\" href=\"#waitForm\">Join the waitlist</a></div> </div> <div cla"
+  "context": "s questions from your own numbers.</p> <div class=\"only-audit\"> <div class=\"hero-ctas\"><button class=\"btn btn-primary\" type=\"button\" id=\"heroRun\">Try it with a sample export</button></div> </div> <form class=\"wait\" id=\"waitForm\" novalidate> <input type=\"email\" name=\"email\" placeholder=\"Email address\" aria-label="
+ },
+ {
+  "en": "Email address",
+  "kind": "attr:placeholder",
+  "context": "ry it with a sample export</button></div> </div> <form class=\"wait\" id=\"waitForm\" novalidate> <input type=\"email\" name=\"email\" placeholder=\"Email address\" aria-label=\"Email address\" autocomplete=\"email\" required> <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"t"
+ },
+ {
+  "en": "Join the waitlist",
+  "kind": "text",
+  "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Join the waitlist</button> <div class=\"wait-msg\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when the fee audit and Virtuse CFO open. N"
+ },
+ {
+  "en": "One email when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email.",
+  "kind": "text",
+  "context": "ss=\"btn btn-primary\" type=\"submit\">Join the waitlist</button> <div class=\"wait-msg\" id=\"waitMsg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> <p class=\"cfo-vlink\"><a href=\"verdict.html\">Start with a free Verdict →"
+ },
+ {
+  "en": "Privacy",
+  "kind": "text",
+  "context": "wait-note\">One email when the fee audit and Virtuse CFO open. Nothing else. Leave any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> <p class=\"cfo-vlink\"><a href=\"verdict.html\">Start with a free Verdict →</a></p> </div> <div class=\"demo\" id=\"demo\" aria-la"
+ },
+ {
+  "en": "Start with a free Verdict →",
+  "kind": "text",
+  "context": "e any time from that email. <a href=\"privacy-policy.html\" style=\"color:inherit\">Privacy</a></p> </form> <p class=\"cfo-vlink\"><a href=\"verdict.html\">Start with a free Verdict →</a></p> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</"
  },
  {
   "en": "Fee audit demo",
   "kind": "attr:aria-label",
-  "context": " <div class=\"hero-ctas only-wait\"><a class=\"btn btn-primary\" href=\"#waitForm\">Join the waitlist</a></div> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" da"
+  "context": "/p> </form> <p class=\"cfo-vlink\"><a href=\"verdict.html\">Start with a free Verdict →</a></p> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" da"
  },
  {
   "en": "Fee audit",
   "kind": "text",
-  "context": "\"btn btn-primary\" href=\"#waitForm\">Join the waitlist</a></div> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" data-run>Play the sample audit</button> "
+  "context": "<a href=\"verdict.html\">Start with a free Verdict →</a></p> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" data-run>Play the sample audit</button> "
  },
  {
   "en": "runs in your browser",
   "kind": "text",
-  "context": "tForm\">Join the waitlist</a></div> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" data-run>Play the sample audit</button> <label class=\"drop only-audit\" id=\""
+  "context": " with a free Verdict →</a></p> </div> <div class=\"demo\" id=\"demo\" aria-label=\"Fee audit demo\"> <div class=\"demo-top\">Fee audit <span class=\"tag\">runs in your browser</span></div> <button class=\"btn btn-ghost play only-wait\" type=\"button\" data-run>Play the sample audit</button> <label class=\"drop only-audit\" id=\""
  },
  {
   "en": "Play the sample audit",
@@ -632,17 +527,17 @@
  {
   "en": "on €43,000 of buys",
   "kind": "text",
-  "context": " <div class=\"res\" id=\"res\"> <div class=\"lbl\">You overpaid in the last 12 months</div> <div class=\"big\">€<span id=\"over\">341</span> <small>on €43,000 of buys</small></div> <div class=\"bars\"> <div class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div><"
+  "context": " <div class=\"res\" id=\"res\"> <div class=\"lbl\">You overpaid in the last 12 months</div> <div class=\"big\">€<span id=\"over\">341</span> <small>on €43,000 of buys</small></div> <div class=\"bars\"> <div class=\"bar\"><span>You paid · Kraken Pro 0.8% + withdrawals</span><div class=\"t\"><div class=\"f r\" data-w"
  },
  {
-  "en": "You paid · Kraken Pro 0.8%",
+  "en": "You paid · Kraken Pro 0.8% + withdrawals",
   "kind": "text",
-  "context": "</div> <div class=\"big\">€<span id=\"over\">341</span> <small>on €43,000 of buys</small></div> <div class=\"bars\"> <div class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>Bybit EU 0.25%</span><div class=\"t\"><div clas"
+  "context": "</div> <div class=\"big\">€<span id=\"over\">341</span> <small>on €43,000 of buys</small></div> <div class=\"bars\"> <div class=\"bar\"><span>You paid · Kraken Pro 0.8% + withdrawals</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>Bybit EU 0.25%</span><div class=\"t\"><div clas"
  },
  {
   "en": "Bybit EU 0.25%",
   "kind": "text",
-  "context": " class=\"bar\"><span>You paid · Kraken Pro 0.8%</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>Bybit EU 0.25%</span><div class=\"t\"><div class=\"f y\" data-w=\"24\"></div></div><b>€108</b></div> <div class=\"bar\"><span>21bitcoin Auto-Invest 0%*</span><div class=\"t\""
+  "context": "span>You paid · Kraken Pro 0.8% + withdrawals</span><div class=\"t\"><div class=\"f r\" data-w=\"100\"></div></div><b>€449</b></div> <div class=\"bar\"><span>Bybit EU 0.25%</span><div class=\"t\"><div class=\"f y\" data-w=\"24\"></div></div><b>€108</b></div> <div class=\"bar\"><span>21bitcoin Auto-Invest 0%*</span><div class=\"t\""
  },
  {
   "en": "21bitcoin Auto-Invest 0%*",
@@ -682,22 +577,22 @@
  {
   "en": "One product, three levels.",
   "kind": "text",
-  "context": " Not investment advice.</p> </div> </div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict is free, no card needed; the fee audit comes with Virtuse CFO. Paid plans open in January; cancel an"
+  "context": " Not investment advice.</p> </div> </div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict is free, no card needed; the fee audit comes with Virtuse CFO. We'll tell you whe"
  },
  {
   "en": "Start with a free verdict.",
   "kind": "text",
-  "context": " </div> </div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict is free, no card needed; the fee audit comes with Virtuse CFO. Paid plans open in January; cancel anytime. The same read-only, local-"
+  "context": " </div> </div> </div> </section> <!-- 6. PRICING --> <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict is free, no card needed; the fee audit comes with Virtuse CFO. We'll tell you when paid plans open; cancel anytime"
  },
  {
   "en": "Verdict is free, no card needed; the fee audit comes with Virtuse CFO. We'll tell you when paid plans open; cancel anytime. The same read-only, local-first design on every plan.",
   "kind": "text",
-  "context": " <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict is free, no card needed; the fee audit comes with Virtuse CFO. Paid plans open in January; cancel anytime. The same read-only, local-first design on every plan.</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">M"
+  "context": " <section id=\"pricing\"> <div class=\"sec-head\"> <h2>One product, three levels. <span>Start with a free verdict.</span></h2> <p class=\"sec-sub\">Verdict is free, no card needed; the fee audit comes with Virtuse CFO. We'll tell you when paid plans open; cancel anytime. The same read-only, local-first design on every plan.</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">M"
  },
  {
   "en": "Billing period",
   "kind": "attr:aria-label",
-  "context": "plans open in January; cancel anytime. The same read-only, local-first design on every plan.</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">Monthly</button> <button type=\"button\" role=\"tab\" aria-selected=\"false\" data-"
+  "context": " when paid plans open; cancel anytime. The same read-only, local-first design on every plan.</p> </div> <div class=\"billing\" role=\"tablist\" aria-label=\"Billing period\"> <button type=\"button\" role=\"tab\" aria-selected=\"true\" data-bill=\"m\">Monthly</button> <button type=\"button\" role=\"tab\" aria-selected=\"false\" data-"
  },
  {
   "en": "Monthly",
@@ -720,11 +615,6 @@
   "context": "ia-selected=\"false\" data-bill=\"y\">Yearly <i>2 months free</i></button> </div> <div class=\"plans3\"> <div class=\"plan\"> <span class=\"layer\">Entry</span> <h3>Verdict</h3> <div class=\"price\">€0 <small>no account</small></div> <p class=\"for\">A score for your thinking, 0 to 100, its b"
  },
  {
-  "en": "Verdict",
-  "kind": "text",
-  "context": "bill=\"y\">Yearly <i>2 months free</i></button> </div> <div class=\"plans3\"> <div class=\"plan\"> <span class=\"layer\">Entry</span> <h3>Verdict</h3> <div class=\"price\">€0 <small>no account</small></div> <p class=\"for\">A score for your thinking, 0 to 100, its band and the weakest point.<"
- },
- {
   "en": "no account",
   "kind": "text",
   "context": "</div> <div class=\"plans3\"> <div class=\"plan\"> <span class=\"layer\">Entry</span> <h3>Verdict</h3> <div class=\"price\">€0 <small>no account</small></div> <p class=\"for\">A score for your thinking, 0 to 100, its band and the weakest point.</p> <ul><li>Your decision scored on 10 signal"
@@ -742,92 +632,92 @@
  {
   "en": "Weakest point, with the tool to check it",
   "kind": "text",
-  "context": "div> <p class=\"for\">A score for your thinking, 0 to 100, its band and the weakest point.</p> <ul><li>Your decision scored on 10 signals</li><li>Weakest point, with the tool to check it</li><li>A 70% drawdown test</li><li>Not advice; it never recommends</li></ul> <a class=\"btn btn-ghost\" href=\"#waitForm\">Join the waitlist</a> </div> "
+  "context": "div> <p class=\"for\">A score for your thinking, 0 to 100, its band and the weakest point.</p> <ul><li>Your decision scored on 10 signals</li><li>Weakest point, with the tool to check it</li><li>A 70% drawdown test</li><li>Not advice; it never recommends</li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with a free Verdict</a"
  },
  {
   "en": "A 70% drawdown test",
   "kind": "text",
-  "context": "king, 0 to 100, its band and the weakest point.</p> <ul><li>Your decision scored on 10 signals</li><li>Weakest point, with the tool to check it</li><li>A 70% drawdown test</li><li>Not advice; it never recommends</li></ul> <a class=\"btn btn-ghost\" href=\"#waitForm\">Join the waitlist</a> </div> <div class=\"plan\"> "
+  "context": "king, 0 to 100, its band and the weakest point.</p> <ul><li>Your decision scored on 10 signals</li><li>Weakest point, with the tool to check it</li><li>A 70% drawdown test</li><li>Not advice; it never recommends</li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with a free Verdict</a> </div> <div cl"
  },
  {
   "en": "Not advice; it never recommends",
   "kind": "text",
-  "context": " the weakest point.</p> <ul><li>Your decision scored on 10 signals</li><li>Weakest point, with the tool to check it</li><li>A 70% drawdown test</li><li>Not advice; it never recommends</li></ul> <a class=\"btn btn-ghost\" href=\"#waitForm\">Join the waitlist</a> </div> <div class=\"plan\"> <span class=\"layer\">One-off</span> "
+  "context": " the weakest point.</p> <ul><li>Your decision scored on 10 signals</li><li>Weakest point, with the tool to check it</li><li>A 70% drawdown test</li><li>Not advice; it never recommends</li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with a free Verdict</a> </div> <div class=\"plan\"> <span class=\"layer\">"
+ },
+ {
+  "en": "Start with a free Verdict",
+  "kind": "text",
+  "context": "t, with the tool to check it</li><li>A 70% drawdown test</li><li>Not advice; it never recommends</li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with a free Verdict</a> </div> <div class=\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</s"
  },
  {
   "en": "One-off",
   "kind": "text",
-  "context": "ever recommends</li></ul> <a class=\"btn btn-ghost\" href=\"#waitForm\">Join the waitlist</a> </div> <div class=\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through "
+  "context": "</li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with a free Verdict</a> </div> <div class=\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through "
  },
  {
   "en": "Full report",
   "kind": "text",
-  "context": " <a class=\"btn btn-ghost\" href=\"#waitForm\">Join the waitlist</a> </div> <div class=\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>A"
+  "context": "=\"btn btn-ghost\" href=\"verdict.html\">Start with a free Verdict</a> </div> <div class=\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>A"
  },
  {
   "en": "once",
   "kind": "text",
-  "context": "e 1 Nov</a> </div> <div class=\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions,"
+  "context": "Verdict</a> </div> <div class=\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals with scores and reasons</li><li>Ev"
  },
  {
   "en": "For one decision you want to think through in depth.",
   "kind": "text",
-  "context": "\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> "
+  "context": "\"plan\"> <span class=\"layer\">One-off</span> <h3>Full report</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals with scores and reasons</li><li>Every missing question for your decision</li><li>A step-by-step plan with Virtuse tools</li>"
  },
  {
   "en": "All 10 signals with scores and reasons",
   "kind": "text",
-  "context": "t</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start w"
+  "context": "t</h3> <div class=\"price\">€14 <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals with scores and reasons</li><li>Every missing question for your decision</li><li>A step-by-step plan with Virtuse tools</li><li>A PDF to keep, no subscription</li></ul> <a cla"
  },
  {
   "en": "Every missing question for your decision",
   "kind": "text",
-  "context": " <small>once</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <"
+  "context": "ce</small></div> <p class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals with scores and reasons</li><li>Every missing question for your decision</li><li>A step-by-step plan with Virtuse tools</li><li>A PDF to keep, no subscription</li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with"
  },
  {
   "en": "A step-by-step plan with Virtuse tools",
   "kind": "text",
-  "context": "class=\"for\">For one decision you want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <div class=\"plan pro\"> <"
+  "context": "ecision you want to think through in depth.</p> <ul><li>All 10 signals with scores and reasons</li><li>Every missing question for your decision</li><li>A step-by-step plan with Virtuse tools</li><li>A PDF to keep, no subscription</li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with a verdict</a> </div> <div class=\"p"
  },
  {
   "en": "A PDF to keep, no subscription",
   "kind": "text",
-  "context": "u want to think through in depth.</p> <ul><li>All 10 signals, with reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Fo"
+  "context": " <ul><li>All 10 signals with scores and reasons</li><li>Every missing question for your decision</li><li>A step-by-step plan with Virtuse tools</li><li>A PDF to keep, no subscription</li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding"
  },
  {
   "en": "Start with a verdict",
   "kind": "text",
-  "context": "reasons</li><li>Assumptions, risks and plan B</li><li>Questions for tomorrow</li><li>No subscription</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Founding price, when paid plans open in January</span> <h3>Virtuse CFO</h3"
+  "context": "r decision</li><li>A step-by-step plan with Virtuse tools</li><li>A PDF to keep, no subscription</li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Founding price, when paid plans open</span> <h3>Virtuse CFO</h3> <"
  },
  {
   "en": "Founding price, when paid plans open",
   "kind": "text",
-  "context": "on</li></ul> <a class=\"btn btn-ghost\" href=\"#verdict\">Start with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Founding price, when paid plans open in January</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span"
- },
- {
-  "en": "Virtuse CFO",
-  "kind": "text",
-  "context": " with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Founding price, when paid plans open in January</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\">"
+  "context": "li></ul> <a class=\"btn btn-ghost\" href=\"verdict.html\">Start with a verdict</a> </div> <div class=\"plan pro\"> <span class=\"founding\">Founding price, when paid plans open</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span"
  },
  {
   "en": "/ month",
   "kind": "text",
-  "context": " <span class=\"founding\">Founding price, when paid plans open in January</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y"
+  "context": "pro\"> <span class=\"founding\">Founding price, when paid plans open</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y"
  },
  {
   "en": "/ year",
   "kind": "text",
-  "context": "lans open in January</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span><"
+  "context": "when paid plans open</span> <h3>Virtuse CFO</h3> <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span><"
  },
  {
   "en": "Or €90 a year, two months free.",
   "kind": "text",
-  "context": " <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited ve"
+  "context": " <div class=\"price\"><span data-m>€9 <small>/ month</small></span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full report"
  },
  {
   "en": "That's €7.50 a month, billed yearly.",
   "kind": "text",
-  "context": "</span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl."
+  "context": "</span><span data-y hidden>€90 <small>/ year</small></span></div> <p class=\"for\"><span data-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li>"
  },
  {
   "en": "Fee audit from your export",
@@ -837,92 +727,92 @@
  {
   "en": "Unlimited verdicts and full reports",
   "kind": "text",
-  "context": "months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask y"
+  "context": "-m>Or €90 a year, two months free.</span><span data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask y"
  },
  {
   "en": "Your decisions over time, incl. company treasury",
   "kind": "text",
-  "context": "s €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn bt"
+  "context": "an data-y hidden>That's €7.50 a month, billed yearly.</span></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn bt"
  },
  {
   "en": "Fee and loan LTV alerts",
   "kind": "text",
-  "context": "i>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"butt"
+  "context": "an></p> <ul><li>Fee audit from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"butt"
  },
  {
   "en": "Tax report, 13 EU countries, and inheritance kit",
   "kind": "text",
-  "context": "t, from 1 November</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Start with the free audit</button> <"
+  "context": "t from your export</li><li>Unlimited verdicts and full reports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Start with the fee audit</button> <f"
  },
  {
   "en": "Ask your CFO, no limit",
   "kind": "text",
-  "context": "ports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Start with the free audit</button> <form class=\"wait wait-plan\" id="
+  "context": "ports</li><li>Your decisions over time, incl. company treasury</li><li>Fee and loan LTV alerts</li><li>Tax report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Start with the fee audit</button> <form class=\"wait wait-plan\" id=\""
  },
  {
-  "en": "Start with the free audit",
+  "en": "Start with the fee audit",
   "kind": "text",
-  "context": "report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Start with the free audit</button> <form class=\"wait wait-plan\" id=\"cfoWaitForm\" data-source=\"cfo_plan\" novalidate> <input type=\"email\" name=\"email\" placeholder=\"Email"
+  "context": "report, 13 EU countries, and inheritance kit</li><li>Ask your CFO, no limit</li></ul> <button class=\"btn btn-primary only-audit\" type=\"button\" data-run>Start with the fee audit</button> <form class=\"wait wait-plan\" id=\"cfoWaitForm\" data-source=\"cfo_plan\" novalidate> <input type=\"email\" name=\"email\" placeholder=\"Email"
  },
  {
   "en": "Let me know",
   "kind": "text",
-  "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Let me know</button> <div class=\"wait-msg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open in January. Nothing else.</p> "
+  "context": " <input class=\"hp\" type=\"text\" name=\"website\" tabindex=\"-1\" autocomplete=\"off\" aria-hidden=\"true\"> <button class=\"btn btn-primary\" type=\"submit\">Let me know</button> <div class=\"wait-msg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open. Nothing else.</p> <"
  },
  {
   "en": "One email when paid plans open. Nothing else.",
   "kind": "text",
-  "context": " <button class=\"btn btn-primary\" type=\"submit\">Let me know</button> <div class=\"wait-msg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open in January. Nothing else.</p> <span class=\"wait-ok\" hidden>You're on the list. We'll email you once, when paid plans open in January.</span> </form> </div> <"
+  "context": " <button class=\"btn btn-primary\" type=\"submit\">Let me know</button> <div class=\"wait-msg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open. Nothing else.</p> <span class=\"wait-ok\" hidden>You're on the list. We'll email you once, when paid plans open.</span> </form> </div> </div> <"
  },
  {
   "en": "You're on the list. We'll email you once, when paid plans open.",
   "kind": "text",
-  "context": "g\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open in January. Nothing else.</p> <span class=\"wait-ok\" hidden>You're on the list. We'll email you once, when paid plans open in January.</span> </form> </div> </div> <div class=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div"
+  "context": "ss=\"wait-msg\" aria-live=\"polite\"></div> <p class=\"wait-note\">One email when paid plans open. Nothing else.</p> <span class=\"wait-ok\" hidden>You're on the list. We'll email you once, when paid plans open.</span> </form> </div> </div> <div class=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open</p> <div class=\"ass"
  },
  {
   "en": "Terms that apply when paid plans open",
   "kind": "text",
-  "context": "he list. We'll email you once, when paid plans open in January.</span> </form> </div> </div> <div class=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Can"
+  "context": "You're on the list. We'll email you once, when paid plans open.</span> </form> </div> </div> <div class=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Can"
  },
  {
   "en": "30-day refund",
   "kind": "text",
-  "context": "lass=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\">"
+  "context": " <div class=\"terms\"> <p class=\"terms-k\">Terms that apply when paid plans open</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\">"
  },
  {
   "en": "No questions, no form.",
   "kind": "text",
-  "context": " <p class=\"terms-k\">Terms that apply when paid plans open in January</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or c"
+  "context": "terms\"> <p class=\"terms-k\">Terms that apply when paid plans open</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or c"
  },
  {
   "en": "Cancel in one click",
   "kind": "text",
-  "context": "ary</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span c"
+  "context": "pen</p> <div class=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the fee audit.</span> <span cl"
  },
  {
   "en": "From your account page.",
   "kind": "text",
-  "context": "s=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day"
+  "context": "s=\"assure-row\"> <span class=\"ic ic-green\"><b>30-day refund</b>No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the fee audit.</span> <span class=\"ic ic-blue\"><b>14-day "
  },
  {
   "en": "Pay with Lightning or card",
   "kind": "text",
-  "context": ">No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span"
+  "context": ">No questions, no form.</span> <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the fee audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span>"
  },
  {
-  "en": "No card needed for the free audit.",
+  "en": "No card needed for the fee audit.",
   "kind": "text",
-  "context": " <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-f"
+  "context": " <span class=\"ic ic-muted\"><b>Cancel in one click</b>From your account page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the fee audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-f"
  },
  {
   "en": "14-day EU withdrawal",
   "kind": "text",
-  "context": " page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-fine\">Prices include VAT where applicable. Same price in all 10 l"
+  "context": "t page.</span> <span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the fee audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-fine\">Prices include VAT where applicable. Same price in all 10 l"
  },
  {
   "en": "Your statutory right to withdraw applies on top.",
   "kind": "text",
-  "context": "pan class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the free audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-fine\">Prices include VAT where applicable. Same price in all 10 languages.</p> </div> </section> <!-- ASK Y"
+  "context": "span class=\"ic ic-orange\"><b>Pay with Lightning or card</b>No card needed for the fee audit.</span> <span class=\"ic ic-blue\"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span> </div> <p class=\"terms-fine\">Prices include VAT where applicable. Same price in all 10 languages.</p> </div> </section> <!-- ASK Y"
  },
  {
   "en": "Prices include VAT where applicable. Same price in all 10 languages.",
@@ -967,17 +857,17 @@
  {
   "en": "Should I buy more before the end of the year?",
   "kind": "text",
-  "context": "rawal fees on 12 transfers to your own wallet.<small>Source: kraken-ledgers-2026.csv · 214 rows, read on this device</small></div> <div class=\"msg q\">Should I buy more before the end of the year?</div> <div class=\"msg a decline\">That's a decision about when to buy, so I can't recommend it. Here's what your numbers show: you bought every month "
+  "context": "rawal fees on 12 transfers to your own wallet.<small>Source: kraken-ledgers-2026.csv · 214 rows, read on this device</small></div> <div class=\"msg q\">Should I buy more before the end of the year?</div> <div class=\"msg a decline\">That's a decision about when to buy, so I can't advise on it. Here's what your numbers show: you bought every month "
  },
  {
-  "en": "That's a decision about when to buy, so I can't recommend it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.",
+  "en": "That's a decision about when to buy, so I can't advise on it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.",
   "kind": "text",
-  "context": "4 rows, read on this device</small></div> <div class=\"msg q\">Should I buy more before the end of the year?</div> <div class=\"msg a decline\">That's a decision about when to buy, so I can't recommend it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.<small>Virtuse CFO explains your data. It doesn't give investment or tax advice.</small></div> </div> <p class=\"disclose\">The answer is generate"
+  "context": "4 rows, read on this device</small></div> <div class=\"msg q\">Should I buy more before the end of the year?</div> <div class=\"msg a decline\">That's a decision about when to buy, so I can't advise on it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.<small>Virtuse CFO explains your data. It doesn't give investment or tax advice.</small></div> </div> <p class=\"disclose\">The answer is generate"
  },
  {
   "en": "Virtuse CFO explains your data. It doesn't give investment or tax advice.",
   "kind": "text",
-  "context": " buy, so I can't recommend it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.<small>Virtuse CFO explains your data. It doesn't give investment or tax advice.</small></div> </div> <p class=\"disclose\">The answer is generated by artificial intelligence from your data. It may contain errors. It does not "
+  "context": " buy, so I can't advise on it. Here's what your numbers show: you bought every month in 2026, €3,580 on average. A licensed adviser can help with timing.<small>Virtuse CFO explains your data. It doesn't give investment or tax advice.</small></div> </div> <p class=\"disclose\">The answer is generated by artificial intelligence from your data. It may contain errors. It does not "
  },
  {
   "en": "The answer is generated by artificial intelligence from your data. It may contain errors. It does not recommend what to do. Your files, wallet and addresses stay on your device.",
@@ -1097,37 +987,37 @@
  {
   "en": "This is everything that leaves your device.",
   "kind": "text",
-  "context": "an>Seed phrases stored</span><b>None</b></div></div> </div> </section> <!-- 3. PROOF, NOT PROMISE --> <section> <div class=\"sec-head\"> <h2>This is everything that leaves your device. <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\""
+  "context": "an>Seed phrases stored</span><b>None</b></div></div> </div> </section> <!-- 3. PROOF, NOT PROMISE --> <section> <div class=\"sec-head\"> <h2>This is everything that leaves your device. <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Fee audit upload\"><span class=\"c\">"
  },
  {
   "en": "Open the network tab and check.",
   "kind": "text",
-  "context": "v> </div> </section> <!-- 3. PROOF, NOT PROMISE --> <section> <div class=\"sec-head\"> <h2>This is everything that leaves your device. <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c o"
+  "context": "v> </div> </section> <!-- 3. PROOF, NOT PROMISE --> <section> <div class=\"sec-head\"> <h2>This is everything that leaves your device. <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Fee audit upload\"><span class=\"c\">// fee audit</span> <span class=\"c ok\""
  },
  {
-  "en": "Free audit upload",
+  "en": "Fee audit upload",
   "kind": "attr:aria-label",
-  "context": "verything that leaves your device. <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span c"
+  "context": "verything that leaves your device. <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Fee audit upload\"><span class=\"c\">// fee audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span cl"
  },
  {
-  "en": "// free audit",
+  "en": "// fee audit",
   "kind": "text",
-  "context": "<span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to ke"
+  "context": " <span>Open the network tab and check.</span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Fee audit upload\"><span class=\"c\">// fee audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to ke"
  },
  {
   "en": "// nothing. 0 bytes.",
   "kind": "text",
-  "context": "pan></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\""
+  "context": "/span></h2> </div> <div class=\"proof\"> <pre class=\"code code-free\" aria-label=\"Fee audit upload\"><span class=\"c\">// fee audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\""
  },
  {
   "en": "Paid account upload",
   "kind": "attr:aria-label",
-  "context": "ria-label=\"Free audit upload\"><span class=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"count"
+  "context": " aria-label=\"Fee audit upload\"><span class=\"c\">// fee audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"count"
  },
  {
   "en": "// CFO account · to keep your alerts running",
   "kind": "text",
-  "context": "lass=\"c\">// free audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"country\"</span>: <span class=\"str\">\"SK\"</span>, <span class=\"k2\">"
+  "context": "class=\"c\">// fee audit</span> <span class=\"c ok\">// nothing. 0 bytes.</span></pre> <pre class=\"code code-paid\" aria-label=\"Paid account upload\"><span class=\"c\">// CFO account · to keep your alerts running</span> { <span class=\"k2\">\"year\"</span>: <span class=\"n\">2026</span>, <span class=\"k2\">\"country\"</span>: <span class=\"str\">\"SK\"</span>, <span class=\"k2\">"
  },
  {
   "en": "\"year\"",
@@ -1307,27 +1197,27 @@
  {
   "en": "No. It rates whether your thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.",
   "kind": "text",
-  "context": "h2>Customer <span>questions.</span></h2> </div> <div class=\"faq\"> <details open><summary>Will Verdict tell me whether to buy Bitcoin?</summary><p>No. It rates whether your thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse"
+  "context": "h2>Customer <span>questions.</span></h2> </div> <div class=\"faq\"> <details open><summary>Will Verdict tell me whether to buy Bitcoin?</summary><p>No. It rates whether your thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virt"
  },
  {
   "en": "What does it cost?",
   "kind": "text",
-  "context": " thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and inc"
+  "context": " thinking is complete. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse CFO is planned at €9 a month or €90 a year, with unli"
  },
  {
   "en": "Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse CFO is planned at €9 a month or €90 a year, with unlimited verdicts and reports. Join the waitlist and we'll tell you when it opens.",
   "kind": "text",
-  "context": " do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and includes unlimited verdicts and reports.</p></details> <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13"
+  "context": " do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details> <details><summary>What does it cost?</summary><p>Verdict is free; the fee audit comes with Virtuse CFO. A full report costs €14, once. Virtuse CFO is planned at €9 a month or €90 a year, with unlimited verdicts and reports. Join the waitlist and we'll tell you when it opens.</p></details> <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13"
  },
  {
   "en": "Where does Verdict get its facts?",
   "kind": "text",
-  "context": "rt costs €14, once. Virtuse CFO opens in January at €9 a month or €90 a year and includes unlimited verdicts and reports.</p></details> <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13 countries, each with the date it was checked. When a fact is missing, V"
+  "context": "ned at €9 a month or €90 a year, with unlimited verdicts and reports. Join the waitlist and we'll tell you when it opens.</p></details> <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13 countries, each with the date it was checked. When a fact is missing, V"
  },
  {
   "en": "From the official sources Virtuse already uses, such as the tax rules of 13 countries, each with the date it was checked. When a fact is missing, Verdict asks you.",
   "kind": "text",
-  "context": "ry at €9 a month or €90 a year and includes unlimited verdicts and reports.</p></details> <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13 countries, each with the date it was checked. When a fact is missing, Verdict asks you.</p></details> <details><summary>What happens to what I write?</summary><p>Without an account we don't store the text of your thinking. To prevent abuse w"
+  "context": "d verdicts and reports. Join the waitlist and we'll tell you when it opens.</p></details> <details><summary>Where does Verdict get its facts?</summary><p>From the official sources Virtuse already uses, such as the tax rules of 13 countries, each with the date it was checked. When a fact is missing, Verdict asks you.</p></details> <details><summary>What happens to what I write?</summary><p>Without an account we don't store the text of your thinking. To prevent abuse w"
  },
  {
   "en": "What happens to what I write?",
@@ -1422,22 +1312,22 @@
  {
   "en": "No. The audit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.",
   "kind": "text",
-  "context": " their menus now and then, so check their help pages if a step looks different.</p></details> <details><summary>Is my file uploaded anywhere?</summary><p>No. The audit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later cho"
+  "context": " their menus now and then, so check their help pages if a step looks different.</p></details> <details><summary>Is my file uploaded anywhere?</summary><p>No. The audit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The fee audit needs neither. You only create an account if you later choo"
  },
  {
   "en": "Do I need an account or a card?",
   "kind": "text",
-  "context": "dit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges"
+  "context": "dit reads the file in your browser and sends nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The fee audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges "
  },
  {
-  "en": "No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.",
+  "en": "No. The fee audit needs neither. You only create an account if you later choose Virtuse CFO.",
   "kind": "text",
-  "context": " nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></deta"
+  "context": " nothing to Virtuse. You can check it yourself in your browser's network tab.</p></details> <details><summary>Do I need an account or a card?</summary><p>No. The fee audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></deta"
  },
  {
   "en": "Which exchanges work at launch?",
   "kind": "text",
-  "context": "ount or a card?</summary><p>No. The free audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summar"
+  "context": "count or a card?</summary><p>No. The fee audit needs neither. You only create an account if you later choose Virtuse CFO.</p></details> <details><summary>Which exchanges work at launch?</summary><p>Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.</p></details> <details><summary>Is this investment or tax advice?</summar"
  },
  {
   "en": "Kraken, Bybit EU and 21bitcoin. More exchanges follow after launch.",
@@ -1457,12 +1347,12 @@
  {
   "en": "Company",
   "kind": "text",
-  "context": "</a><a href=\"lending.html\">Loans</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO · Verdict <span class"
+  "context": "</a><a href=\"lending.html\">Loans</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"verdict.html\">Verdict <span class=\"soon cfo"
  },
  {
   "en": "About Us",
   "kind": "text",
-  "context": "/a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"cfo.html\">Virtuse CFO · Verdict <span class=\"soon cfo-foot-badge\">Free</span>"
+  "context": "/a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"verdict.html\">Verdict <span class=\"soon cfo-foot-badge\">Free</span></a><a hre"
  },
  {
   "en": "Guides",
@@ -1477,27 +1367,32 @@
  {
   "en": "DCA calculator",
   "kind": "text",
-  "context": "a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"ter"
+  "context": "a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href="
  },
  {
   "en": "Sell vs borrow",
   "kind": "text",
-  "context": "bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a "
+  "context": "bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosyste"
  },
  {
   "en": "Inheritance",
   "kind": "text",
-  "context": "-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a"
+  "context": "-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosystem/what-is-bitcoin/\">What is Bitcoin?</a><a href"
+ },
+ {
+  "en": "Bitcoin Ecosystem",
+  "kind": "text",
+  "context": "sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosystem/what-is-bitcoin/\">What is Bitcoin?</a><a href=\"/ecosystem/books/\">Books</a><a href=\"/ecosystem/podcasts/\">Podcasts</a><a href=\"/ecosyste"
  },
  {
   "en": "Legal",
   "kind": "text",
-  "context": "lator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compl"
+  "context": "href=\"/ecosystem/jobs/\">Bitcoin Jobs</a><a href=\"/ecosystem/peers/\">Bitcoin Peers</a><a href=\"/ecosystem/promote/\">Promote</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compl"
  },
  {
   "en": "Terms &amp; Conditions",
   "kind": "text",
-  "context": "rrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\""
+  "context": "f=\"/ecosystem/peers/\">Bitcoin Peers</a><a href=\"/ecosystem/promote/\">Promote</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\""
  },
  {
   "en": "AML &amp; Compliance",
@@ -1570,188 +1465,48 @@
   "context": "lass=\"wl\">V</span><span class=\"wl\">i</span><span class=\"wl\">r</span><span class=\"wl\">t</span><span class=\"wl\">u</span><span class=\"wl\">s</span><span class=\"wl\">e</span></span> </div> </footer> </main> <script> (function () { var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; var ste"
  },
  {
-  "en": " · read locally",
-  "kind": "js",
-  "context": "script message"
- },
- {
-  "en": "Close menu",
-  "kind": "js",
-  "context": "script message"
- },
- {
-  "en": "Please enter a valid email address.",
-  "kind": "js",
-  "context": "script message"
- },
- {
-  "en": "Sending...",
-  "kind": "js",
-  "context": "script message"
- },
- {
-  "en": "Something went wrong. Please try again.",
-  "kind": "js",
-  "context": "script message"
- },
- {
-  "en": "Network error. Please try again.",
-  "kind": "js",
-  "context": "script message"
- },
- {
-  "en": "You're on the list. We'll email you once, when Verdict and the free audit open.",
-  "kind": "js",
-  "context": "script message"
- },
- {
-  "en": "Virtuse CFO · Verdict: check what you left out | Virtuse",
+  "en": "Virtuse CFO: track your fees, loans and taxes | Virtuse",
   "kind": "head",
-  "context": "title"
+  "context": "title / meta description"
  },
  {
   "en": "Verdict scores how complete your Bitcoin decision is, for free. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice.",
   "kind": "head",
-  "context": "description"
+  "context": "title / meta description"
  },
  {
-  "en": "Ecosystem",
-  "kind": "text",
-  "context": "Ecosystem menu"
+  "en": " · read locally",
+  "kind": "script",
+  "context": "script message (build_cfo.py)"
  },
  {
-  "en": "Overview",
-  "kind": "text",
-  "context": "Ecosystem menu"
+  "en": "Close menu",
+  "kind": "script",
+  "context": "script message (build_cfo.py)"
  },
  {
-  "en": "All bitcoin-only resources",
-  "kind": "text",
-  "context": "Ecosystem menu"
+  "en": "Please enter a valid email address.",
+  "kind": "script",
+  "context": "script message (build_cfo.py)"
  },
  {
-  "en": "Bitcoin Ecosystem",
-  "kind": "text",
-  "context": "Ecosystem menu"
+  "en": "Sending...",
+  "kind": "script",
+  "context": "script message (build_cfo.py)"
  },
  {
-  "en": "A plain-English primer",
-  "kind": "text",
-  "context": "Ecosystem menu"
+  "en": "You're on the list. We'll email you once, when Verdict and the fee audit open.",
+  "kind": "script",
+  "context": "script message (build_cfo.py)"
  },
  {
-  "en": "What is Bitcoin?",
-  "kind": "text",
-  "context": "Ecosystem menu"
+  "en": "Something went wrong. Please try again.",
+  "kind": "script",
+  "context": "script message (build_cfo.py)"
  },
  {
-  "en": "A curated reading list",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Books",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin-only shows",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Podcasts",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Channels and documentaries",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Videos",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin events in Europe",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Conferences",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Lawful privacy tools",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin Privacy",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Shops, maps and gift cards",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Spend Bitcoin",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Accept bitcoin in your shop",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Store Tools",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Libraries and SDKs",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Dev Tools",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Jobs, grants and fellowships",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin Jobs",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Fellow bitcoin-only projects",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Bitcoin Peers",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Get your project featured",
-  "kind": "text",
-  "context": "Ecosystem menu"
- },
- {
-  "en": "Promote",
-  "kind": "text",
-  "context": "Ecosystem menu"
+  "en": "Network error. Please try again.",
+  "kind": "script",
+  "context": "script message (build_cfo.py)"
  }
 ]

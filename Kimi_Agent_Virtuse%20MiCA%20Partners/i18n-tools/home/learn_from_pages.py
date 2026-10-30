@@ -17,8 +17,12 @@ for k, s, e, t in segs:
     if t not in uniq and ("'%s'" % t not in SRC and '"%s"' % t not in SRC and '>%s<' % t not in SRC): uniq.append(t)
 M = lambda i: '⟦%d⟧' % i
 import ast
-mm = re.search(r'for key in (\[.*?\]):', SRC, re.S)
+mm = re.search(r'for key in (\[.*?\]):', SRC, re.S) or re.search(r'^JS = (\[.*?\])$', SRC, re.S | re.M)
 JSKEYS = ast.literal_eval(mm.group(1)) if mm else []
+HEADKEYS = {}
+for name in ('TITLE', 'DESC'):   # build_cfo.py looks the page title / description up by their English text
+    hm = re.search(r'^%s = (.*)$' % name, SRC, re.M)
+    if hm: HEADKEYS[name] = ast.literal_eval(hm.group(1))
 for L in langs:
     page = L + '/' + BUILD[1]; target = rd(page)
     old = json.loads(rd('%s/%s.json' % (D, L)))
@@ -27,6 +31,10 @@ for L in langs:
     base = len(uniq)
     for n, k in enumerate(js_new): mk[k] = M(base + n)
     allk = uniq + js_new
+    head = {}
+    if 'TITLE' in HEADKEYS: head[HEADKEYS['TITLE']] = re.search(r'<title>([^<]*)</title>', target).group(1)
+    if 'DESC' in HEADKEYS: head[HEADKEYS['DESC']] = H.unescape(re.search(r'<meta name="description" content="([^"]*)"', target).group(1))
+    mk.update(head)
     tmp = '/tmp/claude-501/learn_%s_%s.json' % (tool, L); os.makedirs(os.path.dirname(tmp), exist_ok=True); wr(tmp, json.dumps(mk, ensure_ascii=False))
     r = subprocess.run([sys.executable, '%s/%s' % (D, BUILD[0]), L], env=dict(os.environ, TR=tmp), capture_output=True, text=True)
     built = rd(page); wr(page, target)
@@ -50,6 +58,7 @@ for L in langs:
         learned.setdefault(t, val)
     if not ok: continue
     new = dict(old)
+    new.update(head)
     for t, v in learned.items():
         kinds = {k for k, s, e, tt in segs if tt == t}
         if any(k.startswith('attr:') for k in kinds): v = v.replace('&quot;', '"')

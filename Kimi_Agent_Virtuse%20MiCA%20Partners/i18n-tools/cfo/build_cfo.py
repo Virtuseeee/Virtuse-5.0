@@ -13,23 +13,28 @@ sys.path.insert(0, os.path.dirname(HERE))
 import csp_tight
 
 SITE = B.SITE
-TITLE = "Virtuse CFO · Verdict: check what you left out | Virtuse"
-DESC = "Verdict scores how complete your Bitcoin decision is, for free. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice."
+TITLE = 'Virtuse CFO: track your fees, loans and taxes | Virtuse'
+DESC = 'Verdict scores how complete your Bitcoin decision is, for free. Virtuse CFO then tracks your fees, loans and taxes. Read-only, no advice.'
 JS = [" · read locally", "Open menu", "Close menu", "Please enter a valid email address.", "Sending...",
-      "You're on the list. We'll email you once, when Verdict and the free audit open.", "Something went wrong. Please try again.",
+      "You're on the list. We'll email you once, when Verdict and the fee audit open.", "Something went wrong. Please try again.",
       "Network error. Please try again."]
+# punctuation that sits between a tag and the next translated text, so it can't live in <lang>.json
+TAG_PUNCT = {'hu': [('<b>CSV</b> ', '<b>CSV</b>, ')]}
 OG_LOCALE = {'sk': 'sk_SK', 'cs': 'cs_CZ', 'de': 'de_DE', 'fr': 'fr_FR', 'es': 'es_ES', 'pl': 'pl_PL', 'hu': 'hu_HU', 'uk': 'uk_UA', 'ru': 'ru_RU'}
 
 
 def build(L):
     one = B.one
     en = open(os.path.join(SITE, 'cfo.html')).read()
-    tr = json.load(open(os.path.join(HERE, L + '.json')))
+    tr = json.load(open(os.environ.get('TR') or os.path.join(HERE, L + '.json')))
 
     h, missing = apply(en, tr)
     missing = [m for m in missing if re.search(r'[A-Za-z]', m)]
     if missing:
         sys.exit('%s: untranslated strings: %r' % (L, missing[:5]))
+
+    for a, b2 in TAG_PUNCT.get(L, []):
+        h = one(h, a, b2)
 
     # head
     title, desc = tr[TITLE], tr[DESC].replace('"', '&quot;')
@@ -66,6 +71,8 @@ def build(L):
             return '%s="../blog-sk.html%s"' % (attr, url[len(path):])
         if os.path.exists(os.path.join(SITE, L, path)):
             return m.group(0)
+        if path == 'verdict.html':   # same form as verdict-landing/nav_split.py: languages without their own Verdict page
+            return '%s="/%s"' % (attr, url)
         return '%s="../%s"' % (attr, url)
     b = h.index('<body')
     h = h[:b] + re.sub(r'\b(href|src)="([^"]+)"', fix_url, h[b:])
@@ -93,8 +100,13 @@ def build(L):
             sys.exit('%s: nav-cta not found' % L)
         h = one(h, '</head>', '<style>.cta-short { display: none; } @media (max-width: 389px) { .cta-full { display: none; } .cta-short { display: inline; } }</style>\n</head>')
     h = B.localise_numbers(h, L)
+    # the Verdict/CFO split styles (verdict-landing/cfo_split.py) come last in <head>, as on the pages
+    sm = re.search(r'<style>/\* CFO alone \(verdict-landing/cfo_split\.py\) \*/.*?</style>\n', h, re.S)
+    if sm:
+        h = h[:sm.start()] + h[sm.end():]
+        h = one(h, '</head>', sm.group(0) + '</head>')
 
-    for bad in ('<html lang="en"', "'en-IE'", 'check what you left out |'):
+    for bad in ('<html lang="en"', "'en-IE'", '<title>%s</title>' % TITLE):
         if bad in h:
             sys.exit('%s: leftover %s' % (L, bad))
     out = os.environ.get('OUT') or os.path.join(SITE, L)

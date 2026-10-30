@@ -11,7 +11,13 @@ out, seen = [], set()
 for k, s, e, t in segments(en):
     if t in seen: continue
     seen.add(t); out.append({'en': t, 'kind': k, 'context': context(en, s, e)})
-m = re.search(r'for key in (\[.*?\]):', src, re.S)
+m = re.search(r'for key in (\[.*?\]):', src, re.S) or re.search(r'^JS = (\[.*?\])$', src, re.S | re.M)
+extra = []
+for name in ('TITLE', 'DESC'):   # build_cfo.py looks the head title / description up by their English text
+    hm = re.search(r'^%s = (.*)$' % name, src, re.M)
+    if hm: extra.append(ast.literal_eval(hm.group(1)))
+for k in extra:
+    if k not in seen: seen.add(k); out.append({'en': k, 'kind': 'head', 'context': 'title / meta description'})
 for k in (ast.literal_eval(m.group(1)) if m else []):
     if k not in seen: seen.add(k); out.append({'en': k, 'kind': 'script', 'context': 'script message (%s)' % builder})
 io.open('%s/en_strings.json' % D, 'w', encoding='utf-8').write(json.dumps(out, ensure_ascii=False, indent=1))
