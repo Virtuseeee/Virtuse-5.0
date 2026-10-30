@@ -196,13 +196,13 @@
     var rm = X.rank_med, ra = X.rank_avg;
     obs.push(rm === 1 ? 'By median it is the strongest of the 12 months' + (ra === 1 ? ', and by average too.' : '; by average it ranks ' + ordinal(ra) + '.') :
       rm === 12 ? 'By median it is the weakest of the 12 months' + (ra === 12 ? ', and by average too.' : '; by average it ranks ' + ordinal(ra) + '.') :
-      'By median it ranks ' + ordinal(rm) + ' of the 12 months, by average ' + ordinal(ra) + '.');
+      'By median it ranks ' + ordinal(rm) + ' of the 12 months' + (ra === 1 ? '; by average it is the strongest.' : ra === 12 ? '; by average it is the weakest.' : ', by average ' + ordinal(ra) + '.'));
     var k = 0, L = X.list, sign = L[L.length - 1].v > 0;
     for (var i = L.length - 1; i >= 0 && (L[i].v > 0) === sign; i--) k++;
     if (k >= 3) obs.push('It has been ' + (sign ? 'positive' : 'negative') + ' in each of the last ' + k + ' years (' + L[L.length - k].y + '–' + L[L.length - 1].y + ').');
-    else obs.push('Last time, in ' + L[L.length - 1].y + ', it returned ' + pct(L[L.length - 1].v) + '.');
+    else obs.push('Most recently, in ' + L[L.length - 1].y + ', it returned ' + pct(L[L.length - 1].v) + '.');
     html += '<p class="vbr-obs">' + obs.join(' ') + '</p>';
-    if (X.cur) html += '<p class="vbr-note">' + name + ' ' + X.cur.y + ' is still running: ' + pct(X.cur.v) + ' so far (latest close ' + day(M.asOf) + '), not included in the figures above.</p>';
+    if (X.cur) html += '<p class="vbr-note">' + name + ' ' + X.cur.y + ' is not over yet: ' + pct(X.cur.v) + ' so far (latest close ' + day(M.asOf) + '), not included in the figures above.</p>';
 
     // Chart: every year, oldest first.
     var items = X.list.map(function (r) { return { label: "'" + String(r.y).slice(2), v: r.v, title: name + ' ' + r.y + ': ' + pct(r.v) }; });
@@ -256,21 +256,21 @@
     var obs = [];
     if (Y.ytd) obs.push('So far in ' + y + ' (to ' + day(M.asOf) + '), Bitcoin is ' + (Y.ret >= 0 ? 'up ' : 'down ') + pctAbs(Y.ret) + ', from ' + usd(Y.start) + ' at the end of ' + (y - 1) + ' to ' + usd(Y.end) + '.');
     else obs.push('Bitcoin ' + (Y.ret >= 0 ? 'rose ' : 'fell ') + pctAbs(Y.ret) + ' in ' + y + ', from ' + usd(Y.start) + ' at the end of ' + (y - 1) + ' to ' + usd(Y.end) + ' at the end of ' + y + '.');
-    if (Y.n) obs.push(Y.pos + ' of ' + Y.n + (Y.ytd ? ' complete' : '') + ' months closed higher; the best was ' + MONTHS[Y.best.m - 1] + ' (' + pct(Y.best.v) + '), the worst ' + MONTHS[Y.worst.m - 1] + ' (' + pct(Y.worst.v) + ').');
+    if (Y.n) obs.push('Of the ' + Y.n + (Y.ytd ? ' complete' : '') + ' months, ' + Y.pos + ' closed higher; the best was ' + MONTHS[Y.best.m - 1] + ' (' + pct(Y.best.v) + '), the worst ' + MONTHS[Y.worst.m - 1] + ' (' + pct(Y.worst.v) + ').');
     if (D) {
       var from = D.ddP && D.ddP.slice(0, 4) === String(y) ? 'the high of ' + day(D.ddP) : 'the start of the year';
-      obs.push(D.ddT ? 'The deepest fall during the year was ' + pct(D.dd) + ', from ' + from + ' to ' + day(D.ddT) + '; the highest close was ' + usd(D.hi) + ' on ' + day(D.hiD) + '.' :
+      obs.push(D.ddT ? 'The deepest fall ' + (Y.ytd ? 'so far this year' : 'during the year') + ' was ' + pctAbs(D.dd) + ', from ' + from + ' to ' + day(D.ddT) + '; the highest close was ' + usd(D.hi) + ' on ' + day(D.hiD) + '.' :
         'Bitcoin never closed below its start-of-year level; the highest close was ' + usd(D.hi) + ' on ' + day(D.hiD) + '.');
     }
     var P = M.years[y - 1];
     if (!Y.ytd) {
-      obs.push('That ranks ' + ordinal(Y.rank) + ' of ' + M.fullYears.length + ' full years since ' + M.fullYears[0] + '.' + (P && !P.ytd && P.ret != null ? ' The year before (' + (y - 1) + ') returned ' + pct(P.ret) + '.' : ''));
+      obs.push('That ' + (Y.rank === 1 ? 'is the best' : Y.rank === M.fullYears.length ? 'is the worst' : 'ranks ' + ordinal(Y.rank)) + ' of ' + M.fullYears.length + ' full years since ' + M.fullYears[0] + '.' + (P && !P.ytd && P.ret != null ? ' The year before (' + (y - 1) + ') returned ' + pct(P.ret) + '.' : ''));
     } else if (P && Y.n) {
       var lm = Y.n, a = M.close(y - 2, 12), b = M.close(y - 1, lm), c = M.close(y, lm);
       if (a != null && b != null && c != null) obs.push('Over the same months (' + (lm === 1 ? 'January' : 'January–' + MONTHS[lm - 1]) + '), ' + y + ' returned ' + pct(c / Y.start - 1) + ' against ' + pct(b / a - 1) + ' in ' + (y - 1) + '.');
     }
     html += '<p class="vbr-obs">' + obs.join(' ') + '</p>';
-    if (Y.ytd) html += '<p class="vbr-note">' + y + ' is still running: the year-to-date figures use the latest daily close (' + day(M.asOf) + '), and ' + MONTHS[M.cm - 1] + ' is not counted as a complete month.</p>';
+    if (Y.ytd) html += '<p class="vbr-note">' + y + ' is not over yet: the year-to-date figures use the latest daily close (' + day(M.asOf) + '), and ' + MONTHS[M.cm - 1] + ' is not counted as a complete month.</p>';
 
     var items = Y.months.map(function (r) { return { label: SHORT[r.m - 1], v: r.future ? null : r.v, cur: r.cur, title: SHORT[r.m - 1] + ' ' + y + (r.cur ? ' (so far)' : '') + ': ' + pct(r.v) }; });
     html += '<div class="vbr-chartbox">' + bars(items, 1, 'Bitcoin return in each month of ' + y) + '</div>';
@@ -346,7 +346,7 @@
     ];
     // Seasonal questions people search for (GSC 2026-10): October and November, complete years only.
     var season = function (o) {
-      var running = o.cur ? ' ' + o.name + ' ' + M.cy + ' is still running and not included.' : '';
+      var running = o.cur ? ' ' + o.name + ' ' + M.cy + ' is not over yet and is not included.' : '';
       return o.name + ' has averaged ' + pct(o.avg) + ' (median ' + pct(o.med) + ') since ' + o.list[0].y + ' and closed higher in ' + o.pos + ' of ' + o.n + ' years. ' +
         (o.m === ba.m && ba.m !== bm.m ? 'That is the highest average of any month, lifted mostly by ' + o.best.y + ' (' + pct(o.best.v) + '). ' : 'The best ' + o.name + ' was ' + o.best.y + ' (' + pct(o.best.v) + '). ') +
         'The worst was ' + o.worst.y + ' (' + pct(o.worst.v) + ').' + running + ' Complete months through ' + thru + '.';

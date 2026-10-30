@@ -57,7 +57,7 @@
         mining: ['Ťažte Bitcoin s overenými partnermi', 'Hosting, cloud a hardvér porovnané podľa nákladov a výplat.', 'Porovnať partnerov'],
         treasury: ['Bitcoin v súvahe firmy', 'Úschova, vykonávanie obchodov a reporting pre firmy a family offices.', 'Treasury partneri'],
         custody: ['Majte vlastné kľúče', 'Hardvérové peňaženky a multi-sig od overených partnerov.', 'Porovnať úschovu'],
-        policy: ['Zdaňte Bitcoin správne', 'Daňové prehľady podľa krajiny od softvérových partnerov.', 'Daňoví partneri'],
+        policy: ['Priznajte dane z Bitcoinu správne', 'Daňové prehľady podľa krajiny od softvérových partnerov.', 'Daňoví partneri'],
         macro: ['Požičajte si namiesto predaja', 'Pôžičky so zábezpekou v Bitcoine od 5 % p. a.', 'Porovnať pôžičky'],
         markets: ['Kde kúpiť Bitcoin', 'Overené regulované platformy vedľa seba: poplatky, úschova, výplata.', 'Porovnať partnerov']
       }
@@ -77,7 +77,7 @@
         nostrCopied: 'Скопировано. Вставьте в своё Nostr-приложение.', openPrimal: 'Открыть Primal', back: '← Все статьи',
         inStory: 'В этой статье', onVirtuse: 'На Virtuse', ovAlt: 'Не уверены? Сравните партнёров за 60 секунд →',
         ovNote: 'Услуги партнёров. Не является финансовой рекомендацией.',
-        capKicker: 'Получите Brief', capDek: 'Каждый понедельник. Только Биткоин. Без токенов. Без PR.', capBtn: 'Получить Brief',
+        capKicker: 'Получите Brief', capDek: 'Каждый понедельник. Только Биткоин. Без токенов. Без пиара.', capBtn: 'Получить Brief',
         subscribe: 'Подписаться', more: 'Ещё статьи', moreAll: 'Все статьи', readMore: 'Читать',
         emailReq: 'Укажите e-mail.', sending: 'Отправка', subOk: 'Готово. Проверьте почту.',
         subErr: 'Не удалось подписаться. Попробуйте ещё раз.', netErr: 'Ошибка сети. Попробуйте ещё раз.',
@@ -89,7 +89,7 @@
         treasury: ['Биткоин на балансе компании', 'Хранение, исполнение и отчётность для компаний и семейных офисов.', 'Партнёры'],
         custody: ['Храните свои ключи', 'Аппаратные кошельки и мультиподпись от проверенных партнёров.', 'Сравнить хранение'],
         policy: ['Налоги на Биткоин без ошибок', 'Отчёты по странам от налоговых сервисов.', 'Налоговые партнёры'],
-        macro: ['Займите под Биткоин вместо продажи', 'Займы под залог Биткоина от 5% годовых.', 'Сравнить займы'],
+        macro: ['Займите под залог Биткоина вместо продажи', 'Займы под залог Биткоина от 5% годовых.', 'Сравнить займы'],
         markets: ['Где купить Биткоин', 'Проверенные регулируемые платформы: комиссии, хранение, вывод.', 'Сравнить партнёров']
       }
     },
@@ -145,21 +145,21 @@
         emailReq: 'Bitte geben Sie Ihre E-Mail-Adresse ein.', sending: 'Wird gesendet', subOk: 'Geschafft. Bitte prüfen Sie Ihr Postfach.',
         subErr: 'Anmeldung fehlgeschlagen. Bitte erneut versuchen.', netErr: 'Netzwerkfehler. Bitte erneut versuchen.',
         footAbout: 'Über uns', footTerms: 'AGB', footPrivacy: 'Datenschutzerklärung', footCopy: '© 2018–2026 Virtuse Wealth Management, a.s. Alle Rechte vorbehalten.', footOpLabel: 'Betreiber', footOpText: ': Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slowakei · Firmennummer (IČO) 36 709 042 · USt-IdNr. SK2022293042 · eingetragen im Handelsregister des Stadtgerichts Bratislava III, Abteilung Sa, Einlage Nr. 4452/B · info@virtuse.com',
-        errTitle: 'Artikel nicht gefunden', errText: 'Dieser Artikel wurde möglicherweise verschoben oder depubliziert. Durchsuchen Sie das Archiv.', errCta: 'Alle Artikel'
+        errTitle: 'Artikel nicht gefunden', errText: 'Dieser Artikel wurde möglicherweise verschoben oder entfernt. Durchsuchen Sie das Archiv.', errCta: 'Alle Artikel'
       },
       services: {
         mining: ['Bitcoin-Mining mit geprüften Partnern', 'Hosting-, Cloud- und Hardware-Partner nach Kosten und Auszahlung verglichen.', 'Mining-Partner vergleichen'],
         treasury: ['Bitcoin in der Unternehmensbilanz', 'Verwahrung, Ausführung und Reporting für Unternehmen und Family Offices.', 'Treasury-Partner ansehen'],
         custody: ['Behalten Sie Ihre eigenen Schlüssel', 'Hardware-Wallets und Multi-Sig-Lösungen von geprüften Partnern.', 'Verwahrung vergleichen'],
-        policy: ['Bitcoin-Steuern richtig erledigen', 'Länderspezifische Berichte von Steuersoftware-Partnern.', 'Steuer-Partner ansehen'],
-        macro: ['Bitcoin beleihen statt verkaufen', 'Bitcoin-besicherte Kredite geprüfter Anbieter, ab 5 % p. a.', 'Kredit-Partner vergleichen'],
+        policy: ['Bitcoin-Steuern richtig erledigen', 'Länderspezifische Berichte von Steuersoftware-Partnern.', 'Steuerpartner ansehen'],
+        macro: ['Bitcoin beleihen statt verkaufen', 'Bitcoin-besicherte Kredite geprüfter Anbieter, ab 5 % p. a.', 'Kreditpartner vergleichen'],
         markets: ['Wo Sie Bitcoin kaufen', 'Geprüfte, regulierte Plattformen im Vergleich: Gebühren, Verwahrung, Auszahlung.', 'Partner vergleichen']
       }
     },
     fr: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
       listPage: 'fr/blog.html', suffix: '&lang=fr', locale: 'fr-FR', worker: 'fr', dir: 'fr/', concierge: true,
-      desks: { mining: 'Minage', treasury: 'Treasury', custody: 'Conservation', policy: 'Régulation', macro: 'Macro', markets: 'Marchés' },
+      desks: { mining: 'Minage', treasury: 'Treasury', custody: 'Conservation', policy: 'Réglementation', macro: 'Macro', markets: 'Marchés' },
       ui: {
         navIssues: 'Derniers numéros', navBlog: 'Blog', navData: 'Données Bitcoin', navHub: 'Hub Virtuse', navGet: 'Recevoir le Brief',
         crumbList: 'Blog', by: 'Par', desk: '', block: 'Bloc', readTime: ' min',
@@ -200,7 +200,7 @@
         nostrCopied: 'Copiado. Péguelo en su aplicación de Nostr.', openPrimal: 'Abrir Primal', back: '← Todos los artículos',
         inStory: 'En este artículo', onVirtuse: 'En Virtuse', ovAlt: '¿No está seguro? Compare partners en 60 segundos →',
         ovNote: 'Servicios de partners. No es asesoramiento financiero.',
-        capKicker: 'Reciba el Brief', capDek: 'Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.', capBtn: 'Recibir el Brief',
+        capKicker: 'Reciba el Brief', capDek: 'Virtuse Brief. Solo Bitcoin. Sin tokens. Sin publirreportajes.', capBtn: 'Recibir el Brief',
         subscribe: 'Recibir el Brief', more: 'Más artículos', moreAll: 'Todos los artículos', readMore: 'Leer',
         emailReq: 'Indique su correo electrónico.', sending: 'Enviando', subOk: 'Listo. Revise su correo.',
         subErr: 'No se pudo completar la suscripción. Inténtelo de nuevo.', netErr: 'Error de red. Inténtelo de nuevo.',
@@ -209,11 +209,11 @@
       },
       services: {
         mining: ['Mine Bitcoin con partners verificados', 'Hosting, nube y hardware comparados por costes y pagos.', 'Comparar partners de minería'],
-        treasury: ['Bitcoin en el balance de su empresa', 'Custodia, ejecución y reporting para empresas y family offices.', 'Ver partners de tesorería'],
+        treasury: ['Bitcoin en el balance de su empresa', 'Custodia, ejecución e informes para empresas y family offices.', 'Ver partners de tesorería'],
         custody: ['Guarde sus propias claves', 'Monederos de hardware y multifirma de partners verificados.', 'Comparar custodia'],
         policy: ['Declare su Bitcoin sin errores', 'Informes fiscales por país de partners de software fiscal.', 'Ver partners fiscales'],
         macro: ['Pida un préstamo en lugar de vender', 'Préstamos respaldados por Bitcoin de prestamistas verificados, desde el 5 % anual.', 'Comparar préstamos'],
-        markets: ['Dónde comprar Bitcoin', 'Plataformas reguladas y verificadas, lado a lado: comisiones, custodia y retiradas.', 'Comparar partners']
+        markets: ['Dónde comprar Bitcoin', 'Plataformas reguladas y verificadas, una junto a otra: comisiones, custodia y retiradas.', 'Comparar partners']
       }
     },
     pl: {
@@ -300,10 +300,10 @@
       services: {
         mining: ['Bitcoin-bányászat ellenőrzött partnerekkel', 'Hosting, felhő és hardver költség és kifizetés szerint összevetve.', 'Partnerek összehasonlítása'],
         treasury: ['Bitcoin a cég mérlegében', 'Letétkezelés, végrehajtás és riportolás cégeknek és family office-oknak.', 'Treasury-partnerek'],
-        custody: ['Saját kulcsok, saját kézben', 'Hardveres tárcák és multisig megoldások ellenőrzött partnerektől.', 'Letétkezelők összehasonlítása'],
+        custody: ['Saját kulcsok, saját kézben', 'Hardvertárcák és multisig megoldások ellenőrzött partnerektől.', 'Letétkezelők összehasonlítása'],
         policy: ['Adózza helyesen a Bitcoint', 'Országonkénti adójelentések adószoftver-partnerektől.', 'Adópartnerek'],
         macro: ['Eladás helyett hitel', 'Bitcoin-fedezetű hitelek ellenőrzött hitelezőktől, évi 5%-tól.', 'Hitelek összehasonlítása'],
-        markets: ['Hol vásároljon Bitcoint', 'Ellenőrzött, szabályozott platformok egymás mellett: díjak, letét, kifizetés.', 'Partnerek összehasonlítása']
+        markets: ['Hol vásároljon Bitcoint', 'Ellenőrzött, szabályozott platformok egymás mellett: díjak, őrzés, kivétel.', 'Partnerek összehasonlítása']
       }
     }
   };
@@ -729,7 +729,7 @@
 (function () {
   var root = document.documentElement.getAttribute('data-root') || '';
   var s = document.createElement('script');
-  s.src = root + 'brief-popup.js?v=20261020d';
+  s.src = root + 'brief-popup.js?v=20261030';
   s.defer = true;
   document.body.appendChild(s);
 })();

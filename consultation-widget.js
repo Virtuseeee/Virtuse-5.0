@@ -54,7 +54,7 @@
       skipLabel: 'Skip',
       backLabel: '← Back',
       resultHeadline: 'We have enough to prepare the call.',
-      disclaimer: 'Virtuse Wealth Management a.s. does not provide investment advice and does not hold client assets. We facilitate affiliate partnerships — the allocation decision is always yours.',
+      disclaimer: 'Virtuse Wealth Management, a.s. does not provide investment advice and does not hold client assets. We facilitate affiliate partnerships — the allocation decision is always yours.',
       riskNote: "You picked topics (buying/selling Bitcoin, custody, treasury, automated bots) where it's important to know upfront: Virtuse doesn't perform or provide these services directly — we facilitate access to partner platforms that do. We'll walk you through exactly who does what on the call.",
       bookLabel: 'Book a 15-min consultation',
       restartLabel: 'Start over',
@@ -145,7 +145,7 @@
       skipLabel: 'Preskočiť',
       backLabel: '← Späť',
       resultHeadline: 'Máme dosť na to, aby sme hovor pripravili.',
-      disclaimer: 'Virtuse Wealth Management a.s. neposkytuje investičné poradenstvo ani nedrží klientske aktíva. Sprostredkúvame partnerské (provízne) vzťahy. Rozhodnutie o alokácii je vždy na tebe.',
+      disclaimer: 'Virtuse Wealth Management, a.s. neposkytuje investičné poradenstvo ani nedrží klientske aktíva. Sprostredkúvame partnerské (provízne) vzťahy. Rozhodnutie o alokácii je vždy na tebe.',
       riskNote: 'Vybral(a) si témy (nákup/predaj Bitcoinu, úschova, treasury, automatizované boty), pri ktorých je dôležité vopred vedieť: Virtuse tieto služby priamo nevykonáva ani nezabezpečuje — sprostredkúva prístup k partnerským platformám, ktoré ich poskytujú. Na hovore ti transparentne vysvetlíme, kto a ako to reálne robí.',
       bookLabel: 'Rezervovať 15-min konzultáciu',
       restartLabel: 'Vyplniť znova',
@@ -248,17 +248,17 @@
       skipLabel: 'Přeskočit',
       backLabel: '← Zpět',
       resultHeadline: 'Máme dost na to, abychom hovor připravili.',
-      disclaimer: 'Virtuse Wealth Management a.s. neposkytuje investiční poradenství ani nedrží klientská aktiva. Zprostředkováváme partnerské (provizní) vztahy. Rozhodnutí o alokaci je vždy na tobě.',
-      riskNote: 'Vybral(a) sis témata (nákup/prodej Bitcoinu, úschova, treasury, automatizovaní boti), u kterých je důležité předem vědět: Virtuse tyto služby přímo neprovádí ani nezajišťuje — zprostředkováváme přístup k partnerským platformám, které je poskytují. Na hovoru ti transparentně vysvětlíme, kdo a jak to reálně dělá.',
-      bookLabel: 'Rezervovat 15min konzultaci',
+      disclaimer: 'Virtuse Wealth Management, a.s. neposkytuje investiční poradenství ani nedrží klientská aktiva. Zprostředkováváme partnerské (provizní) vztahy. Rozhodnutí o alokaci je vždy na tobě.',
+      riskNote: 'Vybral(a) sis témata (nákup/prodej Bitcoinu, úschova, treasury, automatizovaní boti), u kterých je důležité předem vědět: Virtuse tyto služby přímo neprovádí ani nezajišťuje — zprostředkováváme přístup k partnerským platformám, které je poskytují. Během hovoru ti transparentně vysvětlíme, kdo a jak to reálně dělá.',
+      bookLabel: 'Rezervovat 15minutovou konzultaci',
       restartLabel: 'Vyplnit znovu',
       closeLabel: 'Zavřít',
-      dialogLabel: 'Virtuse Konzultace',
+      dialogLabel: 'Konzultace Virtuse',
       stepOf: function (n, total, label) { return n + ' / ' + total + ' — ' + label; },
       questions: [
         {
           label: 'Cíl',
-          headline: 'Co je tvým hlavním důvodem zájmu o krypto-aktiva?',
+          headline: 'Co je tvým hlavním důvodem zájmu o kryptoaktiva?',
           options: [
             'Jen se chci informovat / rozumět tomu',
             'Chci diverzifikovat mimo tradiční aktiva',
@@ -268,7 +268,7 @@
         },
         {
           label: 'Zkušenost',
-          headline: 'Jaká je tvoje současná zkušenost s krypto-aktivy?',
+          headline: 'Jaká je tvoje současná zkušenost s kryptoaktivy?',
           options: [
             'Žádná, jsem úplný začátečník',
             'Základní — vlastním něco, ale nerozumím detailům',
@@ -352,7 +352,7 @@
       skipLabel: 'Überspringen',
       backLabel: '← Zurück',
       resultHeadline: 'Wir haben genug Informationen, um das Gespräch vorzubereiten.',
-      disclaimer: 'Virtuse Wealth Management a.s. erbringt keine Anlageberatung und hält keine Kundenvermögenswerte. Wir vermitteln Affiliate-Partnerschaften — die Allokationsentscheidung liegt immer bei Ihnen.',
+      disclaimer: 'Virtuse Wealth Management, a.s. erbringt keine Anlageberatung und hält keine Kundenvermögenswerte. Wir vermitteln Affiliate-Partnerschaften — die Allokationsentscheidung liegt immer bei Ihnen.',
       riskNote: 'Sie haben Themen gewählt (Kauf/Verkauf von Bitcoin, Verwahrung, Treasury, automatisierte Bots), bei denen Sie vorab Folgendes wissen sollten: Virtuse erbringt diese Leistungen nicht und bietet sie nicht direkt an — wir vermitteln den Zugang zu Partnerplattformen, die dies tun. Im Gespräch erklären wir Ihnen genau, wer was übernimmt.',
       bookLabel: '15-minütige Beratung buchen',
       restartLabel: 'Neu beginnen',
@@ -397,7 +397,7 @@
             'Weniger als 1 Jahr',
             '1 – 3 Jahre',
             '3 – 5 Jahre',
-            '5+ Jahre'
+            'Mehr als 5 Jahre'
           ]
         },
         {
@@ -453,7 +453,7 @@
       skipLabel: 'Passer',
       backLabel: '← Retour',
       resultHeadline: 'Nous avons suffisamment d’informations pour préparer l’appel.',
-      disclaimer: 'Virtuse Wealth Management a.s. ne fournit pas de conseil en investissement et ne détient pas les actifs de ses clients. Nous facilitons des partenariats d’affiliation — la décision d’allocation vous appartient toujours.',
+      disclaimer: 'Virtuse Wealth Management, a.s. ne fournit pas de conseil en investissement et ne détient pas les actifs de ses clients. Nous facilitons des partenariats d’affiliation — la décision d’allocation vous appartient toujours.',
       riskNote: 'Vous avez choisi des sujets (achat/vente de Bitcoin, conservation, trésorerie, bots automatisés) pour lesquels il est important de savoir dès le départ : Virtuse n’exécute ni ne fournit directement ces services — nous facilitons l’accès à des plateformes partenaires qui les proposent. Lors de l’appel, nous vous expliquerons précisément qui fait quoi.',
       bookLabel: 'Réserver une consultation de 15 min',
       restartLabel: 'Recommencer',
@@ -495,7 +495,7 @@
           label: 'Horizon',
           headline: 'Quel horizon de placement envisagez-vous ?',
           options: [
-            'Moins d’1 an',
+            'Moins d’un an',
             '1 – 3 ans',
             '3 – 5 ans',
             '5 ans et plus'
@@ -554,7 +554,7 @@
       skipLabel: 'Omitir',
       backLabel: '← Atrás',
       resultHeadline: 'Tenemos suficiente información para preparar la llamada.',
-      disclaimer: 'Virtuse Wealth Management a.s. no presta asesoramiento de inversión y no mantiene activos de clientes. Facilitamos alianzas de afiliación — la decisión de asignación siempre es suya.',
+      disclaimer: 'Virtuse Wealth Management, a.s. no presta asesoramiento de inversión y no mantiene activos de clientes. Facilitamos alianzas de afiliación — la decisión de asignación siempre es suya.',
       riskNote: 'Ha elegido temas (compra/venta de Bitcoin, custodia, tesorería, bots automatizados) sobre los que es importante saber de antemano: Virtuse no realiza ni presta estos servicios directamente — facilitamos el acceso a plataformas asociadas que sí lo hacen. En la llamada le explicaremos con exactitud quién hace qué.',
       bookLabel: 'Reservar una consulta de 15 min',
       restartLabel: 'Empezar de nuevo',
@@ -587,9 +587,9 @@
           headline: '¿Cuál es el rango aproximado de capital que está considerando?',
           options: [
             'Hasta 5000 €',
-            '5000 – 50 000 €',
-            '50 000 – 250 000 €',
-            'Más de 250 000 €'
+            '5000 – 50.000 €',
+            '50.000 – 250.000 €',
+            'Más de 250.000 €'
           ]
         },
         {
@@ -599,7 +599,7 @@
             'Menos de 1 año',
             '1 – 3 años',
             '3 – 5 años',
-            '5+ años'
+            'Más de 5 años'
           ]
         },
         {
@@ -655,7 +655,7 @@
       skipLabel: 'Pomiń',
       backLabel: '← Wstecz',
       resultHeadline: 'Mamy wystarczająco dużo informacji, aby przygotować rozmowę.',
-      disclaimer: 'Virtuse Wealth Management a.s. nie świadczy doradztwa inwestycyjnego i nie przechowuje aktywów klientów. Pośredniczymy w partnerstwach afiliacyjnych — decyzja o alokacji zawsze należy do Państwa.',
+      disclaimer: 'Virtuse Wealth Management, a.s. nie świadczy doradztwa inwestycyjnego i nie przechowuje aktywów klientów. Pośredniczymy w partnerstwach afiliacyjnych — decyzja o alokacji zawsze należy do Państwa.',
       riskNote: 'Wybrali Państwo tematy (kupno/sprzedaż Bitcoina, przechowywanie, treasury, automatyczne boty), w przypadku których warto od razu wiedzieć: Virtuse nie wykonuje ani nie świadczy tych usług bezpośrednio — ułatwiamy dostęp do platform partnerskich, które je świadczą. Podczas rozmowy dokładnie wyjaśnimy, kto za co odpowiada.',
       bookLabel: 'Zarezerwuj 15-minutową konsultację',
       restartLabel: 'Zacznij od nowa',
@@ -698,8 +698,8 @@
           headline: 'O jakim horyzoncie czasowym Państwo myślą?',
           options: [
             'Mniej niż 1 rok',
-            '1 – 3 lata',
-            '3 – 5 lat',
+            '1–3 lata',
+            '3–5 lat',
             '5+ lat'
           ]
         },
@@ -756,7 +756,7 @@
       skipLabel: 'Kihagyás',
       backLabel: '← Vissza',
       resultHeadline: 'Elegendő információnk van a hívás előkészítéséhez.',
-      disclaimer: 'A Virtuse Wealth Management a.s. nem nyújt befektetési tanácsadást, és nem tart ügyfélvagyont. Affiliate partnerségeket közvetítünk — az allokációról mindig Ön dönt.',
+      disclaimer: 'A Virtuse Wealth Management a.s. nem nyújt befektetési tanácsadást, és nem tart ügyfélvagyont. Ajánlói partnerkapcsolatokon keresztül dolgozunk — az allokációról mindig Ön dönt.',
       riskNote: 'Olyan témákat választott (Bitcoin vétele/eladása, letétkezelés, treasury, automatizált botok), amelyeknél fontos előre tudni: a Virtuse ezeket a szolgáltatásokat nem közvetlenül végzi vagy nyújtja — a hozzáférést közvetítjük olyan partnerplatformokhoz, amelyek nyújtják őket. A hívás során pontosan elmagyarázzuk, ki mit végez.',
       bookLabel: '15 perces konzultáció foglalása',
       restartLabel: 'Újrakezdés',
@@ -840,7 +840,7 @@
         'DCA (recurring investing)'
       ],
       segments: {
-        handsoff: { tag: 'Gondosan előkészített konzultáció', note: 'Pontosan bemutatjuk, hogyan működik az affiliate modellünk — a Virtuse nem kezel vagyont az Ön nevében.' },
+        handsoff: { tag: 'Gondosan előkészített konzultáció', note: 'Pontosan bemutatjuk, hogyan működik az ajánlói modellünk — a Virtuse nem kezel vagyont az Ön nevében.' },
         intro: { tag: 'Bevezető / oktató jellegű konzultáció', note: 'Az alapokra koncentrálunk — semmilyen döntési kényszer nélkül.' },
         experienced: { tag: 'Konzultáció tapasztalt ügyfeleknek', note: 'Mélyebben áttekintjük az elérhető lehetőségek kategóriáit.' },
         tailored: { tag: 'Személyre szabott konzultáció', note: 'A válaszai alapján készítjük elő a kontextust.' }
@@ -958,7 +958,7 @@
       skipLabel: 'Пропустить',
       backLabel: '← Назад',
       resultHeadline: 'У нас достаточно информации, чтобы подготовить звонок.',
-      disclaimer: 'Virtuse Wealth Management a.s. не предоставляет инвестиционных консультаций и не держит активы клиентов. Мы содействуем партнёрствам по аффилиатной модели — решение о распределении активов всегда за вами.',
+      disclaimer: 'Virtuse Wealth Management, a.s. не предоставляет инвестиционных консультаций и не держит активы клиентов. Мы работаем по партнёрской (аффилиатной) модели — решение о распределении активов всегда за вами.',
       riskNote: 'Вы выбрали темы (покупка/продажа Биткоина, хранение, казначейство, автоматизированные боты), в отношении которых важно знать заранее: Virtuse не выполняет и не предоставляет эти услуги напрямую — мы содействуем доступу к партнёрским платформам, которые их оказывают. Во время звонка мы подробно объясним, кто и что делает.',
       bookLabel: 'Забронировать 15-минутную консультацию',
       restartLabel: 'Начать заново',

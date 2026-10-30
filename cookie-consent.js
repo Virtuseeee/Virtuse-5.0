@@ -23,7 +23,7 @@
     en: {
       title: 'Cookies on Virtuse',
       text: 'With your consent, we use cookies to measure traffic (Google Analytics) and advertising (Google Ads). Necessary storage, such as your language, always works. You can change your choice at any time.',
-      policy: 'Privacy policy', accept: 'Accept all', reject: 'Reject all', settings: 'Settings', save: 'Save choices',
+      policy: 'Privacy Policy', accept: 'Accept all', reject: 'Reject all', settings: 'Settings', save: 'Save choices',
       nec: 'Necessary', necD: 'Language, theme and your cookie choice.', on: 'Always on',
       ana: 'Analytics', anaD: 'Google Analytics shows us which pages are useful. We never sell data.',
       mkt: 'Marketing', mktD: 'Google Ads measurement and remarketing.',
@@ -32,7 +32,7 @@
     sk: {
       title: 'Cookies na Virtuse',
       text: 'S vaším súhlasom používame cookies na meranie návštevnosti (Google Analytics) a reklamy (Google Ads). Nevyhnutné úložisko, napríklad jazyk stránky, funguje vždy. Voľbu môžete kedykoľvek zmeniť.',
-      policy: 'Ochrana súkromia', accept: 'Prijať všetko', reject: 'Odmietnuť všetko', settings: 'Nastavenia', save: 'Uložiť voľbu',
+      policy: 'Ochrana osobných údajov', accept: 'Prijať všetko', reject: 'Odmietnuť všetko', settings: 'Nastavenia', save: 'Uložiť voľbu',
       nec: 'Nevyhnutné', necD: 'Jazyk, vzhľad a vaša voľba cookies.', on: 'Vždy zapnuté',
       ana: 'Analytika', anaD: 'Google Analytics nám ukazuje, ktoré stránky sú užitočné. Údaje nikdy nepredávame.',
       mkt: 'Marketing', mktD: 'Meranie a remarketing Google Ads.',
@@ -41,7 +41,7 @@
     cs: {
       title: 'Cookies na Virtuse',
       text: 'S vaším souhlasem používáme cookies k měření návštěvnosti (Google Analytics) a reklamy (Google Ads). Nezbytné úložiště, například jazyk stránky, funguje vždy. Volbu můžete kdykoli změnit.',
-      policy: 'Ochrana soukromí', accept: 'Přijmout vše', reject: 'Odmítnout vše', settings: 'Nastavení', save: 'Uložit volbu',
+      policy: 'Ochrana osobních údajů', accept: 'Přijmout vše', reject: 'Odmítnout vše', settings: 'Nastavení', save: 'Uložit volbu',
       nec: 'Nezbytné', necD: 'Jazyk, vzhled a vaše volba cookies.', on: 'Vždy zapnuto',
       ana: 'Analytika', anaD: 'Google Analytics nám ukazuje, které stránky jsou užitečné. Údaje nikdy neprodáváme.',
       mkt: 'Marketing', mktD: 'Měření a remarketing Google Ads.',
@@ -86,7 +86,7 @@
     hu: {
       title: 'Sütik a Virtuse oldalon',
       text: 'Az Ön hozzájárulásával sütiket használunk a látogatottság (Google Analytics) és a hirdetések (Google Ads) mérésére. A szükséges tárolás, például a nyelv, mindig működik. Döntését bármikor módosíthatja.',
-      policy: 'Adatvédelmi szabályzat', accept: 'Összes elfogadása', reject: 'Összes elutasítása', settings: 'Beállítások', save: 'Választás mentése',
+      policy: 'Adatvédelmi tájékoztató', accept: 'Összes elfogadása', reject: 'Összes elutasítása', settings: 'Beállítások', save: 'Választás mentése',
       nec: 'Szükséges', necD: 'Nyelv, megjelenés és a sütikre vonatkozó döntése.', on: 'Mindig aktív',
       ana: 'Analitika', anaD: 'A Google Analytics megmutatja, mely oldalak hasznosak. Adatot soha nem értékesítünk.',
       mkt: 'Marketing', mktD: 'Google Ads mérés és remarketing.',
