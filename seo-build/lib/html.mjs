@@ -34,7 +34,7 @@ export const AFF_NOTE = {
   fr: ['Lien partenaire – si vous vous inscrivez, Virtuse peut percevoir une commission. Votre prix ne change pas.', 'Comment nous gagnons de l’argent'],
   es: ['Enlace de partner: si se registra, Virtuse puede recibir una comisión. Su precio no cambia.', 'Cómo ganamos dinero'],
   hu: ['Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik.', 'Hogyan szerzünk bevételt'],
-  uk: ['Партнерське посилання – якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється.', 'Як ми заробляємо'],
+  uk: ['Партнерське посилання: якщо ви зареєструєтеся, Virtuse може отримати комісію. Ваша ціна від цього не змінюється.', 'Як ми заробляємо'],
   ru: ['Партнёрская ссылка: если вы зарегистрируетесь, Virtuse может получить комиссию. Ваша цена от этого не меняется.', 'Как мы зарабатываем']
 };
 
@@ -441,7 +441,7 @@ export const CHROME = {
     navConcierge: 'Partner Finder',
     relatedHeading: 'Пов’язані гіди',
     asOfPrefix: 'Дані станом на',
-    disclaimerTax: 'Довідковий огляд 2026 – не є податковою консультацією.',
+    disclaimerTax: 'Довідковий огляд 2026 року, не є податковою консультацією.',
     disclaimerKeys: 'Virtuse ніколи не зберігає ваші ключі.',
     disclaimerKyc: 'KYC і реєстрація відбуваються на регульованій платформі відповідного партнера. Virtuse — некастодіальний хаб і не зберігає кошти чи дані клієнтів цих платформ.',
     privacy: 'Політика конфіденційності',
