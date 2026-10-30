@@ -44,7 +44,7 @@
  "w_b_p": "Use su Bitcoin como garantía para pedir prestado en moneda fiduciaria (EUR, CHF, CZK) o en stablecoins (USDC). Conserve su exposición a Bitcoin y acceda a liquidez sin vender. LTV de hasta el 50 %, plazos de 3 a 24 meses, tipos desde el 5 % anual.",
  "w_b_cta": "Pedir prestado en Firefish",
  "w_i_t": "Inversores",
- "w_i_p": "Aporte moneda fiduciaria o stablecoins para financiar préstamos respaldados por Bitcoin y obtenga los intereses pagados por los prestatarios. La garantía queda bloqueada en un depósito en garantía on-chain. Sin rehipotecación, sin altcoins. Mínimo desde 800 EUR.",
+ "w_i_p": "Aporte moneda fiduciaria o stablecoins para financiar préstamos respaldados por Bitcoin y obtenga los intereses pagados por los prestatarios. La garantía queda bloqueada en un depósito en garantía on-chain. Sin rehipotecación, sin altcoins. Mínimo: 800 EUR.",
  "w_i_cta": "Registrarse en Firefish",
  "f_h2_a": "Riesgos y preguntas.",
  "f_h2_b": "Léalos antes de pedir prestado.",

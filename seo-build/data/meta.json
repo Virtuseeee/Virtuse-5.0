@@ -1495,7 +1495,7 @@
       "gainTax": "Impuesto sobre la renta del 19 al 35 %",
       "healthLevy": "Cotizaciones al seguro de salud del 16 % sobre la ganancia (8 % con discapacidad), liquidadas cada año por la aseguradora de salud",
       "healthLevyShort": "16 % de cotizaciones al seguro de salud",
-      "exemption": "Sin exención por tiempo de tenencia; cada venta y cada permuta entre criptoactivos tributa",
+      "exemption": "Sin exención por periodo de tenencia; cada venta y cada permuta entre criptoactivos tributa",
       "filing": "Declaración anual de la renta (tipo B), hasta el 31 de marzo",
       "note": "El tipo del 7 % y la exención tras 1 año se suprimieron antes de entrar en vigor. Una pérdida neta en cripto no reduce otras rentas."
     },
@@ -1562,7 +1562,7 @@
     "es": {
       "gainTax": "Impuesto progresivo del 19 al 30 % sobre la base del ahorro",
       "exemption": "Sin exención por periodo de tenencia",
-      "filing": "Declaración anual del IRPF; Modelo 721 para criptomonedas custodiadas en el extranjero por encima de 50.000 €",
+      "filing": "Declaración anual del IRPF; modelo 721 para criptomonedas custodiadas en el extranjero por encima de 50.000 €",
       "note": "Los intercambios cripto por cripto son transmisiones sujetas a impuesto: aplique FIFO a monedas idénticas."
     }
   },

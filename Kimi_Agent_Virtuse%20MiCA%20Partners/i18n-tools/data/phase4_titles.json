@@ -487,7 +487,7 @@
  },
  "es": {
   "index": [
-   "Hub Bitcoin: 24 partners, 13 países de la UE | Virtuse",
+   "Hub de Bitcoin: 24 partners, 13 países de la UE | Virtuse",
    "Compre, mine, pida prestado y proteja Bitcoin con 24 partners verificados. 13 países de la UE, préstamos desde el 5 % anual. Sus claves son suyas."
   ],
   "buy-bitcoin": [
@@ -495,15 +495,15 @@
    "Compare proveedores con licencia MiCA: 21bitcoin Auto-Invest con 0 % de comisión, Bybit EU spot desde 0,25 %, Kraken Pro desde 0,8 %."
   ],
   "mining": [
-   "Hosting de minería Bitcoin desde 0,043 $/kWh | Virtuse",
+   "Hosting de minería de Bitcoin desde 0,043 $/kWh | Virtuse",
    "Hosting ASIC con OneMiners, Abundant Mines y Power Mining. Desde 0,043 $/kWh. Países nórdicos, Europa y Etiopía."
   ],
   "lending": [
    "Préstamos con garantía en Bitcoin desde el 5 % | Virtuse",
-   "Pida EUR, CHF, CZK o USDC con su Bitcoin como garantía vía Firefish. Desde el 5 % anual, LTV hasta 50 %, de 3 a 24 meses. Sin vender."
+   "Pida EUR, CHF, CZK o USDC con su Bitcoin como garantía vía Firefish. Desde el 5 % anual, LTV de hasta el 50 %, de 3 a 24 meses. Sin vender."
   ],
   "secure": [
-   "Monederos hardware para Bitcoin desde 49 € | Virtuse",
+   "Monederos de hardware para Bitcoin desde 49 € | Virtuse",
    "Autocustodia con Trezor (desde 49 €), Ledger (desde 79 €) y Blockstream Jade (desde 65 $). Multifirma, sin custodia en un exchange."
   ],
   "treasury": [
@@ -512,14 +512,14 @@
   ],
   "tax": [
    "Software fiscal para Bitcoin desde 39 €/año | Virtuse",
-   "Herramientas fiscales para Bitcoin en la UE: Divly desde 39 €/año, Blockpit, CoinTracking y Koinly. Sin KYC en el software. No es asesoría fiscal."
+   "Herramientas fiscales para Bitcoin en la UE: Divly desde 39 €/año, Blockpit, CoinTracking y Koinly. Sin KYC en el software. No es asesoramiento fiscal."
   ],
   "bots": [
    "Bots de trading de Bitcoin sin custodia | Virtuse",
    "Bots con claves API solo de trading: Coinrule (más de 410.000 traders), Cryptohopper y RevenueBot. Sin permisos de retirada."
   ],
   "bitcoin-data": [
-   "Bitcoin en vivo: precio, comisiones y hashrate | Virtuse",
+   "Bitcoin en directo: precio, comisiones y hashrate | Virtuse",
    "Datos gratuitos de la red Bitcoin: precio, capitalización, comisiones, hashrate y último bloque. Sin cuenta. Límite fijo de 21 millones de BTC."
   ],
   "faq": [

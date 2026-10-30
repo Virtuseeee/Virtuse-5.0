@@ -1077,7 +1077,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     <table class="ar-table hm-table" id="hmTable"></table>
   </div>
   <div class="hm-legend" aria-hidden="true"><span>−30%</span><i class="hm-scale"></i><span>+30%</span></div>
-  <p class="ar-note">Rendimiento desde el último cierre del mes anterior (o trimestre) hasta el último cierre del mes, usando la tasa de referencia diaria de Bitcoin de CoinMetrics. El mes actual utiliza el último precio y se excluye de las filas de media, mediana y porcentaje positivo. 2010 comienza en agosto (el primer mes completo de datos de precios). La vista en EUR convierte con el tipo EUR/USD del BCE a fin de cada mes. Los rendimientos pasados no garantizan los futuros. No es un consejo de inversión.</p>
+  <p class="ar-note">Rendimiento desde el último cierre del mes anterior (o trimestre) hasta el último cierre del mes, usando la tasa de referencia diaria de Bitcoin de CoinMetrics. El mes actual utiliza el último precio y se excluye de las filas de media, mediana y porcentaje positivo. 2010 comienza en agosto (el primer mes completo de datos de precios). La vista en EUR convierte con el tipo EUR/USD del BCE a fin de cada mes. Los rendimientos pasados no garantizan los futuros. No es asesoramiento de inversión.</p>
 </section>
 
 <!-- ===== NEWSLETTER ===== -->
@@ -1327,7 +1327,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     table.innerHTML = h;
 
     var d = live || new Date(data.asOf + 'T00:00:00Z');
-    asOfEl.textContent = (live ? 'Precio en vivo · ' : 'Datos a ') +
+    asOfEl.textContent = (live ? 'Precio en directo · ' : 'Datos a ') +
       d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) +
       ' · ' + (period === 'q' ? 'rentabilidad trimestral en ' : 'rentabilidad mensual en ') + ccy;
   }

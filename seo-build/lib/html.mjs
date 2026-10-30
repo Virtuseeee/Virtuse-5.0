@@ -519,7 +519,7 @@ export const CHROME = {
     dcaHref: 'es/bitcoin-calculadora-dca/',
     conciergeHref: 'es/concierge.html',
     privacyHref: 'es/privacy-policy.html',
-    brief: { heading: 'Reciba <span>el Brief</span>', line: 'Virtuse Brief. Solo Bitcoin. Sin tokens. Sin RP.', placeholder: 'Correo electrónico', button: 'Suscribirse', fine: 'Cada lunes. Cancele cuando quiera.', sending: 'Enviando...', ok: 'Listo. El Brief sale el lunes.', fail: 'Algo salió mal. Inténtelo de nuevo.', network: 'Error de red. Inténtelo de nuevo.' },
+    brief: { heading: 'Reciba <span>el Brief</span>', line: 'Virtuse Brief. Solo Bitcoin. Sin tokens. Sin publirreportajes.', placeholder: 'Correo electrónico', button: 'Suscribirse', fine: 'Cada lunes. Cancele cuando quiera.', sending: 'Enviando...', ok: 'Listo. El Brief sale el lunes.', fail: 'Algo salió mal. Inténtelo de nuevo.', network: 'Error de red. Inténtelo de nuevo.' },
     termsHref: 'es/terms-and-conditions.html'
   }
 };

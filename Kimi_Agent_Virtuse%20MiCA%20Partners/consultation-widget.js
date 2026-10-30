@@ -554,7 +554,7 @@
       skipLabel: 'Omitir',
       backLabel: '← Atrás',
       resultHeadline: 'Tenemos suficiente información para preparar la llamada.',
-      disclaimer: 'Virtuse Wealth Management a.s. no presta asesoramiento de inversión y no mantiene activos de clientes. Facilitamos alianzas de afiliación — la decisión de asignación siempre es suya.',
+      disclaimer: 'Virtuse Wealth Management, a.s. no presta asesoramiento de inversión y no mantiene activos de clientes. Facilitamos alianzas de afiliación — la decisión de asignación siempre es suya.',
       riskNote: 'Ha elegido temas (compra/venta de Bitcoin, custodia, tesorería, bots automatizados) sobre los que es importante saber de antemano: Virtuse no realiza ni presta estos servicios directamente — facilitamos el acceso a plataformas asociadas que sí lo hacen. En la llamada le explicaremos con exactitud quién hace qué.',
       bookLabel: 'Reservar una consulta de 15 min',
       restartLabel: 'Empezar de nuevo',
@@ -587,9 +587,9 @@
           headline: '¿Cuál es el rango aproximado de capital que está considerando?',
           options: [
             'Hasta 5000 €',
-            '5000 – 50 000 €',
-            '50 000 – 250 000 €',
-            'Más de 250 000 €'
+            '5000 – 50.000 €',
+            '50.000 – 250.000 €',
+            'Más de 250.000 €'
           ]
         },
         {
@@ -599,7 +599,7 @@
             'Menos de 1 año',
             '1 – 3 años',
             '3 – 5 años',
-            '5+ años'
+            'Más de 5 años'
           ]
         },
         {
