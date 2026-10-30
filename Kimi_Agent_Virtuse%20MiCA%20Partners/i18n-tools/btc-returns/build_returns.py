@@ -32,7 +32,7 @@ import build_fee_index as F
 import build_legacy
 C, SITE, ORIGIN = F.C, F.SITE, F.ORIGIN
 REPO = os.path.dirname(SITE)
-JS_V = '2'
+JS_V = '3'
 DATA_FILE = os.path.join(SITE, 'data', 'btc-monthly-returns.json')
 HUB = 'btc-monthly-returns.html'
 HUB_SRC = os.path.join(TOOLS, 'legacy', 'src', 'en', HUB)

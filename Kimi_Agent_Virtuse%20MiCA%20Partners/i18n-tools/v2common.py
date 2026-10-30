@@ -140,7 +140,7 @@ def finalize(out, page_path):
 
 def scripts(root, js_version=csp_tight.speed.SITE_JS_V):
     return '''<script src="{r}site-v2.js?v={v}" defer></script>
-<script src="{r}consultation-widget.js?v=20261029d" defer></script>
+<script src="{r}consultation-widget.js?v=20261030" defer></script>
 <script src="{r}concierge-launcher.js" defer></script>
 {cf}
 </body>

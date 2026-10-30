@@ -863,9 +863,9 @@
     }
     function load(src, cb) { var s = document.createElement('script'); s.src = src; s.async = true; s.onload = cb; s.onerror = cb; document.head.appendChild(s); }
     var dict = LANG === 'ru' && !(window.VBPartnersDict && window.VBPartnersDict.ru);
-    function go2() { if (dict) load('/pf-dict-' + LANG + '.js?v=2', draw); else draw(); }
+    function go2() { if (dict) load('/pf-dict-' + LANG + '.js?v=3', draw); else draw(); }
     if (window.VBPartners) return go2();
-    load('/pf-recommend.js?v=2', go2);
+    load('/pf-recommend.js?v=3', go2);
   }
   // Result layout after Skoora's structure (Ras, 2026-10-27): your decision →
   // what Verdict found → two areas behind the verdict → 8 more waiting →
