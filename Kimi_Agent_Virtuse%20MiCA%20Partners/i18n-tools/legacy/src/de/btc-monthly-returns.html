@@ -11,13 +11,9 @@
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
-<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Wärmetabelle der monatlichen Bitcoin-Renditen | Virtuse</title>
-<meta name="description" content="Monatliche und quartalsweise Renditen von Bitcoin seit 2010 als Wärmetabelle, in USD oder EUR. Durchschnittliche und mediane Rendite für jeden Monat, täglich aktualisiert.">
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=0;function load(){if(done)return;done=1;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){(w.requestIdleCallback||function(f){setTimeout(f,200)})(load,{timeout:2000});}if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:true});['pointerdown','keydown','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'dataLayer','GTM-KXX4Q6WH');}</script>
+<title>Heatmap der monatlichen Bitcoin-Renditen | Virtuse</title>
+<meta name="description" content="Monatliche und quartalsweise Renditen von Bitcoin seit 2010 als Heatmap, in USD oder EUR. Durchschnittliche und mediane Rendite für jeden Monat, täglich aktualisiert.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -37,16 +33,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/btc-monthly-returns.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Wärmetabelle der monatlichen Bitcoin-Renditen | Virtuse">
-<meta property="og:description" content="Monatliche und quartalsweise Renditen von Bitcoin seit 2010 als Wärmetabelle, in USD oder EUR. Durchschnittliche und mediane Rendite für jeden Monat, täglich aktualisiert.">
+<meta property="og:title" content="Heatmap der monatlichen Bitcoin-Renditen | Virtuse">
+<meta property="og:description" content="Monatliche und quartalsweise Renditen von Bitcoin seit 2010 als Heatmap, in USD oder EUR. Durchschnittliche und mediane Rendite für jeden Monat, täglich aktualisiert.">
 <meta property="og:url" content="https://virtuse.com/de/btc-monthly-returns.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="de-DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Wärmetabelle der monatlichen Bitcoin-Renditen | Virtuse">
-<meta name="twitter:description" content="Monatliche und quartalsweise Renditen von Bitcoin seit 2010 als Wärmetabelle, in USD oder EUR. Durchschnittliche und mediane Rendite für jeden Monat, täglich aktualisiert.">
+<meta name="twitter:title" content="Heatmap der monatlichen Bitcoin-Renditen | Virtuse">
+<meta name="twitter:description" content="Monatliche und quartalsweise Renditen von Bitcoin seit 2010 als Heatmap, in USD oder EUR. Durchschnittliche und mediane Rendite für jeden Monat, täglich aktualisiert.">
 <meta name="twitter:image" content="https://virtuse.com/og-cover.jpg">
 <link rel="stylesheet" href="../styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1036,7 +1032,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 <!-- ===== HERO ===== -->
 <section class="hero">
   <h1>Monatliche <span class="highlight">Bitcoin-Renditen</span></h1>
-  <p class="hero-desc">Jeder Monat der Bitcoin-Kurshistorie seit 2010 als Wärmetabelle, mit durchschnittlicher und medianer Rendite für jeden Monat. Wechseln Sie zu Quartalen oder Euro. Täglich aktualisiert.</p>
+  <p class="hero-desc">Jeder Monat der Bitcoin-Kurshistorie seit 2010 als Heatmap, mit durchschnittlicher und medianer Rendite für jeden Monat. Wechseln Sie zu Quartalen oder Euro. Täglich aktualisiert.</p>
 </section>
 
 <!-- ===== SUB MENU ===== -->
@@ -1077,7 +1073,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     <table class="ar-table hm-table" id="hmTable"></table>
   </div>
   <div class="hm-legend" aria-hidden="true"><span>−30&nbsp;%</span><i class="hm-scale"></i><span>+30&nbsp;%</span></div>
-  <p class="ar-note">Rendite vom letzten Schluss des Vormonats (oder -quartals) bis zum letzten Schluss des Monats, basierend auf dem täglichen Bitcoin-Referenzkurs von CoinMetrics. Der laufende Monat nutzt den aktuellsten Kurs und ist aus den Zeilen Durchschnitt, Median und positiver Anteil ausgeschlossen. 2010 beginnt im August (der erste vollständige Monat der Kursdaten). Die EUR-Ansicht rechnet mit dem EUR/USD-Kurs der EZB an jedem Monatsende um. Vergangene Renditen garantieren keine zukünftigen. Keine Anlageberatung. Den Marktanteil von Bitcoin im selben Zeitraum zeigt die <a href="btc-dominance.html">Bitcoin Dominanz</a>.</p>
+  <p class="ar-note">Rendite vom letzten Schluss des Vormonats (oder -quartals) bis zum letzten Schluss des Monats, basierend auf dem täglichen Bitcoin-Referenzkurs von CoinMetrics. Der laufende Monat nutzt den aktuellsten Kurs und ist aus den Zeilen Durchschnitt, Median und positiver Anteil ausgeschlossen. 2010 beginnt im August (der erste vollständige Monat der Kursdaten). Die EUR-Ansicht rechnet mit dem EUR/USD-Kurs der EZB an jedem Monatsende um. Vergangene Renditen garantieren keine zukünftigen. Keine Anlageberatung. Den Marktanteil von Bitcoin im selben Zeitraum zeigt die <a href="btc-dominance.html">Bitcoin-Dominanz</a>.</p>
 </section>
 
 <!-- ===== NEWSLETTER ===== -->

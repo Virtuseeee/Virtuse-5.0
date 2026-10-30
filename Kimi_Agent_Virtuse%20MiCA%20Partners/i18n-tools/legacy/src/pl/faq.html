@@ -11,11 +11,7 @@
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
-<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=0;function load(){if(done)return;done=1;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){(w.requestIdleCallback||function(f){setTimeout(f,200)})(load,{timeout:2000});}if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:true});['pointerdown','keydown','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'dataLayer','GTM-KXX4Q6WH');}</script>
 <title>Bitcoin FAQ: opłaty, przechowywanie, KYC | Virtuse</title>
 <meta name="description" content="Opłaty, przechowywanie i KYC u partnerów Virtuse: Kraken Pro od 0,8%, Bybit EU od 0,25%, kopanie od 0,043 $/kWh. Nie trzymamy kluczy.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -1041,7 +1037,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
   <details>
     <summary>Z jakich usług można skorzystać przez Virtuse?</summary>
-    <div class="faq-answer">Siedem kategorii usług, każda ze starannie wybranymi partnerami: <strong>Kup Bitcoin</strong> (dostawcy CASP z licencją MiCA, np. 21bitcoin, Kraken i Bybit EU), <strong>Kopanie</strong> (hosting koparek z OneMiners, Abundant Mines, Power Mining), <strong>Pożyczki</strong> (pożyczki pod zastaw Bitcoina przez Firefish: BTC zostaje, gotówka trafia do Państwa), <strong>Przechowywanie</strong> (portfele sprzętowe Trezor, Ledger i Blockstream Jade), <strong>Treasury</strong> (przechowywanie instytucjonalne z Coinbase Institutional, Sygnum, BitGo), <strong>Podatki</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Boty tradingowe</strong> (Coinrule, Cryptohopper, RevenueBot), a także darmowe narzędzia <a href="bitcoin-data.html">Dane o Bitcoinie</a>: dashboard na żywo, kalkulator emerytalny, wykres tęczowy i inne.</div>
+    <div class="faq-answer">Siedem kategorii usług, każda ze starannie wybranymi partnerami: <strong>Kup Bitcoin</strong> (dostawcy CASP z licencją MiCA, np. 21bitcoin, Kraken i Bybit EU), <strong>Kopanie</strong> (hosting koparek u OneMiners, Abundant Mines, Power Mining), <strong>Pożyczki</strong> (pożyczki pod zastaw Bitcoina przez Firefish: BTC zostaje, gotówka trafia do Państwa), <strong>Przechowywanie</strong> (portfele sprzętowe Trezor, Ledger i Blockstream Jade), <strong>Treasury</strong> (przechowywanie instytucjonalne w Coinbase Institutional, Sygnum, BitGo), <strong>Podatki</strong> (Divly, Blockpit, CoinTracking, Koinly), <strong>Boty tradingowe</strong> (Coinrule, Cryptohopper, RevenueBot), a także darmowe narzędzia <a href="bitcoin-data.html">Dane o Bitcoinie</a>: dashboard na żywo, kalkulator emerytalny, wykres tęczowy i inne.</div>
   </details>
 
   <details>
@@ -1086,7 +1082,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
   <details>
     <summary>Jakie opłaty obowiązują u partnerów?</summary>
-    <div class="faq-answer">Każdy partner ustala własny cennik, a ceny się zmieniają. <a href="/pl/bitcoin-indeks-oplat/">Bitcoin Fee Index</a> porównuje koszty zakupu, podając źródło i datę sprawdzenia każdej opłaty. Przed rejestracją należy zawsze potwierdzić aktualne ceny na stronie partnera.</div>
+    <div class="faq-answer">Każdy partner ustala własny cennik, a ceny się zmieniają. <a href="/pl/bitcoin-indeks-oplat/">Indeks opłat za Bitcoina</a> porównuje koszty zakupu, podając źródło i datę sprawdzenia każdej opłaty. Przed rejestracją należy zawsze potwierdzić aktualne ceny na stronie partnera.</div>
   </details>
 </section>
 
@@ -1116,7 +1112,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
   <details>
     <summary>Czy można ustawić zakupy cykliczne?</summary>
-    <div class="faq-answer">Tak. Zakupy cykliczne (DCA) obsługuje kilku partnerów, na przykład 21bitcoin i Kraken. Opłaty za zakupy cykliczne różnią się w zależności od partnera: zob. <a href="/pl/bitcoin-indeks-oplat/">Bitcoin Fee Index</a> i stronę partnera.</div>
+    <div class="faq-answer">Tak. Zakupy cykliczne (DCA) obsługuje kilku partnerów, na przykład 21bitcoin i Kraken. Opłaty za zakupy cykliczne różnią się w zależności od partnera: zob. <a href="/pl/bitcoin-indeks-oplat/">Indeks opłat za Bitcoina</a> i stronę partnera.</div>
   </details>
 </section>
 
@@ -1151,7 +1147,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
   <details>
     <summary>Czy są usługi bez KYC?</summary>
-    <div class="faq-answer">Tak. Narzędzia, które nigdy nie mają dostępu do Państwa pieniędzy, nie potrzebują KYC: portfele sprzętowe (Trezor, Ledger), oprogramowanie podatkowe (Divly stawia na prywatność i nie wymaga KYC) oraz wszystkie nasze darmowe narzędzia <a href="bitcoin-data.html">Dane o Bitcoinie</a> działają bez żadnego konta.</div>
+    <div class="faq-answer">Tak. Narzędzia, które nigdy nie mają dostępu do Państwa pieniędzy, nie potrzebują KYC: portfele sprzętowe (Trezor, Ledger), oprogramowanie podatkowe (Divly stawia na prywatność i nie wymaga KYC) oraz wszystkie nasze darmowe narzędzia <a href="bitcoin-data.html">Dane o Bitcoinie</a>, które działają bez żadnego konta.</div>
   </details>
 </section>
 

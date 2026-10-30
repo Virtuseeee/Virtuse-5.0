@@ -11,11 +11,7 @@
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
 <script src="/cookie-consent.js" defer></script>
-<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=0;function load(){if(done)return;done=1;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){(w.requestIdleCallback||function(f){setTimeout(f,200)})(load,{timeout:2000});}if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:true});['pointerdown','keydown','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'dataLayer','GTM-KXX4Q6WH');}</script>
 <title>Moyenne mobile à 200 semaines du Bitcoin | Virtuse</title>
 <meta name="description" content="Le plancher de long terme le plus suivi du Bitcoin. La moyenne mobile à 200 semaines a marqué le creux de chaque marché baissier jusqu&#x27;ici.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -1108,14 +1104,14 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
       </div>
       <div class="band-chip" id="bandChip" style="background: var(--border);">Chargement…</div>
     </div>
-    <div class="status-note">Le prix exprimé comme un multiple de la moyenne mobile 200 semaines&nbsp;: plus il est proche de 1×, plus il est proche du plancher historique du Bitcoin.</div>
+    <div class="status-note">Le prix exprimé comme un multiple de la moyenne mobile à 200 semaines&nbsp;: plus il est proche de 1×, plus il est proche du plancher historique du Bitcoin.</div>
   </div>
 </section>
 
 <!-- ===== CHART ===== -->
 <section class="chart-section">
   <div class="chart-panel">
-    <h3><span class="ico">&#9670;</span> Prix vs moyenne mobile 200 semaines (échelle logarithmique)</h3>
+    <h3><span class="ico">&#9670;</span> Prix vs moyenne mobile à 200 semaines (échelle logarithmique)</h3>
     <div class="chart-wrap">
       <canvas id="chart" height="460"></canvas>
       <div class="tooltip" id="tooltip"></div>
@@ -1433,7 +1429,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   var legend = document.getElementById('legend');
   [
     { label: 'Ligne blanche : prix hebdomadaire du Bitcoin', color: '#ffffff' },
-    { label: 'Ligne orange : moyenne mobile 200 semaines (le « plancher »)', color: '#f7931a' },
+    { label: 'Ligne orange : moyenne mobile à 200 semaines (le « plancher »)', color: '#f7931a' },
     { label: '≈ 1× : points bas des marchés baissiers de 2015, 2018 et 2022', color: '#3fb950' },
     { label: '4×+ : les sommets de cycle se sont étirés bien au-dessus du plancher', color: '#c00000' }
   ].forEach(function (b) {
