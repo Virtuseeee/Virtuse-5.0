@@ -819,7 +819,7 @@
     },
     "de": {
       "gainTax": "Do 45% podatku dochodowego (progresywny)",
-      "exemption": "0% po roku posiadania; łączne zyski poniżej 1000 € rocznie są zwolnione z podatku",
+      "exemption": "0% po roku posiadania; łączne zyski poniżej 1 000 € rocznie są zwolnione z podatku",
       "filing": "Roczne zeznanie podatkowe",
       "note": "Wymiana krypto na krypto jest opodatkowana w pierwszym roku. Kluczowa jest ewidencja metodą FIFO."
     },
@@ -886,7 +886,7 @@
     {
       "id": "heir-aware",
       "name": "Poinformowany spadkobierca",
-      "text": "Przynajmniej jedna zaufana osoba musi wiedzieć, że Bitcoin istnieje i od czego zacząć. Bitcoin odkryty po latach albo wcale to najczęstsza porażka przy dziedziczeniu."
+      "text": "Przynajmniej jedna zaufana osoba musi wiedzieć, że Bitcoin istnieje i od czego zacząć. Bitcoin odnaleziony dopiero po latach albo wcale to najczęstszy błąd przy dziedziczeniu."
     },
     {
       "id": "multisig",

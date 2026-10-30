@@ -1032,7 +1032,7 @@
           "answer": "Od 1 stycznia 2026 r. giełdy kryptowalut rejestrują dane, numer podatkowy i transakcje polskich rezydentów w ramach DAC8. PIT-38 za 2026 r. trzeba złożyć do 30 kwietnia 2027 r., a dostawcy raportują do KAS do 30 czerwca 2027 r. Zysk podlega 19% podatkowi; wymiana kryptowaluty na kryptowalutę nie jest opodatkowana.",
           "crumbs": [
             "Strona główna",
-            "Podatki od Bitcoina",
+            "Podatek od Bitcoina",
             "Polska",
             "DAC8"
           ],
@@ -1040,7 +1040,7 @@
           "boxLink": "Co zobaczy urząd skarbowy",
           "cta": "Sprawdź Polskę w Tax Agencie →",
           "related": [
-            "Podatki od Bitcoina w Polsce",
+            "Podatek od Bitcoina w Polsce",
             "Bitcoin: sprzedać czy pożyczyć",
             "Bitcoin i dziedziczenie"
           ],
@@ -1119,7 +1119,7 @@
                 "Dochód ze zbycia kryptowalut podlega 19% podatkowi i wykazuje się go w PIT-38.",
                 "Opodatkowana jest wymiana na złote lub inną walutę oraz zapłata za towary, usługi lub prawa majątkowe. Wymiana kryptowaluty na kryptowalutę ani zakup nie są opodatkowane.",
                 "Nie ma zwolnienia za okres posiadania ani zwolnienia dla małych kwot.",
-                "Można odliczyć udokumentowane koszty zakupu i koszty zbycia. Koszty wymiany kryptowaluty na kryptowalutę nie są kosztem.",
+                "Można odliczyć udokumentowane koszty zakupu i koszty zbycia. Koszty wymiany kryptowaluty na kryptowalutę nie są kosztem uzyskania przychodu.",
                 "Nadwyżka kosztów nad przychodem przechodzi na koszty kryptowalut w kolejnym roku. Nie można jej rozliczyć z zyskami z akcji ani innymi dochodami.",
                 "PIT-38 warto złożyć także w roku bez sprzedaży, jeśli były koszty, aby przeszły na kolejny rok.",
                 "Dochód powyżej 1 mln zł rocznie wlicza się do 4% daniny solidarnościowej."
@@ -1157,7 +1157,7 @@
               "a": "Nie. W Polsce nie ma zwolnienia za okres posiadania; zysk podlega 19% podatkowi przy każdej sprzedaży za pieniądze."
             },
             {
-              "q": "Kupiłem przed 2026 r. Czy to ma znaczenie?",
+              "q": "Zakup przed 2026 r. – czy to ma znaczenie?",
               "a": "Dane DAC8 obejmują okres od 2026 r., ale urząd może sprawdzać wcześniejsze lata, zwykle przez pięć lat od końca roku, w którym upłynął termin płatności podatku."
             }
           ]

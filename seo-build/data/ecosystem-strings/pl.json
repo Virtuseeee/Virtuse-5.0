@@ -17,7 +17,7 @@
     "applyForListing": "Zgłoś projekt",
     "promoteCta": "Znają Państwo projekt wyłącznie o Bitcoinie, który powinien się tu znaleźć? Zapraszamy do zgłoszenia",
     "allPages": "Poznaj ekosystem",
-    "faq": "Najczęściej zadawane pytania",
+    "faq": "Najczęstsze pytania",
     "entriesNote": "Opisy pozycji są w języku angielskim.",
     "tableEvent": "Wydarzenie",
     "tableCity": "Miasto",
@@ -36,7 +36,7 @@
     },
     "indexRelated": [
       "Virtuse Brief: cotygodniowe wiadomości o Bitcoinie",
-      "Pierwsze kroki z Bitcoinem: zacznij tutaj"
+      "Pierwsze kroki z Bitcoinem: od czego zacząć"
     ],
     "promoteCrumb": "Wyróżnienie",
     "eyebrowIndex": "Ekosystem Bitcoina",
@@ -150,7 +150,7 @@
         "<h2>Bitcoin to nie „krypto”</h2>",
         "<p>Tysiące innych tokenów skopiowały fragmenty kodu Bitcoina, ale za większością z nich stoi firma, fundacja lub wąska grupa osób, które mogą zmieniać zasady, emitować kolejne jednostki lub wstrzymać sieć. To inny profil ryzyka. Właśnie dlatego Virtuse zajmuje się wyłącznie Bitcoinem: wartość Bitcoina wynika z tego, że nie ma emitenta ani nikogo, kto nim zarządza, a bardzo trudno to powtórzyć, gdy projekt ma założycieli, przedsprzedaż lub budżet marketingowy. Jeśli ktoś proponuje Państwu nową monetę z obiecanymi zyskami, prosimy traktować to jako ofertę sprzedażową, a nie jako Bitcoin.</p>",
         "<h2>Jak to działa</h2>",
-        "<p>Każda transakcja bitcoinowa jest rozgłaszana w sieci i sprawdzana przez niezależne komputery zwane węzłami. Każdy węzeł weryfikuje, czy monety istnieją, czy nie zostały wcześniej wydane i czy podpis nadawcy jest ważny. Węzeł może uruchomić każdy na zwykłym komputerze i to właśnie pilnuje przestrzegania zasad: węzeł po prostu ignoruje bloki, które je łamią.</p>",
+        "<p>Każda transakcja bitcoinowa jest rozgłaszana w sieci i sprawdzana przez niezależne komputery zwane węzłami. Każdy węzeł weryfikuje, czy monety istnieją, czy nie zostały wcześniej wydane i czy podpis nadawcy jest ważny. Węzeł może uruchomić każdy na zwykłym komputerze i to właśnie węzły pilnują przestrzegania zasad: węzeł po prostu ignoruje bloki, które je łamią.</p>",
         "<p>Górnicy zbierają ważne transakcje w bloki, mniej więcej jeden co dziesięć minut. Aby dodać blok, górnik musi zużyć rzeczywistą energię elektryczną na rozwiązanie kryptograficznej zagadki (proof of work). Ten koszt sprawia, że przepisanie historii jest niepraktyczne: zmiana starej transakcji wymagałaby powtórzenia całej pracy wykonanej od tamtej pory, i to szybciej niż reszta sieci razem wzięta.</p>",
         "<p>Szybsze i tańsze płatności działają na warstwach zbudowanych nad Bitcoinem, przede wszystkim w sieci Lightning, która rozlicza drobne płatności w kilka sekund, a ostateczne bezpieczeństwo nadal opiera na głównym łańcuchu.</p>",
         "<p>W sieci Lightning dwie strony blokują bitcoiny we wspólnym kanale, a następnie aktualizują saldo między sobą tak często, jak chcą, niemal natychmiast i za ułamki centa. Kanały łączą się w sieć, więc można zapłacić komuś, z kim nigdy nie otwierało się kanału. Sklepy w całej Europie już dziś przyjmują płatności Lightning. Więcej: <a href=\"/ecosystem/spend-bitcoin/\">gdzie płacić Bitcoinem</a> oraz <a href=\"/ecosystem/store-tools/\">narzędzia dla sprzedawców</a>.</p>",
@@ -159,7 +159,7 @@
         "<p>Istnieją trzy popularne modele. Przy przechowywaniu u regulowanego dostawcy to dostawca trzyma klucze, a Państwo polegają na jego bezpieczeństwie i wypłacalności; to proste rozwiązanie, ale niesie ryzyko kontrahenta. Przy samodzielnym przechowywaniu z jednym kluczem trzymają go Państwo sami, zwykle w aplikacji portfela lub na dedykowanym urządzeniu. Przy przechowywaniu z wieloma podpisami (wspólnym) do przeniesienia środków potrzeba kilku kluczy, więc utrata lub przejęcie jednego klucza nie oznacza utraty wszystkiego. Właściwy wybór zależy od kwoty, Państwa obycia z technologią oraz od tego, kto powinien mieć dostęp do monet, gdyby coś się Państwu stało.</p>",
         "<p>Rozsądna ścieżka dla większości osób to zacząć od małej kwoty, przećwiczyć testowe odzyskanie portfela, przechowywać frazę odzyskiwania offline i nigdy nie wpisywać jej na żadnej stronie internetowej. Przy większych kwotach warto rozważyć dedykowany sprzęt i plan dla spadkobierców. Szczegóły omawiają nasza <a href=\"/secure.html\">strona o przechowywaniu</a>, <a href=\"/stories/the-most-comprehensive-cold-wallet-guide/\">przewodnik po zimnych portfelach</a> oraz <a href=\"/bitcoin-inheritance/\">lista kontrolna dotycząca dziedziczenia</a>.</p>",
         "<h2>Ryzyka, które warto rozumieć</h2>",
-        "<ul><li><strong>Zmienność.</strong> Cena może spaść o połowę w ciągu kilku miesięcy. Prosimy trzymać tylko tyle, ile są Państwo w stanie utrzymać mimo dużych wahań.</li><li><strong>Nieodwracalność.</strong> Wysłanych transakcji nie można cofnąć, a utrata klucza zwykle oznacza utratę monet.</li><li><strong>Oszustwa.</strong> Nikt uczciwy nie poprosi o frazę odzyskiwania, nie obieca gwarantowanych zysków ani nie będzie Państwa poganiał. Szczególną ostrożność należy zachować wobec ofert „krypto”, które nie dotyczą Bitcoina.</li><li><strong>Podatki i przepisy.</strong> W większości krajów europejskich zyski podlegają opodatkowaniu, a dostawcy muszą przestrzegać MiCA i przepisów o przeciwdziałaniu praniu pieniędzy. Zapraszamy do naszych <a href=\"/bitcoin-tax/\">przewodników podatkowych według krajów</a>.</li></ul>",
+        "<ul><li><strong>Zmienność.</strong> Cena może spaść o połowę w ciągu kilku miesięcy. Prosimy trzymać tylko tyle, ile są Państwo w stanie trzymać także przy dużych wahaniach.</li><li><strong>Nieodwracalność.</strong> Wysłanych transakcji nie można cofnąć, a utrata klucza zwykle oznacza utratę monet.</li><li><strong>Oszustwa.</strong> Nikt uczciwy nie poprosi o frazę odzyskiwania, nie obieca gwarantowanych zysków ani nie będzie Państwa poganiał. Szczególną ostrożność należy zachować wobec ofert „krypto”, które nie dotyczą Bitcoina.</li><li><strong>Podatki i przepisy.</strong> W większości krajów europejskich zyski podlegają opodatkowaniu, a dostawcy muszą przestrzegać MiCA i przepisów o przeciwdziałaniu praniu pieniędzy. Zapraszamy do naszych <a href=\"/bitcoin-tax/\">przewodników podatkowych według krajów</a>.</li></ul>",
         "<h2>Bitcoin w Europie</h2>",
         "<p>Od wejścia w życie unijnego rozporządzenia w sprawie rynków kryptoaktywów (MiCA) firmy oferujące w UE usługi w zakresie kryptoaktywów potrzebują zezwolenia krajowego organu nadzoru i muszą przestrzegać przepisów o przeciwdziałaniu praniu pieniędzy, w tym weryfikacji tożsamości. Od 2026 roku dyrektywa DAC8 zobowiązuje też tych dostawców do zgłaszania transakcji klientów organom podatkowym. Samodzielne przechowywanie bitcoinów jest legalne w całej UE, ale zasady opodatkowania bardzo się różnią: niektóre kraje zwalniają z podatku długoterminowe posiadanie, inne opodatkowują każdą sprzedaż lub wymianę. Przed sprzedażą lub wydaniem bitcoinów warto sprawdzić przepisy obowiązujące w Państwa kraju.</p>",
         "<p>Gdy będą Państwo gotowi do zakupu, zapraszamy do porównania regulowanych partnerów na naszej <a href=\"/buy-bitcoin.html\">stronie Kup Bitcoin</a>. Ta strona ma charakter edukacyjny i nie stanowi porady inwestycyjnej.</p>"
@@ -179,7 +179,7 @@
         },
         {
           "q": "Jakie są główne ryzyka?",
-          "a": "Cena jest zmienna, błędy związane z kluczami mogą być nieodwracalne, a oszustwa są powszechne. Prosimy inwestować tylko tyle, ile są Państwo w stanie utrzymać mimo dużych wahań ceny, i przed przechowywaniem znaczących kwot dobrze poznać zasady przechowywania."
+          "a": "Cena jest zmienna, błędy związane z kluczami mogą być nieodwracalne, a oszustwa są powszechne. Prosimy inwestować tylko tyle, ile są Państwo w stanie trzymać także przy dużych wahaniach ceny, i przed przechowywaniem znaczących kwot dobrze poznać zasady przechowywania."
         }
       ],
       "h1Accent": "Wyjaśnione prostym językiem.",

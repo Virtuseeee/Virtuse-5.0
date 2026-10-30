@@ -2817,7 +2817,7 @@ function descFit(main, tail) { return (main + ' ' + tail).length <= 155 ? `${mai
     { q: 'Jakie kraje obejmuje ten przegląd?', a: `${N} krajów UE: ${COUNTRIES.map((c) => namePl(c.id)).join(', ')}. ${guideText('pl', 'hubFaq')}` },
     { q: 'Czy to porada podatkowa?', a: `Nie. ${guideLine('pl')} Zasady na bieżący rok warto potwierdzić z lokalnym doradcą.` },
     { q: 'Czy Virtuse zgłasza moje aktywa do urzędu skarbowego?', a: 'Nie. Virtuse nigdy nie przechowuje Państwa kluczy ani historii transakcji. KYC przeprowadzają sami partnerzy.' },
-    { q: 'Gdzie oprócz podatków sprawdzę też dziedziczenie?', a: `W module Tax & Inheritance Agent, z tymi samymi ${N} krajami i oceną gotowości do multisig.` }
+    { q: 'Gdzie oprócz podatków sprawdzę dziedziczenie?', a: `W module Tax & Inheritance Agent, z tymi samymi ${N} krajami i oceną gotowości do dziedziczenia (w tym multisig).` }
   ];
   const answer = finalizeAnswer([
     `Ten przegląd porównuje opodatkowanie Bitcoina w ${N} krajach UE, stan na ${asOfPl}.`,
@@ -2861,7 +2861,7 @@ for (const c of COUNTRIES) {
     { q: `Ile wynosi podatek od Bitcoina ${inN}?`, a: `Stan na ${asOfPl}: ${lcPl(gainFull(t))}. ${checkedSentence('pl')} ${GUIDE.pl.notAdvice}.` },
     { q: `Czy ${inN} jest zwolnienie za okres posiadania?`, a: `${t.exemption}. Przed złożeniem zeznania warto potwierdzić zasady na bieżący rok z lokalnym doradcą podatkowym.` },
     { q: `Jak ${inN} rozlicza się podatek od Bitcoina?`, a: `${t.filing}. ${t.note}` },
-    { q: 'Czy Virtuse przechowuje mój Bitcoin albo składa za mnie zeznanie?', a: `Nie. Virtuse nigdy nie przechowuje Państwa kluczy. KYC i rejestracja odbywają się u partnera. Tax Agent porówna przegląd ${N} krajów; zeznanie przygotuje wykwalifikowany doradca podatkowy.` }
+    { q: 'Czy Virtuse przechowuje mój Bitcoin albo składa za mnie zeznanie?', a: `Nie. Virtuse nigdy nie przechowuje Państwa kluczy. KYC i rejestracja odbywają się u partnera. W module Tax Agent można porównać przegląd ${N} krajów; zeznanie warto przygotować z wykwalifikowanym doradcą podatkowym.` }
   ];
   const answer = finalizeAnswer([
     `Podatek od Bitcoina ${inN}, stan na ${asOfPl}: ${lcPl(gainFull(t))}.`,
@@ -2917,7 +2917,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
   const faqs = [
     { q: 'Czy ten kalkulator prognozuje cenę Bitcoina?', a: 'Nie. Porównuje tylko opłaty partnerów według opublikowanego cennika. Nie modeluje zwrotu z ceny Bitcoina.' },
     { q: `Jaki jest plan standardowy, stan na ${feeAsOfPl}?`, a: 'Jednorazowo 500 €, a potem 100 € miesięcznie przez 12 miesięcy. Kolejność według opłat w pierwszym roku.' },
-    { q: 'Która ścieżka ma w tym planie najniższą opublikowaną opłatę?', a: `${win.partner} (${methodPl(win.method)}) z opłatą zmienną ${formatPctPl(win.pct)} według wzoru Stacking Strategist. Najniższy całkowity koszt ze spreadem w Indeksie opłat za Bitcoina: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) przy 100 € miesięcznie.` },
+    { q: 'Który sposób zakupu ma w tym planie najniższą opublikowaną opłatę?', a: `${win.partner} (${methodPl(win.method)}) z opłatą zmienną ${formatPctPl(win.pct)} według wzoru Stacking Strategist. Najniższy całkowity koszt ze spreadem w Indeksie opłat za Bitcoina: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) przy 100 € miesięcznie.` },
     { q: 'Czy to porada inwestycyjna?', a: 'Nie. Służy wyłącznie celom edukacyjnym. KYC odbywa się u partnera. Virtuse nigdy nie przechowuje Państwa kluczy.' }
   ];
   const answer = finalizeAnswer([
@@ -2969,13 +2969,13 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
   const enFile = 'sell-vs-borrow-bitcoin/index.html';
   const deFile = 'de/bitcoin-verkaufen-oder-beleihen/index.html';
   const faqs = [
-    { q: `Czy sprzedaż w tych ${N} krajach wywołuje podatek?`, a: `Zazwyczaj tak, przy sprzedaży za pieniądze. Wymiana krypto na krypto jest opodatkowana w niektórych krajach (Niemcy, Czechy, Hiszpania), w innych nie (Polska, Francja, Austria, Węgry). Zwolnienia się różnią: Niemcy 0% po roku posiadania, Czechy 3-letni test czasu, Polska bez zwolnienia. Stan na ${asOfPl}. Nie stanowi porady podatkowej.` },
+    { q: `Czy sprzedaż w tych ${N} krajach wywołuje podatek?`, a: `Zazwyczaj tak, przy sprzedaży za pieniądze. Wymiana krypto na krypto jest opodatkowana w niektórych krajach (Niemcy, Czechy, Hiszpania), w innych nie (Polska, Francja, Austria, Węgry). Zwolnienia się różnią: Niemcy 0% po roku posiadania, Czechy zwolnienie po 3 latach, Polska bez zwolnienia. Stan na ${asOfPl}. Nie stanowi porady podatkowej.` },
     { q: 'Czy pożyczka jest tym samym zdarzeniem podatkowym co sprzedaż?', a: 'W tym przeglądzie nie. Odsetki, ryzyko likwidacji i KYC u partnera jednak pozostają. Konkretne liczby wyliczy Loan & Liquidity Copilot.' },
     { q: 'Czym jest ryzyko likwidacji?', a: 'Jeśli wartość zabezpieczenia spadnie do progu partnera, partner może sprzedać zabezpieczenie i spłacić nim pożyczkę. Virtuse nigdy nie przechowuje Państwa kluczy ani zabezpieczenia.' },
     { q: 'Gdzie przeliczę konkretną kwotę?', a: 'W module Loan & Liquidity Copilot. Ta strona wyjaśnia tylko różnicę między podatkiem a ryzykiem na podstawie opublikowanych stawek podatkowych.' }
   ];
   const answer = finalizeAnswer([
-    `Według stanu na ${asOfPl} sprzedaż Bitcoina może wywołać podatek (np. w Niemczech do 45% w ciągu roku posiadania, w Rumunii 16% od 2026 r.).`,
+    `Według stanu na ${asOfPl} sprzedaż Bitcoina może wywołać podatek (np. w Niemczech do 45% przy sprzedaży w pierwszym roku posiadania, w Rumunii 16% od 2026 r.).`,
     'Pożyczka pod zastaw Bitcoina pozwala zachować pozycję rynkową, ale oznacza odsetki i ryzyko likwidacji u partnera.',
     'Przegląd orientacyjny 2026, nie stanowi porady podatkowej ani kredytowej. Virtuse nigdy nie przechowuje Państwa kluczy.'
   ], 'pl');
