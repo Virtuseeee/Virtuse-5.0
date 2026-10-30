@@ -52,8 +52,8 @@
       iframeTitle: 'Virtuse Partner Finder',
     },
     sk: {
-      bubbleAria: 'Otvoriť Partner Finder: porovnajte Bitcoin služby podľa svojich kritérií',
-      bubbleTitle: 'Ktorá Bitcoin služba je pre mňa tá pravá?',
+      bubbleAria: 'Otvoriť Partner Finder: porovnajte bitcoinové služby podľa svojich kritérií',
+      bubbleTitle: 'Ktorá bitcoinová služba je pre mňa tá pravá?',
       bubbleSub: 'Zadarmo · Bez registrácie · Nikdy nedržíme vaše kľúče',
       closeAria: 'Zavrieť Partner Finder',
       iframeTitle: 'Virtuse Partner Finder',

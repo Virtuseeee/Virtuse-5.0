@@ -26,7 +26,7 @@ LANGS = {
          'title': 'Verdict: pomáhame investorom robiť múdre rozhodnutia | Virtuse',
          'desc': 'Verdict ohodnotí úplnosť vášho bitcoinového plánu na 10 signáloch, pomenuje najslabšie miesto a dá jeden ďalší krok. Zadarmo. Nie je to investičné poradenstvo.',
          'pricing_eyebrow': 'Ceny', 'pricing_h2': 'Tri úrovne. <span>Začnite bezplatným verdiktom.</span>',
-         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdicte', 'free_items': ['Skóre 0 – 100 a pásmo', 'Zhrnutie', 'Úzke miesto: signál, ktorý rozhoduje o skóre', 'Čo drží / čo sa zlomí, predpoklady (hlavná veta)', 'Ďalšie kroky s nástrojom na overenie'],
+         'cta': 'Získať verdikt zadarmo', 'back': '← O Verdicte', 'free_items': ['Skóre 0–100 a pásmo', 'Zhrnutie', 'Úzke miesto: signál, ktorý rozhoduje o skóre', 'Čo drží / čo sa zlomí, predpoklady (hlavná veta)', 'Ďalšie kroky s nástrojom na overenie'],
          'report_items': ['Všetkých 10 signálov so skóre a dôvodmi', 'Typ 1 vs. Typ 2: vratné, alebo nie?', 'Minimalizácia ľútosti: čo by ste chceli vedieť', 'Riziká a plán B', 'Čo drží / čo sa zlomí a predpoklady celé', 'Ďalšie kroky s tým, kto a dokedy', 'PDF na uloženie, bez predplatného']},
 }
 

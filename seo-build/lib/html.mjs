@@ -27,7 +27,7 @@ const OPERATOR = JSON.parse(fs.readFileSync(new URL('../data/footer-operator.jso
 const CRUMBS_LABEL = { es: 'Ruta de navegación' };
 export const AFF_NOTE = {
   en: ['Partner link – if you sign up, Virtuse may receive a commission. Your price does not change.', 'How we earn'],
-  sk: ['Partnerský odkaz – ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.', 'Ako zarábame'],
+  sk: ['Partnerský odkaz: ak sa zaregistrujete, Virtuse môže dostať províziu. Vaša cena sa tým nemení.', 'Ako zarábame'],
   cs: ['Partnerský odkaz – pokud se zaregistrujete, Virtuse může získat provizi. Vaše cena se tím nemění.', 'Jak vyděláváme'],
   pl: ['Link partnerski – jeśli się Państwo zarejestrują, Virtuse może otrzymać prowizję. Państwa cena się przez to nie zmienia.', 'Jak zarabiamy'],
   de: ['Partnerlink – wenn Sie sich registrieren, kann Virtuse eine Provision erhalten. Ihr Preis ändert sich dadurch nicht.', 'Wie wir verdienen'],
@@ -353,10 +353,10 @@ export const CHROME = {
     navConcierge: 'Partner Finder',
     relatedHeading: 'Súvisiace návody',
     asOfPrefix: 'Stav údajov',
-    disclaimerTax: 'Orientačný prehľad 2026 – nejde o daňové poradenstvo.',
+    disclaimerTax: 'Orientačný prehľad 2026, nejde o daňové poradenstvo.',
     disclaimerKeys: 'Virtuse nikdy nedrží vaše kľúče.',
     disclaimerKyc: 'KYC a registrácia prebiehajú na regulovanej platforme príslušného partnera. Virtuse je nekustodiálny hub a nedrží prostriedky ani údaje klientov týchto platforiem.',
-    privacy: 'Ochrana súkromia',
+    privacy: 'Ochrana osobných údajov',
     terms: 'Obchodné podmienky',
     locale: 'sk_SK',
     homeHref: 'sk/index.html',

@@ -67,7 +67,7 @@ export const GOALS: GoalOption[] = [
   { id: 'earn', label: { en: 'Automate & compound', sk: 'Automatizovať a zhodnocovať', cs: 'Automatizovat a zhodnocovat' }, hint: { en: 'Non-custodial trading & DCA bots', sk: 'Nekustodiálne obchodné a DCA boty', cs: 'Nekustodiální obchodní a DCA boti' } },
   { id: 'treasury', label: { en: 'Corporate treasury', sk: 'Firemné treasury', cs: 'Firemní treasury' }, hint: { en: 'BTC on the balance sheet', sk: 'BTC v súvahe firmy', cs: 'BTC v rozvaze firmy' } },
   { id: 'mining', label: { en: 'Mining', sk: 'Ťažba', cs: 'Těžba' }, hint: { en: 'Earn fresh sats', sk: 'Získavajte nové satoshi', cs: 'Získávejte nové satoshi' } },
-  { id: 'custody', label: { en: 'Custody & inheritance', sk: 'Úschova a dedičstvo', cs: 'Úschova a dědictví' }, hint: { en: 'Keys, multisig, legacy', sk: 'Kľúče, multisig, odkaz', cs: 'Klíče, multisig, odkaz' } },
+  { id: 'custody', label: { en: 'Custody & inheritance', sk: 'Úschova a dedičstvo', cs: 'Úschova a dědictví' }, hint: { en: 'Keys, multisig, legacy', sk: 'Kľúče, multisig, dedičstvo', cs: 'Klíče, multisig, odkaz' } },
   { id: 'tax', label: { en: 'Tax help', sk: 'Pomoc s daňami', cs: 'Pomoc s daněmi' }, hint: { en: 'Reports & compliance', sk: 'Priznania a compliance', cs: 'Přiznání a compliance' } },
 ];
 
@@ -351,7 +351,7 @@ export const PARTNERS: Partner[] = [
   {
     id: 'oneminers',
     name: 'OneMiners',
-    tagline: { en: 'ASIC reseller with EU/Nordic hosting', sk: 'Predajca ASIC s hostingom v EÚ/Škandinávii', cs: 'Prodejce ASIC s hostingem v EU/Skandinávii' },
+    tagline: { en: 'ASIC reseller with EU/Nordic hosting', sk: 'Predajca ASIC s hostingom v EÚ a severských krajinách', cs: 'Prodejce ASIC s hostingem v EU/Skandinávii' },
     goals: ['mining'],
     url: 'https://oneminers.com/products/?discount=virtuse_buy',
     feeNote: { en: 'Hosting in Norway, Finland, and Ethiopia', sk: 'Hosting v Nórsku, Fínsku a Etiópii', cs: 'Hosting v Norsku, Finsku a Etiopii' },
@@ -439,7 +439,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
         push('bybit-eu', 84, [
           t(lang,
             'For larger amounts, a spot order book exchange with EUR pairs.',
-            'Pri väčších sumách burza so spotovým orderbookom a pármi v EUR.',
+            'Pri väčších sumách burza so spotovou knihou objednávok a pármi v EUR.',
             'U větších částek burza se spotovým orderbookem a páry v EUR.'),
         ]);
       } else if (a.custody !== 'self') {
@@ -519,7 +519,7 @@ export function recommend(a: Answers, lang: Lang = 'en'): Recommendation[] {
       push('sygnum', 82, [
         t(lang,
           'Digital asset bank with discretionary treasury mandates, including rebalancing and hedging.',
-          'Banka pre digitálne aktíva s diskrečnými treasury mandátmi vrátane rebalancovania a hedgingu.',
+          'Banka pre digitálne aktíva s diskrečnými treasury mandátmi vrátane rebalansovania a hedgingu.',
           'Banka pro digitální aktiva s diskrečními treasury mandáty včetně rebalancování a hedgingu.'),
       ]);
       if (a.amount === 'xl') {

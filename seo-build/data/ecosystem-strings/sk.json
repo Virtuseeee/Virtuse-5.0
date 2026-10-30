@@ -8,7 +8,7 @@
     "howWePick": "Ako vyberáme",
     "howWePickText": "Každú položku vyberáme ručne. Musí byť zameraná iba na Bitcoin, relevantná pre Európu, aktívna a poctivá. Každé hodnotenie píšeme sami. Platené umiestnenia sú vždy označené ako „Sponzorované“ a naše hodnotenie nikdy nemenia.",
     "criteriaLink": "Prečítajte si kritériá zaradenia",
-    "related": "Súvisiace na Virtuse",
+    "related": "Súvisiace stránky",
     "reviewed": "Naposledy skontrolované:",
     "notAdvice": "Zoznamy majú informačný charakter a nie sú investičným poradenstvom.",
     "privacyFootNote": "Zaujíma vás, ako Virtuse narába s vašimi údajmi? Prečítajte si <a href=\"{privacy}\">ochranu osobných údajov</a>.",
@@ -25,7 +25,7 @@
     "tableLink": "Web",
     "websiteButton": "Web",
     "confTbcSep2027": "september 2027, termín sa ešte potvrdí",
-    "confTba2027": "2027, termín bude oznámený",
+    "confTba2027": "2027, termín sa ešte potvrdí",
     "cities": {
       "Amsterdam": "Amsterdam",
       "Kreuzlingen": "Kreuzlingen",
@@ -159,7 +159,7 @@
         "<p>Existujú tri bežné modely. Pri úschove u regulovaného poskytovateľa drží kľúče poskytovateľ a vy sa spoliehate na jeho zabezpečenie a solventnosť; je to jednoduché, ale nesie to riziko protistrany. Pri vlastnej úschove s jedným kľúčom držíte jeden kľúč sami, zvyčajne v aplikácii peňaženky alebo v samostatnom zariadení. Pri úschove s viacerými podpismi (multisig, kolaboratívna úschova) je na presun prostriedkov potrebných viac kľúčov, takže strata alebo kompromitácia jedného kľúča neznamená stratu všetkého. Správna voľba závisí od sumy, vašej technickej istoty a od toho, kto by mal mať k minciam prístup, ak sa vám niečo stane.</p>",
         "<p>Pre väčšinu ľudí je rozumné začať s malou sumou, vyskúšať si testovaciu obnovu, uchovávať seed frázu offline a nikdy ju nezadávať na žiadnom webe. Pri väčších sumách zvážte samostatné hardvérové zariadenie a plán pre dedičov. Podrobnosti nájdete na našej <a href=\"/secure.html\">stránke o úschove</a>, v <a href=\"/stories/the-most-comprehensive-cold-wallet-guide/\">sprievodcovi studenými peňaženkami</a> a v <a href=\"/bitcoin-inheritance/\">kontrolnom zozname pre dedičstvo</a>.</p>",
         "<h2>Riziká, ktoré by ste mali poznať</h2>",
-        "<ul><li><strong>Volatilita.</strong> Cena môže v priebehu mesiacov klesnúť na polovicu. Držte len toľko, koľko dokážete udržať aj počas veľkých výkyvov.</li><li><strong>Nezvratnosť.</strong> Odoslané transakcie sa nedajú vrátiť a stratený kľúč zvyčajne znamená stratené mince.</li><li><strong>Podvody.</strong> Nikto dôveryhodný od vás nebude pýtať seed frázu, sľubovať zaručené výnosy ani vás súriť. Buďte obzvlášť opatrní pri „krypto“ ponukách, ktoré nie sú Bitcoin.</li><li><strong>Dane a pravidlá.</strong> Zisky sú vo väčšine európskych krajín zdaniteľné a poskytovatelia musia dodržiavať MiCA a pravidlá proti praniu špinavých peňazí. Pozrite si naše <a href=\"/bitcoin-tax/\">daňové návody podľa krajín</a>.</li></ul>",
+        "<ul><li><strong>Volatilita.</strong> Cena môže v priebehu mesiacov klesnúť na polovicu. Držte len toľko, koľko dokážete udržať aj počas veľkých výkyvov.</li><li><strong>Nezvratnosť.</strong> Odoslané transakcie sa nedajú vrátiť a stratený kľúč zvyčajne znamená stratené mince.</li><li><strong>Podvody.</strong> Nikto dôveryhodný od vás nebude žiadať seed frázu, sľubovať zaručené výnosy ani vás súriť. Buďte obzvlášť opatrní pri „krypto“ ponukách, ktoré nie sú Bitcoin.</li><li><strong>Dane a pravidlá.</strong> Zisky sú vo väčšine európskych krajín zdaniteľné a poskytovatelia musia dodržiavať MiCA a pravidlá proti praniu špinavých peňazí. Pozrite si naše <a href=\"/bitcoin-tax/\">daňové návody podľa krajín</a>.</li></ul>",
         "<h2>Bitcoin v Európe</h2>",
         "<p>Odkedy nadobudlo účinnosť nariadenie EÚ o trhoch s kryptoaktívami (MiCA), firmy, ktoré v EÚ ponúkajú služby kryptoaktív, potrebujú povolenie národného regulátora a musia dodržiavať pravidlá proti praniu špinavých peňazí vrátane overovania totožnosti. Od roku 2026 navyše smernica DAC8 ukladá týmto poskytovateľom povinnosť hlásiť transakcie klientov daňovým úradom. Držať bitcoin vo vlastnej úschove je legálne v celej EÚ, no daňové zaobchádzanie sa výrazne líši: niektoré krajiny dlhodobé držanie oslobodzujú, iné zdaňujú každý predaj či výmenu. Pred predajom alebo platbou si overte pravidlá vo svojej krajine.</p>",
         "<p>Keď budete pripravení nakúpiť, porovnajte regulovaných partnerov na našej stránke <a href=\"/buy-bitcoin.html\">Kúpiť Bitcoin</a>. Táto stránka má vzdelávací charakter a nie je investičným poradenstvom.</p>"
@@ -279,10 +279,10 @@
       "title": "Súkromie v Bitcoine: nástroje a návody | Virtuse",
       "description": "Nástroje a návody na ochranu vášho súkromia ako bitcoinera v Európe, od súkromia v sieti po opakované použitie adries. Legálne a prakticky.",
       "intro": "Súkromie vás chráni pred krádežou, profilovaním a cielenými podvodmi. Tieto nástroje a návody vám pomôžu udržať vašu aktivitu v Bitcoine aj bežné prehliadanie webu v súkromí, v medziach zákona.",
-      "legalNote": "Táto stránka je o legálnom súkromí: o ochrane vašich osobných a finančných údajov pred zločincami, obchodníkmi s dátami a zbytočným odhalením. Nikomu nepomáha obchádzať pravidlá proti praniu špinavých peňazí, sankcie ani daňové povinnosti. Pozrite si našu <a href=\"/aml-compliance.html\">stránku AML a compliance</a>. Zaujíma vás, ako Virtuse narába s vašimi údajmi? To je naša <a href=\"/privacy-policy.html\">ochrana osobných údajov</a>.",
+      "legalNote": "Táto stránka je o legálnom súkromí: o ochrane vašich osobných a finančných údajov pred zločincami, obchodníkmi s dátami a zbytočným odhalením. Nikomu nepomáha obchádzať pravidlá proti praniu špinavých peňazí, sankcie ani daňové povinnosti. Pozrite si našu <a href=\"/aml-compliance.html\">stránku AML a compliance</a>. Zaujíma vás, ako Virtuse narába s vašimi údajmi? Prečítajte si naše <a href=\"/privacy-policy.html\">zásady ochrany osobných údajov</a>.",
       "related": [
         "Úschova: majte svoj Bitcoin v bezpečí",
-        "Nástroje pre vývojárov v Bitcoine",
+        "Nástroje pre vývojárov na Bitcoine",
         "AML a compliance vo Virtuse"
       ],
       "h1Accent": ", v medziach zákona."
@@ -319,7 +319,7 @@
       "nav": "Pre vývojárov",
       "navDesc": "Knižnice a SDK",
       "h1": "Nástroje pre vývojárov",
-      "title": "Nástroje a knižnice pre vývojárov v Bitcoine | Virtuse",
+      "title": "Nástroje a knižnice pre vývojárov na Bitcoine | Virtuse",
       "description": "Knižnice, SDK a newslettre na vývoj nad Bitcoinom a Lightningom, vybrané pre vývojárov a tímy v Európe.",
       "intro": "Knižnice, SDK, testovacie prostredia a čítanie pre vývojárov, ktorí stavajú na Bitcoine a Lightningu. Na prvom mieste open source, viaceré projekty udržiavajú európske tímy.",
       "related": [
@@ -337,7 +337,7 @@
       "description": "Kde nájsť prácu vo firmách zameraných iba na Bitcoin v Európe aj na diaľku, od vývoja po marketing a podporu.",
       "intro": "Kde nájsť prácu v Bitcoine: pracovné portály firiem zameraných iba na Bitcoin, plus granty, štipendiá a vzdelávacie programy pre vývojárov. Pracovné ponuky sami nezverejňujeme; každý odkaz vedie k zdroju.",
       "related": [
-        "Nástroje pre vývojárov v Bitcoine",
+        "Nástroje pre vývojárov na Bitcoine",
         "Bitcoinové konferencie v Európe",
         "Spriatelené bitcoinové projekty"
       ],
@@ -349,7 +349,7 @@
       "h1": "Spriatelené bitcoinové projekty",
       "title": "Spriatelené projekty zamerané iba na Bitcoin | Virtuse",
       "description": "Nezávislé projekty, adresáre a vzdelávatelia zameraní iba na Bitcoin, ktorých si vážime a odporúčame. Nekomerčné, ručne vybrané.",
-      "intro": "Nezávislé, nekomerčné projekty zamerané iba na Bitcoin, ktorých si vážime: adresáre, vzdelávatelia a komunity, ktoré s nami zdieľajú názor, že Bitcoin stačí. Komerčných partnerov tu neuvádzame; nájdete ich iba v Partner Finder.",
+      "intro": "Nezávislé, nekomerčné projekty zamerané iba na Bitcoin, ktorých si vážime: adresáre, vzdelávatelia a komunity, ktoré s nami zdieľajú názor, že Bitcoin stačí. Komerčných partnerov tu neuvádzame; nájdete ich iba v nástroji Partner Finder.",
       "partnerNote": "Hľadáte regulovaných partnerov na nákup, úschovu alebo pôžičku? Použite <a href=\"/concierge.html?utm_source=concierge&amp;utm_medium=ecosystem\">Partner Finder</a>.",
       "related": [
         "Hľadáte regulovaných partnerov? Použite Partner Finder",
@@ -364,7 +364,7 @@
       "h1": "Zaradenie do ekosystému",
       "title": "Zaradenie do bitcoinového ekosystému | Virtuse",
       "description": "Ako môže projekt zameraný iba na Bitcoin požiadať o zaradenie do ekosystému Virtuse. Ručné posúdenie, jasné kritériá, označené platené miesta.",
-      "intro": "Adresár Bitcoinový ekosystém Virtuse zostavujeme ručne. Automatické prihlásenia neprijímame. Ak si myslíte, že sem váš projekt patrí, napíšte nám e-mail alebo pošlite formulár nižšie. Každú žiadosť posudzujeme osobne a môžeme ju zamietnuť aj bez uvedenia dôvodu.",
+      "intro": "Adresár „Bitcoinový ekosystém Virtuse“ zostavujeme ručne. Automatické prihlásenia neprijímame. Ak si myslíte, že sem váš projekt patrí, napíšte nám e-mail alebo pošlite formulár nižšie. Každú žiadosť posudzujeme osobne a môžeme ju zamietnuť aj bez uvedenia dôvodu.",
       "h1Accent": ": predstavte svoj projekt."
     }
   },

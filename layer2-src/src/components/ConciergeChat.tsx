@@ -530,10 +530,10 @@ function PlanEmailForm({ recs, answers, lang }: { recs: Recommendation[]; answer
       source="concierge"
       kind="plan"
       className="w-full max-w-sm sm:w-96"
-      title={t(lang, 'Get this list by email', 'Pošlite mi tento zoznam emailom', 'Pošlete mi tento seznam emailem')}
+      title={t(lang, 'Get this list by email', 'Pošlite mi tento zoznam e-mailom', 'Pošlete mi tento seznam emailem')}
       intro={t(lang,
         'One email with your criteria and these partners. We add you to no list unless you tick the box.',
-        'Jeden email s vašimi kritériami a týmito partnermi. Do žiadneho zoznamu vás nepridáme, ak nezaškrtnete políčko.',
+        'Jeden e-mail s vašimi kritériami a týmito partnermi. Do žiadneho zoznamu vás nepridáme, ak nezaškrtnete políčko.',
         'Jeden email s vašimi kritérii a těmito partnery. Do žádného seznamu vás nepřidáme, pokud nezaškrtnete políčko.')}
       buildPayload={() => {
         const payload: Record<string, unknown> = {
