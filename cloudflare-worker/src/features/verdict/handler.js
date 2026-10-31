@@ -2,7 +2,8 @@
 //
 // Order: JSON -> honeypot -> text length -> open? -> monthly AI budget ->
 // per-IP daily limit -> Claude (one retry if the answer reads like advice) ->
-// record the spend -> free view (or the full report on staging).
+// record the spend -> free view (or the full report on staging). With payments
+// on (verdict-pay/), the free view carries { pay: true, rid } for checkout.
 //
 // Secrets: ANTHROPIC_API_KEY (no key -> 503). Vars: VERDICT_ENABLED = "1"
 // opens it (never decided by the Origin header, which any script can set; the
@@ -10,7 +11,7 @@
 // returns the full report on request (staging Worker only);
 // VERDICT_TAX_MODULE = "1" shows the one-line country tax rule (lawyer sign-off
 // first, A§9); VERDICT_CHECKOUT = "1" switches the report card from the waitlist
-// to checkout (after Stripe); VERDICT_MONTHLY_CAP_EUR (default 50); VERDICT_EFFORT (default "low": as accurate as medium in the test set, faster and cheaper; Ras 2026-10-16).
+// to checkout (on by itself once payments are on, see verdict-pay/domain.js); VERDICT_MONTHLY_CAP_EUR (default 50); VERDICT_EFFORT (default "low": as accurate as medium in the test set, faster and cheaper; Ras 2026-10-16).
 // KV: RATE_LIMIT_KV holds the per-IP counter and the month's spend.
 
 import { clientIp, readJson } from '../../http/request.js';
@@ -19,10 +20,12 @@ import { sha256Hex } from '../../shared/crypto.js';
 import { createSpendLedger } from './budget.js';
 import {
   LANGS, MAX_CHARS, TEXT, cleanProfile, effectiveProfile, freeView, looksLikeAdvice, redact, reportPreviewAllowed,
-  reportView, scoreVerdict,
+  reportView, scoreVerdict, verdictOpts,
 } from './domain.js';
 import { PER_IP_RECALC_PER_DAY, perIpPerDay } from './limits.js';
 import { costOf } from './model.js';
+import { paymentsOn } from '../verdict-pay/domain.js';
+import { createPayStore, newRid } from '../verdict-pay/store.js';
 
 // Short error texts in the request language.
 const ERR = {
@@ -40,7 +43,7 @@ const ERR = {
 const IP_WINDOW_SECONDS = 60 * 60 * 24;
 
 // AI Act art. 50(2) / legal pack 8.2.4: machine-readable marking of AI output.
-function aiJson(body, origin) {
+export function aiJson(body, origin) {
   const r = json(200, { ...body, ai_generated: true }, origin);
   r.headers.set('X-AI-Generated', 'true');
   return r;
@@ -98,9 +101,14 @@ export async function handleVerdict({ request, env, origin, now, services }) {
     await ledger.record(spent + cost);
     if (!result) return json(502, { error: ERR.advice[lang] }, origin);
     if (result.declined) return aiJson(result, origin);
-    const report = body.report === true && reportPreviewAllowed(env);
-    const opts = { lang, taxModule: env.VERDICT_TAX_MODULE === '1', checkout: env.VERDICT_CHECKOUT === '1' };
-    return aiJson(report ? reportView(result, eff, opts) : freeView(result, eff, opts), origin);
+    const opts = verdictOpts(env, lang);
+    if (body.report === true && reportPreviewAllowed(env)) return aiJson(reportView(result, eff, opts), origin);
+    if (!paymentsOn(env)) return aiJson(freeView(result, eff, opts), origin);
+    // Payments on: the scored result is kept 24 h under a random id, so the
+    // paid report can be shown after Stripe without running the model again.
+    const rid = newRid();
+    await createPayStore(env.RATE_LIMIT_KV).storeResult(rid, result, eff, lang);
+    return aiJson({ ...freeView(result, eff, opts), pay: true, rid }, origin);
   } catch (e) {
     console.error(e);
     return json(502, { error: ERR.fail[lang] }, origin);

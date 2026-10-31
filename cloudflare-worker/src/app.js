@@ -14,6 +14,7 @@ import { handleSubscribe } from './features/newsletter/subscribe-handler.js';
 import { handleUnsubscribe } from './features/newsletter/unsubscribe-handler.js';
 import { handlePulse } from './features/pulse/handler.js';
 import { handleSend } from './features/send/handler.js';
+import { handleCheckout, handleReport, handleStripeWebhook } from './features/verdict-pay/handler.js';
 import { handleVerdict } from './features/verdict/handler.js';
 import { askClaude } from './features/verdict/model.js';
 import { handleVersion } from './features/version/handler.js';
@@ -64,6 +65,8 @@ const route = pipeline(
   on(ANY, ['/pulse.json', '/pulse/rollback'], (c) => handlePulse(c.request, c.env, c.origin, c.path)),
   // Read-only WordPress proxy for the Stories build on GitHub runners (no Origin).
   on(ANY, prefix(WP_PREFIX + '/'), (c) => handleWpProxy(c.request, c.url, c.fetch)),
+  // Stripe calls it (no Origin); the signature is the proof.
+  on(ANY, '/verdict/stripe-webhook', handleStripeWebhook),
   on(['OPTIONS'], ANY, (c) => preflight(c.origin)),
   // Clicked from an email client: no Origin; the HMAC token is the proof.
   on(['GET'], '/unsubscribe', handleUnsubscribe),
@@ -72,6 +75,8 @@ const route = pipeline(
   postOnly,
   on(['POST'], '/send', handleSend),
   on(['POST'], '/verdict', handleVerdict),
+  on(['POST'], '/verdict/checkout', handleCheckout),
+  on(['POST'], '/verdict/report', handleReport),
   on(['POST'], '/ecosystem-apply', handleEcosystemApply),
   on(['POST'], '/waitlist', handleWaitlist),
   on(['POST'], '/subscribe', handleSubscribe),

@@ -116,6 +116,7 @@
       once: 'Jednorazovo', noSub: 'Žiadne predplatné.', waitNote: 'Platby ešte nespúšťame. Nechajte e-mail a dáme vám vedieť, keď sa report otvorí.',
       wantPh: 'Váš e-mail', wantBtn: 'Dajte mi vedieť', wantOk: 'Ste na zozname. Napíšeme vám raz, keď sa report otvorí.', wantBad: 'Zadajte platný e-mail.',
       wantNote: 'Uložíme len váš e-mail, text rozhodnutia nie. Odhlásiť sa môžete jedným kliknutím z e-mailu.', privacy: 'Súkromie',
+      payGo: 'Presmerúvame na platbu…', paidBadge: 'Celý report', paidNote: 'Uložte si report ako PDF. Táto stránka ho ukáže ešte 30 minút.', repLoad: 'Otvárame váš report…', usedNote: 'Tento report už bol otvorený. Každá platba otvorí jeden report, preto si ho pri otvorení uložte ako PDF.', payFailH: 'Report sa nepodarilo otvoriť', canceled: 'Platba bola zrušená. Výsledok máte stále tu.',
       prevBadge: 'Náhľad reportu', prevNote: 'Náhľad reportu na testovanie (?report=1). Bez ?report=1 vidíte to, čo návštevník: verdikt, 3 kroky, 2 oblasti, partnerov a ceny.',
       allH: 'Všetkých 10 signálov', missAllH: 'Chýbajúce otázky', planH: 'Plán krokov', planP: 'Signály pod 7 bodov, od najslabšieho. Každý s nástrojom, kde ho doplníte.', planNone: 'Všetky signály majú aspoň 7 bodov.', pdf: 'Uložiť ako PDF', pts: ' b.',
       R: {
@@ -216,6 +217,7 @@
       once: 'One-time', noSub: 'No subscription.', waitNote: "Payments aren't open yet. Leave your email and we'll tell you when the report opens.",
       wantPh: 'Your email', wantBtn: 'Let me know', wantOk: "You're on the list. We'll write once, when the report opens.", wantBad: 'Enter a valid email.',
       wantNote: 'We keep only your email, not your decision text. Leave with one click from the email.', privacy: 'Privacy',
+      payGo: 'Taking you to payment…', paidBadge: 'Full report', paidNote: 'Save the report as a PDF. This page shows it for 30 more minutes.', repLoad: 'Opening your report…', usedNote: 'This report has already been opened. Each payment opens one report, so save it as a PDF when you open it.', payFailH: 'We could not open the report', canceled: 'The payment was canceled. Your result is still here.',
       prevBadge: 'Report preview', prevNote: 'Report preview for testing (?report=1). Without ?report=1 you see what a visitor sees: the verdict, 3 steps, 2 areas, partners and pricing.',
       allH: 'All 10 signals', missAllH: 'Missing questions', planH: 'Step-by-step plan', planP: 'Signals under 7 points, weakest first. Each with the tool where you fill it in.', planNone: 'Every signal has at least 7 points.', pdf: 'Save as PDF', pts: ' pts',
       R: {
@@ -316,6 +318,7 @@
       once: 'Разово', noSub: 'Без подписки.', waitNote: 'Платежи пока не запущены. Оставьте e-mail, и мы сообщим, когда отчёт откроется.',
       wantPh: 'Ваш e-mail', wantBtn: 'Сообщите мне', wantOk: 'Вы в списке. Мы напишем один раз, когда отчёт откроется.', wantBad: 'Введите действительный e-mail.',
       wantNote: 'Мы сохраним только ваш e-mail, но не текст решения. Отписаться можно одним кликом из письма.', privacy: 'Конфиденциальность',
+      payGo: 'Переходим к оплате…', paidBadge: 'Полный отчёт', paidNote: 'Сохраните отчёт в PDF. Эта страница покажет его ещё 30 минут.', repLoad: 'Открываем ваш отчёт…', usedNote: 'Этот отчёт уже был открыт. Каждая оплата открывает один отчёт, поэтому сохраните его в PDF при открытии.', payFailH: 'Не удалось открыть отчёт', canceled: 'Оплата отменена. Ваш результат по-прежнему здесь.',
       prevBadge: 'Предпросмотр отчёта', prevNote: 'Предпросмотр отчёта для тестирования (?report=1). Без ?report=1 вы видите то же, что посетитель: вердикт, 3 шага, 2 области, партнёров и цены.',
       allH: 'Все 10 сигналов', missAllH: 'Недостающие вопросы', planH: 'План шагов', planP: 'Сигналы ниже 7 баллов, от самого слабого. Каждый с инструментом, где его дополнить.', planNone: 'У всех сигналов не меньше 7 баллов.', pdf: 'Сохранить как PDF', pts: ' б.',
       R: {
@@ -355,6 +358,8 @@
   var RET = null; // edit from the final check: Continue returns there
   var panel = document.getElementById('panel'), back = document.getElementById('back'), stepsEl = document.getElementById('steps');
   var RESULT = null, i = 0;
+  // Return from Stripe Checkout (verdict-pay.js in the Worker).
+  var QS = new URLSearchParams(location.search), PAID_SID = QS.get('session_id'), CANCELED = QS.get('canceled') === '1';
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function quote(t) { var q = { sk: ['„', '“'], ru: ['«', '»'] }[LANG] || ['“', '”']; return q[0] + esc(t) + q[1]; }
@@ -766,7 +771,7 @@
   }
   function headBlock(r) {
     var L = r.level, col = LEVELCOL[L.id] || 'var(--orange)';
-    return '<div class="res-head lvl-' + L.id + '" style="--b:' + col + '"><div><div class="eyebrow"><i></i>' + (r.report ? R.pdfTitle + ' · ' + STR.prevBadge : STR.resEb) + ' · ' + esc(A.name || goalLabel()) + '</div>' +
+    return '<div class="res-head lvl-' + L.id + '" style="--b:' + col + '"><div><div class="eyebrow"><i></i>' + (r.report ? R.pdfTitle + ' · ' + (r.paid ? STR.paidBadge : STR.prevBadge) : STR.resEb) + ' · ' + esc(A.name || goalLabel()) + '</div>' +
       '<span class="pill">' + (L.id === 'redflag' ? FLAG + ' ' : '') + esc(V.levelPill[L.id]) + '</span>' +
       '<h2 class="verdict">' + esc(L.headline) + '</h2><p class="vwhy">' + esc(L.why) + (L.more ? ' <span class="dim">' + V.more(L.more) + '</span>' : '') + '</p>' +
       '<p class="quote">' + quote(A.text.slice(0, 160) + (A.text.length > 160 ? '…' : '')) + '</p></div>' +
@@ -1215,7 +1220,7 @@
       push({ event: 'consultation_click', verdict_lang: LANG, verdict_band: r.band && r.band.id, verdict_level: r.level && r.level.id, tier: r.report ? 'report' : 'free' });
       if (window.VirtuseConsultation) window.VirtuseConsultation.open(LANG);
     }; });
-    panel.parentNode.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = function () { A.text = ''; RESULT = null; go(1); }; });
+    panel.parentNode.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = startOver; });
     panel.querySelectorAll('[data-step]').forEach(function (b) { b.addEventListener('click', function () { push({ event: 'verdict_step_click', verdict_lang: LANG, step: b.dataset.step, verdict_level: r.level && r.level.id }); }); });
     panel.querySelectorAll('[data-pdf]').forEach(function (b) { b.onclick = downloadPdf; });
     var sh = document.getElementById('pfShow');
@@ -1227,6 +1232,61 @@
     }
     spot();
   }
+  function startOver() {
+    try { sessionStorage.removeItem('vb-verdict-pay'); } catch (e) {}
+    if (PAID_SID || CANCELED) { history.replaceState(null, '', location.pathname); PAID_SID = null; CANCELED = false; }
+    A.text = ''; RESULT = null; go(1);
+  }
+  // "Unlock" in checkout mode: the Worker creates a Stripe Checkout Session
+  // for this scored result (rid) and we go to Stripe's page.
+  function bindPay() {
+    panel.parentNode.querySelectorAll('[data-checkout]').forEach(function (b) {
+      b.onclick = function (e) {
+        if (e) e.preventDefault();
+        if (!RESULT || !RESULT.rid) return;
+        var label = b.innerHTML, msg = b.parentNode.querySelector('.vx-paymsg');
+        if (!msg) { msg = document.createElement('p'); msg.className = 'small vx-paymsg'; msg.setAttribute('aria-live', 'polite'); b.parentNode.appendChild(msg); }
+        b.disabled = true; b.textContent = STR.payGo; msg.textContent = '';
+        push({ event: 'verdict_checkout', verdict_lang: LANG, verdict_level: RESULT.level && RESULT.level.id });
+        fetch(WORKER + '/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ rid: RESULT.rid, lang: LANG }) })
+          .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+          .catch(function () { return { ok: false, d: { error: STR.network } }; })
+          .then(function (x) {
+            if (x.ok && x.d && x.d.url) {
+              try { sessionStorage.setItem('vb-verdict-pay', JSON.stringify({ A: A, R: RESULT })); } catch (e) {}
+              location.href = x.d.url;
+            } else { b.disabled = false; b.innerHTML = label; msg.textContent = (x.d && x.d.error) || STR.error; }
+          });
+      };
+    });
+  }
+  // Back from Stripe: ?session_id=... asks the Worker for the paid report;
+  // ?canceled=1 shows the free result again.
+  function paidReturn() {
+    var saved = null;
+    try { saved = JSON.parse(sessionStorage.getItem('vb-verdict-pay') || 'null'); } catch (e) {}
+    if (saved && saved.A) Object.keys(saved.A).forEach(function (k) { A[k] = saved.A[k]; });
+    i = at('result'); stepper(); back.hidden = true;
+    if (CANCELED) {
+      push({ event: 'verdict_checkout_canceled', verdict_lang: LANG });
+      if (saved && saved.R) { RESULT = saved.R; showResult(); } else go(0);
+      return;
+    }
+    panel.innerHTML = '<div class="load"><div class="spin" aria-hidden="true"></div><h2>' + STR.repLoad + '</h2></div>';
+    fetch(WORKER + '/report', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ session_id: PAID_SID, lang: LANG }) })
+      .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+      .catch(function () { return { ok: false, d: { error: STR.network } }; })
+      .then(function (x) {
+        if (x.ok && x.d && x.d.level) {
+          RESULT = x.d;
+          push({ event: x.d.reportUsed ? 'verdict_report_used' : 'verdict_report_paid', verdict_lang: LANG });
+          showResult();
+        } else {
+          panel.innerHTML = '<h2>' + STR.payFailH + '</h2><p class="sub">' + esc((x.d && x.d.error) || STR.error) + '</p><div class="foot" style="margin-top:18px"><button class="vf-btn" data-again>' + V.filler.recheck + '</button></div>';
+          panel.querySelectorAll('[data-again]').forEach(function (b) { b.onclick = startOver; });
+        }
+      });
+  }
   function showResult() {
     var r = RESULT; if (!r) { go(at('review')); return; }
     var again = '<div class="foot" style="margin-top:18px"><button class="ghost" id="again">' + STR.again + '</button></div>';
@@ -1237,9 +1297,10 @@
     }
     if (!r.level || !r.steps || !r.areas) { panel.innerHTML = '<h2>' + STR.failH + '</h2><p class="sub">' + STR.error + '</p>' + again; document.getElementById('again').onclick = function () { go(at('review')); }; return; }
     if (r.report) { showReport(r); return; }
-    panel.innerHTML = '<div data-ai-generated="true" class="vx">' + decisionBlock(r) + foundBlock(r, 'result') + twoBlock(r, 'result') + waitingBlock(r) +
+    var note = r.reportUsed ? STR.usedNote : CANCELED ? STR.canceled : '';
+    panel.innerHTML = '<div data-ai-generated="true" class="vx">' + (note ? '<p class="warn no-print">' + note + '</p>' : '') + decisionBlock(r) + foundBlock(r, 'result') + twoBlock(r, 'result') + waitingBlock(r) +
       partnersBlock(r, 'verdict') + fullBlock(r) + payBlock(r) + trustBlock() + faqBlock(r) + legal(r) + againFoot(false) + '</div>' + sticky();
-    bindCommon(); bindWant(); bindAdds(); PREV = null; loadPartners(r, 'verdict');
+    bindCommon(); bindWant(); bindPay(); bindAdds(); PREV = null; loadPartners(r, 'verdict');
   }
 
   // Interest in the full report: email only, no decision text.
@@ -1289,7 +1350,7 @@
   function showReport(r) {
     var groups = ['risk', 'taxc', 'plan'];
     panel.innerHTML = '<div data-ai-generated="true" class="report">' +
-      '<p class="warn no-print">' + STR.prevNote + '</p><div class="vx-pdfbar no-print"><button class="vf-btn solid" data-pdf>' + V.pdfDl + '</button><button class="vf-btn" data-pdf>' + V.pdfPrint + '</button><button class="vf-btn" data-again>' + V.filler.recheck + '</button></div>' + headBlock(r) + stepsBlock(r, 'report') +
+      '<p class="warn no-print">' + (r.paid ? STR.paidNote : STR.prevNote) + '</p><div class="vx-pdfbar no-print"><button class="vf-btn solid" data-pdf>' + V.pdfDl + '</button><button class="vf-btn" data-pdf>' + V.pdfPrint + '</button><button class="vf-btn" data-again>' + V.filler.recheck + '</button></div>' + headBlock(r) + stepsBlock(r, 'report') +
       groups.map(function (g) {
         var ss = r.areas.filter(function (a) { return GROUP[a.id] === g; });
         return '<div class="sec">' + R.group[g] + '</div><div class="sig2">' + ss.map(function (a) { return areaCard(a, 'report', r.steps); }).join('') + '</div>';
@@ -1297,8 +1358,8 @@
       '<div class="sec">' + V.missAllH + '</div><div class="faq">' + (r.missing.length ? r.missing.map(function (m, n) { return '<div class="vf-card q"><b>' + (n + 1) + '</b><p>' + esc(m) + '</p></div>'; }).join('') : '<p class="sub sm">' + STR.nothing + '</p>') + '</div>' +
       partnersBlock(r, 'verdict_report') +
       '<p class="sub sm no-print consult-line">' + V.consultSmall + ' <a href="#" data-consult>' + V.consultLink + '</a></p>' +
-      '<div class="sec badge">' + V.visitorBadge + '</div>' + fullBlock(r) + payBlock(r) + trustBlock() + faqBlock(r) + legal(r) + againFoot(true) + '</div>';
-    bindCommon(); bindWant(); loadPartners(r, 'verdict_report');
+      (r.paid ? '' : '<div class="sec badge">' + V.visitorBadge + '</div>' + fullBlock(r) + payBlock(r) + trustBlock() + faqBlock(r)) + legal(r) + againFoot(true) + '</div>';
+    bindCommon(); bindWant(); bindPay(); loadPartners(r, 'verdict_report');
   }
 
   // Cursor spotlight (same effect as site-v2.js, for cards rendered later).
@@ -1327,7 +1388,8 @@
   if (handed) { A.text = handed.slice(0, 1200); A.name = ''; src = 'cfo'; saveText(); }
   build();
   push({ event: 'verdict_start', verdict_lang: LANG, source: src });
-  if (handed) go(at('goal'));
+  if (PAID_SID || CANCELED) paidReturn();
+  else if (handed) go(at('goal'));
   else if (A.goal) {
     // Prefilled: the final check when everything is answered, else the first gap.
     var gap = KEYS().filter(function (k) { return !A[k]; })[0];

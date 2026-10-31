@@ -6,8 +6,13 @@ compatibility_date = "2026-08-14"
 # Free Verdict open, monthly AI cost cap in EUR. Not here on purpose:
 # VERDICT_REPORT_PREVIEW (the 14 EUR report stays behind the waitlist),
 # VERDICT_TAX_MODULE (country tax line waits for the lawyer), WAITLIST_DRY_RUN, SUBSCRIBE_DRY_RUN,
-# VERDICT_PER_IP_BOOST (staging test only), VERDICT_CHECKOUT (Stripe).
-vars = { VERDICT_ENABLED = "1", VERDICT_MONTHLY_CAP_EUR = "15" }
+# VERDICT_PER_IP_BOOST (staging test only), STRIPE_TEST_ONLY (staging only).
+# VERDICT_PAYMENTS = "1": the 14 EUR report is paid with Stripe Checkout (live,
+# Ras + lawyer approved 2026-10-31). It stays off until all three secrets exist
+# on this Worker (no --env): STRIPE_SECRET_KEY (rk_live_ preferred),
+# STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_ID_VERDICT. Webhook: <worker URL>/verdict/stripe-webhook.
+# STRIPE_AUTOMATIC_TAX / STRIPE_INVOICE: off until the accountant decides.
+vars = { VERDICT_ENABLED = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_PAYMENTS = "1" }
 
 # Created via: npx wrangler kv namespace create RATE_LIMIT_KV
 # Then paste the id it prints below.
@@ -32,14 +37,18 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 # calls https://virtuse-newsletter-staging.virtuse-ai.workers.dev, never the
 # production Worker. Verdict is open here and returns the full report preview;
 # production decides both by its own vars, never by the Origin header.
-#   npx wrangler deploy --env staging
+#   npm run deploy:staging   (= node build.mjs && wrangler deploy --env staging)
 #   npx wrangler secret put ANTHROPIC_API_KEY --env staging   (and UNSUB_SECRET, RESEND_* if /waitlist is tested here)
 # WAITLIST_DRY_RUN: staging sign-ups are validated but not stored or e-mailed (2026-10-27).
 # SUBSCRIBE_DRY_RUN: the same for Brief sign-ups (POST /subscribe), 2026-10-28; staging.virtuse.com posts them here.
 # VERDICT_PER_IP_BOOST: 50 new verdicts per IP on that UTC day only (Ras, testing); ends by itself.
+# VERDICT_PAYMENTS + STRIPE_TEST_ONLY: the full report needs a paid Stripe TEST
+# Checkout session (EUR 14); a live key here switches payments off. With payments
+# on, VERDICT_REPORT_PREVIEW is ignored. Secrets, each with --env staging (never
+# in chat, git or this file): STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_ID_VERDICT.
 [env.staging]
 name = "virtuse-newsletter-staging"
-vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27" }
+vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1" }
 
 [[env.staging.kv_namespaces]]
 binding = "RATE_LIMIT_KV"

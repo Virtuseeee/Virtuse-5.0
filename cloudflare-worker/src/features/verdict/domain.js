@@ -14,6 +14,8 @@
 // This file is the domain: rubric, prompt, scoring and the views. No I/O;
 // the Claude call is in model.js, the request flow in handler.js.
 
+import { paymentsOn } from '../verdict-pay/domain.js';
+
 import TAX from '../../generated/tax-facts.js';
 import {
   AREA_COPY, VERBS, verdictLevel, nextSteps, areaView, toolKeyFor, tool as toolOf, pricing,
@@ -519,8 +521,13 @@ export function reportView(full, profile = {}, opts = {}) {
   };
 }
 
+export function verdictOpts(env, lang) {
+  return { lang, taxModule: env.VERDICT_TAX_MODULE === '1', checkout: env.VERDICT_CHECKOUT === '1' || paymentsOn(env) };
+}
+
+// The unpaid preview is never on together with payments.
 export function reportPreviewAllowed(env) {
-  return env.VERDICT_REPORT_PREVIEW === '1';
+  return env.VERDICT_REPORT_PREVIEW === '1' && !paymentsOn(env);
 }
 
 export function looksLikeAdvice(result) {

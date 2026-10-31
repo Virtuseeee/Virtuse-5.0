@@ -9,6 +9,7 @@
 // POST /waitlist         Virtuse CFO waitlist       features/waitlist/
 // POST /ecosystem-apply  "Get your project featured"   features/ecosystem/
 // POST /verdict          Virtuse CFO · Verdict      features/verdict/
+// POST /verdict/checkout, /verdict/report, /verdict/stripe-webhook   paid report (Stripe)   features/verdict-pay/
 // GET|PUT /pulse.json, POST /pulse/rollback   Brief Pulse   features/pulse/
 // GET  /wp/...           read-only WordPress proxy  features/wp-proxy/
 // GET  /version          live build commit          features/version/

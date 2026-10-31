@@ -308,6 +308,15 @@ npx wrangler secret put ANTHROPIC_API_KEY
 
 On launch day: `npx wrangler secret put VERDICT_ENABLED` and type `1` (or set it in the dashboard). Optional: `VERDICT_MONTHLY_CAP_EUR`, `VERDICT_EFFORT` (default `low`; `medium` / `high`).
 
+### Paid full report (Stripe Checkout, €14 one-time)
+
+Code in `src/features/verdict-pay/` and `src/infra/stripe.js`. Routes: `POST /verdict/checkout` (`{rid, lang}` → Checkout URL), `POST /verdict/stripe-webhook` (signature-checked; events `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `charge.refunded`), `POST /verdict/report` (`{session_id}` → full report; 402 unpaid or refunded; after 30 minutes from first opening only the free view).
+
+- On only when `VERDICT_PAYMENTS = "1"` and all three secrets are set: `STRIPE_SECRET_KEY` (prefer a restricted `rk_live_…` key), `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_ID_VERDICT`. With payments on, `/verdict` keeps the scored result (not the decision text) 24 hours in KV under a random `rid`, and the report preview is off.
+- `STRIPE_TEST_ONLY = "1"` (staging) refuses live keys.
+- Off until the accountant decides: `STRIPE_AUTOMATIC_TAX = "1"`, `STRIPE_INVOICE = "1"`.
+- Secrets in your own terminal, production without `--env`, staging with `--env staging`: `npx wrangler secret put STRIPE_SECRET_KEY` (same for the other two).
+
 Test set against the real API (costs money, about $0.05 a call; the runner prints an estimate and needs `--yes`):
 
 ```bash
