@@ -6,7 +6,8 @@
     "build": "node build.mjs",
     "test": "node build.mjs > /dev/null && node --test test/*.test.mjs",
     "dev": "node build.mjs && wrangler dev",
-    "deploy": "node build.mjs && wrangler deploy"
+    "deploy": "node build.mjs && wrangler deploy",
+    "deploy:staging": "node build.mjs && wrangler deploy --env staging"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"
