@@ -35,7 +35,7 @@
 .story-byline strong{color:var(--text);font-weight:600}
 
 .story-figure{margin:28px 0 0}
-.story-figure img{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg-band);border:1px solid var(--line)}
+.story-figure img{width:100%;height:auto;max-height:560px;object-fit:cover;background:var(--bg-band);border:1px solid var(--line)}
 .story-figure figcaption{margin-top:8px;font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint)}
 
 /* Body */
