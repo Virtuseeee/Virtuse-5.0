@@ -62,6 +62,11 @@ markers, so they coexist.
 `manifest.json` lists every generated folder; stories removed from WordPress
 get their folder deleted on the next run (only folders from the manifest).
 
+EN/SK hreflang pairs (2026-11-01): from `news/issues.json` (`slug` + `slug_sk`)
+and from `pairs.json`. WPML's translation link is not in the public REST API,
+so when an SK post is connected to its EN original in WPML, add the pair to
+`pairs.json` (EN slug, SK slug, both post ids) and rebuild.
+
 Removal guard (2026-11-01): before a folder is deleted, the build looks the
 story up on its own (slug, or post id for RU). If WordPress still has it
 published in the feed's category, the feed came back incomplete and the build
