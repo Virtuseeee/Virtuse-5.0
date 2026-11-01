@@ -22,7 +22,9 @@
  * (seo-ops/wp-mu-plugin/virtuse-story-canonical.php).
  *
  * Stories that disappear from WordPress get their folders removed; the list
- * of generated folders lives in stories-build/manifest.json.
+ * of generated folders lives in stories-build/manifest.json. Each one is first
+ * checked on its own, and the build stops instead if it is still published or
+ * if more than 5 would go at once (checkRemovals).
  *
  * At the end it runs hubs.mjs (offline): hub pages stories/, sk/stories/,
  * ru/stories/ (+ /page/<n>/), the hub breadcrumb and "Related tools and
@@ -117,6 +119,57 @@ async function fetchFeed(feed) {
     posts.push(...data);
   }
   return posts;
+}
+
+// ---- removal guard ---------------------------------------------------------
+// A feed that comes back short (WordPress or the proxy hiccups) would delete
+// pages of stories that still exist: on 1 Nov 2026 a run dropped a story
+// published that afternoon. Before any folder is removed, each missing story is
+// looked up on its own; if WordPress still has it published in the feed's
+// category, or if more than MAX_REMOVALS would go at once, the build stops
+// and changes nothing. STORIES_ALLOW_REMOVALS=1 skips the count limit (a real
+// bulk unpublish); the per-story check always runs.
+const MAX_REMOVALS = 5;
+
+function feedOf(storyPath) {
+  const lang = storyPath.startsWith('sk/') ? 'sk' : storyPath.startsWith('ru/') ? 'ru' : 'en';
+  return FEEDS.find((f) => f.lang === lang);
+}
+
+// true = still published in the feed's category; false = gone, unpublished or
+// moved to another category. Network and server errors are retried, then thrown.
+async function stillPublished(storyPath) {
+  const feed = feedOf(storyPath);
+  const key = storyPath.replace(/\/$/, '').split('/').pop();
+  const lang = feed.wpLang ? '&lang=' + feed.wpLang : '';
+  const url = feed.lang === 'ru' // RU folders are post ids, the others slugs
+    ? `${feed.api}/${encodeURIComponent(key)}?_fields=id,status,categories${lang}`
+    : `${feed.api}?slug=${encodeURIComponent(key)}&_fields=id,status,categories${lang}`;
+  for (let attempt = 1; ; attempt++) {
+    try {
+      const r = await fetch(url, { headers: { 'User-Agent': 'virtuse-stories-build' }, signal: AbortSignal.timeout(60000) });
+      if ([401, 403, 404, 410].includes(r.status)) return false;
+      if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + url);
+      const data = await r.json();
+      const posts = Array.isArray(data) ? data : [data];
+      return posts.some((p) => p.status === 'publish' && (p.categories || []).includes(feed.category));
+    } catch (e) {
+      if (attempt >= 3) throw new Error(`cannot check whether ${storyPath} is still published (${e.message}); nothing removed`);
+      await new Promise((ok) => setTimeout(ok, 10000 * attempt));
+    }
+  }
+}
+
+async function checkRemovals(removed) {
+  if (removed.length > MAX_REMOVALS && process.env.STORIES_ALLOW_REMOVALS !== '1')
+    throw new Error(`${removed.length} stories would be removed (limit ${MAX_REMOVALS}): ${removed.join(', ')}. ` +
+      'WordPress probably returned an incomplete list; nothing removed. If the stories really were unpublished, ' +
+      'run again with STORIES_ALLOW_REMOVALS=1');
+  const live = [];
+  for (const p of removed) if (await stillPublished(p)) live.push(p);
+  if (live.length)
+    throw new Error(`still published in WordPress but missing from its list: ${live.join(', ')}. ` +
+      'WordPress returned an incomplete list; nothing removed, try again later');
 }
 
 // ---- page building ---------------------------------------------------------
@@ -478,7 +531,9 @@ async function main() {
   // Remove folders of stories that are no longer in WordPress. Only paths
   // this script created earlier (manifest) are ever deleted.
   const keep = new Set(written);
+  // A story turned into a redirect (cleanup.json) is not written on purpose.
   const removed = previous.filter((p) => !keep.has(p));
+  await checkRemovals(removed.filter((p) => !CLEANUP.redirect[p]));
   for (const p of removed) {
     const dir = path.join(SITE, p);
     if (/^(?:(?:sk|ru)\/)?stories\/[^/]+\/$/.test(p) && fs.existsSync(dir)) fs.rmSync(dir, { recursive: true });

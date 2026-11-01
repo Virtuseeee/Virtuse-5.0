@@ -62,6 +62,15 @@ markers, so they coexist.
 `manifest.json` lists every generated folder; stories removed from WordPress
 get their folder deleted on the next run (only folders from the manifest).
 
+Removal guard (2026-11-01): before a folder is deleted, the build looks the
+story up on its own (slug, or post id for RU). If WordPress still has it
+published in the feed's category, the feed came back incomplete and the build
+stops with an error, changing nothing; the next run tries again. It also stops
+when more than 5 stories would go at once; for a real bulk unpublish run
+`STORIES_ALLOW_REMOVALS=1 node stories-build/build.mjs`. Why: on 1 Nov 2026 a
+push-triggered run got a list without a story published that afternoon and
+deleted its page from main (restored in `faacba05`).
+
 ## Hubs and related links (`hubs.mjs`, 2026-10-13)
 
 `build.mjs` ends by calling `buildHubs()` from `hubs.mjs`. It needs no
