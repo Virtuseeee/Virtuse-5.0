@@ -303,6 +303,7 @@
 -mkdir public_html/sk/stories/iransky-rial-sa-meni-na-prach-ste-si-isti-ze-vase-eura-necaka-rovnaky-osud
 -mkdir public_html/sk/stories/islamsky-jezis-ako-trojsky-kon-neverte-rozpravkam-o-kompatibilite
 -mkdir public_html/sk/stories/je-dolezite-vediet-co-je-mena-ako-sa-rodi-a-ako-umiera
+-mkdir public_html/sk/stories/je-november-najlepsi-mesiac-pre-bitcoin
 -mkdir public_html/sk/stories/jpmorgan-a-jane-street-v-akcii
 -mkdir public_html/sk/stories/kolko-penazi-by-vam-dokazalo-zasadne-zmenit-zivot
 -mkdir public_html/sk/stories/korporatny-bitcoin-ako-jeden-ceo-spustil-revoluciu-v-ochrane-majetku-firiem
@@ -524,6 +525,7 @@ put sk/stories/iransky-pad-mytus-o-sile-skoncil/index.html public_html/sk/storie
 put sk/stories/iransky-rial-sa-meni-na-prach-ste-si-isti-ze-vase-eura-necaka-rovnaky-osud/index.html public_html/sk/stories/iransky-rial-sa-meni-na-prach-ste-si-isti-ze-vase-eura-necaka-rovnaky-osud/index.html
 put sk/stories/islamsky-jezis-ako-trojsky-kon-neverte-rozpravkam-o-kompatibilite/index.html public_html/sk/stories/islamsky-jezis-ako-trojsky-kon-neverte-rozpravkam-o-kompatibilite/index.html
 put sk/stories/je-dolezite-vediet-co-je-mena-ako-sa-rodi-a-ako-umiera/index.html public_html/sk/stories/je-dolezite-vediet-co-je-mena-ako-sa-rodi-a-ako-umiera/index.html
+put sk/stories/je-november-najlepsi-mesiac-pre-bitcoin/index.html public_html/sk/stories/je-november-najlepsi-mesiac-pre-bitcoin/index.html
 put sk/stories/jpmorgan-a-jane-street-v-akcii/index.html public_html/sk/stories/jpmorgan-a-jane-street-v-akcii/index.html
 put sk/stories/kolko-penazi-by-vam-dokazalo-zasadne-zmenit-zivot/index.html public_html/sk/stories/kolko-penazi-by-vam-dokazalo-zasadne-zmenit-zivot/index.html
 put sk/stories/korporatny-bitcoin-ako-jeden-ceo-spustil-revoluciu-v-ochrane-majetku-firiem/index.html public_html/sk/stories/korporatny-bitcoin-ako-jeden-ceo-spustil-revoluciu-v-ochrane-majetku-firiem/index.html
