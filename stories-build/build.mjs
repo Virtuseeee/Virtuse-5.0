@@ -371,14 +371,17 @@ function stamp(date, locale) {
   return `${d} · ${p2(date.getUTCHours())}:${p2(date.getUTCMinutes())} UTC`;
 }
 
-// EN<->SK pairs for hreflang: an issue in news/issues.json may carry "slug_sk" next to its EN "slug".
+// EN<->SK pairs for hreflang: an issue in news/issues.json may carry "slug_sk" next to its EN "slug",
+// and stories-build/pairs.json lists posts connected as translations in WPML.
 // Unpaired stories list only themselves (+ x-default).
 const PAIRS = (() => {
   const m = {};
+  const add = (en, sk) => { m['en:' + en] = 'sk/stories/' + sk + '/'; m['sk:' + sk] = 'stories/' + en + '/'; };
   try {
     const d = JSON.parse(fs.readFileSync(path.join(SITE, 'news/issues.json'), 'utf8'));
-    for (const i of d.issues || []) if (i.slug && i.slug_sk) { m['en:' + i.slug] = 'sk/stories/' + i.slug_sk + '/'; m['sk:' + i.slug_sk] = 'stories/' + i.slug + '/'; }
+    for (const i of d.issues || []) if (i.slug && i.slug_sk) add(i.slug, i.slug_sk);
   } catch (e) { /* no pairs */ }
+  for (const p of JSON.parse(fs.readFileSync(path.join(HERE, 'pairs.json'), 'utf8')).pairs) add(p.en, p.sk);
   return m;
 })();
 function alternates(feed, post, storyPath) {

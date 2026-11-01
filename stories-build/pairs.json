@@ -1,0 +1,8 @@
+{
+  "_note": "EN<->SK story pairs for hreflang, next to the slug/slug_sk pairs in news/issues.json. Add a pair when an SK post is connected to its EN original in WPML (the WPML link is not in the public REST API). wp = [EN post id, SK post id].",
+  "pairs": [
+    { "en": "elons-check-or-bitcoin", "sk": "elonov-ai-sek-alebo-bitcoin", "wp": [15232, 15233] },
+    { "en": "online-gambling-machine-vs-bitcoin", "sk": "slovaci-prehrali-rekordnych-155-miliardy-stat-nas-pritom-strasi-bitcoinom", "wp": [15263, 15254] },
+    { "en": "is-november-bitcoins-best-month", "sk": "je-november-najlepsi-mesiac-pre-bitcoin", "wp": [15290, 15301] }
+  ]
+}
