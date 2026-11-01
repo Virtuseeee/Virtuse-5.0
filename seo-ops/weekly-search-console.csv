@@ -26,3 +26,4 @@ week_start,type,name,regex_or_page,indexed_pages,impressions,clicks,ctr_pct,avg_
 2026-10-19 (last 28 days to 2026-10-17),query,bitcoin retirement calculator,https://virtuse.com/retirement-calculator.html,,133,3,2.3,14.0,
 2026-10-19 (last 28 days to 2026-10-17),query,bitcoin monthly returns,https://virtuse.com/btc-monthly-returns.html,,183,0,0.0,10.0,new top-10 candidate
 2026-10-19 (last 28 days to 2026-10-17),query,dominance bitcoinu,https://virtuse.com/cs/btc-dominance.html,,26,0,0.0,9.2,new top-10 candidate
+2026-11-01 baseline (last 28 days to 2026-10-30),query,~seasonality (bitcoin seasonality),https://virtuse.com/stories/is-november-bitcoins-best-month/,,0,0,0.0,,"before the Take (EN + SK published 1 Nov); indexing requested 1 Nov for both URLs; property https://virtuse.com/ (URL prefix) via vasilisin@virtuse.com; recheck 15-22 Nov"
