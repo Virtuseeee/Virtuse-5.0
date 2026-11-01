@@ -101,7 +101,6 @@
 -mkdir public_html/stories/inflation-is-coming-here-are-3-assets-that-will-get-you-ready
 -mkdir public_html/stories/inflation-is-created-by-the-fed
 -mkdir public_html/stories/institutional-adoption-of-bitcoin-isnt-coming-its-already-here
--mkdir public_html/stories/is-november-bitcoins-best-month
 -mkdir public_html/stories/is-the-digital-euro-modernization-or-just-chinas-social-credit-system-for-the-eu-2
 -mkdir public_html/stories/it-is-always-darkest-before-the-dawn-5-arguments-for-investing-in-commodities
 -mkdir public_html/stories/it-is-time-to-talk-about-the-next-stage-of-crypto-evolution
@@ -732,7 +731,6 @@ put stories/inflation-is-at-5-heres-what-to-do-and-not-to-do-about-it/index.html
 put stories/inflation-is-coming-here-are-3-assets-that-will-get-you-ready/index.html public_html/stories/inflation-is-coming-here-are-3-assets-that-will-get-you-ready/index.html
 put stories/inflation-is-created-by-the-fed/index.html public_html/stories/inflation-is-created-by-the-fed/index.html
 put stories/institutional-adoption-of-bitcoin-isnt-coming-its-already-here/index.html public_html/stories/institutional-adoption-of-bitcoin-isnt-coming-its-already-here/index.html
-put stories/is-november-bitcoins-best-month/index.html public_html/stories/is-november-bitcoins-best-month/index.html
 put stories/is-the-digital-euro-modernization-or-just-chinas-social-credit-system-for-the-eu-2/index.html public_html/stories/is-the-digital-euro-modernization-or-just-chinas-social-credit-system-for-the-eu-2/index.html
 put stories/it-is-always-darkest-before-the-dawn-5-arguments-for-investing-in-commodities/index.html public_html/stories/it-is-always-darkest-before-the-dawn-5-arguments-for-investing-in-commodities/index.html
 put stories/it-is-time-to-talk-about-the-next-stage-of-crypto-evolution/index.html public_html/stories/it-is-time-to-talk-about-the-next-stage-of-crypto-evolution/index.html
@@ -870,4 +868,5 @@ put pl/blog.html public_html/pl/blog.html
 put ru/blog.html public_html/ru/blog.html
 put uk/blog.html public_html/uk/blog.html
 put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json
+# removed from WordPress, delete on the server: public_html/stories/is-november-bitcoins-best-month/
 bye
