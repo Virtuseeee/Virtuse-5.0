@@ -831,6 +831,10 @@
 @media (max-width:600px){.legacy .credit-link{white-space:normal;max-width:100%}}
 @media (max-width:700px){.wrap .legacy.legacy > section,.wrap .legacy.legacy > div{padding-left:0;padding-right:0}}  /* main.wrap already pads the sides */
 </style>
+<style data-v2>
+.dom-text p{color:var(--muted);font-size:16px;line-height:1.7;max-width:720px;margin:0 0 16px}
+.dom-text p:last-child{margin-bottom:0}
+</style>
 </head>
 <body>
 <header class="nav">
@@ -868,7 +872,7 @@
 </header>
 
 <main class="wrap bd-v3 bd-sub bd-acc-blue" id="top">
-  <div class="buy-hero2 lg-hero"><div class="eyebrow"><i></i>Bitcoin-Daten</div><h1>Bitcoin <span>Dominanz</span></h1>
+  <div class="buy-hero2 lg-hero"><div class="eyebrow"><i></i>Bitcoin-Daten</div><h1>Bitcoin <span>Dominanz (BTC) heute</span></h1>
   <p class="sp-lead">Die Bitcoin-Dominanz (BTC-Dominanz) ist der Anteil von Bitcoin an der gesamten Krypto-Marktkapitalisierung, hier seit 2013. Hohe Dominanz bedeutet, dass Kapital in Bitcoin konzentriert ist, sinkende Dominanz deutet auf eine Rotation der Spekulation in Altcoins hin.</p></div>
   <nav class="bd-links lg-sub" aria-label="Bitcoin-Daten-Unterseiten"><a href="bitcoin-data.html">Dashboard</a> · <a href="retirement-calculator.html">Ruhestandsrechner</a> · <a href="btc-dominance.html" aria-current="page">BTC-Dominanz</a> · <a href="ma-200w.html">200-Wochen-GD</a> · <a href="rainbow-chart.html">Regenbogen-Chart</a> · <a href="root-cycles.html">Wurzelzyklen-Modell</a> · <a href="trading-volume.html">Handelsvolumen</a> · <a href="fear-greed.html">Angst &amp; Gier</a> · <a href="asset-returns.html">Anlagerenditen</a> · <a href="btc-monthly-returns.html">Monatliche Renditen</a> · <a href="bitcoin-vs-gold.html">Bitcoin vs. Gold</a></nav>
   <div class="legacy">
@@ -904,7 +908,15 @@
 </section>
   </div>
 
-  <section id="faq" class="qa">
+  <section id="erklaerung" class="dom-text">
+    <div class="sec-head one"><div class="sec-copy"><h2>Was die Bitcoin-Dominanz <span>zeigt</span></h2></div></div>
+    <p>Die Bitcoin-Dominanz misst, welchen Anteil Bitcoin am Gesamtwert aller Kryptowährungen hat. Dafür wird die Marktkapitalisierung von Bitcoin, also Kurs mal umlaufende Menge, durch die Marktkapitalisierung aller erfassten Coins und Token geteilt. Ein Wert von 60 % heißt: Von jedem Euro, der im Kryptomarkt steckt, entfallen 60 Cent auf Bitcoin.</p>
+    <p>Die Kennzahl hängt nicht am Bitcoin-Kurs allein. Sie steigt, wenn Bitcoin stärker zulegt oder weniger verliert als der übrige Markt, und sie sinkt, wenn Kapital in andere Coins fließt. Viele Marktbeobachter lesen die BTC-Dominanz deshalb als Hinweis darauf, wie viel Risiko Anleger eingehen: Eine hohe Dominanz steht für einen Markt, der sich auf Bitcoin konzentriert, eine fallende Dominanz für mehr Spekulation mit Altcoins.</p>
+    <p>Die näherungsweisen Monatswerte im Chart zeigen, wie stark sich das verschieben kann. 2013 lag die Bitcoin-Dominanz bei bis zu 94,8 %. Im Boom neuer Token fiel sie bis Januar 2018 auf 33,5 %, den tiefsten Wert der Reihe. 2021 sank sie erneut auf rund 40 %, Mitte 2025 lag sie wieder bei 64,5 %. Den aktuellen Wert lädt die Seite live von CoinGecko.</p>
+    <p>Beim Vergleich mit anderen Quellen hilft ein Blick auf die Methodik. Die Anbieter erfassen nicht alle dieselben Coins, deshalb weichen ihre Werte leicht voneinander ab. Stablecoins wie USDT zählen bei CoinGecko zur Gesamtmarktkapitalisierung: Wächst ihr Bestand, sinkt die Dominanz, auch wenn sich der Bitcoin-Kurs nicht bewegt. Die Bitcoin-Dominanz ist daher ein Richtwert für die Marktstruktur, keine Anlageempfehlung.</p>
+  </section>
+
+<section id="faq" class="qa">
     <div class="sec-head one"><div class="sec-copy"><h2>Fragen <span>und Antworten</span></h2></div></div>
     <details open><summary>Was ist die Bitcoin-Dominanz?</summary><p>Die Bitcoin-Dominanz (BTC-Dominanz) ist der Anteil von Bitcoin an der gesamten Marktkapitalisierung aller erfassten Kryptowährungen. Der Chart auf dieser Seite zeigt sie seit 2013.</p></details>
     <details><summary>Wie wird die BTC-Dominanz berechnet?</summary><p>Die Marktkapitalisierung von Bitcoin wird durch die Marktkapitalisierung aller erfassten Kryptowährungen geteilt. Die historischen Werte sind monatlich und näherungsweise, der aktuelle Wert kommt live von CoinGecko. Die Methodik unterscheidet sich leicht zwischen den Datenanbietern.</p></details>
