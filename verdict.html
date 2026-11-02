@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@500;600;700&display=swap">
 <link rel="stylesheet" href="/site-v2.min.css?v=20">
-<link rel="stylesheet" href="/verdict-flow.css?v=20261028a">
+<link rel="stylesheet" href="/verdict-flow.css?v=20261102">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <!-- VLH:START -->
 <link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html">
@@ -306,7 +306,9 @@
 </script>
 <!-- VLS:END -->
 <script src="/vb-profile.js?v=1" data-tool="verdict"></script>
-<script src="/verdict-flow.js?v=20261031"></script>
+<script>/* Verdict Lite (6 questions) is the default funnel; the full Verdict stays behind ?mode=full and opens
+   for ?report=1 and Stripe returns. Rollback: replace this block with the verdict-flow.js tag. */
+(function(){var q=location.search,full=/[?&]mode=full\b/.test(q)||/[?&](report|session_id|canceled)=/.test(q);var s=document.createElement('script');s.async=false;s.src=full?'/verdict-flow.js?v=20261031':'/verdict-lite.js?v=1';document.currentScript.parentNode.insertBefore(s,document.currentScript.nextSibling);})();</script>
 <script src="/pf-recommend.js?v=3" defer></script>
 <script src="/site-v2.js?v=12" defer></script>
 <script src="/consultation-lazy.js?v=5" defer></script>
