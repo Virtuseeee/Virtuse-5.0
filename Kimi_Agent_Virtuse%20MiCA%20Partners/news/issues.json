@@ -6,14 +6,14 @@
       "title": "Binance lost $6.3B. Bitcoin didn't flinch.",
       "excerpt": "Someone drained $6.3 billion from Binance on Thursday night. Bitcoin fell to $76,000. The network didn't flinch.",
       "slug": "four-green-days-one-bad-night",
-      "image": "/news/covers/brief-20261102.jpg",
-      "read_min": 4,
+      "image": "https://blog.virtuse.com/wp-content/uploads/2026/11/virtuse-brief-2026-11-02-hero-20261102.jpg",
+      "read_min": 3,
       "author": "Ras Vasilisin",
-      "og_image": "/news/og/brief-20261102.jpg",
+      "og_image": "https://blog.virtuse.com/wp-content/uploads/2026/11/virtuse-brief-2026-11-02-hero-20261102.jpg",
       "facts": [
-        "Someone drained $6.3 billion from Binance on Thursday night",
-        "Bitcoin fell to about $76,000; the network held",
-        "Four green ETF days, then one bad night"
+        "Attackers drained about $6.3B from Binance hot wallets on Thursday night",
+        "Bitcoin fell to about $76,000, then held; the network missed zero blocks",
+        "US spot ETFs had four green days, then Friday's -$643M washout"
       ]
     },
     {
