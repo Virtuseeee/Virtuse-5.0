@@ -345,6 +345,42 @@
 /contact	301	https://blog.virtuse.com/contact/
 /sk/contact/	301	https://blog.virtuse.com/sk/contact/
 /sk/contact	301	https://blog.virtuse.com/sk/contact/
+/public/pdf/whitepaper.pdf/	301	/about.html
+/public/pdf/whitepaper.pdf	301	/about.html
+/de/public/pdf/whitepaper.pdf/	301	/de/about.html
+/es/public/pdf/whitepaper.pdf/	301	/es/about.html
+/fr/public/pdf/whitepaper.pdf/	301	/fr/about.html
+/pl/public/pdf/whitepaper.pdf/	301	/pl/about.html
+/hu/public/pdf/whitepaper.pdf/	301	/hu/about.html
+/cs/public/pdf/whitepaper.pdf/	301	/cs/about.html
+/sk/public/pdf/whitepaper.pdf/	301	/sk/about.html
+/uk/public/pdf/whitepaper.pdf/	301	/uk/about.html
+/ru/public/pdf/whitepaper.pdf/	301	/ru/about.html
+/it/public/pdf/whitepaper.pdf/	301	/about.html
+/an-exchange-like-no-other/	301	/about.html
+/an-exchange-like-no-other	301	/about.html
+/de/an-exchange-like-no-other/	301	/de/about.html
+/es/an-exchange-like-no-other/	301	/es/about.html
+/fr/an-exchange-like-no-other/	301	/fr/about.html
+/pl/an-exchange-like-no-other/	301	/pl/about.html
+/hu/an-exchange-like-no-other/	301	/hu/about.html
+/cs/an-exchange-like-no-other/	301	/cs/about.html
+/sk/an-exchange-like-no-other/	301	/sk/about.html
+/uk/an-exchange-like-no-other/	301	/uk/about.html
+/ru/an-exchange-like-no-other/	301	/ru/about.html
+/it/an-exchange-like-no-other/	301	/about.html
+/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/15-investicnych-strategii-ako-prezit-korona-recesiu	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/de/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/es/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/fr/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/pl/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/hu/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/cs/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/sk/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/uk/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/ru/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
+/it/15-investicnych-strategii-ako-prezit-korona-recesiu/	301	/stories/15-investment-strategies-for-surviving-the-corona-recession/
 /de/bitcoin-tax/	301	
 /de/bitcoin-tax/slovakia/	301	
 /de/bitcoin-fee-index/	301	

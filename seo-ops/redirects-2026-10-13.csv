@@ -47,3 +47,6 @@ old_pattern,target,note,status
 /blog-sk.html,/blog.html,"Ras 13 Oct 2026: keep live, no redirect. table row 9 lists /blog-sk.html, but it is the live Slovak blog hub (200, in sitemap, the sk target of every other blog-hub rule)",hold
 /contact/,https://blog.virtuse.com/contact/,extension: legacy CSV 'keep' (Nick 2026-10-07: only contact for former exchange users); explicit forward so it survives the catch-all removal,ready
 /sk/contact/,https://blog.virtuse.com/sk/contact/,extension: as /contact/,ready
+/public/pdf/whitepaper.pdf,/about.html,"Ras 2 Nov 2026: old Virtu token whitepaper (404, ~20 linking domains, one DR 81 per Ahrefs)",ready
+/an-exchange-like-no-other/,/about.html,"Ras 2 Nov 2026: old exchange page, 2 strong links per Ahrefs; overrides the 410 in the legacy-exchange block below",ready
+/15-investicnych-strategii-ako-prezit-korona-recesiu/,/stories/15-investment-strategies-for-surviving-the-corona-recession/,"Ras 2 Nov 2026: Slovak post never got a story page (404, linked from a DR 75 site); the EN story is the same article",ready
