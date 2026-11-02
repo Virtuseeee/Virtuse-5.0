@@ -1078,4 +1078,10 @@ ErrorDocument 410 /404.html
   Header set Cache-Control "public, max-age=604800" "expr=%{CONTENT_TYPE} =~ m#^(image/|font/|application/font)# || %{REQUEST_URI} =~ m#\.(webp|avif|jpe?g|png|gif|svg|ico|woff2?)$#i"
   # Layer 2 module bundles have a content hash in the name: 1 year.
   Header set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_URI} =~ m#^/concierge-assets/#"
+  # Versioned files, 1 year (2026-10-29): /vendor/ (version in the folder name, e.g.
+  # three-0.160.0) and anything requested with ?v=... (site-v2.min.css?v=20, site-v2.js?v=12,
+  # consultation-lazy.js?v=1, ...). Bump v whenever such a file changes, on every page
+  # that loads it. HTML and JSON stay no-cache: news/issues.json and news-pulse.json are
+  # fetched with ?v= but change under the same v.
+  Header set Cache-Control "public, max-age=31536000, immutable" "expr=(%{REQUEST_URI} =~ m#^/vendor/# || %{QUERY_STRING} =~ /^v=/) && %{CONTENT_TYPE} !~ m#^(text/html|application/json)#"
 </IfModule>
