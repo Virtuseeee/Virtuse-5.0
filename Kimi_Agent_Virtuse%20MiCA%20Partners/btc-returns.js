@@ -80,7 +80,7 @@
       var a = m === 1 ? close(y - 1, 12) : close(y, m - 1), b = close(y, m);
       return a == null || b == null ? null : b / a - 1;
     }
-    var M = { cy: cy, cm: cm, fy: fy, asOf: data.asOf, close: close, months: [], years: {}, yearList: [] };
+    var M = { cy: cy, cm: cm, fy: fy, asOf: data.asOf, close: close, fx: data.eurusd || {}, months: [], years: {}, yearList: [] };
 
     var allN = 0, allPos = 0;
     for (var m = 1; m <= 12; m++) {
@@ -352,9 +352,23 @@
         'The worst was ' + o.worst.y + ' (' + pct(o.worst.v) + ').' + running + ' Complete months through ' + thru + '.';
     };
     var oct = M.months[9], nov = M.months[10];
+    // Median vs average: the month where one year moves the average most (GSC 2026-11).
+    var gm = M.months.slice().sort(function (a, b) { return Math.abs(b.avg - b.med) - Math.abs(a.avg - a.med); })[0];
+    var gx = gm.avg > gm.med ? gm.best : gm.worst;
+    var medAvg = 'The average adds up the return of every year for that month and divides by the number of years, so one extreme year can move it a lot. ' +
+      'The median is the middle year when they are sorted, so a single outlier barely changes it. ' + gm.name + ' shows the gap: an average of ' + pct(gm.avg) +
+      ' against a median of ' + pct(gm.med) + ', because ' + gx.y + ' returned ' + pct(gx.v) + '. That is why this page ranks months by median. Complete months through ' + thru + '.';
+    // USD vs EUR: the last full year, from the ECB EUR/USD rates in the data file.
+    var ly = M.fullYears[M.fullYears.length - 1], LY = M.years[ly];
+    var fx0 = M.fx[key(ly - 1, 12)], fx1 = M.fx[key(ly, 12)];
+    var usdEur = 'The heatmap shows both. A euro return is the dollar return adjusted for the change in EUR/USD over the same period, using the ECB rate at each month end. ' +
+      'When the euro rises against the dollar, euro returns come out lower than dollar returns; when it falls, they come out higher.' +
+      (fx0 && fx1 && LY.ret != null ? ' In ' + ly + ', Bitcoin returned ' + pct(LY.ret) + ' in dollars and ' + pct((1 + LY.ret) * fx0 / fx1 - 1) + ' in euros, while EUR/USD moved ' + pct(fx1 / fx0 - 1) + '.' : '');
     faq.splice(2, 0,
       ["What is Bitcoin's average return in October?", season(oct)],
-      ['Is November historically good for Bitcoin?', season(nov) + ' Past returns do not predict future returns.']);
+      ['Is November historically good for Bitcoin?', season(nov) + ' Past returns do not predict future returns.'],
+      ['What is the difference between the median and the average monthly return?', medAvg],
+      ['Are the returns different in euros than in US dollars?', usdEur]);
     // Meta description facts (build_returns.py): the strongest month by median, the robust measure.
     var meta = { name: bm.name, med: pct(bm.med), pos: bm.pos, n: bm.n };
     return { html: html, faq: faq, thru: thru, meta: meta };
