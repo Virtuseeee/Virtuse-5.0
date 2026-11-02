@@ -18,7 +18,7 @@
     }));
   }
   /* Fallback only: the featured card follows the newest issue in news/issues.json. */
-  var FEATURED_SLUG = 'a-billion-out-bitcoin-holds-80k';
+  var FEATURED_SLUG = 'four-green-days-one-bad-night';
   /* The newest issue from issues.json; a cover hosted on this site (not blog.virtuse.com) is kept
      as the featured cover, the WordPress featured image does not replace it. */
   var LATEST_ISSUE = null;
