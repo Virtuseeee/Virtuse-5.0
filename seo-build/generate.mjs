@@ -1013,9 +1013,10 @@ ${faqHtml(faqs, 'FAQ')}
 `;
   pushPage({
     relFile: enRel, lang: 'en', guide: true,
-    // titleHook / seoDescription (seo-data.json) = search-led title and meta for countries with GSC demand; the rest keep the template
+    // titleHook / seoDescription (seo-data.json) = search-led title and meta for countries with GSC demand; the rest keep the template.
+    // seoDescription metas end with a call to action instead of the checked date (GSC 2026-11; the date stays on the page).
     title: assertTitle(c.titleHook ? `Bitcoin Tax in ${theEn(c)} ${AS_OF_YEAR}: ${c.titleHook} | Virtuse` : `Bitcoin tax in ${theEn(c)} (${asOfEn})`),
-    description: assertDescription(c.seoDescription ? `${c.seoDescription} ${checkedSentence('en')} Not tax advice.`
+    description: assertDescription(c.seoDescription ? `${c.seoDescription} Compare ${N} countries in the Tax Agent. Not tax advice.`
       : descParts(`Bitcoin tax in ${theEn(c)} as of ${asOfEn}: ${lcEn(gainFull(c))}.`, checkedSentence('en'), 'Not tax advice.')),
     h1: `Bitcoin tax in ${theEn(c)}`,
     answerHtml: esc(answer),
