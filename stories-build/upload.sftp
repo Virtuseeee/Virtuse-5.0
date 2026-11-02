@@ -74,6 +74,7 @@
 -mkdir public_html/stories/fear-is-real
 -mkdir public_html/stories/five-percent-yields-and-an-empty-bid-for-paper
 -mkdir public_html/stories/five-takeaways-from-ray-dalios-portfolio
+-mkdir public_html/stories/four-green-days-one-bad-night
 -mkdir public_html/stories/from-2014-up-until-now-the-evolution-of-crypto-exchanges
 -mkdir public_html/stories/gamestop-is-a-financial-protest-against-the-global-financial-system
 -mkdir public_html/stories/gamestop-urges-all-of-us-to-adapt-to-bitcoin-standard
@@ -239,6 +240,7 @@
 -mkdir public_html/sk/stories/banky-padaju-na-heslach-bitcoin-na-ludoch
 -mkdir public_html/sk/stories/biely-dom-zmenil-definiciu-recesie-a-posunul-gaslighting-na-novu-uroven
 -mkdir public_html/sk/stories/biely-dom-zmenil-definiciu-recesie-a-potom-vykazal-falosne-cisla-o-zamestnanosti
+-mkdir public_html/sk/stories/binance-prisla-o-63-mld-bitcoin-vydrzal
 -mkdir public_html/sk/stories/bitcoin-a-zlato-proti-krize
 -mkdir public_html/sk/stories/bitcoin-ako-nova-firemna-pokladnica
 -mkdir public_html/sk/stories/bitcoin-ako-poistka-voci-chaosu
@@ -461,6 +463,7 @@ put sk/stories/banks-adopt-bitcoin-for-all-wrong-reasons/index.html public_html/
 put sk/stories/banky-padaju-na-heslach-bitcoin-na-ludoch/index.html public_html/sk/stories/banky-padaju-na-heslach-bitcoin-na-ludoch/index.html
 put sk/stories/biely-dom-zmenil-definiciu-recesie-a-posunul-gaslighting-na-novu-uroven/index.html public_html/sk/stories/biely-dom-zmenil-definiciu-recesie-a-posunul-gaslighting-na-novu-uroven/index.html
 put sk/stories/biely-dom-zmenil-definiciu-recesie-a-potom-vykazal-falosne-cisla-o-zamestnanosti/index.html public_html/sk/stories/biely-dom-zmenil-definiciu-recesie-a-potom-vykazal-falosne-cisla-o-zamestnanosti/index.html
+put sk/stories/binance-prisla-o-63-mld-bitcoin-vydrzal/index.html public_html/sk/stories/binance-prisla-o-63-mld-bitcoin-vydrzal/index.html
 put sk/stories/bitcoin-a-zlato-proti-krize/index.html public_html/sk/stories/bitcoin-a-zlato-proti-krize/index.html
 put sk/stories/bitcoin-ako-nova-firemna-pokladnica/index.html public_html/sk/stories/bitcoin-ako-nova-firemna-pokladnica/index.html
 put sk/stories/bitcoin-ako-poistka-voci-chaosu/index.html public_html/sk/stories/bitcoin-ako-poistka-voci-chaosu/index.html
@@ -708,6 +711,7 @@ put stories/everything-but-bitcoin/index.html public_html/stories/everything-but
 put stories/fear-is-real/index.html public_html/stories/fear-is-real/index.html
 put stories/five-percent-yields-and-an-empty-bid-for-paper/index.html public_html/stories/five-percent-yields-and-an-empty-bid-for-paper/index.html
 put stories/five-takeaways-from-ray-dalios-portfolio/index.html public_html/stories/five-takeaways-from-ray-dalios-portfolio/index.html
+put stories/four-green-days-one-bad-night/index.html public_html/stories/four-green-days-one-bad-night/index.html
 put stories/from-2014-up-until-now-the-evolution-of-crypto-exchanges/index.html public_html/stories/from-2014-up-until-now-the-evolution-of-crypto-exchanges/index.html
 put stories/gamestop-is-a-financial-protest-against-the-global-financial-system/index.html public_html/stories/gamestop-is-a-financial-protest-against-the-global-financial-system/index.html
 put stories/gamestop-urges-all-of-us-to-adapt-to-bitcoin-standard/index.html public_html/stories/gamestop-urges-all-of-us-to-adapt-to-bitcoin-standard/index.html

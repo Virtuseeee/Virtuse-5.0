@@ -10938,7 +10938,7 @@
 <!-- STORIES-HUBS:START -->
   <url>
     <loc>https://virtuse.com/stories/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -10950,15 +10950,15 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/3/</loc>
-    <lastmod>2022-08-03</lastmod>
+    <lastmod>2022-08-24</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/4/</loc>
-    <lastmod>2022-03-02</lastmod>
+    <lastmod>2022-03-16</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/5/</loc>
-    <lastmod>2021-10-06</lastmod>
+    <lastmod>2021-11-02</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/6/</loc>
@@ -10974,7 +10974,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -11010,7 +11010,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/page/9/</loc>
-    <lastmod>2020-06-15</lastmod>
+    <lastmod>2020-07-16</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/ru/stories/</loc>
@@ -11208,6 +11208,10 @@
   <url>
     <loc>https://virtuse.com/sk/stories/biely-dom-zmenil-definiciu-recesie-a-potom-vykazal-falosne-cisla-o-zamestnanosti/</loc>
     <lastmod>2022-12-26</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/binance-prisla-o-63-mld-bitcoin-vydrzal/</loc>
+    <lastmod>2026-11-02</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/bitcoin-a-zlato-proti-krize/</loc>
@@ -12148,6 +12152,10 @@
   <url>
     <loc>https://virtuse.com/stories/five-takeaways-from-ray-dalios-portfolio/</loc>
     <lastmod>2020-10-06</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/four-green-days-one-bad-night/</loc>
+    <lastmod>2026-11-02</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/from-2014-up-until-now-the-evolution-of-crypto-exchanges/</loc>
