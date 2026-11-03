@@ -355,3 +355,10 @@
 .ml-res-top:not(.ready) { visibility: hidden; }
 .ml-form .ml-fine:empty { display: none; }
 .ml-wl-msg { color: var(--muted); }
+/* hero: left column spans the sample card's height, so tops and bottoms line up */
+@media (min-width: 901px) {
+  .ml-land .hero { align-items: stretch; }
+  .ml-land .hero > div:first-child { display: flex; flex-direction: column; justify-content: space-between; }
+  .ml-land .hero > div:last-child { display: flex; flex-direction: column; justify-content: center; }
+  .ml-land .hero > div:last-child > .ml-demo { flex: 1 1 auto; align-content: space-between; }
+}
