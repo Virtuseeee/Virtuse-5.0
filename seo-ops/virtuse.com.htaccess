@@ -51,6 +51,10 @@ RewriteRule ^ - [E=VB_HUB_EN:/stories/]
 RewriteCond %{DOCUMENT_ROOT}/sk/stories/index.html -f
 RewriteRule ^ - [E=VB_HUB_SK:/sk/stories/]
 
+# Brief SK 2026-11-02: Take CTA wrongly pointed at weekly slug; only utm_content=take → heist article
+RewriteCond %{QUERY_STRING} (?:^|&)utm_content=take(?:&|$)
+RewriteRule ^sk/stories/binance-prisla-o-63-mld-bitcoin-vydrzal/?$ https://virtuse.com/article.html?slug=lupez-na-binance-63-miliardy-kto-ju-naozaj-spachal&lang=sk [R=301,L]
+
 # Story cleanup 2026-10-16 (stories-build/cleanup.json): duplicate → original
 RewriteRule ^sk/stories/sedem-vzorcov-exponencialneho-zisku/?$ https://virtuse.com/sk/stories/7-vzorcov-exponencialneho-zisku/ [R=301,L]
 RewriteRule ^sk/sedem-vzorcov-exponencialneho-zisku(?:/.*)?$ https://virtuse.com/sk/stories/7-vzorcov-exponencialneho-zisku/ [R=301,L]
