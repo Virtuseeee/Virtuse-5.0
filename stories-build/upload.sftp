@@ -318,6 +318,7 @@
 -mkdir public_html/sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu
 -mkdir public_html/sk/stories/last-chance-to-buy-tesla
 -mkdir public_html/sk/stories/luciferov-efekt-si-skutocne-dobry-alebo-len-netestovany
+-mkdir public_html/sk/stories/lupez-na-binance-63-miliardy-kto-ju-naozaj-spachal
 -mkdir public_html/sk/stories/machiavelliho-styl-preco-dobri-chlapci-koncia-ako-rohozky
 -mkdir public_html/sk/stories/manzelsky-par-bol-obvineny-z-prania-spinavych-penazi-v-hodnote-36-miliardy-dolarov-v-bitcoinoch
 -mkdir public_html/sk/stories/matrix-ta-chce-unaveneho-preco-je-thoreauova-samota-tvojim-najvacsim-utokom-na-system
@@ -541,6 +542,7 @@ put sk/stories/kto-vlastni-web3/index.html public_html/sk/stories/kto-vlastni-we
 put sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu/index.html public_html/sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu/index.html
 put sk/stories/last-chance-to-buy-tesla/index.html public_html/sk/stories/last-chance-to-buy-tesla/index.html
 put sk/stories/luciferov-efekt-si-skutocne-dobry-alebo-len-netestovany/index.html public_html/sk/stories/luciferov-efekt-si-skutocne-dobry-alebo-len-netestovany/index.html
+put sk/stories/lupez-na-binance-63-miliardy-kto-ju-naozaj-spachal/index.html public_html/sk/stories/lupez-na-binance-63-miliardy-kto-ju-naozaj-spachal/index.html
 put sk/stories/machiavelliho-styl-preco-dobri-chlapci-koncia-ako-rohozky/index.html public_html/sk/stories/machiavelliho-styl-preco-dobri-chlapci-koncia-ako-rohozky/index.html
 put sk/stories/manzelsky-par-bol-obvineny-z-prania-spinavych-penazi-v-hodnote-36-miliardy-dolarov-v-bitcoinoch/index.html public_html/sk/stories/manzelsky-par-bol-obvineny-z-prania-spinavych-penazi-v-hodnote-36-miliardy-dolarov-v-bitcoinoch/index.html
 put sk/stories/matrix-ta-chce-unaveneho-preco-je-thoreauova-samota-tvojim-najvacsim-utokom-na-system/index.html public_html/sk/stories/matrix-ta-chce-unaveneho-preco-je-thoreauova-samota-tvojim-najvacsim-utokom-na-system/index.html

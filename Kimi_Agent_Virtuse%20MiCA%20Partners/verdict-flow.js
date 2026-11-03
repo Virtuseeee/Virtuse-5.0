@@ -1071,7 +1071,7 @@
   function waitingBlock(r) {
     var n = (r.locked || []).length; if (!n) return '';
     return '<section class="vf-card vx-wait">' + '<div class="vx-whead"><span class="vx-lockc">' + ic('lock') + '</span><div><b>' + W.waitH(n) + '</b><p>' + W.waitP + '</p></div>' +
-      '<a class="vf-btn solid" href="#unlock" data-want>' + ic('lock', 16) + ' ' + W.waitCta + ' ' + ic('arrow', 16) + '</a></div>' +
+      '<a class="vf-btn solid" href="#unlock" data-want>' + ic('lock', 16) + ' ' + (r.pricing && r.pricing.report && r.pricing.report.mode === 'checkout' ? W.buyBtn + ' · ' + V.repPrice : W.waitCta) + ' ' + ic('arrow', 16) + '</a></div>' +
       '<div class="vx-lgrid">' + r.locked.map(function (x) {
         return '<div class="vx-lcard ' + GCOL[GROUP[x.id]] + '"><div><b>' + esc(x.title || x.name) + '</b>' + ic('lock', 16) + '</div><i></i><i></i><i></i></div>';
       }).join('') + '</div>' +
@@ -1241,24 +1241,24 @@
   // for this scored result (rid) and we go to Stripe's page.
   function bindPay() {
     panel.parentNode.querySelectorAll('[data-checkout]').forEach(function (b) {
-      b.onclick = function (e) {
-        if (e) e.preventDefault();
-        if (!RESULT || !RESULT.rid) return;
-        var label = b.innerHTML, msg = b.parentNode.querySelector('.vx-paymsg');
-        if (!msg) { msg = document.createElement('p'); msg.className = 'small vx-paymsg'; msg.setAttribute('aria-live', 'polite'); b.parentNode.appendChild(msg); }
-        b.disabled = true; b.textContent = STR.payGo; msg.textContent = '';
-        push({ event: 'verdict_checkout', verdict_lang: LANG, verdict_level: RESULT.level && RESULT.level.id });
-        fetch(WORKER + '/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ rid: RESULT.rid, lang: LANG }) })
-          .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
-          .catch(function () { return { ok: false, d: { error: STR.network } }; })
-          .then(function (x) {
-            if (x.ok && x.d && x.d.url) {
-              try { sessionStorage.setItem('vb-verdict-pay', JSON.stringify({ A: A, R: RESULT })); } catch (e) {}
-              location.href = x.d.url;
-            } else { b.disabled = false; b.innerHTML = label; msg.textContent = (x.d && x.d.error) || STR.error; }
-          });
-      };
+      b.onclick = function (e) { if (e) e.preventDefault(); startCheckout(b); };
     });
+  }
+  function startCheckout(b) {
+    if (!RESULT || !RESULT.rid) return;
+    var label = b.innerHTML, msg = b.parentNode.querySelector('.vx-paymsg');
+    if (!msg) { msg = document.createElement('p'); msg.className = 'small vx-paymsg'; msg.setAttribute('aria-live', 'polite'); b.parentNode.appendChild(msg); }
+    b.disabled = true; b.textContent = STR.payGo; msg.textContent = '';
+    push({ event: 'verdict_checkout', verdict_lang: LANG, verdict_level: RESULT.level && RESULT.level.id });
+    vbApi().then(function (api) { return api.postJson('/verdict/checkout', { rid: RESULT.rid, lang: LANG }); })
+      .then(function (r) { return { ok: r.ok, d: r.data }; })
+      .catch(function () { return { ok: false, d: { error: STR.network } }; })
+      .then(function (x) {
+        if (x.ok && x.d && x.d.url) {
+          try { sessionStorage.setItem('vb-verdict-pay', JSON.stringify({ A: A, R: RESULT })); } catch (e) {}
+          location.href = x.d.url;
+        } else { b.disabled = false; b.innerHTML = label; msg.textContent = (x.d && x.d.error) || STR.error; }
+      });
   }
   // Back from Stripe: ?session_id=... asks the Worker for the paid report;
   // ?canceled=1 shows the free result again.
@@ -1273,8 +1273,8 @@
       return;
     }
     panel.innerHTML = '<div class="load"><div class="spin" aria-hidden="true"></div><h2>' + STR.repLoad + '</h2></div>';
-    fetch(WORKER + '/report', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ session_id: PAID_SID, lang: LANG }) })
-      .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+    vbApi().then(function (api) { return api.postJson('/verdict/report', { session_id: PAID_SID, lang: LANG }); })
+      .then(function (r) { return { ok: r.ok, d: r.data }; })
       .catch(function () { return { ok: false, d: { error: STR.network } }; })
       .then(function (x) {
         if (x.ok && x.d && x.d.level) {
@@ -1320,7 +1320,8 @@
   function bindWant() {
     var f = document.getElementById('want');
     if (f && wantOk()) { f.innerHTML = '<p class="sub sm" style="color:var(--text)">' + STR.wantOk + '</p>'; wantDoneAll(); return; }
-    if (!f) { panel.parentNode.querySelectorAll('[data-want]').forEach(function (b) { b.onclick = function (e) { e.preventDefault(); var u = document.getElementById('unlock'); if (u) u.scrollIntoView({ behavior: 'smooth' }); }; }); return; }
+    // Checkout mode (no waitlist form): every report CTA goes straight to Stripe.
+    if (!f) { panel.parentNode.querySelectorAll('[data-want]').forEach(function (b) { b.onclick = function (e) { if (e) e.preventDefault(); push({ event: 'unlock_click', verdict_lang: LANG, verdict_level: RESULT && RESULT.level && RESULT.level.id, via: 'checkout' }); startCheckout(b); }; }); return; }
     panel.parentNode.querySelectorAll('[data-want]').forEach(function (b) {
       b.onclick = function (e) { if (e) e.preventDefault(); push({ event: 'unlock_click', verdict_lang: LANG, verdict_band: RESULT && RESULT.band && RESULT.band.id, verdict_level: RESULT && RESULT.level && RESULT.level.id }); f.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { var e = document.getElementById('we'); if (e) e.focus({ preventScroll: true }); }, 500); };
     });

@@ -1288,7 +1288,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
     </div>
     <div class="brief">
-      <a class="issue" id="briefIssue" href="../article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote">
+      <a class="issue" id="briefIssue" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
         <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="Imagen de portada: Bitcoin Beat the War. November Still Gets a Vote." loading="lazy" onerror="this.remove()">
         <div class="issue-body">
           <span class="k" id="briefMeta">Último Brief · 5 oct 2026 · 3 min</span>
@@ -1791,9 +1791,9 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     var iss = (d.issues || []).filter(function (x) { return x && x.slug && x.title && !x.essay; })[0]; if (!iss) return;
     var dt = new Date(iss.date + 'T12:00:00Z');
     var when = dt.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-    document.getElementById('briefIssue').href = '../article.html?slug=' + encodeURIComponent(iss.slug) + '&lang=es';
-    // the static story page when it exists (the reader link stays as the fallback)
-    var sp = '/stories/' + encodeURIComponent(iss.slug) + '/'; if (sp && window.fetch) fetch(sp, { method: 'HEAD' }).then(function (r) { if (r.ok) document.getElementById('briefIssue').href = sp; }).catch(function () {});
+    var sp = '/stories/' + encodeURIComponent(iss.slug) + '/';
+    document.getElementById('briefIssue').href = sp;
+    if (window.fetch) fetch(sp, { method: 'HEAD' }).then(function (r) { if (!r.ok) document.getElementById('briefIssue').href = '/stories/'; }).catch(function () {});
     document.getElementById('briefMeta').textContent = 'Último Brief · ' + when + ' · ' + (iss.read_min || 3) + ' min';
     document.getElementById('briefTitle').textContent = iss.title + ' (en inglés)';
     document.getElementById('briefExcerpt').textContent = iss.excerpt || '';

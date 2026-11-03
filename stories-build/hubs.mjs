@@ -354,7 +354,9 @@ function readStory(storyPath) {
   const heroTag = /<figure class="story-figure" id="articleHero">/.test(html) ? (html.match(/<img id="heroImg"[^>]*>/) || [''])[0] : '';
   return {
     file, html, lang, storyPath, deskId,
-    title: attr(html, /<meta property="og:title" content="([^"]*)"/),
+    // Drop a trailing brand suffix so a SERP title that mirrors onto og:title
+    // does not become the hub card headline. Other stories have no suffix here.
+    title: attr(html, /<meta property="og:title" content="([^"]*)"/).replace(/ \| Virtuse Brief$/, ''),
     description: attr(html, /<meta name="description" content="([^"]*)"/),
     published: attr(html, /<meta property="article:published_time" content="([^"]*)"/),
     modified: attr(html, /<meta property="article:modified_time" content="([^"]*)"/),
