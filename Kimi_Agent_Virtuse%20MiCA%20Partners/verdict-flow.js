@@ -22,7 +22,7 @@
     if (window.VB_API) return Promise.resolve(window.VB_API);
     return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
       var s = document.createElement('script');
-      s.src = '/vb-api.js?v=1';
+      s.src = '/vb-api.js?v=2';
       s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
       s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
       document.head.appendChild(s);
@@ -1248,8 +1248,8 @@
         if (!msg) { msg = document.createElement('p'); msg.className = 'small vx-paymsg'; msg.setAttribute('aria-live', 'polite'); b.parentNode.appendChild(msg); }
         b.disabled = true; b.textContent = STR.payGo; msg.textContent = '';
         push({ event: 'verdict_checkout', verdict_lang: LANG, verdict_level: RESULT.level && RESULT.level.id });
-        fetch(WORKER + '/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ rid: RESULT.rid, lang: LANG }) })
-          .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+        vbApi().then(function (api) { return api.postJson('/verdict/checkout', { rid: RESULT.rid, lang: LANG }); })
+          .then(function (r) { return { ok: r.ok, d: r.data }; })
           .catch(function () { return { ok: false, d: { error: STR.network } }; })
           .then(function (x) {
             if (x.ok && x.d && x.d.url) {
@@ -1273,8 +1273,8 @@
       return;
     }
     panel.innerHTML = '<div class="load"><div class="spin" aria-hidden="true"></div><h2>' + STR.repLoad + '</h2></div>';
-    fetch(WORKER + '/report', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ session_id: PAID_SID, lang: LANG }) })
-      .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, d: d }; }); })
+    vbApi().then(function (api) { return api.postJson('/verdict/report', { session_id: PAID_SID, lang: LANG }); })
+      .then(function (r) { return { ok: r.ok, d: r.data }; })
       .catch(function () { return { ok: false, d: { error: STR.network } }; })
       .then(function (x) {
         if (x.ok && x.d && x.d.level) {
