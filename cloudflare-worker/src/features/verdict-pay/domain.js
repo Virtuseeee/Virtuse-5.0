@@ -58,6 +58,7 @@ export function paidRecord(s, old, now) {
     pi: s.payment_intent || null,
     paidAt: (old && old.paidAt) || now,
     usedAt: (old && old.usedAt) || null,
+    emailedAt: (old && old.emailedAt) || null,
   };
 }
 

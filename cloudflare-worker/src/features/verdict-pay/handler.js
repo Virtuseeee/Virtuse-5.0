@@ -6,6 +6,11 @@
 //                              checkout.session.async_payment_succeeded, charge.refunded
 // POST /verdict/report         { session_id, lang } -> the full report, open for
 //                              30 minutes from the first opening; after that the free view
+//
+// The webhook also emails the buyer a purchase confirmation with the report
+// as a PDF (receipt.js, pdf.js), once per Session (emailedAt in the KV record).
+// Only the webhook sends it, so a parallel /verdict/report cannot send twice.
+// VERDICT_RECEIPT_TO (staging) sends every confirmation to that address instead.
 
 import { readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
@@ -16,7 +21,10 @@ import {
   PAY_TEXT, REPORT_ERRORS, REPORT_WINDOW_MS, RID_RE, SESSION_RE, SIGNATURE_TOLERANCE_S, checkoutParams,
   isVerdictSession, msgLang, pageLang, paymentsOn,
 } from './domain.js';
+import { renderReportPdf } from './pdf.js';
+import { operatorLine, orderNumber, receiptLang, renderReceipt } from './receipt.js';
 import { createPayStore } from './store.js';
+import { INTER_BOLD, INTER_REGULAR } from '../../generated/fonts.js';
 
 const stripeFor = (ctx) => createStripeClient(ctx.env.STRIPE_SECRET_KEY, ctx.fetch);
 
@@ -47,8 +55,51 @@ export async function handleCheckout(ctx) {
   return json(200, { ok: true, url: r.data.url }, origin);
 }
 
+const fromBase64 = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+function toBase64(bytes) {
+  let s = '';
+  for (let k = 0; k < bytes.length; k += 0x8000) s += String.fromCharCode.apply(null, bytes.subarray(k, k + 0x8000));
+  return btoa(s);
+}
+
+// Purchase confirmation + report PDF for one paid Session. Returns false when
+// sending failed (the webhook then answers 500 and Stripe retries).
+export async function sendReceipt(ctx, session, rec, store) {
+  const { env, now } = ctx;
+  if (rec.emailedAt) return true;
+  const to = env.VERDICT_RECEIPT_TO || session.customer_details?.email || session.customer_email;
+  if (!to) { console.error('verdict receipt: no email on session'); return true; }
+  const stored = await store.getResult(rec.rid);
+  if (!stored) { console.error('verdict receipt: result expired', rec.rid); return true; }
+  const lang = receiptLang(session.metadata?.lang);
+  try {
+    const view = reportView(stored.result, stored.profile, verdictOpts(env, pageLang(stored.lang || lang)));
+    const pdf = await renderReportPdf(view, {
+      lang, fonts: { regular: fromBase64(INTER_REGULAR), bold: fromBase64(INTER_BOLD) },
+      date: new Date(rec.paidAt || now), order: orderNumber(session.id), operator: operatorLine(lang),
+    });
+    const mail = renderReceipt({ lang, sid: session.id, amount: rec.amount, currency: rec.currency, paidAt: rec.paidAt || now });
+    await ctx.services.resend.sendEmail({
+      from: env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL,
+      to: [to],
+      reply_to: env.RESEND_REPLY_TO || 'info@virtuse.com',
+      subject: mail.subject,
+      html: mail.html,
+      attachments: [{ filename: mail.filename, content: toBase64(pdf) }],
+      tags: [{ name: 'kind', value: 'verdict_receipt' }],
+    }, 'Resend verdict receipt failed');
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+  rec.emailedAt = now;
+  await store.putPaid(session.id, rec);
+  return true;
+}
+
 // Called by Stripe, not the browser: plain JSON, no CORS.
-export async function handleStripeWebhook({ request, env, now }) {
+export async function handleStripeWebhook(ctx) {
+  const { request, env, now } = ctx;
   const reply = (status, body) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
   if (request.method !== 'POST') return reply(405, { error: 'Method not allowed' });
   if (!env.STRIPE_WEBHOOK_SECRET) return reply(503, { error: 'Webhook not configured' });
@@ -65,7 +116,10 @@ export async function handleStripeWebhook({ request, env, now }) {
   const obj = event?.data?.object;
   if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
     // Other Virtuse payments on the same account have no Verdict metadata: ignored.
-    if (isVerdictSession(obj) && obj.payment_status === 'paid') await store.markPaid(obj, now);
+    if (isVerdictSession(obj) && obj.payment_status === 'paid') {
+      const rec = await store.markPaid(obj, now);
+      if (rec.status === 'paid' && !(await sendReceipt(ctx, obj, rec, store))) return reply(500, { error: 'Receipt not sent' });
+    }
   } else if (event.type === 'charge.refunded' && obj?.payment_intent) {
     const sid = await store.sessionForPayment(obj.payment_intent);
     const rec = sid && (await store.getPaid(sid));

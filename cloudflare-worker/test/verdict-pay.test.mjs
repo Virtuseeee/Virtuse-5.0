@@ -230,3 +230,60 @@ test('paid but the stored result expired: 410 with a refund note', withApis(asyn
   assert.equal(res.status, 410);
   assert.match((await res.json()).error, /refund/);
 }));
+
+// Purchase confirmation email with the report PDF (receipt.js, pdf.js).
+const resendCalls = (calls) => calls.filter((c) => c.url === 'https://api.resend.com/emails').map((c) => JSON.parse(c.init.body));
+
+test('webhook emails the buyer once: confirmation + the report as a PDF', withApis(async (calls) => {
+  const e = env({ RESEND_API_KEY: 're_test', RESEND_SEND_FROM: 'Virtuse <plan@virtuse.com>' });
+  const { rid } = await freeVerdict(e);
+  const ev = { type: 'checkout.session.completed', data: { object: session(rid, { customer_details: { email: 'buyer@example.com' } }) } };
+  assert.equal((await webhook(e, ev)).status, 200);
+  const sent = resendCalls(calls);
+  assert.equal(sent.length, 1);
+  const m = sent[0];
+  assert.deepEqual(m.to, ['buyer@example.com']);
+  assert.equal(m.reply_to, 'info@virtuse.com');
+  assert.match(m.subject, /platba potvrdená/);
+  assert.match(m.html, /14,00\s€/);
+  assert.match(m.html, /Prevádzkovateľ: Virtuse Wealth Management, a\.s\./);
+  assert.equal(m.attachments.length, 1);
+  assert.match(m.attachments[0].filename, /^Virtuse-Verdict-report-\d{8}-[A-Z0-9]+\.pdf$/);
+  const pdf = Buffer.from(m.attachments[0].content, 'base64');
+  assert.equal(pdf.subarray(0, 5).toString(), '%PDF-');
+  assert.ok(pdf.length > 20000);
+  assert.ok(JSON.parse(e.RATE_LIMIT_KV.store.get(`verdict:paid:${SID}`)).emailedAt);
+  // Stripe sends the same event again, or async_payment_succeeded follows: no second email.
+  await webhook(e, ev);
+  await webhook(e, { ...ev, type: 'checkout.session.async_payment_succeeded' });
+  assert.equal(resendCalls(calls).length, 1);
+}));
+
+test('receipt: VERDICT_RECEIPT_TO redirects it (staging); /verdict/report alone sends nothing', withApis(async (calls) => {
+  const e = env({ RESEND_API_KEY: 're_test', VERDICT_RECEIPT_TO: 'vasilisin@virtuse.com' });
+  const { rid } = await freeVerdict(e);
+  await webhook(e, { type: 'checkout.session.completed', data: { object: session(rid, { customer_details: { email: 'buyer@example.com' }, metadata: { product: 'verdict_report', rid, lang: 'en' } }) } });
+  const sent = resendCalls(calls);
+  assert.deepEqual(sent[0].to, ['vasilisin@virtuse.com']);
+  assert.match(sent[0].subject, /payment confirmed/);
+}));
+
+test('receipt: a Resend failure answers 500 so Stripe retries, the retry sends it', async () => {
+  const e = env({ RESEND_API_KEY: 're_test' });
+  const orig = globalThis.fetch;
+  let resendOk = false, sentCount = 0;
+  globalThis.fetch = async (url) => {
+    const u = String(url);
+    if (u === 'https://api.resend.com/emails') { if (!resendOk) return new Response('down', { status: 500 }); sentCount++; return new Response('{"id":"e"}', { status: 200 }); }
+    return new Response(JSON.stringify({ id: 'm', type: 'message', role: 'assistant', model: 'x', stop_reason: 'end_turn', stop_sequence: null, content: [{ type: 'text', text: JSON.stringify(MODEL_OUT) }], usage: { input_tokens: 1, output_tokens: 1, cache_creation_input_tokens: 0, cache_read_input_tokens: 0 } }), { status: 200, headers: { 'content-type': 'application/json' } });
+  };
+  try {
+    const { rid } = await freeVerdict(e);
+    const ev = { type: 'checkout.session.completed', data: { object: session(rid, { customer_details: { email: 'buyer@example.com' } }) } };
+    assert.equal((await webhook(e, ev)).status, 500);
+    assert.equal(JSON.parse(e.RATE_LIMIT_KV.store.get(`verdict:paid:${SID}`)).status, 'paid', 'still paid: the report opens');
+    resendOk = true;
+    assert.equal((await webhook(e, ev)).status, 200);
+    assert.equal(sentCount, 1);
+  } finally { globalThis.fetch = orig; }
+});
