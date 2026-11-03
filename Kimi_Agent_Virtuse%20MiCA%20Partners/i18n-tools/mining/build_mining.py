@@ -16,8 +16,11 @@ PARTNERS = [
     dict(id='powermining', name='Power Mining', logo='logo-powermining.png', cls='clear', kind='home', url='https://shop.powermining.io/?ref=Virtuse'),
     dict(id='solosatoshi', name='Solo Satoshi', logo='logo-solosatoshi.png', cls='', kind='home', url='https://www.solosatoshi.com/aff/8822/'),
 ]
-EN_TITLE_OLD = 'Bitcoin Mining Hosting from $0.043/kWh | Virtuse'
-EN_TITLE_NEW = 'Bitcoin Mining Hosting &amp; Hardware Partners | Virtuse'
+# The live title is the page's promise (no data centre of your own). A rebuild
+# that still has the previous title in <head> is moved forward; a head that
+# already has EN_TITLE_NEW is left as it is.
+EN_TITLE_OLD = 'Bitcoin Mining Hosting &amp; Hardware Partners | Virtuse'
+EN_TITLE_NEW = 'Mine Bitcoin Without Your Own Data Centre | Virtuse'
 
 
 def build(L):

@@ -51,6 +51,11 @@ const WP_CANONICAL_REMOTE = '/_sub/blog/wp-content/mu-plugins/virtuse-story-cano
 // their original (not built; the rule lives in seo-ops/build_redirects.py), off-topic
 // stories kept readable but noindex and out of the sitemap/hubs.
 const CLEANUP = JSON.parse(fs.readFileSync(path.join(HERE, 'cleanup.json'), 'utf8'));
+// SERP title + description for pages whose WordPress title/excerpt is a poor
+// snippet. Applied only to <title>, meta description and the og/twitter mirrors.
+// The H1, image alt, breadcrumbs and Article JSON-LD stay the WordPress title
+// and excerpt. The daily stories build would otherwise put the excerpt back.
+const SEO_HEAD = JSON.parse(fs.readFileSync(path.join(HERE, 'seo-head.json'), 'utf8'));
 const FALLBACK_IMAGE = { url: ORIGIN + '/news/og-card.png?v=20260921', width: 1200, height: 630 };
 
 // WordPress base URL. Defaults to the blog itself; the GitHub Action sets
@@ -398,6 +403,17 @@ function render(template, feed, post, inferDesk) {
   const url = ORIGIN + '/' + storyPath;
   const title = text(post.title.rendered);
   const description = descriptionOf(post);
+  const seo = SEO_HEAD[storyPath] || null;
+  if (seo) {
+    if (!seo.title || !seo.description) throw new Error('seo-head.json needs title and description: ' + storyPath);
+    if (seo.title.length > 60) throw new Error(`seo title is ${seo.title.length} characters: ${storyPath}`);
+    if (seo.description.length < 140 || seo.description.length > 160) throw new Error(`seo description is ${seo.description.length} characters: ${storyPath}`);
+    if (/[\u2013\u2014]/.test(seo.title + seo.description)) throw new Error('seo-head has an en or em dash: ' + storyPath);
+    if (!/ \| Virtuse( Brief)?$/.test(seo.title)) throw new Error('seo title is missing the Virtuse suffix: ' + storyPath);
+  }
+  const headTitle = seo ? seo.title : `${title} | Virtuse Brief`;
+  const socialTitle = seo ? seo.title : title;
+  const headDescription = seo ? seo.description : description;
   const img = imageOf(post);
   const ogImg = img || FALLBACK_IMAGE;
   const published = new Date(post.date_gmt + 'Z').toISOString();
@@ -437,16 +453,16 @@ function render(template, feed, post, inferDesk) {
   };
   const alts = alternates(feed, post, storyPath);
   const head = [
-    `<title>${esc(title)} | Virtuse Brief</title>`,
-    `<meta name="description" content="${esc(description)}">`,
+    `<title>${esc(headTitle)}</title>`,
+    `<meta name="description" content="${esc(headDescription)}">`,
     `<link rel="canonical" href="${url}">`,
     CLEANUP.noindex[storyPath] ? '<meta name="robots" content="noindex, follow">' : '',
     ...alts.map(([l, p]) => `<link rel="alternate" hreflang="${l}" href="${ORIGIN}/${p}">`),
     `<meta name="author" content="Ras Vasilisin">`,
     `<meta property="og:type" content="article">`,
     `<meta property="og:site_name" content="Virtuse Brief">`,
-    `<meta property="og:title" content="${esc(title)}">`,
-    `<meta property="og:description" content="${esc(description)}">`,
+    `<meta property="og:title" content="${esc(socialTitle)}">`,
+    `<meta property="og:description" content="${esc(headDescription)}">`,
     `<meta property="og:url" content="${url}">`,
     `<meta property="og:image" content="${esc(ogImg.url)}">`,
     ogImg.width ? `<meta property="og:image:width" content="${ogImg.width}">` : '',
@@ -458,8 +474,8 @@ function render(template, feed, post, inferDesk) {
     `<meta property="article:author" content="Ras Vasilisin">`,
     `<meta property="article:section" content="${esc(desk)}">`,
     `<meta name="twitter:card" content="summary_large_image">`,
-    `<meta name="twitter:title" content="${esc(title)}">`,
-    `<meta name="twitter:description" content="${esc(description)}">`,
+    `<meta name="twitter:title" content="${esc(socialTitle)}">`,
+    `<meta name="twitter:description" content="${esc(headDescription)}">`,
     `<meta name="twitter:image" content="${esc(ogImg.url)}">`,
     `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`,
     storyCrumbsLd(feed.lang, title, storyPath),
