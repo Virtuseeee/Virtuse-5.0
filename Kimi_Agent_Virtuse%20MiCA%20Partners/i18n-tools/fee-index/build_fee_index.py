@@ -22,6 +22,7 @@ TOOLS = os.path.dirname(HERE)
 sys.path.insert(0, TOOLS)
 import v2common as C
 import aff_note as A
+import related_hubs
 B = C.B
 SITE = C.SITE
 REPO = os.path.dirname(SITE)
@@ -364,8 +365,6 @@ def build_main(L, fi, s21, extra_pages):
     out = head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_alt'], og_image=ORIGIN + '/og/fee-index.jpg')
     nav, foot = chrome(L, url)
 
-    loc = lambda p: ('/' if L == 'en' else '/%s/' % L) + p
-    dca = '/bitcoin-dca-calculator/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][2])
     steps = ''.join('''      <div class="how-log-item">
         <div class="how-log-marker"><span class="how-log-dot"></span></div>
         <div class="how-log-body">
@@ -376,9 +375,7 @@ def build_main(L, fi, s21, extra_pages):
       </div>
 '''.format(step=t['step'], n=n, tt=t['s%d_t' % n], pp=t['s%d_p' % n]) for n in range(1, 4))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(faq))
-    rel = [(loc('stacking.html'), 'rel_stack'), (loc('retirement-calculator.html'), 'rel_ret'), (loc('concierge.html'), 'rel_pf'),
-           ('/bitcoin-fee-index/methodology/', 'rel_method'), (dca, 'rel_dca'), (loc('buy-bitcoin.html'), 'rel_buy')]
-    cards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[k + '_t'], t[k + '_p']) for u, k in rel)
+    cards = related_hubs.cards_html(L, 'fee')   # Bod B map: buy, stacking, Partner Finder, Brief
     blurb = t['press_blurb'].format(amount=eur(DEFAULT, L), w=rk[0]['name'], wt=pct(rk[0]['total'], L))
     embed = esc('<iframe src="%s/bitcoin-fee-index/embed/" title="Virtuse Bitcoin Fee Index" width="100%%" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>\n'
                 '<p>Source: <a href="%s/bitcoin-fee-index/">Virtuse Bitcoin Fee Index</a> (fees checked %s)</p>' % (ORIGIN, ORIGIN, date_str(fi['checked'], 'en')))
@@ -447,7 +444,7 @@ def build_main(L, fi, s21, extra_pages):
            qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html, psum=t['press_sum'], pintro=t['press_intro'], pbh=t['press_blurb_h'],
            blurb=blurb, eh=t['embed_h'], eintro=t['embed_intro'], embed=embed, bemb=t['btn_embed'], bprint=t['btn_print'], barch=t['btn_archive'],
            brief=brief_card(L, t, days=days90(L)),
-           rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], cards=cards, disclaimer=t['disclaimer'], foot=foot)
+           rh2a=related_hubs.heading(L)[0], rh2b=related_hubs.heading(L)[1], cards=cards, disclaimer=t['disclaimer'], foot=foot)
     out += body + C.scripts('/')
     check_text(out, L)
     write(out_file(L)[len(SITE) + 1:], out)

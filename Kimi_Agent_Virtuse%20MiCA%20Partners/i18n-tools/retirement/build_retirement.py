@@ -15,6 +15,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 TOOLS = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(TOOLS, 'fee-index'))
 import build_fee_index as F
+import related_hubs
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']   # hreflang order as before
 JS_V = '3'
@@ -242,10 +243,7 @@ def build(L):
       </div>
 '''.format(step=t['step'], i=i, tt=t['s%d_t' % i], pp=t['s%d_p' % i]) for i in range(1, 4))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', esc(q).replace('&#x27;', "'"), a) for i, (q, a) in enumerate(faq))
-    fee = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][1])
-    rel = [(page_url('stacking.html'), 'rel_stack'), (fee, 'rel_fee'), (page_url('concierge.html'), 'rel_pf'), (dca, 'rel_dca'),
-           (tax, 'rel_tax'), (page_url('verdict.html'), 'rel_cfo')]   # Verdict landing (own page in en/sk/ru, else /verdict.html)
-    rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
+    rcards = related_hubs.cards_html(L, 'retirement')   # Bod B map: stacking, Bitcoin Data, Brief, Partner Finder
 
     strings = {k: v for k, v in t.items() if k.startswith('c_')}
     i18n = json.dumps(strings, ensure_ascii=False).replace('</', '<\\/')
@@ -293,7 +291,7 @@ def build(L):
 <script type="application/json" id="rc-i18n">{i18n}</script>
 '''.format(nav=nav, eyebrow=t['eyebrow'], h1=t['h1'], h1o=t['h1_q'], lead=t['lead'], noscript=t['noscript'], calc=calculator(L, t, links),
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html,
-           brief=F.brief_card(L, t, 'retirement_brief'), rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'],
+           brief=F.brief_card(L, t, 'retirement_brief'), rh2a=related_hubs.heading(L)[0], rh2b=related_hubs.heading(L)[1], rcards=rcards, disclaimer=t['disclaimer'],
            foot=foot, i18n=i18n)
     # Bitcoin Data v3 accent system (handover 2026-10-25): accent = this page's card on the hub; newer site-v2 css/js
     sc = C.scripts('/')   # css/js cache-busters: one sitewide value, set in C.finalize (speed.py)

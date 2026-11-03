@@ -13,6 +13,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 TOOLS = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(TOOLS, 'fee-index'))
 import build_fee_index as F
+import related_hubs
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']   # hreflang order as before
 
@@ -49,9 +50,6 @@ def build(L):
     nav, foot = F.chrome(L, url, comma=False)
     nav = re.sub(r'(<a href="%s")' % re.escape(page), r'\1 aria-current="page"', nav, count=1)
 
-    loc = lambda p: ('/' if L == 'en' else '/%s/' % L) + p
-    def page_url(p):   # the language's own page when it exists
-        return loc(p) if L == 'en' or os.path.exists(os.path.join(SITE, L, p)) else '/' + p
     steps = ''.join('''      <div class="how-log-item">
         <div class="how-log-marker"><span class="how-log-dot"></span></div>
         <div class="how-log-body">
@@ -62,10 +60,7 @@ def build(L):
       </div>
 '''.format(step=t['step'], i=i, tt=t['s%d_t' % i], pp=t['s%d_p' % i]) for i in range(1, 4))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(faq))
-    tax = '/bitcoin-tax/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][0])
-    rel = [(tax, 'rel_tax'), (page_url('tax.html'), 'rel_rep'), (page_url('secure.html'), 'rel_sec'), (page_url('loan.html'), 'rel_loan'),
-           (page_url('concierge.html'), 'rel_pf'), (page_url('verdict.html'), 'rel_cfo')]   # Verdict landing (own page in en/sk/ru, else /verdict.html)
-    rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
+    rcards = related_hubs.cards_html(L, 'tax-agent')   # Bod B map: tax guides, loan, inheritance, Partner Finder
 
     out += '''<body class="page-buy page-fee page-pf page-tax no-split">
 {nav}
@@ -110,7 +105,7 @@ def build(L):
 
 '''.format(nav=nav, eyebrow=t['eyebrow'], h1=t['h1'], h1o=t['h1_or'], lead=t['lead'], noscript=t['noscript'],
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html,
-           brief=F.brief_card(L, t, 'tax_agent_brief'), rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'], foot=foot)
+           brief=F.brief_card(L, t, 'tax_agent_brief'), rh2a=related_hubs.heading(L)[0], rh2b=related_hubs.heading(L)[1], rcards=rcards, disclaimer=t['disclaimer'], foot=foot)
     out += C.scripts('/')
     F.check_text(out, L)
     open(shell, 'w').write(C.finalize(out, shell))
