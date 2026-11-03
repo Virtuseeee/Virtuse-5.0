@@ -287,6 +287,24 @@ export function applyStoryExtras(html, info, template) {
     h = must(h, /<div class="story-end">/, () => `${block}\n\n        <div class="story-end">`, 'story-end');
   }
   h = syncChrome(h, template, root);
+  const ctaHref = `${root}news.html?utm_source=${briefCampaignSource(storyPath)}&amp;utm_medium=cta&amp;utm_campaign=brief_d`;
+  h = must(h, /(<a\b[^>]*\bid="briefCtaLink"[^>]*\bhref=")[^"]*/, (m, a) => a + ctaHref, 'briefCtaLink');
+  if (!h.includes('id="authorLinkedIn"')) {
+    h = must(h, /(<p class="bio" id="authorBio">[^<]*<\/p>)/,
+      (m, a) => `${a}\n              <p class="author-links"><a id="authorLinkedIn" href="${PROFILE_LI}" rel="me noopener" target="_blank">LinkedIn</a></p>`,
+      'authorLinkedIn');
+  }
+  if (h.includes(AUTHOR_OLD)) h = h.replaceAll(AUTHOR_OLD, AUTHOR_NEW);
+  const follow = '<a href="https://www.linkedin.com/company/virtuse-exchange/?utm_source=virtuse&amp;utm_medium=footer&amp;utm_campaign=linkedin_follow" rel="noopener noreferrer" target="_blank" data-ui="followVirtuse">Follow Virtuse</a>';
+  if (!h.includes('utm_campaign=linkedin_follow')) {
+    h = must(h, /(<nav class="footer-links"[^>]*>[\s\S]*?)(<\/nav>)/,
+      (m, a, b) => `${a}\n      ${follow}\n    ${b}`,
+      'footer LinkedIn');
+  } else {
+    h = h.replace(/[ \t]*<a href="https:\/\/www\.linkedin\.com\/company\/virtuse-exchange\/\?utm_source=virtuse&amp;utm_medium=footer&amp;utm_campaign=linkedin_follow"[^>]*>[^<]*<\/a>\s*<\/nav>/,
+      `      ${follow}\n    </nav>`);
+  }
+  h = h.replaceAll('rastislav-ras-vasilisin', 'rastislav-vasilisin');
   return localizeStatic(h, lang, root, info.deskId);
 }
 
@@ -405,6 +423,9 @@ export function localizeStatic(html, lang, root, deskId) {
   const { R, CT } = chromeData();
   const L = R[lang] || R.en;
   const ui = { ...CT.en, ...(CT[lang] || {}), ...L.ui };
+  if (ui.briefCtaBtn == null) ui.briefCtaBtn = ui.capBtn;
+  if (ui.briefCtaDek == null) ui.briefCtaDek = ui.capDek;
+  if (ui.followVirtuse == null) ui.followVirtuse = 'LinkedIn';
   let h = html.replace(/(<([a-z]+)\b[^>]*\bdata-ui="(\w+)"[^>]*>)([^<]*)(<\/\2>)/g, (m, open, tag, key, t, close) =>
     (ui[key] != null ? open + esc(ui[key]) + close : m));
   h = h.replace(/href="[^"]*"([^>]*?)\sdata-hub="([^"]+)"/g, (m, mid, v) => `href="${root}${L.dir}${v}"${mid} data-hub="${v}"`);
@@ -446,7 +467,24 @@ function syncChrome(h, template, root) {
   } else {
     h = must(h, /\n( *)<div class="share-row"><span/, (m, sp) => `\n${sp}${cfo}\n\n${sp}<div class="share-row"><span`, 'end share-row');
   }
+  const cta = pick(/<!-- brief-cta:start -->[\s\S]*?<!-- brief-cta:end -->/, 'brief-cta');
+  if (h.includes('<!-- brief-cta:start -->')) {
+    h = h.replace(/<!-- brief-cta:start -->[\s\S]*?<!-- brief-cta:end -->/, () => cta);
+  } else {
+    h = must(h, /\n( *)<p class="back-row">/, (m, sp) => `\n${sp}${cta}\n\n${sp}<p class="back-row">`, 'brief-cta');
+  }
   return h;
+}
+
+const PROFILE_LI = 'https://www.linkedin.com/in/rastislav-vasilisin-11bb5819/';
+const AUTHOR_OLD = '"author":{"@type":"Person","name":"Ras Vasilisin","url":"https://virtuse.com/about.html"}';
+const AUTHOR_NEW = `"author":{"@type":"Person","name":"Ras Vasilisin","url":"https://virtuse.com/about.html","sameAs":["${PROFILE_LI}"]}`;
+
+function briefCampaignSource(storyPath) {
+  const parts = storyPath.split('/').filter(Boolean);
+  const slug = parts[parts.length - 1] || 'story';
+  const prefix = parts[0] === 'sk' || parts[0] === 'ru' ? parts[0] + '-' : '';
+  return prefix + slug;
 }
 
 const hubPagePath = (lang, n) => `${HUB_LANGS[lang].dir}stories/${n > 1 ? `page/${n}/` : ''}`;
