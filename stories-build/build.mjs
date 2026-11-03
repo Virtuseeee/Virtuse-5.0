@@ -386,7 +386,8 @@ function sanitizeBody(html, base) {
     }
   };
   walk(parseBody(html).children, '', false);
-  return out.join('').trim();
+  // One old post still links a mistyped personal LinkedIn slug. Keep the canonical URL.
+  return out.join('').trim().replaceAll('rastislav-ras-vasilisin', 'rastislav-vasilisin');
 }
 
 // article.js's minutes(): words of the body's text content / 220.
@@ -473,7 +474,7 @@ function render(template, feed, post, inferDesk) {
     datePublished: published, dateModified: modified,
     mainEntityOfPage: url, url,
     image: ogImg.url,
-    author: { '@type': 'Person', name: 'Ras Vasilisin', url: ORIGIN + '/about.html' },
+    author: { '@type': 'Person', name: 'Ras Vasilisin', url: ORIGIN + '/about.html', sameAs: ['https://www.linkedin.com/in/rastislav-vasilisin-11bb5819/'] },
     publisher: { '@type': 'Organization', name: 'Virtuse', url: ORIGIN + '/', logo: { '@type': 'ImageObject', url: ORIGIN + '/news/brief-nav-logo.png' } },
   };
   const alts = alternates(feed, post, storyPath);

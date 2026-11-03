@@ -79,7 +79,30 @@ DAYS90 = {'en': '90 d', 'sk': '90 dní', 'cs': '90 dní', 'de': '90 Tage', 'fr':
           'uk': '90 дн.', 'ru': '90 дн.'}
 
 
-def brief(L, t, root, source, days=None):
+def brief(L, t, root, source, days=None, slug=None):
+    cta = ''
+    if L in ('en', 'sk'):
+        label = 'Get the Brief' if L == 'en' else 'Odoberaj Brief'
+        dek = ('Bitcoin-only, every Monday. No tokens. No PR.' if L == 'en'
+               else 'Iba Bitcoin, každý pondelok. Žiadne tokeny. Žiadne PR.')
+        page = slug
+        if not page:
+            page = source[:-6] if source.endswith('_brief') else source
+            page = page.replace('legacy_', '').replace('_', '-')
+            if page == 'data':
+                page = 'bitcoin-data'
+            elif page == 'fee-index':
+                page = 'bitcoin-fee-index'
+        src = page if L == 'en' else 'sk-' + page
+        cta = (
+            '\n    <!-- brief-d-cta:start -->\n'
+            '    <aside class="brief-d-cta" aria-label="Virtuse Brief" style="margin:8px 0 4px;padding:16px 0 0;border-top:1px solid rgba(255,255,255,.08)">\n'
+            '      <p style="margin:0 0 6px;font-weight:700">{label}</p>\n'
+            '      <p style="margin:0 0 14px;color:var(--muted)">{dek}</p>\n'
+            '      <a class="btn btn-ghost" href="{root}news.html?utm_source={src}&amp;utm_medium=cta&amp;utm_campaign=brief_d">{label}</a>\n'
+            '    </aside>\n'
+            '    <!-- brief-d-cta:end -->'
+        ).format(label=label, dek=dek, root=root, src=src)
     return '''<section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>{h2a} <span>{h2b}</span></h2></div></div>
     <div class="brief brief-slim">
@@ -108,11 +131,11 @@ def brief(L, t, root, source, days=None):
         <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
         <div class="fine">{fine} <a href="{root}news.html?utm_source=brief&amp;utm_medium={source}" style="color:var(--muted)">{all}</a></div>
       </div>
-    </div>
+    </div>{cta}
   </section>'''.format(h2a=t('b_h2_a'), h2b=t('b_h2_b'), root=root, latest=t('b_latest'),
                        note=(' (%s)' % B.BRIEF_EN[L]) if L != 'en' else '', read=t('b_read'), img_alt=t('b_img_alt'), gh=t('b_get_h'),
                        free=t('b_free'), gp=t('b_get_p'), email=t('email'), btn=t('b_btn'), fine=t('b_fine'), all=t('b_all'), source=source,
-                       days=days or DAYS90.get(L, '90 d'))
+                       days=days or DAYS90.get(L, '90 d'), cta=cta)
 
 
 def fix_links(L, out):

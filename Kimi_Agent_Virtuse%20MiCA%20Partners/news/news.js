@@ -847,10 +847,19 @@
   /* The static HTML card is a fallback. If issues.json has a newer issue, rewrite the card from it
      (eyebrow date, cover, headline, facts, links), so a new issue needs only a JSON entry.
      The headline stays the card's H2 (.featured-title); the page H1 is "Virtuse Brief". */
+  function setBriefShare(path) {
+    var a = document.getElementById('briefShareLinkedIn');
+    if (!a || !path) return;
+    if (path.charAt(0) !== '/') path = '/' + path;
+    var page = 'https://virtuse.com' + path;
+    page += (page.indexOf('?') === -1 ? '?' : '&') + 'utm_source=linkedin&utm_medium=social&utm_campaign=brief_share';
+    a.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(page);
+  }
   function paintFeatured(issue) {
     var card = $('featured');
     if (!card || !issue) return;
     var href = issueLink(issue.slug);
+    setBriefShare(href);
     var head = card.querySelector('.featured-title a');
     if (head && head.getAttribute('data-issue-slug') === issue.slug) return;
 
@@ -883,7 +892,7 @@
       });
       list.hidden = !facts.length;
     }
-    var read = card.querySelector('.featured-brief-actions .btn');
+    var read = card.querySelector('.featured-brief-actions .btn-quiet');
     if (read) {
       read.setAttribute('href', href);
       markIssue(read, issue.slug);

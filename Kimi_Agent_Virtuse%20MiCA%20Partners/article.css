@@ -100,6 +100,14 @@
 .author-box .who{font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:4px}
 .author-box .name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--text)}
 .author-box .bio{font-family:var(--font-display);font-size:.98rem;line-height:1.5;color:var(--text-muted);margin-top:2px}
+.author-links{margin-top:8px;font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.08em;text-transform:uppercase}
+.author-links a{color:var(--text)}
+.author-links a:hover{color:var(--accent-hot)}
+.brief-cta{margin:8px 0 4px;padding:18px 0 2px;border-top:1px solid var(--line)}
+.brief-cta-kicker{font-family:var(--font-mono);font-size:var(--t-scale);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.brief-cta-title{font-family:var(--font-display);font-size:1.35rem;font-weight:700;line-height:1.2;margin-bottom:6px}
+.brief-cta-dek{font-family:var(--font-display);font-size:.98rem;line-height:1.45;color:var(--text-muted);margin-bottom:14px}
+.brief-cta .btn{display:inline-flex}
 
 /* Share: one icon set, rendered by JS into three slots
    (under the byline on phones, in the rail on desktop, and at the end). */
