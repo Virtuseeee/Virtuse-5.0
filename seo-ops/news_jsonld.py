@@ -18,7 +18,7 @@ What it writes, between <!-- news-jsonld:start ... --> and <!-- news-jsonld:end 
       dateModified   = issue "modified" if present, else the date
       image          = og:image of the static story page, else issue og_image, else image
       url            = https://virtuse.com/stories/<slug>/ if that page exists in the site
-                       folder, else https://virtuse.com/article.html?slug=<slug>
+                       folder, else the stories hub (never article.html?slug=)
       author         = Person Rastislav Vasilisin (about.html#founder)
       publisher      = {"@id": "https://virtuse.com/#org"}
 No third-party dependencies. Idempotent.
@@ -71,7 +71,7 @@ def build():
             url = f"{BASE}/stories/{slug}/"
             image = story_og_image(story)
         else:
-            url = f"{BASE}/article.html?slug={slug}"
+            url = f"{BASE}/stories/"
             image = ""
         image = image or absolute(i.get("og_image") or i.get("image") or "")
         art = {

@@ -168,10 +168,11 @@
     fetch(root + 'news/issues.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
       var iss = (d.issues || []).filter(function (x) { return x && x.slug && x.title && !x.essay; })[0]; if (!iss) return;
       var when = new Date(iss.date + 'T12:00:00Z').toLocaleDateString(LOC, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-      card.href = root + 'article.html?slug=' + encodeURIComponent(iss.slug) + (LANG !== 'en' ? '&lang=' + LANG : '');
-      // the static story page when it exists (EN story; Slovak only with its own slug_sk); the reader link stays as the fallback
-      var sp = LANG === 'sk' ? (iss.slug_sk ? '/sk/stories/' + encodeURIComponent(iss.slug_sk) + '/' : '') : '/stories/' + encodeURIComponent(iss.slug) + '/';
-      if (sp) fetch(sp, { method: 'HEAD' }).then(function (r) { if (r.ok) card.href = sp; }).catch(function () {});
+      // Canonical story URL (no article.html hop). Slovak issues use slug_sk; everyone else reads the EN story.
+      var hub = LANG === 'sk' ? '/sk/stories/' : (LANG === 'ru' ? '/ru/stories/' : (LANG === 'en' || LANG === 'it' ? '/stories/' : '/' + LANG + '/blog.html'));
+      var sp = (LANG === 'sk' && iss.slug_sk) ? '/sk/stories/' + encodeURIComponent(iss.slug_sk) + '/' : '/stories/' + encodeURIComponent(iss.slug) + '/';
+      card.href = sp;
+      fetch(sp, { method: 'HEAD' }).then(function (r) { if (!r.ok) card.href = hub; }).catch(function () {});
       document.getElementById('briefMeta').textContent = t('latestBrief', 'Latest Brief · ') + when + ' · ' + (iss.read_min || 3) + t('min', ' min');
       document.getElementById('briefTitle').textContent = iss.title + t('briefLangNote', '');
       document.getElementById('briefExcerpt').textContent = iss.excerpt || '';

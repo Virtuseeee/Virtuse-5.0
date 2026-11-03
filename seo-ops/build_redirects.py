@@ -272,16 +272,26 @@ def article_rules(ps):
                   f'RewriteRule ^{L}article\\.html$ {HOST}/ru/stories/? [R=301,L]']
     lines += ['RewriteCond %{ENV:VB_OLD} =1',
               f'RewriteRule ^{L}article\\.html$ {HOST}%{{ENV:VB_HUB_EN}}? [R=301,L]',
-              '# 5. any other slug without a story page here: a post newer than the last Stories upload,',
-              '#    or no post at all. /article.html?slug=S is served as the reader, which renders the',
-              '#    WordPress post and sends slugs WordPress does not know on to the stories hub',
-              '#    (article.js); the headers block marks it noindex. /xx/article.html?slug=S (no such',
-              '#    file) → 302 to the reader with lang=xx (302: once the story page exists, rules 1-3',
-              '#    answer directly). 2026-10-14 to 2026-10-26 these went to the hub, so new posts did too.',
-              'RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]',
-              r'RewriteRule ^article\.html$ - [L]',
-              'RewriteCond %{QUERY_STRING} (?:^|&)(slug=[^&]+)',
-              f'RewriteRule ^({LANG_ALT})/article\\.html$ {HOST}/article.html?%1&lang=$1 [NE,R=302,L]',
+              '# 5. any other slug (newer than the last Stories upload, or no post at all) → that',
+              '#    language\'s stories/blog hub, query string dropped, one 301. Bod C 2026-11-03:',
+              '#    Google must not see article.html?slug=. The 2026-10-26 reader 200 is gone, so a',
+              '#    post is at /stories/<slug>/ only after the stories build. /xx/article.html?slug=',
+              '#    does not bounce through the reader (that was a second hop).',
+              'RewriteCond %{QUERY_STRING} (?:^|&)slug=',
+              'RewriteCond %{ENV:VB_AL} ^sk$',
+              f'RewriteRule ^{L}article\\.html$ {HOST}%{{ENV:VB_HUB_SK}}? [R=301,L]']
+    if exists('/ru/stories/index.html'):
+        lines += ['RewriteCond %{QUERY_STRING} (?:^|&)slug=',
+                  'RewriteCond %{ENV:VB_AL} ^ru$',
+                  f'RewriteRule ^{L}article\\.html$ {HOST}/ru/stories/? [R=301,L]']
+    for lg in LANGS:
+        if lg in ('sk', 'ru') or not exists(f'/{lg}/blog.html'):
+            continue
+        lines += ['RewriteCond %{QUERY_STRING} (?:^|&)slug=',
+                  f'RewriteCond %{{ENV:VB_AL}} ^{lg}$',
+                  f'RewriteRule ^{L}article\\.html$ {HOST}/{lg}/blog.html? [R=301,L]']
+    lines += ['RewriteCond %{QUERY_STRING} (?:^|&)slug=',
+              f'RewriteRule ^{L}article\\.html$ {HOST}%{{ENV:VB_HUB_EN}}? [R=301,L]',
               '# 6. /xx/article.html without a slug (no such file) → that language\'s blog hub.',
               '#    The bare root /article.html (no slug) stays the reader page (200).']
     for lg in LANGS:
@@ -363,6 +373,17 @@ def block():
     return '\n'.join(lines) + '\n', rows, ps, stats
 
 
+def article_hub(lang):
+    """Where an article.html slug with no story page lands (mirrors article_rules step 5)."""
+    if lang == 'sk':
+        return hub_static('sk')
+    if lang == 'ru' and exists('/ru/stories/index.html'):
+        return '/ru/stories/'
+    if lang in ('', 'en', 'it'):
+        return hub_static('')
+    return hub_static(lang)
+
+
 def old_paths(rows, ps):
     """Every mapped path (+ language and slash-less variants) with its expected result."""
     out = []
@@ -435,22 +456,25 @@ def old_paths(rows, ps):
         ('/uk/article.html?slug=what-is-a-bitcoin-treasury&lang=uk', '/stories/what-is-a-bitcoin-treasury/'),
         ('/sk/article.html?slug=10-moralnych-dovodov-preco-vlastnit-bitcoin', '/sk/stories/10-moralnych-dovodov-preco-vlastnit-bitcoin/'),
         ('/article.html?slug=10-moralnych-dovodov-preco-vlastnit-bitcoin&lang=sk', '/sk/stories/10-moralnych-dovodov-preco-vlastnit-bitcoin/'),
-        ('/fr/article.html?slug=no-such-story-xyz&lang=fr', '/article.html?slug=no-such-story-xyz&lang=fr'),
-        ('/sk/article.html?slug=no-such-story-xyz', '/article.html?slug=no-such-story-xyz&lang=sk'),
-        ('/de/article.html?slug=no-such-story-xyz', '/article.html?slug=no-such-story-xyz&lang=de'),
-        ('/ru/article.html?slug=%25d0%25bd%25d0%25b5%25d1%2582&lang=ru', '/article.html?slug=%d0%bd%d0%b5%d1%82&lang=ru'),
-        ('/a/no-such-story-xyz', '/article.html?slug=no-such-story-xyz'),
-        ('/sk/a/no-such-story-xyz/', '/article.html?slug=no-such-story-xyz&lang=sk'),
+        ('/fr/article.html?slug=no-such-story-xyz&lang=fr', article_hub('fr')),
+        ('/sk/article.html?slug=no-such-story-xyz', article_hub('sk')),
+        ('/de/article.html?slug=no-such-story-xyz', article_hub('de')),
+        ('/ru/article.html?slug=%25d0%25bd%25d0%25b5%25d1%2582&lang=ru', article_hub('ru')),
+        ('/a/no-such-story-xyz', article_hub('')),
+        ('/sk/a/no-such-story-xyz/', article_hub('sk')),
         ('/a/what-is-a-bitcoin-treasury', '/stories/what-is-a-bitcoin-treasury/'),
+        ('/sk/a/what-is-a-bitcoin-treasury', '/stories/what-is-a-bitcoin-treasury/'),
         ('/it/article.html?slug=what-is-a-bitcoin-treasury', '/stories/what-is-a-bitcoin-treasury/'),
     ):
-        add(s, 302 if t.startswith('/article.html?') else 301, t)
-    # no story page here → the reader answers (200, X-Robots-Tag noindex); article.js renders
-    # the WordPress post or sends a slug that exists nowhere on to the stories hub
-    for s in ('/article.html?slug=no-such-story-xyz', '/article.html?slug=no-such-story-xyz&lang=en',
-              '/article.html?slug=no-such-story-xyz&lang=sk', '/article.html?slug=no-such-story-xyz&lang=ru',
-              '/article.html?slug=no-such-story-xyz&lang=de', '/article.html?slug=a-story-newer-than-the-last-build'):
-        add(s, 200, '')
+        add(s, 301, t)
+    # no story page → that language's hub, one 301, query dropped (Bod C)
+    for s, lang in (('/article.html?slug=no-such-story-xyz', ''),
+                    ('/article.html?slug=no-such-story-xyz&lang=en', ''),
+                    ('/article.html?slug=no-such-story-xyz&lang=sk', 'sk'),
+                    ('/article.html?slug=no-such-story-xyz&lang=ru', 'ru'),
+                    ('/article.html?slug=no-such-story-xyz&lang=de', 'de'),
+                    ('/article.html?slug=a-story-newer-than-the-last-build', '')):
+        add(s, 301, article_hub(lang))
     old_en = sorted(p['slug'] for p in ps if p['lang'] == 'en' and not p['story'] and re.fullmatch(r'[a-z0-9-]+', p['slug']))
     old_sk = sorted(p['slug'] for p in ps if p['lang'] == 'sk' and not p['story'] and re.fullmatch(r'[a-z0-9-]+', p['slug']))
     for s, t in ((f'/article.html?slug={old_en[0]}', hub_static('')), (f'/article.html?slug={old_en[-1]}&lang=de', hub_static('')),
@@ -462,6 +486,11 @@ def old_paths(rows, ps):
         add(f'/article.html?slug={dbl}&lang=ru', 301, p['story'])
         add(f'/article.html?slug={p["raw"].upper()}&lang=ru', 301, p['story'])
     add('/article.html', 200, '')
+    # Legacy exchange calculator (not in the approved CSV). No compound-interest page exists;
+    # the approved target is Stacking Strategist, not /bitcoin-dca-calculator/.
+    add('/compound-interest-calculator/', 301, '/stacking.html')
+    add('/compound-interest-calculator', 301, '/stacking.html')
+    add('/sk/compound-interest-calculator/', 301, '/sk/stacking.html')
     # must stay 200 / 404
     for s in ('/', '/index.html', '/bots.html', '/blog-sk.html', '/blog.html', '/sk/about.html',
               '/stories/what-is-a-bitcoin-treasury/', '/sk/bitcoin-dane/slovensko/', '/bitcoin-tax/slovakia/',

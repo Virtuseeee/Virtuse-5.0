@@ -175,11 +175,12 @@ def build(L):
     # 5. scripts: paths, language, number and date formats, messages
     loc = LOCALE[L]
     h = one(h, "fetch('news/issues.json'", "fetch('../news/issues.json'")
-    h = one(h, "document.getElementById('briefIssue').href = 'article.html?slug=' + encodeURIComponent(iss.slug);",
-            "document.getElementById('briefIssue').href = '../article.html?slug=' + encodeURIComponent(iss.slug) + '&lang=%s';" % L)
-    if L == 'sk':   # Slovak issues have their own story page (slug_sk); without one the reader link stays
+    # Brief card points at the canonical story. Other languages read the EN story at /stories/<slug>/.
+    if L == 'sk':
         h = one(h, "var sp = '/stories/' + encodeURIComponent(iss.slug) + '/';",
-                "var sp = (iss.slug_sk ? '/sk/stories/' + encodeURIComponent(iss.slug_sk) + '/' : '');")
+                "var sp = iss.slug_sk ? '/sk/stories/' + encodeURIComponent(iss.slug_sk) + '/' : '/stories/' + encodeURIComponent(iss.slug) + '/';")
+        h = one(h, "document.getElementById('briefIssue').href = '/stories/';",
+                "document.getElementById('briefIssue').href = '/sk/stories/';")
     h = one(h, "window.VB_API.subscribe({ email: email, hp: hp, lang: 'en' })", "window.VB_API.subscribe({ email: email, hp: hp, lang: '%s' })" % L)
     h = h.replace('data-consultation-lang="en"', 'data-consultation-lang="%s"' % L)
     h = one(h, "function fmt(n) { return '€' + Math.round(n).toLocaleString('en-IE'); }",

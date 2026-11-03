@@ -628,7 +628,8 @@
     function url(src) {
       var q = 'utm_source=' + src + '&utm_medium=social_share&utm_campaign=brief_article';
       if (sharePath) return base + '/' + sharePath + '?' + (langCode !== own ? 'lang=' + langCode + '&' : '') + q;
-      return base + '/article.html?slug=' + encodeURIComponent(slug) + (langCode !== 'en' ? '&lang=' + langCode : '') + '&' + q;
+      var hub = (langCode === 'sk' || langCode === 'ru') ? langCode + '/stories/' : 'stories/';
+      return base + '/' + hub + '?' + q;
     }
     var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
     var canNative = !!navigator.share;
@@ -671,7 +672,7 @@
     var grid = $('moreGrid');
     posts.filter(function (p) { return p.id !== currentId; }).slice(0, 3).forEach(function (p) {
       var a = el('a', 'blog-card');
-      a.href = ROOT + 'article.html?slug=' + encodeURIComponent(p.slug) + L.suffix;
+      a.href = ROOT + storyPath(p);
       var src = imgOf(p);
       if (src) { var img = el('img'); img.loading = 'lazy'; setImg(img, p, CARD_SIZES); img.alt = ''; a.appendChild(img); }
       var b = el('div', 'blog-card-body');
@@ -704,10 +705,10 @@
       });
   }
 
-  // article.html?slug=… is what the server answers while a story has no static page yet
-  // (seo-ops/virtuse.com.htaccess): render the WordPress post. A slug WordPress does not
-  // know either goes to the stories hub of the requested language, as the server did
-  // before 2026-10-26. Story pages and network errors keep the error box.
+  // The server 301s article.html?slug= to the story page, or to the language hub when
+  // that page is not on disk (Bod C). This reader still renders a post if it is opened
+  // directly. A slug WordPress does not know goes to the stories hub. Story pages and
+  // network errors keep the error box.
   var askedLang = langCode;
   function notFound() {
     if (STORY) { showError(); return; }

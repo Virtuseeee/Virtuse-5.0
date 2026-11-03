@@ -14,7 +14,7 @@ const CHROME_V2 = JSON.parse(fs.readFileSync(new URL('../data/chrome-v2.json', i
 // ONE cache-buster for the shared site-v2 files on every page; same numbers as SITE_CSS_V / SITE_JS_V in
 // Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/speed.py (design-align Batch A Part 1, 2026-10-26).
 export const SITE_CSS_V = '20';
-export const SITE_JS_V = '12';
+export const SITE_JS_V = '13';
 export const SITE_V2 = SITE_JS_V;
 // Cloudflare Web Analytics (cookieless, no consent, never on staging). Same string as
 // SNIPPET in Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/cf_analytics.py; its --check compares the pages.

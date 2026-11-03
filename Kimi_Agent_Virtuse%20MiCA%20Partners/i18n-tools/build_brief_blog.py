@@ -184,8 +184,7 @@ def build(lang, src_path, out_path):
     # interface in the page language (article.html reads ?lang=).
     if lang != 'en' and not cfg.get('langSuffix'):
         cfg['langSuffix'] = '&lang=' + lang
-        for c in d['cards'] + [d['featured']]:
-            c['href'] += '&lang=' + lang
+        # Card hrefs stay on the canonical story path. Do not append &lang= (that was the reader).
     ui = {k: n[k] for k in ('emailReq', 'sending', 'subOk', 'subErr', 'netErr')}
     on = ' class="on" aria-current="page"'
     lang_links = '\n'.join('          <a href="%s" lang="%s"%s>%s</a>' % (d['langs'][code], code, on if code == lang else '', label)
