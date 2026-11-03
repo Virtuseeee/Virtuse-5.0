@@ -1,400 +1,419 @@
-// Verdict Lite (verdict.html, sk/verdict.html; handover 2026-11-02): six
-// questions, then a result scored in the browser by fixed rules (no AI call,
-// no Worker call except the €14 report waitlist). Same chrome and CSS classes
-// as the full funnel (verdict-flow.js), which stays reachable with ?mode=full
-// and for ?report=1 / Stripe returns (see the loader in verdict.html).
-// Answer ids are the full funnel's, saved in the shared profile (vb-profile.js),
-// so Partner Finder, Tax Agent and the full Verdict get them prefilled.
+/* Verdict (verdict.html, sk/verdict.html): five short steps, a free Lite score for an email,
+   and the €14 full report (waitlist only, no payment yet). Replaced the old free-text
+   10-signal Verdict on 2026-11-03 (verdict-flow.js stays only for ru/verdict.html).
+
+   Scoring: six areas, 0 to 10 each, fixed rules, no AI model. The score measures how
+   ready the plan is, never whether to buy or sell. Grade and band come from the same
+   thresholds: A/B (70+) Basics in place, C (55-69) A few gaps, D/E (under 55) Basics missing.
+
+   Worker calls (through vb-api.js): POST /send kind verdict_lite (source verdict)
+   emails the Lite score after the gate; the payload is only score, grade, band,
+   gap ids and the six area points, and the Brief tick rides on the same call
+   (brief: true), so there is one welcome at most. /waitlist (source
+   verdict_report) for the €14 report.
+   Plain ES5 like the rest of the site's scripts. */
 (function () {
-  var LANG = document.documentElement.lang === 'sk' ? 'sk' : 'en';
+  'use strict';
+  var LANG = (document.documentElement.lang || 'en').slice(0, 2) === 'sk' ? 'sk' : 'en';
+  var P = function (f) { return (LANG === 'sk' ? '/sk/' : '/') + f; };
+  var LOC = LANG === 'sk' ? 'sk-SK' : 'en-IE';
+  var eur = function (n) { var s = Math.round(n).toLocaleString(LOC); return LANG === 'sk' ? s + ' €' : '€' + s; };
+  var $ = function (id) { return document.getElementById(id); };
+  var dl = function (o) { (window.dataLayer = window.dataLayer || []).push(o); };
+  var MOCK = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+
+  var I = {
+    home: '<path d="M4 11 12 4l8 7v9H4z"/><path d="M10 20v-5h4v5"/>',
+    mort: '<path d="M4 11 12 4l8 7v9H4z"/><path d="M9 15h6M12 12v6"/>',
+    rent: '<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/>',
+    other: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.2 2.4c-.5.2-.7.6-.7 1.1v.5M12 17v.01"/>',
+    seed: '<path d="M12 21v-9M12 12c0-4 3-7 7-7 0 4-3 7-7 7zM12 14c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5z"/>',
+    btc: '<circle cx="12" cy="12" r="9"/><path d="M10 7.5h3.2a2 2 0 0 1 0 4H10m0 0h3.7a2.1 2.1 0 0 1 0 4.2H10m0-8.2v8.2"/>',
+    key: '<circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l2 2M15 8l2 2"/>',
+    shield: '<path d="M12 3 4 6v6c0 4.5 3.4 8.2 8 9 4.6-.8 8-4.5 8-9V6z"/><path d="M9 12h6M12 9v6"/>',
+    any: '<path d="M4 7h12l-3-3M20 17H8l3 3"/>',
+    tax: '<path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h3"/>',
+    lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    crash: '<path d="M3 5l6 6 4-4 8 9"/><path d="M15 16h6v-6"/>',
+    heirs: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14.2A5 5 0 0 1 21 19"/>',
+    scam: '<path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.01"/>',
+    fees: '<circle cx="12" cy="12" r="9"/><path d="M15 9a3 3 0 1 0 0 6M8 11h5M8 13h5"/>',
+    pick: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
+    ret: '<path d="M3 20h18M5 20V10l7-5 7 5v10"/><path d="M9 20v-5h6v5"/>',
+    wait: '<path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9"/>',
+    more: '<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'
+  };
+
+  var S = {
+    en: {
+      countries: [['sk','Slovakia'],['cz','Czechia'],['at','Austria'],['de','Germany'],['pl','Poland'],['hu','Hungary'],['si','Slovenia'],['hr','Croatia'],['ro','Romania'],['bg','Bulgaria'],['nl','Netherlands'],['fr','France'],['es','Spain'],['other','Another country']],
+      grp: ['About you', 'Your plan'], chips: ['Start', 'About you', 'Your plan', 'Verdict'],
+      step: 'Step {0} of {1}', opt: 'optional', select: 'Select…', cont: 'Continue →', last: 'See my Verdict →',
+      retireErr: 'Your retirement age is lower than your age.',
+      steps: [
+        ["Let's start with the basics.", 'Your name only appears in your own report.', { name: ['First name', 'e.g. Anna'], age: ['Your age', 'e.g. 41'], country: ['Where do you pay tax?', 'Tax rules and the partners you can use depend on it.'] }],
+        ['Tell us about your savings and retirement.', 'Be as honest as you can. Round numbers are fine, and nothing leaves this page until you ask for your score.', { savings: ['Savings and investments (€), without your home and pension', 'e.g. 150000'], pension: ['Retirement savings so far (€): pension pillars, private pension', 'e.g. 40000'], retire: ['At what age do you plan to retire?', 'e.g. 65'], retmonthly: ['How much do you put aside for retirement each month (€)?', 'e.g. 150'], reserve: ['How many months could you live from cash, without Bitcoin?'] }],
+        ['Do you own your home?', 'Your home is often your biggest asset, and a mortgage changes how much a fall can hurt.', { homeval: ['Estimated home value (€)', 'e.g. 250000'], mortbal: ['Remaining mortgage (€)', 'e.g. 140000'], debt: ['Other debts (consumer loans, cards, leasing)?'] }],
+        ["What's your relationship with Bitcoin?", 'No judgement. We work with first-timers, long-time holders and sceptics alike.', { btc: ['How much would you put into Bitcoin (€)?', 'e.g. 20000'], monthly: ['And each month after that (€)?', 'e.g. 200'], custody: ['Who should hold the keys?'], fall: ['Bitcoin drops 70% in a year. What do you do?'] }],
+        ['What keeps you up at night about Bitcoin?', 'Pick all that apply. Your plan starts with these.', { tax_known: ['Do you know what the tax office takes when you sell?'] }]
+      ],
+      o: {
+        reserve: [['lt1','Under 1'],['1_3','1 to 3'],['3_6','3 to 6'],['6p','6 or more']],
+        home: [['own','Yes','Owned outright'],['mortgage','Yes, with a mortgage','Still paying it off'],['rent','No','I rent'],['other','Other','Family, shared, other']],
+        debt: [['none','None'],['lt10','Under €10,000'],['gt10','Over €10,000']],
+        experience: [['hodler','I own Bitcoin','Already invested'],['new','Curious','Haven’t bought yet'],['sceptic','Sceptical','Not sure it’s for me']],
+        custody: [['self','Me','A hardware wallet I control'],['assisted','Me, with help','Help with keys and recovery'],['any','Not sure yet','Show me all options']],
+        fall: [['sell','Sell, to stop the loss','Some or all of it'],['wait','Hold and wait','Do nothing'],['more','Buy more','At the lower price']],
+        worries: [['tax','Paying too much tax'],['keys','Losing my keys'],['crash','A crash wiping out my savings'],['heirs','My family not finding it'],['scams','Getting scammed'],['fees','Hidden fees'],['partner','Picking the wrong partner'],['retire','Not having enough for retirement']],
+        tax_known: [['yes','Yes, I know the rule'],['roughly','Roughly'],['no','No idea yet']]
+      },
+      areas: { size: 'Size', reserve: 'Reserve', debt: 'Debts', tax: 'Tax', custody: 'Custody', fall: 'Behaviour in a fall' },
+      band: ['Basics in place', 'A few gaps', 'Basics missing'],
+      who: function (n) { return n ? n + ', your' : 'Your'; },
+      gap1: 'Your #1 gap: ',
+      G: {
+        tax: ['Learn the sale rule in your country', function (a) { return a.tax_known === 'yes' ? 'You know the rule. Keep a record of every purchase from day one.' : 'You do not know the details yet. In many EU countries every swap counts as a sale too.'; }],
+        size: ['Size the position to a 70% fall', function (a, c) { return c.share != null && c.share >= 20 ? 'A large share of your savings is at stake. A 70% fall would change your plans.' : 'Bitcoin has fallen 70% or more several times. Know what that would mean for you before you buy.'; }],
+        reserve: ['Build a 6-month cash reserve first', function () { return 'So a fall never forces you to sell at the bottom.'; }],
+        debt: ['Pay down expensive debt first', function () { return 'Card and consumer-loan interest usually costs more than you can plan to earn.'; }],
+        mortgage: ['Keep the mortgage safe in a fall', function () { return 'More than 80% of your home value is still owed. Cash for the payments should never depend on the Bitcoin price.'; }],
+        fall: ['Write one rule for a fall', function () { return 'You said you would sell. Decide now, in one line, what you will do at −70%.'; }],
+        keys: ['Practise a wallet recovery with €20', function () { return 'Set up, wipe and restore the wallet before the full amount goes in.'; }],
+        custody: ['Decide who holds the keys', function () { return 'Without a choice, you cannot compare the partners that fit you.'; }],
+        recovery: ['Agree the recovery steps with your provider', function () { return 'Know exactly what happens if you lose a key, before larger amounts go in.'; }],
+        retire: ['Keep retirement money out of Bitcoin’s swings', function (a, c) { return c.years != null ? 'You plan to retire in ' + c.years + ' years. Money you need within the next years should not depend on the Bitcoin price.' : 'Money you need for retirement should not depend on the Bitcoin price.'; }],
+        heirs: ['Tell one person how to find your Bitcoin', function () { return 'Without instructions, heirs often never find it.'; }],
+        records: ['Keep a record of every purchase', function () { return 'Date, amount and price. It makes every later tax return simple.'; }]
+      },
+      R: {
+        sizeNa: 'You did not give your savings, so the size could not be checked.',
+        size: [function () { return '<b>Small position.</b> Under 5% of your savings; a fall would not change your plans.'; }, function (p) { return '<b>Sensible size.</b> ' + p + '% of your savings; a fall would hurt, not break your plans.'; }, function (p) { return '<b>Large position.</b> ' + p + '% of your savings; a fall would change your plans.'; }],
+        reserve: ['<b>Reserve in place.</b> 6 months or more of cash outside Bitcoin.', '<b>Reserve almost there.</b> 3 to 6 months of cash; the target is 6.', '<b>Thin reserve.</b> Under 3 months of cash; a fall could force a sale.'],
+        debt: ['<b>No consumer debt.</b> Nothing pushes you to sell at a bad moment.', '<b>Small debts.</b> Under €10,000 besides any mortgage.', '<b>Debts first.</b> Over €10,000 of consumer debt besides any mortgage.'],
+        retire: function (y, pen, mon) { return y == null ? '<b>Retirement.</b> You did not give your retirement age.' : '<b>' + (y === 0 ? 'Retirement this year.' : 'Retirement in ' + y + (y === 1 ? ' year.' : ' years.')) + '</b> ' + (pen ? 'You have pension savings put aside' : 'No pension savings given') + (mon ? ' and add to them every month.' : '.'); },
+        mort: ['<b>Mortgage under control.</b> Less than 80% of your home value is still owed.', '<b>Heavy mortgage.</b> More than 80% of your home value is still owed.'],
+        tax: ['<b>Tax rule known.</b> You know how a sale is taxed in your country.', '<b>Tax rule roughly known.</b> The details are still open.', '<b>Tax rule unknown.</b> You do not know yet how a sale is taxed.'],
+        custody: { selfNew: '<b>Own keys, first time.</b> The backup is not tested yet.', self: '<b>Own keys.</b> You hold your Bitcoin yourself.', assisted: '<b>Assisted custody.</b> You get help with keys and recovery.', any: '<b>Custody open.</b> You have not decided who holds the keys.' },
+        fall: { more: '<b>Calm in a fall.</b> You would buy more at a lower price.', wait: '<b>Calm in a fall.</b> You would wait, not sell.', sell: '<b>Risky in a fall.</b> You would sell some or all to stop the loss.' }
+      },
+      blur: { pts: 'Where your points come from', fall: 'What a 70% fall means for you', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', against your reserve and debts' : 'Your amount in euros, against your reserve and debts'; }, rule: function (c) { return 'The sale rule in ' + c; }, ruleTxt: 'Holding period, exemption limit, what counts as a sale', steps: '3 steps for this week', yourCountry: 'your country' },
+      gateErr: 'Enter a valid email.', net: 'Something went wrong. Please try again.',
+      sent: 'Your Lite score is on its way to your inbox.', notSent: 'We could not send the email right now. Your score is below.',
+      wlOk: "You're on the list. We'll email you once, when the report opens.",
+      demo: { top: 'VERDICT REPORT · SAMPLE', title: 'Anna’s Bitcoin plan check', meta: '41 · Slovakia · first purchase · own keys', scale: ['Basics missing', 'A few gaps', 'Basics in place'], pill: 'B · Basics in place', nums: [['Planned', '€20,000 · 13%'], ['After a 70% fall', '€6,000 left'], ['Monthly', '€200'], ['Cash reserve', '3 to 6 months']], areas: ['Size', 'Reserve', 'Debts', 'Tax', 'Custody', 'Behaviour'] },
+      jump: ['Landing', '1 Basics', '2 Savings', '3 Home', '4 Bitcoin', '5 Worries', 'Loading', 'Gate', 'Lite score', 'Sample']
+    },
+    sk: {
+      countries: [['sk','Slovensko'],['cz','Česko'],['at','Rakúsko'],['de','Nemecko'],['pl','Poľsko'],['hu','Maďarsko'],['si','Slovinsko'],['hr','Chorvátsko'],['ro','Rumunsko'],['bg','Bulharsko'],['nl','Holandsko'],['fr','Francúzsko'],['es','Španielsko'],['other','Iná krajina']],
+      grp: ['O vás', 'Váš plán'], chips: ['Štart', 'O vás', 'Váš plán', 'Verdict'],
+      step: 'Krok {0} z {1}', opt: 'nepovinné', select: 'Vyberte…', cont: 'Pokračovať →', last: 'Zobraziť môj Verdict →',
+      retireErr: 'Vek odchodu do dôchodku je nižší ako váš vek.',
+      steps: [
+        ['Začnime základmi.', 'Vaše meno sa zobrazí len vo vašom vlastnom reporte.', { name: ['Krstné meno', 'napr. Anna'], age: ['Váš vek', 'napr. 41'], country: ['V ktorej krajine platíte dane?', 'Od toho závisia daňové pravidlá aj partneri, ktorých môžete využiť.'] }],
+        ['Povedzte nám o svojich úsporách a dôchodku.', 'Buďte čo najúprimnejší. Stačia zaokrúhlené čísla a nič neopustí túto stránku, kým si nevypýtate skóre.', { savings: ['Úspory a investície (€), bez bývania a dôchodku', 'napr. 150000'], pension: ['Doterajšie úspory na dôchodok (€): dôchodkové piliere, súkromné sporenie', 'napr. 40000'], retire: ['V akom veku plánujete ísť do dôchodku?', 'napr. 65'], retmonthly: ['Koľko si mesačne odkladáte na dôchodok (€)?', 'napr. 150'], reserve: ['Koľko mesiacov by ste vyžili z hotovosti, bez Bitcoinu?'] }],
+        ['Bývate vo vlastnom?', 'Bývanie býva najväčší majetok a hypotéka mení, ako veľmi môže pokles bolieť.', { homeval: ['Odhadovaná hodnota bývania (€)', 'napr. 250000'], mortbal: ['Zostatok hypotéky (€)', 'napr. 140000'], debt: ['Iné dlhy (spotrebné úvery, karty, lízing)?'] }],
+        ['Aký máte vzťah k Bitcoinu?', 'Nikoho nesúdime. Pomáhame začiatočníkom, dlhoročným držiteľom aj skeptikom.', { btc: ['Koľko by ste dali do Bitcoinu (€)?', 'napr. 20000'], monthly: ['A potom každý mesiac (€)?', 'napr. 200'], custody: ['Kto má držať kľúče?'], fall: ['Bitcoin za rok klesne o 70 %. Čo urobíte?'] }],
+        ['Čo vás na Bitcoine trápi najviac?', 'Vyberte všetko, čo platí. Váš plán začne práve týmto.', { tax_known: ['Viete, koľko si pri predaji vezme daňový úrad?'] }]
+      ],
+      o: {
+        reserve: [['lt1','Menej ako 1'],['1_3','1 až 3'],['3_6','3 až 6'],['6p','6 a viac']],
+        home: [['own','Áno','Bez hypotéky'],['mortgage','Áno, s hypotékou','Ešte ju splácam'],['rent','Nie','Bývam v prenájme'],['other','Iné','U rodiny, spoločne, iné']],
+        debt: [['none','Žiadne'],['lt10','Do 10 000 €'],['gt10','Nad 10 000 €']],
+        experience: [['hodler','Bitcoin vlastním','Už som investoval'],['new','Zaujíma ma','Ešte som nekúpil'],['sceptic','Som skeptický','Nie som si istý, či je pre mňa']],
+        custody: [['self','Ja','Hardvérová peňaženka, ktorú ovládam'],['assisted','Ja, s pomocou','Pomoc s kľúčmi a obnovou'],['any','Ešte neviem','Ukážte mi všetky možnosti']],
+        fall: [['sell','Predám, aby som zastavil stratu','Časť alebo všetko'],['wait','Počkám','Nič nerobím'],['more','Prikúpim','Za nižšiu cenu']],
+        worries: [['tax','Že zaplatím priveľa na daniach'],['keys','Že stratím kľúče'],['crash','Že prepad zničí moje úspory'],['heirs','Že ho rodina nenájde'],['scams','Že naletím podvodníkom'],['fees','Skryté poplatky'],['partner','Že si vyberiem zlého partnera'],['retire','Že mi nebude stačiť na dôchodok']],
+        tax_known: [['yes','Áno, poznám pravidlo'],['roughly','Približne'],['no','Zatiaľ netuším']]
+      },
+      areas: { size: 'Veľkosť', reserve: 'Rezerva', debt: 'Dlhy', tax: 'Dane', custody: 'Úschova', fall: 'Správanie pri poklese' },
+      band: ['Základy máte', 'Pár medzier', 'Chýbajú základy'],
+      who: function (n) { return n ? n + ', vaše' : 'Vaše'; },
+      gap1: 'Vaša medzera č. 1: ',
+      G: {
+        tax: ['Zistite, ako sa vo vašej krajine zdaní predaj', function (a) { return a.tax_known === 'yes' ? 'Pravidlo poznáte. Od prvého dňa si zapisujte každý nákup.' : 'Podrobnosti zatiaľ nepoznáte. V mnohých krajinách EÚ sa ako predaj ráta aj každá výmena.'; }],
+        size: ['Nastavte veľkosť tak, aby ste zvládli pokles o 70 %', function (a, c) { return c.share != null && c.share >= 20 ? 'V hre je veľká časť vašich úspor. Pokles o 70 % by zmenil vaše plány.' : 'Bitcoin už viackrát klesol o 70 % a viac. Pred nákupom si ujasnite, čo by to znamenalo pre vás.'; }],
+        reserve: ['Najprv si vytvorte rezervu na 6 mesiacov', function () { return 'Aby vás pokles nikdy neprinútil predávať na dne.'; }],
+        debt: ['Najprv splaťte drahé dlhy', function () { return 'Úroky z kariet a spotrebných úverov zvyčajne stoja viac, než môžete rozumne plánovať zarobiť.'; }],
+        mortgage: ['Chráňte hypotéku pred poklesom', function () { return 'Dlhujete viac ako 80 % hodnoty bývania. Peniaze na splátky nesmú závisieť od ceny Bitcoinu.'; }],
+        fall: ['Napíšte si jedno pravidlo pre pokles', function () { return 'Uviedli ste, že by ste predali. Rozhodnite sa teraz, jednou vetou, čo urobíte pri −70 %.'; }],
+        keys: ['Vyskúšajte si obnovu peňaženky s 20 €', function () { return 'Peňaženku nastavte, vymažte a obnovte skôr, než do nej pôjde celá suma.'; }],
+        custody: ['Rozhodnite, kto bude držať kľúče', function () { return 'Bez tohto rozhodnutia nemôžete porovnať partnerov, ktorí vám vyhovujú.'; }],
+        recovery: ['Dohodnite si s poskytovateľom postup obnovy', function () { return 'Vedzte presne, čo sa stane pri strate kľúča, skôr než pôjdu do hry väčšie sumy.'; }],
+        retire: ['Peniaze na dôchodok nenechajte na výkyvoch Bitcoinu', function (a, c) { return c.years != null ? 'Do dôchodku plánujete ísť o ' + c.years + ' rokov. Peniaze, ktoré budete potrebovať v najbližších rokoch, nesmú závisieť od ceny Bitcoinu.' : 'Peniaze na dôchodok nesmú závisieť od ceny Bitcoinu.'; }],
+        heirs: ['Povedzte jednému človeku, ako váš Bitcoin nájsť', function () { return 'Bez pokynov ho dedičia často nikdy nenájdu.'; }],
+        records: ['Zapisujte si každý nákup', function () { return 'Dátum, suma a cena. Každé neskoršie daňové priznanie bude jednoduché.'; }]
+      },
+      R: {
+        sizeNa: 'Neuviedli ste úspory, takže veľkosť sa nedala posúdiť.',
+        size: [function () { return '<b>Malá pozícia.</b> Menej ako 5 % vašich úspor; pokles by vaše plány nezmenil.'; }, function (p) { return '<b>Rozumná veľkosť.</b> ' + p + ' % vašich úspor; pokles by bolel, ale plány by nezničil.'; }, function (p) { return '<b>Veľká pozícia.</b> ' + p + ' % vašich úspor; pokles by zmenil vaše plány.'; }],
+        reserve: ['<b>Rezervu máte.</b> 6 mesiacov a viac v hotovosti mimo Bitcoinu.', '<b>Rezerva takmer stačí.</b> 3 až 6 mesiacov v hotovosti; cieľ je 6.', '<b>Tenká rezerva.</b> Menej ako 3 mesiace v hotovosti; pokles by vás mohol prinútiť predať.'],
+        debt: ['<b>Žiadne spotrebné dlhy.</b> Nič vás netlačí predávať v zlej chvíli.', '<b>Malé dlhy.</b> Do 10 000 € okrem prípadnej hypotéky.', '<b>Najprv dlhy.</b> Viac ako 10 000 € spotrebných dlhov okrem prípadnej hypotéky.'],
+        retire: function (y, pen, mon) { return y == null ? '<b>Dôchodok.</b> Neuviedli ste vek odchodu do dôchodku.' : '<b>' + (y === 0 ? 'Dôchodok ešte tento rok.' : 'Dôchodok o ' + y + ' ' + (y === 1 ? 'rok.' : y < 5 ? 'roky.' : 'rokov.')) + '</b> ' + (pen ? 'Na dôchodok si už odkladáte' : 'Úspory na dôchodok ste neuviedli') + (mon ? ' a každý mesiac pridávate.' : '.'); },
+        mort: ['<b>Hypotéka pod kontrolou.</b> Dlhujete menej ako 80 % hodnoty bývania.', '<b>Vysoká hypotéka.</b> Dlhujete viac ako 80 % hodnoty bývania.'],
+        tax: ['<b>Pravidlo poznáte.</b> Viete, ako sa vo vašej krajine zdaní predaj.', '<b>Pravidlo poznáte približne.</b> Podrobnosti sú ešte otvorené.', '<b>Pravidlo nepoznáte.</b> Zatiaľ neviete, ako sa zdaní predaj.'],
+        custody: { selfNew: '<b>Vlastné kľúče, prvýkrát.</b> Záloha ešte nie je vyskúšaná.', self: '<b>Vlastné kľúče.</b> Bitcoin držíte sami.', assisted: '<b>Asistovaná úschova.</b> S kľúčmi a obnovou vám pomáhajú.', any: '<b>Úschova otvorená.</b> Ešte ste sa nerozhodli, kto bude držať kľúče.' },
+        fall: { more: '<b>Pokojný pri poklese.</b> Prikúpili by ste za nižšiu cenu.', wait: '<b>Pokojný pri poklese.</b> Počkali by ste, nepredávali.', sell: '<b>Riziko pri poklese.</b> Predali by ste časť alebo všetko, aby ste zastavili stratu.' }
+      },
+      blur: { pts: 'Odkiaľ sú vaše body', fall: 'Čo pre vás znamená pokles o 70 %', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', oproti vašej rezerve a dlhom' : 'Vaša suma v eurách, oproti rezerve a dlhom'; }, rule: function (c) { return 'Pravidlo predaja: ' + c; }, ruleTxt: 'Doba držby, oslobodenie, čo sa ráta ako predaj', steps: '3 kroky na tento týždeň', yourCountry: 'vaša krajina' },
+      gateErr: 'Zadajte platný e-mail.', net: 'Niečo sa pokazilo. Skúste to znova.',
+      sent: 'Lite skóre vám posielame e-mailom.', notSent: 'E-mail sa teraz nepodarilo odoslať. Vaše skóre nájdete nižšie.',
+      wlOk: 'Ste na zozname. Napíšeme vám raz, keď report spustíme.',
+      demo: { top: 'VERDICT REPORT · VZOR', title: 'Plán Bitcoinu: Anna', meta: '41 · Slovensko · prvý nákup · vlastné kľúče', scale: ['Chýbajú základy', 'Pár medzier', 'Základy máte'], pill: 'B · Základy máte', nums: [['Plánuje', '20 000 € · 13 %'], ['Po poklese o 70 %', 'zostane 6 000 €'], ['Mesačne', '200 €'], ['Rezerva', '3 až 6 mesiacov']], areas: ['Veľkosť', 'Rezerva', 'Dlhy', 'Dane', 'Úschova', 'Správanie'] },
+      jump: ['Landing', '1 Základ', '2 Úspory', '3 Bývanie', '4 Bitcoin', '5 Obavy', 'Načítanie', 'Brána', 'Lite skóre', 'Vzor']
+    }
+  }[LANG];
+
+  var COL = { home: ['green','blue','purple','yellow'], experience: ['orange','green','purple'], custody: ['teal','blue','indigo'], fall: ['pink','yellow','green'], worries: ['orange','teal','pink','purple','yellow','blue','indigo','green'] };
+  var ICO = { home: [I.home, I.mort, I.rent, I.other], experience: [I.btc, I.seed, I.other], custody: [I.key, I.shield, I.any], fall: [I.crash, I.wait, I.more], worries: [I.tax, I.lock, I.crash, I.heirs, I.scam, I.fees, I.pick, I.ret] };
+  var STEPS = [
+    { f: [{ k: 'name', type: 'text', opt: 1 }, { k: 'age', type: 'num' }, { k: 'country', type: 'select' }] },
+    { f: [{ k: 'savings', type: 'eur' }, { k: 'pension', type: 'eur', opt: 1 }, { k: 'retire', type: 'num' }, { k: 'retmonthly', type: 'eur', opt: 1 }, { k: 'reserve', type: 'seg' }] },
+    { f: [{ k: 'home', type: 'tiles' }, { k: 'homeval', type: 'eur', opt: 1, when: function () { return A.home === 'own' || A.home === 'mortgage'; } }, { k: 'mortbal', type: 'eur', when: function () { return A.home === 'mortgage'; } }, { k: 'debt', type: 'seg' }] },
+    { f: [{ k: 'experience', type: 'tiles', cols: 'c3' }, { k: 'btc', type: 'eur' }, { k: 'monthly', type: 'eur', opt: 1 }, { k: 'custody', type: 'tiles', cols: 'c3', sm: 1 }, { k: 'fall', type: 'tiles', cols: 'c3', sm: 1 }] },
+    { f: [{ k: 'worries', type: 'multi', opt: 1 }, { k: 'tax_known', type: 'seg' }] }
+  ];
+  var KICK = ['blue', 'green', 'purple', 'orange', 'pink'];
+  var KEY = 'vb-verdict-lite';
+  var A = { worries: [] }, done = false, cur = 0;
+  try { var saved = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (saved && saved.A) { A = saved.A; A.worries = A.worries || []; done = !!saved.done; } } catch (e) {}
+  function save() { try { sessionStorage.setItem(KEY, JSON.stringify({ A: A, done: done })); } catch (e) {} }
+  var svg = function (p) { return '<svg viewBox="0 0 24 24" aria-hidden="true">' + p + '</svg>'; };
+  var fmt = function (s) { var a = arguments; return s.replace(/\{(\d)\}/g, function (m, i) { return a[+i + 1]; }); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+
+  function stepper(el, active) {
+    el.innerHTML = S.chips.map(function (n, i) { return '<span class="' + (i < active ? 'done' : i === active ? 'on' : '') + '">' + n + '</span>'; }).join('');
+  }
+  function show(s) {
+    s = +s || 0;
+    if ((s === 7 || s === 8) && !done) s = 1;   // no result without a completed funnel
+    if (s === 8 && !A.email) s = 7;              // the Lite score needs the email first
+    document.querySelectorAll('.ml-screen').forEach(function (el) { el.classList.remove('on'); });
+    var key = s >= 1 && s <= 5 ? 'q' : String(s);
+    var scr = document.querySelector('.ml-screen[data-s="' + key + '"]'); if (!scr) return;
+    scr.classList.add('on');
+    $('ml').classList.toggle('wide', s === 0);
+    if (s === 0) demoLoop(); else clearTimeout(demoLoop.t);
+    if (key === 'q') { cur = s - 1; renderQ(); dl({ event: 'verdict_step', verdict_step: s }); }
+    if (s === 6) load();
+    if (s === 8) result();
+    if (history.replaceState) history.replaceState(null, '', location.pathname + (s ? '?s=' + s : ''));
+    window.scrollTo(0, 0);
+  }
+  function lab(f, l) { return l ? '<label class="ml-lab" for="f_' + f.k + '">' + l + (f.opt ? ' <em>' + S.opt + '</em>' : '') + '</label>' : ''; }
+  function field(f, txt) {
+    var v = A[f.k], L = txt[f.k] || [];
+    if (f.type === 'text' || f.type === 'num' || f.type === 'eur')
+      return lab(f, L[0]) + '<div class="ml-inwrap' + (f.type === 'eur' ? ' eur' : '') + '"><input class="ml-input" id="f_' + f.k + '" data-k="' + f.k + '" ' + (f.type === 'text' ? 'type="text" autocomplete="given-name" maxlength="40"' : 'type="number" inputmode="numeric" min="0"') + ' placeholder="' + (L[1] || '') + '" value="' + (v == null ? '' : esc(v)) + '"></div>' + (f.k === 'retire' ? '<p class="ml-err" id="mlRetErr" hidden>' + S.retireErr + '</p>' : '');
+    if (f.type === 'select')
+      return lab(f, L[0]) + '<select class="ml-input ml-select" id="f_' + f.k + '" data-k="' + f.k + '"><option value="">' + S.select + '</option>' + S.countries.map(function (o) { return '<option value="' + o[0] + '"' + (v === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>' + (L[1] ? '<div class="ml-why">' + L[1] + '</div>' : '');
+    if (f.type === 'seg')
+      return lab(f, L[0]) + '<div class="ml-seg" role="radiogroup">' + S.o[f.k].map(function (o) { return '<button type="button" role="radio" aria-checked="' + (v === o[0]) + '" class="' + (v === o[0] ? 'sel' : '') + '" data-k="' + f.k + '" data-v="' + o[0] + '">' + o[1] + '</button>'; }).join('') + '</div>';
+    if (f.type === 'tiles')
+      return lab(f, L[0]) + '<div class="ml-tiles ' + (f.cols || '') + (f.sm ? ' sm' : '') + '" role="radiogroup">' + S.o[f.k].map(function (o, i) { return '<button type="button" role="radio" aria-checked="' + (v === o[0]) + '" class="ml-tile c-' + COL[f.k][i] + (v === o[0] ? ' sel' : '') + '" data-k="' + f.k + '" data-v="' + o[0] + '">' + svg(ICO[f.k][i]) + '<span><b>' + o[1] + '</b><small>' + o[2] + '</small></span></button>'; }).join('') + '</div>';
+    if (f.type === 'multi')
+      return '<div class="ml-tiles c4 multi">' + S.o.worries.map(function (o, i) { var on = A.worries.indexOf(o[0]) > -1; return '<button type="button" aria-pressed="' + on + '" class="ml-tile c-' + COL.worries[i] + (on ? ' sel' : '') + '" data-m="' + o[0] + '">' + svg(ICO.worries[i]) + '<b>' + o[1] + '</b></button>'; }).join('') + '</div>';
+  }
+  function renderQ() {
+    var st = STEPS[cur], n = STEPS.length, txt = S.steps[cur], pct = Math.round((cur + 1) / n * 100);
+    stepper($('mlStepper'), cur < 3 ? 1 : 2);
+    $('mlStepTxt').textContent = fmt(S.step, cur + 1, n);
+    $('mlPct').textContent = pct + '%';
+    $('mlBar').style.width = pct + '%';
+    $('mlQ').className = 'ml-card k-' + KICK[cur];
+    $('mlQ').innerHTML = '<div class="ml-kick">' + fmt(S.step, cur + 1, n) + ' · ' + S.grp[cur < 3 ? 0 : 1] + '</div><h2>' + txt[0] + '</h2><p class="ml-hint">' + txt[1] + '</p><div class="ml-fields">' +
+      st.f.filter(function (f) { return !f.when || f.when(); }).map(function (f) { return '<div class="ml-field">' + field(f, txt[2]) + '</div>'; }).join('') + '</div>';
+    $('mlNext').textContent = cur === n - 1 ? S.last : S.cont;
+    check();
+  }
+  function retireBad() { return A.retire != null && A.age != null && A.retire !== '' && A.age !== '' && +A.retire < +A.age; }
+  function check() {
+    var ok = STEPS[cur].f.every(function (f) { return f.opt || (f.when && !f.when()) || (A[f.k] != null && A[f.k] !== ''); });
+    if (cur === 1) { var bad = retireBad(), e = $('mlRetErr'); if (e) e.hidden = !bad; if (bad) ok = false; }
+    $('mlNext').disabled = !ok;
+  }
+
+  function calc() {
+    var share = A.savings > 0 && A.btc != null ? A.btc / A.savings * 100 : null;
+    var size = share == null ? 3 : share < 5 ? 10 : share < 20 ? 7 : share < 50 ? 4 : 1;
+    var reserve = { '6p': 10, '3_6': 7, '1_3': 4, lt1: 1 }[A.reserve] || 3;
+    var debt = { none: 10, lt10: 7, gt10: 3 }[A.debt] || 5;
+    var ltv = A.home === 'mortgage' && A.homeval > 0 && A.mortbal != null ? A.mortbal / A.homeval : null;
+    if (ltv != null && ltv > 0.8) debt = Math.max(1, debt - 3);
+    // Guard: a retirement age below the current age gives no "years" and no penalty
+    var years = A.retire != null && A.age != null && +A.retire >= +A.age ? A.retire - A.age : null;
+    if (years != null && years < 10 && share != null && share >= 20) size = Math.max(1, size - 2);
+    var tax = { yes: 10, roughly: 6 }[A.tax_known] || 2;
+    var custody = A.custody === 'self' ? (A.experience !== 'hodler' ? 6 : 9) : A.custody === 'assisted' ? 8 : 4;
+    var fall = { more: 10, wait: 10, sell: 4 }[A.fall] || 5;
+    var sc = { size: size, reserve: reserve, debt: debt, tax: tax, custody: custody, fall: fall };
+    var sum = size + reserve + debt + tax + custody + fall;
+    return { share: share, ltv: ltv, years: years, sc: sc, total: Math.round(sum / 60 * 100 / 5) * 5 };
+  }
+  function grade(t) { return t >= 85 ? 'A' : t >= 70 ? 'B' : t >= 55 ? 'C' : t >= 40 ? 'D' : 'E'; }
+  function band(t) { return t >= 70 ? S.band[0] : t >= 55 ? S.band[1] : S.band[2]; }
+  // Rank gaps by the points each area misses, plus a boost for what the person worries about.
+  // Partner Finder stays a result CTA, never a gap.
+  function gaps(c) {
+    var sc = c.sc, w = A.worries || [], pr = {};
+    var put = function (id, p) { pr[id] = Math.max(pr[id] || 0, p); };
+    if (sc.size < 10) put('size', 10 - sc.size);
+    if (sc.reserve < 10) put('reserve', 10 - sc.reserve);
+    if (A.debt && A.debt !== 'none') put('debt', A.debt === 'gt10' ? 7 : 3);
+    if (c.ltv != null && c.ltv > 0.8) put('mortgage', 4);
+    if (sc.tax < 10) put('tax', 10 - sc.tax);
+    if (A.custody === 'any') put('custody', 6);
+    if (A.custody === 'self' && sc.custody < 10) put('keys', 10 - sc.custody);
+    if (A.custody === 'assisted') put('recovery', 2);
+    if (sc.fall < 10) put('fall', 10 - sc.fall);
+    if (c.years != null && c.years < 10 && (c.share || 0) >= 20) put('retire', 5);
+    var boost = { tax: 'tax', keys: A.custody === 'assisted' ? 'recovery' : A.custody === 'any' ? 'custody' : 'keys', crash: 'size', heirs: 'heirs', scams: A.custody === 'any' ? 'custody' : 'keys', retire: 'retire' };
+    w.forEach(function (k) { var id = boost[k]; if (id) pr[id] = (pr[id] || 0) + 3; });
+    var ids = Object.keys(pr).sort(function (a, b) { return pr[b] - pr[a]; });
+    ['heirs', 'records'].forEach(function (id) { if (ids.indexOf(id) < 0) ids.push(id); });
+    return ids.slice(0, 3).map(function (id) { var g = S.G[id]; return [g[0], g[1](A, c), id]; });
+  }
+  function result() {
+    var c = calc(), t = c.total, gr = grade(t), sc = c.sc;
+    var nm = A.name ? String(A.name).trim() : '';
+    $('mlGrade').textContent = gr; $('mlGrade').className = 'ml-grade g' + gr;
+    $('mlWho').textContent = S.who(nm);
+    $('mlScore').textContent = t;
+    $('mlBandH').textContent = band(t);
+    $('mlResTop').classList.add('ready');
+    var g = gaps(c), ul = $('mlGaps');
+    ul.innerHTML = ''; g.forEach(function (x) { var e = document.createElement('li'); e.innerHTML = '<b></b><span></span>'; e.children[0].textContent = x[0]; e.children[1].textContent = x[1]; ul.appendChild(e); });
+    $('mlGap1').textContent = S.gap1 + g[0][0].charAt(0).toLowerCase() + g[0][0].slice(1);
+    var R = S.R, sh = c.share, p = sh == null ? 0 : Math.round(sh), rd = [];
+    rd.push([sc.size >= 7, sh == null ? R.sizeNa : sh < 5 ? R.size[0](p) : sh < 20 ? R.size[1](p) : R.size[2](p)]);
+    rd.push([sc.reserve >= 7, sc.reserve >= 10 ? R.reserve[0] : sc.reserve >= 7 ? R.reserve[1] : R.reserve[2]]);
+    rd.push([A.debt !== 'gt10', A.debt === 'none' ? R.debt[0] : A.debt === 'lt10' ? R.debt[1] : R.debt[2]]);
+    rd.push([c.years == null || c.years >= 10 || (sh || 0) < 20, R.retire(c.years, A.pension, A.retmonthly)]);
+    if (c.ltv != null) rd.push([c.ltv <= 0.8, c.ltv <= 0.8 ? R.mort[0] : R.mort[1]]);
+    rd.push([sc.tax >= 7, sc.tax >= 10 ? R.tax[0] : sc.tax >= 6 ? R.tax[1] : R.tax[2]]);
+    rd.push([sc.custody >= 7, A.custody === 'self' ? (A.experience !== 'hodler' ? R.custody.selfNew : R.custody.self) : A.custody === 'assisted' ? R.custody.assisted : R.custody.any]);
+    rd.push([sc.fall >= 7, R.fall[A.fall] || R.fall.wait]);
+    $('mlRead').innerHTML = rd.map(function (r) { return '<li class="' + (r[0] ? '' : 'warn') + '">' + r[1] + '</li>'; }).join('');
+    // Blurred preview of the paid report (the real report would be built after payment)
+    var cn = A.country && A.country !== 'other' ? (S.countries.filter(function (x) { return x[0] === A.country; })[0] || [0, S.blur.yourCountry])[1] : S.blur.yourCountry;
+    var rows = document.querySelectorAll('.ml-blur-row');
+    var set = function (i, b, s) { rows[i].children[0].textContent = b; rows[i].children[1].textContent = s; };
+    set(0, S.blur.pts, ['size', 'reserve', 'debt', 'tax', 'custody', 'fall'].map(function (k) { return S.areas[k] + ' ' + sc[k] + '/10'; }).join(' · '));
+    set(1, S.blur.fall, S.blur.fallTxt(A.btc ? eur(A.btc) : '', A.btc ? eur(A.btc * 0.3) : ''));
+    set(2, S.blur.rule(cn), S.blur.ruleTxt);
+    set(3, S.blur.steps, g.map(function (x, i) { return (i + 1) + '. ' + x[0]; }).join(' · '));
+    var amt = !A.btc ? '' : A.btc < 1000 ? 's' : A.btc < 10000 ? 'm' : A.btc < 100000 ? 'l' : 'xl';
+    $('mlPf').href = P('concierge.html') + '?pf_goal=buy&pf_country=' + (A.country || '') + '&pf_experience=' + (A.experience === 'hodler' ? 'hodler' : 'new') + '&pf_custody=' + (A.custody || '') + '&pf_amount=' + amt + '&utm_source=verdict&utm_medium=lite';
+    dl({ event: 'verdict_result', verdict_mode: 'lite', verdict_score: t, verdict_grade: gr });
+  }
+  function load() {
+    stepper($('mlStepper2'), 3);
+    var li = document.querySelectorAll('#mlChecks li');
+    li.forEach(function (l) { l.classList.remove('ok'); });
+    li.forEach(function (l, i) { setTimeout(function () { l.classList.add('ok'); }, 420 * (i + 1)); });
+    clearTimeout(load.t); load.t = setTimeout(function () { if (document.querySelector('.ml-screen[data-s="6"]').classList.contains('on')) show(7); }, 2700);
+  }
+
+  // Hero sample card (fictional client Anna), also shown small on the gate screen
+  var D = S.demo;
+  var DEMO = '<div class="dm-top"><span>' + D.top + '</span><span class="dm-dots"><i></i><i></i><i></i><i></i></span></div>' +
+    '<div class="dm-st"><b class="dm-t">' + D.title + '</b><span class="dm-meta">' + D.meta + '</span></div>' +
+    '<div class="dm-st dm-score"><div class="dm-n"><b>75</b><small>/100</small></div><div class="dm-scale"><div class="dm-lbl"><span>' + D.scale[0] + '</span><span>' + D.scale[1] + '</span><span>' + D.scale[2] + '</span></div><div class="dm-track"><i></i></div><span class="dm-pill">' + D.pill + '</span></div></div>' +
+    '<div class="dm-st dm-nums">' + D.nums.map(function (x) { return '<div><small>' + x[0] + '</small><b>' + x[1] + '</b></div>'; }).join('') + '</div>' +
+    '<div class="dm-st dm-areas">' + [7, 7, 10, 6, 6, 10].map(function (v, i) { return '<div class="' + (v <= 6 ? 'lo' : '') + '"><span>' + D.areas[i] + '</span><i><em style="--w:' + v * 10 + '%"></em></i><b>' + v + '</b></div>'; }).join('') + '</div>';
+  function demoInit() {
+    ['mlDemo', 'mlDemo2'].forEach(function (id) { var d = $(id); if (d && !d.innerHTML) d.innerHTML = DEMO; });
+    var d2 = $('mlDemo2'); if (d2) d2.classList.add('all');
+  }
+  function demoLoop() {
+    var d = $('mlDemo'); if (!d) return;
+    clearTimeout(demoLoop.t);
+    var st = d.querySelectorAll('.dm-st'), dots = d.querySelectorAll('.dm-dots i'), n = d.querySelector('.dm-n b');
+    d.classList.remove('all'); st.forEach(function (x) { x.classList.remove('on'); }); dots.forEach(function (x) { x.classList.remove('on'); });
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { d.classList.add('all'); return; }
+    st.forEach(function (x, k) { setTimeout(function () {
+      x.classList.add('on'); if (dots[k]) dots[k].classList.add('on');
+      if (x.classList.contains('dm-score')) { var t0 = performance.now(); (function f(now) { var q = Math.min(1, (now - t0) / 1100); n.textContent = Math.round(75 * (1 - Math.pow(1 - q, 3))); if (q < 1) requestAnimationFrame(f); })(t0); }
+    }, 250 + k * 750); });
+    demoLoop.t = setTimeout(function () { if ($('ml').classList.contains('wide')) demoLoop(); }, 250 + st.length * 750 + 4500);
+  }
 
   function vbApi() {
     if (window.VB_API) return Promise.resolve(window.VB_API);
     return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
       var s = document.createElement('script');
-      s.src = '/vb-api.js?v=1';
+      s.src = '/vb-api.js?v=2';
       s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
       s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
       document.head.appendChild(s);
     }));
   }
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Question text and options: 1:1 with verdict-flow.js (stg2). Everything
-  // else is Lite copy; the SK Lite copy is a DRAFT for Ras.
-  var STR = {
-    en: {
-      steps: ['Start', 'About you', 'Your plan', 'Verdict'], progress: 'Your progress', back: '← Back', skip: '? Not sure yet', about: 'About you', plan: 'Your plan',
-      startEb: 'Verdict Lite · free', startH: '6 questions before you choose a Bitcoin partner in the EU.',
-      startP: 'Country, amount, custody and tax. You get a score out of 100, the weakest point and one next step.',
-      startHint: '~1 minute · no account · not investment advice', startNote: 'Six short questions, no free text', startBtn: 'Get Lite Verdict',
-      q: {
-        country: ['Where do you pay tax?', 'Bitcoin tax rules differ a lot between countries.', 'Tax Agent and Partner Finder use the same answer.'],
-        amount: ['How much money is involved?', 'Roughly is fine.', 'Used to show what a 70% fall would mean in euros.'],
-        share: ['What share of your wealth is it?', 'An estimate is enough. Count savings and investments, not your home.', 'The biggest single factor in the Lite score.'],
-        experience: ['Do you already own Bitcoin?', 'Partner Finder uses this to show partners for beginners or experienced holders.', 'Used by Partner Finder.'],
-        custody_pref: ['How do you want your Bitcoin held?', 'Partner Finder uses this to show partners that meet your criteria.', 'Used by Partner Finder.'],
-        tax_known: ['Do you know how a sale is taxed in your country?', 'For example the rate, an exemption after a holding period, or whether swapping coins is taxed.', 'Affects the Tax area of the score.']
-      },
-      opts: {
-        country: [['sk', 'Slovakia'], ['cz', 'Czechia'], ['at', 'Austria'], ['de', 'Germany'], ['pl', 'Poland'], ['hu', 'Hungary'], ['si', 'Slovenia'], ['hr', 'Croatia'], ['ro', 'Romania'], ['bg', 'Bulgaria'], ['nl', 'Netherlands'], ['fr', 'France'], ['es', 'Spain'], ['other', 'Another country']],
-        amount: [['s', 'Under €1,000'], ['m', '€1,000 to 10,000'], ['l', '€10,000 to 100,000'], ['xl', 'Over €100,000']],
-        share: [['lt5', 'Under 5%'], ['5_20', '5 to 20%'], ['20_50', '20 to 50%'], ['gt50', 'More than half']],
-        experience: [['new', 'Not yet, this will be my first purchase'], ['hodler', 'Yes, I already have some']],
-        custody_pref: [['self', 'My own keys'], ['assisted', 'Assisted custody (help with keys and recovery)'], ['any', 'No preference']],
-        tax_known: [['yes', 'Yes, I know the rule'], ['roughly', 'Roughly'], ['no', 'No']]
-      },
-      loadH: 'Checking your answers', loadSteps: ['Reading your 6 answers…', 'Scoring size, tax and custody…', 'Finding the weakest point…'], loadGet: 'What you get',
-      unlock: [['Score out of 100', 'From your 6 answers, by fixed rules.'], ['Strongest and weakest point', 'Which area holds you back.'], ['3 bottlenecks', 'What to sort out before you choose a partner.'], ['One next step', 'With the Virtuse tool that helps.']],
-      resEb: 'Verdict Lite', band: {
-        ready: ['Basics in place', 'Ready to compare partners.', 'Size, tax and custody are covered. Compare the partners that match your criteria and choose.'],
-        gaps: ['A few gaps', 'Close: fill in one or two points first.', 'Most of the basics are there. The points below are what is still missing.'],
-        basics: ['Basics missing', 'Not yet: fill in the basics first.', 'Before you choose a partner, sort out the points below. Each takes minutes, not days.']
-      },
-      scoreLine: 'Score from your 6 answers: size, tax and custody, 10 points each, scaled to 100 and rounded to 5.',
-      sumH: 'Summary', twoH: 'Strongest and weakest point', strongest: 'Strongest', weakest: 'Weakest', bottH: '3 bottlenecks', nextH: 'Your next step',
-      area: { size: 'Size', tax: 'Tax', custody: 'Custody' },
-      meaning: {
-        size: ['A large part of your wealth is at stake. A 70% fall would change your plans.', 'A 70% fall would hurt, but it would not break your finances.', 'The amount is small next to your savings. A 70% fall would not change your plans.'],
-        tax: ["You don't know yet how a sale is taxed in your country.", 'You know the rule roughly. Check the details before the first sale.', 'You know how a sale is taxed in your country.'],
-        custody: ["You haven't decided who will hold the keys.", 'You know how you want it held. Practise the recovery before larger amounts.', 'You know how you want your Bitcoin held.']
-      },
-      sum: function (a) {
-        var out = [];
-        out.push(a.amount ? 'You plan to put ' + a.amount + ' into Bitcoin' + (a.share ? ', ' + a.share + ' of your wealth' : '') + '.' : (a.share ? 'It is ' + a.share + ' of your wealth.' : 'You did not give an amount.'));
-        if (a.experience) out.push(a.experienceId === 'new' ? 'It will be your first Bitcoin.' : 'You already hold some Bitcoin.');
-        out.push((a.country ? 'You pay tax in ' + (a.countryId === 'other' ? 'another country' : a.country) : 'You did not say where you pay tax') + (a.taxId === 'yes' ? ' and you know how a sale is taxed.' : a.taxId === 'roughly' ? ' and you know the sale rule roughly.' : " and you don't know the sale rule yet."));
-        out.push(a.custody ? 'Custody: ' + a.custody.toLowerCase() + '.' : 'You have not chosen how to hold it.');
-        return out.join(' ');
-      },
-      b: {
-        taxNo: ['Find out how a sale of Bitcoin is taxed in {c}.', 'The rate, a holding period and whether swapping coins counts. You need this before the first sale, not after.'],
-        taxRough: ['Check the exact tax rule for {c}.', 'Roughly is a start. The exemption and the filing date decide how much you keep.'],
-        taxCountry: ['Pick the country where you pay tax.', 'Tax rules and the partners you can use depend on it.'],
-        sizeHigh: ['Check the size: {s} of your wealth.', 'In a 70% fall, {f} would be left of {a}. Decide on a size you could hold through that.'],
-        sizeNa: ['Estimate what share of your wealth this is.', 'The share, not the amount, decides how much a 70% fall would hurt.'],
-        amountNa: ['Put a rough amount on it.', 'A 70% fall means something different at €500 and at €50,000.'],
-        custodyAny: ['Decide who will hold the keys.', 'An exchange, your own wallet or assisted custody: each has different risks and a different recovery.'],
-        custodyNew: ['Practise a wallet recovery with a small amount first.', 'Own keys on a first purchase: test the backup before the full amount goes in.'],
-        horizon: ['Decide when you might need this money.', 'Lite did not ask. Bitcoin can fall 70% and take years to recover.'],
-        reserve: ['Keep a reserve of 6 months of expenses outside Bitcoin.', 'Lite did not ask. The reserve is what lets you hold through a fall.'],
-        rule: ['Write down what you will do if Bitcoin falls 70%.', 'Lite did not ask. A rule set in advance beats a decision made in a fall.']
-      },
-      tools: { tax: 'Tax Agent', stacking: 'Stacking Strategist', secure: 'Custody options', full: 'Full Verdict (free)' },
-      conH: 'Go through it with a person', conP: 'Free 15-minute consultation with Virtuse. No sales pitch.', conBtn: 'Book a free 15-minute call',
-      repH: 'Full report', repT: 'All 10 signals, not just 3 areas.', repList: ['All 10 signals with points and reasons', 'Every missing question for your decision', 'A step plan with Virtuse tools', 'A PDF you keep, no subscription'],
-      once: 'One-time', price: '€14', waitNote: "Payments aren't open yet. Leave your email and we'll tell you when the report opens.",
-      wantPh: 'Your email', wantBtn: 'Join the waitlist', wantOk: "You're on the list. We'll email you once when the report opens.", wantBad: 'Enter a valid email.',
-      wantNote: 'We store only your email, not your answers. Unsubscribe with one click.', privacy: 'Privacy', network: 'Network error. Try again.', error: 'Something went wrong. Try again in a moment.',
-      pfH: 'Partners that match your criteria', pfP: 'Partner Finder opens with your answers filled in and shows the partners that match your criteria. Fixed rules set the order, not commission. You compare and choose.',
-      pfBtn: 'Open Partner Finder', pfNote: 'Partner links: if you sign up, Virtuse may get a commission; your price does not change.',
-      fullP: 'Want the 10-signal check with your own words?', fullLink: 'Full Verdict, free →',
-      again: '↺ Rate again', pdf: 'Save as PDF',
-      legal: 'Verdict Lite is an automatic check of your 6 answers by fixed rules; no AI model reads them. It rates how complete the basics of your plan are, not whether to buy. Not investment, tax or legal advice.',
-      copy: '© 2018–2026 Virtuse Wealth Management, a.s.',
-      heroBtn: 'Get Lite Verdict →', heroNote: '6 questions · ~1 minute · free'
-    },
-    sk: {
-      steps: ['Štart', 'O vás', 'Váš plán', 'Verdict'], progress: 'Váš postup', back: '← Späť', skip: '? Zatiaľ neviem', about: 'O vás', plan: 'Váš plán',
-      startEb: 'Verdict Lite · zadarmo', startH: '6 otázok predtým, ako si vyberiete Bitcoin partnera v EÚ.',
-      startP: 'Krajina, suma, úschova a dane. Dostanete skóre zo 100, najslabšie miesto a jeden ďalší krok.',
-      startHint: '~1 minúta · bez účtu · nie je to investičné poradenstvo', startNote: 'Šesť krátkych otázok, bez písania', startBtn: 'Získať Verdict Lite',
-      q: {
-        country: ['V ktorej krajine platíte dane?', 'Pravidlá pre Bitcoin sa medzi krajinami výrazne líšia.', 'Rovnakú odpoveď použijú Tax Agent a Partner Finder.'],
-        amount: ['O akú sumu ide?', 'Približne stačí.', 'Podľa nej ukážeme, čo by znamenal pokles o 70 % v eurách.'],
-        share: ['Koľko z vášho majetku to bude?', 'Odhad stačí. Rátajte úspory a investície, nie bývanie.', 'Najväčší jednotlivý faktor skóre Lite.'],
-        experience: ['Vlastníte už Bitcoin?', 'Podľa toho Partner Finder vyberie partnerov pre začiatočníkov alebo pokročilých.', 'Použije Partner Finder.'],
-        custody_pref: ['Ako chcete mať Bitcoin v úschove?', 'Podľa toho Partner Finder ukáže partnerov, ktorí spĺňajú vaše kritériá.', 'Použije Partner Finder.'],
-        tax_known: ['Viete, ako sa vo vašej krajine zdaní predaj?', 'Napríklad sadzba, oslobodenie po čase držby alebo či sa zdaňuje aj výmena kryptomien.', 'Ovplyvní oblasť Dane v skóre.']
-      },
-      opts: {
-        country: [['sk', 'Slovensko'], ['cz', 'Česko'], ['at', 'Rakúsko'], ['de', 'Nemecko'], ['pl', 'Poľsko'], ['hu', 'Maďarsko'], ['si', 'Slovinsko'], ['hr', 'Chorvátsko'], ['ro', 'Rumunsko'], ['bg', 'Bulharsko'], ['nl', 'Holandsko'], ['fr', 'Francúzsko'], ['es', 'Španielsko'], ['other', 'Iná krajina']],
-        amount: [['s', 'Menej ako 1 000 €'], ['m', '1 000 až 10 000 €'], ['l', '10 000 až 100 000 €'], ['xl', 'Viac ako 100 000 €']],
-        share: [['lt5', 'Menej ako 5 %'], ['5_20', '5 až 20 %'], ['20_50', '20 až 50 %'], ['gt50', 'Viac ako polovica']],
-        experience: [['new', 'Ešte nie, bude to prvý nákup'], ['hodler', 'Áno, už nejaký mám']],
-        custody_pref: [['self', 'Vlastné kľúče'], ['assisted', 'Asistovaná úschova (pomoc s kľúčmi a obnovou)'], ['any', 'Je mi to jedno']],
-        tax_known: [['yes', 'Áno, poznám pravidlo'], ['roughly', 'Približne'], ['no', 'Nie']]
-      },
-      loadH: 'Kontrolujeme vaše odpovede', loadSteps: ['Čítame vašich 6 odpovedí…', 'Hodnotíme veľkosť, dane a úschovu…', 'Hľadáme najslabšie miesto…'], loadGet: 'Čo dostanete',
-      unlock: [['Skóre zo 100', 'Z vašich 6 odpovedí, podľa pevných pravidiel.'], ['Najsilnejšie a najslabšie miesto', 'Ktorá oblasť vás brzdí.'], ['3 úzke miesta', 'Čo vyriešiť predtým, ako si vyberiete partnera.'], ['Jeden ďalší krok', 'S nástrojom Virtuse, ktorý pomôže.']],
-      resEb: 'Verdict Lite', band: {
-        ready: ['Základy máte', 'Pripravení porovnať partnerov.', 'Veľkosť, dane a úschovu máte pokryté. Porovnajte partnerov, ktorí spĺňajú vaše kritériá, a vyberte si.'],
-        gaps: ['Pár medzier', 'Blízko: najprv doplňte jeden či dva body.', 'Väčšinu základov máte. Nižšie je, čo ešte chýba.'],
-        basics: ['Chýbajú základy', 'Zatiaľ nie: najprv doplňte základy.', 'Predtým, ako si vyberiete partnera, vyriešte body nižšie. Každý zaberie minúty, nie dni.']
-      },
-      scoreLine: 'Skóre z vašich 6 odpovedí: veľkosť, dane a úschova, každá po 10 bodov, prepočítané na 100 a zaokrúhlené na 5.',
-      sumH: 'Zhrnutie', twoH: 'Najsilnejšie a najslabšie miesto', strongest: 'Najsilnejšie', weakest: 'Najslabšie', bottH: '3 úzke miesta', nextH: 'Váš ďalší krok',
-      area: { size: 'Veľkosť', tax: 'Dane', custody: 'Úschova' },
-      meaning: {
-        size: ['V hre je veľká časť vášho majetku. Pokles o 70 % by zmenil vaše plány.', 'Pokles o 70 % by bolel, ale financie by vám nerozvrátil.', 'Suma je malá oproti vašim úsporám. Pokles o 70 % by vaše plány nezmenil.'],
-        tax: ['Zatiaľ neviete, ako sa vo vašej krajine zdaní predaj.', 'Pravidlo poznáte približne. Pred prvým predajom si overte detaily.', 'Viete, ako sa vo vašej krajine zdaní predaj.'],
-        custody: ['Nerozhodli ste sa, kto bude držať kľúče.', 'Viete, ako chcete Bitcoin držať. Pred väčšou sumou si vyskúšajte obnovu.', 'Viete, ako chcete mať Bitcoin v úschove.']
-      },
-      sum: function (a) {
-        var out = [];
-        out.push(a.amount ? 'Do Bitcoinu chcete dať ' + a.amount + (a.share ? ', čo je ' + a.share + ' vášho majetku' : '') + '.' : (a.share ? 'Ide o ' + a.share + ' vášho majetku.' : 'Sumu ste neuviedli.'));
-        if (a.experience) out.push(a.experienceId === 'new' ? 'Bude to váš prvý Bitcoin.' : 'Nejaký Bitcoin už máte.');
-        out.push((a.country ? 'Dane platíte v krajine ' + (a.countryId === 'other' ? 'mimo zoznamu' : a.country) : 'Neuviedli ste, kde platíte dane') + (a.taxId === 'yes' ? ' a viete, ako sa zdaní predaj.' : a.taxId === 'roughly' ? ' a pravidlo pre predaj poznáte približne.' : ' a pravidlo pre predaj zatiaľ nepoznáte.'));
-        out.push(a.custody ? 'Úschova: ' + a.custody.toLowerCase() + '.' : 'Spôsob úschovy ste nevybrali.');
-        return out.join(' ');
-      },
-      b: {
-        taxNo: ['Zistite, ako sa zdaní predaj Bitcoinu v krajine {c}.', 'Sadzba, čas držby a či sa počíta aj výmena kryptomien. Potrebujete to pred prvým predajom, nie po ňom.'],
-        taxRough: ['Overte si presné daňové pravidlo pre krajinu {c}.', 'Približne je začiatok. Koľko si necháte, rozhodne oslobodenie a termín priznania.'],
-        taxCountry: ['Vyberte krajinu, v ktorej platíte dane.', 'Od nej závisia daňové pravidlá aj partneri, ktorých môžete použiť.'],
-        sizeHigh: ['Skontrolujte veľkosť: {s} vášho majetku.', 'Pri poklese o 70 % by zo sumy {a} zostalo {f}. Zvoľte veľkosť, ktorú takým poklesom udržíte.'],
-        sizeNa: ['Odhadnite, akú časť majetku to tvorí.', 'Ako veľmi by pokles o 70 % bolel, rozhoduje podiel, nie suma.'],
-        amountNa: ['Určte približnú sumu.', 'Pokles o 70 % znamená niečo iné pri 500 € a pri 50 000 €.'],
-        custodyAny: ['Rozhodnite, kto bude držať kľúče.', 'Burza, vlastná peňaženka alebo asistovaná úschova: každá má iné riziká a inú obnovu.'],
-        custodyNew: ['Najprv si s malou sumou vyskúšajte obnovu peňaženky.', 'Vlastné kľúče pri prvom nákupe: zálohu otestujte skôr, ako vložíte celú sumu.'],
-        horizon: ['Rozhodnite, kedy môžete tieto peniaze potrebovať.', 'Lite sa na to nepýtal. Bitcoin môže padnúť o 70 % a roky sa nevrátiť.'],
-        reserve: ['Majte mimo Bitcoinu rezervu na 6 mesiacov výdavkov.', 'Lite sa na to nepýtal. Rezerva vám umožní prečkať pokles.'],
-        rule: ['Napíšte si, čo urobíte, keď Bitcoin padne o 70 %.', 'Lite sa na to nepýtal. Vopred dané pravidlo je lepšie ako rozhodnutie počas poklesu.']
-      },
-      tools: { tax: 'Tax Agent', stacking: 'Stacking Strategist', secure: 'Možnosti úschovy', full: 'Celý Verdict (zadarmo)' },
-      conH: 'Prejdite si to s človekom', conP: 'Bezplatná 15-minútová konzultácia s Virtuse. Bez predaja.', conBtn: 'Rezervovať bezplatnú konzultáciu',
-      repH: 'Celý report', repT: 'Všetkých 10 signálov, nielen 3 oblasti.', repList: ['Všetkých 10 signálov s bodmi a dôvodmi', 'Všetky chýbajúce otázky pre vaše rozhodnutie', 'Plán krokov s nástrojmi Virtuse', 'PDF, ktoré si ponecháte, bez predplatného'],
-      once: 'Jednorazovo', price: '14 €', waitNote: 'Platby ešte nespúšťame. Nechajte e-mail a dáme vám vedieť, keď sa report otvorí.',
-      wantPh: 'Váš e-mail', wantBtn: 'Zapísať sa na čakaciu listinu', wantOk: 'Ste na zozname. Napíšeme vám raz, keď sa report otvorí.', wantBad: 'Zadajte platný e-mail.',
-      wantNote: 'Uložíme len váš e-mail, odpovede nie. Odhlásiť sa môžete jedným kliknutím.', privacy: 'Súkromie', network: 'Chyba siete. Skúste to znova.', error: 'Niečo sa pokazilo. Skúste to o chvíľu.',
-      pfH: 'Partneri, ktorí spĺňajú vaše kritériá', pfP: 'Partner Finder sa otvorí s vyplnenými odpoveďami a ukáže partnerov, ktorí spĺňajú vaše kritériá. Poradie určujú pevné pravidlá, nie provízia. Porovnávate a vyberáte vy.',
-      pfBtn: 'Otvoriť Partner Finder', pfNote: 'Partnerské odkazy: ak sa zaregistrujete, Virtuse môže dostať províziu, vaša cena sa nemení.',
-      fullP: 'Chcete kontrolu na 10 signáloch aj s vlastnými slovami?', fullLink: 'Celý Verdict, zadarmo →',
-      again: '↺ Ohodnotiť znova', pdf: 'Uložiť ako PDF',
-      legal: 'Verdict Lite je automatická kontrola vašich 6 odpovedí podľa pevných pravidiel; žiadny model AI ich nečíta. Hodnotí, nakoľko máte pokryté základy plánu, nie či kúpiť. Nie je to investičné, daňové ani právne poradenstvo.',
-      copy: '© 2018–2026 Virtuse Wealth Management, a.s.',
-      heroBtn: 'Získať Verdict Lite →', heroNote: '6 otázok · ~1 minúta · zadarmo'
+  document.addEventListener('click', function (e) {
+    var go = e.target.closest('[data-go]');
+    if (go) { e.preventDefault(); show(go.getAttribute('data-go')); return; }
+    var b = e.target.closest('#mlQ [data-v]');
+    if (b) {
+      var bk = b.getAttribute('data-k'); A[bk] = b.getAttribute('data-v'); save();
+      if (bk === 'home') { renderQ(); return; }   // home value / mortgage fields depend on it
+      b.parentNode.querySelectorAll('[data-v]').forEach(function (x) { var on = x === b; x.classList.toggle('sel', on); x.setAttribute('aria-checked', on); });
+      check(); return;
     }
-  }[LANG];
-
-  var KEYS = ['country', 'amount', 'share', 'experience', 'custody_pref', 'tax_known'];
-  var PLAN = ['custody_pref', 'tax_known'];
-  var DROP = { en: { s: ['under €1,000', 'under €300'], m: ['€1,000 to 10,000', 'about €300 to 3,000'], l: ['€10,000 to 100,000', 'about €3,000 to 30,000'], xl: ['over €100,000', 'over €30,000'] },
-    sk: { s: ['menej ako 1 000 €', 'menej ako 300 €'], m: ['1 000 až 10 000 €', 'asi 300 až 3 000 €'], l: ['10 000 až 100 000 €', 'asi 3 000 až 30 000 €'], xl: ['viac ako 100 000 €', 'viac ako 30 000 €'] } }[LANG];
-  var TAXC = ['sk', 'cz', 'at', 'de', 'pl', 'hu', 'si', 'hr', 'ro', 'bg', 'nl', 'fr', 'es'];
-  var SV = '<svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-  var CK = '<svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-
-  var panel = document.getElementById('panel'), back = document.getElementById('back'), stepsEl = document.getElementById('steps');
-  if (!panel) return;
-  var A = {}, RES = null, i = 0, RET = null;
-  var P = window.VBProfile;
-  if (P) { var pf = P.get(); KEYS.forEach(function (k) { if (pf[k]) A[k] = pf[k]; }); }
-
-  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function push(o) { o.verdict_mode = 'lite'; (window.dataLayer = window.dataLayer || []).push(o); }
-  function label(key, v) { var o = (STR.opts[key] || []).filter(function (x) { return x[0] === v; })[0]; return o ? o[1] : null; }
-  function val(k) { return A[k] && A[k] !== 'na' ? A[k] : null; }
-  function low(s) { return s ? s.charAt(0).toLowerCase() + s.slice(1) : s; }
-  function save(k) { if (!P) return; var o = {}; o[k] = A[k]; P.set(o); }
-  function foot(note, btn) { return '<div class="foot"><span class="note">' + (note || '') + '</span><button class="cta solid" id="c">' + btn + ' ' + SV + '</button></div>'; }
-
-  var SCREENS = [{ s: 0, p: .5, r: start, k: 'start' }];
-  KEYS.forEach(function (k) {
-    var plan = PLAN.indexOf(k) >= 0, list = plan ? PLAN : KEYS.filter(function (x) { return PLAN.indexOf(x) < 0; });
-    SCREENS.push({ s: plan ? 2 : 1, p: (list.indexOf(k) + 1) / list.length, r: q(k), k: k });
+    var m = e.target.closest('#mlQ [data-m]');
+    if (m) { var k = m.getAttribute('data-m'), i = A.worries.indexOf(k); if (i > -1) A.worries.splice(i, 1); else A.worries.push(k); m.classList.toggle('sel'); m.setAttribute('aria-pressed', i < 0); save(); check(); }
   });
-  SCREENS.push({ s: 3, p: .5, r: loading, k: 'loading' }, { s: 3, p: 1, r: result, k: 'result' });
-  function at(k) { for (var n = 0; n < SCREENS.length; n++) if (SCREENS[n].k === k) return n; return 0; }
+  document.addEventListener('input', function (e) {
+    var k = e.target.getAttribute && e.target.getAttribute('data-k');
+    if (!k || e.target.tagName === 'SELECT') return;
+    var v = e.target.value; A[k] = e.target.type === 'number' ? (v === '' ? null : +v) : v; save(); check();
+  });
+  document.addEventListener('change', function (e) { if (e.target.tagName === 'SELECT' && e.target.getAttribute('data-k')) { A[e.target.getAttribute('data-k')] = e.target.value; save(); check(); } });
+  $('mlNext').onclick = function () { if (cur < STEPS.length - 1) show(cur + 2); else { done = true; save(); show(6); } };
+  $('mlBack').onclick = function () { show(cur); };
 
-  back.textContent = STR.back;
-  back.onclick = function () { if (i > 0) go(i === at('result') ? at('tax_known') : i - 1); };
-  function stepper() {
-    var cur = SCREENS[i];
-    stepsEl.innerHTML = '<div class="prog">' + STR.progress + '</div>' + STR.steps.map(function (t, k) {
-      var st = k < cur.s ? 'done' : k === cur.s ? 'on' : '', w = k < cur.s ? 100 : k === cur.s ? cur.p * 100 : 0;
-      return '<div class="step ' + st + '"><div class="lbl"><span class="n">' + (k < cur.s ? '✓' : k + 1) + '</span><span class="t">' + t + '</span></div><div class="track"><i style="width:' + w + '%"></i></div></div>';
-    }).join('');
-  }
-  function go(n) {
-    i = n; back.hidden = i === 0 || i === at('loading'); stepper();
-    var root = panel.closest('.vf'); if (root) root.classList.toggle('is-result', SCREENS[i].k === 'result');
-    SCREENS[i].r(); spot();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    push({ event: 'verdict_step', verdict_lang: LANG, verdict_step: SCREENS[i].k });
-  }
-  function next() { if (RET) { var r = RET; RET = null; go(at(r)); } else go(i + 1); }
-
-  function start() {
-    panel.innerHTML = '<div class="chip-eyebrow">' + STR.startEb + '</div><h1>' + STR.startH + '</h1><p class="sub">' + STR.startP + '</p><p class="hint">' + STR.startHint + '</p>' + foot(STR.startNote, STR.startBtn);
-    document.getElementById('c').onclick = next;
-  }
-  function q(key) {
-    return function () {
-      var Q = STR.q[key], O = STR.opts[key], chips = key === 'country';
-      var h = '<div class="eyebrow">' + (PLAN.indexOf(key) >= 0 ? STR.plan : STR.about) + '</div><h2>' + Q[0] + '</h2><p class="sub">' + Q[1] + '</p><p class="why">' + Q[2] + '</p>';
-      h += chips
-        ? '<div class="chips">' + O.map(function (c) { return '<button class="opt' + (A[key] === c[0] ? ' sel' : '') + '" data-v="' + c[0] + '">' + c[1] + '</button>'; }).join('') + '</div>'
-        : '<div class="opts">' + O.map(function (o) { return '<button class="opt' + (A[key] === o[0] ? ' sel' : '') + '" data-v="' + o[0] + '"><span>' + o[1] + '</span>' + (A[key] === o[0] ? CK : SV) + '</button>'; }).join('') + '</div>';
-      panel.innerHTML = h + '<div class="alt"><button class="ghost" data-skip>' + STR.skip + '</button></div>';
-      panel.querySelectorAll('.opt').forEach(function (b) { b.onclick = function () { A[key] = b.dataset.v; save(key); b.classList.add('sel'); setTimeout(next, 160); }; });
-      panel.querySelector('[data-skip]').onclick = function () { A[key] = 'na'; save(key); next(); };
-    };
-  }
-  function loading() {
-    var U = STR.unlock;
-    panel.innerHTML = '<div class="load"><div class="spin" aria-hidden="true"></div><h2>' + STR.loadH + '</h2><p class="sub" id="ls" aria-live="polite">' + STR.loadSteps[0] + '</p>' +
-      '<div class="unlock"><div class="mock" aria-hidden="true"><i style="width:40%"></i><i class="o"></i><i style="width:80%"></i><i style="width:55%"></i></div><div><div class="eyebrow">' + STR.loadGet + '</div>' +
-      '<ul class="vl-get">' + U.map(function (u) { return '<li><b>' + u[0] + '</b> ' + u[1] + '</li>'; }).join('') + '</ul></div></div></div>';
-    var k = 0, t = setInterval(function () { k++; var e = document.getElementById('ls'); if (e) e.textContent = STR.loadSteps[Math.min(k, STR.loadSteps.length - 1)]; }, 700);
-    push({ event: 'verdict_submit', verdict_lang: LANG, verdict_goal: 'buy' });
-    setTimeout(function () {
-      clearInterval(t); RES = score();
-      push({ event: 'verdict_result', verdict_lang: LANG, verdict_band: RES.band, verdict_score: RES.score, verdict_weakest: RES.weak.id });
-      next();
-    }, 2100);
-  }
-
-  // Lite scoring: three areas, 0 to 10 each, from the six answers.
-  function score() {
-    var share = val('share'), amount = val('amount'), tax = val('tax_known'), cust = val('custody_pref'), exp = val('experience'), country = val('country');
-    var size = { lt5: 10, '5_20': 7, '20_50': 4, gt50: 1 }[share]; if (size == null) size = 3;
-    if (amount === 'xl' && (share === '20_50' || share === 'gt50')) size = Math.max(0, size - 1);
-    var tx = { yes: 10, roughly: 6, no: 2 }[tax]; if (tx == null) tx = 2;
-    if (!country) tx = Math.max(0, tx - 1);
-    var cu = cust === 'self' ? (exp === 'new' ? 6 : exp === 'hodler' ? 9 : 7) : cust === 'assisted' ? 8 : cust === 'any' ? 4 : 3;
-    var areas = [{ id: 'size', p: size }, { id: 'tax', p: tx }, { id: 'custody', p: cu }];
-    var sc = Math.round((size + tx + cu) / 30 * 100 / 5) * 5;
-    var band = sc >= 80 ? 'ready' : sc >= 55 ? 'gaps' : 'basics';
-    var order = areas.slice().sort(function (a, b) { return a.p - b.p; });
-    // Bottlenecks: answered gaps first, then what Lite does not ask.
-    var cn = country && country !== 'other' ? label('country', country) : null, B = [];
-    var taxTool = { name: STR.tools.tax, href: '/tax-agent.html' + (country && TAXC.indexOf(country) >= 0 ? '?country=' + country : '') };
-    var lp = LANG === 'sk' ? '/sk/' : '/';
-    if (!country) B.push(bn('taxCountry', taxTool));
-    else if (tax !== 'yes') B.push(bn(tax === 'roughly' ? 'taxRough' : 'taxNo', taxTool, { c: cn || (LANG === 'sk' ? 'kde platíte dane' : 'your country') }));
-    if (!amount) B.push(bn('amountNa', null));
-    if (share === 'gt50' || share === '20_50') {
-      var d = DROP[amount] || null;
-      B.push(bn('sizeHigh', { name: STR.tools.stacking, href: lp + 'stacking.html' }, { s: low(label('share', share)), a: d ? d[0] : (LANG === 'sk' ? 'vašej sumy' : 'your amount'), f: d ? d[1] : (LANG === 'sk' ? 'asi 30 %' : 'about 30%') }));
-    } else if (!share) B.push(bn('sizeNa', null));
-    if (cust === 'any' || !cust) B.push(bn('custodyAny', { name: STR.tools.secure, href: lp + 'secure.html' }));
-    else if (cust === 'self' && exp === 'new') B.push(bn('custodyNew', { name: STR.tools.secure, href: lp + 'secure.html' }));
-    var full = { name: STR.tools.full, href: '?mode=full#start' };
-    ['horizon', 'reserve', 'rule'].forEach(function (k) { B.push(bn(k, full)); });
-    // Only the first gap that came from an answer keeps a tool button per tool; keep the list short.
-    B = B.slice(0, 3);
-    return { score: sc, band: band, areas: areas, strong: order[2], weak: order[0], steps: B };
-  }
-  function bn(id, tool, vars) {
-    var t = STR.b[id].map(function (s) { return s.replace(/\{(\w)\}/g, function (_, k) { return (vars || {})[k] || ''; }); });
-    return { id: id, act: t[0], why: t[1], tool: tool };
-  }
-  function utm(href, medium) { return href + (href.indexOf('?') < 0 ? '?' : '&') + 'utm_source=verdict&utm_medium=' + medium; }
-
-  function ring(sc, col) {
-    var r = 34, c = 2 * Math.PI * r;
-    return '<svg class="vf-ring" width="88" height="88" viewBox="0 0 88 88" aria-hidden="true"><circle cx="44" cy="44" r="' + r + '" stroke="rgba(255,255,255,.08)" stroke-width="7" fill="none"/>' +
-      '<circle cx="44" cy="44" r="' + r + '" stroke="' + col + '" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="' + (c * sc / 100) + ' ' + c + '" transform="rotate(-90 44 44)"/></svg>';
-  }
-  var COL = { ready: 'var(--teal)', gaps: 'var(--orange)', basics: 'var(--orange)' };
-  var ACOL = { size: 'var(--blue)', tax: 'var(--teal)', custody: 'var(--purple)' };
-  function areaCard(a, role) {
-    var m = STR.meaning[a.id][a.p >= 8 ? 2 : a.p >= 5 ? 1 : 0];
-    return '<div class="vf-card area spot" style="--c:' + ACOL[a.id] + '"><div class="h"><div><div class="role">' + role + '</div><b>' + STR.area[a.id] + '</b></div><em>' + a.p + '<small>/10</small></em></div>' +
-      '<div class="bar"><i style="width:' + a.p * 10 + '%"></i></div><p>' + m + '</p></div>';
-  }
-  function pfHref() {
-    var q = { pf_goal: 'buy' };
-    if (val('country') && val('country') !== 'other') q.pf_country = A.country;
-    if (val('experience')) q.pf_experience = A.experience;
-    if (val('custody_pref')) q.pf_custody = A.custody_pref;
-    if (val('amount')) q.pf_amount = A.amount;
-    return (LANG === 'sk' ? '/sk/' : '/') + 'concierge.html?' + Object.keys(q).map(function (k) { return k + '=' + encodeURIComponent(q[k]); }).join('&') + '&utm_source=verdict&utm_medium=lite';
-  }
-  function result() {
-    var r = RES; if (!r) { go(at('start')); return; }
-    var bd = STR.band[r.band], col = COL[r.band];
-    var sumA = { amount: val('amount') && low(label('amount', A.amount)), share: val('share') && low(label('share', A.share)), experience: val('experience'), experienceId: A.experience,
-      country: val('country') && label('country', A.country), countryId: A.country, taxId: val('tax_known'), custody: val('custody_pref') && label('custody_pref', A.custody_pref) };
-    var steps = r.steps.map(function (s, n) {
-      return '<li class="vf-card spot' + (n === 0 ? ' first orange' : '') + '"><span class="num">' + (n + 1) + '</span><div><p class="act">' + esc(s.act) + '</p><p class="whyl">' + esc(s.why) + '</p>' +
-        (s.tool ? '<div class="vrow"><a class="vf-btn" href="' + esc(utm(s.tool.href, 'lite')) + '" data-step="' + s.id + '">' + esc(s.tool.name) + ' →</a></div>' : '') + '</div></li>';
-    }).join('');
-    var n1 = r.steps[0];
-    panel.innerHTML = '<div class="vx lite">' +
-      '<div class="res-head" style="--b:' + col + '"><div><div class="eyebrow"><i></i>' + STR.resEb + '</div><span class="pill">' + bd[0] + '</span>' +
-      '<h2 class="verdict">' + bd[1] + '</h2><p class="vwhy">' + bd[2] + '</p></div>' +
-      '<div class="score">' + ring(r.score, col) + '<b>' + r.score + '<small>/100</small></b></div></div>' +
-      '<p class="small scoreline">' + STR.scoreLine + '</p>' +
-      '<div class="sec">' + STR.sumH + '</div><p class="means">' + esc(STR.sum(sumA)) + '</p>' +
-      '<div class="sec">' + STR.twoH + '</div><div class="sig2">' + areaCard(r.strong, STR.strongest) + areaCard(r.weak, STR.weakest) + '</div>' +
-      '<div class="sec" id="steps3">' + STR.bottH + '</div><ol class="vf-steps">' + steps + '</ol>' +
-      '<div class="sec">' + STR.nextH + '</div><div class="vf-card next spot" style="--c:var(--orange)"><p class="act">' + esc(n1.act) + '</p><div class="row">' +
-        (n1.tool ? '<a class="vf-btn solid" href="' + esc(utm(n1.tool.href, 'lite_next')) + '" data-step="next">' + esc(n1.tool.name) + ' →</a>' : '') + '</div></div>' +
-      '<div class="vf-card consult spot no-print"><b>' + STR.conH + '</b><p>' + STR.conP + '</p><button class="vf-btn solid" data-consult>' + STR.conBtn + ' ' + SV + '</button></div>' +
-      '<div class="vf-card price no-print" id="unlock"><div><div class="eyebrow">' + STR.repH + '</div><h3>' + STR.repT + '</h3><ul>' + STR.repList.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
-        '<div><span class="small">' + STR.once + '</span><div class="amt">' + STR.price + '</div><p class="small">' + STR.waitNote + '</p>' + wantForm() + '</div></div>' +
-      '<div class="sec no-print" id="partners">' + STR.pfH + '</div><div class="vf-card spot no-print"><p>' + STR.pfP + '</p><a class="vf-btn" href="' + esc(pfHref()) + '" data-step="partners">' + STR.pfBtn + ' →</a><p class="small">' + STR.pfNote + '</p></div>' +
-      '<p class="sub sm no-print" style="margin-top:22px">' + STR.fullP + ' <a href="?mode=full#start" data-full>' + STR.fullLink + '</a></p>' +
-      '<p class="small" style="margin-top:22px">' + STR.legal + '</p><p class="small">' + STR.copy + '</p>' +
-      '<div class="foot no-print" style="margin-top:18px"><button class="vf-btn" data-again>' + STR.again + '</button><button class="vf-btn solid" data-pdf>' + STR.pdf + '</button></div></div>';
-    panel.querySelector('[data-consult]').onclick = function () {
-      push({ event: 'consultation_click', verdict_lang: LANG, verdict_band: r.band, tier: 'lite' });
-      if (window.VirtuseConsultation) window.VirtuseConsultation.open(LANG);
-    };
-    panel.querySelector('[data-again]').onclick = function () { RES = null; go(at('country')); };
-    panel.querySelector('[data-pdf]').onclick = function () { push({ event: 'verdict_pdf', verdict_lang: LANG }); window.print(); };
-    panel.querySelectorAll('[data-step]').forEach(function (b) { b.addEventListener('click', function () { push({ event: 'verdict_step_click', verdict_lang: LANG, step: b.dataset.step }); }); });
-    var fl = panel.querySelector('[data-full]'); if (fl) fl.addEventListener('click', function () { push({ event: 'verdict_full_click', verdict_lang: LANG }); });
-    bindWant();
-    push({ event: 'verdict_complete', verdict_lang: LANG, tier: 'lite', verdict_band: r.band, verdict_score: r.score, verdict_goal: 'buy' });
-  }
-
-  function wantForm() {
-    return '<form class="want" id="want" novalidate><input type="email" id="we" autocomplete="email" placeholder="' + STR.wantPh + '" aria-label="' + STR.wantPh + '" required>' +
-      '<input type="text" id="wh" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">' +
-      '<button class="vf-btn" type="submit">' + STR.wantBtn + '</button><p class="small" id="wm" aria-live="polite">' + STR.wantNote + ' <a href="privacy-policy.html#verdict-cfo">' + STR.privacy + '</a></p></form>';
-  }
-  function bindWant() {
-    var f = document.getElementById('want'); if (!f) return;
-    var done = false; try { done = sessionStorage.getItem('vb-want-ok') === '1'; } catch (e) {}
-    if (done) { f.innerHTML = '<p class="sub sm" style="color:var(--text)">' + STR.wantOk + '</p>'; return; }
+  // Gate: the email unlocks the Lite score; the Brief only when ticked.
+  $('mlGate').onsubmit = function (e) {
+    e.preventDefault();
+    var f = e.target, em = f.email.value.trim(), msg = $('mlGateMsg');
+    if (f.website.value) return;
+    if (!EMAIL.test(em)) { msg.textContent = S.gateErr; f.email.focus(); return; }
+    msg.textContent = ''; A.email = em; save();
+    var c = calc(), btn = f.querySelector('button[type=submit]'), sent = $('mlSent');
+    var payload = { score: c.total, grade: grade(c.total), band: c.total >= 70 ? 0 : c.total >= 55 ? 1 : 2, gaps: gaps(c).map(function (g) { return g[2]; }), areas: c.sc };
+    dl({ event: 'verdict_lite_unlock', verdict_brief: f.brief.checked });
+    btn.disabled = true;
+    var go = function (ok) { btn.disabled = false; sent.textContent = ok ? S.sent : S.notSent; sent.className = 'ml-sent' + (ok ? '' : ' warn'); show(8); };
+    vbApi().then(function (api) { return api.postJson('/send', { email: em, hp: f.website.value, lang: LANG, kind: 'verdict_lite', source: 'verdict', brief: f.brief.checked, payload: payload }); })
+      .then(function (r) { if (!r || !r.ok) throw 0; dl({ event: 'verdict_lite_email_sent' }); go(true); })
+      .catch(function () { go(false); });
+  };
+  // €14 full report waitlist (existing Worker source verdict_report)
+  document.querySelectorAll('form[data-wl]').forEach(function (f) {
     f.onsubmit = function (e) {
       e.preventDefault();
-      var em = document.getElementById('we').value.trim(), msg = document.getElementById('wm'), btn = f.querySelector('button');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { msg.textContent = STR.wantBad; return; }
-      btn.disabled = true;
-      push({ event: 'unlock_click', verdict_lang: LANG, via: 'form' });
-      vbApi().then(function (api) { return api.postJson('/waitlist', { email: em, hp: document.getElementById('wh').value, source: 'verdict_report', lang: LANG }); })
-        .then(function (r) { return { ok: r.ok, d: r.data }; })
-        .catch(function () { return { ok: false, d: { error: STR.network } }; })
-        .then(function (x) {
-          if (x.ok) {
-            f.innerHTML = '<p class="sub sm" style="color:var(--text)">' + STR.wantOk + '</p>';
-            try { sessionStorage.setItem('vb-want-ok', '1'); } catch (e) {}
-            push({ event: 'capture_submit', capture_source: 'verdict_report', verdict_lang: LANG });
-          } else { btn.disabled = false; msg.textContent = (x.d && x.d.error) || STR.error; }
-        });
+      var em = (f.email.value || A.email || '').trim(), msg = f.querySelector('.ml-wl-msg');
+      if (f.website.value) return;
+      if (!EMAIL.test(em)) { msg.textContent = S.gateErr; f.email.focus(); return; }
+      var btn = f.querySelector('button'); btn.disabled = true; msg.textContent = '';
+      vbApi().then(function (api) { return api.postJson('/waitlist', { email: em, hp: f.website.value, source: 'verdict_report', lang: LANG }); })
+        .then(function (r) { if (r && r.ok === false) throw 0; f.querySelectorAll('input,button').forEach(function (x) { x.hidden = true; }); msg.textContent = S.wlOk; dl({ event: 'waitlist_signup', waitlist_source: 'verdict_report' }); })
+        .catch(function () { btn.disabled = false; msg.textContent = S.net; });
     };
-  }
+  });
 
-  function spot() {
-    panel.querySelectorAll('.spot, .opt').forEach(function (c) {
-      if (c.dataset.spot) return; c.dataset.spot = '1';
-      var raf = 0, px = 0, py = 0; c.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(function () { raf = 0; c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (px - r.left) + 'px'); c.style.setProperty('--my', (py - r.top) + 'px'); }); }, { passive: true });
-      c.addEventListener('pointerleave', function () { if (raf) { cancelAnimationFrame(raf); raf = 0; } c.classList.remove('pm'); });
-    });
+  // Local preview only: a bar to jump between the screens
+  if (MOCK) {
+    var j = document.querySelector('.ml-jump'); if (j) { j.hidden = false; j.insertAdjacentHTML('beforeend', S.jump.map(function (n, i) { return '<a href="?s=' + i + '" data-go="' + i + '">' + i + ' ' + n + '</a>'; }).join('')); }
   }
-
-  // Landing hero (verdict.html VL block): Lite has no free text, so the hero
-  // form becomes a plain start button.
-  var ask = document.getElementById('vlAsk');
-  if (ask) {
-    ask.classList.add('vl-lite');
-    var bt = ask.querySelector('button[type=submit]'); if (bt) bt.textContent = STR.heroBtn;
-    var msg = document.getElementById('vlMsg'); if (msg) { msg.textContent = STR.heroNote; msg.removeAttribute('data-short'); }
-    ask.addEventListener('submit', function (e) {
-      e.preventDefault(); e.stopImmediatePropagation();
-      document.documentElement.classList.add('vl-app'); try { sessionStorage.setItem('vb-vl-app', '1'); } catch (x) {}
-      history.replaceState(null, '', location.pathname + location.search + '#start');
-      push({ event: 'verdict_start', verdict_lang: LANG, source: 'hero' });
-      go(at('country')); window.scrollTo(0, 0);
-    }, true);
+  // ?consult=1 (from the Lite score email) opens the 15-minute call widget
+  if (/[?&]consult=1\b/.test(location.search)) {
+    var tryOpen = function (n) { if (window.VirtuseConsultation && window.VirtuseConsultation.open) window.VirtuseConsultation.open(LANG); else if (n) setTimeout(function () { tryOpen(n - 1); }, 300); };
+    setTimeout(function () { tryOpen(20); }, 300);
   }
-  window.vfSkipIntro = function () { if (i === 0) next(); };
-  window.vfStartWithText = function () { go(at('country')); };
-
-  var src = (location.search.match(/[?&]utm_source=([\w-]+)/) || [])[1] || 'direct';
-  push({ event: 'verdict_start', verdict_lang: LANG, source: src });
-  go(0);
+  demoInit();
+  var rdr = document.querySelector('.vl .radar');
+  if (rdr) { if ('IntersectionObserver' in window) { var ro = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { rdr.classList.add('in'); ro.disconnect(); } }, { threshold: 0.3 }); ro.observe(rdr); } else rdr.classList.add('in'); }
+  var mm = /[?&]s=(\d+)/.exec(location.search);
+  show(mm ? mm[1] : 0);
 })();
