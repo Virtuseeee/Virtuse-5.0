@@ -184,10 +184,52 @@
   function stepper(el, active) {
     el.innerHTML = S.chips.map(function (n, i) { return '<span class="' + (i < active ? 'done' : i === active ? 'on' : '') + '">' + n + '</span>'; }).join('');
   }
+  // History: every step the visitor moves to forward is its own browser history entry
+  // (pushState), so the browser Back button walks back one step at a time and Forward
+  // re-renders. State = { vl: 1, s: step, i: entries since the funnel was entered,
+  // p: previous step }. Loading (6) is replaced by the gate, so Back never re-runs it.
+  // Landing (0) is always the entry the visitor arrived on, so Back from the landing
+  // leaves to the previous page.
+  var H = window.history && history.pushState;
+  function st() { var x = H && history.state; return x && x.vl ? x : null; }
+  function url(s) { return location.pathname + (s ? '?s=' + s : ''); }
+  function nav(s, how) {
+    if (!H) return;
+    var now = st(), i = now ? now.i : 0, p = now ? now.s : 0;
+    if (how === 'push') history.pushState({ vl: 1, s: s, i: i + 1, p: p }, '', url(s));
+    else history.replaceState({ vl: 1, s: s, i: i, p: now ? now.p : 0 }, '', url(s));
+  }
+  // Step the browser would show for s, after the guards
+  function guard(s) {
+    s = +s || 0;
+    if ((s >= 6 && s <= 8) && !done) s = 1;     // no loading, gate or result without a completed funnel
+    if (s === 8 && !A.email) s = 7;             // the Lite score needs the email first
+    return s;
+  }
+  function goStep(s) { var g = guard(s); show(g); nav(g, 'push'); }
+  function goBackTo(s) {
+    var now = st();
+    if (now && now.i > 0 && now.p === s) { history.back(); return; }   // the previous entry is that step
+    show(guard(s)); nav(guard(s), 'replace');
+  }
+  // Back to the landing: return to the landing entry the visitor arrived on
+  function goLanding() {
+    var now = st();
+    if (now && now.i > 0) { toLanding = true; history.go(-now.i); return; }
+    show(0); nav(0, 'replace');
+  }
+  var toLanding = false;
+  window.addEventListener('popstate', function (e) {
+    var x = e.state && e.state.vl ? e.state : null;
+    if (toLanding) { toLanding = false; show(0); if (H) history.replaceState({ vl: 1, s: 0, i: 0, p: 0 }, '', url(0)); return; }
+    var s = x ? x.s : (+((/[?&]s=(\d+)/.exec(location.search) || [])[1]) || 0);
+    var g = guard(s);
+    if (g === 6) g = done ? 7 : 1;                // never replay the loading screen
+    show(g);
+    if (g !== s) nav(g, 'replace');
+  });
   function show(s) {
     s = +s || 0;
-    if ((s === 7 || s === 8) && !done) s = 1;   // no result without a completed funnel
-    if (s === 8 && !A.email) s = 7;              // the Lite score needs the email first
     document.querySelectorAll('.ml-screen').forEach(function (el) { el.classList.remove('on'); });
     var key = s >= 1 && s <= 5 ? 'q' : String(s);
     var scr = document.querySelector('.ml-screen[data-s="' + key + '"]'); if (!scr) return;
@@ -197,7 +239,6 @@
     if (key === 'q') { cur = s - 1; renderQ(); dl({ event: 'verdict_step', verdict_step: s }); }
     if (s === 6) load();
     if (s === 8) result();
-    if (history.replaceState) history.replaceState(null, '', location.pathname + (s ? '?s=' + s : ''));
     window.scrollTo(0, 0);
   }
   function lab(f, l) { return l ? '<label class="ml-lab" for="f_' + f.k + '">' + l + (f.opt ? ' <em>' + S.opt + '</em>' : '') + '</label>' : ''; }
@@ -311,7 +352,7 @@
     var li = document.querySelectorAll('#mlChecks li');
     li.forEach(function (l) { l.classList.remove('ok'); });
     li.forEach(function (l, i) { setTimeout(function () { l.classList.add('ok'); }, 420 * (i + 1)); });
-    clearTimeout(load.t); load.t = setTimeout(function () { if (document.querySelector('.ml-screen[data-s="6"]').classList.contains('on')) show(7); }, 2700);
+    clearTimeout(load.t); load.t = setTimeout(function () { if (document.querySelector('.ml-screen[data-s="6"]').classList.contains('on')) { show(7); nav(7, 'replace'); } }, 2700);
   }
 
   // Hero sample card (fictional client Anna), also shown small on the gate screen
@@ -352,7 +393,7 @@
 
   document.addEventListener('click', function (e) {
     var go = e.target.closest('[data-go]');
-    if (go) { e.preventDefault(); show(go.getAttribute('data-go')); return; }
+    if (go) { e.preventDefault(); var to = +go.getAttribute('data-go') || 0; if (to === 0) goLanding(); else goStep(to); return; }
     var b = e.target.closest('#mlQ [data-v]');
     if (b) {
       var bk = b.getAttribute('data-k'); A[bk] = b.getAttribute('data-v'); save();
@@ -369,8 +410,8 @@
     var v = e.target.value; A[k] = e.target.type === 'number' ? (v === '' ? null : +v) : v; save(); check();
   });
   document.addEventListener('change', function (e) { if (e.target.tagName === 'SELECT' && e.target.getAttribute('data-k')) { A[e.target.getAttribute('data-k')] = e.target.value; save(); check(); } });
-  $('mlNext').onclick = function () { if (cur < STEPS.length - 1) show(cur + 2); else { done = true; save(); show(6); } };
-  $('mlBack').onclick = function () { show(cur); };
+  $('mlNext').onclick = function () { if (cur < STEPS.length - 1) goStep(cur + 2); else { done = true; save(); goStep(6); } };
+  $('mlBack').onclick = function () { if (cur === 0) goLanding(); else goBackTo(cur); };
 
   // Gate: the email unlocks the Lite score; the Brief only when ticked.
   $('mlGate').onsubmit = function (e) {
@@ -383,10 +424,10 @@
     var payload = { score: c.total, grade: grade(c.total), band: c.total >= 70 ? 0 : c.total >= 55 ? 1 : 2, gaps: gaps(c).map(function (g) { return g[2]; }), areas: c.sc };
     dl({ event: 'verdict_lite_unlock', verdict_brief: f.brief.checked });
     btn.disabled = true;
-    var go = function (ok) { btn.disabled = false; sent.textContent = ok ? S.sent : S.notSent; sent.className = 'ml-sent' + (ok ? '' : ' warn'); show(8); };
+    var done8 = function (ok) { btn.disabled = false; sent.textContent = ok ? S.sent : S.notSent; sent.className = 'ml-sent' + (ok ? '' : ' warn'); goStep(8); };
     vbApi().then(function (api) { return api.postJson('/send', { email: em, hp: f.website.value, lang: LANG, kind: 'verdict_lite', source: 'verdict', brief: f.brief.checked, payload: payload }); })
-      .then(function (r) { if (!r || !r.ok) throw 0; dl({ event: 'verdict_lite_email_sent' }); go(true); })
-      .catch(function () { go(false); });
+      .then(function (r) { if (!r || !r.ok) throw 0; dl({ event: 'verdict_lite_email_sent' }); done8(true); })
+      .catch(function () { done8(false); });
   };
   // €14 full report waitlist (existing Worker source verdict_report)
   document.querySelectorAll('form[data-wl]').forEach(function (f) {
@@ -415,5 +456,9 @@
   var rdr = document.querySelector('.vl .radar');
   if (rdr) { if ('IntersectionObserver' in window) { var ro = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { rdr.classList.add('in'); ro.disconnect(); } }, { threshold: 0.3 }); ro.observe(rdr); } else rdr.classList.add('in'); }
   var mm = /[?&]s=(\d+)/.exec(location.search);
-  show(mm ? mm[1] : 0);
+  // First render: the step in the URL (after the guards), without a new history entry
+  var first = guard(mm ? mm[1] : 0);
+  if (first === 6) first = done ? 7 : 1;
+  show(first);
+  if (H) { var hs = st(); history.replaceState({ vl: 1, s: first, i: hs ? hs.i : 0, p: hs ? hs.p : 0 }, '', url(first)); }
 })();
