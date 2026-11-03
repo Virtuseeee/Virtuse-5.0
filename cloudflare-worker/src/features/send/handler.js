@@ -61,11 +61,19 @@ export async function handleSend({ request, env, origin, services }) {
     return json(429, { error: 'Too many attempts. Please try again later.', code: 'rate_limited' }, origin);
   }
 
+  const from = env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL;
+  if (!from) {
+    console.error('send: RESEND_SEND_FROM / RESEND_FROM_EMAIL not set');
+    await services.limiter.refund(ipKey, WINDOW_SECONDS);
+    await services.limiter.refund(addrKey, WINDOW_SECONDS);
+    return json(502, { error: 'Something went wrong. Please try again in a moment.' }, origin);
+  }
+
   const { subject, html } = renderSendEmail({ kind, source, payload: checked.value, lang, brief: wantsBrief });
 
   try {
     await services.resend.sendEmail({
-      from: env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL,
+      from,
       to: [email],
       ...(env.RESEND_REPLY_TO ? { reply_to: env.RESEND_REPLY_TO } : {}),
       subject,
@@ -77,9 +85,10 @@ export async function handleSend({ request, env, origin, services }) {
     });
   } catch (e) {
     console.error(e);
-    // Resend refused the request itself (e.g. 422 for an address it will not
-    // deliver to): the visitor's input, not an outage. Not counted.
-    if (e && e.status >= 400 && e.status < 500 && e.status !== 429) {
+    // Resend refused the recipient (4xx naming the `to` field, e.g. 422 for an
+    // address it will not deliver to): the visitor's input, not an outage, so
+    // not counted. Any other 4xx (missing sender, bad key) is our setup: 502.
+    if (e && e.status >= 400 && e.status < 500 && e.status !== 429 && /`to`|\bto\b field|recipient/i.test(e.message || '')) {
       await services.limiter.refund(ipKey, WINDOW_SECONDS);
       await services.limiter.refund(addrKey, WINDOW_SECONDS);
       return json(400, { error: 'Please check the email address.', code: 'invalid_recipient' }, origin);

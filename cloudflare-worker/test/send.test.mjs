@@ -259,11 +259,11 @@ test('POST /send verdict_lite: one email; with brief one contact and one welcome
   assert.equal(calls.length, 0);
 }));
 
-function withResendStatus(status, fn) {
+function withResendStatus(status, fn, msg = 'Invalid `to` field. Please use our testing email address instead of domains like `example.com`.') {
   return async () => {
     const orig = globalThis.fetch;
     let n = 0;
-    globalThis.fetch = async () => { n++; return new Response('{"message":"Invalid `to` field"}', { status }); };
+    globalThis.fetch = async () => { n++; return new Response(JSON.stringify({ message: msg }), { status }); };
     try { await fn(() => n); } finally { globalThis.fetch = orig; }
   };
 }
@@ -309,4 +309,14 @@ test('POST /send: per-IP limit from SEND_IP_LIMIT_PER_HOUR, 429 carries rate_lim
   const ds = [];
   for (let i = 0; i < 6; i++) ds.push((await worker.fetch(req({ ...LITE_BODY, email: `v${i}@b.co` }), d)).status);
   assert.deepEqual(ds, [200, 200, 200, 200, 200, 429]);
+}));
+
+test('POST /send: a Resend 4xx about our setup (missing from) is 502, not invalid_recipient', withResendStatus(422, async () => {
+  assert.equal((await worker.fetch(req(LITE_BODY), env())).status, 502);
+}, 'Missing `from` field.'));
+
+test('POST /send: no sender configured -> 502 before calling Resend', withResendStatus(200, async (calls) => {
+  const e = env(); delete e.RESEND_FROM_EMAIL;
+  assert.equal((await worker.fetch(req(LITE_BODY), e)).status, 502);
+  assert.equal(calls(), 0);
 }));
