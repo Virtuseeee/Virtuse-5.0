@@ -99,6 +99,8 @@
       blur: { pts: 'Where your points come from', fall: 'What a 70% fall means for you', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', against your reserve and debts' : 'Your amount in euros, against your reserve and debts'; }, rule: function (c) { return 'The sale rule in ' + c; }, ruleTxt: 'Holding period, exemption limit, what counts as a sale', steps: '3 steps for this week', yourCountry: 'your country' },
       gateErr: 'Enter a valid email.', net: 'Something went wrong. Please try again.',
       sent: 'Your Lite score is on its way to your inbox.', notSent: 'We could not send the email right now. Your score is below.',
+      tooMany: 'Too many attempts. Please try again in an hour. Your score is below.',
+      badAddr: 'We could not deliver to this address. Please check it and try again.',
       wlOk: "You're on the list. We'll email you once, when the report opens.",
       demo: { top: 'VERDICT REPORT · SAMPLE', title: 'Anna’s Bitcoin plan check', meta: '41 · Slovakia · first purchase · own keys', scale: ['Basics missing', 'A few gaps', 'Basics in place'], pill: 'B · Basics in place', nums: [['Planned', '€20,000 · 13%'], ['After a 70% fall', '€6,000 left'], ['Monthly', '€200'], ['Cash reserve', '3 to 6 months']], areas: ['Size', 'Reserve', 'Debts', 'Tax', 'Custody', 'Behaviour'] },
       jump: ['Landing', '1 Basics', '2 Savings', '3 Home', '4 Bitcoin', '5 Worries', 'Loading', 'Gate', 'Lite score', 'Sample']
@@ -157,6 +159,8 @@
       blur: { pts: 'Odkiaľ sú vaše body', fall: 'Čo pre vás znamená pokles o 70 %', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', oproti vašej rezerve a dlhom' : 'Vaša suma v eurách, oproti rezerve a dlhom'; }, rule: function (c) { return 'Pravidlo predaja: ' + c; }, ruleTxt: 'Doba držby, oslobodenie, čo sa ráta ako predaj', steps: '3 kroky na tento týždeň', yourCountry: 'vaša krajina' },
       gateErr: 'Zadajte platný e-mail.', net: 'Niečo sa pokazilo. Skúste to znova.',
       sent: 'Lite skóre vám posielame e-mailom.', notSent: 'E-mail sa teraz nepodarilo odoslať. Vaše skóre nájdete nižšie.',
+      tooMany: 'Príliš veľa pokusov. Skúste to znova o hodinu. Vaše skóre nájdete nižšie.',
+      badAddr: 'Na túto adresu sa e-mail nepodarilo doručiť. Skontrolujte ju a skúste to znova.',
       wlOk: 'Ste na zozname. Napíšeme vám raz, keď report spustíme.',
       demo: { top: 'VERDICT REPORT · VZOR', title: 'Plán Bitcoinu: Anna', meta: '41 · Slovensko · prvý nákup · vlastné kľúče', scale: ['Chýbajú základy', 'Pár medzier', 'Základy máte'], pill: 'B · Základy máte', nums: [['Plánuje', '20 000 € · 13 %'], ['Po poklese o 70 %', 'zostane 6 000 €'], ['Mesačne', '200 €'], ['Rezerva', '3 až 6 mesiacov']], areas: ['Veľkosť', 'Rezerva', 'Dlhy', 'Dane', 'Úschova', 'Správanie'] },
       jump: ['Landing', '1 Základ', '2 Úspory', '3 Bývanie', '4 Bitcoin', '5 Obavy', 'Načítanie', 'Brána', 'Lite skóre', 'Vzor']
@@ -424,10 +428,18 @@
     var payload = { score: c.total, grade: grade(c.total), band: c.total >= 70 ? 0 : c.total >= 55 ? 1 : 2, gaps: gaps(c).map(function (g) { return g[2]; }), areas: c.sc };
     dl({ event: 'verdict_lite_unlock', verdict_brief: f.brief.checked });
     btn.disabled = true;
-    var done8 = function (ok) { btn.disabled = false; sent.textContent = ok ? S.sent : S.notSent; sent.className = 'ml-sent' + (ok ? '' : ' warn'); goStep(8); };
+    // text: null = sent; otherwise the warning shown above the score.
+    var done8 = function (text) { btn.disabled = false; sent.textContent = text || S.sent; sent.className = 'ml-sent' + (text ? ' warn' : ''); goStep(8); };
     vbApi().then(function (api) { return api.postJson('/send', { email: em, hp: f.website.value, lang: LANG, kind: 'verdict_lite', source: 'verdict', brief: f.brief.checked, payload: payload }); })
-      .then(function (r) { if (!r || !r.ok) throw 0; dl({ event: 'verdict_lite_email_sent' }); done8(true); })
-      .catch(function () { done8(false); });
+      .then(function (r) {
+        if (r && r.ok) { dl({ event: 'verdict_lite_email_sent' }); return done8(null); }
+        var code = r && r.data && r.data.code;
+        dl({ event: 'verdict_lite_email_failed', verdict_error: code || (r ? 'http_' + r.status : 'network') });
+        // Resend refused the address: stay on the gate so it can be corrected.
+        if (code === 'invalid_recipient') { btn.disabled = false; msg.textContent = S.badAddr; f.email.focus(); return; }
+        done8(r && r.status === 429 ? S.tooMany : S.notSent);
+      })
+      .catch(function () { done8(S.notSent); });
   };
   // €14 full report waitlist (existing Worker source verdict_report)
   document.querySelectorAll('form[data-wl]').forEach(function (f) {
