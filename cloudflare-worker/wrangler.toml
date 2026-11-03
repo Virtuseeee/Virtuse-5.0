@@ -12,6 +12,8 @@ compatibility_date = "2026-08-14"
 # on this Worker (no --env): STRIPE_SECRET_KEY (rk_live_ preferred),
 # STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_ID_VERDICT. Webhook: <worker URL>/verdict/stripe-webhook.
 # STRIPE_AUTOMATIC_TAX / STRIPE_INVOICE: off until the accountant decides.
+# The webhook emails the buyer a confirmation with the report PDF via Resend
+# (RESEND_API_KEY, RESEND_SEND_FROM; reply-to RESEND_REPLY_TO or info@virtuse.com).
 vars = { VERDICT_ENABLED = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_PAYMENTS = "1" }
 
 # Created via: npx wrangler kv namespace create RATE_LIMIT_KV
@@ -46,9 +48,11 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 # Checkout session (EUR 14); a live key here switches payments off. With payments
 # on, VERDICT_REPORT_PREVIEW is ignored. Secrets, each with --env staging (never
 # in chat, git or this file): STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_ID_VERDICT.
+# Purchase confirmation + report PDF (webhook): needs RESEND_API_KEY (--env staging);
+# VERDICT_RECEIPT_TO sends every staging confirmation to that address, never the buyer's.
 [env.staging]
 name = "virtuse-newsletter-staging"
-vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1" }
+vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1", VERDICT_RECEIPT_TO = "vasilisin@virtuse.com", RESEND_SEND_FROM = "Virtuse <plan@virtuse.com>" }
 
 [[env.staging.kv_namespaces]]
 binding = "RATE_LIMIT_KV"
