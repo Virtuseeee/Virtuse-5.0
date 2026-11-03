@@ -279,8 +279,14 @@ POST /send  { email, hp, lang, kind, source, payload, brief }
   Partner Finder's order. No "best", no reasons, no verdict.
 - **Nothing stored without `brief: true`.** With it, the contact joins the
   Brief segment like `/subscribe` (welcome email only for new contacts).
-- Limits: the shared per-IP limit (5/hour) plus 3 emails per address per
-  hour (KV key is a SHA-256 of the address).
+- Limits: its own per-IP counter (`sendlimit:ip:<ip>`, not shared with
+  `/subscribe` and `/waitlist`) and a per-address one (KV key is a SHA-256 of
+  the address). Defaults 5 and 3 per hour, overridable with
+  `SEND_IP_LIMIT_PER_HOUR` / `SEND_ADDRESS_LIMIT_PER_HOUR` (staging: 30 / 10).
+  Only valid requests are counted. 429 answers carry `code: rate_limited`.
+- Resend errors: a 4xx from Resend (e.g. 422 for an address it will not
+  deliver to) becomes 400 `code: invalid_recipient` and is not counted; only
+  Resend 5xx or a network error is 502.
 - Partner links: the card's tracked link + `utm_source=email&utm_medium=<kind>&utm_campaign=capture&utm_content=<partner>`.
   `PARTNERS` in `src/features/send/domain.js` must match `data/partners.json`; the test
   fails if a host is missing there.

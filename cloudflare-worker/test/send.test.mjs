@@ -258,3 +258,55 @@ test('POST /send verdict_lite: one email; with brief one contact and one welcome
   assert.equal((await worker.fetch(req({ email: 'a@b.co', kind: 'verdict_lite', source: 'verdict', payload: { ...LITE, gaps: ['<b>x</b>'] } }), e)).status, 400);
   assert.equal(calls.length, 0);
 }));
+
+function withResendStatus(status, fn) {
+  return async () => {
+    const orig = globalThis.fetch;
+    let n = 0;
+    globalThis.fetch = async () => { n++; return new Response('{"message":"Invalid `to` field"}', { status }); };
+    try { await fn(() => n); } finally { globalThis.fetch = orig; }
+  };
+}
+
+const LITE_BODY = { email: 'qa@b.co', lang: 'en', kind: 'verdict_lite', source: 'verdict', payload: LITE };
+
+test('POST /send: Resend 422 -> 400 invalid_recipient, attempt not counted', withResendStatus(422, async () => {
+  const e = env();
+  for (let i = 0; i < 6; i++) {
+    const res = await worker.fetch(req(LITE_BODY), e);
+    assert.equal(res.status, 400);
+    assert.equal((await res.json()).code, 'invalid_recipient');
+  }
+  // every counter was given back
+  assert.ok([...e.RATE_LIMIT_KV.store.values()].every((v) => v === '0'));
+}));
+
+test('POST /send: Resend 5xx stays 502', withResendStatus(500, async () => {
+  assert.equal((await worker.fetch(req(LITE_BODY), env())).status, 502);
+}));
+
+test('POST /send: invalid payloads are not counted; own key, not the signup one', withFetch(async () => {
+  const e = env();
+  for (let i = 0; i < 8; i++) {
+    assert.equal((await worker.fetch(req({ ...LITE_BODY, payload: { ...LITE, score: 75 } }), e)).status, 400);
+  }
+  assert.equal(e.RATE_LIMIT_KV.store.size, 0);
+  assert.equal((await worker.fetch(req(LITE_BODY), e)).status, 200);
+  const keys = [...e.RATE_LIMIT_KV.store.keys()];
+  assert.ok(keys.includes('sendlimit:ip:1.2.3.4'));
+  assert.ok(!keys.some((k) => k.startsWith('ratelimit:')));
+}));
+
+test('POST /send: per-IP limit from SEND_IP_LIMIT_PER_HOUR, 429 carries rate_limited', withFetch(async () => {
+  const e = { ...env(), SEND_IP_LIMIT_PER_HOUR: '7', SEND_ADDRESS_LIMIT_PER_HOUR: '50' };
+  const statuses = [];
+  for (let i = 0; i < 8; i++) statuses.push((await worker.fetch(req({ ...LITE_BODY, email: `u${i}@b.co` }), e)).status);
+  assert.deepEqual(statuses, [200, 200, 200, 200, 200, 200, 200, 429]);
+  const last = await worker.fetch(req({ ...LITE_BODY, email: 'z@b.co' }), e);
+  assert.equal((await last.json()).code, 'rate_limited');
+  // default without the env var is 5 per IP
+  const d = env();
+  const ds = [];
+  for (let i = 0; i < 6; i++) ds.push((await worker.fetch(req({ ...LITE_BODY, email: `v${i}@b.co` }), d)).status);
+  assert.deepEqual(ds, [200, 200, 200, 200, 200, 429]);
+}));

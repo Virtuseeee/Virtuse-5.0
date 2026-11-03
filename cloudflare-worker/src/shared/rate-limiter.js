@@ -16,6 +16,13 @@ export function createKvLimiter(kv) {
       return false;
     },
 
+    // Gives back one attempt counted by exceeded(), e.g. when the request
+    // turned out to be the visitor's mistake (an address Resend refuses).
+    async refund(key, windowSeconds) {
+      const current = parseInt((await kv.get(key)) || '0', 10);
+      if (current > 0) await kv.put(key, String(current - 1), { expirationTtl: windowSeconds });
+    },
+
     // True the first time `key` is claimed in the window, false while that
     // claim is still alive.
     async claimOnce(key, windowSeconds) {
