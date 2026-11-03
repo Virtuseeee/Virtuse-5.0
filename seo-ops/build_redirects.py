@@ -322,6 +322,19 @@ def lang_hub_rules():
     return lines
 
 
+def brief_sk_take_rule():
+    """Live hotfix 2026-11-02, committed so a rebuild does not drop it.
+
+    The SK Brief Take CTA pointed at the weekly story slug. Only requests with
+    utm_content=take go to the heist article; every other hit stays on the story.
+    """
+    return [
+        '# Brief SK 2026-11-02: Take CTA wrongly pointed at weekly slug; only utm_content=take → heist article',
+        'RewriteCond %{QUERY_STRING} (?:^|&)utm_content=take(?:&|$)',
+        'RewriteRule ^sk/stories/binance-prisla-o-63-mld-bitcoin-vydrzal/?$ https://virtuse.com/article.html?slug=lupez-na-binance-63-miliardy-kto-ju-naozaj-spachal&lang=sk [R=301,L]',
+    ]
+
+
 def cleanup_rules():
     """Story cleanup 2026-10-16 (stories-build/cleanup.json): duplicate story → its original,
     for the story URL and the old WordPress post URL (/<slug>/, /sk/<slug>/)."""
@@ -358,6 +371,7 @@ def block():
               'RewriteRule ^ - [E=VB_HUB_EN:/stories/]',
               'RewriteCond %{DOCUMENT_ROOT}/sk/stories/index.html -f',
               'RewriteRule ^ - [E=VB_HUB_SK:/sk/stories/]', '']
+    lines += brief_sk_take_rule() + ['']
     lines += cleanup_rules() + ['']
     lines += article_rules(ps) + ['']
     lines += ['# The table (all languages: /xx/<old>/ → /xx/<target> if it exists, else EN)']
