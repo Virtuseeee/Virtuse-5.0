@@ -24,10 +24,11 @@
   // staging.virtuse.com and local testing
   var IS_STAGE = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost';
   // Routes that staging and localhost send to the staging Worker: Verdict open,
-  // and WAITLIST_DRY_RUN / SUBSCRIBE_DRY_RUN, so test sign-ups are validated
+  // its paid report (the result id lives in that Worker's store), and
+  // WAITLIST_DRY_RUN / SUBSCRIBE_DRY_RUN, so test sign-ups are validated
   // but nothing is stored or e-mailed. /send and /pulse.json go to the
   // production Worker from every host.
-  var STAGE_ROUTES = { '/verdict': true, '/waitlist': true, '/subscribe': true };
+  var STAGE_ROUTES = { '/verdict': true, '/verdict/checkout': true, '/verdict/report': true, '/waitlist': true, '/subscribe': true };
   // Requests give up after this long and reject like a network error. The
   // Worker answers /subscribe, /waitlist and /send within a few seconds;
   // /verdict waits for the model (60 s timeout, one retry on the Worker).
