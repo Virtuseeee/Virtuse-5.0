@@ -15,6 +15,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 TOOLS = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(TOOLS, 'fee-index'))
 import build_fee_index as F
+import related_hubs
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']   # hreflang order as before
 LOGO_CLASS = {'logo-bybit.png': 'dark', 'logo-kraken.png': 'cover', 'logo-invity.svg': 'pad'}
@@ -83,10 +84,7 @@ def build(L, n, c, k, partners):
             cards.append('<a class="pf-card" href="{u}"><img src="/{logo}" alt="" width="36" height="36" class="{lc}" loading="lazy"><span><b>{name}</b><small>{cat}</small></span></a>'.format(
                 u=page_url(p['page']), logo=p['logo'], lc=LOGO_CLASS.get(p['logo'], ''), name=name, cat=t['cat_' + cat]))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', q, a) for i, (q, a) in enumerate(faq))
-    fee = '/bitcoin-fee-index/' if L == 'en' else '/%s/%s/' % (L, B.GUIDES[L][1])
-    rel = [(page_url('stacking.html'), 'rel_stack'), (page_url('retirement-calculator.html'), 'rel_ret'), (fee, 'rel_fee'), (page_url('buy-bitcoin.html'), 'rel_buy'),
-           (page_url('loan.html'), 'rel_loan'), (page_url('verdict.html'), 'rel_cfo')]   # Verdict landing (own page in en/sk/ru, else /verdict.html)
-    rcards = ''.join('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[x + '_t'], t[x + '_p']) for u, x in rel)
+    rcards = related_hubs.cards_html(L, 'concierge')   # Bod B map: buy, custody, treasury, tax hubs
 
     out += '''<body class="page-buy page-fee page-pf no-split">
 {nav}
@@ -140,7 +138,7 @@ def build(L, n, c, k, partners):
 '''.format(nav=nav, eyebrow=t['eyebrow'], h1=t['h1'], h1o=t['h1_or'], lead=t['lead'], counts=t['counts'], noscript=t['noscript'],
            disc=t['disclosure'], hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, eh2a=t['eco_h2_a'], eh2b=t['eco_h2_b'], ep=t['eco_p'],
            cards=''.join(cards), qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html, brief=F.brief_card(L, t, 'partner_finder_brief'),
-           rh2a=t['rel_h2_a'], rh2b=t['rel_h2_b'], rcards=rcards, disclaimer=t['disclaimer'], foot=foot)
+           rh2a=related_hubs.heading(L)[0], rh2b=related_hubs.heading(L)[1], rcards=rcards, disclaimer=t['disclaimer'], foot=foot)
     # the page is the Partner Finder itself: no launcher bubble here
     out += C.scripts('/').replace('<script src="/concierge-launcher.js" defer></script>\n', '')
     F.check_text(out, L)
