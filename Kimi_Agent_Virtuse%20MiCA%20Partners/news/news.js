@@ -73,19 +73,14 @@
     if (isNaN(d.getTime())) return '';
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  function articleUrl(slug) {
-    return 'article.html?slug=' + encodeURIComponent(slug);
-  }
-  /* Edition links go straight to the static story page /stories/<slug>/ (no redirect hop).
-     A link starts on article.html and is switched once a HEAD request confirms the story
-     page exists here (production sends a missing path to the blog with a 301, so a
-     redirected answer counts as missing). Every such link carries data-issue-slug. */
+  /* Edition links go straight to /stories/<slug>/. A missing story page falls back to the
+     stories hub (the server 301s article.html?slug= there too). data-issue-slug marks them. */
   var STORY = {};
   function storyPath(slug) {
     return '/stories/' + encodeURIComponent(slug) + '/';
   }
   function issueLink(slug) {
-    return STORY[slug] === true ? storyPath(slug) : articleUrl(slug);
+    return storyPath(slug);
   }
   function linkStories() {
     var links = document.querySelectorAll('a[data-issue-slug]');
@@ -94,18 +89,18 @@
       var slug = a.getAttribute('data-issue-slug');
       if (!slug || seen[slug]) return;
       seen[slug] = 1;
-      var apply = function () {
+      var apply = function (href) {
         [].forEach.call(document.querySelectorAll('a[data-issue-slug]'), function (x) {
-          if (x.getAttribute('data-issue-slug') === slug) x.setAttribute('href', storyPath(slug));
+          if (x.getAttribute('data-issue-slug') === slug) x.setAttribute('href', href);
         });
       };
-      if (STORY[slug] === true) { apply(); return; }
-      if (STORY[slug] === false || STORY[slug] === 'pending') return;
+      apply(storyPath(slug));
+      if (STORY[slug] === true || STORY[slug] === false || STORY[slug] === 'pending') return;
       STORY[slug] = 'pending';
       fetch(storyPath(slug), { method: 'HEAD' }).then(function (r) {
         STORY[slug] = !!(r.ok && !r.redirected);
-        if (STORY[slug]) apply();
-      }).catch(function () { STORY[slug] = false; });
+        if (!STORY[slug]) apply('/stories/');
+      }).catch(function () { STORY[slug] = false; apply('/stories/'); });
     });
   }
   function setText(id, v) {

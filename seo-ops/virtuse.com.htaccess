@@ -22,18 +22,18 @@ RewriteRule ^(.*)$ https://virtuse.com/$1 [R=301,L]
 RewriteRule ^sk/news\.html$ https://virtuse.com/news.html [R=301,L]
 
 # Brief articles. The static page /stories/<slug>/ (sk/stories/) is the canonical copy.
-# Short links /a/<slug> and the old reader URL article.html?slug=<slug>[&lang=sk] 301 there
-# when the page exists. Otherwise (a post newer than the last Stories build on this server)
-# they reach the reader /article.html?slug=<slug>, which renders the WordPress post and
-# sends slugs that exist nowhere on to the stories hub (article.js; since 2026-10-26, before
-# that every missing page went straight to the hub). 302, so nothing is cached once the
-# story page is uploaded.
+# Short links /a/<slug> 301 there when the page exists. A slug with no story page 301s
+# to that language's stories hub in one hop (Bod C, 2026-11-03), not to the reader.
+# article.html?slug=… rules (known story, or the language hub) are in the approved-redirects
+# block below. The bare /article.html with no slug stays the reader.
 RewriteCond %{DOCUMENT_ROOT}/stories/$1/index.html -f
 RewriteRule ^a/([a-z0-9-]+)/?$ https://virtuse.com/stories/$1/ [R=301,L]
 RewriteCond %{DOCUMENT_ROOT}/sk/stories/$1/index.html -f
 RewriteRule ^sk/a/([a-z0-9-]+)/?$ https://virtuse.com/sk/stories/$1/ [R=301,L]
-RewriteRule ^a/([a-z0-9-]+)/?$ https://virtuse.com/article.html?slug=$1 [R=302,L]
-RewriteRule ^sk/a/([a-z0-9-]+)/?$ https://virtuse.com/article.html?slug=$1&lang=sk [R=302,L]
+RewriteCond %{DOCUMENT_ROOT}/stories/$1/index.html -f
+RewriteRule ^sk/a/([a-z0-9-]+)/?$ https://virtuse.com/stories/$1/ [R=301,L]
+RewriteRule ^a/([a-z0-9-]+)/?$ https://virtuse.com/stories/? [R=301,L]
+RewriteRule ^sk/a/([a-z0-9-]+)/?$ https://virtuse.com/sk/stories/? [R=301,L]
 # article.html?slug=… rules: see the approved-redirects block below.
 
 # BEGIN approved-redirects-2026-10-13
@@ -138,16 +138,40 @@ RewriteCond %{ENV:VB_AL} ^ru$
 RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/ru/stories/? [R=301,L]
 RewriteCond %{ENV:VB_OLD} =1
 RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
-# 5. any other slug without a story page here: a post newer than the last Stories upload,
-#    or no post at all. /article.html?slug=S is served as the reader, which renders the
-#    WordPress post and sends slugs WordPress does not know on to the stories hub
-#    (article.js); the headers block marks it noindex. /xx/article.html?slug=S (no such
-#    file) → 302 to the reader with lang=xx (302: once the story page exists, rules 1-3
-#    answer directly). 2026-10-14 to 2026-10-26 these went to the hub, so new posts did too.
-RewriteCond %{QUERY_STRING} (?:^|&)slug=[^&]
-RewriteRule ^article\.html$ - [L]
-RewriteCond %{QUERY_STRING} (?:^|&)(slug=[^&]+)
-RewriteRule ^(de|es|fr|pl|hu|cs|sk|uk|ru|it)/article\.html$ https://virtuse.com/article.html?%1&lang=$1 [NE,R=302,L]
+# 5. any other slug (newer than the last Stories upload, or no post at all) → that
+#    language's stories/blog hub, query string dropped, one 301. Bod C 2026-11-03:
+#    Google must not see article.html?slug=. The 2026-10-26 reader 200 is gone, so a
+#    post is at /stories/<slug>/ only after the stories build. /xx/article.html?slug=
+#    does not bounce through the reader (that was a second hop).
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteCond %{ENV:VB_AL} ^sk$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com%{ENV:VB_HUB_SK}? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteCond %{ENV:VB_AL} ^ru$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/ru/stories/? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteCond %{ENV:VB_AL} ^de$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/de/blog.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteCond %{ENV:VB_AL} ^es$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/es/blog.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteCond %{ENV:VB_AL} ^fr$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/fr/blog.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteCond %{ENV:VB_AL} ^pl$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/pl/blog.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteCond %{ENV:VB_AL} ^hu$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/hu/blog.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteCond %{ENV:VB_AL} ^cs$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/cs/blog.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteCond %{ENV:VB_AL} ^uk$
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/uk/blog.html? [R=301,L]
+RewriteCond %{QUERY_STRING} (?:^|&)slug=
+RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
 # 6. /xx/article.html without a slug (no such file) → that language's blog hub.
 #    The bare root /article.html (no slug) stays the reader page (200).
 RewriteRule ^de/article\.html$ https://virtuse.com/de/blog.html? [R=301,L]
@@ -916,6 +940,8 @@ RewriteRule ^an-exchange-like-no-other/?$ - [G,L]
 RewriteRule ^career/?$ - [G,L]
 RewriteRule ^coffee/?$ - [G,L]
 RewriteRule ^commodities/?$ https://virtuse.com/asset-returns.html [R=301,L]
+# No compound-interest page exists. Target is Stacking Strategist (the approved regular-purchase
+# calculator, a live 200). /bitcoin-dca-calculator/ exists and was not this row's target.
 RewriteRule ^compound-interest-calculator/?$ https://virtuse.com/stacking.html [R=301,L]
 RewriteRule ^cryptocurrency-exchange-development/?$ - [G,L]
 RewriteRule ^dashboard/?$ https://virtuse.com/bitcoin-data.html [R=301,L]
@@ -943,6 +969,7 @@ RewriteRule ^silver/?$ - [G,L]
 RewriteRule ^sk/affiliate-program-details/?$ - [G,L]
 RewriteRule ^sk/affiliates/?$ - [G,L]
 RewriteRule ^sk/burza-ako-ziadna-ina/?$ - [G,L]
+# Same choice as /compound-interest-calculator/: Stacking Strategist in Slovak.
 RewriteRule ^sk/compound-interest-calculator/?$ https://virtuse.com/sk/stacking.html [R=301,L]
 RewriteRule ^sk/dakujeme-za-priazen/?$ - [G,L]
 RewriteRule ^sk/dakujeme/?$ https://virtuse.com/news.html [R=301,L]
@@ -981,10 +1008,13 @@ RewriteRule ^sk/typy-uctov/?$ - [G,L]
 RewriteRule ^sk/ucet/?$ - [G,L]
 RewriteRule ^sk/uhlik/?$ - [G,L]
 RewriteRule ^sk/umiestnovanie-tokenov/?$ - [G,L]
-RewriteRule ^sk/virtu-token/?$ - [G,L]
+# Partner Finder. The approved-redirects block already 301s these; the same target here
+# so a later rebuild of this block cannot 410 a path that should be one hop to concierge.html.
+# virtuse-exchange-token-listing-guidelines stays 410 (not in the approved map).
+RewriteRule ^sk/virtu-token/?$ https://virtuse.com/sk/concierge.html [R=301,L]
 RewriteRule ^sk/virtuse-news/?$ https://virtuse.com/news.html [R=301,L]
 RewriteRule ^sk/virtuse-report/?$ https://virtuse.com/news.html [R=301,L]
-RewriteRule ^sk/virtusex-platformy/?$ - [G,L]
+RewriteRule ^sk/virtusex-platformy/?$ https://virtuse.com/sk/concierge.html [R=301,L]
 RewriteRule ^sk/vyvoj-krypto-burzy/?$ - [G,L]
 RewriteRule ^sk/wealth-management/?$ https://virtuse.com/sk/index.html [R=301,L]
 RewriteRule ^sk/withdrawal-confirmation/?$ - [G,L]
@@ -998,11 +1028,11 @@ RewriteRule ^test-popup/?$ - [G,L]
 RewriteRule ^thank-you-page/?$ https://virtuse.com/news.html [R=301,L]
 RewriteRule ^thank-you/?$ - [G,L]
 RewriteRule ^the-virtuse-report/?$ https://virtuse.com/news.html [R=301,L]
-RewriteRule ^token-listing/?$ - [G,L]
-RewriteRule ^virtu-token/?$ - [G,L]
+RewriteRule ^token-listing/?$ https://virtuse.com/concierge.html [R=301,L]
+RewriteRule ^virtu-token/?$ https://virtuse.com/concierge.html [R=301,L]
 RewriteRule ^virtuse-exchange-token-listing-guidelines/?$ - [G,L]
 RewriteRule ^virtuse-news/?$ https://virtuse.com/news.html [R=301,L]
-RewriteRule ^virtusex-platform/?$ - [G,L]
+RewriteRule ^virtusex-platform/?$ https://virtuse.com/concierge.html [R=301,L]
 RewriteRule ^wallet/?$ https://virtuse.com/secure.html [R=301,L]
 RewriteRule ^withdrawal-confirmation/?$ - [G,L]
 RewriteRule ^xmas-greetings/?$ - [G,L]
@@ -1059,8 +1089,8 @@ ErrorDocument 410 /404.html
   Header always set X-Frame-Options "SAMEORIGIN" "expr=%{REQUEST_URI} !~ m#^/(?:bitcoin-fee-index|bitcoin-vs-gold|asset-returns)/embed/#"
   Header always set Content-Security-Policy "frame-ancestors *" "expr=%{REQUEST_URI} =~ m#^/(?:bitcoin-fee-index|bitcoin-vs-gold|asset-returns)/embed/#"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-  # /article.html?slug=… answers 200 only while the story's static page is missing (otherwise
-  # it 301s there): keep that temporary copy out of search results (2026-10-26).
+  # article.html?slug=… is a 301 (the story, or the language hub). If a slug is ever
+  # served as 200 because a rewrite was skipped, keep that copy out of search results.
   Header always set X-Robots-Tag "noindex, follow" "expr=%{REQUEST_URI} == '/article.html' && %{QUERY_STRING} =~ /(?:^|&)slug=/"
 </IfModule>
 

@@ -83,7 +83,7 @@ def brief(L, t, root, source, days=None):
     return '''<section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>{h2a} <span>{h2b}</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="{root}" href="{root}article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote{langq}">
+      <a class="issue" id="briefIssue" data-root="{root}" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
         <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="{img_alt}" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">{latest}</span>
@@ -109,7 +109,7 @@ def brief(L, t, root, source, days=None):
         <div class="fine">{fine} <a href="{root}news.html?utm_source=brief&amp;utm_medium={source}" style="color:var(--muted)">{all}</a></div>
       </div>
     </div>
-  </section>'''.format(h2a=t('b_h2_a'), h2b=t('b_h2_b'), root=root, langq=('&amp;lang=' + L) if L != 'en' else '', latest=t('b_latest'),
+  </section>'''.format(h2a=t('b_h2_a'), h2b=t('b_h2_b'), root=root, latest=t('b_latest'),
                        note=(' (%s)' % B.BRIEF_EN[L]) if L != 'en' else '', read=t('b_read'), img_alt=t('b_img_alt'), gh=t('b_get_h'),
                        free=t('b_free'), gp=t('b_get_p'), email=t('email'), btn=t('b_btn'), fine=t('b_fine'), all=t('b_all'), source=source,
                        days=days or DAYS90.get(L, '90 d'))

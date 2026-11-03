@@ -310,6 +310,30 @@ const WP_UPLOADS_HOST = 'https://blog.virtuse.com';
 const fixUploadUrls = (v) => v.replace(
   /(^|,\s*|\s)(?:(?:https?:)?\/\/(?:www\.)?virtuse\.com)?(\/wp-content\/)/gi, `$1${WP_UPLOADS_HOST}$2`);
 
+// Reader URLs in the post body become the canonical story, or the language hub
+// when that story is not on disk (Bod C). The next stories build keeps the rewrite.
+function canonicalArticleHref(value) {
+  const m = String(value).match(/^(?:https?:\/\/(?:www\.)?virtuse\.com)?\/?(?:\.\.\/)*article\.html\?slug=([^&#\s]+)(?:&lang=([a-z]{2}))?/i);
+  if (!m) return value;
+  let slug = m[1];
+  try { slug = decodeURIComponent(slug); } catch (e) { /* keep */ }
+  try { slug = decodeURIComponent(slug); } catch (e) { /* once was enough */ }
+  const lang = m[2] || '';
+  const hit = (rel) => (fs.existsSync(path.join(SITE, rel, 'index.html')) ? `${ORIGIN}/${rel}/` : null);
+  const order = [];
+  if (lang === 'sk') order.push(`sk/stories/${slug}`);
+  if (lang === 'ru' && /^\d+$/.test(slug)) order.push(`ru/stories/${slug}`);
+  order.push(`stories/${slug}`, `sk/stories/${slug}`);
+  for (const rel of order) {
+    const found = hit(rel);
+    if (found) return found;
+  }
+  if (lang === 'sk') return `${ORIGIN}/sk/stories/`;
+  if (lang === 'ru') return `${ORIGIN}/ru/stories/`;
+  if (lang && lang !== 'en' && fs.existsSync(path.join(SITE, lang, 'blog.html'))) return `${ORIGIN}/${lang}/blog.html`;
+  return `${ORIGIN}/stories/`;
+}
+
 // Attribute values were decoded while parsing; entities decode() does not
 // know (&eacute; ...) stay as they are instead of becoming &amp;eacute;.
 const attrEsc = (v) => v.replace(/&(?!(#\d+|#x[0-9a-f]+|[a-z][a-z0-9]*);)/gi, '&amp;')
@@ -339,6 +363,7 @@ function sanitizeBody(html, base) {
       for (const k of (BODY_ATTRS[n.tag] || []).concat('class')) {
         if (!(k in a)) continue;
         let v = a[k];
+        if (k === 'href') v = canonicalArticleHref(v);
         if (k === 'href' || k === 'src' || k === 'srcset') v = fixUploadUrls(v);
         if (k === 'href' || k === 'src') { v = safeUrl(v, base); if (v === null) continue; }
         if (k === 'srcset' && /javascript:/i.test(v)) continue;
