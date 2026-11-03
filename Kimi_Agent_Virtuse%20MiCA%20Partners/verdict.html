@@ -37,7 +37,7 @@
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
 <link rel="stylesheet" href="/verdict-landing.css?v=20261028a">
-<link rel="stylesheet" href="/verdict-lite.css?v=4">
+<link rel="stylesheet" href="/verdict-lite.css?v=5">
 <!-- VLH:END -->
 </head>
 <body class="page-verdict no-split">
@@ -79,7 +79,7 @@
 <div class="hero"><div>
 <span class="eyebrow blue"><i></i>Verdict</span>
 <h1>Audit your Bitcoin plan <em>in 3 minutes.</em></h1>
-<p class="px">Enter your savings, goals, and worries. Get an instant score out of 100, a letter grade, and your 3 biggest gaps. 100% free.</p>
+<p class="px">Enter your savings, goals, and worries. Get an instant score out of 100, a letter grade, and your 3 biggest gaps. Lite score free.</p>
 <div class="ctas"><button class="b bp" type="button" data-go="1">Get your free Lite score →</button></div>
 <p class="ml-land-note">About 3 minutes · no account · not investment advice</p>
 </div><div>
@@ -256,6 +256,7 @@
       <div class="ml-grade" id="mlGrade"></div>
       <h2 class="ml-h" style="margin-top:22px"><span id="mlWho" style="color:var(--text)"></span> score: <b id="mlScore"></b>/100</h2>
       <div class="ml-band" id="mlBandH"></div>
+      <div class="ml-sent" id="mlSent" aria-live="polite"></div>
     </div>
     <div class="ml-box">
       <h3>3 areas to improve first</h3>
@@ -283,7 +284,7 @@
         <div class="ml-lock" style="width:60px;height:60px;margin:0 auto 14px;border-radius:16px"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
         <div class="ml-gap1" id="mlGap1" style="margin:0 0 8px"></div>
         <p class="ml-sub" style="margin:0 auto 20px;font-size:15px">The full report explains every point, puts your numbers in euros and turns the gaps into 3 steps you keep as a PDF.</p>
-        <button class="ml-big" type="button" data-go="7">Unlock the full report · €14 →</button>
+        <button class="ml-big" type="button" data-go="7">Join the €14 waitlist →</button>
         <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">See a sample report</a> · One-time · waitlist for now, nothing is charged</p>
       </div>
     </div>
@@ -394,6 +395,17 @@
       </div>
     </div>
 
+
+    <div class="ml-box" id="waitlist" style="text-align:center">
+      <h4>Want this report for your own plan?</h4>
+      <p>€14 once, no subscription. Payment is not live yet: join the waitlist and we email you once when the report opens.</p>
+      <form class="ml-form" data-wl novalidate style="max-width:420px;margin:0 auto">
+        <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="Email" autocomplete="email">
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="ml-btn2 orange" type="submit">Join the €14 waitlist</button>
+        <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
+      </form>
+    </div>
     <div class="ml-box ml-consult">
       <div><h4>Want to go through it with us?</h4><p>Bring your report to a free 15-minute call. We answer your questions; you decide.</p></div>
       <button class="ml-big orange" type="button" data-consultation-trigger data-consultation-lang="en">Book a free 15-min call</button>
@@ -422,10 +434,10 @@
     </div>
   </footer>
 </main>
-<script src="/vb-api.js?v=1" defer></script>
+<script src="/vb-api.js?v=2" defer></script>
 <script src="/site-v2.js?v=12" defer></script>
 <script src="/consultation-lazy.js?v=5" defer></script>
-<script src="/verdict-lite.js?v=2" defer></script>
+<script src="/verdict-lite.js?v=3" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

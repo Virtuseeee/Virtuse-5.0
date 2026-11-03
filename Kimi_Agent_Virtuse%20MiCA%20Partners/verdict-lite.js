@@ -6,9 +6,11 @@
    ready the plan is, never whether to buy or sell. Grade and band come from the same
    thresholds: A/B (70+) Basics in place, C (55-69) A few gaps, D/E (under 55) Basics missing.
 
-   Worker calls (through vb-api.js): /subscribe when the Brief box is ticked,
-   /waitlist (source verdict_report) for the €14 report. The Lite score email itself
-   needs a Worker route that does not exist yet (open item).
+   Worker calls (through vb-api.js): POST /send kind verdict_lite (source verdict)
+   emails the Lite score after the gate; the payload is only score, grade, band,
+   gap ids and the six area points, and the Brief tick rides on the same call
+   (brief: true), so there is one welcome at most. /waitlist (source
+   verdict_report) for the €14 report.
    Plain ES5 like the rest of the site's scripts. */
 (function () {
   'use strict';
@@ -18,7 +20,7 @@
   var eur = function (n) { var s = Math.round(n).toLocaleString(LOC); return LANG === 'sk' ? s + ' €' : '€' + s; };
   var $ = function (id) { return document.getElementById(id); };
   var dl = function (o) { (window.dataLayer = window.dataLayer || []).push(o); };
-  var MOCK = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || /[?&]mock=1\b/.test(location.search);
+  var MOCK = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 
   var I = {
     home: '<path d="M4 11 12 4l8 7v9H4z"/><path d="M10 20v-5h4v5"/>',
@@ -96,6 +98,7 @@
       },
       blur: { pts: 'Where your points come from', fall: 'What a 70% fall means for you', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', against your reserve and debts' : 'Your amount in euros, against your reserve and debts'; }, rule: function (c) { return 'The sale rule in ' + c; }, ruleTxt: 'Holding period, exemption limit, what counts as a sale', steps: '3 steps for this week', yourCountry: 'your country' },
       gateErr: 'Enter a valid email.', net: 'Something went wrong. Please try again.',
+      sent: 'Your Lite score is on its way to your inbox.', notSent: 'We could not send the email right now. Your score is below.',
       wlOk: "You're on the list. We'll email you once, when the report opens.",
       demo: { top: 'VERDICT REPORT · SAMPLE', title: 'Anna’s Bitcoin plan check', meta: '41 · Slovakia · first purchase · own keys', scale: ['Basics missing', 'A few gaps', 'Basics in place'], pill: 'B · Basics in place', nums: [['Planned', '€20,000 · 13%'], ['After a 70% fall', '€6,000 left'], ['Monthly', '€200'], ['Cash reserve', '3 to 6 months']], areas: ['Size', 'Reserve', 'Debts', 'Tax', 'Custody', 'Behaviour'] },
       jump: ['Landing', '1 Basics', '2 Savings', '3 Home', '4 Bitcoin', '5 Worries', 'Loading', 'Gate', 'Lite score', 'Sample']
@@ -153,6 +156,7 @@
       },
       blur: { pts: 'Odkiaľ sú vaše body', fall: 'Čo pre vás znamená pokles o 70 %', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', oproti vašej rezerve a dlhom' : 'Vaša suma v eurách, oproti rezerve a dlhom'; }, rule: function (c) { return 'Pravidlo predaja: ' + c; }, ruleTxt: 'Doba držby, oslobodenie, čo sa ráta ako predaj', steps: '3 kroky na tento týždeň', yourCountry: 'vaša krajina' },
       gateErr: 'Zadajte platný e-mail.', net: 'Niečo sa pokazilo. Skúste to znova.',
+      sent: 'Lite skóre vám posielame e-mailom.', notSent: 'E-mail sa teraz nepodarilo odoslať. Vaše skóre nájdete nižšie.',
       wlOk: 'Ste na zozname. Napíšeme vám raz, keď report spustíme.',
       demo: { top: 'VERDICT REPORT · VZOR', title: 'Plán Bitcoinu: Anna', meta: '41 · Slovensko · prvý nákup · vlastné kľúče', scale: ['Chýbajú základy', 'Pár medzier', 'Základy máte'], pill: 'B · Základy máte', nums: [['Plánuje', '20 000 € · 13 %'], ['Po poklese o 70 %', 'zostane 6 000 €'], ['Mesačne', '200 €'], ['Rezerva', '3 až 6 mesiacov']], areas: ['Veľkosť', 'Rezerva', 'Dlhy', 'Dane', 'Úschova', 'Správanie'] },
       jump: ['Landing', '1 Základ', '2 Úspory', '3 Bývanie', '4 Bitcoin', '5 Obavy', 'Načítanie', 'Brána', 'Lite skóre', 'Vzor']
@@ -267,7 +271,7 @@
     w.forEach(function (k) { var id = boost[k]; if (id) pr[id] = (pr[id] || 0) + 3; });
     var ids = Object.keys(pr).sort(function (a, b) { return pr[b] - pr[a]; });
     ['heirs', 'records'].forEach(function (id) { if (ids.indexOf(id) < 0) ids.push(id); });
-    return ids.slice(0, 3).map(function (id) { var g = S.G[id]; return [g[0], g[1](A, c)]; });
+    return ids.slice(0, 3).map(function (id) { var g = S.G[id]; return [g[0], g[1](A, c), id]; });
   }
   function result() {
     var c = calc(), t = c.total, gr = grade(t), sc = c.sc;
@@ -336,7 +340,13 @@
 
   function vbApi() {
     if (window.VB_API) return Promise.resolve(window.VB_API);
-    return new Promise(function (ok, no) { var s = document.createElement('script'); s.src = '/vb-api.js?v=1'; s.onload = function () { window.VB_API ? ok(window.VB_API) : no(); }; s.onerror = no; document.head.appendChild(s); });
+    return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
+      var s = document.createElement('script');
+      s.src = '/vb-api.js?v=2';
+      s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
+      s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
+      document.head.appendChild(s);
+    }));
   }
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -369,9 +379,14 @@
     if (f.website.value) return;
     if (!EMAIL.test(em)) { msg.textContent = S.gateErr; f.email.focus(); return; }
     msg.textContent = ''; A.email = em; save();
-    if (f.brief.checked) vbApi().then(function (api) { return api.postJson('/subscribe', { email: em, hp: '', lang: LANG }); }).catch(function () {});
+    var c = calc(), btn = f.querySelector('button[type=submit]'), sent = $('mlSent');
+    var payload = { score: c.total, grade: grade(c.total), band: c.total >= 70 ? 0 : c.total >= 55 ? 1 : 2, gaps: gaps(c).map(function (g) { return g[2]; }), areas: c.sc };
     dl({ event: 'verdict_lite_unlock', verdict_brief: f.brief.checked });
-    show(8);
+    btn.disabled = true;
+    var go = function (ok) { btn.disabled = false; sent.textContent = ok ? S.sent : S.notSent; sent.className = 'ml-sent' + (ok ? '' : ' warn'); show(8); };
+    vbApi().then(function (api) { return api.postJson('/send', { email: em, hp: f.website.value, lang: LANG, kind: 'verdict_lite', source: 'verdict', brief: f.brief.checked, payload: payload }); })
+      .then(function (r) { if (!r || !r.ok) throw 0; dl({ event: 'verdict_lite_email_sent' }); go(true); })
+      .catch(function () { go(false); });
   };
   // €14 full report waitlist (existing Worker source verdict_report)
   document.querySelectorAll('form[data-wl]').forEach(function (f) {
@@ -390,6 +405,11 @@
   // Local preview only: a bar to jump between the screens
   if (MOCK) {
     var j = document.querySelector('.ml-jump'); if (j) { j.hidden = false; j.insertAdjacentHTML('beforeend', S.jump.map(function (n, i) { return '<a href="?s=' + i + '" data-go="' + i + '">' + i + ' ' + n + '</a>'; }).join('')); }
+  }
+  // ?consult=1 (from the Lite score email) opens the 15-minute call widget
+  if (/[?&]consult=1\b/.test(location.search)) {
+    var tryOpen = function (n) { if (window.VirtuseConsultation && window.VirtuseConsultation.open) window.VirtuseConsultation.open(LANG); else if (n) setTimeout(function () { tryOpen(n - 1); }, 300); };
+    setTimeout(function () { tryOpen(20); }, 300);
   }
   demoInit();
   var rdr = document.querySelector('.vl .radar');

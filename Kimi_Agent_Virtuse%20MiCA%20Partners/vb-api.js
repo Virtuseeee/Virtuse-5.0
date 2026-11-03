@@ -4,7 +4,7 @@
    through window.VB_API.
 
    Loading: pages with inline form code (the 10 homepages, the 10 cfo.html,
-   verdict.html) load it with <script src="vb-api.js?v=1" defer>. The shared
+   verdict.html) load it with <script src="vb-api.js?v=2" defer>. The shared
    scripts (site-v2.js, brief-chrome.js, brief-popup.js, news/news.js,
    partner-capture.js, verdict-flow.js) load it on first use with the small
    vbApi() loader they each carry, so the ~1,100 pages that use them need no
@@ -25,9 +25,11 @@
   var IS_STAGE = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost';
   // Routes that staging and localhost send to the staging Worker: Verdict open,
   // and WAITLIST_DRY_RUN / SUBSCRIBE_DRY_RUN, so test sign-ups are validated
-  // but nothing is stored or e-mailed. /send and /pulse.json go to the
-  // production Worker from every host.
-  var STAGE_ROUTES = { '/verdict': true, '/waitlist': true, '/subscribe': true };
+  // but nothing is stored or e-mailed. /send too (since 2026-11-03, for the
+  // Verdict Lite score email): the staging Worker sends it for real, so a
+  // staging test reaches the inbox without the production Worker.
+  // /pulse.json goes to the production Worker from every host.
+  var STAGE_ROUTES = { '/verdict': true, '/waitlist': true, '/subscribe': true, '/send': true };
   // Requests give up after this long and reject like a network error. The
   // Worker answers /subscribe, /waitlist and /send within a few seconds;
   // /verdict waits for the model (60 s timeout, one retry on the Worker).
