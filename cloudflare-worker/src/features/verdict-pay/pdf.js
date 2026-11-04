@@ -149,7 +149,8 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     page.drawRectangle({ x: M + sw + 58, y: y - 40, width: pw, height: 18, color: C.tint, borderColor: C.line, borderWidth: 0.6 });
     page.drawText(pill, { x: M + sw + 66, y: y - 34, size: 9, font: bold, color: C.blue });
     y -= 58;
-    para(r.gradeLine, { size: 9, color: C.muted, gap: 12 });
+    para(r.gradeLine, { size: 9, color: C.muted, gap: 3 });
+    para(r.scale.map((b, k) => `${b}: ${r.scaleRange[k]}`).join('  ·  '), { size: 8.5, color: C.muted, gap: 12 });
     r.nums.forEach(([k, v]) => row([k, v], [0.4, 0.6], { boldFirst: false }));
     y -= 6;
 
@@ -160,7 +161,8 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     const M2 = r.areaMap;
     ensure(330); // the heading, its text and the map stay on one page
     heading(`${M2.h[0]} ${M2.h[1]}`);
-    para(`${M2.lead} ${M2.how}`, { size: 9.5, color: C.muted, gap: 8 });
+    para(`${M2.lead} ${M2.how}`, { size: 9.5, color: C.muted, gap: 4 });
+    para(M2.sum, { font: bold, size: 9.5, gap: 8 });
     ensure(236);
     const cx = W / 2;
     const cy = y - 112;
@@ -218,6 +220,15 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
       rows.forEach((x) => row(x, widths));
       y -= 6;
     };
+    // Label, value, and on key lines how the value is worked out.
+    const steps = (rows) => rows.forEach(([lab, val, strong, how]) => row([how ? `${lab} (${how})` : lab, val], [0.68, 0.32], { font: strong ? bold : reg }));
+    const bigValue = (lab, val) => {
+      ensure(70);
+      page.drawRectangle({ x: M, y: y - 58, width: CW, height: 58, color: C.tint, borderColor: C.line, borderWidth: 0.6 });
+      page.drawText(clean(lab), { x: M + 12, y: y - 19, size: 9.5, font: reg, color: C.muted });
+      page.drawText(clean(val), { x: M + 12, y: y - 47, size: 24, font: bold, color: C.blue });
+      y -= 66;
+    };
 
     if (r.worth) {
       heading(r.worth.h);
@@ -239,18 +250,18 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     if (r.retireBox.rows.length) table(null, r.retireBox.rows, [0.68, 0.32]);
     if (r.retireBox.plan) {
       const plan = r.retireBox.plan;
+      bigValue(plan.label, plan.value);
       table(null, plan.rows, [0.68, 0.32]);
-      table(null, [[plan.label, plan.value]], [0.68, 0.32]);
       if (plan.scenario) valueBoxes(plan.scenario);
     }
     para(r.retireBox.text, { size: 10, gap: 4 });
     if (r.retireBox.note) para(r.retireBox.note, { size: 8.5, color: C.muted, gap: 6 });
 
     heading(r.h.custody);
+    para(r.custody.yours, { size: 10, gap: 8 });
     row(r.custody.head, [0.28, 0.36, 0.36], { font: bold });
     r.custody.rows.forEach((x) => row(x, [0.28, 0.36, 0.36], { boldFirst: true }));
     y -= 4;
-    para(r.custody.yours, { size: 10, gap: 6 });
 
     heading(`${r.h.taxK}: ${r.h.tax}`);
     if (r.tax.text) para(r.tax.text, { size: 10, gap: 6 });
@@ -260,7 +271,10 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     if (ex) {
       ensure(90); // keep the title with its table
       if (ex.title) para(ex.title, { font: bold, size: 10, gap: 4 });
-      if (ex.kv.length) table(null, ex.kv, [0.62, 0.38]);
+      steps(ex.kv);
+      if (ex.bands) { y -= 4; table(ex.bands.head, [...ex.bands.rows, ex.bands.foot], [0.4, 0.22, 0.16, 0.22]); }
+      steps(ex.after);
+      y -= 6;
       if (ex.hero) valueBoxes(ex.hero);
       if (ex.text) para(ex.text, { size: 10, gap: 6 });
       if (ex.rows.length) table(ex.head, ex.rows, ex.head.map(() => 1 / ex.head.length));

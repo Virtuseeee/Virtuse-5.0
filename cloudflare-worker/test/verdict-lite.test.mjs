@@ -100,6 +100,13 @@ test('area map: the groups and questions promised on the Verdict pages', () => {
     for (const a of r.areas) { assert.ok(html.includes(a.q), a.q); assert.ok(html.includes(`<b>${a.title}</b>`), a.title); }
     for (const g of r.areaMap.groups) { assert.ok(html.includes(g.k), g.k); assert.ok(html.includes(g.h), g.h); }
     assert.ok(html.includes(r.areaMap.how), 'how');
+    assert.ok(readFileSync(path.join(HERE, '..', '..', 'Kimi_Agent_Virtuse%20MiCA%20Partners', 'verdict-lite.js'), 'utf8').includes(r.areaMap.how), 'how on the free map');
+    // The areas add up to the total: sum out of 60, converted to 100, rounded to 5.
+    const pts = r.areas.reduce((n, a) => n + a.points, 0);
+    assert.equal(r.score, Math.round(((pts / 60) * 100) / 5) * 5);
+    assert.ok(r.areaMap.sum.includes(`${pts} `) && r.areaMap.sum.includes(`${r.score} `));
+    assert.ok(r.gradeLine.includes(String(pts)));
+    assert.equal(r.scaleRange.length, r.scale.length);
     assert.deepEqual(r.areas.filter((a) => a.weak).map((a) => a.id), ['tax']);
   }
   assert.equal(liteReportView(check({ ...ANNA, savings: 1000000, reserve: '6p', tax_known: 'yes', custody: 'self', experience: 'hodler' }), 'en').areas.filter((a) => a.weak).length, 1);
@@ -368,11 +375,30 @@ test('tax example: 5% sale in the scenario, by country', () => {
   assert.match(sk.title, /vo veku 65 rokov/);
   const skTax = 43983.32 * 0.19 + (60349.21 - 43983.32) * 0.25 + (75010.32 - 60349.21) * 0.3 + (gain - 75010.32) * 0.35;
   const nb = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
-  const row = (re) => sk.kv.find((x) => re.test(x[0]));
-  assert.equal(row(/Daň spolu/)[1], `${nb(skTax)}\u00a0€`);
-  assert.equal(row(/Zdravotné/)[1], `${nb(gain * 0.16)}\u00a0€`);
-  assert.equal(sk.hero.vals[0][1], `${nb(skTax + gain * 0.16)}\u00a0€`);
-  assert.equal(sk.hero.vals[1][1], `${nb(sale - skTax - gain * 0.16)}\u00a0€`);
+  const digits = (t) => +String(t).replace(/\D/g, '');
+  const row = (re) => sk.after.find((x) => re.test(x[0]));
+  // Printed lines add up: value, 5% of it, cost, gain, tax per band, levy, total, left.
+  const kv = Object.fromEntries(sk.kv.map((x) => [x[0], digits(x[1])]));
+  const [worth, sold, paid, profit] = Object.values(kv);
+  assert.equal(sold, Math.round(worth * 0.05));
+  assert.equal(profit, sold - paid);
+  assert.ok(sk.kv[3][3].includes('−'), 'the gain shows its sum');
+  assert.ok(Math.abs(profit - gain) <= 1 && Math.abs(sold - sale) <= 1);
+  const lines = sk.bands.rows.map((x) => digits(x[3]));
+  const taxSum = lines.reduce((a, b) => a + b, 0);
+  assert.equal(sk.bands.rows.length, 4);
+  assert.equal(digits(sk.bands.foot[3]), taxSum);
+  assert.ok(Math.abs(taxSum - skTax) <= 3);
+  assert.ok(Math.abs(sk.bands.rows.reduce((a, x) => a + digits(x[1]), 0) - profit) <= 2);
+  assert.match(sk.bands.rows[0][0], /^do /);
+  assert.match(sk.bands.rows[1][0], / až /);
+  assert.match(sk.bands.rows[3][0], /^nad /);
+  const levy = digits(row(/Zdravotné/)[1]);
+  assert.equal(levy, Math.round(profit * 0.16));
+  assert.equal(digits(sk.hero.vals[0][1]), taxSum + levy);
+  assert.equal(digits(sk.hero.vals[1][1]), sold - taxSum - levy);
+  assert.equal(digits(row(/Z predaja/)[1]), sold - taxSum - levy);
+  assert.match(sk.hero.sub, /zo zisku/);
   assert.match(sk.dates.at(-1), new RegExp(`roku ${new Date().getFullYear() + 12} .*31\\. marca ${new Date().getFullYear() + 13}`));
   // A small gain stays in the first band.
   const small = blocks({ btc: 1000, monthly: 0, age: 60, retire: 61, country: 'sk' }, 'sk').taxExample;
@@ -410,8 +436,14 @@ test('fees: published rates on the amounts, alphabetical, no winner', () => {
   assert.deepEqual(f.rows[1].slice(2), ['€50', '€6']);
   assert.deepEqual(f.rows[2].slice(2), ['€160', '€19']);
   assert.match(f.note, /not a ranking/);
-  assert.match(f.note, /not listed for your criteria below: Kraken\./);
-  assert.match(blocks({ experience: 'hodler', custody: 'assisted', btc: 500000 }).fees.note, /not listed for your criteria below: 21bitcoin\. No row here, the fee is on the partner's site: Invity\./);
+  assert.match(f.note, /not among the partners that match your criteria below: Kraken\./);
+  // Every partner that matches has a row; a fee kept for comparison says so.
+  const hod = blocks({ experience: 'hodler', custody: 'assisted', btc: 500000 }).fees;
+  assert.deepEqual(hod.rows.map((x) => x[0]), ['21bitcoin', 'Bybit EU', 'Invity', 'Kraken']);
+  assert.match(hod.rows[0][1], /for comparison only/);
+  assert.equal(hod.rows[2][2], "on the partner's site");
+  assert.doesNotMatch(hod.rows[3][1], /comparison/);
+  assert.match(hod.note, /not among the partners that match your criteria below: 21bitcoin\./);
   assert.equal(blocks({ btc: 0, monthly: null }).fees, null);
   assert.equal(blocks({ monthly: null }).fees.head.length, 3);
 });

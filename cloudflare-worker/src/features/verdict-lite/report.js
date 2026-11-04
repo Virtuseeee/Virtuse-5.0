@@ -31,7 +31,8 @@ const COPY = {
     reserveShort: { '6p': '6 months or more', '3_6': '3 to 6 months', '1_3': '1 to 3 months', lt1: 'under 1 month' },
     reserveNum: { '6p': '6 months or more · target met', '3_6': '3 to 6 months · target 6', '1_3': '1 to 3 months · target 6', lt1: 'Under 1 month · target 6' },
     scale: ['Basics missing', 'A few gaps', 'Basics in place'],
-    gradeLine: (g) => `Grade ${g} · plan readiness`,
+    gradeLine: (g, n) => `Grade ${g} · ${n} out of 60 points`,
+    scaleRange: ['under 55 · D, E', '55 to 69 · C', '70 and up · A, B'],
     pill: (g, b) => `${g} · ${b}`,
     h: {
       summaryK: 'Plain-English summary',
@@ -42,7 +43,8 @@ const COPY = {
     area: { size: 'Size', reserve: 'Reserve', debt: 'Debts', tax: 'Tax', custody: 'Custody', fall: 'Behaviour in a fall' },
     map: {
       k: 'Six areas', h: ['Six areas.', 'Two groups.'], figure: 'Area map', lead: (t, g) => `Your plan: ${t} out of 100, grade ${g}.`,
-      how: 'Each area is scored 0 to 10; the score is their sum, shown out of 100 and rounded to 5. Grade A or B (70 and up) means basics in place, C (55 to 69) a few gaps, D or E basics missing. It measures how ready your plan is, not whether Bitcoin is a good buy.',
+      how: 'Each area is scored 0 to 10, so 60 points at most. The score is that sum converted to 100 and rounded to 5: 45 out of 60 is 75. Grade A or B (70 and up) means basics in place, C (55 to 69) a few gaps, D or E (under 55) basics missing. It measures how ready your plan is, not whether Bitcoin is a good buy.',
+      sum: (parts, sum, t) => `Your points: ${parts} = ${sum} out of 60, which converts and rounds to ${t} out of 100.`,
       survival: ['Survival', 'Can a fall hurt you?'], setup: ['Setup', 'Are you set up?'],
       short: { size: 'Size', reserve: 'Reserve', debt: 'Debts', tax: 'Tax', custody: 'Custody', fall: 'Behaviour' },
       q: { size: 'What share of your savings goes into Bitcoin?', reserve: 'How many months could you live from cash?', debt: 'Could a loan force you to sell at the bottom?', tax: 'Do you know how a sale is taxed in your country?', custody: 'Who holds the keys, and is the backup tested?', fall: 'What would you do if Bitcoin fell 70%?' },
@@ -56,7 +58,7 @@ const COPY = {
       mort: (p) => `Mortgage at ${p} of the home value.`,
       mortHeavy: (p) => `Mortgage at ${p} of the home value, which takes 3 points off.`,
       tax: { yes: 'You know how a sale is taxed in your country.', roughly: 'You know the rule roughly. Details are still open before the first sale.', no: 'You do not know yet how a sale is taxed.' },
-      custody: { selfNew: 'Own keys chosen. Recovery not practised yet.', self: 'Own keys, and you already hold Bitcoin. A tested backup is the last point.', assisted: 'Assisted custody: you get help with keys and recovery.', any: 'You have not decided who holds the keys.' },
+      custody: { selfNew: 'Own keys chosen. Recovery not practised yet.', self: 'Own keys, and you already hold Bitcoin. A tested backup is the last point.', assisted: 'Assisted custody: you get help with keys and recovery. What is left is checking how recovery works with your provider.', any: 'You have not decided who holds the keys.' },
       fall: { more: 'You would buy more at a lower price, not sell.', wait: 'You would wait, not sell.', sell: 'You would sell some or all to stop the loss.' },
     },
     sum: {
@@ -65,7 +67,7 @@ const COPY = {
       math: (b, p, r, ok) => `${b} is ${p} of your savings: after a 70% fall ${r} would be left, ${ok ? 'which would hurt but not break your finances.' : 'which would change your plans.'}`,
       debt: { none: 'You have no debts', noneMort: 'You have no debts besides the mortgage', lt10: 'You have under €10,000 of consumer debt', gt10: 'You have over €10,000 of consumer debt' },
       fall: { wait: ', and you said you would wait in a fall rather than sell.', more: ', and you said you would buy more in a fall rather than sell.', sell: ', and you said you would sell in a fall, which turns a paper loss into a real one.' },
-      open: (n, w) => `${n === 2 ? 'Two details are' : 'Three details are'} open${w === 0 ? '.' : w === 1 ? ', and one of them is what you worry about.' : w === 2 ? ', and two of them are what you worry about.' : ', and all three are what you worry about.'}`,
+      open: (n, w) => `${n === 2 ? 'Two points are' : 'Three points are'} still open${w === 0 ? '.' : w === n ? `, and ${n === 2 ? 'both' : 'all three'} touch what you worry about.` : w === 1 ? ', and one of them touches what you worry about.' : ', and two of them touch what you worry about.'}`,
     },
     gapLine: {
       tax: (c) => `The sale rule ${c ? `in ${c} ` : ''}is set out below, and records matter from the first purchase.`,
@@ -94,11 +96,11 @@ const COPY = {
       head: ['', 'Own keys', 'Assisted custody'],
       rows: [
         ['Who holds the keys', 'You, on a hardware wallet', 'You and a provider (multisig)'],
-        ['If you lose the backup', 'Nobody can restore it', 'The provider helps you recover'],
+        ['If you lose a key or the backup', 'Nobody can restore it', 'The provider helps you recover'],
         ['What you pay', 'A one-off device price', 'A fee set by the provider'],
         ['Fits when', 'You practise the recovery first', 'You want help with recovery and heirs'],
       ],
-      yours: { self: 'You chose own keys. The recovery test in your plan is the part to do before larger amounts go in.', assisted: 'You chose assisted custody. Ask your provider how recovery works before larger amounts go in.', any: 'You have not decided yet. This table is the decision to make.' },
+      yours: { self: 'You chose own keys. The recovery test in your plan is the part to do before larger amounts go in.', assisted: 'You chose assisted custody, so you do not carry the keys alone. Before larger amounts go in, ask your provider exactly how recovery works.', any: 'You have not decided yet. This table is the decision to make.' },
     },
     tax: {
       gain: 'Tax on a gain', levy: 'Also payable', exempt: 'Exemption', filing: 'Tax return', note: 'Worth knowing',
@@ -164,7 +166,8 @@ const COPY = {
     reserveShort: { '6p': '6 mesiacov a viac', '3_6': '3 až 6 mesiacov', '1_3': '1 až 3 mesiace', lt1: 'menej ako 1 mesiac' },
     reserveNum: { '6p': '6 mesiacov a viac · cieľ splnený', '3_6': '3 až 6 mesiacov · cieľ 6', '1_3': '1 až 3 mesiace · cieľ 6', lt1: 'Menej ako 1 mesiac · cieľ 6' },
     scale: ['Chýbajú základy', 'Pár medzier', 'Základy máte'],
-    gradeLine: (g) => `Známka ${g} · pripravenosť plánu`,
+    gradeLine: (g, n) => `Známka ${g} · ${n} zo 60 bodov`,
+    scaleRange: ['pod 55 · D, E', '55 až 69 · C', '70 a viac · A, B'],
     pill: (g, b) => `${g} · ${b}`,
     h: {
       summaryK: 'Zhrnutie',
@@ -175,7 +178,8 @@ const COPY = {
     area: { size: 'Veľkosť', reserve: 'Rezerva', debt: 'Dlhy', tax: 'Dane', custody: 'Úschova', fall: 'Správanie pri poklese' },
     map: {
       k: 'Šesť oblastí', h: ['Šesť oblastí.', 'Dve skupiny.'], figure: 'Mapa oblastí', lead: (t, g) => `Váš plán: ${t} zo 100, známka ${g}.`,
-      how: 'Každá oblasť má 0 až 10 bodov; skóre je ich súčet, zo 100 a zaokrúhlený na 5. Známka A alebo B (70 a viac) znamená, že základy máte, C (55 až 69) pár medzier, D alebo E chýbajúce základy. Meria, nakoľko je pripravený váš plán, nie či je Bitcoin dobrý nákup.',
+      how: 'Každá oblasť má 0 až 10 bodov, spolu teda najviac 60. Skóre je tento súčet prepočítaný na 100 a zaokrúhlený na 5: 45 zo 60 je 75. Známka A alebo B (70 a viac) znamená, že základy máte, C (55 až 69) pár medzier, D alebo E (pod 55) chýbajúce základy. Meria, nakoľko je pripravený váš plán, nie či je Bitcoin dobrý nákup.',
+      sum: (parts, sum, t) => `Vaše body: ${parts} = ${sum} zo 60, po prepočte a zaokrúhlení ${t} zo 100.`,
       survival: ['Odolnosť', 'Môže vám pokles ublížiť?'], setup: ['Príprava', 'Ste pripravení?'],
       short: { size: 'Veľkosť', reserve: 'Rezerva', debt: 'Dlhy', tax: 'Dane', custody: 'Úschova', fall: 'Správanie' },
       q: { size: 'Aký podiel úspor ide do Bitcoinu?', reserve: 'Koľko mesiacov by ste vyžili z hotovosti?', debt: 'Môže vás úver prinútiť predať na dne?', tax: 'Viete, ako sa vo vašej krajine zdaní predaj?', custody: 'Kto drží kľúče a je záloha vyskúšaná?', fall: 'Čo by ste urobili, keby Bitcoin klesol o 70 %?' },
@@ -189,7 +193,7 @@ const COPY = {
       mort: (p) => `Hypotéka na ${p} hodnoty bývania.`,
       mortHeavy: (p) => `Hypotéka na ${p} hodnoty bývania, preto sú 3 body dole.`,
       tax: { yes: 'Viete, ako sa vo vašej krajine zdaní predaj.', roughly: 'Pravidlo poznáte približne. Pred prvým predajom treba doriešiť detaily.', no: 'Zatiaľ neviete, ako sa zdaní predaj.' },
-      custody: { selfNew: 'Zvolené vlastné kľúče. Obnova ešte nie je vyskúšaná.', self: 'Vlastné kľúče a Bitcoin už držíte. Posledný bod je vyskúšaná záloha.', assisted: 'Asistovaná úschova: s kľúčmi a obnovou vám pomáhajú.', any: 'Ešte ste sa nerozhodli, kto bude držať kľúče.' },
+      custody: { selfNew: 'Zvolené vlastné kľúče. Obnova ešte nie je vyskúšaná.', self: 'Vlastné kľúče a Bitcoin už držíte. Posledný bod je vyskúšaná záloha.', assisted: 'Asistovaná úschova: s kľúčmi a obnovou vám pomáhajú. Zostáva overiť si u poskytovateľa, ako obnova funguje.', any: 'Ešte ste sa nerozhodli, kto bude držať kľúče.' },
       fall: { more: 'Prikúpili by ste za nižšiu cenu, nepredávali.', wait: 'Počkali by ste, nepredávali.', sell: 'Predali by ste časť alebo všetko, aby ste zastavili stratu.' },
     },
     sum: {
@@ -198,7 +202,7 @@ const COPY = {
       math: (b, p, r, ok) => `${b} je ${p} vašich úspor: po poklese o 70 % by zostalo ${r}, ${ok ? 'čo by bolelo, ale vaše financie by to nezničilo.' : 'čo by zmenilo vaše plány.'}`,
       debt: { none: 'Nemáte dlhy', noneMort: 'Okrem hypotéky nemáte dlhy', lt10: 'Máte spotrebné dlhy do 10 000 €', gt10: 'Máte spotrebné dlhy nad 10 000 €' },
       fall: { wait: ' a uviedli ste, že pri poklese by ste počkali, nie predávali.', more: ' a uviedli ste, že pri poklese by ste prikúpili, nie predávali.', sell: ' a uviedli ste, že pri poklese by ste predali, čím sa strata na papieri zmení na skutočnú.' },
-      open: (n, w) => `Otvorené ${n === 2 ? 'sú dva detaily' : 'sú tri detaily'}${w === 0 ? '.' : w === 1 ? ' a jeden z nich je presne to, čo vás trápi.' : w === 2 ? ' a dva z nich sú presne tie, ktoré vás trápia.' : ' a všetky sú presne tie, ktoré vás trápia.'}`,
+      open: (n, w) => `Otvorené ${n === 2 ? 'zostávajú dva body' : 'zostávajú tri body'}${w === 0 ? '.' : w === n ? ` a ${n === 2 ? 'oba' : 'všetky'} sa týkajú toho, čo vás trápi.` : w === 1 ? ' a jeden z nich sa týka toho, čo vás trápi.' : ' a dva z nich sa týkajú toho, čo vás trápi.'}`,
     },
     gapLine: {
       tax: (c) => `Pravidlo predaja ${c ? `${c} ` : ''}nájdete nižšie a záznamy sú dôležité od prvého nákupu.`,
@@ -227,11 +231,11 @@ const COPY = {
       head: ['', 'Vlastné kľúče', 'Asistovaná úschova'],
       rows: [
         ['Kto drží kľúče', 'Vy, na hardvérovej peňaženke', 'Vy a poskytovateľ (multisig)'],
-        ['Ak stratíte zálohu', 'Nikto ju neobnoví', 'Poskytovateľ vám pomôže s obnovou'],
+        ['Ak stratíte kľúč alebo zálohu', 'Nikto ich neobnoví', 'Poskytovateľ vám pomôže s obnovou'],
         ['Čo platíte', 'Jednorazovo cenu zariadenia', 'Poplatok podľa poskytovateľa'],
         ['Hodí sa, keď', 'si najprv vyskúšate obnovu', 'chcete pomoc s obnovou a dedením'],
       ],
-      yours: { self: 'Zvolili ste vlastné kľúče. Skúška obnovy z vášho plánu patrí pred väčšie sumy.', assisted: 'Zvolili ste asistovanú úschovu. Pred väčšími sumami sa poskytovateľa opýtajte, ako funguje obnova.', any: 'Ešte ste sa nerozhodli. Táto tabuľka je rozhodnutie, ktoré máte pred sebou.' },
+      yours: { self: 'Zvolili ste vlastné kľúče. Skúška obnovy z vášho plánu patrí pred väčšie sumy.', assisted: 'Zvolili ste asistovanú úschovu, takže na kľúče nie ste sami. Pred väčšími sumami sa poskytovateľa opýtajte, ako presne funguje obnova.', any: 'Ešte ste sa nerozhodli. Táto tabuľka je rozhodnutie, ktoré máte pred sebou.' },
     },
     tax: {
       gain: 'Daň zo zisku', levy: 'Navyše', exempt: 'Oslobodenie', filing: 'Priznanie', note: 'Dobré vedieť',
@@ -291,6 +295,7 @@ const BAND_LABEL = {
   sk: ['Základy máte', 'Pár medzier', 'Chýbajú základy'],
 };
 const ORDER = ['size', 'reserve', 'debt', 'tax', 'custody', 'fall'];
+const swapCols = ([label, own, assisted]) => [label, assisted, own];
 
 const quarter = (asOf) => { const [y, q] = String(asOf).split('-'); return `${q} ${y}`; };
 const page = (lang, file, query) => {
@@ -337,6 +342,8 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
     [T.n.home, homeValue],
     [T.n.debts, T.n.debt[A.debt]],
   ];
+
+  const pointSum = ORDER.reduce((n, id) => n + sc[id], 0);
 
   // Area by area
   const sizeNear = years != null && years < 10 && share != null && share >= 20;
@@ -449,8 +456,9 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
     nums,
     score: total,
     grade: g,
-    gradeLine: T.gradeLine(g),
+    gradeLine: T.gradeLine(g, pointSum),
     scale: T.scale,
+    scaleRange: T.scaleRange,
     pill: T.pill(g, band),
     h: {
       summaryK: T.h.summaryK,
@@ -460,11 +468,12 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
     summary: [p1.join(' '), p2.join(' ')],
     areas,
     areaMap: {
-      k: T.map.k, h: T.map.h, figure: T.map.figure, caption: `${total}/100`, lead: T.map.lead(total, g), how: T.map.how,
+      k: T.map.k, h: T.map.h, figure: T.map.figure, caption: `${total}/100`, lead: T.map.lead(total, g), how: T.map.how, sum: T.map.sum(ORDER.map((id) => sc[id]).join(' + '), pointSum, total),
       groups: [{ k: T.map.survival[0], h: T.map.survival[1], color: 'orange', ids: ['size', 'reserve', 'debt'] }, { k: T.map.setup[0], h: T.map.setup[1], color: 'teal', ids: ['tax', 'custody', 'fall'] }],
     },
     fall: fallParas,
-    custody: { head: T.custodyTable.head, rows: T.custodyTable.rows, yours: T.custodyTable.yours[A.custody] },
+    // The way the buyer chose comes first, so an assisted plan does not open with own-key failures.
+    custody: { head: A.custody === 'assisted' ? swapCols(T.custodyTable.head) : T.custodyTable.head, rows: A.custody === 'assisted' ? T.custodyTable.rows.map(swapCols) : T.custodyTable.rows, yours: T.custodyTable.yours[A.custody] },
     tax,
     risks: risks.map(([title, text]) => ({ title, text })),
     solid: solid.slice(0, 3).map(([title, text]) => ({ title, text })),

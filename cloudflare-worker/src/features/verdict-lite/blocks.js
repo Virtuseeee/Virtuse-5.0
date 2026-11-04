@@ -34,14 +34,16 @@ const COPY = {
       none: 'You did not give your monthly spending, so the target stays in months: 6 months. Multiply a typical month by six to get your figure.',
     },
     retire: {
-      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Retirement savings together, without returns', lump: 'Planned for Bitcoin', monthly: (e, n) => `Added at ${e} a month, ${n} months`, planTotal: 'You put into Bitcoin by retirement', scenario: 'Hypothetical scenario: Bitcoin +20% a year, inflation 4%', nominal: (a) => `Value on your first day at ${a}`, real: "The same in today's money", planSub: "Fixed assumptions from the Retirement Calculator, not a forecast. Bitcoin has fallen 70% or more several times, and the real value can be far lower, including a loss.",
+      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Retirement savings together, without returns', lump: 'Planned for Bitcoin', monthly: (e, n) => `Added at ${e} a month, ${n} months`, planTotal: 'You put into Bitcoin by retirement', scenario: 'Hypothetical scenario: Bitcoin +20% a year, inflation 4%', nominal: (a) => `Hypothetical value on your first day at ${a}`, real: "The same in today's money", planSub: "Fixed assumptions from the Retirement Calculator, not a forecast. Bitcoin has fallen 70% or more several times, and the real value can be far lower, including a loss.",
       longest: (m, left) => `The longest recovery above took ${m} months; you have ${left} months until retirement.`,
+      statBack: 'Longest way back to the high', statLeft: 'Months until you retire', months: (m) => `${m} months`,
       note: 'Retirement savings are simple sums, without returns or inflation.', na: 'You did not give a retirement age that can be used here.',
     },
     tax: {
       gain: (g) => `Example: a ${g} gain`, rate: 'Rate', taxC: 'Tax', levyC: 'Health levy', left: 'Left', upTo: (r) => `up to ${r}`,
       heroK: 'Hypothetical tax on this sale', sale: (a) => `Example: selling 5% of your Bitcoin in the first year of retirement, at ${a}`, value: 'Bitcoin value in the +20% a year scenario', sold: 'You sell 5%', cost: 'Purchase cost of that part (5% of what you put in)', gainL: 'Taxable gain',
-      band: (r, b) => `Tax at ${r} on ${b}`, taxTotal: 'Tax in total', levy: (r) => `Health levy, ${r} of the gain`, total: 'Tax and levies in total', share: (p) => `${p} of the gain`, leftSale: 'Left from the sale', leftGain: 'Left from the gain',
+      band: (r, b) => `Tax at ${r} on ${b}`, taxTotal: 'Tax in total', levy: (r) => `Health levy, ${r} of the gain`, total: 'Tax and levies in total', share: (p, g) => `That is ${p} of the ${g} gain.`, leftSale: 'Left from the sale', leftGain: 'Left from the gain',
+      bandHead: ['Part of the gain', 'Amount', 'Rate', 'Tax'], bandFrom: (x) => `up to ${x}`, bandBetween: (a, b) => `${a} to ${b}`, bandOver: (x) => `over ${x}`,
       exempt: (n) => `After ${n} ${n === 1 ? 'year' : 'years'} of holding, a sale is exempt under the rule above, so the tax is ${'€'}0. This assumes you sell your oldest purchases first.`,
       noteSale: (y) => `At today's rates and bands, on this gain alone: no other income, allowances, costs or fees. The purchase cost is 5% of the amounts in this report; Bitcoin you already hold is not counted. Rates can differ in ${y} years, and the scenario is not a forecast. Check with a tax adviser before you file.`,
       note: 'For illustration only, at the rates above. Your actual rate depends on your other income and costs. This is not a forecast of any gain.',
@@ -55,7 +57,7 @@ const COPY = {
       method21: 'Auto-Invest plan', methodBybit: 'Spot trading', methodKraken: 'Pro trading',
       auto: (first) => `€0 on Auto-Invest from day 8; ${first} at 0.99% in the first 7 days`, autoYear: '€0 from day 8',
       note: (q) => `Published entry-level fees, ${q}, in alphabetical order. Spreads, deposit and network fees can add to this. This is not a ranking; check each partner's price list.`,
-      compare: (n) => `For comparison only, not listed for your criteria below: ${n}.`, noRow: (n) => `No row here, the fee is on the partner's site: ${n}.`,
+      compare: (n) => `For comparison only, not among the partners that match your criteria below: ${n}.`, compareTag: 'for comparison only', onSite: "on the partner's site", methodApp: 'App', methodCard: 'App and card',
     },
     partners: {
       k: 'Partners', h: 'Partners that match your criteria',
@@ -96,14 +98,16 @@ const COPY = {
       none: 'Neuviedli ste mesačné výdavky, takže cieľ zostáva v mesiacoch: 6 mesiacov. Bežný mesiac vynásobte šiestimi a máte svoju sumu.',
     },
     retire: {
-      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Úspory na dôchodok spolu, bez výnosov', lump: 'Plánujete do Bitcoinu', monthly: (e, n) => `Pridáte pri ${e} mesačne, ${n} mesiacov`, planTotal: 'Do Bitcoinu vložíte do dôchodku', scenario: 'Hypotetický scenár: Bitcoin +20 % ročne, inflácia 4 %', nominal: (a) => `Hodnota v prvý deň vo veku ${a} rokov`, real: 'To isté v dnešných cenách', planSub: 'Pevné predpoklady z Dôchodkovej kalkulačky, nie predpoveď. Bitcoin už viackrát klesol o 70 % a viac a skutočná hodnota môže byť oveľa nižšia, vrátane straty.',
+      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Úspory na dôchodok spolu, bez výnosov', lump: 'Plánujete do Bitcoinu', monthly: (e, n) => `Pridáte pri ${e} mesačne, ${n} mesiacov`, planTotal: 'Do Bitcoinu vložíte do dôchodku', scenario: 'Hypotetický scenár: Bitcoin +20 % ročne, inflácia 4 %', nominal: (a) => `Hypotetická hodnota v prvý deň vo veku ${a} rokov`, real: 'To isté v dnešných cenách', planSub: 'Pevné predpoklady z Dôchodkovej kalkulačky, nie predpoveď. Bitcoin už viackrát klesol o 70 % a viac a skutočná hodnota môže byť oveľa nižšia, vrátane straty.',
       longest: (m, left) => `Najdlhší návrat vyššie trval ${m} mesiacov; do dôchodku máte ${left} mesiacov.`,
+      statBack: 'Najdlhšia cesta späť na maximum', statLeft: 'Do dôchodku vám zostáva', months: (m) => `${m} mesiacov`,
       note: 'Úspory na dôchodok sú jednoduché súčty, bez výnosov a inflácie.', na: 'Neuviedli ste vek odchodu do dôchodku, s ktorým by sa tu dalo počítať.',
     },
     tax: {
       gain: (g) => `Príklad: zisk ${g}`, rate: 'Sadzba', taxC: 'Daň', levyC: 'Zdravotné odvody', left: 'Zostane', upTo: (r) => `do ${r}`,
       heroK: 'Hypotetická suma na zdanenie', sale: (a) => `Príklad: predaj 5 % Bitcoinu v prvom roku dôchodku, vo veku ${a} rokov`, value: 'Hodnota Bitcoinu v scenári +20 % ročne', sold: 'Predáte 5 %', cost: 'Nákupná cena tejto časti (5 % z vložených súm)', gainL: 'Zdaniteľný zisk',
-      band: (r, b) => `Daň ${r} z ${b}`, taxTotal: 'Daň spolu', levy: (r) => `Zdravotné odvody, ${r} zo zisku`, total: 'Daň a odvody spolu', share: (p) => `${p} zo zisku`, leftSale: 'Z predaja vám zostane', leftGain: 'Zo zisku zostane',
+      band: (r, b) => `Daň ${r} z ${b}`, taxTotal: 'Daň spolu', levy: (r) => `Zdravotné odvody, ${r} zo zisku`, total: 'Daň a odvody spolu', share: (p, g) => `To je ${p} zo zisku ${g}.`, leftSale: 'Z predaja vám zostane', leftGain: 'Zo zisku zostane',
+      bandHead: ['Časť zisku', 'Suma', 'Sadzba', 'Daň'], bandFrom: (x) => `do ${x}`, bandBetween: (a, b) => `${a} až ${b}`, bandOver: (x) => `nad ${x}`,
       exempt: (n) => `Po ${n} ${n === 1 ? 'roku' : 'rokoch'} držby je predaj podľa pravidla vyššie oslobodený, takže daň je 0 €. Počíta sa s tým, že predávate najstaršie nákupy.`,
       noteSale: (y) => `Pri dnešných sadzbách a pásmach, len z tohto zisku: bez iných príjmov, nezdaniteľnej časti, výdavkov a poplatkov. Nákupná cena je 5 % zo súm v tomto reporte; Bitcoin, ktorý už držíte, sa nepočíta. O ${y} ${y === 1 ? 'rok' : y < 5 ? 'roky' : 'rokov'} môžu byť sadzby iné a scenár nie je predpoveď. Pred podaním priznania sa poraďte s daňovým poradcom.`,
       note: 'Len ako ilustrácia, pri sadzbách uvedených vyššie. Skutočná sadzba závisí od vašich ostatných príjmov a výdavkov. Nejde o predpoveď zisku.',
@@ -117,7 +121,7 @@ const COPY = {
       method21: 'Sporiaci plán Auto-Invest', methodBybit: 'Spot obchodovanie', methodKraken: 'Pro trading',
       auto: (first) => `0 € na Auto-Invest od 8. dňa; ${first} pri 0,99 % prvých 7 dní`, autoYear: '0 € od 8. dňa',
       note: (q) => `Zverejnené vstupné poplatky, ${q}, abecedne. Môžu sa pridať spready, poplatky za vklad a sieť. Nie je to poradie; pozrite si cenník každého partnera.`,
-      compare: (n) => `Len na porovnanie, pri vašich kritériách nižšie neuvedené: ${n}.`, noRow: (n) => `Bez riadku v tabuľke, poplatok je na stránke partnera: ${n}.`,
+      compare: (n) => `Len na porovnanie, nie je medzi partnermi podľa vašich kritérií nižšie: ${n}.`, compareTag: 'len na porovnanie', onSite: 'na stránke partnera', methodApp: 'Aplikácia', methodCard: 'Aplikácia a karta',
     },
     partners: {
       k: 'Partneri', h: 'Partneri, ktorí spĺňajú vaše kritériá',
@@ -218,21 +222,29 @@ function retirement(A, T, years, { eur }, scen) {
     if (paidIn) plan.rows.push([T.retire.monthly(eur(A.monthly), m), eur(paidIn)]);
   }
   const longest = Math.max(...FACTS.falls.map((f) => f.monthsBack));
-  return { k: T.retire.k, h: T.retire.h, rows, plan, text: T.retire.longest(longest, m), note: T.retire.note };
+  return { k: T.retire.k, h: T.retire.h, rows, plan, text: T.retire.longest(longest, m), stats: [[T.retire.statBack, T.retire.months(longest)], [T.retire.statLeft, T.retire.months(m)]], note: T.retire.note };
 }
 
 function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
   const ex = TAX_EXAMPLE[A.country];
   if (!ex) return null;
-  if (ex.zero) return { text: T.tax.zero, kv: [], rows: [], head: [], dates: [] };
-  if (ex.box3) return { text: T.tax.box3, kv: [], rows: [], head: [], dates: [] };
+  if (ex.zero) return { text: T.tax.zero, kv: [], after: [], bands: null, rows: [], head: [], dates: [] };
+  if (ex.box3) return { text: T.tax.box3, kv: [], after: [], bands: null, rows: [], head: [], dates: [] };
   const rate = (r) => (lang === 'sk' ? `${String(r).replace('.', ',')}\u00a0%` : `${r}%`);
-  const sale = scen ? scen.nominal * SCENARIO.sellShare : 0;
-  const cost = scen ? scen.paid * SCENARIO.sellShare : 0;
+  // Every printed line adds up: whole euros are rounded once, then only added and taken away.
+  const share = rate(SCENARIO.sellShare * 100);
+  const worth = scen ? Math.round(scen.nominal) : 0;
+  const sale = Math.round(worth * SCENARIO.sellShare);
+  const cost = scen ? Math.round(scen.paid * SCENARIO.sellShare) : 0;
   const worked = scen && sale > cost;
   const g = worked ? sale - cost : EXAMPLE_GAIN;
   const base = worked ? sale : g;
-  const kv = worked ? [[T.tax.value, eur(scen.nominal)], [T.tax.sold, eur(sale)], [T.tax.cost, eur(cost)], [T.tax.gainL, eur(g)]] : [];
+  const kv = worked ? [
+    [T.tax.value, eur(worth)],
+    [T.tax.sold, eur(sale), false, `${share} × ${eur(worth)}`],
+    [T.tax.cost, eur(cost), false, `${share} × ${eur(scen.paid)}`],
+    [T.tax.gainL, eur(g), true, `${eur(sale)} − ${eur(cost)}`],
+  ] : [];
   const dates = [];
   if (ex.hold) {
     const d = new Date(date);
@@ -242,29 +254,42 @@ function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
   const saleYear = date.getFullYear() + (worked ? years : 0);
   const filing = T.tax.filing[A.country];
   if (filing) dates.push(filing(saleYear));
-  const out = { title: worked ? T.tax.sale(A.retire) : T.tax.gain(eur(g)), kv, head: [], rows: [], dates, note: worked ? T.tax.noteSale(years) : T.tax.note };
+  const out = { title: worked ? T.tax.sale(A.retire) : T.tax.gain(eur(g)), kv, after: [], bands: null, head: [], rows: [], dates, note: worked ? T.tax.noteSale(years) : T.tax.note };
   if (worked && ex.hold && years >= ex.hold) {
     out.text = T.tax.exempt(ex.hold);
     out.hero = { k: T.tax.heroK, vals: [[T.tax.total, eur(0)], [T.tax.leftSale, eur(sale)]] };
     return out;
   }
-  const levy = ex.levy ? (g * ex.levy) / 100 : 0;
   if (ex.brackets || (ex.rates.length === 1 && !ex.upTo)) {
-    const bands = ex.brackets || [[Infinity, ex.rates[0]]];
+    const list = ex.brackets || [[Infinity, ex.rates[0]]];
+    const money = (x) => eur(Math.round(x));
     let from = 0;
     let tax = 0;
     const lines = [];
-    for (const [to, r] of bands) {
+    for (const [to, r] of list) {
       const part = Math.min(g, to) - from;
       if (part <= 0) break;
-      tax += (part * r) / 100;
-      lines.push([T.tax.band(rate(r), eur(part)), eur((part * r) / 100)]);
+      const due = Math.round((part * r) / 100);
+      tax += due;
+      lines.push({ from, to, r, part: Math.round(part), due });
       from = to;
     }
-    kv.push(...lines);
-    if (lines.length > 1) kv.push([T.tax.taxTotal, eur(tax)]);
-    if (ex.levy) kv.push([T.tax.levy(rate(ex.levy)), eur(levy)]);
-    out.hero = { k: T.tax.heroK, vals: [[T.tax.total, eur(tax + levy)], [worked ? T.tax.leftSale : T.tax.leftGain, eur(base - tax - levy)]], sub: T.tax.share(pct(((tax + levy) / g) * 100)) };
+    if (lines.length > 1) {
+      out.bands = {
+        head: T.tax.bandHead,
+        rows: lines.map((x) => [x.from === 0 ? T.tax.bandFrom(money(x.to)) : x.to === Infinity || x.to >= g ? T.tax.bandOver(money(x.from)) : T.tax.bandBetween(money(x.from), money(x.to)), eur(x.part), rate(x.r), eur(x.due)]),
+        foot: [T.tax.taxTotal, eur(g), '', eur(tax)],
+      };
+    } else {
+      kv.push([T.tax.band(rate(lines[0].r), eur(lines[0].part)), eur(lines[0].due)]);
+    }
+    const levy = ex.levy ? Math.round((g * ex.levy) / 100) : 0;
+    const all = tax + levy;
+    if (ex.levy) out.after.push([T.tax.levy(rate(ex.levy)), eur(levy), false, `${rate(ex.levy)} × ${eur(g)}`]);
+    if (ex.levy) out.after.push([T.tax.total, eur(all), true, `${eur(tax)} + ${eur(levy)}`]);
+    const leftLabel = worked ? T.tax.leftSale : T.tax.leftGain;
+    out.after.push([leftLabel, eur(base - all), true, `${eur(base)} − ${eur(all)}`]);
+    out.hero = { k: T.tax.heroK, vals: [[ex.levy ? T.tax.total : T.tax.taxTotal, eur(all)], [leftLabel, eur(base - all)]], sub: T.tax.share(pct((all / g) * 100), eur(g)) };
     return out;
   }
   // A range without published bands in our data: show each rate.
@@ -277,12 +302,20 @@ function fees(A, T, { eur }) {
   const one = A.btc > 0 ? A.btc : 0;
   const year = (A.monthly || 0) * 12;
   if (!one && !year) return null;
-  const method = { '21bitcoin': T.fees.method21, 'bybit-eu': T.fees.methodBybit, kraken: T.fees.methodKraken };
+  const method = { '21bitcoin': T.fees.method21, 'bybit-eu': T.fees.methodBybit, kraken: T.fees.methodKraken, invity: T.fees.methodApp, 'crypto-com': T.fees.methodCard };
   const money = (x) => eur(x);
   const head = [T.fees.partner, T.fees.method, ...(one ? [T.fees.one(eur(one))] : []), ...(year ? [T.fees.year(eur(A.monthly))] : [])];
-  const rows = FACTS.fees.map((f) => {
-    const cells = [f.partner, method[f.id] || ''];
-    if (f.id === '21bitcoin') {
+  const matched = matchingPartners(A);
+  // One row per partner that matches the criteria (a wallet has a device price, not a fee on a purchase),
+  // plus the published fees kept for comparison, marked as such. Always alphabetical.
+  const unpublished = matched.filter((id) => !PRICED.includes(id) && id !== 'trezor').map((id) => ({ id, partner: PARTNERS[id].name, none: true }));
+  const list = [...FACTS.fees, ...unpublished].sort((x, y) => x.partner.localeCompare(y.partner, 'en'));
+  const rows = list.map((f) => {
+    const cells = [f.partner, matched.includes(f.id) ? method[f.id] || '' : `${method[f.id] || ''} · ${T.fees.compareTag}`];
+    if (f.none) {
+      if (one) cells.push(T.fees.onSite);
+      if (year) cells.push(T.fees.onSite);
+    } else if (f.id === '21bitcoin') {
       if (one) cells.push(T.fees.auto(money(one * 0.0099)));
       if (year) cells.push(T.fees.autoYear);
     } else {
@@ -291,11 +324,9 @@ function fees(A, T, { eur }) {
     }
     return cells;
   });
-  const matched = matchingPartners(A);
   const names = (ids) => ids.map((id) => PARTNERS[id].name).join(', ');
   const compare = FACTS.fees.filter((f) => !matched.includes(f.id)).map((f) => f.id);
-  const noRow = matched.filter((id) => !PRICED.includes(id) && id !== 'trezor');
-  const note = [T.fees.note(quarter(FACTS.feesAsOf)), compare.length && T.fees.compare(names(compare)), noRow.length && T.fees.noRow(names(noRow))].filter(Boolean).join(' ');
+  const note = [T.fees.note(quarter(FACTS.feesAsOf)), compare.length && T.fees.compare(names(compare))].filter(Boolean).join(' ');
   return { k: T.fees.k, h: T.fees.h, head, rows, note };
 }
 
