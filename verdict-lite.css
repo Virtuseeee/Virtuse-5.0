@@ -574,3 +574,6 @@
 @media (max-width: 640px) { .ml-vid-empty { padding: 36px 16px; } }
 /* Hint under a disabled Continue: which is missing (verdict-lite.js check()) */
 .ml-need { margin: 12px 0 0; text-align: center; }
+/* One strong action per screen (2026-11-05): on the Verdict pages the shared nav CTA is quiet */
+.page-verdict .nav-cta { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
+.page-verdict .nav-cta:hover, .page-verdict .nav-cta:focus-visible { background: var(--card-hover); }
