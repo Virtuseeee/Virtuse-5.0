@@ -11,7 +11,7 @@
 <script src="/cookie-consent.js" defer></script>
 <script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=0;function load(){if(done)return;done=1;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){(w.requestIdleCallback||function(f){setTimeout(f,200)})(load,{timeout:2000});}if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:true});['pointerdown','keydown','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'dataLayer','GTM-KXX4Q6WH');}</script>
 <title>Verdict: audit your Bitcoin plan in 3 minutes | Virtuse</title>
-<meta name="description" content="Enter your savings, goals and worries. Get an instant score out of 100, a letter grade and your 3 biggest gaps. 100% free. Not investment advice.">
+<meta name="description" content="Enter your savings, goals and worries. Get an instant score out of 100, a letter grade and your 3 biggest gaps. Lite score free. Not investment advice.">
 <meta name="robots" content="noindex, follow">
 <!-- TODO(launch): set vb-verdict to on, remove noindex, add to sitemap + hreflang -->
 <meta name="vb-verdict" content="on">
@@ -22,7 +22,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
 <meta property="og:title" content="Verdict: audit your Bitcoin plan in 3 minutes | Virtuse">
-<meta property="og:description" content="Enter your savings, goals and worries. Get an instant score out of 100, a letter grade and your 3 biggest gaps. 100% free. Not investment advice.">
+<meta property="og:description" content="Enter your savings, goals and worries. Get an instant score out of 100, a letter grade and your 3 biggest gaps. Lite score free. Not investment advice.">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://virtuse.com/verdict.html">
 <meta property="og:image" content="https://virtuse.com/og-cover.jpg">
@@ -36,8 +36,8 @@
 <link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html">
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
-<link rel="stylesheet" href="/verdict-landing.css?v=20261028a">
-<link rel="stylesheet" href="/verdict-lite.css?v=14">
+<link rel="stylesheet" href="/verdict-landing.css?v=20261104">
+<link rel="stylesheet" href="/verdict-lite.css?v=15">
 <!-- VLH:END -->
 </head>
 <body class="page-verdict no-split">
@@ -153,7 +153,7 @@
 <details><summary>What does it cost?</summary><p>The Lite score is free for your email. The full report costs €14, once.</p></details>
 <details><summary>What is in the full report?</summary><p>The points and the reason for each of the six areas, what a 70% fall means in euros for your amount, your country's sale rule in plain words, custody options side by side and three steps for this week, as a PDF you keep. <a href="?s=9" data-go="9">See a sample report</a>.</p></details>
 <details><summary>Why do you ask for my email?</summary><p>Your email unlocks your Lite score. The Virtuse Brief only if you tick the box.</p></details>
-<details><summary>What happens to my numbers?</summary><p>For the Lite score your answers stay in your browser; only the score and your gaps go into the email. If you buy the full report, we keep your answers for 24 hours to build it. Details in the <a href="/privacy-policy.html">Privacy Policy</a>.</p></details>
+<details><summary>What happens to my numbers?</summary><p>For the Lite score your numbers stay in your browser; only your score, grade, area points and gap names go to our server, to send you the email. If you buy the full report, we keep your answers for 24 hours to build it, then delete them. Details in the <a href="/privacy-policy.html#verdict-cfo">Privacy Policy</a>.</p></details>
 <details><summary>Does an AI read my answers?</summary><p>No. Verdict scores your answers by fixed rules, the same for everyone.</p></details>
 <details><summary>Do I need an account or a card?</summary><p>No account. The Lite score needs only an email; a card is needed only for the full report, and Stripe handles the payment.</p></details>
 <details><summary>Can I withdraw after I buy?</summary><p>Yes. You can withdraw within 14 days without giving a reason, even after you have opened the report, and on top of that there is the 30-day refund. <a href="/withdrawal.html">Withdraw from the contract here</a>.</p></details>
@@ -170,6 +170,7 @@
     <div class="ml-bar"><i id="mlBar" style="width:0"></i></div>
     <div class="ml-card" id="mlQ"></div>
     <div class="ml-nav"><button class="ml-back" id="mlBack" type="button">← Back</button><button class="ml-big" id="mlNext" type="button" disabled>Continue →</button></div>
+    <p class="ml-fine ml-need" id="mlNeed" aria-live="polite" hidden>Fill in the required fields to continue.</p>
   </section>
 
   <!-- 6 LOADING -->
@@ -215,7 +216,7 @@
           <button class="ml-btn2 light" type="submit">Show my Lite score</button>
           <p class="ml-fine" id="mlGateMsg" aria-live="polite"></p>
         </form>
-        <p class="ml-fine">We use your email only for your Verdict. <a href="/privacy-policy.html" style="color:inherit">Privacy</a></p>
+        <p class="ml-fine">We use your email only for your Verdict, and for the Brief only if you tick the box. <a href="/privacy-policy.html#verdict-cfo" style="color:inherit">Privacy</a></p>
       </div>
       <div class="ml-plan pro" data-buybox>
         <span class="ml-badge">Full report</span>
@@ -505,7 +506,7 @@
 <script src="/vb-api.js?v=2" defer></script>
 <script src="/site-v2.js?v=12" defer></script>
 <script src="/consultation-lazy.js?v=5" defer></script>
-<script src="/verdict-lite.js?v=15" defer></script>
+<script src="/verdict-lite.js?v=16" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
