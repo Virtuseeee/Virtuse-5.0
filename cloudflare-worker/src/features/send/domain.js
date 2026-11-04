@@ -22,11 +22,19 @@
 // sends the partner's registration steps from data/partner-checklists.json
 // (bundled as src/checklists.js by build.mjs). Only partners whose entry has
 // "approved": true are accepted.
+//
+// `verdict_lite` (source `verdict`): the free Lite score from verdict.html /
+// sk/verdict.html, sent after the email gate. The payload is the score, grade,
+// band, up to three gap ids and the six area points; the Worker recomputes the
+// score from the areas and refuses anything that does not add up. Gap titles and
+// tips come from LITE below, never from the browser. No country, no answers,
+// no name. With `brief: true` the visitor also joins the Brief (the page sends
+// the Brief tick here, not to /subscribe, so there is one welcome at most).
 
 import CHECKLISTS from '../../generated/checklists.js';
 
-export const SEND_KINDS = ['plan', 'result', 'checklist'];
-export const SEND_SOURCES = ['concierge', 'stacking', 'loan', 'tax', 'partner_click'];
+export const SEND_KINDS = ['plan', 'result', 'checklist', 'verdict_lite'];
+export const SEND_SOURCES = ['concierge', 'stacking', 'loan', 'tax', 'partner_click', 'verdict'];
 export const SITE_LANGS = ['en', 'sk', 'uk', 'cs', 'ru', 'de', 'fr', 'es', 'pl', 'hu'];
 export const EMAIL_LANGS = ['en', 'sk', 'cs'];
 
@@ -234,6 +242,82 @@ const STRINGS = {
 
 const LOCALES = { en: 'en-IE', sk: 'sk-SK', cs: 'cs-CZ' };
 
+// --- Verdict Lite score (kind verdict_lite) ---------------------------------
+// Same rules as verdict-lite.js: six areas 0-10, score = round(sum/60*100/5)*5,
+// grade A>=85 B>=70 C>=55 D>=40 else E, band 0 (70+) 1 (55-69) 2 (under 55).
+export const LITE_AREAS = ['size', 'reserve', 'debt', 'tax', 'custody', 'fall'];
+export const LITE_GAPS = ['size', 'reserve', 'debt', 'mortgage', 'tax', 'custody', 'keys', 'recovery', 'fall', 'retire', 'heirs', 'records'];
+export function liteScore(areas) { return Math.round(LITE_AREAS.reduce((t, k) => t + areas[k], 0) / 60 * 100 / 5) * 5; }
+export function liteGrade(t) { return t >= 85 ? 'A' : t >= 70 ? 'B' : t >= 55 ? 'C' : t >= 40 ? 'D' : 'E'; }
+export function liteBand(t) { return t >= 70 ? 0 : t >= 55 ? 1 : 2; }
+const LITE_UTM = 'utm_source=verdict&utm_medium=email&utm_campaign=lite_score';
+
+const LITE = {
+  en: {
+    subject: 'Your Virtuse Verdict Lite score: {0} · {1}/100',
+    title: 'Your Lite score',
+    intro: 'Here is your free Lite score from Verdict on virtuse.com. It shows how ready your Bitcoin plan is, based on your answers. It is not advice to buy or sell.',
+    grade: 'Grade',
+    band: ['Basics in place', 'A few gaps', 'Basics missing'],
+    gaps: '3 areas to improve first',
+    gap: {
+      size: ['Size the position to a 70% fall', 'Know what a 70% fall would mean for you before you buy.'],
+      reserve: ['Build a 6-month cash reserve first', 'So a fall never forces you to sell at the bottom.'],
+      debt: ['Pay down expensive debt first', 'Card and consumer-loan interest usually costs more than you can plan to earn.'],
+      mortgage: ['Keep the mortgage safe in a fall', 'Cash for the payments should never depend on the Bitcoin price.'],
+      tax: ['Learn the sale rule in your country', 'In many EU countries every swap between coins counts as a sale too.'],
+      custody: ['Decide who holds the keys', 'Without a choice, you cannot compare the partners that fit you.'],
+      keys: ['Practise a wallet recovery with €20', 'Set up, wipe and restore the wallet before the full amount goes in.'],
+      recovery: ['Agree the recovery steps with your provider', 'Know what happens if you lose a key, before larger amounts go in.'],
+      fall: ['Write one rule for a fall', 'Decide now, in one line, what you will do at −70%.'],
+      retire: ['Keep retirement money out of Bitcoin’s swings', 'Money you need in the next years should not depend on the Bitcoin price.'],
+      heirs: ['Tell one person how to find your Bitcoin', 'Without instructions, heirs often never find it.'],
+      records: ['Keep a record of every purchase', 'Date, amount and price. It makes every later tax return simple.'],
+    },
+    next: 'Your next steps',
+    open: 'Open Verdict',
+    call: 'Book a free 15-min call',
+    report: 'Join the €14 report waitlist',
+    reportNote: 'The full report explains every point, puts your numbers in euros and turns the gaps into 3 steps. Payment is not live yet; the waitlist is free.',
+    finder: 'Partner Finder: partners that match your criteria',
+    finderNote: 'You compare and choose. Virtuse may receive a referral fee.',
+    disclaimer: 'Verdict checks your answers by fixed rules; no AI model reads them. It is not investment, tax or legal advice. Virtuse does not hold your funds or keys.',
+    why: 'You get this one email because you asked for your Lite score on virtuse.com. We did not add you to any list.',
+  },
+  sk: {
+    subject: 'Vaše Virtuse Verdict Lite skóre: {0} · {1}/100',
+    title: 'Vaše Lite skóre',
+    intro: 'Posielame vám bezplatné Lite skóre z Verdictu na virtuse.com. Ukazuje, nakoľko je váš plán s Bitcoinom pripravený, podľa vašich odpovedí. Nie je to rada kúpiť ani predať.',
+    grade: 'Známka',
+    band: ['Základy máte', 'Pár medzier', 'Chýbajú základy'],
+    gaps: '3 oblasti, ktoré treba zlepšiť najskôr',
+    gap: {
+      size: ['Nastavte veľkosť tak, aby ste zvládli pokles o 70 %', 'Pred nákupom si ujasnite, čo by pre vás znamenal pokles o 70 %.'],
+      reserve: ['Najprv si vytvorte rezervu na 6 mesiacov', 'Aby vás pokles nikdy neprinútil predávať na dne.'],
+      debt: ['Najprv splaťte drahé dlhy', 'Úroky z kariet a spotrebných úverov zvyčajne stoja viac, než môžete rozumne plánovať zarobiť.'],
+      mortgage: ['Chráňte hypotéku pred poklesom', 'Peniaze na splátky nesmú závisieť od ceny Bitcoinu.'],
+      tax: ['Zistite, ako sa vo vašej krajine zdaní predaj', 'V mnohých krajinách EÚ sa ako predaj ráta aj každá výmena kryptomien.'],
+      custody: ['Rozhodnite, kto bude držať kľúče', 'Bez tohto rozhodnutia nemôžete porovnať partnerov, ktorí vám vyhovujú.'],
+      keys: ['Vyskúšajte si obnovu peňaženky s 20 €', 'Peňaženku nastavte, vymažte a obnovte skôr, než do nej pôjde celá suma.'],
+      recovery: ['Dohodnite si s poskytovateľom postup obnovy', 'Vedzte, čo sa stane pri strate kľúča, skôr než pôjdu do hry väčšie sumy.'],
+      fall: ['Napíšte si jedno pravidlo pre pokles', 'Rozhodnite sa teraz, jednou vetou, čo urobíte pri −70 %.'],
+      retire: ['Peniaze na dôchodok nenechajte na výkyvoch Bitcoinu', 'Peniaze, ktoré budete potrebovať v najbližších rokoch, nesmú závisieť od ceny Bitcoinu.'],
+      heirs: ['Povedzte jednému človeku, ako váš Bitcoin nájsť', 'Bez pokynov ho dedičia často nikdy nenájdu.'],
+      records: ['Zapisujte si každý nákup', 'Dátum, suma a cena. Každé neskoršie daňové priznanie bude jednoduché.'],
+    },
+    next: 'Vaše ďalšie kroky',
+    open: 'Otvoriť Verdict',
+    call: 'Rezervovať 15 minút zadarmo',
+    report: 'Zapísať sa na waitlist · 14 €',
+    reportNote: 'Celý report vysvetlí každý bod, ukáže vaše čísla v eurách a z medzier urobí 3 kroky. Platba ešte nie je spustená; čakacia listina je zadarmo.',
+    finder: 'Partner Finder: partneri, ktorí spĺňajú vaše kritériá',
+    finderNote: 'Porovnáte a vyberiete si sami. Virtuse môže od partnera dostať províziu.',
+    disclaimer: 'Verdict kontroluje vaše odpovede pevnými pravidlami; nečíta ich žiadny model AI. Nie je to investičné, daňové ani právne poradenstvo. Virtuse nedrží vaše prostriedky ani kľúče.',
+    why: 'Tento jeden e-mail dostávate, lebo ste si na virtuse.com vypýtali Lite skóre. Nepridali sme vás do žiadneho zoznamu.',
+  },
+};
+
+
 // --- validation ------------------------------------------------------------
 
 export function oneOf(list, value) {
@@ -299,6 +383,24 @@ export function validatePayload(kind, source, payload) {
       return { ok: false, error: 'bad inheritanceScore' };
     }
     return { ok: true, value };
+  }
+  if (kind === 'verdict_lite') {
+    if (source !== 'verdict') return { ok: false, error: 'verdict_lite needs source verdict' };
+    const { score, grade, band, gaps, areas } = payload;
+    if (!areas || typeof areas !== 'object' || Array.isArray(areas)) return { ok: false, error: 'bad areas' };
+    const a = {};
+    for (const k of LITE_AREAS) {
+      if (!(Number.isInteger(areas[k]) && areas[k] >= 0 && areas[k] <= 10)) return { ok: false, error: `bad areas.${k}` };
+      a[k] = areas[k];
+    }
+    if (!(Number.isInteger(score) && score >= 0 && score <= 100)) return { ok: false, error: 'bad score' };
+    if (score !== liteScore(a)) return { ok: false, error: 'score does not match areas' };
+    if (grade !== liteGrade(score)) return { ok: false, error: 'bad grade' };
+    if (band !== liteBand(score)) return { ok: false, error: 'bad band' };
+    if (!Array.isArray(gaps) || gaps.length < 1 || gaps.length > 3) return { ok: false, error: 'gaps must list 1 to 3 ids' };
+    if (!gaps.every((g) => oneOf(LITE_GAPS, g))) return { ok: false, error: 'unknown gap' };
+    if (new Set(gaps).size !== gaps.length) return { ok: false, error: 'duplicate gap' };
+    return { ok: true, value: { score, grade, band, gaps: [...gaps], areas: a } };
   }
   return { ok: false, error: 'unknown kind' };
 }
@@ -399,6 +501,36 @@ export function renderSendEmail({ kind, source, payload, lang, brief }) {
   const siteLang = SITE_LANGS.includes(lang) ? lang : 'en';
   const emailLang = EMAIL_LANGS.includes(lang) ? lang : 'en';
   const S = STRINGS[emailLang];
+
+  if (kind === 'verdict_lite') {
+    const L = LITE[lang === 'sk' ? 'sk' : 'en'];
+    const page = (f, extra) => `${SITE}/${lang === 'sk' ? 'sk/' : ''}${f}?${extra ? extra + '&' : ''}${LITE_UTM}`;
+    const gradeColor = payload.band === 0 ? '#2e7d32' : payload.band === 1 ? '#b26a00' : '#b3261e';
+    const gaps = payload.gaps
+      .map((id, i) => `<tr><td valign="top" style="padding:10px 12px 10px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#7a7366;">${i + 1}.</td>
+<td style="padding:10px 0;border-bottom:1px solid #e3ddd0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#16120c;"><strong>${esc(L.gap[id][0])}</strong><br>${esc(L.gap[id][1])}</td></tr>`)
+      .join('\n');
+    const link = (href, label) => `<p style="margin:0 0 10px 0;font-family:Arial,Helvetica,sans-serif;font-size:14px;"><a href="${esc(href)}" style="color:#16120c;font-weight:600;">${esc(label)} &rarr;</a></p>`;
+    const body = `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 20px 0;"><tr>
+<td style="padding:0 18px 0 0;"><div style="width:64px;height:64px;line-height:64px;text-align:center;border-radius:14px;background-color:#f4f1ea;font-family:Arial,Helvetica,sans-serif;font-size:34px;font-weight:800;color:${gradeColor};">${esc(payload.grade)}</div></td>
+<td style="font-family:Arial,Helvetica,sans-serif;"><div style="font-size:28px;font-weight:800;color:#16120c;">${payload.score}<span style="font-size:16px;color:#7a7366;font-weight:600;">/100</span></div>
+<div style="font-size:15px;font-weight:600;color:${gradeColor};">${esc(L.band[payload.band])}</div></td></tr></table>
+<p style="margin:0 0 4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7a7366;">${esc(L.gaps)}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:24px;">${gaps}</table>
+<p style="margin:0 0 12px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7a7366;">${esc(L.next)}</p>
+<p style="margin:0 0 14px 0;">${button(page('verdict.html', 'consult=1'), L.call)}</p>
+${link(page('verdict.html', 's=9'), L.report)}
+<p style="margin:-4px 0 14px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#7a7366;">${esc(L.reportNote)}</p>
+${link(page('concierge.html'), L.finder)}
+<p style="margin:-4px 0 14px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#7a7366;">${esc(L.finderNote)}</p>
+${link(page('verdict.html'), L.open)}`;
+    const footer = [L.disclaimer, L.why, brief ? S.whyBrief : '', OPERATOR[lang === 'sk' ? 'sk' : 'en']]
+      .filter(Boolean).map((t) => `<p style="margin:0 0 8px 0;">${esc(t)}</p>`).join('');
+    return {
+      subject: L.subject.replace('{0}', payload.grade).replace('{1}', String(payload.score)),
+      html: layout({ lang: lang === 'sk' ? 'sk' : 'en', title: L.title, intro: L.intro, body, footer }),
+    };
+  }
 
   if (kind === 'checklist') {
     const p = PARTNERS[payload.partner];

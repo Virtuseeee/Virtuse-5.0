@@ -695,3 +695,13 @@
   .p2-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 14pt; padding-top: 6pt; border-top: 1px solid var(--p2-line); font-size: 6.6pt; color: var(--p2-muted); }
   .p2-legal { max-width: 70%; }
   .p2-copy { font-family: var(--p2-mono); white-space: nowrap; }
+
+/* Verdict Lite (verdict-lite.js, 2026-11-02): no free text in the landing hero, "what you get" list */
+.vl .vl-ask.vl-lite label, .vl .vl-ask.vl-lite textarea { display: none; }
+.vl .vl-ask.vl-lite .vl-msg { color: var(--muted) !important; }
+.vf .lite .vf-card > .vf-btn + .small { margin-top: 12px; }
+.vf .vl-get { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 10px; font-size: 14px; color: var(--muted); }
+.vf .vl-get b { display: block; color: var(--text); font-size: 15px; }
+.vf .lite .next .act { font-size: 17px; }
+.vf .lite .price h3 { font-size: 20px; margin: 6px 0 0; }
+@media print { .vf .lite * { color: #000 !important; } }

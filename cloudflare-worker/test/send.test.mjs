@@ -207,3 +207,116 @@ test('checklist email: steps, partner link, sources; SK frame falls back to EN s
     CHECKLISTS.kraken.approved = saved;
   }
 });
+
+// --- verdict_lite (Lite score from verdict.html) ----------------------------
+const LITE = { score: 70, grade: 'B', band: 0, gaps: ['tax', 'reserve', 'custody'], areas: { size: 8, reserve: 6, debt: 10, tax: 2, custody: 7, fall: 8 } };
+
+test('verdict_lite payload: score, grade and band must follow the areas; gap ids from the allowlist', () => {
+  assert.deepEqual(validatePayload('verdict_lite', 'verdict', { ...LITE, extra: 'x' }).value, LITE);
+  const bad = [
+    [{ ...LITE, score: 75 }, 'score does not match areas'],
+    [{ ...LITE, score: 101 }, 'bad score'],
+    [{ ...LITE, grade: 'A' }, 'bad grade'],
+    [{ ...LITE, band: 1 }, 'bad band'],
+    [{ ...LITE, gaps: ['tax', 'partner'] }, 'unknown gap'],
+    [{ ...LITE, gaps: ['tax', 'tax'] }, 'duplicate gap'],
+    [{ ...LITE, gaps: [] }, 'gaps must list 1 to 3 ids'],
+    [{ ...LITE, gaps: ['tax', 'reserve', 'custody', 'keys'] }, 'gaps must list 1 to 3 ids'],
+    [{ ...LITE, areas: { ...LITE.areas, tax: 11 } }, 'bad areas.tax'],
+    [{ ...LITE, areas: { ...LITE.areas, fall: 2.5 } }, 'bad areas.fall'],
+  ];
+  for (const [p, err] of bad) assert.equal(validatePayload('verdict_lite', 'verdict', p).error, err);
+  assert.equal(validatePayload('verdict_lite', 'concierge', LITE).ok, false);
+});
+
+test('verdict_lite email: grade, score, band and gap titles from Worker strings, EN and SK', () => {
+  const en = renderSendEmail({ kind: 'verdict_lite', source: 'verdict', payload: LITE, lang: 'en', brief: false });
+  assert.equal(en.subject, 'Your Virtuse Verdict Lite score: B · 70/100');
+  assert.match(en.html, /Basics in place/);
+  assert.match(en.html, /Learn the sale rule in your country/);
+  assert.match(en.html, /utm_source=verdict&amp;utm_medium=email&amp;utm_campaign=lite_score/);
+  assert.match(en.html, /https:\/\/virtuse\.com\/verdict\.html\?consult=1/);
+  assert.match(en.html, /not investment, tax or legal advice/);
+  assert.doesNotMatch(en.html.replace(/<[^>]+>/g, ' '), /\b(best|recommended|top)\b/i);
+  const sk = renderSendEmail({ kind: 'verdict_lite', source: 'verdict', payload: LITE, lang: 'sk', brief: false });
+  assert.equal(sk.subject, 'Vaše Virtuse Verdict Lite skóre: B · 70/100');
+  assert.match(sk.html, /Základy máte/);
+  assert.match(sk.html, /https:\/\/virtuse\.com\/sk\/concierge\.html\?/);
+  // other site languages fall back to the English email
+  assert.match(renderSendEmail({ kind: 'verdict_lite', source: 'verdict', payload: LITE, lang: 'de', brief: false }).subject, /^Your Virtuse/);
+});
+
+test('POST /send verdict_lite: one email; with brief one contact and one welcome', withFetch(async (calls) => {
+  const e = env();
+  assert.equal((await worker.fetch(req({ email: 'a@b.co', hp: '', lang: 'sk', kind: 'verdict_lite', source: 'verdict', payload: LITE }), e)).status, 200);
+  assert.equal(calls.length, 1);
+  assert.match(calls[0].body.subject, /B · 70\/100/);
+  calls.length = 0;
+  assert.equal((await worker.fetch(req({ email: 'c@d.co', lang: 'en', kind: 'verdict_lite', source: 'verdict', payload: LITE, brief: true }), e)).status, 200);
+  assert.deepEqual(calls.map((c) => c.url), ['https://api.resend.com/emails', 'https://api.resend.com/contacts', 'https://api.resend.com/emails']);
+  calls.length = 0;
+  assert.equal((await worker.fetch(req({ email: 'a@b.co', kind: 'verdict_lite', source: 'verdict', payload: { ...LITE, gaps: ['<b>x</b>'] } }), e)).status, 400);
+  assert.equal(calls.length, 0);
+}));
+
+function withResendStatus(status, fn, msg = 'Invalid `to` field. Please use our testing email address instead of domains like `example.com`.') {
+  return async () => {
+    const orig = globalThis.fetch;
+    let n = 0;
+    globalThis.fetch = async () => { n++; return new Response(JSON.stringify({ message: msg }), { status }); };
+    try { await fn(() => n); } finally { globalThis.fetch = orig; }
+  };
+}
+
+const LITE_BODY = { email: 'qa@b.co', lang: 'en', kind: 'verdict_lite', source: 'verdict', payload: LITE };
+
+test('POST /send: Resend 422 -> 400 invalid_recipient, attempt not counted', withResendStatus(422, async () => {
+  const e = env();
+  for (let i = 0; i < 6; i++) {
+    const res = await worker.fetch(req(LITE_BODY), e);
+    assert.equal(res.status, 400);
+    assert.equal((await res.json()).code, 'invalid_recipient');
+  }
+  // every counter was given back
+  assert.ok([...e.RATE_LIMIT_KV.store.values()].every((v) => v === '0'));
+}));
+
+test('POST /send: Resend 5xx stays 502', withResendStatus(500, async () => {
+  assert.equal((await worker.fetch(req(LITE_BODY), env())).status, 502);
+}));
+
+test('POST /send: invalid payloads are not counted; own key, not the signup one', withFetch(async () => {
+  const e = env();
+  for (let i = 0; i < 8; i++) {
+    assert.equal((await worker.fetch(req({ ...LITE_BODY, payload: { ...LITE, score: 75 } }), e)).status, 400);
+  }
+  assert.equal(e.RATE_LIMIT_KV.store.size, 0);
+  assert.equal((await worker.fetch(req(LITE_BODY), e)).status, 200);
+  const keys = [...e.RATE_LIMIT_KV.store.keys()];
+  assert.ok(keys.includes('sendlimit:ip:1.2.3.4'));
+  assert.ok(!keys.some((k) => k.startsWith('ratelimit:')));
+}));
+
+test('POST /send: per-IP limit from SEND_IP_LIMIT_PER_HOUR, 429 carries rate_limited', withFetch(async () => {
+  const e = { ...env(), SEND_IP_LIMIT_PER_HOUR: '7', SEND_ADDRESS_LIMIT_PER_HOUR: '50' };
+  const statuses = [];
+  for (let i = 0; i < 8; i++) statuses.push((await worker.fetch(req({ ...LITE_BODY, email: `u${i}@b.co` }), e)).status);
+  assert.deepEqual(statuses, [200, 200, 200, 200, 200, 200, 200, 429]);
+  const last = await worker.fetch(req({ ...LITE_BODY, email: 'z@b.co' }), e);
+  assert.equal((await last.json()).code, 'rate_limited');
+  // default without the env var is 5 per IP
+  const d = env();
+  const ds = [];
+  for (let i = 0; i < 6; i++) ds.push((await worker.fetch(req({ ...LITE_BODY, email: `v${i}@b.co` }), d)).status);
+  assert.deepEqual(ds, [200, 200, 200, 200, 200, 429]);
+}));
+
+test('POST /send: a Resend 4xx about our setup (missing from) is 502, not invalid_recipient', withResendStatus(422, async () => {
+  assert.equal((await worker.fetch(req(LITE_BODY), env())).status, 502);
+}, 'Missing `from` field.'));
+
+test('POST /send: no sender configured -> 502 before calling Resend', withResendStatus(200, async (calls) => {
+  const e = env(); delete e.RESEND_FROM_EMAIL;
+  assert.equal((await worker.fetch(req(LITE_BODY), e)).status, 502);
+  assert.equal(calls(), 0);
+}));

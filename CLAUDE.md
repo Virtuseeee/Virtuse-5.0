@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-11-04, second round) — `feat/verdict-lite` merged with main in local branch `feat/verdict-lite-into-main` (**not pushed, not on staging, not deployed**)
+
+- PR #156 (homepage) is in main without Lite, so **do not deploy main until this branch is in**: the homepage promises a Lite score that main's `verdict.html` does not have.
+- Conflicts: `verdict.html` + `sk/verdict.html` = Lite's page + SEO Bod D's `brief-d-cta` aside; `wrangler.toml` staging vars = both sets (send limits + receipt). Worker tests 181/181, `wrangler deploy --dry-run` OK; EN + SK homepage → Verdict → step 1 checked at 1440 and 375 px, no console errors.
+- **Open decision before production:** the live Worker (`/version` 2f68187a) and live `verdict-flow.js` have the Stripe €14 checkout (`VERDICT_PAYMENTS=1`); Lite replaces that page, offers only a €14 waitlist and says "Payment is not live yet". Deploying Lite removes the buy path from verdict.html unless the page is changed. The Worker must be deployed too (`/send` kind `verdict_lite`).
+
 ## Session status (2026-11-04) — Homepage restructure Verdict · Hub · Brief, EN + SK (local branch `feat/homepage-verdict-hub-brief`, **not pushed, not on staging, not deployed**; awaiting Ras)
 
 - Handover: Google Doc "Claude handover — Homepage Verdict/Hub/Brief — 2026-11-04 QA" (1GD7VqGV…), built on the 2026-11-03 doc (1sG9g6cC…). Order: Hero → `#buy` → `#shelf` → `#money` → `#verdict` → `#brief` → `#how` → `#finder` → `#answers`. CFO is gone from the homepage (nav, footer, panel, waitlist form + handler, dead CSS); only the `<span id="cfo">` anchor + its CSS rule and meta `vb-cfo-stage` remain. `#money` is byte-identical to main. `aside.brief-d-cta` deleted.

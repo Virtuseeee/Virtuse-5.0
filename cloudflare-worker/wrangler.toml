@@ -52,7 +52,7 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 # VERDICT_RECEIPT_TO sends every staging confirmation to that address, never the buyer's.
 [env.staging]
 name = "virtuse-newsletter-staging"
-vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1", VERDICT_RECEIPT_TO = "vasilisin@virtuse.com", RESEND_SEND_FROM = "Virtuse <plan@virtuse.com>" }
+vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", SEND_IP_LIMIT_PER_HOUR = "30", SEND_ADDRESS_LIMIT_PER_HOUR = "10", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1", VERDICT_RECEIPT_TO = "vasilisin@virtuse.com", RESEND_SEND_FROM = "Virtuse <plan@virtuse.com>" }
 
 [[env.staging.kv_namespaces]]
 binding = "RATE_LIMIT_KV"

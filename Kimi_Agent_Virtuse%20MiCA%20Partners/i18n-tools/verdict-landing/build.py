@@ -146,7 +146,7 @@ HREFLANG = ('<link rel="alternate" hreflang="en" href="https://virtuse.com/verdi
             '<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html">\n'
             '<link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">')
 
-VB_API_TAG = '<script src="/vb-api.js?v=1" defer></script>'   # Worker client (vb-api.js) for the waitlist form
+VB_API_TAG = '<script src="/vb-api.js?v=2" defer></script>'   # Worker client (vb-api.js) for the waitlist form
 
 HEAD_GATE = '''<script>/* Verdict landing: open the funnel directly for hand-overs, ?flow=1, ?report=1 and a reload during a run */
 (function(){try{var s=sessionStorage;if(location.hash==='#start'||/[?&](flow|report)=1\\b/.test(location.search)||s.getItem('vb-verdict-text')||s.getItem('vb-vl-app')==='1')document.documentElement.classList.add('vl-app');}catch(e){}})();</script>'''

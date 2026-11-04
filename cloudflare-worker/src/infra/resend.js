@@ -7,8 +7,12 @@
 const API = 'https://api.resend.com';
 const DUPLICATE_RE = /already exists|duplicate/i;
 
+// The error carries the HTTP status, so a caller can tell Resend refusing the
+// request (4xx, e.g. 422 for an address it will not deliver to) from an outage.
 function failure(label, status, text) {
-  return new Error(`${label} (status ${status}): ${text.slice(0, 300)}`);
+  const e = new Error(`${label} (status ${status}): ${text.slice(0, 300)}`);
+  e.status = status;
+  return e;
 }
 
 // fetchImpl defaults to the global fetch, looked up at call time.
