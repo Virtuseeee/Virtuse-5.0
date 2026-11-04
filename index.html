@@ -503,8 +503,8 @@ html.anim .how-log .how-log-dot { transform: scale(0); transition: transform .6s
 html.anim .how-log.drawn .how-log-dot { transform: scale(1); }
 @media (max-width: 960px) { html.anim .how-log::before { display: none; } }
 /* bars grow when their card comes into view */
-html.anim .bars-wait .fill, html.anim .bars-wait .abar .f { width: 0 !important; }
-.fill, .abar .f { transition: width 1.1s cubic-bezier(.16,1,.3,1); }
+html.anim .bars-wait .fill { width: 0 !important; }
+.fill { transition: width 1.1s cubic-bezier(.16,1,.3,1); }
 @media (prefers-reduced-motion: reduce) { html.anim .rv, html.anim .w { opacity: 1 !important; transform: none !important; transition: none !important; } }
 /* cursor spotlight on cards (subtle) */
 .spot { position: relative; isolation: isolate; }
@@ -627,50 +627,15 @@ footer { margin-top: 40px; }
   .nav.open .nav-links { display: flex !important; }
 }
 
-/* v10: CFO in nav with stage badge */
+/* v10: nav badge */
 .nav-badge { font: 500 10px/1 var(--mono); letter-spacing: 0.04em; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 5px; padding: 3px 5px; margin-left: 6px; vertical-align: 1px; }
 
-/* waitlist line under the calculator */
-.wait { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
-.wait-link { font: inherit; color: var(--text); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-.wait-form { display: flex; gap: 8px; margin-top: 12px; max-width: 420px; }
-.wait-form input { flex: 1; min-width: 0; background: var(--inset); border: 1px solid var(--line-strong); color: var(--text); border-radius: 10px; padding: 11px 13px; font: 14px var(--sans); }
-.wait-form .btn { padding: 11px 16px; }
-.wait-msg { font-size: 13px; color: var(--good); margin-top: 8px; min-height: 18px; }
 
-/* CFO panel (shown from the free-audit stage) */
-.cfo-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-.cfo-panel h2 { font-size: 42px; font-weight: 700; line-height: 1.12; letter-spacing: -0.015em; }
-.cfo-panel h2 span { font-weight: 400; color: var(--muted); }
-.cfo-panel .lead { color: var(--muted); font-size: 17px; margin: 18px 0 26px; max-width: 470px; }
-.cfo-trust { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 22px; font-size: 13px; color: var(--muted); }
-.cfo-trust span::before { content: "✓"; color: var(--good); margin-right: 7px; }
-.audit-card { background: var(--card); border-radius: 16px; padding: 24px; border: 1px solid var(--line-strong); }
-.audit-card .top { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
-.audit-card .tag { font: 500 11px/1 var(--mono); letter-spacing: 0; text-transform: none; color: var(--good); border: 1px solid rgba(63,185,80,0.4); border-radius: 6px; padding: 5px 7px; }
-.audit-card .file { font: 12px var(--mono); color: var(--muted); background: var(--inset); border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; margin-bottom: 18px; }
-.audit-card .lbl { font-size: 13px; color: var(--muted); }
-.audit-card .big { font-size: 52px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--orange); font-variant-numeric: tabular-nums; }
-.audit-card .big small { font-size: 15px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
-.abars { display: grid; gap: 10px; margin: 18px 0 8px; }
-.abar { display: grid; grid-template-columns: 120px 1fr 56px; gap: 12px; align-items: center; font-size: 13px; }
-.abar .t { height: 8px; background: var(--inset); border-radius: 4px; overflow: hidden; }
-.abar .f { height: 100%; border-radius: 4px; background: var(--line-strong); }
-.abar .f.g { background: var(--good); }
-.abar .v { text-align: right; font-variant-numeric: tabular-nums; }
-.audit-card .sample { font-size: 11px; color: var(--dim); margin-top: 12px; }
+/* Verdict panel */
 
-/* stage switch (review control, not part of the design) */
-body.stage-wait .only-audit { display: none !important; }
-body:not(.stage-wait) .only-wait { display: none !important; }
-@media (max-width: 960px) { .cfo-panel { grid-template-columns: 1fr; gap: 28px; } }
-@media (max-width: 640px) { .cfo-panel h2 { font-size: 30px; } .abar { grid-template-columns: 96px 1fr 50px; } }
 
-/* v12: no green in the Buy calculator or the CFO panel */
-#buy .fill.low, .abar .f.g { background: var(--text); }
-.cfo-trust span::before { color: var(--text); }
-.audit-card .tag { color: var(--muted); border-color: var(--line-strong); }
-.wait-msg { color: var(--text); }
+/* v12: no green in the Buy calculator */
+#buy .fill.low { background: var(--text); }
 
 /* v14: footer = live virtuse.com footer (5 columns, giant wordmark) */
 footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 40px; overflow: hidden; }
@@ -708,7 +673,6 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 }
 @media (prefers-reduced-motion: reduce) { .footer-wordmark-icon-wrap, .footer-wordmark-text { animation: none; } }
 .brief-msg { color: var(--text); }
-.audit-card .big { color: var(--text); }
 
 /* v16: How Virtuse works, live-site changelog row */
 .how-log { display: flex; gap: 40px; border-top: 1px solid var(--line-strong); }
@@ -744,16 +708,12 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 @media (max-width: 640px) { .shelf6 a { min-height: 240px; } .shelf6 h3 { font-size: 28px; } }
 .how-log-body p { flex-grow: 1; }
 
-/* v18: Buy + CFO panels: both columns share one top and one bottom edge */
-.feature, .cfo-panel { align-items: stretch; }
-#buy .feature > div:first-child, .cfo-panel > div:first-child { display: flex; flex-direction: column; justify-content: center; }
+/* v18: Buy + Verdict panels: both columns share one top and one bottom edge */
+.feature { align-items: stretch; }
+#buy .feature > div:first-child, #verdict .feature > div:first-child { display: flex; flex-direction: column; justify-content: center; }
 #buy .panel { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
 #buy .panel .src { margin: 0; padding-top: 16px; border-top: 1px solid var(--line); }
-.audit-card { display: flex; flex-direction: column; }
-.audit-card .abars { margin-bottom: 0; }
-.audit-card .sample { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
-.cfo-panel .hero-ctas { margin-top: 0; }
-@media (max-width: 960px) { #buy .panel, .audit-card { min-height: 0; } }
+@media (max-width: 960px) { #buy .panel { min-height: 0; } }
 
 .diff { display: grid; gap: 4px; padding: 18px; background: var(--inset); border: 1px solid var(--line); border-radius: 12px; }
 .diff span { font-size: 13px; color: var(--muted); }
@@ -777,13 +737,6 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 .brief-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 </style>
 <style>
-/* CFO waitlist form (homepage CFO section) */
-.cfo-wait { display: flex; gap: 8px; flex-wrap: wrap; max-width: 520px; }
-.cfo-wait input[type="email"] { flex: 1 1 220px; min-width: 0; background: var(--inset); border: 1px solid var(--line-strong); color: var(--text); border-radius: 10px; padding: 12px 14px; font: 14px var(--sans); }
-.cfo-wait .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-.cfo-panel .wait-msg { font-size: 13px; color: var(--text); min-height: 20px; margin-top: 10px; }
-.cfo-wait-note { font-size: 12px; color: var(--dim); margin: 4px 0 0; }
-.cfo-wait-note a { color: inherit; }
 /* phones: shorter page (review round 1) */
 @media (max-width: 640px) {
   section { padding-block: 48px; }
@@ -806,8 +759,6 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 .nav-group.open .nav-drop { display: flex; }
 @media (hover: hover) and (min-width: 1181px) { .nav-group:hover .nav-drop { display: flex; } }
 .nav-links .nav-drop a { padding: 9px 10px; border-radius: 8px; font-size: 14px; color: var(--muted); text-decoration: none; border: 0; }
-/* CFO + Verdict item: one line, the desktop dropdown grows to fit the badge (2026-10-15) */
-@media (min-width: 1181px) { #navCfo .nd-t { white-space: nowrap; } }
 .nav-links .nav-drop a:hover, .nav-links .nav-drop a:focus-visible { background: var(--card-hover); color: var(--text); }
 /* Menu items with a one-line description on desktop (checklist 2.5) */
 .nav-drop { min-width: 280px; }
@@ -882,9 +833,9 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
 /* section accents */
 #money { --acc: var(--green); }
 #buy { --acc: var(--orange); }
-#cfo { --acc: var(--blue); }
-#buy .k, #cfo .k { display: inline-flex !important; align-items: center; gap: 8px; }
-#buy .k::before, #cfo .k::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 18%, transparent); }
+#verdict { --acc: var(--blue); }
+#buy .k, #verdict .k { display: inline-flex !important; align-items: center; gap: 8px; }
+#buy .k::before, #verdict .k::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 18%, transparent); }
 .problem-fig { display: inline-flex; align-items: center; gap: 8px; }
 .problem-fig::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(63,185,80,.15); }
 .problem-card { transition: box-shadow .25s, border-color .25s; border: 1px solid transparent; }
@@ -909,11 +860,6 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
 .save-chart text { font: 10px var(--mono); fill: rgba(255,226,196,.65); }
 @media (max-width: 640px) { .diff { grid-template-columns: 1fr; } .save-chart { width: 100%; height: 90px; margin-top: 10px; } .diff .diff-big { font-size: 40px; } }
 
-/* CFO section: blue */
-#cfo .audit-card { border-color: rgba(95,174,222,.30); background: radial-gradient(120% 80% at 100% 0%, rgba(95,174,222,.14), transparent 55%), var(--card); }
-#cfo .audit-card .tag { color: var(--blue); border-color: rgba(95,174,222,.45); }
-.abar .f { background: var(--red) !important; }
-.abar .f.g { background: var(--green) !important; }
 
 /* shelf: each category its own quiet colour */
 .shelf6 a { --c: var(--text); position: relative; border: 1px solid transparent; transition: background .15s, border-color .25s, box-shadow .25s; }
@@ -923,12 +869,56 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
 .shelf6 a .meta b { color: var(--c); }
 .shelf6 a:hover { border-color: color-mix(in srgb, var(--c) 45%, transparent); box-shadow: 0 18px 50px -24px color-mix(in srgb, var(--c) 55%, transparent); }
 
-/* badges: Soon orange, New blue */
-.nav-badge, .cfo-foot-badge { display: inline-flex; align-items: center; gap: 5px; }
-.nav-badge::before, .cfo-foot-badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--blue); }
-body.stage-wait .nav-badge::before, body.stage-wait .cfo-foot-badge::before { background: var(--orange); }
-body.stage-wait .nav-badge, body.stage-wait .cfo-foot-badge { color: #ffc27a; border-color: rgba(247,147,26,.4); }
-body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color: #a8d8f5; border-color: rgba(95,174,222,.45); }
+/* badges */
+.nav-badge, .foot-badge { display: inline-flex; align-items: center; gap: 5px; color: #ffc27a; border-color: rgba(247,147,26,.4); }
+.nav-badge::before, .foot-badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+
+
+/* Verdict: copy and card from the verdict.html hero, in the same .feature layout as #buy */
+#verdict { position: relative; }
+#cfo { position: absolute; top: 0; scroll-margin-top: 64px; }
+#verdict h2 em { font-style: normal; background: linear-gradient(90deg, #a5e0fb, #5faede); -webkit-background-clip: text; background-clip: text; color: transparent; }
+#verdict .btn-primary { background: var(--blue); color: #06121b; border-color: var(--blue); font-size: 15px; font-weight: 600; padding: 12px 20px; border-radius: 10px; }
+#verdict .ml-land-note { color: var(--dim); font-size: 13px; margin: 14px 0 0; }
+#verdict .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.ml-demo { position: relative; overflow: hidden; display: grid; align-content: space-between; gap: 8px; height: 100%; padding: 16px 22px; text-align: left; border: 1px solid var(--line-strong); border-radius: 24px; background: linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 22%, transparent 48%), radial-gradient(70% 50% at 50% 0%, rgba(95,174,222,.16), transparent 70%), var(--card); box-shadow: 0 30px 80px -40px rgba(95,174,222,.45); }
+.dm-top { display: flex; justify-content: space-between; align-items: center; font: 500 11px/1 var(--mono); letter-spacing: .14em; color: var(--orange); }
+.dm-dots { display: flex; gap: 5px; }
+.dm-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--card-hover); transition: background .3s; }
+.dm-dots i.on { background: var(--orange); }
+.dm-st { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
+.dm-st.on, .ml-demo.all .dm-st { opacity: 1; transform: none; }
+.dm-t { display: block; font-size: 20px; font-weight: 700; letter-spacing: -.01em; }
+.dm-meta { color: var(--muted); font-size: 13px; }
+.dm-score { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; }
+.dm-n b { font-size: 46px; font-weight: 700; letter-spacing: -.04em; color: var(--orange); line-height: 1; }
+.dm-n small { color: var(--muted); font-size: 16px; }
+.dm-lbl { display: flex; justify-content: space-between; color: var(--dim); font-size: 10px; margin-bottom: 6px; }
+.dm-track { height: 7px; background: var(--card-hover); border-radius: 7px; overflow: hidden; }
+.dm-track i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--orange), #f9b45a); border-radius: 7px; transition: width 1.1s cubic-bezier(.2,.7,.2,1); }
+.dm-score.on .dm-track i, .ml-demo.all .dm-track i { width: 75%; }
+.dm-pill { display: inline-block; margin-top: 8px; padding: 5px 10px; border-radius: 999px; border: 1px solid rgba(247,147,26,.45); background: rgba(247,147,26,.08); color: var(--orange); font-size: 12px; font-weight: 600; }
+.dm-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dm-nums div { background: var(--inset); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+.dm-nums small { display: block; font: 500 9px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+.dm-nums b { font-size: 14px; font-weight: 600; }
+.dm-areas { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; row-gap: 6px; }
+.dm-areas div { display: grid; grid-template-columns: 70px 1fr 16px; gap: 10px; align-items: center; font-size: 12px; color: var(--muted); }
+.dm-areas i { height: 5px; background: var(--card-hover); border-radius: 5px; overflow: hidden; }
+.dm-areas em { display: block; height: 100%; width: 0; background: var(--note); border-radius: 5px; transition: width .9s ease .15s; }
+.dm-areas .lo em { background: var(--orange); }
+.dm-areas.on em, .ml-demo.all .dm-areas em { width: var(--w); }
+.dm-areas b { color: var(--text); text-align: right; }
+@media (max-width: 960px) { .ml-demo { height: auto; } }
+
+/* Brief: latest issue and sign-up in one card */
+.brief { gap: 0; background: var(--card); border-radius: 16px; overflow: hidden; }
+.brief .issue, .brief .signup { background: transparent; border-radius: 0; }
+.brief .signup { border-left: 1px solid var(--line); }
+@media (max-width: 960px) { .brief .signup { border-left: 0; border-top: 1px solid var(--line); } }
+
+/* How: step 3 second link */
+.how-card-cta-2 { order: 3; margin-top: 8px; font-weight: 500; color: var(--muted); }
 
 /* Brief: live BTC sparkline */
 .btc-spark { margin-bottom: 18px; padding: 14px 16px 10px; border-radius: 12px; background: radial-gradient(100% 120% at 0% 0%, rgba(247,147,26,.12), transparent 60%), var(--inset); border: 1px solid var(--line); }
@@ -938,6 +928,10 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 .btc-top em { font-style: normal; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .btc-top em.up { color: var(--green); } .btc-top em.down { color: var(--red); }
 .btc-spark svg { width: 100%; height: 56px; display: block; margin-top: 8px; }
+/* Brief: BTC/EUR sparkline draws in when it comes on screen */
+.btc-spark.btc-wait svg { clip-path: inset(0 100% 0 0); }
+.btc-spark.btc-draw svg { animation: btcDraw 1.4s cubic-bezier(.22,.7,.2,1) both; }
+@keyframes btcDraw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 </style>
 <script type="application/ld+json" id="virtuse-ld">
 {
@@ -983,7 +977,6 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
 </script>
 </head>
 <body>
-<script>document.body.classList.toggle('stage-wait', (document.querySelector('meta[name="vb-cfo-stage"]') || {}).content !== 'audit');</script>
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="/" aria-label="Virtuse home">
@@ -1001,7 +994,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
-        <div class="nav-drop" id="nd-tools"><a href="verdict.html" id="navVerdict"><span class="nd-t">Verdict <span class="nav-badge cfo-badge">Free</span></span><span class="nd-d">Rate your decision, free</span></a><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO</span><span class="nd-d">Fees, loans and tax over time · planned</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partners that match your answers</span></a><a href="/bitcoin-fee-index/"><span class="nd-t">Fee Index</span><span class="nd-d">Total cost of buying, compared</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plan regular buys, compare fees</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Sell or borrow against your Bitcoin</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Country rules and an inheritance check</span></a><a href="retirement-calculator.html"><span class="nd-t">Retirement Calculator</span><span class="nd-d">How much Bitcoin for retirement</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="verdict.html" id="navVerdict"><span class="nd-t">Verdict <span class="nav-badge">Free</span></span><span class="nd-d">Rate your decision, free</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partners that match your answers</span></a><a href="/bitcoin-fee-index/"><span class="nd-t">Fee Index</span><span class="nd-d">Total cost of buying, compared</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plan regular buys, compare fees</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Sell or borrow against your Bitcoin</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Country rules and an inheritance check</span></a><a href="retirement-calculator.html"><span class="nd-t">Retirement Calculator</span><span class="nd-d">How much Bitcoin for retirement</span></a></div>
       </div>
       <div class="nav-group" id="ng-eco">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Ecosystem</button>
@@ -1095,36 +1088,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
   </div>
 
-  <!-- 2b. WHAT WE PROMISE -->
-  <section id="money">
-    <div class="sec-head one">
-      <div class="sec-copy">
-        <h2>What we promise. <span>Read it before you trust us.</span></h2>
-      </div>
-    </div>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <span class="problem-fig">Fig 0.1</span>
-        <div class="problem-art" aria-hidden="true"><div class="cube-stage var-purpose"><div class="cube-scene"><div class="cube"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face right"></div><div class="cube-face left"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div></div></div></div>
-        <h3>We never hold your coins</h3>
-        <p>No keys, no coins, no money. You open your account and transact on the partner's licensed platform.</p>
-      </div>
-      <div class="problem-card">
-        <span class="problem-fig">Fig 0.2</span>
-        <div class="problem-art" aria-hidden="true"><div class="cube-stage var-agents"><i class="cube-node"></i><i class="cube-node"></i><i class="cube-node"></i><div class="cube-scan"></div><div class="cube-scene"><div class="cube"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face right"></div><div class="cube-face left"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div></div></div></div>
-        <h3>The order is never for sale</h3>
-        <p>Lists are sorted by published price or by fixed rules based on your answers, never by what a partner pays us.</p>
-      </div>
-      <div class="problem-card">
-        <span class="problem-fig">Fig 0.3</span>
-        <div class="problem-art" aria-hidden="true"><div class="cube-stage var-speed"><div class="cube-veil"></div><div class="cube-scene"><div class="cube"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face right"></div><div class="cube-face left"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div></div></div></div>
-        <h3>We say what partners pay us</h3>
-        <p>Some partners pay a referral fee when you sign up through our link. You pay the same price either way.</p>
-      </div>
-    </div>
-</section>
-
-  <!-- 3. FEATURED: BUY BITCOIN (firefish 'Bitcoin is your credit' layout) -->
+  <!-- 3. BUY BITCOIN: fee index -->
   <section id="buy">
     <div class="feature">
       <div>
@@ -1138,9 +1102,8 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
           <div class="range-ends"><span>€50</span><span>€5,000</span></div>
         </div>
         <div class="hero-ctas" style="margin-top:24px">
-          <a class="btn btn-primary only-wait" href="buy-bitcoin.html">See all 5 buy partners</a>
-          <a class="btn btn-primary only-audit" href="cfo.html">Check your real fees</a>
-          <a class="btn btn-ghost only-audit" href="buy-bitcoin.html">See all 5 buy partners</a>
+          <a class="btn btn-primary" href="buy-bitcoin.html">See all buy partners</a>
+          <a class="btn btn-ghost" href="/bitcoin-fee-index/">See the Fee Index</a>
         </div>
       </div>
       <div class="panel">
@@ -1172,44 +1135,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     </div>
   </section>
 
-  <!-- 3b. VIRTUSE CFO (from the free-audit stage) -->
-  <section id="cfo">
-    <div class="cfo-panel">
-      <div>
-        <span class="k" style="display:block;margin-bottom:16px">Virtuse CFO · Free Verdict</span>
-        <h2>Your AI CFO for Bitcoin. <span>It reads your own exports and never sees your wallet.</span></h2>
-        <p class="lead">The calculator above uses published fees. Virtuse CFO reads your own exchange export in your browser, shows what you actually paid, and answers questions from your own numbers.<span class="only-wait"> Join the waitlist and we'll tell you when the fee audit opens.</span></p>
-        <div class="hero-ctas only-audit" style="margin-top:0">
-          <a class="btn btn-primary" href="cfo.html">Run the fee audit</a>
-          <a class="btn btn-ghost" href="verdict.html">Get a free verdict</a>
-          <a class="btn btn-ghost" href="cfo.html">How it works</a>
-        </div>
-        <form class="cfo-wait only-wait" id="waitForm" novalidate>
-          <label for="waitEmail" style="position:absolute;left:-9999px">Email address</label>
-          <input id="waitEmail" name="email" type="email" placeholder="Email address" autocomplete="email" required>
-          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn-primary" type="submit">Join the waitlist</button>
-          <a class="btn btn-ghost" href="verdict.html">Get a free verdict</a>
-          <a class="btn btn-ghost" href="cfo.html">How it works</a>
-        </form>
-        <div class="wait-msg only-wait" id="waitMsg" aria-live="polite"></div>
-        <p class="cfo-wait-note only-wait">One email when the audit opens, nothing else. <a href="privacy-policy.html">Privacy</a></p>
-      </div>
-      <div class="audit-card" aria-label="Sample audit result">
-        <div class="top">Fee audit <span class="tag">runs in your browser</span></div>
-        <div class="file">kraken-ledgers-2026.csv · 214 rows · 0 bytes sent</div>
-        <div class="lbl">You overpaid in the last 12 months</div>
-        <div class="big">€341 <small>on €43,000 of buys</small></div>
-        <div class="abars">
-          <div class="abar"><span class="lbl">You paid</span><div class="t"><div class="f" style="width:100%"></div></div><span class="v">€449</span></div>
-          <div class="abar"><span class="lbl">Bybit EU 0.25%</span><div class="t"><div class="f g" style="width:24%"></div></div><span class="v">€108</span></div>
-        </div>
-        <div class="sample">Sample export and figures for illustration.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. SHELF: everything else -->
+  <!-- 4. SHELF -->
   <section id="shelf">
     <div class="sec-head one">
       <div class="sec-copy">
@@ -1227,8 +1153,92 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
     <p class="shelf-disclose"><b style="color:var(--text);font-weight:600">What we earn:</b> some partners pay Virtuse a referral fee when you sign up through our link. You pay the same price, and the fee never changes the order or the facts.</p>
   </section>
 
+<!-- 5. WHAT WE PROMISE -->
+  <section id="money">
+    <div class="sec-head one">
+      <div class="sec-copy">
+        <h2>What we promise. <span>Read it before you trust us.</span></h2>
+      </div>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <span class="problem-fig">Fig 0.1</span>
+        <div class="problem-art" aria-hidden="true"><div class="cube-stage var-purpose"><div class="cube-scene"><div class="cube"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face right"></div><div class="cube-face left"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div></div></div></div>
+        <h3>We never hold your coins</h3>
+        <p>No keys, no coins, no money. You open your account and transact on the partner's licensed platform.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-fig">Fig 0.2</span>
+        <div class="problem-art" aria-hidden="true"><div class="cube-stage var-agents"><i class="cube-node"></i><i class="cube-node"></i><i class="cube-node"></i><div class="cube-scan"></div><div class="cube-scene"><div class="cube"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face right"></div><div class="cube-face left"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div></div></div></div>
+        <h3>The order is never for sale</h3>
+        <p>Lists are sorted by published price or by fixed rules based on your answers, never by what a partner pays us.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-fig">Fig 0.3</span>
+        <div class="problem-art" aria-hidden="true"><div class="cube-stage var-speed"><div class="cube-veil"></div><div class="cube-scene"><div class="cube"><div class="cube-face front"></div><div class="cube-face back"></div><div class="cube-face right"></div><div class="cube-face left"></div><div class="cube-face top"></div><div class="cube-face bottom"></div></div></div></div></div>
+        <h3>We say what partners pay us</h3>
+        <p>Some partners pay a referral fee when you sign up through our link. You pay the same price either way.</p>
+      </div>
+    </div>
+</section>
 
-  <!-- 4b. HOW VIRTUSE WORKS (from the live site) -->
+<!-- 6. VERDICT -->
+  <section id="verdict">
+    <span id="cfo"></span>
+    <div class="feature">
+      <div>
+        <span class="k">Virtuse Verdict · Free Lite score</span>
+        <h2>Audit your Bitcoin plan <em>in 3 minutes.</em></h2>
+        <p class="lead">Enter your savings, goals, and worries. Get an instant score out of 100, a letter grade, and your 3 biggest gaps. Lite score free.</p>
+        <div class="hero-ctas" style="margin-top:0">
+          <a class="btn btn-primary" href="verdict.html">Get your free Lite score →</a>
+        </div>
+        <p class="ml-land-note">About 3 minutes · no account · not investment advice</p>
+      </div>
+      <div class="demo-col">
+        <div class="demo ml-demo" id="mlDemo" aria-describedby="mlDemoAlt"></div>
+        <p class="sr-only" id="mlDemoAlt">Sample report for a fictional client, Anna: 75 out of 100, grade B, Basics in place. €20,000 planned is 13% of her savings; after a 70% fall €6,000 would be left. Weakest areas: tax and custody.</p>
+      </div>
+    </div>
+  </section>
+
+<!-- 7. VIRTUSE BRIEF: one card -->
+  <section id="brief">
+    <div class="sec-head one">
+      <div class="sec-copy">
+        <h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2>
+      </div>
+    </div>
+    <div class="brief">
+      <a class="issue" id="briefIssue" href="news.html?utm_source=brief&amp;utm_medium=home&amp;utm_content=latest_issue">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="Cover image: Bitcoin Beat the War. November Still Gets a Vote." loading="lazy" onerror="this.remove()">
+        <div class="issue-body">
+          <span class="k" id="briefMeta">Latest Brief · 5 Oct 2026 · 3 min</span>
+          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote.</h3>
+          <p id="briefExcerpt">Up 65% against gold since the February low and ahead of every major asset since the war began. October has the history to extend the lead. November has the history to take it back.</p>
+          <span class="more">Read the issue →</span>
+        </div>
+      </a>
+      <div class="signup">
+        <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 days</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+        </div>
+        <h3>Get the Brief. <span>Free.</span></h3>
+        <p>Market, policy, mining. No tokens. No PR. One email, every Monday.</p>
+        <form class="brief-form" id="briefForm" data-brief-form novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Email address</label>
+          <input id="email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary" type="submit">Get the Brief</button>
+        </form>
+        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+        <div class="fine">Unsubscribe anytime. Not advice. <a href="news.html?utm_source=brief&amp;utm_medium=home" style="color:var(--muted)">All issues and the blog →</a></div>
+      </div>
+    </div>
+  </section>
+
+<!-- 8. HOW VIRTUSE WORKS -->
   <section id="how">
     <div class="sec-head one">
       <div class="sec-copy">
@@ -1260,71 +1270,33 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
           <span class="how-log-num">Step 03</span>
           <h3>Grow your stack</h3>
           <p>Set your rhythm, compare every partner's fees, and automate with trading bots.</p>
-          <a href="stacking.html?utm_source=stacking&amp;utm_medium=how" class="how-card-cta">Plan my stack <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="verdict.html" class="how-card-cta">Get your free Lite score <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="concierge.html?utm_source=concierge&amp;utm_medium=how3" class="how-card-cta how-card-cta-2">Or use Partner Finder</a>
         </div>
       </div>
     </div>
   </section>
 
-
-
-
-
-  <!-- 5. NOT SURE -->
+<!-- 9. NOT SURE -->
   <section id="finder">
     <div class="finder">
-      <div><h3>Not sure which shelf you need?</h3><p>Answer five questions and see which partners match your criteria. It takes about 60 seconds.</p></div>
+      <div><h3>Can't decide?</h3><p>Answer five questions and see which partners match your criteria. It takes about 60 seconds.</p></div>
       <a class="btn btn-primary" href="concierge.html?utm_source=concierge&amp;utm_medium=finder">Find partners in 60 seconds</a>
     </div>
   </section>
 
-  <!-- 6. LATEST BRIEF -->
-  <section id="brief">
-    <div class="sec-head one">
-      <div class="sec-copy">
-        <h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2>
-      </div>
-    </div>
-    <div class="brief">
-      <a class="issue" id="briefIssue" href="article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote">
-        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="Cover image: Bitcoin Beat the War. November Still Gets a Vote." loading="lazy" onerror="this.remove()">
-        <div class="issue-body">
-          <span class="k" id="briefMeta">Latest Brief · 5 Oct 2026 · 3 min</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote.</h3>
-          <p id="briefExcerpt">Up 65% against gold since the February low and ahead of every major asset since the war began. October has the history to extend the lead. November has the history to take it back.</p>
-          <span class="more">Read the issue →</span>
-        </div>
-      </a>
-      <div class="signup">
-        <div class="btc-spark" id="btcSpark" hidden>
-          <div class="btc-top"><span>BTC / EUR · 90 days</span><b id="btcLast"></b><em id="btcChg"></em></div>
-          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
-        </div>
-        <h3>Get the Brief. <span>Free.</span></h3>
-        <p>Market, policy, mining. No tokens. No PR. One email, every Monday.</p>
-        <form class="brief-form" id="briefForm" data-brief-form novalidate>
-          <label for="email" style="position:absolute;left:-9999px">Email address</label>
-          <input id="email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
-          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn btn-primary" type="submit">Get the Brief</button>
-        </form>
-        <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
-        <div class="fine">Unsubscribe anytime. Not advice. <a href="news.html?utm_source=brief&amp;utm_medium=home" style="color:var(--muted)">All issues and the blog →</a></div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- 7. QUICK ANSWERS -->
+  <!-- 10. QUICK ANSWERS -->
   <section id="answers" class="qa">
     <div class="sec-head one">
-      <div class="sec-copy"><h2>Quick answers. <span>The four that matter first.</span></h2></div>
+      <div class="sec-copy"><h2>Quick answers. <span>The ones that matter first.</span></h2></div>
     </div>
     <details open><summary>Is Virtuse an exchange?</summary><p>No. Virtuse is an independent comparison hub. You buy, store and borrow on the partner's own platform, under its licence.</p></details>
     <details><summary>Does Virtuse ever hold my Bitcoin?</summary><p>No. Virtuse never holds coins, keys or euros, and never places orders for you.</p></details>
     <details><summary>Are the partners regulated?</summary><p>Each partner operates under its own licence or registration where its service requires one. We check this before listing a partner, and each partner card shows the details.</p></details>
     <details><summary>Which countries and languages are covered?</summary><p>The site is in 10 languages and the tax tools cover 13 EU countries. Each partner decides where it serves customers, so check the partner's page for your country.</p></details>
+    <details><summary>What is Verdict?</summary><p>A free check in five short steps that shows how ready your Bitcoin plan is: a Lite score and your top 3 gaps. It rates your plan; it does not tell you to buy or sell.</p></details>
+    <details><summary>Is Verdict free?</summary><p>The Lite score is free for your email. The full report is €14, once, with no subscription.</p></details>
+    <details><summary>What is Virtuse Brief?</summary><p>Our free weekly Bitcoin newsletter, every Monday, in English and Slovak. Unsubscribe anytime.</p></details>
     <a class="all" href="faq.html">All questions →</a>
   </section>
 
@@ -1333,7 +1305,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="verdict.html">Verdict <span class="soon cfo-foot-badge">Free</span></a><a href="cfo.html">Virtuse CFO</a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Ecosystem</h4><a href="/ecosystem/">Bitcoin Ecosystem</a><a href="/ecosystem/what-is-bitcoin/">What is Bitcoin?</a><a href="/ecosystem/books/">Books</a><a href="/ecosystem/podcasts/">Podcasts</a><a href="/ecosystem/videos/">Videos</a><a href="/ecosystem/conferences/">Conferences</a><a href="/ecosystem/privacy/">Bitcoin Privacy</a><a href="/ecosystem/spend-bitcoin/">Spend Bitcoin</a><a href="/ecosystem/store-tools/">Store Tools</a><a href="/ecosystem/dev-tools/">Dev Tools</a><a href="/ecosystem/jobs/">Bitcoin Jobs</a><a href="/ecosystem/peers/">Bitcoin Peers</a><a href="/ecosystem/promote/">Promote</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a><a href="https://www.linkedin.com/company/virtuse-exchange/?utm_source=virtuse&amp;utm_medium=footer&amp;utm_campaign=linkedin_follow" rel="noopener noreferrer" target="_blank">Follow Virtuse</a></div><div class="footer-col"><h4>Tools</h4><a href="verdict.html">Verdict <span class="soon foot-badge">Free</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Ecosystem</h4><a href="/ecosystem/">Bitcoin Ecosystem</a><a href="/ecosystem/what-is-bitcoin/">What is Bitcoin?</a><a href="/ecosystem/books/">Books</a><a href="/ecosystem/podcasts/">Podcasts</a><a href="/ecosystem/videos/">Videos</a><a href="/ecosystem/conferences/">Conferences</a><a href="/ecosystem/privacy/">Bitcoin Privacy</a><a href="/ecosystem/spend-bitcoin/">Spend Bitcoin</a><a href="/ecosystem/store-tools/">Store Tools</a><a href="/ecosystem/dev-tools/">Dev Tools</a><a href="/ecosystem/jobs/">Bitcoin Jobs</a><a href="/ecosystem/peers/">Bitcoin Peers</a><a href="/ecosystem/promote/">Promote</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p>
@@ -1631,11 +1603,11 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
   var on = root.classList.contains('anim') && 'IntersectionObserver' in window;
   if (!on) root.classList.remove('anim');
   try {
-  var GROUPS = '.shelf6, .tiles, .plans3, .plans, .problem-grid, .how-log, .ask-side, .assure-row, .tools, .promises, .proof, .feature, .cfo-panel, .ask, .calc, .footer-columns';
-  var CARDS = '.shelf6 > a, .tile, .plan, .problem-card, .tool, .promises > *, .ask-side > div, .audit-card, #buy .panel, .demo, .chat-panel, .code';
+  var GROUPS = '.shelf6, .tiles, .plans3, .plans, .problem-grid, .how-log, .ask-side, .assure-row, .tools, .promises, .proof, .feature, .ask, .calc, .footer-columns';
+  var CARDS = '.shelf6 > a, .tile, .plan, .problem-card, .tool, .promises > *, .ask-side > div, #buy .panel, .demo, .chat-panel, .code';
 
   // spotlight works with or without motion
-  document.querySelectorAll('.shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo').forEach(function (c) {
+  document.querySelectorAll('.shelf6 > a, .tile, .plan, .problem-card, .tool, #buy .panel, .demo').forEach(function (c) {
     c.classList.add('spot');
     var raf = 0, px = 0, py = 0; c.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(function () { raf = 0; var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (px - r.left) + 'px'); c.style.setProperty('--my', (py - r.top) + 'px'); }); }, { passive: true });
   });
@@ -1676,7 +1648,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     if (head) Array.prototype.slice.call(head.querySelectorAll('h2, .sec-sub, .k, .note, p.lead')).forEach(function (c, k) { c.classList.add('rv'); c.style.setProperty('--d', (k * 90) + 'ms'); });
   });
   document.querySelectorAll(GROUPS).forEach(function (g) {
-    if (g.closest('.rv') && !g.closest('.feature, .cfo-panel, .ask')) return;
+    if (g.closest('.rv') && !g.closest('.feature, .ask')) return;
     Array.prototype.slice.call(g.children).forEach(function (c, k) {
       c.classList.add('rv'); if (c.matches(CARDS)) c.classList.add('rv-card');
       c.style.setProperty('--d', (Math.min(k, 6) * 90) + 'ms');
@@ -1688,7 +1660,7 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
   });
 
   // 3. bars wait until seen
-  document.querySelectorAll('#buy .panel, .audit-card').forEach(function (c) { c.classList.add('bars-wait'); });
+  document.querySelectorAll('#buy .panel').forEach(function (c) { c.classList.add('bars-wait'); });
 
   // 4. count-ups for big figures written as text, e.g. €341
   function countUp(el) {
@@ -1712,8 +1684,6 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
       }
       el.querySelectorAll('.bars-wait').forEach(function (b) { setTimeout(function () { b.classList.remove('bars-wait'); }, 350); });
       if (el.classList.contains('bars-wait')) setTimeout(function () { el.classList.remove('bars-wait'); }, 350);
-      el.querySelectorAll('.audit-card .big').forEach(countUp);
-      if (el.matches('.audit-card')) el.querySelectorAll('.big').forEach(countUp);
     });
   }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
@@ -1770,9 +1740,27 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     document.getElementById('btcLine').setAttribute('d', d);
     document.getElementById('btcArea').setAttribute('d', d + ' L' + W + ' ' + H + ' L0 ' + H + ' Z');
     var last = c[c.length - 1], chg = (last / c[0] - 1) * 100;
-    document.getElementById('btcLast').textContent = '€' + Math.round(last).toLocaleString('en-IE');
-    var e = document.getElementById('btcChg'); e.textContent = (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%'; e.className = chg >= 0 ? 'up' : 'down';
+    var lastEl = document.getElementById('btcLast'), fmtLast = function (v) { return '€' + Math.round(v).toLocaleString('en-IE'); }, fmtChg = function (v) { return (v >= 0 ? '+' : '') + v.toFixed(1) + '%'; };
+    lastEl.textContent = fmtLast(last);
+    var e = document.getElementById('btcChg'); e.textContent = fmtChg(chg); e.className = chg >= 0 ? 'up' : 'down';
     box.hidden = false;
+    // draw-in + count-up once on screen; reduced motion keeps the final state set above
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    box.classList.add('btc-wait');
+    var io = new IntersectionObserver(function (en) {
+      if (!en[en.length - 1].isIntersecting) return;
+      io.disconnect();
+      var first = c[0], t0 = performance.now();
+      box.classList.replace('btc-wait', 'btc-draw');
+      (function f(now) {
+        var q = Math.min(1, (now - t0) / 1400), k = 1 - Math.pow(1 - q, 3);
+        lastEl.textContent = fmtLast(first + (last - first) * k);
+        e.textContent = fmtChg(chg * k);
+        if (q < 1) requestAnimationFrame(f);
+        else { lastEl.textContent = fmtLast(last); e.textContent = fmtChg(chg); }
+      })(t0);
+    }, { threshold: 0.4 });
+    io.observe(box);
   }).catch(function () {});
 })();
 // Language menu
@@ -1789,9 +1777,6 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
     var iss = (d.issues || []).filter(function (x) { return x && x.slug && x.title && !x.essay; })[0]; if (!iss) return;
     var dt = new Date(iss.date + 'T12:00:00Z');
     var when = dt.getUTCDate() + ' ' + ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][dt.getUTCMonth()] + ' ' + dt.getUTCFullYear();
-    document.getElementById('briefIssue').href = 'article.html?slug=' + encodeURIComponent(iss.slug);
-    // the static story page when it exists (the reader link stays as the fallback)
-    var sp = '/stories/' + encodeURIComponent(iss.slug) + '/'; if (sp && window.fetch) fetch(sp, { method: 'HEAD' }).then(function (r) { if (r.ok) document.getElementById('briefIssue').href = sp; }).catch(function () {});
     document.getElementById('briefMeta').textContent = 'Latest Brief · ' + when + ' · ' + (iss.read_min || 3) + ' min';
     document.getElementById('briefTitle').textContent = iss.title;
     document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
@@ -1818,33 +1803,12 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
       .then(function () { btn.disabled = false; btn.textContent = label; });
   });
 })();
-// CFO waitlist form in the CFO section -> Worker /waitlist
-(function () {
-  var form = document.getElementById('waitForm'), msg = document.getElementById('waitMsg');
-  if (!form) return;
-  var sub = form.querySelector('button[type="submit"]'), label = sub.textContent;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a valid email address.'; return; }
-    msg.textContent = ''; sub.disabled = true; sub.textContent = 'Sending...';
-    Promise.resolve().then(function () { return window.VB_API.postJson('/waitlist', { email: email, hp: hp, source: 'home_cfo', lang: document.documentElement.lang }); })
-      .then(function (r) {
-        if (r.ok) {
-          form.reset();
-          msg.textContent = "You're on the list. We'll email you once, when the fee audit opens.";
-          (window.dataLayer = window.dataLayer || []).push({ event: 'capture_submit', capture_source: 'cfo_waitlist_home' });
-        } else { msg.textContent = (r.data && r.data.error) || 'Something went wrong. Please try again.'; }
-      })
-      .catch(function () { msg.textContent = 'Network error. Please try again.'; })
-      .then(function () { sub.disabled = false; sub.textContent = label; });
-  });
-})();
-// CFO panel clicks (audit stage only)
-document.querySelectorAll('#cfo a, #buy .only-audit').forEach(function (a) {
-  a.addEventListener('click', function () { (window.dataLayer = window.dataLayer || []).push({ event: 'cfo_cta_click', cta_text: a.textContent.trim() }); });
+// Verdict CTA clicks on the homepage
+document.querySelectorAll('#verdict a, #how a[href*="verdict.html"]').forEach(function (a) {
+  a.addEventListener('click', function () { (window.dataLayer = window.dataLayer || []).push({ event: 'verdict_cta_click', cta_text: a.textContent.trim() }); });
 });
 </script>
+<script src="verdict-demo.js?v=1" defer></script>
 <script src="consultation-lazy.js?v=5" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
