@@ -2,7 +2,8 @@
    and the €14 full report, paid with Stripe Checkout. Replaced the old free-text
    10-signal Verdict on 2026-11-03 (verdict-flow.js stays only for ru/verdict.html).
 
-   Scoring: six areas, 0 to 10 each, fixed rules, no AI model. The score measures how
+   Scoring: six areas, 0 to 10 each, 60 at most; the sum is converted to 100 and rounded
+   to 5 (45 of 60 is 75). Fixed rules, no AI model. The score measures how
    ready the plan is, never whether to buy or sell. Grade and band come from the same
    thresholds: A/B (70+) Basics in place, C (55-69) A few gaps, D/E (under 55) Basics missing.
 
@@ -71,6 +72,7 @@
         worries: [['tax','Paying too much tax'],['keys','Losing my keys'],['crash','A crash wiping out my savings'],['heirs','My family not finding it'],['scams','Getting scammed'],['fees','Hidden fees'],['partner','Picking the wrong partner'],['retire','Not having enough for retirement']],
         tax_known: [['yes','Yes, I know the rule'],['roughly','Roughly'],['no','No idea yet']]
       },
+      map: { k: 'Six areas', h: ['Six areas.', 'Two groups.'], figure: 'Area map', lead: function (t, g) { return 'Your plan: ' + t + ' out of 100, grade ' + g + '.'; }, how: 'Each area is scored 0 to 10, so 60 points at most. The score is that sum converted to 100 and rounded to 5: 45 out of 60 is 75. Grade A or B (70 and up) means basics in place, C (55 to 69) a few gaps, D or E (under 55) basics missing. It measures how ready your plan is, not whether Bitcoin is a good buy.', sum: function (p, n, t) { return 'Your points: ' + p + ' = ' + n + ' out of 60, which converts and rounds to ' + t + ' out of 100.'; }, short: { size: 'Size', reserve: 'Reserve', debt: 'Debts', tax: 'Tax', custody: 'Custody', fall: 'Behaviour' } },
       areas: { size: 'Size', reserve: 'Reserve', debt: 'Debts', tax: 'Tax', custody: 'Custody', fall: 'Behaviour in a fall' },
       band: ['Basics in place', 'A few gaps', 'Basics missing'],
       who: function (n) { return n ? n + ', your' : 'Your'; },
@@ -133,6 +135,7 @@
         worries: [['tax','Že zaplatím priveľa na daniach'],['keys','Že stratím kľúče'],['crash','Že prepad zničí moje úspory'],['heirs','Že ho rodina nenájde'],['scams','Že naletím podvodníkom'],['fees','Skryté poplatky'],['partner','Že si vyberiem zlého partnera'],['retire','Že mi nebude stačiť na dôchodok']],
         tax_known: [['yes','Áno, poznám pravidlo'],['roughly','Približne'],['no','Zatiaľ netuším']]
       },
+      map: { k: 'Šesť oblastí', h: ['Šesť oblastí.', 'Dve skupiny.'], figure: 'Mapa oblastí', lead: function (t, g) { return 'Váš plán: ' + t + ' zo 100, známka ' + g + '.'; }, how: 'Každá oblasť má 0 až 10 bodov, spolu teda najviac 60. Skóre je tento súčet prepočítaný na 100 a zaokrúhlený na 5: 45 zo 60 je 75. Známka A alebo B (70 a viac) znamená, že základy máte, C (55 až 69) pár medzier, D alebo E (pod 55) chýbajúce základy. Meria, nakoľko je pripravený váš plán, nie či je Bitcoin dobrý nákup.', sum: function (p, n, t) { return 'Vaše body: ' + p + ' = ' + n + ' zo 60, po prepočte a zaokrúhlení ' + t + ' zo 100.'; }, short: { size: 'Veľkosť', reserve: 'Rezerva', debt: 'Dlhy', tax: 'Dane', custody: 'Úschova', fall: 'Správanie' } },
       areas: { size: 'Veľkosť', reserve: 'Rezerva', debt: 'Dlhy', tax: 'Dane', custody: 'Úschova', fall: 'Správanie pri poklese' },
       band: ['Základy máte', 'Pár medzier', 'Chýbajú základy'],
       who: function (n) { return n ? n + ', vaše' : 'Vaše'; },
@@ -247,7 +250,7 @@
     var scr = document.querySelector('.ml-screen[data-s="' + key + '"]'); if (!scr) return;
     scr.classList.add('on');
     $('ml').classList.toggle('wide', s === 0);
-    $('ml').classList.toggle('ml-paid', s === 9 || s === 10);
+    $('ml').classList.toggle('ml-paid', s === 8 || s === 9 || s === 10);
     if (s === 0) demoLoop(); else clearTimeout(demoLoop.t);
     if (key === 'q') { cur = s - 1; renderQ(); dl({ event: 'verdict_step', verdict_step: s }); }
     if (s === 6) load();
@@ -327,6 +330,22 @@
     ['heirs', 'records'].forEach(function (id) { if (ids.indexOf(id) < 0) ids.push(id); });
     return ids.slice(0, 3).map(function (id) { var g = S.G[id]; return [g[0], g[1](A, c), id]; });
   }
+  // The left text and the area map, same markup and classes as #signals on the page.
+  // M: strings; A: [{ short, points, weak }] in the order of the map.
+  function areaTop(M, A) {
+    var x = esc, c = [230, 200], R = 130;
+    var xy = function (k, v) { var t = (-90 + k * 60) * Math.PI / 180; return [(c[0] + R * v / 10 * Math.cos(t)).toFixed(1), (c[1] + R * v / 10 * Math.sin(t)).toFixed(1)]; };
+    var ring = function (v) { return [0, 1, 2, 3, 4, 5].map(function (k) { return xy(k, v).join(','); }).join(' '); };
+    var labels = [[230, 28, 'middle'], [366.8, 121, 'start'], [366.8, 279, 'start'], [230, 358, 'middle'], [93.2, 279, 'end'], [93.2, 121, 'end']];
+    var svgMap = '<svg viewBox="-40 -6 540 422" role="img" aria-label="' + x(M.figure + ', ' + M.caption) + '">' +
+      [2.5, 5, 7.5, 10].map(function (v) { return '<polygon class="rg" points="' + ring(v) + '"/>'; }).join('') +
+      A.map(function (a, k) { var e = xy(k, 10); return '<line class="sp" x1="230" y1="200" x2="' + e[0] + '" y2="' + e[1] + '"/>'; }).join('') +
+      '<polygon class="ar" points="' + A.map(function (a, k) { return xy(k, a.points).join(','); }).join(' ') + '"/>' +
+      A.map(function (a, k) { var e = xy(k, a.points); return '<circle class="dt' + (a.weak ? ' wk' : '') + '" cx="' + e[0] + '" cy="' + e[1] + '" r="4"/>'; }).join('') +
+      A.map(function (a, k) { var l = labels[k]; return '<text class="lb' + (a.weak ? ' wk' : '') + '" x="' + l[0] + '" y="' + l[1] + '" text-anchor="' + l[2] + '"><tspan>' + x(a.short) + '</tspan><tspan class="sc" x="' + l[0] + '" dy="15">' + a.points + '</tspan></text>'; }).join('') + '</svg>';
+    return '<div class="ml-areas-top"><div><span class="ml-k2">' + x(M.k) + '</span><h4>' + x(M.h[0]) + ' <span>' + x(M.h[1]) + '</span></h4><p class="ml-areas-lead">' + x(M.lead) + '</p><p>' + x(M.how) + '</p><p class="ml-areas-sum">' + x(M.sum) + '</p></div>' +
+      '<figure class="radar in"><figcaption><span class="eyebrow blue"><i></i>' + x(M.figure) + '</span><b>' + x(M.caption) + '</b></figcaption>' + svgMap + '</figure></div>';
+  }
   function result() {
     var c = calc(), t = c.total, gr = grade(t), sc = c.sc;
     var nm = A.name ? String(A.name).trim() : '';
@@ -335,6 +354,13 @@
     $('mlScore').textContent = t;
     $('mlBandH').textContent = band(t);
     $('mlResTop').classList.add('ready');
+    // The free area map: the same panel as in the report, without the reasons.
+    var mapIds = ['size', 'reserve', 'debt', 'tax', 'custody', 'fall'];
+    var lowest = Math.min.apply(null, mapIds.map(function (k) { return sc[k]; }));
+    var weakId = lowest < 10 ? mapIds.filter(function (k) { return sc[k] === lowest; })[0] : '';
+    var ptSum = mapIds.reduce(function (n, k) { return n + sc[k]; }, 0);
+    var mapEl = $('mlFreeMap');
+    if (mapEl) mapEl.innerHTML = areaTop({ k: S.map.k, h: S.map.h, figure: S.map.figure, caption: t + '/100', lead: S.map.lead(t, gr), how: S.map.how, sum: S.map.sum(mapIds.map(function (k) { return sc[k]; }).join(' + '), ptSum, t) }, mapIds.map(function (k) { return { short: S.map.short[k], points: sc[k], weak: k === weakId }; }));
     var g = gaps(c), ul = $('mlGaps');
     ul.innerHTML = ''; g.forEach(function (x) { var e = document.createElement('li'); e.innerHTML = '<b></b><span></span>'; e.children[0].textContent = x[0]; e.children[1].textContent = x[1]; ul.appendChild(e); });
     $('mlGap1').textContent = S.gap1 + g[0][0].charAt(0).toLowerCase() + g[0][0].slice(1);
@@ -498,31 +524,21 @@
     var box = function (k, t, body, acc) { return '<div class="ml-box acc-' + acc + '"><span class="ml-k2">' + x(k) + '</span>' + (t ? '<h4>' + x(t) + '</h4>' : '') + body + '</div>'; };
     var paras = function (list) { return list.map(function (t) { return '<p>' + x(t) + '</p>'; }).join(''); };
     var dlBtn = function (cls) { return '<div class="ml-rep-dl"><button class="' + cls + '" type="button" data-pdf>' + x(r.download) + '</button><p class="ml-fine ml-pdf-msg" aria-live="polite"></p></div>'; };
-    var kv = function (rows) { return rows.length ? '<table class="ml-table ml-kv"><tbody>' + rows.map(function (t) { return '<tr' + (t[2] ? ' class="strong"' : '') + '><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
+    var kv = function (rows) { return rows.length ? '<table class="ml-table ml-kv"><tbody>' + rows.map(function (t) { return '<tr' + (t[2] ? ' class="strong"' : '') + '><td>' + x(t[0]) + (t[3] ? '<small class="ml-calc">' + x(t[3]) + '</small>' : '') + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
     var heroVals = function (b) {
       return '<span class="ml-k2">' + x(b.k) + '</span><div class="ml-plan-vals">' + b.vals.map(function (v) { return '<div><small>' + x(v[0]) + '</small><b>' + x(v[1]) + '</b></div>'; }).join('') + '</div>' + (b.sub ? '<p>' + x(b.sub) + '</p>' : '');
     };
     var planHero = function (p) {
-      return p ? '<div class="ml-plan-hero">' + kv(p.rows.concat([[p.label, p.value, true]])) + (p.scenario ? heroVals(p.scenario) : '') + '</div>' : '';
+      return p ? '<div class="ml-plan-hero"><div class="ml-plan-top"><small>' + x(p.label) + '</small><b>' + x(p.value) + '</b></div>' + kv(p.rows) + (p.scenario ? '<div class="ml-plan-scn">' + heroVals(p.scenario) + '</div>' : '') + '</div>' : '';
     };
     // The area map and the two groups, same markup and classes as #signals on the page.
     var areaSection = function () {
-      var M = r.areaMap, A = r.areas, c = [230, 200], R = 130;
-      var xy = function (k, v) { var t = (-90 + k * 60) * Math.PI / 180; return [(c[0] + R * v / 10 * Math.cos(t)).toFixed(1), (c[1] + R * v / 10 * Math.sin(t)).toFixed(1)]; };
-      var ring = function (v) { return [0, 1, 2, 3, 4, 5].map(function (k) { return xy(k, v).join(','); }).join(' '); };
-      var labels = [[230, 28, 'middle'], [366.8, 121, 'start'], [366.8, 279, 'start'], [230, 358, 'middle'], [93.2, 279, 'end'], [93.2, 121, 'end']];
-      var svgMap = '<svg viewBox="-40 -6 540 422" role="img" aria-label="' + x(M.figure + ', ' + M.caption) + '">' +
-        [2.5, 5, 7.5, 10].map(function (v) { return '<polygon class="rg" points="' + ring(v) + '"/>'; }).join('') +
-        A.map(function (a, k) { var e = xy(k, 10); return '<line class="sp" x1="230" y1="200" x2="' + e[0] + '" y2="' + e[1] + '"/>'; }).join('') +
-        '<polygon class="ar" points="' + A.map(function (a, k) { return xy(k, a.points).join(','); }).join(' ') + '"/>' +
-        A.map(function (a, k) { var e = xy(k, a.points); return '<circle class="dt' + (a.weak ? ' wk' : '') + '" cx="' + e[0] + '" cy="' + e[1] + '" r="4"/>'; }).join('') +
-        A.map(function (a, k) { var l = labels[k]; return '<text class="lb' + (a.weak ? ' wk' : '') + '" x="' + l[0] + '" y="' + l[1] + '" text-anchor="' + l[2] + '"><tspan>' + x(a.short) + '</tspan><tspan class="sc" x="' + l[0] + '" dy="15">' + a.points + '</tspan></text>'; }).join('') + '</svg>';
+      var M = r.areaMap, A = r.areas;
       var row = function (id) {
         var a = A.filter(function (z) { return z.id === id; })[0];
-        return '<li class="sig-row' + (a.weak ? ' weak' : '') + '"><div><b>' + x(a.title) + '</b><span>' + x(a.q) + '</span><span class="why">' + x(a.why) + '</span></div><div class="sig-val"><i><em style="width:' + a.points * 10 + '%"></em></i><b>' + a.points + '</b></div></li>';
+        return '<li class="sig-row' + (a.weak ? ' weak' : '') + '"><div><b>' + x(a.title) + '</b><span>' + x(a.q) + '</span><span class="why">' + x(a.why) + '</span></div><div class="sig-val"><i><em style="width:' + a.points * 10 + '%"></em></i><b>' + a.points + '<small>/10</small></b></div></li>';
       };
-      return '<div class="ml-box acc-blue ml-areas vl"><div class="ml-areas-top"><div><span class="ml-k2">' + x(M.k) + '</span><h4>' + x(M.h[0]) + ' <span>' + x(M.h[1]) + '</span></h4><p class="ml-areas-lead">' + x(M.lead) + '</p><p>' + x(M.how) + '</p></div>' +
-        '<figure class="radar in"><figcaption><span class="eyebrow blue"><i></i>' + x(M.figure) + '</span><b>' + x(M.caption) + '</b></figcaption>' + svgMap + '</figure></div>' +
+      return '<div class="ml-box acc-blue ml-areas vl">' + areaTop(M, A) +
         '<div class="sig-groups ml-g2">' + M.groups.map(function (g) { return '<div class="sig-group" style="--c: var(--' + g.color + ')"><div class="k">' + x(g.k) + '</div><h3>' + x(g.h) + '</h3><ul>' + g.ids.map(row).join('') + '</ul></div>'; }).join('') + '</div></div>';
     };
     var partnerCard = function (p) {
@@ -538,11 +554,22 @@
     };
     var note = function (t) { return '<p style="font-size:13px;color:var(--dim);margin-top:16px">' + x(t) + '</p>'; };
     var plain = function (rows) { return rows.length ? '<table class="ml-table"><tbody>' + rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
+    var bandsTbl = function (B) {
+      return '<table class="ml-table ml-bands"><thead><tr>' + B.head.map(function (c) { return '<th>' + x(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+        B.rows.map(function (row) { return '<tr>' + row.map(function (c) { return '<td>' + x(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody><tfoot><tr>' + B.foot.map(function (c) { return '<td>' + x(c) + '</td>'; }).join('') + '</tr></tfoot></table>';
+    };
     var taxEx = function (e) {
       if (!e) return '';
-      var side = (e.hero ? '<div class="ml-plan-hero">' + heroVals(e.hero) + '</div>' : '') + (e.text ? '<p style="margin-top:14px">' + x(e.text) + '</p>' : '') + (e.rows.length ? tbl(e.head, e.rows) : '') +
-        e.dates.map(function (t) { return '<p style="margin-top:14px">' + x(t) + '</p>'; }).join('') + (e.note ? note(e.note) : '');
-      return '<h5 class="ml-rep-h5">' + x(e.title || '') + '</h5>' + (e.kv.length ? '<div class="ml-retire"><div>' + kv(e.kv) + '</div><div>' + side + '</div></div>' : side);
+      var hero = e.hero ? '<div class="ml-plan-hero">' + heroVals(e.hero) + (e.text ? '<p>' + x(e.text) + '</p>' : '') + '</div>' : (e.text ? '<p style="margin-top:14px">' + x(e.text) + '</p>' : '');
+      var range = e.rows.length ? tbl(e.head, e.rows) : '';
+      var tail = e.dates.map(function (t) { return '<p style="margin-top:14px">' + x(t) + '</p>'; }).join('') + (e.note ? note(e.note) : '');
+      var title = '<h5 class="ml-rep-h5">' + x(e.title || '') + '</h5>';
+      if (!e.kv.length) return title + hero + range + tail;
+      // The trail reads sale, cost, gain; tax by band; levy, total, what is left. The result sits beside it.
+      var cells = e.bands
+        ? '<div>' + kv(e.kv) + '</div><div>' + bandsTbl(e.bands) + '</div><div>' + kv(e.after) + '</div><div>' + hero + '</div>'
+        : '<div>' + kv(e.kv) + kv(e.after) + '</div><div>' + hero + range + '</div>';
+      return title + '<div class="ml-retire ml-tax-grid">' + cells + '</div>' + tail;
     };
     var docsHtml = function (D) {
       return '<p>' + x(D.pdfNote) + '</p>' +
@@ -555,23 +582,23 @@
       '<h2 class="ml-rep-h">' + x(r.title) + '</h2>' +
       '<div class="ml-box ml-nums" style="margin-top:30px">' + r.nums.map(function (n) { return '<div><small>' + x(n[0]) + '</small><b>' + x(n[1]) + '</b></div>'; }).join('') + '</div>' +
       '<div class="ml-sent-wrap"><span class="ml-sent">' + x(r.sent) + '</span></div>' + dlBtn('ml-big orange') +
-      '<div class="ml-score-row"><div><div class="n">' + r.score + '<small>/100</small></div><div class="lbl">' + x(r.gradeLine) + '</div></div><div><div class="ml-scale"><span>' + r.scale.map(x).join('</span><span>') + '</span></div><div class="ml-track"><i style="width:' + r.score + '%"></i></div></div></div>' +
+      '<div class="ml-score-row"><div><div class="n">' + r.score + '<small>/100</small></div><div class="lbl">' + x(r.gradeLine) + '</div></div><div><div class="ml-scale">' + r.scale.map(function (t, i) { return '<span' + ((r.score >= 70 ? 2 : r.score >= 55 ? 1 : 0) === i ? ' class="on"' : '') + '>' + x(t) + '<small>' + x(r.scaleRange[i]) + '</small></span>'; }).join('') + '</div><div class="ml-track"><i style="width:' + r.score + '%"></i></div></div></div>' +
       '<div style="text-align:center"><span class="ml-pill">' + x(r.pill) + '</span></div>' +
       '<div class="ml-box acc-blue" style="margin-top:44px"><span class="ml-k2">' + x(h.summaryK) + '</span>' + paras(r.summary) + '</div>' +
       areaSection() +
       (r.worth ? box(r.worth.k, r.worth.h, kv(r.worth.rows) + (r.worth.note ? note(r.worth.note) : ''), 'teal') : '') +
       box(h.fallK, h.fall, paras(r.fall) + (r.fallTable ? tbl(r.fallTable.head, r.fallTable.rows) + note(r.fallTable.note) : ''), 'pink') +
       box(r.reserveBox.k, r.reserveBox.h, '<p>' + x(r.reserveBox.text) + '</p>', 'green') +
-      box(r.retireBox.k, r.retireBox.h, '<div class="ml-retire"><div class="ml-retire-l">' + kv(r.retireBox.rows) + '<div class="ml-retire-note"><p>' + x(r.retireBox.text) + '</p>' + (r.retireBox.note ? note(r.retireBox.note) : '') + '</div></div>' + planHero(r.retireBox.plan) + '</div>', 'orange') +
-      box(h.custodyK, h.custody, tbl(r.custody.head, r.custody.rows) + '<p style="margin-top:16px">' + x(r.custody.yours) + '</p>', 'purple') +
+      box(r.retireBox.k, r.retireBox.h, '<div class="ml-retire"><div class="ml-retire-l">' + kv(r.retireBox.rows) + (r.retireBox.stats ? '<div class="ml-retire-stats">' + r.retireBox.stats.map(function (t) { return '<div><small>' + x(t[0]) + '</small><b>' + x(t[1]) + '</b></div>'; }).join('') + '</div>' : '<p>' + x(r.retireBox.text) + '</p>') + (r.retireBox.note ? note(r.retireBox.note) : '') + '</div>' + planHero(r.retireBox.plan) + '</div>', 'orange') +
+      box(h.custodyK, h.custody, '<p style="margin-bottom:16px">' + x(r.custody.yours) + '</p>' + tbl(r.custody.head, r.custody.rows), 'purple') +
       box(h.taxK, h.tax, (r.tax.text ? '<p>' + x(r.tax.text) + '</p>' : '') + (r.tax.rows.length ? '<table class="ml-table"><tbody>' + r.tax.rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : '') + (r.tax.note ? note(r.tax.note) : '') + taxEx(r.taxExample), 'yellow') +
-      (r.fees ? box(r.fees.k, r.fees.h, tbl(r.fees.head, r.fees.rows) + note(r.fees.note), 'indigo') : '') +
+      (r.fees ? box(r.fees.k, r.fees.h, '<div class="ml-table-scroll">' + tbl(r.fees.head, r.fees.rows) + '</div>' + note(r.fees.note), 'indigo') : '') +
       box(h.bothK, h.both, '<div class="ml-cols"><div><div class="ml-colh r">' + x(h.wrong) + '</div>' + pts(r.risks) + '</div><div><div class="ml-colh g">' + x(h.solid) + '</div>' + (r.solid.length ? pts(r.solid) : '<p>' + x(r.solidNone) + '</p>') + '</div></div>', 'pink') +
       box(h.planK, h.plan, '<ul class="ml-steps">' + r.steps.map(function (s, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(s.title) + '</b><span>' + x(s.text) + '</span>' + (s.tool ? '<a class="ml-step-tool" href="' + x(s.tool.href) + '">' + x(s.tool.name) + ' →</a>' : '') + '</div></li>'; }).join('') + '</ul>', 'green') +
       box(r.partners.k, r.partners.h, '<p>' + x(r.partners.intro) + '</p>' + r.partners.groups.map(partnerGroup).join(''), 'blue') +
       box(r.docs.k, r.docs.h, docsHtml(r.docs), 'purple') +
       box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + x(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>', 'teal') +
-      dlBtn('ml-big orange') + '<p class="ml-legal">' + x(r.legal) + '</p>';
+      dlBtn('ml-big orange wide') + '<p class="ml-legal">' + x(r.legal) + '</p>';
   }
   // The same PDF as in the email, from the Worker, while the report is open.
   function downloadPdf(btn, sid) {
