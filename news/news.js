@@ -18,7 +18,7 @@
     }));
   }
   /* Fallback only: the featured card follows the newest issue in news/issues.json. */
-  var FEATURED_SLUG = 'a-billion-out-bitcoin-holds-80k';
+  var FEATURED_SLUG = 'four-green-days-one-bad-night';
   /* The newest issue from issues.json; a cover hosted on this site (not blog.virtuse.com) is kept
      as the featured cover, the WordPress featured image does not replace it. */
   var LATEST_ISSUE = null;
@@ -73,19 +73,14 @@
     if (isNaN(d.getTime())) return '';
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  function articleUrl(slug) {
-    return 'article.html?slug=' + encodeURIComponent(slug);
-  }
-  /* Edition links go straight to the static story page /stories/<slug>/ (no redirect hop).
-     A link starts on article.html and is switched once a HEAD request confirms the story
-     page exists here (production sends a missing path to the blog with a 301, so a
-     redirected answer counts as missing). Every such link carries data-issue-slug. */
+  /* Edition links go straight to /stories/<slug>/. A missing story page falls back to the
+     stories hub (the server 301s article.html?slug= there too). data-issue-slug marks them. */
   var STORY = {};
   function storyPath(slug) {
     return '/stories/' + encodeURIComponent(slug) + '/';
   }
   function issueLink(slug) {
-    return STORY[slug] === true ? storyPath(slug) : articleUrl(slug);
+    return storyPath(slug);
   }
   function linkStories() {
     var links = document.querySelectorAll('a[data-issue-slug]');
@@ -94,18 +89,18 @@
       var slug = a.getAttribute('data-issue-slug');
       if (!slug || seen[slug]) return;
       seen[slug] = 1;
-      var apply = function () {
+      var apply = function (href) {
         [].forEach.call(document.querySelectorAll('a[data-issue-slug]'), function (x) {
-          if (x.getAttribute('data-issue-slug') === slug) x.setAttribute('href', storyPath(slug));
+          if (x.getAttribute('data-issue-slug') === slug) x.setAttribute('href', href);
         });
       };
-      if (STORY[slug] === true) { apply(); return; }
-      if (STORY[slug] === false || STORY[slug] === 'pending') return;
+      apply(storyPath(slug));
+      if (STORY[slug] === true || STORY[slug] === false || STORY[slug] === 'pending') return;
       STORY[slug] = 'pending';
       fetch(storyPath(slug), { method: 'HEAD' }).then(function (r) {
         STORY[slug] = !!(r.ok && !r.redirected);
-        if (STORY[slug]) apply();
-      }).catch(function () { STORY[slug] = false; });
+        if (!STORY[slug]) apply('/stories/');
+      }).catch(function () { STORY[slug] = false; apply('/stories/'); });
     });
   }
   function setText(id, v) {
@@ -852,10 +847,19 @@
   /* The static HTML card is a fallback. If issues.json has a newer issue, rewrite the card from it
      (eyebrow date, cover, headline, facts, links), so a new issue needs only a JSON entry.
      The headline stays the card's H2 (.featured-title); the page H1 is "Virtuse Brief". */
+  function setBriefShare(path) {
+    var a = document.getElementById('briefShareLinkedIn');
+    if (!a || !path) return;
+    if (path.charAt(0) !== '/') path = '/' + path;
+    var page = 'https://virtuse.com' + path;
+    page += (page.indexOf('?') === -1 ? '?' : '&') + 'utm_source=linkedin&utm_medium=social&utm_campaign=brief_share';
+    a.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(page);
+  }
   function paintFeatured(issue) {
     var card = $('featured');
     if (!card || !issue) return;
     var href = issueLink(issue.slug);
+    setBriefShare(href);
     var head = card.querySelector('.featured-title a');
     if (head && head.getAttribute('data-issue-slug') === issue.slug) return;
 
@@ -888,7 +892,7 @@
       });
       list.hidden = !facts.length;
     }
-    var read = card.querySelector('.featured-brief-actions .btn');
+    var read = card.querySelector('.featured-brief-actions .btn-quiet');
     if (read) {
       read.setAttribute('href', href);
       markIssue(read, issue.slug);
