@@ -8,10 +8,13 @@
 
 export const RESULT_TTL = 60 * 60 * 24;
 export const PAID_TTL = 60 * 60 * 24 * 30;
-export const PI_TTL = 60 * 60 * 24 * 90;
+export const PI_TTL = PAID_TTL; // the order record and its payment link go together
 export const REPORT_WINDOW_MS = 30 * 60 * 1000;
 export const SIGNATURE_TOLERANCE_S = 300;
 export const PRODUCT = 'verdict_report';
+// The wording of terms 5a, the withdrawal page and privacy section 9 at the time of a purchase:
+// the commit history holds each version, the Stripe metadata and the order record hold this date.
+export const TERMS_VERSION = '2026-11-04';
 export const RID_RE = /^[a-f0-9]{32}$/;
 export const SESSION_RE = /^cs_(test|live)_[A-Za-z0-9]{10,200}$/;
 
@@ -42,7 +45,7 @@ export function checkoutParams(env, origin, rid, page, extra = {}) {
     success_url: `${pageUrl}?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${pageUrl}?canceled=1`,
     client_reference_id: rid,
-    metadata: { product: PRODUCT, rid, lang: page },
+    metadata: { product: PRODUCT, rid, lang: page, terms_version: TERMS_VERSION },
     locale: page,
     automatic_tax: env.STRIPE_AUTOMATIC_TAX === '1' ? { enabled: true } : undefined,
     invoice_creation: env.STRIPE_INVOICE === '1' ? { enabled: true } : undefined,
@@ -54,6 +57,7 @@ export function checkoutParams(env, origin, rid, page, extra = {}) {
 export function paidRecord(s, old, now) {
   return {
     rid: s.metadata.rid,
+    terms: s.metadata.terms_version || null,
     status: old && old.status === 'refunded' ? 'refunded' : 'paid',
     livemode: !!s.livemode,
     amount: s.amount_total,
@@ -71,8 +75,8 @@ export const LITE_SESSION_S = 2 * 60 * 60;
 export const LITE_CHECKOUT_PER_HOUR = 20;
 
 export const LITE_TERMS = {
-  en: 'One payment, no subscription. Your report opens right after payment and a PDF comes by email. 30-day refund, no questions asked; your 14-day EU right of withdrawal applies on top. Terms: virtuse.com/terms-and-conditions.html',
-  sk: 'Jedna platba, bez predplatného. Report sa otvorí hneď po platbe a PDF príde e-mailom. Vrátenie peňazí do 30 dní bez otázok; vaše 14-dňové právo na odstúpenie v EÚ platí navyše. Podmienky: virtuse.com/sk/terms-and-conditions.html',
+  en: 'One payment, no subscription. Your report opens right after payment and a PDF comes by email. 30-day refund, no questions asked; your 14-day EU right of withdrawal applies on top, even after you open the report. Withdrawal: virtuse.com/withdrawal.html. Terms: virtuse.com/terms-and-conditions.html',
+  sk: 'Jedna platba, bez predplatného. Report sa otvorí hneď po platbe a PDF príde e-mailom. Vrátenie peňazí do 30 dní bez otázok; vaše 14-dňové právo na odstúpenie v EÚ platí navyše, aj po otvorení reportu. Odstúpenie: virtuse.com/sk/withdrawal.html. Podmienky: virtuse.com/sk/terms-and-conditions.html',
 };
 
 export const PAY_TEXT = {

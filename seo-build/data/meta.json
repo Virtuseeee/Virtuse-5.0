@@ -415,13 +415,13 @@
       "gainTax": "15 % Einkommensteuer auf Krypto-Einkünfte",
       "exemption": "Keine Befreiung nach Haltedauer; Kleintransaktionen bis je 10 % des Mindestlohns sind steuerfrei (insgesamt bis zu einem Mindestlohn pro Jahr)",
       "filing": "Jährliche Einkommensteuererklärung",
-      "note": "Besteuert wird nur der Tausch in Geld, Waren oder Dienstleistungen, Krypto-zu-Krypto-Tausch nicht. Dokumentierte Anschaffungskosten sind abzugsfähig, und ein Verlust kann mit Gewinnen desselben Jahres und der zwei Vorjahre verrechnet werden."
+      "note": "Besteuert wird nur der Tausch in Geld, Waren oder Dienstleistungen, Krypto-zu-Krypto-Tausch nicht. Dokumentierte Anschaffungskosten sind abzugsfähig, und ein in der Steuererklärung ausgewiesener Verlust kann mit Krypto-Gewinnen desselben Jahres und jedes früheren Jahres verrechnet werden; die frühere Zweijahresgrenze wurde ab 2026 abgeschafft."
     },
     "si": {
       "gainTax": "Keine Steuer auf private Veräußerungsgewinne (gewerblicher Handel ist steuerpflichtig)",
       "exemption": "Private Gewinne sind steuerfrei",
       "filing": "Für private Gewinne ist keine Erklärung nötig; für Mining-Einkünfte ist binnen 15 Tagen eine Vorauszahlungserklärung abzugeben; gewerbliche Einkünfte gehören in die betriebliche Steuererklärung",
-      "note": "Mining gilt als sonstiges Einkommen. Häufiger Handel kann als gewerbliche Tätigkeit gelten. Eine Steuer von 25 % auf Krypto-Gewinne wurde 2025 vorgeschlagen, war aber bis Oktober 2026 nicht beschlossen."
+      "note": "Mining gilt als sonstiges Einkommen. Häufiger Handel kann als gewerbliche Tätigkeit gelten. Eine Steuer von 25 % auf Krypto-Gewinne wurde 2025 vorgeschlagen, vor der zweiten Lesung jedoch zurückgezogen, und der Entwurf ist mit den Wahlen 2026 verfallen."
     },
     "hr": {
       "gainTax": "12 % auf Krypto-Gewinne (seit 2024)",
@@ -551,13 +551,13 @@
       "gainTax": "15 % daň z príjmov z kryptoaktív",
       "exemption": "Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)",
       "filing": "Ročné priznanie k dani z príjmov fyzickej osoby",
-      "note": "Zdaňuje sa len výmena za peniaze, tovar alebo služby; výmena krypto za krypto nie. Preukázateľné obstarávacie náklady sa dajú odpočítať a stratu možno započítať so ziskami z toho istého roka a dvoch predchádzajúcich rokov."
+      "note": "Zdaňuje sa len výmena za peniaze, tovar alebo služby; výmena krypto za krypto nie. Preukázateľné obstarávacie náklady sa dajú odpočítať a stratu vykázanú v priznaní možno započítať so ziskami z kryptoaktív z toho istého roka a z ktoréhokoľvek skoršieho roka; bývalý dvojročný limit od roku 2026 zrušili."
     },
     "si": {
       "gainTax": "Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)",
       "exemption": "Súkromné zisky sú bez dane",
       "filing": "Pri súkromných ziskoch žiadne; príjem z ťažby vyžaduje priznanie k preddavku dane do 15 dní; podnikateľské príjmy patria do daňového priznania z podnikania",
-      "note": "Ťažba sa zdaňuje ako ostatný príjem. Časté obchodovanie môže byť podnikaním. Daň 25 % zo ziskov z kryptoaktív bola navrhnutá v roku 2025, k októbru 2026 však nebola prijatá."
+      "note": "Ťažba sa zdaňuje ako ostatný príjem. Časté obchodovanie môže byť podnikaním. Daň 25 % zo ziskov z kryptoaktív bola navrhnutá v roku 2025, pred druhým čítaním ju však stiahli a s voľbami v roku 2026 návrh zanikol."
     },
     "hr": {
       "gainTax": "12 % zo ziskov z kryptomien (od roku 2024)",
@@ -683,13 +683,13 @@
       "gainTax": "15 % daň z příjmů z kryptoaktiv",
       "exemption": "Bez osvobození podle doby držení; drobné transakce do 10 % minimální mzdy jsou bez daně (celkem nejvýše jedna minimální mzda ročně)",
       "filing": "Roční přiznání k dani z příjmů fyzických osob",
-      "note": "Daní se jen směna za peníze, zboží nebo služby; směna kryptoměny za kryptoměnu ne. Doložené pořizovací náklady lze odečíst a ztrátu lze započíst proti ziskům téhož roku a dvou předchozích let."
+      "note": "Daní se jen směna za peníze, zboží nebo služby; směna kryptoměny za kryptoměnu ne. Doložené pořizovací náklady lze odečíst a ztrátu vykázanou v přiznání lze započíst proti ziskům z kryptoaktiv téhož roku i kteréhokoli dřívějšího roku; dřívější dvouletý limit byl od roku 2026 zrušen."
     },
     "si": {
       "gainTax": "Soukromé zisky z prodeje se nedaní (podnikatelské obchodování ano)",
       "exemption": "Soukromé zisky jsou bez daně",
       "filing": "U soukromých zisků žádné; příjem z těžby vyžaduje přiznání k záloze na daň do 15 dnů; podnikatelské příjmy patří do daňového přiznání z podnikání",
-      "note": "Těžba se daní jako ostatní příjem. Časté obchodování může být podnikáním. Daň 25 % ze zisků z kryptoaktiv byla navržena v roce 2025, k říjnu 2026 však nebyla přijata."
+      "note": "Těžba se daní jako ostatní příjem. Časté obchodování může být podnikáním. Daň 25 % ze zisků z kryptoaktiv byla navržena v roce 2025, před druhým čtením však byla stažena a s volbami v roce 2026 návrh zanikl."
     },
     "hr": {
       "gainTax": "12 % ze zisků z kryptoměn (od roku 2024)",
@@ -827,13 +827,13 @@
       "gainTax": "15% podatku dochodowego od dochodów z kryptoaktywów",
       "exemption": "Brak zwolnienia za okres posiadania; drobne transakcje, każda do 10% płacy minimalnej, są zwolnione (łącznie do jednej płacy minimalnej rocznie)",
       "filing": "Roczne zeznanie w podatku dochodowym od osób fizycznych",
-      "note": "Opodatkowana jest tylko wymiana na pieniądze, towary lub usługi; wymiana krypto na krypto nie. Udokumentowane koszty nabycia można odliczyć, a stratę rozliczyć z zyskami z tego samego roku i dwóch poprzednich lat."
+      "note": "Opodatkowana jest tylko wymiana na pieniądze, towary lub usługi; wymiana krypto na krypto nie. Udokumentowane koszty nabycia można odliczyć, a stratę wykazaną w zeznaniu rozliczyć z zyskami z kryptoaktywów z tego samego roku i z każdego wcześniejszego roku; dawny dwuletni limit zniesiono od 2026 roku."
     },
     "si": {
       "gainTax": "Brak podatku od prywatnych zysków ze zbycia (handel w ramach działalności jest opodatkowany)",
       "exemption": "Prywatne zyski są wolne od podatku",
       "filing": "Nie dotyczy prywatnych zysków; dochód z kopania wymaga deklaracji zaliczki na podatek w ciągu 15 dni; dochód z działalności wykazuje się w zeznaniu z działalności",
-      "note": "Kopanie jest opodatkowane jako inny dochód. Częsty handel może zostać uznany za działalność. W 2025 roku zaproponowano 25% podatek od zysków z kryptoaktywów, ale do października 2026 nie został uchwalony."
+      "note": "Kopanie jest opodatkowane jako inny dochód. Częsty handel może zostać uznany za działalność. W 2025 roku zaproponowano 25% podatek od zysków z kryptoaktywów, ale wycofano go przed drugim czytaniem, a projekt wygasł wraz z wyborami w 2026 roku."
     },
     "hr": {
       "gainTax": "12% od zysków z kryptowalut (od 2024 r.)",
@@ -956,13 +956,13 @@
       "gainTax": "15% személyi jövedelemadó a kriptojövedelemre",
       "exemption": "Nincs tartási idő utáni mentesség; a minimálbér 10%-át egyenként meg nem haladó kisértékű ügyletek adómentesek (évente összesen legfeljebb egy havi minimálbérig)",
       "filing": "Éves személyijövedelemadó-bevallás",
-      "note": "Csak a pénzre, árura vagy szolgáltatásra váltás adóköteles, a kripto-kripto csere nem. A dokumentált beszerzési költségek levonhatók, a veszteség pedig adókiegyenlítéssel beszámítható az adott év és az azt megelőző két év nyereségébe."
+      "note": "Csak a pénzre, árura vagy szolgáltatásra váltás adóköteles, a kripto-kripto csere nem. A dokumentált beszerzési költségek levonhatók, a bevallásban feltüntetett veszteség pedig adókiegyenlítéssel beszámítható az adott év és bármely korábbi év kriptonyereségébe; a korábbi kétéves korlátot 2026-tól megszüntették."
     },
     "si": {
       "gainTax": "A magánszemélyek elidegenítési nyeresége nem adózik (az üzletszerű kereskedés igen)",
       "exemption": "A magánnyereség adómentes",
       "filing": "Magánnyereségnél nincs; a bányászati jövedelemről 15 napon belül adóelőleg-bevallást kell beadni; az üzleti jövedelem a vállalkozási adóbevallásba kerül",
-      "note": "A bányászat egyéb jövedelemként adózik. A gyakori kereskedés üzleti tevékenységnek minősülhet. 2025-ben javasoltak egy 25%-os adót a kriptonyereségre, de 2026 októberéig nem fogadták el."
+      "note": "A bányászat egyéb jövedelemként adózik. A gyakori kereskedés üzleti tevékenységnek minősülhet. 2025-ben javasoltak egy 25%-os adót a kriptonyereségre, de a második olvasat előtt visszavonták, és a javaslat a 2026-os választásokkal megszűnt."
     },
     "hr": {
       "gainTax": "12% a kriptonyereségre (2024 óta)",
@@ -1100,13 +1100,13 @@
       "gainTax": "15% податку на доходи фізичних осіб від криптовалют",
       "exemption": "Без звільнення за строк володіння; дрібні операції, кожна з яких не перевищує 10% мінімальної зарплати, звільнені (загалом до однієї мінімальної зарплати на рік)",
       "filing": "Щорічна декларація з податку на доходи фізичних осіб",
-      "note": "Оподатковується лише обмін на гроші, товари чи послуги; обмін криптовалюти на криптовалюту ні. Задокументовані витрати на придбання можна відрахувати, а збиток зарахувати проти прибутку того самого року та двох попередніх років."
+      "note": "Оподатковується лише обмін на гроші, товари чи послуги; обмін криптовалюти на криптовалюту ні. Задокументовані витрати на придбання можна відрахувати, а збиток, зазначений у декларації, зарахувати проти прибутку від криптоактивів того самого року та будь-якого попереднього року; колишній дворічний ліміт скасовано з 2026 року."
     },
     "si": {
       "gainTax": "Приватний прибуток від продажу не оподатковується (підприємницька торгівля оподатковується)",
       "exemption": "Приватний прибуток звільнений від податку",
       "filing": "Для приватного прибутку декларація не потрібна; дохід від майнінгу потребує декларації про авансовий податок протягом 15 днів; підприємницький дохід зазначається в декларації підприємця",
-      "note": "Майнінг оподатковується як інший дохід. Часта торгівля може вважатися підприємництвом. У 2025 році запропонували податок 25% на прибуток від криптовалют, але станом на жовтень 2026 року його не ухвалили."
+      "note": "Майнінг оподатковується як інший дохід. Часта торгівля може вважатися підприємництвом. У 2025 році запропонували податок 25% на прибуток від криптовалют, але перед другим читанням його відкликали, а проєкт втратив актуальність із виборами 2026 року."
     },
     "hr": {
       "gainTax": "12% з криптоприбутку (з 2024 року)",
@@ -1244,13 +1244,13 @@
       "gainTax": "Налог на доходы физических лиц 15% с дохода от криптовалют",
       "exemption": "Без освобождения по сроку владения; мелкие операции до 10% минимальной зарплаты каждая освобождены (в сумме до одной минимальной зарплаты в год)",
       "filing": "Ежегодная декларация по налогу на доходы физических лиц",
-      "note": "Облагается только обмен на деньги, товары или услуги; обмен криптовалюты на криптовалюту нет. Документально подтверждённые расходы на приобретение можно вычесть, а убыток зачесть против прибыли того же года и двух предыдущих лет."
+      "note": "Облагается только обмен на деньги, товары или услуги; обмен криптовалюты на криптовалюту нет. Документально подтверждённые расходы на приобретение можно вычесть, а убыток, указанный в декларации, зачесть против прибыли от криптоактивов того же года и любого предыдущего года; прежний двухлетний лимит отменён с 2026 года."
     },
     "si": {
       "gainTax": "Частная прибыль от продажи не облагается (предпринимательская торговля облагается)",
       "exemption": "Частная прибыль освобождена от налога",
       "filing": "Для частной прибыли не требуется; доход от майнинга требует декларации об авансовом налоге в течение 15 дней; предпринимательский доход указывается в декларации по предпринимательской деятельности",
-      "note": "Майнинг облагается как прочий доход. Частая торговля может считаться предпринимательством. В 2025 году был предложен налог 25% на прибыль от криптовалют, но по состоянию на октябрь 2026 года он не принят."
+      "note": "Майнинг облагается как прочий доход. Частая торговля может считаться предпринимательством. В 2025 году был предложен налог 25% на прибыль от криптовалют, но перед вторым чтением его отозвали, а проект утратил актуальность с выборами 2026 года."
     },
     "hr": {
       "gainTax": "12% с криптоприбыли (с 2024 года)",
@@ -1388,13 +1388,13 @@
       "gainTax": "Impôt sur le revenu de 15 % sur les revenus crypto",
       "exemption": "Aucune exonération liée à la durée de détention ; les petites transactions, chacune jusqu'à 10 % du salaire minimum, sont exonérées (au total jusqu'à un salaire minimum par an)",
       "filing": "Déclaration annuelle d'impôt sur le revenu",
-      "note": "Seuls les échanges contre de la monnaie, des biens ou des services sont imposés ; les échanges crypto contre crypto ne le sont pas. Les coûts d'acquisition documentés sont déductibles, et une perte peut être imputée sur les gains de la même année et des deux années précédentes."
+      "note": "Seuls les échanges contre de la monnaie, des biens ou des services sont imposés ; les échanges crypto contre crypto ne le sont pas. Les coûts d'acquisition documentés sont déductibles, et une perte déclarée peut être imputée sur les gains crypto de la même année et de toute année antérieure ; l'ancienne limite de deux ans a été supprimée à partir de 2026."
     },
     "si": {
       "gainTax": "Pas d'impôt sur les plus-values des particuliers (le trading professionnel est imposé)",
       "exemption": "Les gains privés ne sont pas imposés",
       "filing": "Aucune déclaration pour les gains privés ; les revenus de minage exigent une déclaration d'acompte d'impôt sous 15 jours ; les revenus professionnels figurent dans la déclaration fiscale de l'entreprise",
-      "note": "Le minage est imposé comme autre revenu. Un trading fréquent peut être considéré comme une activité professionnelle. Un impôt de 25 % sur les plus-values crypto a été proposé en 2025, mais n'était pas adopté en octobre 2026."
+      "note": "Le minage est imposé comme autre revenu. Un trading fréquent peut être considéré comme une activité professionnelle. Un impôt de 25 % sur les plus-values crypto a été proposé en 2025, mais retiré avant la deuxième lecture, et le projet est devenu caduc avec les élections de 2026."
     },
     "hr": {
       "gainTax": "12 % sur les gains crypto (depuis 2024)",
@@ -1521,13 +1521,13 @@
       "gainTax": "Impuesto sobre la renta del 15 % sobre las rentas de cripto",
       "exemption": "Sin exención por periodo de tenencia; las operaciones pequeñas de hasta el 10 % del salario mínimo cada una están exentas (hasta un salario mínimo al año en total)",
       "filing": "Declaración anual del impuesto sobre la renta de las personas físicas",
-      "note": "Solo tributa el cambio por dinero, bienes o servicios; los intercambios de cripto por cripto no. Los costes de adquisición documentados son deducibles y una pérdida puede compensarse con las ganancias del mismo año y de los dos años anteriores."
+      "note": "Solo tributa el cambio por dinero, bienes o servicios; los intercambios de cripto por cripto no. Los costes de adquisición documentados son deducibles y una pérdida declarada puede compensarse con las ganancias de cripto del mismo año y de cualquier año anterior; el antiguo límite de dos años se suprimió a partir de 2026."
     },
     "si": {
       "gainTax": "Las ganancias privadas por venta no tributan (el trading empresarial sí)",
       "exemption": "Las ganancias privadas están exentas",
       "filing": "Ninguna para ganancias privadas; las rentas de minería requieren una declaración de pago a cuenta en 15 días; las rentas empresariales van en la declaración fiscal de la actividad",
-      "note": "La minería tributa como otra renta. El trading frecuente puede considerarse actividad empresarial. En 2025 se propuso un impuesto del 25 % sobre las ganancias de cripto, pero en octubre de 2026 no se había aprobado."
+      "note": "La minería tributa como otra renta. El trading frecuente puede considerarse actividad empresarial. En 2025 se propuso un impuesto del 25 % sobre las ganancias de cripto, pero se retiró antes de la segunda lectura y el proyecto decayó con las elecciones de 2026."
     },
     "hr": {
       "gainTax": "12 % sobre las ganancias cripto (desde 2024)",

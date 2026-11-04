@@ -85,7 +85,7 @@ export default {
    "name": "Hungary",
    "gainTax": "15% personal income tax on crypto income",
    "exemption": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
-   "note": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.",
+   "note": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss declared in the tax return can be offset against crypto gains of the same year and of any earlier year; the former two-year limit was abolished from 2026.",
    "sk": {
     "gainTax": "15 % daň z príjmov z kryptoaktív",
     "exemption": "Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)"
@@ -100,7 +100,7 @@ export default {
    "name": "Slovenia",
    "gainTax": "No tax on private disposal gains (business trading is taxed)",
    "exemption": "Private gains are not taxed",
-   "note": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.",
+   "note": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but was withdrawn before the second reading, and the bill lapsed with the 2026 elections.",
    "sk": {
     "gainTax": "Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)",
     "exemption": "Súkromné zisky sú bez dane"

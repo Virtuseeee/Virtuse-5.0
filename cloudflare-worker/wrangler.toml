@@ -3,7 +3,8 @@ main = "src/index.js"
 compatibility_date = "2026-08-14"
 
 # Production Verdict (Ship, Ras's "ano" required before deploy_worker.sh).
-# Free Verdict open, monthly AI cost cap in EUR. Not here on purpose:
+# The old AI Verdict route stays closed (VERDICT_ENABLED 0): the five-step Verdict uses fixed rules
+# and privacy section 9 says no AI model reads the answers. Not here on purpose:
 # VERDICT_REPORT_PREVIEW (the 14 EUR report stays behind the waitlist),
 # VERDICT_TAX_MODULE (country tax line waits for the lawyer), WAITLIST_DRY_RUN, SUBSCRIBE_DRY_RUN,
 # VERDICT_PER_IP_BOOST (staging test only), STRIPE_TEST_ONLY (staging only).
@@ -14,7 +15,7 @@ compatibility_date = "2026-08-14"
 # STRIPE_AUTOMATIC_TAX / STRIPE_INVOICE: off until the accountant decides.
 # The webhook emails the buyer a confirmation with the report PDF via Resend
 # (RESEND_API_KEY, RESEND_SEND_FROM; reply-to RESEND_REPLY_TO or info@virtuse.com).
-vars = { VERDICT_ENABLED = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_PAYMENTS = "1" }
+vars = { VERDICT_ENABLED = "0", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_PAYMENTS = "1" }
 
 # Created via: npx wrangler kv namespace create RATE_LIMIT_KV
 # Then paste the id it prints below.
@@ -52,7 +53,7 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 # VERDICT_RECEIPT_TO sends every staging confirmation to that address, never the buyer's.
 [env.staging]
 name = "virtuse-newsletter-staging"
-vars = { VERDICT_ENABLED = "1", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", SEND_IP_LIMIT_PER_HOUR = "30", SEND_ADDRESS_LIMIT_PER_HOUR = "10", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1", VERDICT_RECEIPT_TO = "vasilisin@virtuse.com", RESEND_SEND_FROM = "Virtuse <plan@virtuse.com>" }
+vars = { VERDICT_ENABLED = "0", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", SEND_IP_LIMIT_PER_HOUR = "30", SEND_ADDRESS_LIMIT_PER_HOUR = "10", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1", VERDICT_RECEIPT_TO = "vasilisin@virtuse.com", RESEND_SEND_FROM = "Virtuse <plan@virtuse.com>" }
 
 [[env.staging.kv_namespaces]]
 binding = "RATE_LIMIT_KV"

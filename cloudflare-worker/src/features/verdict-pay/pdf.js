@@ -343,6 +343,7 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     }
 
     heading(S.legal);
+    if (r.withdraw) para(`${r.withdraw.text} ${r.withdraw.label}: ${printed(r.withdraw.href)}`, { size: 9.5, gap: 6 });
     for (const t of [r.legal, operator]) if (t) para(t, { size: 8.5, color: C.muted, gap: 5 });
 
     // Documents to fill in: each starts on a new page, so it prints on its own.

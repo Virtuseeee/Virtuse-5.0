@@ -287,3 +287,83 @@ test('receipt: a Resend failure answers 500 so Stripe retries, the retry sends i
     assert.equal(sentCount, 1);
   } finally { globalThis.fetch = orig; }
 });
+
+// Withdrawal function (Act 108/2024 § 20a) and the data promises in privacy section 9.
+const withdrawReq = (body) => new Request('https://w.example/verdict/withdraw', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: 'https://virtuse.com', 'CF-Connecting-IP': '1.2.3.4' }, body: JSON.stringify(body) });
+const resendMock = (fail = () => false) => {
+  const sent = [];
+  const old = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    if (String(url).includes('api.resend.com')) {
+      const b = JSON.parse(init.body);
+      if (fail(b)) return new Response('{}', { status: 500 });
+      sent.push(b);
+      return new Response('{"id":"e"}', { status: 200 });
+    }
+    return old(url, init);
+  };
+  return { sent, restore: () => { globalThis.fetch = old; } };
+};
+
+test('withdrawal: copy to Virtuse, confirmation with date and time, nothing stored', async () => {
+  const m = resendMock();
+  try {
+    const e = { RATE_LIMIT_KV: mockKv(), RESEND_API_KEY: 're_x', RESEND_SEND_FROM: 'Virtuse <plan@virtuse.com>' };
+    const res = await worker.fetch(withdrawReq({ name: 'Anna Nová', email: 'anna@example.com', order: 'ABC123', lang: 'sk' }), e);
+    assert.equal(res.status, 200);
+    const d = await res.json();
+    assert.ok(d.ok && d.confirmed && /\d{4}/.test(d.at));
+    assert.deepEqual(m.sent.map((x) => x.to[0]), ['info@virtuse.com', 'anna@example.com']);
+    assert.equal(m.sent[0].reply_to, 'anna@example.com');
+    const html = m.sent[1].html;
+    for (const part of ['Odstupujem od zmluvy', 'Anna Nová', 'anna@example.com', 'ABC123', d.at]) assert.ok(html.includes(part), part);
+    const keys = [...e.RATE_LIMIT_KV.store.keys()];
+    assert.equal(keys.length, 1);
+    assert.match(keys[0], /^verdict:withdraw:[a-f0-9]{64}$/);
+    assert.ok(![...e.RATE_LIMIT_KV.store.values()].some((v) => String(v).includes('anna')));
+  } finally { m.restore(); }
+});
+
+test('withdrawal: the order number is optional, name and email are checked', async () => {
+  const m = resendMock();
+  try {
+    const e = () => ({ RATE_LIMIT_KV: mockKv(), RESEND_API_KEY: 're_x', RESEND_SEND_FROM: 'x@virtuse.com' });
+    assert.equal((await worker.fetch(withdrawReq({ name: 'Anna', email: 'a@example.com' }), e())).status, 200);
+    const noName = await worker.fetch(withdrawReq({ name: '', email: 'a@example.com' }), e());
+    assert.equal(noName.status, 400);
+    assert.equal((await noName.json()).field, 'name');
+    assert.equal((await worker.fetch(withdrawReq({ name: 'Anna', email: 'nope' }), e())).status, 400);
+    const before = m.sent.length;
+    assert.equal((await worker.fetch(withdrawReq({ name: 'Anna', email: 'a@example.com', hp: 'x' }), e())).status, 200);
+    assert.equal(m.sent.length, before, 'the honeypot sends nothing');
+  } finally { m.restore(); }
+});
+
+test('withdrawal: no copy to Virtuse means an error; no confirmation is reported', async () => {
+  let m = resendMock(() => true);
+  try {
+    const res = await worker.fetch(withdrawReq({ name: 'Anna', email: 'a@example.com' }), { RATE_LIMIT_KV: mockKv(), RESEND_API_KEY: 're_x', RESEND_SEND_FROM: 'x@virtuse.com' });
+    assert.equal(res.status, 502);
+    assert.match((await res.json()).error, /info@virtuse\.com/);
+  } finally { m.restore(); }
+  m = resendMock((b) => b.to[0] === 'a@example.com');
+  try {
+    const res = await worker.fetch(withdrawReq({ name: 'Anna', email: 'a@example.com' }), { RATE_LIMIT_KV: mockKv(), RESEND_API_KEY: 're_x', RESEND_SEND_FROM: 'x@virtuse.com' });
+    assert.equal(res.status, 200);
+    assert.equal((await res.json()).confirmed, false);
+  } finally { m.restore(); }
+});
+
+test('privacy section 9: answers 24 h, order record and payment link 30 days', async () => {
+  const { createPayStore } = await import('../src/features/verdict-pay/store.js');
+  const puts = [];
+  const kv = { async get() { return null; }, async put(k, v, o) { puts.push([k, v, o]); } };
+  const store = createPayStore(kv);
+  await store.storeLite('a'.repeat(32), { age: 40 }, 'en');
+  assert.equal(puts[0][2].expirationTtl, 24 * 60 * 60);
+  assert.ok(!puts[0][1].includes('email'));
+  await store.markPaid({ id: 'cs_test_x', metadata: { rid: 'a'.repeat(32), terms_version: '2026-11-04' }, payment_intent: 'pi_1', amount_total: 1400, currency: 'eur' }, 1);
+  assert.equal(puts[1][2].expirationTtl, 30 * 24 * 60 * 60);
+  assert.equal(JSON.parse(puts[1][1]).terms, '2026-11-04');
+  assert.equal(puts[2][2].expirationTtl, 30 * 24 * 60 * 60);
+});

@@ -598,7 +598,7 @@
       box(r.partners.k, r.partners.h, '<p>' + x(r.partners.intro) + '</p>' + r.partners.groups.map(partnerGroup).join(''), 'blue') +
       box(r.docs.k, r.docs.h, docsHtml(r.docs), 'purple') +
       box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + x(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>', 'teal') +
-      dlBtn('ml-big orange wide') + '<p class="ml-legal">' + x(r.legal) + '</p>';
+      dlBtn('ml-big orange wide') + (r.withdraw ? '<p class="ml-legal">' + x(r.withdraw.text) + ' <a href="' + x(r.withdraw.href) + '">' + x(r.withdraw.label) + ' →</a></p>' : '') + '<p class="ml-legal">' + x(r.legal) + '</p>';
   }
   // The same PDF as in the email, from the Worker, while the report is open.
   function downloadPdf(btn, sid) {

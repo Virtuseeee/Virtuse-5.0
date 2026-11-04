@@ -46,3 +46,9 @@ export function equalBytes(a, b) {
 export function byteLength(text) {
   return encoder.encode(text).length;
 }
+
+// Privacy policy: the IP is kept only as a one-way hash, salted per day
+// (salt = secret + date), and the counter expires after at most 24 hours.
+export async function ipHash(ip, day, env) {
+  return sha256Hex(`${env.UNSUB_SECRET || 'virtuse'}:${day}:${ip}`);
+}

@@ -968,8 +968,8 @@
   "tr": "Ежегодная декларация по налогу на доходы физических лиц"
  },
  {
-  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.",
-  "tr": "Облагается только обмен на деньги, товары или услуги; обмен криптовалюты на криптовалюту нет. Документально подтверждённые расходы на приобретение можно вычесть, а убыток зачесть против прибыли того же года и двух предыдущих лет."
+  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss declared in the tax return can be offset against crypto gains of the same year and of any earlier year; the former two-year limit was abolished from 2026.",
+  "tr": "Облагается только обмен на деньги, товары или услуги; обмен криптовалюты на криптовалюту нет. Документально подтверждённые расходы на приобретение можно вычесть, а убыток, указанный в декларации, зачесть против прибыли от криптоактивов того же года и любого предыдущего года; прежний двухлетний лимит отменён с 2026 года."
  },
  {
   "en": "No tax on private disposal gains (business trading is taxed)",
@@ -984,8 +984,8 @@
   "tr": "Для частной прибыли не требуется; доход от майнинга требует декларации об авансовом налоге в течение 15 дней; предпринимательский доход указывается в декларации по предпринимательской деятельности"
  },
  {
-  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.",
-  "tr": "Майнинг облагается как прочий доход. Частая торговля может считаться предпринимательством. В 2025 году был предложен налог 25% на прибыль от криптовалют, но по состоянию на октябрь 2026 года он не принят."
+  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but was withdrawn before the second reading, and the bill lapsed with the 2026 elections.",
+  "tr": "Майнинг облагается как прочий доход. Частая торговля может считаться предпринимательством. В 2025 году был предложен налог 25% на прибыль от криптовалют, но перед вторым чтением его отозвали, а проект утратил актуальность с выборами 2026 года."
  },
  {
   "en": "12% on crypto gains (since 2024)",

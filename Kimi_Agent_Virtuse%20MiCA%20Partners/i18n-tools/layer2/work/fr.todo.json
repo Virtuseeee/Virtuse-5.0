@@ -968,8 +968,8 @@
   "tr": "Déclaration annuelle d'impôt sur le revenu"
  },
  {
-  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.",
-  "tr": "Seuls les échanges contre de la monnaie, des biens ou des services sont imposés ; les échanges crypto contre crypto ne le sont pas. Les coûts d'acquisition documentés sont déductibles, et une perte peut être imputée sur les gains de la même année et des deux années précédentes."
+  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss declared in the tax return can be offset against crypto gains of the same year and of any earlier year; the former two-year limit was abolished from 2026.",
+  "tr": "Seuls les échanges contre de la monnaie, des biens ou des services sont imposés ; les échanges crypto contre crypto ne le sont pas. Les coûts d'acquisition documentés sont déductibles, et une perte déclarée peut être imputée sur les gains crypto de la même année et de toute année antérieure ; l'ancienne limite de deux ans a été supprimée à partir de 2026."
  },
  {
   "en": "No tax on private disposal gains (business trading is taxed)",
@@ -984,8 +984,8 @@
   "tr": "Aucune déclaration pour les gains privés ; les revenus de minage exigent une déclaration d'acompte d'impôt sous 15 jours ; les revenus professionnels figurent dans la déclaration fiscale de l'entreprise"
  },
  {
-  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.",
-  "tr": "Le minage est imposé comme autre revenu. Un trading fréquent peut être considéré comme une activité professionnelle. Un impôt de 25 % sur les plus-values crypto a été proposé en 2025, mais n'était pas adopté en octobre 2026."
+  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but was withdrawn before the second reading, and the bill lapsed with the 2026 elections.",
+  "tr": "Le minage est imposé comme autre revenu. Un trading fréquent peut être considéré comme une activité professionnelle. Un impôt de 25 % sur les plus-values crypto a été proposé en 2025, mais retiré avant la deuxième lecture, et le projet est devenu caduc avec les élections de 2026."
  },
  {
   "en": "12% on crypto gains (since 2024)",

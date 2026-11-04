@@ -49,11 +49,8 @@ export function aiJson(body, origin) {
   return r;
 }
 
-// Privacy policy 6.2/6.3: the IP is kept only as a one-way hash, salted per
-// day (salt = secret + date), and the counter expires after 24 hours.
-export async function ipHash(ip, day, env) {
-  return sha256Hex(`${env.UNSUB_SECRET || 'virtuse'}:${day}:${ip}`);
-}
+export { ipHash } from '../../shared/crypto.js';
+import { ipHash } from '../../shared/crypto.js';
 
 export async function handleVerdict({ request, env, origin, now, services }) {
   const parsed = await readJson(request);

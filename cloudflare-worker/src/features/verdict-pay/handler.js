@@ -21,6 +21,7 @@ import { clientIp, readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
 import { createStripeClient, verifyStripeSignature } from '../../infra/stripe.js';
 import { freeView, reportView, verdictOpts } from '../verdict/domain.js';
+import { ipHash } from '../../shared/crypto.js';
 import { aiJson } from '../verdict/handler.js';
 import { liteReportView } from '../verdict-lite/report.js';
 import { validateAnswers } from '../verdict-lite/rules.js';
@@ -50,7 +51,8 @@ export async function handleCheckout(ctx) {
     // the only unauthenticated write on this route, hence the limit per IP.
     const checked = validateAnswers(body.answers);
     if (!checked.ok) return json(400, { error: PAY_TEXT.badAnswers[lang], detail: checked.error }, origin);
-    if (await ctx.services.limiter.exceeded(`verdict:litepay:${clientIp(request)}`, LITE_CHECKOUT_PER_HOUR, 60 * 60)) {
+    const day = new Date(ctx.now ?? Date.now()).toISOString().slice(0, 10);
+    if (await ctx.services.limiter.exceeded(`verdict:litepay:${await ipHash(clientIp(request), day, env)}`, LITE_CHECKOUT_PER_HOUR, 60 * 60)) {
       return json(429, { error: PAY_TEXT.tooMany[lang], code: 'rate_limited' }, origin);
     }
     rid = newRid();
@@ -60,6 +62,8 @@ export async function handleCheckout(ctx) {
       customer_email: email,
       expires_at: Math.floor(ctx.now / 1000) + LITE_SESSION_S,
       custom_text: { submit: { message: LITE_TERMS[lang] } },
+      // With the card's country, the second piece of evidence of the customer's country (VAT).
+      billing_address_collection: 'required',
     });
   } else {
     rid = typeof body?.rid === 'string' ? body.rid : '';

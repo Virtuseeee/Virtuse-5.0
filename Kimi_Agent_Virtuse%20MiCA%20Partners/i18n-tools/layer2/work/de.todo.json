@@ -968,8 +968,8 @@
   "tr": "Jährliche Einkommensteuererklärung"
  },
  {
-  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.",
-  "tr": "Besteuert wird nur der Tausch in Geld, Waren oder Dienstleistungen, Krypto-zu-Krypto-Tausch nicht. Dokumentierte Anschaffungskosten sind abzugsfähig, und ein Verlust kann mit Gewinnen desselben Jahres und der zwei Vorjahre verrechnet werden."
+  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss declared in the tax return can be offset against crypto gains of the same year and of any earlier year; the former two-year limit was abolished from 2026.",
+  "tr": "Besteuert wird nur der Tausch in Geld, Waren oder Dienstleistungen, Krypto-zu-Krypto-Tausch nicht. Dokumentierte Anschaffungskosten sind abzugsfähig, und ein in der Steuererklärung ausgewiesener Verlust kann mit Krypto-Gewinnen desselben Jahres und jedes früheren Jahres verrechnet werden; die frühere Zweijahresgrenze wurde ab 2026 abgeschafft."
  },
  {
   "en": "No tax on private disposal gains (business trading is taxed)",
@@ -984,8 +984,8 @@
   "tr": "Für private Gewinne ist keine Erklärung nötig; für Mining-Einkünfte ist binnen 15 Tagen eine Vorauszahlungserklärung abzugeben; gewerbliche Einkünfte gehören in die betriebliche Steuererklärung"
  },
  {
-  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.",
-  "tr": "Mining gilt als sonstiges Einkommen. Häufiger Handel kann als gewerbliche Tätigkeit gelten. Eine Steuer von 25 % auf Krypto-Gewinne wurde 2025 vorgeschlagen, war aber bis Oktober 2026 nicht beschlossen."
+  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but was withdrawn before the second reading, and the bill lapsed with the 2026 elections.",
+  "tr": "Mining gilt als sonstiges Einkommen. Häufiger Handel kann als gewerbliche Tätigkeit gelten. Eine Steuer von 25 % auf Krypto-Gewinne wurde 2025 vorgeschlagen, vor der zweiten Lesung jedoch zurückgezogen, und der Entwurf ist mit den Wahlen 2026 verfallen."
  },
  {
   "en": "12% on crypto gains (since 2024)",

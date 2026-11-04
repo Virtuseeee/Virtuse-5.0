@@ -491,8 +491,8 @@
 /* Brief panel: the sign-up card fills its height, illustration on top */
 .ml-brief .brief { align-items: stretch; }
 .ml-brief .signup { display: flex; flex-direction: column; gap: 14px; }
-.ml-scooter { flex: 1 1 auto; min-height: 150px; display: flex; align-items: center; justify-content: center; padding: 16px 18px; border-radius: 12px; background: radial-gradient(100% 120% at 0% 0%, rgba(247,147,26,.14), transparent 70%), var(--inset); }
-.ml-scooter svg { width: 100%; max-width: 420px; height: auto; display: block; }
+.ml-scooter { position: relative; flex: 1 1 auto; min-height: 205px; border-radius: 12px; overflow: hidden; background: var(--inset); }
+.ml-scooter img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 35%; display: block; }
 
 @media (max-width: 960px) {
   .ml-paid .ml-areas-top { grid-template-columns: minmax(0, 1fr); gap: 20px; }
@@ -558,3 +558,10 @@
 /* A wide table scrolls inside its card on a phone, never the page */
 .ml-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 @media (max-width: 640px) { .ml-table-scroll .ml-table { min-width: 520px; } }
+
+/* Before the payment: what happens to the answers (privacy section 9) */
+.ml-data { font-size: 13.5px; line-height: 1.5; color: var(--muted); margin: 14px auto 12px; max-width: 62ch; }
+.ml-data-s { margin: 8px 0 4px; }
+.ml-plan.pro .ml-data { text-align: left; margin: 12px 0; }
+.ml-lockover .ml-data { margin: 0 auto 14px; font-size: 13px; }
+.ml-legal a { color: inherit; }

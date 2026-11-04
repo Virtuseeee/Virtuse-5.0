@@ -151,6 +151,7 @@ const COPY = {
     },
     sent: 'A PDF copy is on its way to the email you paid with. This page stays open for 30 minutes.',
     download: 'Download PDF',
+    withdraw: { text: 'Your 14-day right of withdrawal applies even after you have opened this report.', label: 'Withdraw from the contract here' },
     legal: 'Verdict checks your answers by fixed rules and is not investment, tax or legal advice. Partners are listed because they match the criteria, not ranked; Virtuse may receive a referral fee.',
   },
   sk: {
@@ -286,6 +287,7 @@ const COPY = {
     },
     sent: 'Kópia v PDF je na ceste na e-mail, ktorým ste platili. Táto stránka zostane otvorená 30 minút.',
     download: 'Stiahnuť PDF',
+    withdraw: { text: 'Vaše 14-dňové právo odstúpiť od zmluvy platí aj po otvorení tohto reportu.', label: 'Odstúpiť od zmluvy tu' },
     legal: 'Verdict kontroluje vaše odpovede pevnými pravidlami a nie je to investičné, daňové ani právne poradenstvo. Partnerov uvádzame preto, že spĺňajú kritériá, nie podľa poradia; Virtuse môže od partnera dostať províziu.',
   },
 };
@@ -482,6 +484,7 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
     next,
     sent: T.sent,
     download: T.download,
+    withdraw: { ...T.withdraw, href: page(lang, 'withdrawal.html') },
     ...reportBlocks(A, c, lang, FMT[lang], date, fact?.name || ''),
     legal: T.legal,
   };

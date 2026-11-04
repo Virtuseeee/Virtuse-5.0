@@ -104,7 +104,7 @@ export default {
     "healthLevy": "",
     "exemption": "No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)",
     "filing": "Annual personal income tax return",
-    "note": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years."
+    "note": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss declared in the tax return can be offset against crypto gains of the same year and of any earlier year; the former two-year limit was abolished from 2026."
    },
    "sk": {
     "name": "Maďarsko",
@@ -113,7 +113,7 @@ export default {
     "healthLevy": "",
     "exemption": "Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)",
     "filing": "Ročné priznanie k dani z príjmov fyzickej osoby",
-    "note": "Zdaňuje sa len výmena za peniaze, tovar alebo služby; výmena krypto za krypto nie. Preukázateľné obstarávacie náklady sa dajú odpočítať a stratu možno započítať so ziskami z toho istého roka a dvoch predchádzajúcich rokov."
+    "note": "Zdaňuje sa len výmena za peniaze, tovar alebo služby; výmena krypto za krypto nie. Preukázateľné obstarávacie náklady sa dajú odpočítať a stratu vykázanú v priznaní možno započítať so ziskami z kryptoaktív z toho istého roka a z ktoréhokoľvek skoršieho roka; bývalý dvojročný limit od roku 2026 zrušili."
    }
   },
   "si": {
@@ -123,7 +123,7 @@ export default {
     "healthLevy": "",
     "exemption": "Private gains are not taxed",
     "filing": "No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return",
-    "note": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026."
+    "note": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but was withdrawn before the second reading, and the bill lapsed with the 2026 elections."
    },
    "sk": {
     "name": "Slovinsko",
@@ -132,7 +132,7 @@ export default {
     "healthLevy": "",
     "exemption": "Súkromné zisky sú bez dane",
     "filing": "Pri súkromných ziskoch žiadne; príjem z ťažby vyžaduje priznanie k preddavku dane do 15 dní; podnikateľské príjmy patria do daňového priznania z podnikania",
-    "note": "Ťažba sa zdaňuje ako ostatný príjem. Časté obchodovanie môže byť podnikaním. Daň 25 % zo ziskov z kryptoaktív bola navrhnutá v roku 2025, k októbru 2026 však nebola prijatá."
+    "note": "Ťažba sa zdaňuje ako ostatný príjem. Časté obchodovanie môže byť podnikaním. Daň 25 % zo ziskov z kryptoaktív bola navrhnutá v roku 2025, pred druhým čítaním ju však stiahli a s voľbami v roku 2026 návrh zanikol."
    }
   },
   "hr": {

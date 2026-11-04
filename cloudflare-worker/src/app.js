@@ -15,6 +15,7 @@ import { handleUnsubscribe } from './features/newsletter/unsubscribe-handler.js'
 import { handlePulse } from './features/pulse/handler.js';
 import { handleSend } from './features/send/handler.js';
 import { handleCheckout, handleReport, handleStripeWebhook } from './features/verdict-pay/handler.js';
+import { handleWithdraw } from './features/verdict-pay/withdraw.js';
 import { handleVerdict } from './features/verdict/handler.js';
 import { askClaude } from './features/verdict/model.js';
 import { handleVersion } from './features/version/handler.js';
@@ -77,6 +78,7 @@ const route = pipeline(
   on(['POST'], '/verdict', handleVerdict),
   on(['POST'], '/verdict/checkout', handleCheckout),
   on(['POST'], '/verdict/report', handleReport),
+  on(['POST'], '/verdict/withdraw', handleWithdraw),
   on(['POST'], '/ecosystem-apply', handleEcosystemApply),
   on(['POST'], '/waitlist', handleWaitlist),
   on(['POST'], '/subscribe', handleSubscribe),

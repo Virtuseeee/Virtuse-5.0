@@ -88,7 +88,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - Tax on gains: 15% personal income tax on crypto income
 - Exemption: No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)
 - Filing: Annual personal income tax return
-- Note: Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.
+- Note: Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss declared in the tax return can be offset against crypto gains of the same year and of any earlier year; the former two-year limit was abolished from 2026.
 - EN: https://virtuse.com/bitcoin-tax/hungary/
 - DE: https://virtuse.com/de/bitcoin-steuern/ungarn/
 - SK: https://virtuse.com/sk/bitcoin-dane/madarsko/
@@ -104,7 +104,7 @@ As of Q3 2026. Copied from seo-build data / live Layer 2 modules. Do not treat a
 - Tax on gains: No tax on private disposal gains (business trading is taxed)
 - Exemption: Private gains are not taxed
 - Filing: No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return
-- Note: Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.
+- Note: Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but was withdrawn before the second reading, and the bill lapsed with the 2026 elections.
 - EN: https://virtuse.com/bitcoin-tax/slovenia/
 - DE: https://virtuse.com/de/bitcoin-steuern/slowenien/
 - SK: https://virtuse.com/sk/bitcoin-dane/slovinsko/

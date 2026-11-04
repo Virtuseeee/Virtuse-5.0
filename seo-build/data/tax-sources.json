@@ -205,7 +205,7 @@
       "sourceTitle": "NAV: A kriptoügyletek jövedelmének adózása",
       "quote": "A kriptoeszközzel végrehajtott ügyletekből az adóévben elért ügyleti nyereség után 15 százalék személyi jövedelemadót kell fizetni.",
       "verified": true,
-      "notes": "Matches site. The NAV page is written for the 2021/2022 returns (Szja tv. § 67/C); the rule is unchanged as far as checked but the page is not 2026-specific. Losses can be offset via 'adókiegyenlítés' over the previous 2 years.",
+      "notes": "Matches site. The NAV page is written for the 2021/2022 returns (Szja tv. § 67/C); the rule is unchanged as far as checked but the page is not 2026-specific. Losses: the two-year limit on 'adókiegyenlítés' was abolished from 2026 (Szja tv. 67/C, bill promulgated 19 Nov 2025; KPMG Tax Alert 2025-11-25); a loss declared in a return can be offset against any later year. Confirmed by the tax review of 2026-11-04.",
       "fields": {
         "gainTax": {
           "text": "15% personal income tax on crypto income",
@@ -242,7 +242,7 @@
       "sourceTitle": "FURS: Trgujem z virtualnimi valutami",
       "quote": "se dohodnine ne plača pod pogojem, da fizična oseba ne dosega tovrstnih dohodkov v zvezi z opravljanjem dejavnosti",
       "verified": true,
-      "notes": "Site has no Loan preset for Slovenia (calculator would use 0). The site's claim that a proposed 25% tax was withdrawn in 2025 is from press (rtvslo.si: bill pulled from the December 2025 session); not verified on an official page. Re-check before 2027 in case the bill returns.",
+      "notes": "Site has no Loan preset for Slovenia (calculator would use 0). The proposed 25% tax (ZDDOK): first reading 3 Sep 2025, withdrawn from the agenda before the second reading (rtvslo.si, plutko.si), lapsed with the 2026 elections; tax review of 2026-11-04. Not verified on an official page. Re-check before 2027 in case the bill returns.",
       "fields": {
         "gainTax": {
           "text": "No tax on private disposal gains (business trading is taxed)",

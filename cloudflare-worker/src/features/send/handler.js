@@ -13,7 +13,7 @@
 import { EMAIL_RE } from '../../config.js';
 import { clientIp, readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
-import { sha256Hex } from '../../shared/crypto.js';
+import { ipHash, sha256Hex } from '../../shared/crypto.js';
 import { WELCOME_LANGS } from '../newsletter/welcome.js';
 import { SEND_KINDS, SEND_SOURCES, SITE_LANGS, oneOf, renderSendEmail, validatePayload } from './domain.js';
 
@@ -51,7 +51,7 @@ export async function handleSend({ request, env, origin, services }) {
   const lang = oneOf(SITE_LANGS, rawLang) ? rawLang : 'en';
   const wantsBrief = brief === true;
 
-  const ipKey = `sendlimit:ip:${clientIp(request)}`;
+  const ipKey = `sendlimit:ip:${await ipHash(clientIp(request), new Date().toISOString().slice(0, 10), env)}`;
   const addrKey = await addressKey(email);
   if (await services.limiter.exceeded(ipKey, limitFrom(env.SEND_IP_LIMIT_PER_HOUR, DEFAULT_PER_IP), WINDOW_SECONDS)) {
     return json(429, { error: 'Too many attempts. Please try again later.', code: 'rate_limited' }, origin);

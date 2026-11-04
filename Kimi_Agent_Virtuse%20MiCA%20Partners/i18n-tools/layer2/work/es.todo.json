@@ -968,8 +968,8 @@
   "tr": "Declaración anual del impuesto sobre la renta de las personas físicas"
  },
  {
-  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss can be offset against gains of the same year and the two previous years.",
-  "tr": "Solo tributa el cambio por dinero, bienes o servicios; los intercambios de cripto por cripto no. Los costes de adquisición documentados son deducibles y una pérdida puede compensarse con las ganancias del mismo año y de los dos años anteriores."
+  "en": "Only exchanges into money, goods or services are taxed; crypto-to-crypto swaps are not. Documented acquisition costs are deductible, and a loss declared in the tax return can be offset against crypto gains of the same year and of any earlier year; the former two-year limit was abolished from 2026.",
+  "tr": "Solo tributa el cambio por dinero, bienes o servicios; los intercambios de cripto por cripto no. Los costes de adquisición documentados son deducibles y una pérdida declarada puede compensarse con las ganancias de cripto del mismo año y de cualquier año anterior; el antiguo límite de dos años se suprimió a partir de 2026."
  },
  {
   "en": "No tax on private disposal gains (business trading is taxed)",
@@ -984,8 +984,8 @@
   "tr": "Ninguna para ganancias privadas; las rentas de minería requieren una declaración de pago a cuenta en 15 días; las rentas empresariales van en la declaración fiscal de la actividad"
  },
  {
-  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but had not been enacted as of October 2026.",
-  "tr": "La minería tributa como otra renta. El trading frecuente puede considerarse actividad empresarial. En 2025 se propuso un impuesto del 25 % sobre las ganancias de cripto, pero en octubre de 2026 no se había aprobado."
+  "en": "Mining is taxed as other income. Frequent trading can count as a business activity. A 25% tax on crypto gains was proposed in 2025 but was withdrawn before the second reading, and the bill lapsed with the 2026 elections.",
+  "tr": "La minería tributa como otra renta. El trading frecuente puede considerarse actividad empresarial. En 2025 se propuso un impuesto del 25 % sobre las ganancias de cripto, pero se retiró antes de la segunda lectura y el proyecto decayó con las elecciones de 2026."
  },
  {
   "en": "12% on crypto gains (since 2024)",

@@ -297,7 +297,8 @@ test('POST /send: invalid payloads are not counted; own key, not the signup one'
   assert.equal(e.RATE_LIMIT_KV.store.size, 0);
   assert.equal((await worker.fetch(req(LITE_BODY), e)).status, 200);
   const keys = [...e.RATE_LIMIT_KV.store.keys()];
-  assert.ok(keys.includes('sendlimit:ip:1.2.3.4'));
+  assert.ok(keys.some((k) => /^sendlimit:ip:[a-f0-9]{64}$/.test(k)), 'the IP is kept only as a hash');
+  assert.ok(!keys.some((k) => k.includes('1.2.3.4')));
   assert.ok(!keys.some((k) => k.startsWith('ratelimit:')));
 }));
 

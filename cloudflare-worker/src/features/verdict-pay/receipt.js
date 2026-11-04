@@ -12,6 +12,7 @@ const T = {
     order: 'Order summary', product: 'Product', productV: 'Verdict · full report (one-off, no subscription)',
     amount: 'Amount paid', date: 'Date', ref: 'Order number', method: 'Payment', methodV: 'Card, via Stripe',
     terms: 'Terms and conditions', privacy: 'Privacy policy',
+    withdraw: 'Your 14-day right of withdrawal applies even after you have opened the report.', withdrawLink: 'Withdraw from the contract here',
     help: 'Questions about your order or a refund: reply to this email or write to info@virtuse.com.',
     note: 'The report rates how complete your thinking is, not whether the decision is right. It is not investment, tax or legal advice.',
     noteLite: 'The report rates how ready your plan is, not whether to buy or sell. It is not investment, tax or legal advice.',
@@ -23,6 +24,7 @@ const T = {
     order: 'Zhrnutie objednávky', product: 'Produkt', productV: 'Verdict · celý report (jednorazovo, bez predplatného)',
     amount: 'Zaplatená suma', date: 'Dátum', ref: 'Číslo objednávky', method: 'Platba', methodV: 'Kartou cez Stripe',
     terms: 'Obchodné podmienky', privacy: 'Ochrana osobných údajov',
+    withdraw: 'Vaše 14-dňové právo odstúpiť od zmluvy platí aj po otvorení reportu.', withdrawLink: 'Odstúpiť od zmluvy tu',
     help: 'Otázky k objednávke alebo žiadosť o vrátenie peňazí: odpovedzte na tento e-mail alebo napíšte na info@virtuse.com.',
     note: 'Report hodnotí úplnosť vašej úvahy, nie to, či je rozhodnutie správne. Nejde o investičné, daňové ani právne poradenstvo.',
     noteLite: 'Report hodnotí, ako je váš plán pripravený, nie to, či kúpiť alebo predať. Nejde o investičné, daňové ani právne poradenstvo.',
@@ -59,6 +61,11 @@ export function formatDate(ms, lang) {
   return new Date(ms).toLocaleDateString(LOCALE[lang] || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Bratislava' });
 }
 
+// Date and time of a statement, for the withdrawal confirmation.
+export function formatTimestamp(ms, lang) {
+  return new Date(ms).toLocaleString(LOCALE[lang] || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Europe/Bratislava', timeZoneName: 'short' });
+}
+
 export function reportFilename(paidAt, sid) {
   const day = new Date(paidAt).toISOString().slice(0, 10).replace(/-/g, '');
   return `Virtuse-Verdict-report-${day}-${orderNumber(sid)}.pdf`;
@@ -83,6 +90,7 @@ export function renderReceipt({ lang, sid, amount, currency, paidAt, lite = fals
 ${row(t.product, t.productV)}${row(t.amount, formatAmount(amount, currency, L))}${row(t.date, formatDate(paidAt, L))}${row(t.ref, orderNumber(sid))}${row(t.method, t.methodV)}
 </table>
 <p style="margin:20px 0 0 0;font-size:14px;line-height:22px;color:#2b2f36;">${esc(t.help)}</p>
+${lite && t.withdraw ? `<p style="margin:12px 0 0 0;font-size:14px;line-height:22px;color:#2b2f36;">${esc(t.withdraw)} <a href="${site}/withdrawal.html?order=${encodeURIComponent(orderNumber(sid))}" style="color:#2b62c0;">${esc(t.withdrawLink)}</a></p>` : ''}
 <p style="margin:12px 0 0 0;font-size:14px;line-height:22px;"><a href="${site}/terms-and-conditions.html" style="color:#2b62c0;">${esc(t.terms)}</a> · <a href="${site}/privacy-policy.html#verdict-cfo" style="color:#2b62c0;">${esc(t.privacy)}</a></p>
 <p style="margin:20px 0 0 0;font-size:12px;line-height:19px;color:#5f6670;">${esc(lite && t.noteLite ? t.noteLite : t.note)}</p>
 <p style="margin:12px 0 28px 0;font-size:11px;line-height:18px;color:#8b949e;">${esc(operatorLine(L))}</p>
