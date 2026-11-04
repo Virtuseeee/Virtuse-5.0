@@ -37,7 +37,7 @@
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
 <link rel="stylesheet" href="/verdict-landing.css?v=20261028a">
-<link rel="stylesheet" href="/verdict-lite.css?v=5">
+<link rel="stylesheet" href="/verdict-lite.css?v=6">
 <!-- VLH:END -->
 </head>
 <body class="page-verdict no-split">
@@ -115,7 +115,7 @@
 <section id="pricing">
     <div class="sec-head"><div class="eyebrow orange"><i></i>Pricing</div>
       <h2>Two levels. <span>Start with a free Lite score.</span></h2>
-      <p class="sec-sub">The Lite score is free for your email. The full report is €14 once, no subscription; for now you can join the waitlist for it.</p>
+      <p class="sec-sub">The Lite score is free for your email. The full report is €14 once, no subscription.</p>
     </div>
     <div class="plans3 ml-plans2">
       <div class="plan">
@@ -136,10 +136,10 @@
       </div>
     </div>
     <div class="terms">
-      <p class="terms-k">Terms that apply when payment opens</p>
+      <p class="terms-k">Terms</p>
       <div class="assure-row">
         <span class="ic ic-green"><b>30-day refund</b>No questions, no form.</span>
-        <span class="ic ic-orange"><b>Pay with Lightning or card</b>One payment, no subscription.</span>
+        <span class="ic ic-orange"><b>Pay by card</b>One payment, no subscription.</span>
         <span class="ic ic-blue"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span>
       </div>
       <p class="terms-fine">Prices include VAT where applicable.</p>
@@ -150,12 +150,12 @@
 <div class="sec-head faq-head"><div class="eyebrow blue"><i></i>FAQ</div><h2>Customer <span>questions.</span></h2></div>
 <div class="faq">
 <details open><summary>Will Verdict tell me whether to buy Bitcoin?</summary><p>No. It rates how ready your plan is. What you do is your decision. Verdict doesn't recommend buying, selling, borrowing or any partner.</p></details>
-<details><summary>What does it cost?</summary><p>The Lite score is free for your email. The full report costs €14, once; for now you can join the waitlist for it.</p></details>
+<details><summary>What does it cost?</summary><p>The Lite score is free for your email. The full report costs €14, once.</p></details>
 <details><summary>What is in the full report?</summary><p>The points and the reason for each of the six areas, what a 70% fall means in euros for your amount, your country's sale rule in plain words, custody options side by side and three steps for this week, as a PDF you keep. <a href="?s=9" data-go="9">See a sample report</a>.</p></details>
 <details><summary>Why do you ask for my email?</summary><p>Your email unlocks your Lite score. The Virtuse Brief only if you tick the box.</p></details>
-<details><summary>What happens to my numbers?</summary><p>They are used only to build your score and your report. Details in the <a href="/privacy-policy.html">Privacy Policy</a>.</p></details>
+<details><summary>What happens to my numbers?</summary><p>For the Lite score your answers stay in your browser; only the score and your gaps go into the email. If you buy the full report, we keep your answers for 24 hours to build it. Details in the <a href="/privacy-policy.html">Privacy Policy</a>.</p></details>
 <details><summary>Does an AI read my answers?</summary><p>No. Verdict scores your answers by fixed rules, the same for everyone.</p></details>
-<details><summary>Do I need an account or a card?</summary><p>No. The Lite score needs only an email.</p></details>
+<details><summary>Do I need an account or a card?</summary><p>No account. The Lite score needs only an email; a card is needed only for the full report, and Stripe handles the payment.</p></details>
 <details><summary>Is this investment or tax advice?</summary><p>No. Verdict rates how ready your plan is. For tax questions, ask a tax adviser.</p></details>
 </div>
 </section>
@@ -215,7 +215,7 @@
         </form>
         <p class="ml-fine">We use your email only for your Verdict. <a href="/privacy-policy.html" style="color:inherit">Privacy</a></p>
       </div>
-      <div class="ml-plan pro">
+      <div class="ml-plan pro" data-buybox>
         <span class="ml-badge">Full report</span>
         <h3>Full report</h3>
         <div class="ml-price">€14 <small>once · no subscription</small></div>
@@ -229,14 +229,16 @@
           <li>A PDF you keep</li>
         </ul>
         <div class="ml-spacer"></div>
-        <button class="ml-btn2 orange" type="button" data-go="9">See a sample report first</button>
-        <form class="ml-form" data-wl novalidate>
+        <button class="ml-btn2 orange" type="button" data-buy>Get the full report · €14</button>
+        <button class="ml-btn2 ghost" type="button" data-go="9">See a sample report first</button>
+        <p class="ml-fine ml-buy-msg" aria-live="polite"></p>
+        <form class="ml-form" data-wl novalidate hidden>
           <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="Email" autocomplete="email">
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="ml-btn2 ghost" type="submit">Join the €14 waitlist</button>
           <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
         </form>
-        <p class="ml-fine">Payment is not live yet. Waitlist only, nothing is charged.</p>
+        <p class="ml-fine">Secure card payment through Stripe. The report opens right away and a PDF comes by email. 30-day refund.</p>
       </div>
     </div>
     <div class="ml-peek">
@@ -280,12 +282,19 @@
         <div class="ml-blur-row"><b></b><span></span></div>
         <div class="ml-blur-row"><b></b><span></span></div>
       </div>
-      <div class="ml-lockover">
+      <div class="ml-lockover" data-buybox>
         <div class="ml-lock" style="width:60px;height:60px;margin:0 auto 14px;border-radius:16px"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
         <div class="ml-gap1" id="mlGap1" style="margin:0 0 8px"></div>
         <p class="ml-sub" style="margin:0 auto 20px;font-size:15px">The full report explains every point, puts your numbers in euros and turns the gaps into 3 steps you keep as a PDF.</p>
-        <button class="ml-big" type="button" data-go="7">Join the €14 waitlist →</button>
-        <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">See a sample report</a> · One-time · waitlist for now, nothing is charged</p>
+        <button class="ml-big" type="button" data-buy>Get the full report · €14 →</button>
+        <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
+        <form class="ml-form" data-wl novalidate hidden>
+          <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="Email" autocomplete="email">
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="ml-btn2 orange" type="submit">Join the €14 waitlist</button>
+          <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
+        </form>
+        <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">See a sample report</a> · One-time · card via Stripe · 30-day refund</p>
       </div>
     </div>
 
@@ -396,10 +405,12 @@
     </div>
 
 
-    <div class="ml-box" id="waitlist" style="text-align:center">
+    <div class="ml-box" id="waitlist" data-buybox style="text-align:center">
       <h4>Want this report for your own plan?</h4>
-      <p>€14 once, no subscription. Payment is not live yet: join the waitlist and we email you once when the report opens.</p>
-      <form class="ml-form" data-wl novalidate style="max-width:420px;margin:0 auto">
+      <p>€14 once, no subscription. If you have not answered yet, you do the five short steps first. 30-day refund.</p>
+      <button class="ml-big" type="button" data-buy>Get my report · €14</button>
+      <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
+      <form class="ml-form" data-wl novalidate hidden style="max-width:420px;margin:0 auto">
         <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="Email" autocomplete="email">
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="ml-btn2 orange" type="submit">Join the €14 waitlist</button>
@@ -413,13 +424,30 @@
     <p class="ml-legal">Sample report for a fictional client. Numbers are illustrative. Verdict checks your answers by fixed rules and is not investment, tax or legal advice. Partners are listed because they match the criteria, not ranked; Virtuse may receive a referral fee. © 2018–2026 Virtuse Wealth Management, a.s.</p>
   </section>
 
+  <!-- 10 THE BOUGHT REPORT (filled by verdict-lite.js from POST /verdict/report) -->
+  <section class="ml-screen" data-s="10">
+    <div id="mlReport"></div>
+    <div class="ml-box ml-consult">
+      <div><h4>Want to go through it with us?</h4><p>Bring your report to a free 15-minute call. We answer your questions; you decide.</p></div>
+      <button class="ml-big orange" type="button" data-consultation-trigger data-consultation-lang="en">Book a free 15-min call</button>
+    </div>
+  </section>
+
   <nav class="ml-jump" aria-label="Preview screens" hidden><b>Preview screens:</b></nav>
 </div>
+
+    <!-- brief-d-cta:start -->
+    <aside class="brief-d-cta" aria-label="Virtuse Brief" style="margin:8px 0 4px;padding:16px 0 0;border-top:1px solid rgba(255,255,255,.08)">
+      <p style="margin:0 0 6px;font-weight:700">Get the Brief</p>
+      <p style="margin:0 0 14px;color:var(--muted)">Bitcoin-only, every Monday. No tokens. No PR.</p>
+      <a class="btn btn-ghost" href="news.html?utm_source=verdict&amp;utm_medium=cta&amp;utm_campaign=brief_d">Get the Brief</a>
+    </aside>
+    <!-- brief-d-cta:end -->
 
 <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="verdict.html">Verdict <span class="soon cfo-foot-badge">Free</span></a><a href="cfo.html">Virtuse CFO</a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="buy-bitcoin.html">Buy Bitcoin</a><a href="secure.html">Custody</a><a href="mining.html">Mining</a><a href="lending.html">Loans</a><a href="treasury.html">Treasury</a><a href="tax.html">Tax</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="faq.html">FAQ</a><a href="https://www.linkedin.com/company/virtuse-exchange/?utm_source=virtuse&amp;utm_medium=footer&amp;utm_campaign=linkedin_follow" rel="noopener noreferrer" target="_blank">Follow Virtuse</a></div><div class="footer-col"><h4>Tools</h4><a href="verdict.html">Verdict <span class="soon cfo-foot-badge">Free</span></a><a href="cfo.html">Virtuse CFO</a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="news.html">Virtuse Brief</a><a href="blog.html">Blog</a><a href="bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Legal</h4><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="aml-compliance.html">AML &amp; Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p>
@@ -437,7 +465,7 @@
 <script src="/vb-api.js?v=2" defer></script>
 <script src="/site-v2.js?v=12" defer></script>
 <script src="/consultation-lazy.js?v=5" defer></script>
-<script src="/verdict-lite.js?v=5" defer></script>
+<script src="/verdict-lite.js?v=6" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
