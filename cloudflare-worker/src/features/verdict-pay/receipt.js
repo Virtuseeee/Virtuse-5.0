@@ -14,6 +14,7 @@ const T = {
     terms: 'Terms and conditions', privacy: 'Privacy policy',
     help: 'Questions about your order or a refund: reply to this email or write to info@virtuse.com.',
     note: 'The report rates how complete your thinking is, not whether the decision is right. It is not investment, tax or legal advice.',
+    noteLite: 'The report rates how ready your plan is, not whether to buy or sell. It is not investment, tax or legal advice.',
     file: 'Virtuse-Verdict-report',
   },
   sk: {
@@ -25,6 +26,7 @@ const T = {
     terms: 'Obchodné podmienky', privacy: 'Ochrana osobných údajov',
     help: 'Otázky k objednávke alebo žiadosť o vrátenie peňazí: odpovedzte na tento e-mail alebo napíšte na info@virtuse.com.',
     note: 'Report hodnotí úplnosť vašej úvahy, nie to, či je rozhodnutie správne. Nejde o investičné, daňové ani právne poradenstvo.',
+    noteLite: 'Report hodnotí, ako je váš plán pripravený, nie to, či kúpiť alebo predať. Nejde o investičné, daňové ani právne poradenstvo.',
     file: 'Virtuse-Verdict-report',
   },
   ru: {
@@ -61,7 +63,7 @@ export function formatDate(ms, lang) {
 }
 
 // { subject, html, filename } for one paid Session.
-export function renderReceipt({ lang, sid, amount, currency, paidAt }) {
+export function renderReceipt({ lang, sid, amount, currency, paidAt, lite = false }) {
   const L = receiptLang(lang);
   const t = T[L];
   const site = `https://virtuse.com${L === 'en' ? '' : '/' + L}`;
@@ -80,7 +82,7 @@ ${row(t.product, t.productV)}${row(t.amount, formatAmount(amount, currency, L))}
 </table>
 <p style="margin:20px 0 0 0;font-size:14px;line-height:22px;color:#2b2f36;">${esc(t.help)}</p>
 <p style="margin:12px 0 0 0;font-size:14px;line-height:22px;"><a href="${site}/terms-and-conditions.html" style="color:#2b62c0;">${esc(t.terms)}</a> · <a href="${site}/privacy-policy.html#verdict-cfo" style="color:#2b62c0;">${esc(t.privacy)}</a></p>
-<p style="margin:20px 0 0 0;font-size:12px;line-height:19px;color:#5f6670;">${esc(t.note)}</p>
+<p style="margin:20px 0 0 0;font-size:12px;line-height:19px;color:#5f6670;">${esc(lite && t.noteLite ? t.noteLite : t.note)}</p>
 <p style="margin:12px 0 28px 0;font-size:11px;line-height:18px;color:#8b949e;">${esc(operatorLine(L))}</p>
 </td></tr></table></td></tr></table></body></html>`;
   const day = new Date(paidAt).toISOString().slice(0, 10).replace(/-/g, '');

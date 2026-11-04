@@ -1,6 +1,7 @@
 // The paid Verdict report as an A4 PDF, attached to the purchase
 // confirmation email (handler.js). Built from the same reportView() the page
-// shows, so the PDF never says more or less than the paid report.
+// shows (for Verdict Lite: liteReportView()), so the PDF never says more or
+// less than the paid report.
 //
 // pdf-lib + fontkit with Inter (OFL), subset to Latin, Latin Extended
 // (Slovak, Czech) and Cyrillic in assets/fonts/; build.mjs inlines the two
@@ -105,7 +106,123 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     para(text, { font: bold, size: 14, gap: 8 });
   };
 
+  // Footer on every page, then the bytes.
+  const finish = () => {
+    const pages = doc.getPages();
+    pages.forEach((p, k) => {
+      const left = '© 2018–2026 Virtuse Wealth Management, a.s.';
+      const right = `${k + 1} / ${pages.length}`;
+      p.drawText(left, { x: M, y: 26, size: 7.5, font: reg, color: C.muted });
+      p.drawText(right, { x: W - M - reg.widthOfTextAtSize(right, 7.5), y: 26, size: 7.5, font: reg, color: C.muted });
+    });
+    return doc.save({ useObjectStreams: true });
+  };
+
+  // One table row: columns by share of the content width, each wrapped.
+  const row = (cells, widths, { font = reg, size = 9, color = C.ink, boldFirst = false } = {}) => {
+    const cols = cells.map((text, k) => lines(text, boldFirst && k === 0 ? bold : font, size, CW * widths[k] - 8));
+    const h = Math.max(...cols.map((c) => c.length), 1) * size * 1.38 + 6;
+    ensure(h + 2);
+    let x = M;
+    cols.forEach((ls, k) => {
+      ls.forEach((l, i) => page.drawText(l, { x, y: y - size - i * size * 1.38, size, font: boldFirst && k === 0 ? bold : font, color }));
+      x += CW * widths[k];
+    });
+    y -= h;
+    page.drawLine({ start: { x: M, y: y + 2 }, end: { x: W - M, y: y + 2 }, thickness: 0.4, color: C.line });
+    y -= 2;
+  };
+
+  const printed = (href) => `virtuse.com${href}`;
+
+  const liteBody = () => {
+    const ds = date.toLocaleDateString(L === 'sk' ? 'sk-SK' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Bratislava' });
+    para(`${S.date}: ${ds}${order ? ` · ${S.order}: ${order}` : ''}`, { size: 9, color: C.muted, gap: 12 });
+    para(r.title, { font: bold, size: 22, gap: 4, lead: 1.2 });
+    para(r.meta, { size: 10, color: C.muted, gap: 12 });
+    const score = String(r.score);
+    page.drawText(score, { x: M, y: y - 44, size: 48, font: bold, color: C.ink });
+    const sw = bold.widthOfTextAtSize(score, 48);
+    page.drawText('/100', { x: M + sw + 4, y: y - 44, size: 16, font: reg, color: C.muted });
+    const pill = clean(r.pill);
+    const pw = bold.widthOfTextAtSize(pill, 9) + 16;
+    page.drawRectangle({ x: M + sw + 58, y: y - 40, width: pw, height: 18, color: C.tint, borderColor: C.line, borderWidth: 0.6 });
+    page.drawText(pill, { x: M + sw + 66, y: y - 34, size: 9, font: bold, color: C.blue });
+    y -= 58;
+    para(r.gradeLine, { size: 9, color: C.muted, gap: 12 });
+    r.nums.forEach(([k, v]) => row([k, v], [0.4, 0.6], { boldFirst: false }));
+    y -= 6;
+
+    heading(r.h.summaryK);
+    r.summary.forEach((t) => para(t, { size: 10.5, gap: 8 }));
+
+    heading(r.h.areas);
+    for (const a of r.areas) {
+      ensure(48);
+      const pts = `${a.points}/10`;
+      page.drawText(clean(a.title), { x: M, y: y - 11, size: 11, font: bold, color: C.ink });
+      page.drawText(pts, { x: W - M - bold.widthOfTextAtSize(pts, 11), y: y - 11, size: 11, font: bold, color: pointsColor(a.points) });
+      y -= 17;
+      page.drawRectangle({ x: M, y: y - 4, width: CW, height: 4, color: C.track });
+      page.drawRectangle({ x: M, y: y - 4, width: Math.max(2, (CW * a.points) / 10), height: 4, color: pointsColor(a.points) });
+      y -= 12;
+      para(a.why, { size: 9.5, gap: 10 });
+    }
+
+    heading(r.h.fallK);
+    r.fall.forEach((t) => para(t, { size: 10, gap: 6 }));
+
+    heading(r.h.custody);
+    row(r.custody.head, [0.28, 0.36, 0.36], { font: bold });
+    r.custody.rows.forEach((x) => row(x, [0.28, 0.36, 0.36], { boldFirst: true }));
+    y -= 4;
+    para(r.custody.yours, { size: 10, gap: 6 });
+
+    heading(`${r.h.taxK}: ${r.h.tax}`);
+    if (r.tax.text) para(r.tax.text, { size: 10, gap: 6 });
+    r.tax.rows.forEach((x) => row(x, [0.24, 0.76], { boldFirst: true }));
+    if (r.tax.note) { y -= 4; para(r.tax.note, { size: 8.5, color: C.muted, gap: 6 }); }
+
+    const points = (list) => list.forEach((x, k) => {
+      ensure(40);
+      para(`${k + 1}. ${x.title}`, { font: bold, size: 10, gap: 1 });
+      para(x.text, { size: 9.5, color: C.muted, gap: 6 });
+    });
+    heading(r.h.wrong);
+    points(r.risks);
+    heading(r.h.solid);
+    if (r.solid.length) points(r.solid); else para(r.solidNone, { size: 10 });
+
+    heading(r.h.plan);
+    for (const [k, s] of r.steps.entries()) {
+      ensure(60);
+      const top = y;
+      const n = String(k + 1);
+      page.drawCircle({ x: M + 9, y: y - 9, size: 9, color: C.blue });
+      page.drawText(n, { x: M + 9 - bold.widthOfTextAtSize(n, 9) / 2, y: y - 12, size: 9, font: bold, color: rgb(1, 1, 1) });
+      para(s.title, { font: bold, size: 10.5, x: M + 28, width: CW - 28, gap: 2 });
+      para(s.text, { size: 9.5, color: C.muted, x: M + 28, width: CW - 28, gap: 2 });
+      if (s.tool) para(`${S.tool}: ${s.tool.name} · ${printed(s.tool.href)}`, { size: 9, color: C.blue, x: M + 28, width: CW - 28, gap: 2 });
+      y = Math.min(y, top - 22) - 8;
+    }
+
+    heading(r.h.next);
+    for (const x of r.next) {
+      ensure(30);
+      para(`${x.name}: ${x.small}`, { font: bold, size: 10, gap: 1 });
+      para(printed(x.print || x.href), { size: 9, color: C.blue, gap: 6 });
+    }
+
+    heading(S.legal);
+    for (const t of [r.legal, operator]) if (t) para(t, { size: 8.5, color: C.muted, gap: 5 });
+  };
+
   newPage();
+
+  if (r.lite) {
+    liteBody();
+    return finish();
+  }
 
   // Cover: meta line, score, level, why, score note.
   const ds = date.toLocaleDateString({ sk: 'sk-SK', ru: 'ru-RU' }[L] || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Bratislava' });
@@ -175,14 +292,5 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
   heading(S.legal);
   for (const t of [r.scoreNote, r.aiLabel, r.disclaimer, operator]) if (t) para(t, { size: 8.5, color: C.muted, gap: 5 });
 
-  // Footer on every page.
-  const pages = doc.getPages();
-  pages.forEach((p, k) => {
-    const left = '© 2018–2026 Virtuse Wealth Management, a.s.';
-    const right = `${k + 1} / ${pages.length}`;
-    p.drawText(left, { x: M, y: 26, size: 7.5, font: reg, color: C.muted });
-    p.drawText(right, { x: W - M - reg.widthOfTextAtSize(right, 7.5), y: 26, size: 7.5, font: reg, color: C.muted });
-  });
-
-  return doc.save({ useObjectStreams: true });
+  return finish();
 }

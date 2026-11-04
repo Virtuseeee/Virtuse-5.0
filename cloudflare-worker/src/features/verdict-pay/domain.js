@@ -32,7 +32,9 @@ export function isVerdictSession(s) {
 }
 
 // Checkout Session params for one stored result (rid) and page language.
-export function checkoutParams(env, origin, rid, page) {
+// extra (Verdict Lite): prefilled email, a short expiry (the answers are kept
+// only 24 h) and the terms line above the pay button.
+export function checkoutParams(env, origin, rid, page, extra = {}) {
   const pageUrl = `${origin}${page === 'en' ? '' : '/' + page}/verdict.html`;
   return {
     mode: 'payment',
@@ -44,6 +46,7 @@ export function checkoutParams(env, origin, rid, page) {
     locale: page,
     automatic_tax: env.STRIPE_AUTOMATIC_TAX === '1' ? { enabled: true } : undefined,
     invoice_creation: env.STRIPE_INVOICE === '1' ? { enabled: true } : undefined,
+    ...extra,
   };
 }
 
@@ -62,15 +65,28 @@ export function paidRecord(s, old, now) {
   };
 }
 
+// A Lite Checkout Session expires after 2 hours, well inside the 24 h the
+// answers are kept, so a late payment always finds them.
+export const LITE_SESSION_S = 2 * 60 * 60;
+export const LITE_CHECKOUT_PER_HOUR = 20;
+
+export const LITE_TERMS = {
+  en: 'One payment, no subscription. Your report opens right after payment and a PDF comes by email. 30-day refund, no questions asked; your 14-day EU right of withdrawal applies on top. Terms: virtuse.com/terms-and-conditions.html',
+  sk: 'Jedna platba, bez predplatného. Report sa otvorí hneď po platbe a PDF príde e-mailom. Vrátenie peňazí do 30 dní bez otázok; vaše 14-dňové právo na odstúpenie v EÚ platí navyše. Podmienky: virtuse.com/sk/terms-and-conditions.html',
+};
+
 export const PAY_TEXT = {
   closed: { sk: 'Platby zatiaľ nie sú otvorené.', en: 'Payments are not open yet.' },
   expiredRun: { sk: 'Tento verdikt už vypršal (24 h). Spustite ho, prosím, znova.', en: 'This verdict has expired (24 h). Please run it again.' },
   checkoutFail: { sk: 'Platbu sa nepodarilo otvoriť. Skúste to o chvíľu.', en: 'Could not open the payment. Please try again in a moment.' },
   fail: { sk: 'Niečo sa pokazilo. Skúste to o chvíľu.', en: 'Something went wrong. Please try again in a moment.' },
+  badAnswers: { sk: 'Niektoré odpovede chýbajú. Prejdite, prosím, kroky znova.', en: 'Some answers are missing. Please go through the steps again.' },
+  tooMany: { sk: 'Príliš veľa pokusov. Skúste to znova o hodinu.', en: 'Too many attempts. Please try again in an hour.' },
 };
 
 export const REPORT_ERRORS = {
   unpaid: { sk: 'Platba nie je potvrdená. Ak vám boli strhnuté peniaze, napíšte na info@virtuse.com.', en: 'The payment is not confirmed. If you were charged, write to info@virtuse.com.' },
   refunded: { sk: 'Táto platba bola vrátená.', en: 'This payment was refunded.' },
   expired: { sk: 'Výsledok už nie je uložený (24 h). Napíšte na info@virtuse.com, platbu vám vrátime.', en: 'The result is no longer stored (24 h). Write to info@virtuse.com and we will refund you.' },
+  emailed: { sk: 'Odpovede už na webe neuchovávame (24 h). Report máte v e-maile ako PDF; ak ho nenájdete, napíšte na info@virtuse.com.', en: 'Your answers are no longer stored on the site (24 h). The report is in your email as a PDF; if you cannot find it, write to info@virtuse.com.' },
 };

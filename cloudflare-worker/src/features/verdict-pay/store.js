@@ -1,5 +1,6 @@
 // KV records of the paid Verdict report (RATE_LIMIT_KV, like the other verdict:* keys):
 //   verdict:res:<rid>    { result, profile, lang }    24 h; the scored result, never the decision text
+//                        { lite: true, answers, lang } 24 h; Verdict Lite: the validated answers, no email
 //   verdict:paid:<cs_id> { rid, status, usedAt, ... } 30 days
 //   verdict:pi:<pi_id>   cs_id                        90 days, for charge.refunded
 
@@ -18,6 +19,8 @@ export function createPayStore(kv) {
   return {
     storeResult: (rid, result, profile, lang) =>
       kv.put(`verdict:res:${rid}`, JSON.stringify({ result, profile, lang }), { expirationTtl: RESULT_TTL }),
+    storeLite: (rid, answers, lang) =>
+      kv.put(`verdict:res:${rid}`, JSON.stringify({ lite: true, answers, lang }), { expirationTtl: RESULT_TTL }),
     getResult: (rid) => getJson(`verdict:res:${rid}`),
     hasResult: async (rid) => !!(await kv.get(`verdict:res:${rid}`)),
     getPaid: (sid) => getJson(`verdict:paid:${sid}`),

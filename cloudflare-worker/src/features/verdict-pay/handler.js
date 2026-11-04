@@ -2,6 +2,8 @@
 // STRIPE_PRICE_ID_VERDICT). Rules in domain.js, KV records in store.js.
 //
 // POST /verdict/checkout       { rid, lang }        -> { url } of a Checkout Session
+//                              { answers, lang, email } Verdict Lite: stores the answers
+//                              24 h under a new rid, same Session and same webhook
 // POST /verdict/stripe-webhook (Stripe, signed)      checkout.session.completed,
 //                              checkout.session.async_payment_succeeded, charge.refunded
 // POST /verdict/report         { session_id, lang } -> the full report, open for
@@ -12,18 +14,21 @@
 // Only the webhook sends it, so a parallel /verdict/report cannot send twice.
 // VERDICT_RECEIPT_TO (staging) sends every confirmation to that address instead.
 
-import { readJson } from '../../http/request.js';
+import { EMAIL_RE } from '../../config.js';
+import { clientIp, readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
 import { createStripeClient, verifyStripeSignature } from '../../infra/stripe.js';
 import { freeView, reportView, verdictOpts } from '../verdict/domain.js';
 import { aiJson } from '../verdict/handler.js';
+import { liteReportView } from '../verdict-lite/report.js';
+import { validateAnswers } from '../verdict-lite/rules.js';
 import {
-  PAY_TEXT, REPORT_ERRORS, REPORT_WINDOW_MS, RID_RE, SESSION_RE, SIGNATURE_TOLERANCE_S, checkoutParams,
+  LITE_CHECKOUT_PER_HOUR, LITE_SESSION_S, LITE_TERMS, PAY_TEXT, REPORT_ERRORS, REPORT_WINDOW_MS, RID_RE, SESSION_RE, SIGNATURE_TOLERANCE_S, checkoutParams,
   isVerdictSession, msgLang, pageLang, paymentsOn,
 } from './domain.js';
 import { renderReportPdf } from './pdf.js';
 import { operatorLine, orderNumber, receiptLang, renderReceipt } from './receipt.js';
-import { createPayStore } from './store.js';
+import { createPayStore, newRid } from './store.js';
 import { INTER_BOLD, INTER_REGULAR } from '../../generated/fonts.js';
 
 const stripeFor = (ctx) => createStripeClient(ctx.env.STRIPE_SECRET_KEY, ctx.fetch);
@@ -35,15 +40,36 @@ export async function handleCheckout(ctx) {
   const body = parsed.value;
   const page = pageLang(body?.lang);
   const lang = msgLang(page);
-  if (!paymentsOn(env)) return json(503, { error: PAY_TEXT.closed[lang] }, origin);
-  const rid = typeof body?.rid === 'string' ? body.rid : '';
-  if (!RID_RE.test(rid)) return json(400, { error: 'Invalid rid' }, origin);
-  if (!(await createPayStore(env.RATE_LIMIT_KV).hasResult(rid))) return json(404, { error: PAY_TEXT.expiredRun[lang] }, origin);
+  if (!paymentsOn(env)) return json(503, { error: PAY_TEXT.closed[lang], code: 'closed' }, origin);
+  let rid;
+  let params;
+  if (body?.answers) {
+    // Verdict Lite: no stored result exists yet, so this call makes one. It is
+    // the only unauthenticated write on this route, hence the limit per IP.
+    const checked = validateAnswers(body.answers);
+    if (!checked.ok) return json(400, { error: PAY_TEXT.badAnswers[lang], detail: checked.error }, origin);
+    if (await ctx.services.limiter.exceeded(`verdict:litepay:${clientIp(request)}`, LITE_CHECKOUT_PER_HOUR, 60 * 60)) {
+      return json(429, { error: PAY_TEXT.tooMany[lang], code: 'rate_limited' }, origin);
+    }
+    rid = newRid();
+    await createPayStore(env.RATE_LIMIT_KV).storeLite(rid, checked.value, lang);
+    const email = typeof body.email === 'string' && body.email.length <= 254 && EMAIL_RE.test(body.email) ? body.email : undefined;
+    params = checkoutParams(env, origin, rid, lang, {
+      customer_email: email,
+      expires_at: Math.floor(ctx.now / 1000) + LITE_SESSION_S,
+      custom_text: { submit: { message: LITE_TERMS[lang] } },
+    });
+  } else {
+    rid = typeof body?.rid === 'string' ? body.rid : '';
+    if (!RID_RE.test(rid)) return json(400, { error: 'Invalid rid' }, origin);
+    if (!(await createPayStore(env.RATE_LIMIT_KV).hasResult(rid))) return json(404, { error: PAY_TEXT.expiredRun[lang] }, origin);
+    params = checkoutParams(env, origin, rid, page);
+  }
   // Same rid + lang within 24 h -> the same Session (a double click or a
   // return from cancel_url does not create a second one).
   let r;
   try {
-    r = await stripeFor(ctx).request('POST', '/checkout/sessions', checkoutParams(env, origin, rid, page), `verdict-checkout-${rid}-${page}`);
+    r = await stripeFor(ctx).request('POST', '/checkout/sessions', params, `verdict-checkout-${rid}-${page}`);
   } catch (e) {
     console.error(e);
     r = { ok: false, status: 0, data: {} };
@@ -73,12 +99,14 @@ export async function sendReceipt(ctx, session, rec, store) {
   if (!stored) { console.error('verdict receipt: result expired', rec.rid); return true; }
   const lang = receiptLang(session.metadata?.lang);
   try {
-    const view = reportView(stored.result, stored.profile, verdictOpts(env, pageLang(stored.lang || lang)));
+    const view = stored.lite
+      ? liteReportView(stored.answers, stored.lang)
+      : reportView(stored.result, stored.profile, verdictOpts(env, pageLang(stored.lang || lang)));
     const pdf = await renderReportPdf(view, {
       lang, fonts: { regular: fromBase64(INTER_REGULAR), bold: fromBase64(INTER_BOLD) },
       date: new Date(rec.paidAt || now), order: orderNumber(session.id), operator: operatorLine(lang),
     });
-    const mail = renderReceipt({ lang, sid: session.id, amount: rec.amount, currency: rec.currency, paidAt: rec.paidAt || now });
+    const mail = renderReceipt({ lang, sid: session.id, amount: rec.amount, currency: rec.currency, paidAt: rec.paidAt || now, lite: !!stored.lite });
     await ctx.services.resend.sendEmail({
       from: env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL,
       to: [to],
@@ -145,7 +173,7 @@ export async function paidReport(ctx, sid) {
   }
   if (rec.status !== 'paid') return { status: 402, error: rec.status };
   const stored = await store.getResult(rec.rid);
-  if (!stored) return { status: 410, error: 'expired' };
+  if (!stored) return { status: 410, error: rec.emailedAt ? 'emailed' : 'expired' };
   if (!rec.usedAt) {
     rec.usedAt = now;
     await store.putPaid(sid, rec);
@@ -173,6 +201,10 @@ export async function handleReport(ctx) {
     return json(502, { error: PAY_TEXT.fail[lang] }, origin);
   }
   if (out.error) return json(out.status, { error: (REPORT_ERRORS[out.error] || REPORT_ERRORS.unpaid)[lang] }, origin);
+  if (out.stored.lite) {
+    if (out.used) return json(200, { lite: true, reportUsed: true }, origin);
+    return json(200, { ...liteReportView(out.stored.answers, out.stored.lang), paid: true, until: out.until }, origin);
+  }
   const { result, profile } = out.stored;
   const opts = verdictOpts(env, pageLang(out.stored.lang || page));
   if (out.used) return aiJson({ ...freeView(result, profile, opts), reportUsed: true }, origin);

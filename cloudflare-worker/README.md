@@ -462,3 +462,7 @@ Secrets / settings (`wrangler secret put NAME`):
 Turnstile test keys (always pass, Cloudflare docs): site key `1x00000000000000000000AA`, secret
 `1x0000000000000000000000000000000AA`. The widget "virtuse.com Ecosystem Promote form" (site key `0x4AAAAAAFheOLDBd1DyVOhF`, Managed, virtuse.com + staging.virtuse.com) exists since 2026-10-22;
 the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret into `TURNSTILE_SECRET_KEY`.
+
+## Verdict Lite report (paid, fixed rules)
+
+`POST /verdict/checkout { answers, lang, email }` is the Lite path of the Checkout route: answers validated by `features/verdict-lite/rules.js`, kept 24 h without the email, 20 attempts per IP per hour. The webhook and `POST /verdict/report` are shared with the older paid report; `stored.lite` picks `liteReportView()` (`features/verdict-lite/report.js`) instead of `reportView()`. The page and the PDF both print that one object. If you change `calc()` or `gaps()` in `verdict-lite.js`, change `rules.js` too: `test/verdict-lite.test.mjs` compares them.

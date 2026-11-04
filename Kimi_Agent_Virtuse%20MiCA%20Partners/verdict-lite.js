@@ -1,5 +1,5 @@
 /* Verdict (verdict.html, sk/verdict.html): five short steps, a free Lite score for an email,
-   and the €14 full report (waitlist only, no payment yet). Replaced the old free-text
+   and the €14 full report, paid with Stripe Checkout. Replaced the old free-text
    10-signal Verdict on 2026-11-03 (verdict-flow.js stays only for ru/verdict.html).
 
    Scoring: six areas, 0 to 10 each, fixed rules, no AI model. The score measures how
@@ -9,8 +9,12 @@
    Worker calls (through vb-api.js): POST /send kind verdict_lite (source verdict)
    emails the Lite score after the gate; the payload is only score, grade, band,
    gap ids and the six area points, and the Brief tick rides on the same call
-   (brief: true), so there is one welcome at most. /waitlist (source
-   verdict_report) for the €14 report.
+   (brief: true), so there is one welcome at most.
+   POST /verdict/checkout { answers, lang, email } stores the answers on the Worker
+   for 24 hours and answers with the Stripe Checkout URL. Back from Stripe with
+   ?session_id=, POST /verdict/report returns the report, built on the Worker from
+   the same rules (features/verdict-lite/; a test keeps calc() and gaps() here in
+   step with it). /waitlist (source verdict_report) only when payments are closed.
    Plain ES5 like the rest of the site's scripts. */
 (function () {
   'use strict';
@@ -52,7 +56,7 @@
       retireErr: 'Your retirement age is lower than your age.',
       steps: [
         ["Let's start with the basics.", 'Your name only appears in your own report.', { name: ['First name', 'e.g. Anna'], age: ['Your age', 'e.g. 41'], country: ['Where do you pay tax?', 'Tax rules and the partners you can use depend on it.'] }],
-        ['Tell us about your savings and retirement.', 'Be as honest as you can. Round numbers are fine, and nothing leaves this page until you ask for your score.', { savings: ['Savings and investments (€), without your home and pension', 'e.g. 150000'], pension: ['Retirement savings so far (€): pension pillars, private pension', 'e.g. 40000'], retire: ['At what age do you plan to retire?', 'e.g. 65'], retmonthly: ['How much do you put aside for retirement each month (€)?', 'e.g. 150'], reserve: ['How many months could you live from cash, without Bitcoin?'] }],
+        ['Tell us about your savings and retirement.', 'Be as honest as you can. Round numbers are fine. Your answers stay on this page unless you buy the full report.', { savings: ['Savings and investments (€), without your home and pension', 'e.g. 150000'], pension: ['Retirement savings so far (€): pension pillars, private pension', 'e.g. 40000'], retire: ['At what age do you plan to retire?', 'e.g. 65'], retmonthly: ['How much do you put aside for retirement each month (€)?', 'e.g. 150'], reserve: ['How many months could you live from cash, without Bitcoin?'] }],
         ['Do you own your home?', 'Your home is often your biggest asset, and a mortgage changes how much a fall can hurt.', { homeval: ['Estimated home value (€)', 'e.g. 250000'], mortbal: ['Remaining mortgage (€)', 'e.g. 140000'], debt: ['Other debts (consumer loans, cards, leasing)?'] }],
         ["What's your relationship with Bitcoin?", 'No judgement. We work with first-timers, long-time holders and sceptics alike.', { btc: ['How much would you put into Bitcoin (€)?', 'e.g. 20000'], monthly: ['And each month after that (€)?', 'e.g. 200'], custody: ['Who should hold the keys?'], fall: ['Bitcoin drops 70% in a year. What do you do?'] }],
         ['What keeps you up at night about Bitcoin?', 'Pick all that apply. Your plan starts with these.', { tax_known: ['Do you know what the tax office takes when you sell?'] }]
@@ -102,6 +106,8 @@
       tooMany: 'Too many attempts. Please try again in an hour. Your score is below.',
       badAddr: 'We could not deliver to this address. Please check it and try again.',
       wlOk: "You're on the list. We'll email you once, when the report opens.",
+      buyWait: 'Opening secure payment…', buyClosed: 'Payment is not open right now. Leave your email and we will write to you once when it is.', buyCanceled: 'Payment cancelled. Nothing was charged.',
+      repLoad: 'Preparing your report…', repUsed: 'This report was open for 30 minutes and has now closed. Your PDF copy is in the email you paid with. Cannot find it? Write to info@virtuse.com.', repNet: 'We could not load your report. Please reload this page. Your PDF copy is on its way by email; if it does not arrive, write to info@virtuse.com.',
       demo: { top: 'VERDICT REPORT · SAMPLE', title: 'Anna’s Bitcoin plan check', meta: '41 · Slovakia · first purchase · own keys', scale: ['Basics missing', 'A few gaps', 'Basics in place'], pill: 'B · Basics in place', nums: [['Planned', '€20,000 · 13%'], ['After a 70% fall', '€6,000 left'], ['Monthly', '€200'], ['Cash reserve', '3 to 6 months']], areas: ['Size', 'Reserve', 'Debts', 'Tax', 'Custody', 'Behaviour'] },
       jump: ['Landing', '1 Basics', '2 Savings', '3 Home', '4 Bitcoin', '5 Worries', 'Loading', 'Gate', 'Lite score', 'Sample']
     },
@@ -112,7 +118,7 @@
       retireErr: 'Vek odchodu do dôchodku je nižší ako váš vek.',
       steps: [
         ['Začnime základmi.', 'Vaše meno sa zobrazí len vo vašom vlastnom reporte.', { name: ['Krstné meno', 'napr. Anna'], age: ['Váš vek', 'napr. 41'], country: ['V ktorej krajine platíte dane?', 'Od toho závisia daňové pravidlá aj partneri, ktorých môžete využiť.'] }],
-        ['Povedzte nám o svojich úsporách a dôchodku.', 'Buďte čo najúprimnejší. Stačia zaokrúhlené čísla a nič neopustí túto stránku, kým si nevypýtate skóre.', { savings: ['Úspory a investície (€), bez bývania a dôchodku', 'napr. 150000'], pension: ['Doterajšie úspory na dôchodok (€): dôchodkové piliere, súkromné sporenie', 'napr. 40000'], retire: ['V akom veku plánujete ísť do dôchodku?', 'napr. 65'], retmonthly: ['Koľko si mesačne odkladáte na dôchodok (€)?', 'napr. 150'], reserve: ['Koľko mesiacov by ste vyžili z hotovosti, bez Bitcoinu?'] }],
+        ['Povedzte nám o svojich úsporách a dôchodku.', 'Buďte čo najúprimnejší. Stačia zaokrúhlené čísla. Vaše odpovede zostanú na tejto stránke, pokiaľ si nekúpite celý report.', { savings: ['Úspory a investície (€), bez bývania a dôchodku', 'napr. 150000'], pension: ['Doterajšie úspory na dôchodok (€): dôchodkové piliere, súkromné sporenie', 'napr. 40000'], retire: ['V akom veku plánujete ísť do dôchodku?', 'napr. 65'], retmonthly: ['Koľko si mesačne odkladáte na dôchodok (€)?', 'napr. 150'], reserve: ['Koľko mesiacov by ste vyžili z hotovosti, bez Bitcoinu?'] }],
         ['Bývate vo vlastnom?', 'Bývanie býva najväčší majetok a hypotéka mení, ako veľmi môže pokles bolieť.', { homeval: ['Odhadovaná hodnota bývania (€)', 'napr. 250000'], mortbal: ['Zostatok hypotéky (€)', 'napr. 140000'], debt: ['Iné dlhy (spotrebné úvery, karty, lízing)?'] }],
         ['Aký máte vzťah k Bitcoinu?', 'Nikoho nesúdime. Pomáhame začiatočníkom, dlhoročným držiteľom aj skeptikom.', { btc: ['Koľko by ste dali do Bitcoinu (€)?', 'napr. 20000'], monthly: ['A potom každý mesiac (€)?', 'napr. 200'], custody: ['Kto má držať kľúče?'], fall: ['Bitcoin za rok klesne o 70 %. Čo urobíte?'] }],
         ['Čo vás na Bitcoine trápi najviac?', 'Vyberte všetko, čo platí. Váš plán začne práve týmto.', { tax_known: ['Viete, koľko si pri predaji vezme daňový úrad?'] }]
@@ -162,6 +168,8 @@
       tooMany: 'Príliš veľa pokusov. Skúste to znova o hodinu. Vaše skóre nájdete nižšie.',
       badAddr: 'Na túto adresu sa e-mail nepodarilo doručiť. Skontrolujte ju a skúste to znova.',
       wlOk: 'Ste na zozname. Napíšeme vám raz, keď report spustíme.',
+      buyWait: 'Otváram zabezpečenú platbu…', buyClosed: 'Platba teraz nie je otvorená. Nechajte nám e-mail a raz vám napíšeme, keď bude.', buyCanceled: 'Platba bola zrušená. Nič sa nestrhlo.',
+      repLoad: 'Pripravujem váš report…', repUsed: 'Tento report bol otvorený 30 minút a teraz je zatvorený. Kópiu v PDF máte v e-maile, ktorým ste platili. Neviete ju nájsť? Napíšte na info@virtuse.com.', repNet: 'Report sa nepodarilo načítať. Znovu načítajte túto stránku. Kópia v PDF je na ceste e-mailom; ak nepríde, napíšte na info@virtuse.com.',
       demo: { top: 'VERDICT REPORT · VZOR', title: 'Plán Bitcoinu: Anna', meta: '41 · Slovensko · prvý nákup · vlastné kľúče', scale: ['Chýbajú základy', 'Pár medzier', 'Základy máte'], pill: 'B · Základy máte', nums: [['Plánuje', '20 000 € · 13 %'], ['Po poklese o 70 %', 'zostane 6 000 €'], ['Mesačne', '200 €'], ['Rezerva', '3 až 6 mesiacov']], areas: ['Veľkosť', 'Rezerva', 'Dlhy', 'Dane', 'Úschova', 'Správanie'] },
       jump: ['Landing', '1 Základ', '2 Úspory', '3 Bývanie', '4 Bitcoin', '5 Obavy', 'Načítanie', 'Brána', 'Lite skóre', 'Vzor']
     }
@@ -339,7 +347,7 @@
     rd.push([sc.custody >= 7, A.custody === 'self' ? (A.experience !== 'hodler' ? R.custody.selfNew : R.custody.self) : A.custody === 'assisted' ? R.custody.assisted : R.custody.any]);
     rd.push([sc.fall >= 7, R.fall[A.fall] || R.fall.wait]);
     $('mlRead').innerHTML = rd.map(function (r) { return '<li class="' + (r[0] ? '' : 'warn') + '">' + r[1] + '</li>'; }).join('');
-    // Blurred preview of the paid report (the real report would be built after payment)
+    // Blurred preview of the paid report (the Worker builds the real one after payment)
     var cn = A.country && A.country !== 'other' ? (S.countries.filter(function (x) { return x[0] === A.country; })[0] || [0, S.blur.yourCountry])[1] : S.blur.yourCountry;
     var rows = document.querySelectorAll('.ml-blur-row');
     var set = function (i, b, s) { rows[i].children[0].textContent = b; rows[i].children[1].textContent = s; };
@@ -441,7 +449,77 @@
       })
       .catch(function () { done8(S.notSent); });
   };
-  // €14 full report waitlist (existing Worker source verdict_report)
+  // €14 full report: the answers go to the Worker only here, then on to Stripe.
+  function buy(btn) {
+    if (!done) { goStep(1); return; }     // the sample page, before the funnel
+    var box = btn.closest('[data-buybox]'), msg = box && box.querySelector('.ml-buy-msg');
+    var say = function (t) { if (msg) msg.textContent = t; };
+    var answers = {}; Object.keys(A).forEach(function (k) { if (k !== 'email') answers[k] = A[k]; });
+    btn.disabled = true; say(S.buyWait);
+    dl({ event: 'verdict_checkout_start' });
+    vbApi().then(function (api) { return api.postJson('/verdict/checkout', { answers: answers, lang: LANG, email: A.email || undefined }); })
+      .then(function (r) {
+        if (r && r.ok && r.data && r.data.url) { location.href = r.data.url; return; }
+        btn.disabled = false;
+        if (r && r.status === 503) {          // payments closed on this Worker: the waitlist instead
+          say(S.buyClosed);
+          var wl = box && box.querySelector('form[data-wl]');
+          if (wl) { wl.hidden = false; btn.hidden = true; }
+          return;
+        }
+        say((r && r.data && r.data.error) || S.net);
+      })
+      .catch(function () { btn.disabled = false; say(S.net); });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-buy]');
+    if (b) { e.preventDefault(); buy(b); }
+  });
+
+  // The report, back from Stripe with ?session_id=. The Worker checks the payment.
+  var REP_ICO = { tax: I.tax, finder: I.pick, custody: I.key };
+  function renderReport(r) {
+    var h = r.h, x = esc;
+    var tbl = function (head, rows) {
+      return '<table class="ml-table"><thead><tr>' + head.map(function (c) { return '<th>' + x(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+        rows.map(function (row) { return '<tr>' + row.map(function (c) { return '<td>' + x(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
+    };
+    var pts = function (list) { return '<ul class="ml-pts">' + list.map(function (p, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(p.title) + '</b><span>' + x(p.text) + '</span></div></li>'; }).join('') + '</ul>'; };
+    var box = function (k, t, body) { return '<div class="ml-box"><span class="ml-k2">' + x(k) + '</span>' + (t ? '<h4>' + x(t) + '</h4>' : '') + body + '</div>'; };
+    var paras = function (list) { return list.map(function (t) { return '<p>' + x(t) + '</p>'; }).join(''); };
+    return '<div class="ml-sent">' + x(r.sent) + '</div>' +
+      '<div class="ml-k2" style="text-align:center;margin-top:28px">' + x(r.kicker) + '</div>' +
+      '<h2 class="ml-rep-h">' + x(r.title) + '</h2><p class="ml-rep-meta">' + x(r.meta) + '</p>' +
+      '<div class="ml-box ml-nums" style="margin-top:30px">' + r.nums.map(function (n) { return '<div><small>' + x(n[0]) + '</small><b>' + x(n[1]) + '</b></div>'; }).join('') + '</div>' +
+      '<div class="ml-score-row"><div><div class="n">' + r.score + '<small>/100</small></div><div class="lbl">' + x(r.gradeLine) + '</div></div><div><div class="ml-scale"><span>' + r.scale.map(x).join('</span><span>') + '</span></div><div class="ml-track"><i style="width:' + r.score + '%"></i></div></div></div>' +
+      '<div style="text-align:center"><span class="ml-pill">' + x(r.pill) + '</span></div>' +
+      '<div class="ml-box" style="margin-top:44px"><span class="ml-k2">' + x(h.summaryK) + '</span>' + paras(r.summary) + '</div>' +
+      box(h.areasK, h.areas, tbl([h.area, h.points, h.why], r.areas.map(function (a) { return [a.title, a.points + ' / 10', a.why]; }))) +
+      box(h.fallK, h.fall, paras(r.fall)) +
+      box(h.custodyK, h.custody, tbl(r.custody.head, r.custody.rows) + '<p style="margin-top:16px">' + x(r.custody.yours) + '</p>') +
+      box(h.taxK, h.tax, (r.tax.text ? '<p>' + x(r.tax.text) + '</p>' : '') + (r.tax.rows.length ? '<table class="ml-table"><tbody>' + r.tax.rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : '') + (r.tax.note ? '<p style="font-size:13px;color:var(--dim);margin-top:16px">' + x(r.tax.note) + '</p>' : '')) +
+      box(h.bothK, h.both, '<div class="ml-cols"><div><div class="ml-colh r">' + x(h.wrong) + '</div>' + pts(r.risks) + '</div><div><div class="ml-colh g">' + x(h.solid) + '</div>' + (r.solid.length ? pts(r.solid) : '<p>' + x(r.solidNone) + '</p>') + '</div></div>') +
+      box(h.planK, h.plan, '<ul class="ml-steps">' + r.steps.map(function (s, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(s.title) + '</b><span>' + x(s.text) + '</span>' + (s.tool ? '<a class="ml-step-tool" href="' + x(s.tool.href) + '">' + x(s.tool.name) + ' →</a>' : '') + '</div></li>'; }).join('') + '</ul>') +
+      box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + x(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>') +
+      '<p class="ml-legal">' + x(r.legal) + '</p>';
+  }
+  function loadReport(sid) {
+    var el = $('mlReport');
+    el.innerHTML = '<p class="ml-sub" style="text-align:center">' + esc(S.repLoad) + '</p>';
+    var say = function (t) { el.innerHTML = '<div class="ml-box"><p>' + esc(t) + '</p></div>'; };
+    vbApi().then(function (api) { return api.postJson('/verdict/report', { session_id: sid, lang: LANG }); })
+      .then(function (r) {
+        var d = (r && r.data) || {};
+        if (!r || !r.ok) { say(d.error || S.repNet); return; }
+        if (d.reportUsed) { say(S.repUsed); return; }
+        el.innerHTML = renderReport(d);
+        try { sessionStorage.removeItem(KEY); } catch (e) {}
+        dl({ event: 'verdict_report_view', verdict_score: d.score, verdict_grade: d.grade });
+      })
+      .catch(function () { say(S.repNet); });
+  }
+
+  // €14 full report waitlist, only when payments are closed (Worker source verdict_report)
   document.querySelectorAll('form[data-wl]').forEach(function (f) {
     f.onsubmit = function (e) {
       e.preventDefault();
@@ -467,10 +545,14 @@
   demoInit();
   var rdr = document.querySelector('.vl .radar');
   if (rdr) { if ('IntersectionObserver' in window) { var ro = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { rdr.classList.add('in'); ro.disconnect(); } }, { threshold: 0.3 }); ro.observe(rdr); } else rdr.classList.add('in'); }
+  var sidM = /[?&]session_id=(cs_(?:test|live)_[A-Za-z0-9]+)/.exec(location.search);
+  if (sidM) { show(10); loadReport(sidM[1]); return; }
+  var canceled = /[?&]canceled=1\b/.test(location.search);
   var mm = /[?&]s=(\d+)/.exec(location.search);
   // First render: the step in the URL (after the guards), without a new history entry
-  var first = guard(mm ? mm[1] : 0);
+  var first = guard(canceled ? (A.email ? 8 : 7) : mm ? mm[1] : 0);
   if (first === 6) first = done ? 7 : 1;
   show(first);
+  if (canceled) document.querySelectorAll('.ml-screen.on .ml-buy-msg').forEach(function (m) { m.textContent = S.buyCanceled; });
   if (H) { var hs = st(); history.replaceState({ vl: 1, s: first, i: hs ? hs.i : 0, p: hs ? hs.p : 0 }, '', url(first)); }
 })();

@@ -24,6 +24,7 @@ const resolved = ({ file, text }) => imports(text).filter((s) => s.startsWith('.
 const PURE = [
   'features/send/domain.js', 'features/waitlist/domain.js', 'features/ecosystem/domain.js', 'features/ecosystem/strings.js',
   'features/verdict/domain.js', 'features/verdict/result.js', 'features/verdict/limits.js', 'features/verdict-pay/domain.js',
+  'features/verdict-lite/rules.js', 'features/verdict-lite/report.js',
   'features/pulse/schema.js', 'features/newsletter/segments.js', 'features/newsletter/welcome.js', 'features/newsletter/unsubscribe-page.js',
   'shared/crypto.js', 'config.js',
 ];

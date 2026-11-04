@@ -364,3 +364,10 @@
 }
 .ml-sent:empty { display: none; }
 .ml-sent.warn { color: var(--muted); }
+
+/* The bought report (screen 10) and the buy buttons */
+.ml-form[hidden], .ml-btn2[hidden], .ml-big[hidden] { display: none !important; }
+.ml-step-tool { display: inline-block; margin-top: 6px; color: var(--orange); font-size: 14px; text-decoration: none; }
+.ml-step-tool:hover { text-decoration: underline; }
+.ml-buy-msg:empty { display: none; }
+.ml-table td { overflow-wrap: break-word; }

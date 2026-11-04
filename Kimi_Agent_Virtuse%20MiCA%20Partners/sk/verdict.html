@@ -37,7 +37,7 @@
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
 <link rel="stylesheet" href="/verdict-landing.css?v=20261028a">
-<link rel="stylesheet" href="/verdict-lite.css?v=5">
+<link rel="stylesheet" href="/verdict-lite.css?v=6">
 <!-- VLH:END -->
 </head>
 <body class="page-verdict no-split">
@@ -115,7 +115,7 @@
 <section id="pricing">
     <div class="sec-head"><div class="eyebrow orange"><i></i>Cenník</div>
       <h2>Dve úrovne. <span>Začnite bezplatným Lite skóre.</span></h2>
-      <p class="sec-sub">Lite skóre je zadarmo za váš e-mail. Celý report stojí 14 € jednorazovo, bez predplatného; zatiaľ sa naň môžete zapísať na čakaciu listinu.</p>
+      <p class="sec-sub">Lite skóre je zadarmo za váš e-mail. Celý report stojí 14 € jednorazovo, bez predplatného.</p>
     </div>
     <div class="plans3 ml-plans2">
       <div class="plan">
@@ -136,10 +136,10 @@
       </div>
     </div>
     <div class="terms">
-      <p class="terms-k">Podmienky, ktoré platia po spustení platby</p>
+      <p class="terms-k">Podmienky</p>
       <div class="assure-row">
         <span class="ic ic-green"><b>Vrátenie peňazí do 30 dní</b>Bez otázok, bez formulára.</span>
-        <span class="ic ic-orange"><b>Platba cez Lightning alebo kartou</b>Jedna platba, bez predplatného.</span>
+        <span class="ic ic-orange"><b>Platba kartou</b>Jedna platba, bez predplatného.</span>
         <span class="ic ic-blue"><b>14-dňové odstúpenie v EÚ</b>Vaše zákonné právo na odstúpenie platí navyše.</span>
       </div>
       <p class="terms-fine">Ceny sú vrátane DPH, ak sa uplatňuje.</p>
@@ -150,12 +150,12 @@
 <div class="sec-head faq-head"><div class="eyebrow blue"><i></i>FAQ</div><h2>Časté <span>otázky.</span></h2></div>
 <div class="faq">
 <details open><summary>Povie mi Verdict, či mám kúpiť Bitcoin?</summary><p>Nie. Hodnotí, nakoľko je váš plán pripravený. Čo urobíte, je vaše rozhodnutie. Verdict neodporúča kúpu, predaj, pôžičku ani žiadneho partnera.</p></details>
-<details><summary>Koľko to stojí?</summary><p>Lite skóre je zadarmo za váš e-mail. Celý report stojí 14 € jednorazovo; zatiaľ sa naň môžete zapísať na čakaciu listinu.</p></details>
+<details><summary>Koľko to stojí?</summary><p>Lite skóre je zadarmo za váš e-mail. Celý report stojí 14 € jednorazovo.</p></details>
 <details><summary>Čo obsahuje celý report?</summary><p>Body a dôvod pre každú zo šiestich oblastí, čo znamená pokles o 70 % v eurách pre vašu sumu, pravidlo predaja vo vašej krajine jednoducho, možnosti úschovy vedľa seba a tri kroky na tento týždeň, ako PDF, ktoré si ponecháte. <a href="?s=9" data-go="9">Pozrieť vzorový report</a>.</p></details>
 <details><summary>Prečo chcete môj e-mail?</summary><p>E-mail odomkne vaše Lite skóre. Virtuse Brief len vtedy, ak zaškrtnete políčko.</p></details>
-<details><summary>Čo sa stane s mojimi číslami?</summary><p>Použijú sa len na vaše skóre a report. Podrobnosti v <a href="/sk/privacy-policy.html">zásadách ochrany osobných údajov</a>.</p></details>
+<details><summary>Čo sa stane s mojimi číslami?</summary><p>Pri Lite skóre zostanú odpovede vo vašom prehliadači; do e-mailu ide len skóre a vaše medzery. Ak si kúpite celý report, odpovede uchováme 24 hodín, aby sme ho mohli pripraviť. Podrobnosti v <a href="/sk/privacy-policy.html">zásadách ochrany osobných údajov</a>.</p></details>
 <details><summary>Čítajú moje odpovede AI?</summary><p>Nie. Verdict hodnotí vaše odpovede pevnými pravidlami, rovnakými pre každého.</p></details>
-<details><summary>Potrebujem účet alebo kartu?</summary><p>Nie. Lite skóre potrebuje len e-mail.</p></details>
+<details><summary>Potrebujem účet alebo kartu?</summary><p>Účet nie. Lite skóre potrebuje len e-mail; karta je potrebná len pre celý report a platbu spracuje Stripe.</p></details>
 <details><summary>Je to investičné alebo daňové poradenstvo?</summary><p>Nie. Verdict hodnotí, nakoľko je váš plán pripravený. S daňovými otázkami sa obráťte na daňového poradcu.</p></details>
 </div>
 </section>
@@ -215,7 +215,7 @@
         </form>
         <p class="ml-fine">Váš e-mail použijeme len pre váš Verdict. <a href="/sk/privacy-policy.html" style="color:inherit">Ochrana údajov</a></p>
       </div>
-      <div class="ml-plan pro">
+      <div class="ml-plan pro" data-buybox>
         <span class="ml-badge">Celý report</span>
         <h3>Celý report</h3>
         <div class="ml-price">14 € <small>jednorazovo · bez predplatného</small></div>
@@ -229,14 +229,16 @@
           <li>PDF, ktoré si ponecháte</li>
         </ul>
         <div class="ml-spacer"></div>
-        <button class="ml-btn2 orange" type="button" data-go="9">Najprv pozrieť vzorový report</button>
-        <form class="ml-form" data-wl novalidate>
+        <button class="ml-btn2 orange" type="button" data-buy>Získať celý report · 14 €</button>
+        <button class="ml-btn2 ghost" type="button" data-go="9">Najprv pozrieť vzorový report</button>
+        <p class="ml-fine ml-buy-msg" aria-live="polite"></p>
+        <form class="ml-form" data-wl novalidate hidden>
           <input class="ml-input" type="email" name="email" placeholder="vas@email.sk" required aria-label="E-mail" autocomplete="email">
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="ml-btn2 ghost" type="submit">Zapísať sa na waitlist · 14 €</button>
           <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
         </form>
-        <p class="ml-fine">Platba ešte nie je spustená. Len čakacia listina, nič sa nestrhne.</p>
+        <p class="ml-fine">Zabezpečená platba kartou cez Stripe. Report sa otvorí hneď a PDF príde e-mailom. Vrátenie peňazí do 30 dní.</p>
       </div>
     </div>
     <div class="ml-peek">
@@ -280,12 +282,19 @@
         <div class="ml-blur-row"><b></b><span></span></div>
         <div class="ml-blur-row"><b></b><span></span></div>
       </div>
-      <div class="ml-lockover">
+      <div class="ml-lockover" data-buybox>
         <div class="ml-lock" style="width:60px;height:60px;margin:0 auto 14px;border-radius:16px"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
         <div class="ml-gap1" id="mlGap1" style="margin:0 0 8px"></div>
         <p class="ml-sub" style="margin:0 auto 20px;font-size:15px">Celý report vysvetlí každý bod, ukáže vaše čísla v eurách a z medzier urobí 3 kroky, ktoré si ponecháte ako PDF.</p>
-        <button class="ml-big" type="button" data-go="7">Zapísať sa na waitlist · 14 € →</button>
-        <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">Pozrieť vzorový report</a> · Jednorazovo · zatiaľ čakacia listina, nič sa nestrhne</p>
+        <button class="ml-big" type="button" data-buy>Získať celý report · 14 € →</button>
+        <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
+        <form class="ml-form" data-wl novalidate hidden>
+          <input class="ml-input" type="email" name="email" placeholder="vas@email.sk" required aria-label="E-mail" autocomplete="email">
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="ml-btn2 orange" type="submit">Zapísať sa na waitlist · 14 €</button>
+          <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
+        </form>
+        <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">Pozrieť vzorový report</a> · Jednorazovo · kartou cez Stripe · vrátenie do 30 dní</p>
       </div>
     </div>
 
@@ -396,10 +405,12 @@
     </div>
 
 
-    <div class="ml-box" id="waitlist" style="text-align:center">
+    <div class="ml-box" id="waitlist" data-buybox style="text-align:center">
       <h4>Chcete takýto report pre svoj plán?</h4>
-      <p>14 € jednorazovo, bez predplatného. Platba ešte nie je spustená: zapíšte sa na waitlist a napíšeme vám raz, keď report spustíme.</p>
-      <form class="ml-form" data-wl novalidate style="max-width:420px;margin:0 auto">
+      <p>14 € jednorazovo, bez predplatného. Ak ste ešte neodpovedali, najprv prejdete päť krátkych krokov. Vrátenie peňazí do 30 dní.</p>
+      <button class="ml-big" type="button" data-buy>Získať môj report · 14 €</button>
+      <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
+      <form class="ml-form" data-wl novalidate hidden style="max-width:420px;margin:0 auto">
         <input class="ml-input" type="email" name="email" placeholder="vas@email.sk" required aria-label="E-mail" autocomplete="email">
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="ml-btn2 orange" type="submit">Zapísať sa na waitlist · 14 €</button>
@@ -411,6 +422,15 @@
       <button class="ml-big orange" type="button" data-consultation-trigger data-consultation-lang="sk">Rezervovať 15 minút zadarmo</button>
     </div>
     <p class="ml-legal">Vzorový report pre vymyslenú klientku. Čísla sú ilustračné. Verdict kontroluje vaše odpovede pevnými pravidlami a nie je to investičné, daňové ani právne poradenstvo. Partnerov uvádzame preto, že spĺňajú kritériá, nie podľa poradia; Virtuse môže od partnera dostať províziu. © 2018–2026 Virtuse Wealth Management, a.s.</p>
+  </section>
+
+  <!-- 10 THE BOUGHT REPORT (filled by verdict-lite.js from POST /verdict/report) -->
+  <section class="ml-screen" data-s="10">
+    <div id="mlReport"></div>
+    <div class="ml-box ml-consult">
+      <div><h4>Chcete to prejsť s nami?</h4><p>Vezmite si report na bezplatný 15-minútový hovor. Odpovieme na vaše otázky; rozhodnete sa sami.</p></div>
+      <button class="ml-big orange" type="button" data-consultation-trigger data-consultation-lang="sk">Rezervovať 15 minút zadarmo</button>
+    </div>
   </section>
 
   <nav class="ml-jump" aria-label="Náhľad obrazoviek" hidden><b>Obrazovky:</b></nav>
@@ -445,7 +465,7 @@
 <script src="/vb-api.js?v=2" defer></script>
 <script src="/site-v2.js?v=12" defer></script>
 <script src="/consultation-lazy.js?v=5" defer></script>
-<script src="/verdict-lite.js?v=5" defer></script>
+<script src="/verdict-lite.js?v=6" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
