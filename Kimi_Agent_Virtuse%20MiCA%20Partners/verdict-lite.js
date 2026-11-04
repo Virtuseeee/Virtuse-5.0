@@ -67,7 +67,7 @@
         home: [['own','Yes','Owned outright'],['mortgage','Yes, with a mortgage','Still paying it off'],['rent','No','I rent'],['other','Other','Family, shared, other']],
         debt: [['none','None'],['lt10','Under €10,000'],['gt10','Over €10,000']],
         experience: [['hodler','I own Bitcoin','Already invested'],['new','Curious','Haven’t bought yet'],['sceptic','Sceptical','Not sure it’s for me']],
-        custody: [['self','Me','A hardware wallet I control'],['assisted','Me, with help','Help with keys and recovery'],['any','Not sure yet','Show me all options']],
+        custody: [['self','Me','A hardware wallet I control'],['assisted','Me, with help','Assisted custody: help with keys and recovery'],['any','Not sure yet','Show me all options']],
         fall: [['sell','Sell, to stop the loss','Some or all of it'],['wait','Hold and wait','Do nothing'],['more','Buy more','At the lower price']],
         worries: [['tax','Paying too much tax'],['keys','Losing my keys'],['crash','A crash wiping out my savings'],['heirs','My family not finding it'],['scams','Getting scammed'],['fees','Hidden fees'],['partner','Picking the wrong partner'],['retire','Not having enough for retirement']],
         tax_known: [['yes','Yes, I know the rule'],['roughly','Roughly'],['no','No idea yet']]
@@ -130,7 +130,7 @@
         home: [['own','Áno','Bez hypotéky'],['mortgage','Áno, s hypotékou','Ešte ju splácam'],['rent','Nie','Bývam v prenájme'],['other','Iné','U rodiny, spoločne, iné']],
         debt: [['none','Žiadne'],['lt10','Do 10 000 €'],['gt10','Nad 10 000 €']],
         experience: [['hodler','Bitcoin vlastním','Už som investoval'],['new','Zaujíma ma','Ešte som nekúpil'],['sceptic','Som skeptický','Nie som si istý, či je pre mňa']],
-        custody: [['self','Ja','Hardvérová peňaženka, ktorú ovládam'],['assisted','Ja, s pomocou','Pomoc s kľúčmi a obnovou'],['any','Ešte neviem','Ukážte mi všetky možnosti']],
+        custody: [['self','Ja','Hardvérová peňaženka, ktorú ovládam'],['assisted','Ja, s pomocou','Asistovaná úschova: pomoc s kľúčmi a obnovou'],['any','Ešte neviem','Ukážte mi všetky možnosti']],
         fall: [['sell','Predám, aby som zastavil stratu','Časť alebo všetko'],['wait','Počkám','Nič nerobím'],['more','Prikúpim','Za nižšiu cenu']],
         worries: [['tax','Že zaplatím priveľa na daniach'],['keys','Že stratím kľúče'],['crash','Že prepad zničí moje úspory'],['heirs','Že ho rodina nenájde'],['scams','Že naletím podvodníkom'],['fees','Skryté poplatky'],['partner','Že si vyberiem zlého partnera'],['retire','Že mi nebude stačiť na dôchodok']],
         tax_known: [['yes','Áno, poznám pravidlo'],['roughly','Približne'],['no','Zatiaľ netuším']]
@@ -562,7 +562,7 @@
       if (!e) return '';
       var hero = e.hero ? '<div class="ml-plan-hero">' + heroVals(e.hero) + (e.text ? '<p>' + x(e.text) + '</p>' : '') + '</div>' : (e.text ? '<p style="margin-top:14px">' + x(e.text) + '</p>' : '');
       var range = e.rows.length ? tbl(e.head, e.rows) : '';
-      var tail = e.dates.map(function (t) { return '<p style="margin-top:14px">' + x(t) + '</p>'; }).join('') + (e.note ? note(e.note) : '');
+      var tail = (e.scale ? '<p style="margin-top:14px">' + x(e.scale) + '</p>' : '') + e.dates.map(function (t) { return '<p style="margin-top:14px">' + x(t) + '</p>'; }).join('') + (e.note ? note(e.note) : '');
       var title = '<h5 class="ml-rep-h5">' + x(e.title || '') + '</h5>';
       if (!e.kv.length) return title + hero + range + tail;
       // The trail reads sale, cost, gain; tax by band; levy, total, what is left. The result sits beside it.

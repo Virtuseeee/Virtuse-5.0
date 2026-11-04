@@ -24,7 +24,7 @@ const LOCALE = { en: 'en-GB', sk: 'sk-SK' };
 
 const COPY = {
   en: {
-    worth: { k: 'The whole picture', h: 'Bitcoin as a share of what you own', savings: 'Savings and investments', pension: 'Retirement savings', home: 'Home minus mortgage', total: 'Total', btc: 'Planned for Bitcoin', ofTotal: (p) => `${p} of the total`, debts: 'Consumer debts are not deducted, because you gave them as a range.' },
+    worth: { k: 'The whole picture', h: 'Bitcoin as a share of what you own', savings: 'Savings and investments', pension: 'Retirement savings', home: 'Home minus mortgage', total: 'Total', btc: 'Planned for Bitcoin', ofTotal: (p) => `${p} of the total`, debts: 'Consumer debts are not deducted, because you gave them as a range.', vs: (p) => `Of your savings alone it is ${p}; this figure also counts the other lines above.` },
     falls: { head: ['Fall', 'High to low', 'Your amount at the low', 'Months it took to get back to the high'], note: 'Bitcoin in USD, month-end prices. Past falls do not predict future ones.' },
     reserve: {
       k: 'Cash reserve', h: 'Your reserve in euros',
@@ -43,7 +43,7 @@ const COPY = {
       gain: (g) => `Example: a ${g} gain`, rate: 'Rate', taxC: 'Tax', levyC: 'Health levy', left: 'Left', upTo: (r) => `up to ${r}`,
       heroK: 'Hypothetical tax on this sale', sale: (a) => `Example: selling 5% of your Bitcoin in the first year of retirement, at ${a}`, value: 'Bitcoin value in the +20% a year scenario', sold: 'You sell 5%', cost: 'Purchase cost of that part (5% of what you put in)', gainL: 'Taxable gain',
       band: (r, b) => `Tax at ${r} on ${b}`, taxTotal: 'Tax in total', levy: (r) => `Health levy, ${r} of the gain`, total: 'Tax and levies in total', share: (p, g) => `That is ${p} of the ${g} gain.`, leftSale: 'Left from the sale', leftGain: 'Left from the gain',
-      bandHead: ['Part of the gain', 'Amount', 'Rate', 'Tax'], bandFrom: (x) => `up to ${x}`, bandBetween: (a, b) => `${a} to ${b}`, bandOver: (x) => `over ${x}`,
+      scale: (first, rest) => `${first} applies to the part of the gain over ${rest}`, scaleAnd: 'and', bandHead: ['Part of the gain', 'Amount', 'Rate', 'Tax'], bandFrom: (x) => `up to ${x}`, bandBetween: (a, b) => `${a} to ${b}`, bandOver: (x) => `over ${x}`,
       exempt: (n) => `After ${n} ${n === 1 ? 'year' : 'years'} of holding, a sale is exempt under the rule above, so the tax is ${'€'}0. This assumes you sell your oldest purchases first.`,
       noteSale: (y) => `At today's rates and bands, on this gain alone: no other income, allowances, costs or fees. The purchase cost is 5% of the amounts in this report; Bitcoin you already hold is not counted. Rates can differ in ${y} years, and the scenario is not a forecast. Check with a tax adviser before you file.`,
       levyNote: 'The health levy uses the general 16% rate; the rate and base depend on your situation, for example if you receive a pension.',
@@ -58,13 +58,13 @@ const COPY = {
       method21: 'Auto-Invest plan', methodBybit: 'Spot trading', methodKraken: 'Pro trading',
       auto: (first) => `€0 on Auto-Invest from day 8; ${first} at 0.99% in the first 7 days`, autoYear: '€0 from day 8',
       note: (q) => `Published entry-level fees, ${q}, in alphabetical order. Spreads, deposit and network fees can add to this. This is not a ranking; check each partner's price list.`,
-      compare: (n) => `For comparison only, not among the partners that match your criteria below: ${n}.`, compareTag: 'for comparison only', onSite: "on the partner's site", methodApp: 'App', methodCard: 'App and card',
+      compare: (n) => `Outside your criteria, for comparison only: ${n}.`, compareTag: 'for comparison only', onSite: "on the partner's site", methodApp: 'App', methodCard: 'App and card',
     },
     partners: {
       k: 'Partners', h: 'Partners that match your criteria',
       criteria: (e, c, a) => `Your criteria: buying Bitcoin · ${e} · ${c}${a ? ` · ${a}` : ''}`,
       intro: 'Selected by the same fixed rules as Partner Finder and listed alphabetically, not ranked. You compare and choose. Links may be referral links and Virtuse may receive a fee.',
-      exp: { new: 'first purchase', hodler: 'already holding Bitcoin' }, cust: { self: 'own keys', assisted: 'own keys, with help', any: 'custody open' },
+      exp: { new: 'first purchase', hodler: 'already holding Bitcoin' }, cust: { self: 'own keys', assisted: 'assisted custody', any: 'custody open' },
       amount: { s: 'under €1,000', m: '€1,000 to €10,000', l: '€10,000 to €100,000', xl: 'over €100,000' },
       licence: 'Licence', price: "Fees and prices: on the partner's site", open: 'Open',
       groups: { buy: 'Buying', custody: 'Custody', tax: 'Tax', heirs: 'Inheritance' }, custodyNote: (e) => `Partner Finder's custody rule · ${e}`, taxNote: (c) => `Partner Finder's tax rule · ${c}`, otherCountry: 'other country',
@@ -89,7 +89,7 @@ const COPY = {
     },
   },
   sk: {
-    worth: { k: 'Celý obraz', h: 'Bitcoin ako podiel toho, čo máte', savings: 'Úspory a investície', pension: 'Úspory na dôchodok', home: 'Bývanie mínus hypotéka', total: 'Spolu', btc: 'Plánujete do Bitcoinu', ofTotal: (p) => `${p} z celku`, debts: 'Spotrebné dlhy nie sú odpočítané, lebo ste ich uviedli ako rozpätie.' },
+    worth: { k: 'Celý obraz', h: 'Bitcoin ako podiel toho, čo máte', savings: 'Úspory a investície', pension: 'Úspory na dôchodok', home: 'Bývanie mínus hypotéka', total: 'Spolu', btc: 'Plánujete do Bitcoinu', ofTotal: (p) => `${p} z celku`, debts: 'Spotrebné dlhy nie sú odpočítané, lebo ste ich uviedli ako rozpätie.', vs: (p) => `Zo samotných úspor je to ${p}; toto číslo ráta aj ostatné položky vyššie.` },
     falls: { head: ['Pokles', 'Z maxima na minimum', 'Vaša suma na minime', 'Koľko mesiacov trvala cesta späť na maximum'], note: 'Bitcoin v USD, ceny na konci mesiaca. Minulé poklesy nepredpovedajú budúce.' },
     reserve: {
       k: 'Rezerva v hotovosti', h: 'Vaša rezerva v eurách',
@@ -108,7 +108,7 @@ const COPY = {
       gain: (g) => `Príklad: zisk ${g}`, rate: 'Sadzba', taxC: 'Daň', levyC: 'Zdravotné odvody', left: 'Zostane', upTo: (r) => `do ${r}`,
       heroK: 'Hypotetická suma na zdanenie', sale: (a) => `Príklad: predaj 5 % Bitcoinu v prvom roku dôchodku, vo veku ${a} rokov`, value: 'Hodnota Bitcoinu v scenári +20 % ročne', sold: 'Predáte 5 %', cost: 'Nákupná cena tejto časti (5 % z vložených súm)', gainL: 'Zdaniteľný zisk',
       band: (r, b) => `Daň ${r} z ${b}`, taxTotal: 'Daň spolu', levy: (r) => `Zdravotné odvody, ${r} zo zisku`, total: 'Daň a odvody spolu', share: (p, g) => `To je ${p} zo zisku ${g}.`, leftSale: 'Z predaja vám zostane', leftGain: 'Zo zisku zostane',
-      bandHead: ['Časť zisku', 'Suma', 'Sadzba', 'Daň'], bandFrom: (x) => `do ${x}`, bandBetween: (a, b) => `${a} až ${b}`, bandOver: (x) => `nad ${x}`,
+      scale: (first, rest) => `${first} platí pre časť zisku nad ${rest}`, scaleAnd: 'a', bandHead: ['Časť zisku', 'Suma', 'Sadzba', 'Daň'], bandFrom: (x) => `do ${x}`, bandBetween: (a, b) => `${a} až ${b}`, bandOver: (x) => `nad ${x}`,
       exempt: (n) => `Po ${n} ${n === 1 ? 'roku' : 'rokoch'} držby je predaj podľa pravidla vyššie oslobodený, takže daň je 0 €. Počíta sa s tým, že predávate najstaršie nákupy.`,
       noteSale: (y) => `Pri dnešných sadzbách a pásmach, len z tohto zisku: bez iných príjmov, nezdaniteľnej časti, výdavkov a poplatkov. Nákupná cena je 5 % zo súm v tomto reporte; Bitcoin, ktorý už držíte, sa nepočíta. O ${y} ${y === 1 ? 'rok' : y < 5 ? 'roky' : 'rokov'} môžu byť sadzby iné a scenár nie je predpoveď. Pred podaním priznania sa poraďte s daňovým poradcom.`,
       levyNote: 'Zdravotné odvody sú počítané všeobecnou sadzbou 16 %; sadzba a základ závisia od vašej situácie, napríklad ak poberáte dôchodok.',
@@ -123,13 +123,13 @@ const COPY = {
       method21: 'Sporiaci plán Auto-Invest', methodBybit: 'Spot obchodovanie', methodKraken: 'Pro trading',
       auto: (first) => `0 € na Auto-Invest od 8. dňa; ${first} pri 0,99 % prvých 7 dní`, autoYear: '0 € od 8. dňa',
       note: (q) => `Zverejnené vstupné poplatky, ${q}, abecedne. Môžu sa pridať spready, poplatky za vklad a sieť. Nie je to poradie; pozrite si cenník každého partnera.`,
-      compare: (n) => `Len na porovnanie, nie je medzi partnermi podľa vašich kritérií nižšie: ${n}.`, compareTag: 'len na porovnanie', onSite: 'na stránke partnera', methodApp: 'Aplikácia', methodCard: 'Aplikácia a karta',
+      compare: (n) => `Mimo vašich kritérií, len na porovnanie: ${n}.`, compareTag: 'len na porovnanie', onSite: 'na stránke partnera', methodApp: 'Aplikácia', methodCard: 'Aplikácia a karta',
     },
     partners: {
       k: 'Partneri', h: 'Partneri, ktorí spĺňajú vaše kritériá',
       criteria: (e, c, a) => `Vaše kritériá: nákup Bitcoinu · ${e} · ${c}${a ? ` · ${a}` : ''}`,
       intro: 'Vybraní rovnakými pevnými pravidlami ako v Partner Finderi a uvedení abecedne, nie podľa poradia. Porovnáte a vyberiete si sami. Odkazy môžu byť odporúčacie a Virtuse môže dostať províziu.',
-      exp: { new: 'prvý nákup', hodler: 'Bitcoin už držíte' }, cust: { self: 'vlastné kľúče', assisted: 'vlastné kľúče s pomocou', any: 'úschova otvorená' },
+      exp: { new: 'prvý nákup', hodler: 'Bitcoin už držíte' }, cust: { self: 'vlastné kľúče', assisted: 'asistovaná úschova', any: 'úschova otvorená' },
       amount: { s: 'do 1 000 €', m: '1 000 až 10 000 €', l: '10 000 až 100 000 €', xl: 'nad 100 000 €' },
       licence: 'Licencia', price: 'Poplatky a ceny: na stránke partnera', open: 'Otvoriť',
       groups: { buy: 'Nákup', custody: 'Úschova', tax: 'Dane', heirs: 'Dedičstvo' }, custodyNote: (e) => `Pravidlo pre úschovu v Partner Finderi · ${e}`, taxNote: (c) => `Pravidlo pre dane v Partner Finderi · ${c}`, otherCountry: 'iná krajina',
@@ -181,7 +181,8 @@ function worth(A, T, { eur, pct }) {
   if (equity !== null && A.homeval) rows.push([T.worth.home, equity < 0 ? `−${eur(-equity)}` : eur(equity)]);
   rows.push([T.worth.total, eur(total)]);
   rows.push([T.worth.btc, `${eur(A.btc || 0)} · ${T.worth.ofTotal(pct(((A.btc || 0) / total) * 100))}`]);
-  return { k: T.worth.k, h: T.worth.h, rows, note: A.debt !== 'none' ? T.worth.debts : '' };
+  const vs = A.savings > 0 && total > A.savings && A.btc > 0 ? T.worth.vs(pct((A.btc / A.savings) * 100)) : '';
+  return { k: T.worth.k, h: T.worth.h, rows, note: [vs, A.debt !== 'none' ? T.worth.debts : ''].filter(Boolean).join(' ') };
 }
 
 function fallTable(A, T, { eur, pct }) {
@@ -275,6 +276,13 @@ function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
       tax += due;
       lines.push({ from, to, r, part: Math.round(part), due });
       from = to;
+    }
+    // The bands this gain does not reach, so "19 to 35%" in the rule above has its thresholds.
+    const above = list.slice(lines.length).map(([, r], k) => [rate(r), money(list[lines.length + k - 1][0])]);
+    if (above.length) {
+      const parts = above.map(([r, from], k) => (k ? `${r} ${lang === 'sk' ? 'nad ' : 'over '}${from}` : from));
+      const rest = parts.length > 1 ? `${parts.slice(0, -1).join(', ')} ${T.tax.scaleAnd} ${parts.at(-1)}` : parts[0];
+      out.scale = `${T.tax.scale(above[0][0], rest)}.`;
     }
     if (lines.length > 1) {
       out.bands = {

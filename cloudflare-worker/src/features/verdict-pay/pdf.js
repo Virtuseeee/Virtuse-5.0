@@ -277,6 +277,7 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
       y -= 6;
       if (ex.hero) valueBoxes(ex.hero);
       if (ex.text) para(ex.text, { size: 10, gap: 6 });
+      if (ex.scale) para(ex.scale, { size: 10, gap: 6 });
       if (ex.rows.length) table(ex.head, ex.rows, ex.head.map(() => 1 / ex.head.length));
       ex.dates.forEach((t) => para(t, { size: 10, gap: 4 }));
       if (ex.note) para(ex.note, { size: 8.5, color: C.muted, gap: 6 });

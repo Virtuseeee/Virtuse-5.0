@@ -334,6 +334,7 @@ test('falls, reserve and whole picture are plain arithmetic on the answers', () 
   assert.deepEqual(r.fallTable.rows[2], ['2013–2015', '−81%', '€3,800', '39']);
   assert.deepEqual(r.worth.rows.at(-1), ['Planned for Bitcoin', '€20,000 · 7% of the total']);
   assert.deepEqual(r.worth.rows.at(-2), ['Total', '€300,000']);
+  assert.match(r.worth.note, /Of your savings alone it is 13%/);
   assert.match(r.reserveBox.text, /did not give/);
   assert.match(blocks({ expenses: 2000 }).reserveBox.text, /6 months is €12,000.*€6,000 to €12,000.*up to €6,000/);
   assert.match(blocks({ expenses: 2000, reserve: '6p' }).reserveBox.text, /target is met/);
@@ -344,6 +345,7 @@ test('falls, reserve and whole picture are plain arithmetic on the answers', () 
   assert.match(r.retireBox.plan.scenario.sub, /not a forecast/);
   assert.match(r.retireBox.plan.scenario.vals[0][0], /first day at 65/);
   assert.equal(blocks({ btc: 0, monthly: null }).retireBox.plan, null);
+  for (const lang of ['en', 'sk']) assert.doesNotMatch(JSON.stringify(blocks({ custody: 'assisted' }, lang).partners) + JSON.stringify(blocks({ custody: 'assisted' }, lang).docs), /with help|s pomocou/);
   assert.equal(blocks({ btc: 0 }).fallTable, null);
   assert.equal(blocks({ savings: 0, pension: null, home: 'rent' }).worth, null);
 });
@@ -403,6 +405,10 @@ test('tax example: 5% sale in the scenario, by country', () => {
   // A small gain stays in the first band.
   const small = blocks({ btc: 1000, monthly: 0, age: 60, retire: 61, country: 'sk' }, 'sk').taxExample;
   assert.equal(small.kv.filter((x) => /^Daň \d/.test(x[0])).length, 1);
+  // The bands it does not reach are named, so "19 to 35%" has its thresholds.
+  assert.match(small.scale, /^25\u00a0% platí pre časť zisku nad 43\u00a0983\u00a0€, 30\u00a0% nad 60\u00a0349\u00a0€ a 35\u00a0% nad 75\u00a0010\u00a0€\.$/);
+  assert.equal(sk.scale, undefined, 'every band is already in the table');
+  assert.match(blocks({ btc: 1000, monthly: 0, age: 60, retire: 61, country: 'sk' }).taxExample.scale, /^25% applies to the part of the gain over €43,983, 30% over €60,349 and 35% over €75,010\.$/);
   // Flat rate, one line.
   const at = blocks({ ...A, country: 'at' }).taxExample;
   assert.match(at.kv[4][0], /Tax at 27.5% on/);
@@ -436,14 +442,14 @@ test('fees: published rates on the amounts, alphabetical, no winner', () => {
   assert.deepEqual(f.rows[1].slice(2), ['€50', '€6']);
   assert.deepEqual(f.rows[2].slice(2), ['€160', '€19']);
   assert.match(f.note, /not a ranking/);
-  assert.match(f.note, /not among the partners that match your criteria below: Kraken\./);
+  assert.match(f.note, /Outside your criteria, for comparison only: Kraken\./);
   // Every partner that matches has a row; a fee kept for comparison says so.
   const hod = blocks({ experience: 'hodler', custody: 'assisted', btc: 500000 }).fees;
   assert.deepEqual(hod.rows.map((x) => x[0]), ['21bitcoin', 'Bybit EU', 'Invity', 'Kraken']);
   assert.match(hod.rows[0][1], /for comparison only/);
   assert.equal(hod.rows[2][2], "on the partner's site");
   assert.doesNotMatch(hod.rows[3][1], /comparison/);
-  assert.match(hod.note, /not among the partners that match your criteria below: 21bitcoin\./);
+  assert.match(hod.note, /Outside your criteria, for comparison only: 21bitcoin\./);
   assert.equal(blocks({ btc: 0, monthly: null }).fees, null);
   assert.equal(blocks({ monthly: null }).fees.head.length, 3);
 });
