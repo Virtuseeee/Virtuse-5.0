@@ -100,7 +100,7 @@
         custody: { selfNew: '<b>Own keys, first time.</b> The backup is not tested yet.', self: '<b>Own keys.</b> You hold your Bitcoin yourself.', assisted: '<b>Assisted custody.</b> You get help with keys and recovery.', any: '<b>Custody open.</b> You have not decided who holds the keys.' },
         fall: { more: '<b>Calm in a fall.</b> You would buy more at a lower price.', wait: '<b>Calm in a fall.</b> You would wait, not sell.', sell: '<b>Risky in a fall.</b> You would sell some or all to stop the loss.' }
       },
-      blur: { pts: 'Where your points come from', fall: 'What a 70% fall means for you', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', against your reserve and debts' : 'Your amount in euros, against your reserve and debts'; }, rule: function (c) { return 'The sale rule in ' + c; }, ruleTxt: 'Holding period, exemption limit, what counts as a sale', steps: '3 steps for this week', yourCountry: 'your country' },
+      blur: { retire: 'Retirement in plain numbers', retireTxt: function (s, p) { return (s ? s + ' retirement savings' : 'Retirement savings') + (p ? ' · ' + p + ' put into your Bitcoin plan by then' : ''); }, partners: 'Partners by your criteria', partnersTxt: 'Buying, custody, tax, inheritance: listed by fixed rules, you choose', pts: 'Where your points come from', fall: 'What a 70% fall means for you', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', against your reserve and debts' : 'Your amount in euros, against your reserve and debts'; }, rule: function (c) { return 'The sale rule in ' + c; }, ruleTxt: 'Holding period, exemption limit, what counts as a sale', steps: '3 steps for this week', yourCountry: 'your country' },
       gateErr: 'Enter a valid email.', net: 'Something went wrong. Please try again.',
       sent: 'Your Lite score is on its way to your inbox.', notSent: 'We could not send the email right now. Your score is below.',
       tooMany: 'Too many attempts. Please try again in an hour. Your score is below.',
@@ -162,7 +162,7 @@
         custody: { selfNew: '<b>Vlastné kľúče, prvýkrát.</b> Záloha ešte nie je vyskúšaná.', self: '<b>Vlastné kľúče.</b> Bitcoin držíte sami.', assisted: '<b>Asistovaná úschova.</b> S kľúčmi a obnovou vám pomáhajú.', any: '<b>Úschova otvorená.</b> Ešte ste sa nerozhodli, kto bude držať kľúče.' },
         fall: { more: '<b>Pokojný pri poklese.</b> Prikúpili by ste za nižšiu cenu.', wait: '<b>Pokojný pri poklese.</b> Počkali by ste, nepredávali.', sell: '<b>Riziko pri poklese.</b> Predali by ste časť alebo všetko, aby ste zastavili stratu.' }
       },
-      blur: { pts: 'Odkiaľ sú vaše body', fall: 'Čo pre vás znamená pokles o 70 %', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', oproti vašej rezerve a dlhom' : 'Vaša suma v eurách, oproti rezerve a dlhom'; }, rule: function (c) { return 'Pravidlo predaja: ' + c; }, ruleTxt: 'Doba držby, oslobodenie, čo sa ráta ako predaj', steps: '3 kroky na tento týždeň', yourCountry: 'vaša krajina' },
+      blur: { retire: 'Dôchodok v číslach', retireTxt: function (s, p) { return (s ? s + ' úspor na dôchodok' : 'Úspory na dôchodok') + (p ? ' · ' + p + ' vložených do plánu v Bitcoine' : ''); }, partners: 'Partneri podľa vašich kritérií', partnersTxt: 'Nákup, úschova, dane, dedičstvo: podľa pevných pravidiel, vyberáte vy', pts: 'Odkiaľ sú vaše body', fall: 'Čo pre vás znamená pokles o 70 %', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', oproti vašej rezerve a dlhom' : 'Vaša suma v eurách, oproti rezerve a dlhom'; }, rule: function (c) { return 'Pravidlo predaja: ' + c; }, ruleTxt: 'Doba držby, oslobodenie, čo sa ráta ako predaj', steps: '3 kroky na tento týždeň', yourCountry: 'vaša krajina' },
       gateErr: 'Zadajte platný e-mail.', net: 'Niečo sa pokazilo. Skúste to znova.',
       sent: 'Lite skóre vám posielame e-mailom.', notSent: 'E-mail sa teraz nepodarilo odoslať. Vaše skóre nájdete nižšie.',
       tooMany: 'Príliš veľa pokusov. Skúste to znova o hodinu. Vaše skóre nájdete nižšie.',
@@ -355,6 +355,9 @@
     set(1, S.blur.fall, S.blur.fallTxt(A.btc ? eur(A.btc) : '', A.btc ? eur(A.btc * 0.3) : ''));
     set(2, S.blur.rule(cn), S.blur.ruleTxt);
     set(3, S.blur.steps, g.map(function (x, i) { return (i + 1) + '. ' + x[0]; }).join(' · '));
+    var planIn = (A.btc || 0) + (c.years != null ? (A.monthly || 0) * c.years * 12 : 0);
+    set(4, S.blur.retire, S.blur.retireTxt(A.pension ? eur(A.pension) : '', planIn ? eur(planIn) : ''));
+    set(5, S.blur.partners, S.blur.partnersTxt);
     var amt = !A.btc ? '' : A.btc < 1000 ? 's' : A.btc < 10000 ? 'm' : A.btc < 100000 ? 'l' : 'xl';
     $('mlPf').href = P('concierge.html') + '?pf_goal=buy&pf_country=' + (A.country || '') + '&pf_experience=' + (A.experience === 'hodler' ? 'hodler' : 'new') + '&pf_custody=' + (A.custody || '') + '&pf_amount=' + amt + '&utm_source=verdict&utm_medium=lite';
     dl({ event: 'verdict_result', verdict_mode: 'lite', verdict_score: t, verdict_grade: gr });
@@ -487,7 +490,22 @@
     var pts = function (list) { return '<ul class="ml-pts">' + list.map(function (p, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(p.title) + '</b><span>' + x(p.text) + '</span></div></li>'; }).join('') + '</ul>'; };
     var box = function (k, t, body) { return '<div class="ml-box"><span class="ml-k2">' + x(k) + '</span>' + (t ? '<h4>' + x(t) + '</h4>' : '') + body + '</div>'; };
     var paras = function (list) { return list.map(function (t) { return '<p>' + x(t) + '</p>'; }).join(''); };
-    var dlBtn = '<div class="ml-rep-dl"><button class="ml-btn2 ghost" type="button" data-pdf>' + x(r.download) + '</button><p class="ml-fine ml-pdf-msg" aria-live="polite"></p></div>';
+    var dlBtn = function (cls) { return '<div class="ml-rep-dl"><button class="' + cls + '" type="button" data-pdf>' + x(r.download) + '</button><p class="ml-fine ml-pdf-msg" aria-live="polite"></p></div>'; };
+    var kv = function (rows) { return rows.length ? '<table class="ml-table ml-kv"><tbody>' + rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
+    var planHero = function (p) {
+      return p ? '<div class="ml-plan-hero">' + kv(p.rows) + '<span class="ml-k2">' + x(p.label) + '</span><b>' + x(p.value) + '</b><p>' + x(p.sub) + '</p></div>' : '';
+    };
+    var partnerCard = function (p) {
+      return '<div class="ml-partner"><div class="ml-partner-top"><b>' + x(p.name) + '</b><span>' + x(p.tagline) + '</span></div>' +
+        '<ul class="ml-partner-facts">' + p.facts.map(function (t) { return '<li>' + x(t) + '</li>'; }).join('') + '</ul>' +
+        (p.steps.length ? '<details><summary>' + x(p.stepsNote) + '</summary><ol>' + p.steps.map(function (s) { return '<li><b>' + x(s.title) + '</b> ' + x(s.text) + '</li>'; }).join('') + '</ol></details>' : '') +
+        '<a class="ml-btn2 ghost" rel="noopener sponsored" target="_blank" href="' + x(p.href) + '">' + x(r.partners.open) + ' ' + x(p.name) + ' →</a></div>';
+    };
+    var partnerGroup = function (g) {
+      return '<div class="ml-pgroup"><h5 class="ml-rep-h5">' + x(g.title) + '</h5>' + (g.note ? '<p class="ml-pgroup-note">' + x(g.note) + '</p>' : '') + (g.empty ? '<p>' + x(g.empty) + '</p>' : '') +
+        (g.list.length ? '<div class="ml-partners">' + g.list.map(partnerCard).join('') + '</div>' : '') +
+        '<div class="ml-pgroup-links">' + g.links.map(function (l) { return '<a class="ml-step-tool" href="' + x(l.href) + '">' + x(l.name) + ' →</a>'; }).join('') + '</div></div>';
+    };
     var note = function (t) { return '<p style="font-size:13px;color:var(--dim);margin-top:16px">' + x(t) + '</p>'; };
     var plain = function (rows) { return rows.length ? '<table class="ml-table"><tbody>' + rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
     var taxEx = function (e) {
@@ -502,32 +520,28 @@
         '<h5 class="ml-rep-h5">' + x(D.record.title) + '</h5><p>' + x(D.record.text) + '</p><button class="ml-btn2 ghost" type="button" data-csv>' + x(D.record.csv) + '</button>' +
         '<h5 class="ml-rep-h5">' + x(D.heirs.title) + '</h5><p><b>' + x(D.heirs.warn) + '</b></p>' + plain(D.heirs.filled) + '<ul class="ml-check plain">' + D.heirs.fields.map(function (t) { return '<li>' + x(t) + '</li>'; }).join('') + '</ul>';
     };
-    return '<div class="ml-sent">' + x(r.sent) + '</div>' + dlBtn +
-      '<div class="ml-k2" style="text-align:center;margin-top:28px">' + x(r.kicker) + '</div>' +
+    return '<div class="ml-k2" style="text-align:center">' + x(r.kicker) + '</div>' +
       '<h2 class="ml-rep-h">' + x(r.title) + '</h2><p class="ml-rep-meta">' + x(r.meta) + '</p>' +
+      '<div class="ml-sent-wrap"><span class="ml-sent">' + x(r.sent) + '</span></div>' + dlBtn('ml-btn2 ghost') +
       '<div class="ml-box ml-nums" style="margin-top:30px">' + r.nums.map(function (n) { return '<div><small>' + x(n[0]) + '</small><b>' + x(n[1]) + '</b></div>'; }).join('') + '</div>' +
       '<div class="ml-score-row"><div><div class="n">' + r.score + '<small>/100</small></div><div class="lbl">' + x(r.gradeLine) + '</div></div><div><div class="ml-scale"><span>' + r.scale.map(x).join('</span><span>') + '</span></div><div class="ml-track"><i style="width:' + r.score + '%"></i></div></div></div>' +
       '<div style="text-align:center"><span class="ml-pill">' + x(r.pill) + '</span></div>' +
       '<div class="ml-box" style="margin-top:44px"><span class="ml-k2">' + x(h.summaryK) + '</span>' + paras(r.summary) + '</div>' +
       box(h.areasK, h.areas, tbl([h.area, h.points, h.why], r.areas.map(function (a) { return [a.title, a.points + ' / 10', a.why]; }))) +
-      (r.worth ? box(r.worth.k, r.worth.h, plain(r.worth.rows) + (r.worth.note ? note(r.worth.note) : '')) : '') +
+      (r.worth ? box(r.worth.k, r.worth.h, kv(r.worth.rows) + (r.worth.note ? note(r.worth.note) : '')) : '') +
       box(h.fallK, h.fall, paras(r.fall)) +
       (r.fallTable ? '<div class="ml-box" style="margin-top:-8px">' + tbl(r.fallTable.head, r.fallTable.rows) + note(r.fallTable.note) + '</div>' : '') +
       box(r.reserveBox.k, r.reserveBox.h, '<p>' + x(r.reserveBox.text) + '</p>') +
-      box(r.retireBox.k, r.retireBox.h, plain(r.retireBox.rows) + '<p style="margin-top:14px">' + x(r.retireBox.text) + '</p>' + (r.retireBox.note ? note(r.retireBox.note) : '')) +
+      box(r.retireBox.k, r.retireBox.h, '<div class="ml-retire"><div>' + kv(r.retireBox.rows) + '</div>' + planHero(r.retireBox.plan) + '</div><p style="margin-top:18px">' + x(r.retireBox.text) + '</p>' + (r.retireBox.note ? note(r.retireBox.note) : '')) +
       box(h.custodyK, h.custody, tbl(r.custody.head, r.custody.rows) + '<p style="margin-top:16px">' + x(r.custody.yours) + '</p>') +
       box(h.taxK, h.tax, (r.tax.text ? '<p>' + x(r.tax.text) + '</p>' : '') + (r.tax.rows.length ? '<table class="ml-table"><tbody>' + r.tax.rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : '') + (r.tax.note ? note(r.tax.note) : '') + taxEx(r.taxExample)) +
       (r.fees ? box(r.fees.k, r.fees.h, tbl(r.fees.head, r.fees.rows) + note(r.fees.note)) : '') +
       box(h.bothK, h.both, '<div class="ml-cols"><div><div class="ml-colh r">' + x(h.wrong) + '</div>' + pts(r.risks) + '</div><div><div class="ml-colh g">' + x(h.solid) + '</div>' + (r.solid.length ? pts(r.solid) : '<p>' + x(r.solidNone) + '</p>') + '</div></div>') +
       box(h.planK, h.plan, '<ul class="ml-steps">' + r.steps.map(function (s, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(s.title) + '</b><span>' + x(s.text) + '</span>' + (s.tool ? '<a class="ml-step-tool" href="' + x(s.tool.href) + '">' + x(s.tool.name) + ' →</a>' : '') + '</div></li>'; }).join('') + '</ul>') +
-      box(r.partners.k, r.partners.h, '<p><b>' + x(r.partners.criteria) + '</b></p><p>' + x(r.partners.intro) + '</p><div class="ml-partners">' + r.partners.list.map(function (p) {
-        return '<div class="ml-partner"><div class="ml-partner-top"><div><b>' + x(p.name) + '</b><span>' + x(p.tagline) + '</span></div><a class="ml-btn2 ghost" rel="noopener sponsored" target="_blank" href="' + x(p.href) + '">' + x(r.partners.open) + ' ' + x(p.name) + ' →</a></div>' +
-          '<ul class="ml-partner-facts">' + p.facts.map(function (t) { return '<li>' + x(t) + '</li>'; }).join('') + '</ul>' +
-          '<details><summary>' + x(p.stepsNote) + '</summary><ol>' + p.steps.map(function (s) { return '<li><b>' + x(s.title) + '</b> ' + x(s.text) + '</li>'; }).join('') + '</ol></details></div>';
-      }).join('') + '</div>') +
+      box(r.partners.k, r.partners.h, '<p>' + x(r.partners.intro) + '</p>' + r.partners.groups.map(partnerGroup).join('')) +
       box(r.docs.k, r.docs.h, docsHtml(r.docs)) +
       box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + x(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>') +
-      dlBtn + '<p class="ml-legal">' + x(r.legal) + '</p>';
+      dlBtn('ml-big orange') + '<p class="ml-legal">' + x(r.legal) + '</p>';
   }
   // The same PDF as in the email, from the Worker, while the report is open.
   function downloadPdf(btn, sid) {
@@ -559,6 +573,13 @@
         setTimeout(function () { URL.revokeObjectURL(u); }, 60000);
       }
     };
+    $('ml').classList.add('ml-paid');
+    // The site's cursor spotlight (.spot in site-v2.css) on cards drawn after load.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) el.addEventListener('pointermove', function (e) {
+      var c = e.target.closest && e.target.closest('.ml-box, .ml-partner'); if (!c) return;
+      var b = c.getBoundingClientRect();
+      c.style.setProperty('--mx', (e.clientX - b.left) + 'px'); c.style.setProperty('--my', (e.clientY - b.top) + 'px');
+    });
     el.innerHTML = '<p class="ml-sub" style="text-align:center">' + esc(S.repLoad) + '</p>';
     var say = function (t) { el.innerHTML = '<div class="ml-box"><p>' + esc(t) + '</p></div>'; };
     vbApi().then(function (api) { return api.postJson('/verdict/report', { session_id: sid, lang: LANG }); })
