@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev https://virtuse-newsletter-staging.virtuse-ai.workers.dev https://cloudflareinsights.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://api.coingecko.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://virtuse-newsletter.virtuse-ai.workers.dev https://virtuse-newsletter-staging.virtuse-ai.workers.dev https://cloudflareinsights.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
@@ -37,7 +37,7 @@
 <link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
 <link rel="stylesheet" href="/verdict-landing.css?v=20261028a">
-<link rel="stylesheet" href="/verdict-lite.css?v=13">
+<link rel="stylesheet" href="/verdict-lite.css?v=14">
 <!-- VLH:END -->
 </head>
 <body class="page-verdict no-split">
@@ -360,7 +360,7 @@
     <div class="ml-box acc-yellow">
       <span class="ml-k2">Tax in Slovakia</span>
       <h4>The sale rule in plain words</h4>
-      <p>Slovakia has no holding-period exemption. A gain on a sale is taxed as income at 19 to 35%, plus 16% health insurance contributions. Every sale and every swap between coins counts. Gains go into the type B return, due 31 March.</p>
+      <p>Slovakia has no holding-period exemption. A gain on a sale is taxed as income at 19 to 35%, plus health insurance contributions (rate and base depend on your situation). Every sale and every swap between coins counts. Gains go into the type B return, due 31 March.</p>
       <p style="font-size:13px;color:var(--dim)">Indicative, as shown in the Virtuse Tax Agent (Q3 2026). Check with a tax adviser before you file.</p>
     </div>
 
@@ -413,7 +413,7 @@
         <li>Your reserve and retirement in euros</li>
         <li>A tax example step by step: selling 5% of your Bitcoin in the first year of retirement, with dates for your country</li>
         <li>Published fees on your amounts</li>
-        <li>Partners for buying, custody and tax that match your criteria, with first steps for buying; you compare and choose</li>
+        <li>Partners for buying, custody and tax that match your criteria; you compare and choose</li>
         <li>To fill in: your rule for a fall, recovery checklist, purchase record, letter for your heirs</li>
       </ul>
     </div>
@@ -465,7 +465,10 @@
           </div>
         </a>
         <div class="signup">
-          <div class="ml-scooter" aria-hidden="true"><img src="/img/verdict-brief-scooter.webp" alt="" width="900" height="392" loading="lazy" decoding="async"></div>
+          <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 days</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+        </div>
           <h3>Get the Brief. <span>Free.</span></h3>
           <p>Market, regulation, mining. No tokens. No PR. One email every Monday.</p>
           <form class="brief-form" id="briefForm" data-brief-form data-source="verdict_page" novalidate>
@@ -502,7 +505,7 @@
 <script src="/vb-api.js?v=2" defer></script>
 <script src="/site-v2.js?v=12" defer></script>
 <script src="/consultation-lazy.js?v=5" defer></script>
-<script src="/verdict-lite.js?v=13" defer></script>
+<script src="/verdict-lite.js?v=14" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
