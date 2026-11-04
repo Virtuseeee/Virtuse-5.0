@@ -319,9 +319,9 @@ test('partners: fixed wording, tracked links, translated steps', () => {
       for (const p of g.list) {
         assert.ok(p.facts.length >= 1, p.id);
         assert.match(p.href, /utm_source=verdict&utm_medium=report/);
-        // Buying cards carry the first steps, already translated.
-        if (g.id === 'buy') { assert.ok(p.steps.length >= 3, p.id); if (lang === 'sk') assert.doesNotMatch(p.steps[0].title, /^(Download|Create|Buy|Open)/, p.id); }
-        else assert.equal(p.steps.length, 0, p.id);
+        // First steps wait for approval in data/partner-checklists.json; none is approved yet.
+        assert.equal(p.steps.length, 0, p.id);
+        assert.equal(p.stepsNote, '', p.id);
       }
     }
     assert.doesNotMatch(JSON.stringify(partners), /match score|best|top pick|najlepš/i);

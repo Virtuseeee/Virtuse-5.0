@@ -34,7 +34,7 @@ const COPY = {
       none: 'You did not give your monthly spending, so the target stays in months: 6 months. Multiply a typical month by six to get your figure.',
     },
     retire: {
-      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Retirement savings together, without returns', lump: 'Planned for Bitcoin', monthly: (e, n) => `Added at ${e} a month, ${n} months`, planTotal: 'You put into Bitcoin by retirement', scenario: 'Hypothetical scenario: Bitcoin +20% a year, inflation 4%', nominal: (a) => `Hypothetical value on your first day at ${a}`, real: "The same in today's money", planSub: "Fixed assumptions from the Retirement Calculator, not a forecast. Bitcoin has fallen 70% or more several times, and the real value can be far lower, including a loss.",
+      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Retirement savings together, without returns', lump: 'Planned for Bitcoin', monthly: (e, n) => `Added at ${e} a month, ${n} months`, planTotal: 'You put into Bitcoin by retirement', scenario: 'Hypothetical scenario: Bitcoin +20% a year, inflation 4%', nominal: (a) => `Hypothetical value on your first day at ${a}`, real: "The same in today's money", planSub: "Fixed assumptions from the Retirement Calculator, not a forecast. Bitcoin has fallen 70% or more several times, and the real value can be far lower, including a loss. Crypto-assets are not covered by deposit guarantee or investor compensation schemes.",
       longest: (m, left) => `The longest recovery above took ${m} months; you have ${left} months until retirement.`,
       statBack: 'Longest way back to the high', statLeft: 'Months until you retire', months: (m) => `${m} months`,
       note: 'Retirement savings are simple sums, without returns or inflation.', na: 'You did not give a retirement age that can be used here.',
@@ -46,6 +46,7 @@ const COPY = {
       bandHead: ['Part of the gain', 'Amount', 'Rate', 'Tax'], bandFrom: (x) => `up to ${x}`, bandBetween: (a, b) => `${a} to ${b}`, bandOver: (x) => `over ${x}`,
       exempt: (n) => `After ${n} ${n === 1 ? 'year' : 'years'} of holding, a sale is exempt under the rule above, so the tax is ${'€'}0. This assumes you sell your oldest purchases first.`,
       noteSale: (y) => `At today's rates and bands, on this gain alone: no other income, allowances, costs or fees. The purchase cost is 5% of the amounts in this report; Bitcoin you already hold is not counted. Rates can differ in ${y} years, and the scenario is not a forecast. Check with a tax adviser before you file.`,
+      levyNote: 'The health levy uses the general 16% rate; the rate and base depend on your situation, for example if you receive a pension.',
       note: 'For illustration only, at the rates above. Your actual rate depends on your other income and costs. This is not a forecast of any gain.',
       hold: (n, d) => `A purchase made today would reach the ${n}-year holding period on ${d}.`,
       filing: { sk: (y) => `A sale in ${y} goes into the type B return due 31 March ${y + 1}.`, hr: (y) => `A gain in ${y} goes on the JOPPD form by the end of February ${y + 1}.` },
@@ -98,7 +99,7 @@ const COPY = {
       none: 'Neuviedli ste mesačné výdavky, takže cieľ zostáva v mesiacoch: 6 mesiacov. Bežný mesiac vynásobte šiestimi a máte svoju sumu.',
     },
     retire: {
-      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Úspory na dôchodok spolu, bez výnosov', lump: 'Plánujete do Bitcoinu', monthly: (e, n) => `Pridáte pri ${e} mesačne, ${n} mesiacov`, planTotal: 'Do Bitcoinu vložíte do dôchodku', scenario: 'Hypotetický scenár: Bitcoin +20 % ročne, inflácia 4 %', nominal: (a) => `Hypotetická hodnota v prvý deň vo veku ${a} rokov`, real: 'To isté v dnešných cenách', planSub: 'Pevné predpoklady z Dôchodkovej kalkulačky, nie predpoveď. Bitcoin už viackrát klesol o 70 % a viac a skutočná hodnota môže byť oveľa nižšia, vrátane straty.',
+      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Úspory na dôchodok spolu, bez výnosov', lump: 'Plánujete do Bitcoinu', monthly: (e, n) => `Pridáte pri ${e} mesačne, ${n} mesiacov`, planTotal: 'Do Bitcoinu vložíte do dôchodku', scenario: 'Hypotetický scenár: Bitcoin +20 % ročne, inflácia 4 %', nominal: (a) => `Hypotetická hodnota v prvý deň vo veku ${a} rokov`, real: 'To isté v dnešných cenách', planSub: 'Pevné predpoklady z Dôchodkovej kalkulačky, nie predpoveď. Bitcoin už viackrát klesol o 70 % a viac a skutočná hodnota môže byť oveľa nižšia, vrátane straty. Kryptoaktíva nie sú kryté systémom ochrany vkladov ani systémom náhrad pre investorov.',
       longest: (m, left) => `Najdlhší návrat vyššie trval ${m} mesiacov; do dôchodku máte ${left} mesiacov.`,
       statBack: 'Najdlhšia cesta späť na maximum', statLeft: 'Do dôchodku vám zostáva', months: (m) => `${m} mesiacov`,
       note: 'Úspory na dôchodok sú jednoduché súčty, bez výnosov a inflácie.', na: 'Neuviedli ste vek odchodu do dôchodku, s ktorým by sa tu dalo počítať.',
@@ -110,6 +111,7 @@ const COPY = {
       bandHead: ['Časť zisku', 'Suma', 'Sadzba', 'Daň'], bandFrom: (x) => `do ${x}`, bandBetween: (a, b) => `${a} až ${b}`, bandOver: (x) => `nad ${x}`,
       exempt: (n) => `Po ${n} ${n === 1 ? 'roku' : 'rokoch'} držby je predaj podľa pravidla vyššie oslobodený, takže daň je 0 €. Počíta sa s tým, že predávate najstaršie nákupy.`,
       noteSale: (y) => `Pri dnešných sadzbách a pásmach, len z tohto zisku: bez iných príjmov, nezdaniteľnej časti, výdavkov a poplatkov. Nákupná cena je 5 % zo súm v tomto reporte; Bitcoin, ktorý už držíte, sa nepočíta. O ${y} ${y === 1 ? 'rok' : y < 5 ? 'roky' : 'rokov'} môžu byť sadzby iné a scenár nie je predpoveď. Pred podaním priznania sa poraďte s daňovým poradcom.`,
+      levyNote: 'Zdravotné odvody sú počítané všeobecnou sadzbou 16 %; sadzba a základ závisia od vašej situácie, napríklad ak poberáte dôchodok.',
       note: 'Len ako ilustrácia, pri sadzbách uvedených vyššie. Skutočná sadzba závisí od vašich ostatných príjmov a výdavkov. Nejde o predpoveď zisku.',
       hold: (n, d) => `Nákup urobený dnes by dosiahol dobu držby ${n} ${n === 1 ? 'rok' : 'roky'} dňa ${d}.`,
       filing: { sk: (y) => `Predaj v roku ${y} patrí do priznania typu B s termínom 31. marca ${y + 1}.`, hr: (y) => `Zisk v roku ${y} patrí na formulár JOPPD do konca februára ${y + 1}.` },
@@ -284,6 +286,7 @@ function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
       kv.push([T.tax.band(rate(lines[0].r), eur(lines[0].part)), eur(lines[0].due)]);
     }
     const levy = ex.levy ? Math.round((g * ex.levy) / 100) : 0;
+    if (ex.levy) out.note = `${T.tax.levyNote} ${out.note}`;
     const all = tax + levy;
     if (ex.levy) out.after.push([T.tax.levy(rate(ex.levy)), eur(levy), false, `${rate(ex.levy)} × ${eur(g)}`]);
     if (ex.levy) out.after.push([T.tax.total, eur(all), true, `${eur(tax)} + ${eur(levy)}`]);
@@ -344,7 +347,8 @@ function partnerBlock(A, T, lang, countryName) {
     const f = p[lang];
     const facts = [f.licence && `${P.licence}: ${f.licence}`, ...(PRICED.includes(id) ? [f.fee] : [P.price, f.fee])].filter(Boolean);
     const c = CHECKLISTS[id];
-    const steps = withSteps ? (c.steps[lang] && c.steps[lang].length ? c.steps[lang] : c.steps.en).map(({ title, text }) => ({ title, text })) : [];
+    // A partner's first steps appear only once they are approved in data/partner-checklists.json.
+    const steps = withSteps && c.approved ? (c.steps[lang] && c.steps[lang].length ? c.steps[lang] : c.steps.en).map(({ title, text }) => ({ title, text })) : [];
     return { id, name: p.name, tagline: f.tagline, facts, href: utm(p.url, id), site: new URL(p.url).hostname, stepsNote: steps.length ? P.steps(fmtDate(new Date(`${c.as_of}T12:00:00Z`), lang)) : '', steps };
   };
   const cards = (ids, withSteps) => ids.map((id) => card(id, withSteps)).sort((x, y) => x.name.localeCompare(y.name, 'en'));
