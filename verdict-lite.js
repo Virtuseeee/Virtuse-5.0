@@ -247,6 +247,7 @@
     var scr = document.querySelector('.ml-screen[data-s="' + key + '"]'); if (!scr) return;
     scr.classList.add('on');
     $('ml').classList.toggle('wide', s === 0);
+    $('ml').classList.toggle('ml-paid', s === 9 || s === 10);
     if (s === 0) demoLoop(); else clearTimeout(demoLoop.t);
     if (key === 'q') { cur = s - 1; renderQ(); dl({ event: 'verdict_step', verdict_step: s }); }
     if (s === 6) load();
@@ -480,7 +481,13 @@
   });
 
   // The report, back from Stripe with ?session_id=. The Worker checks the payment.
-  var REP_ICO = { tax: I.tax, finder: I.pick, custody: I.key };
+  var REP_ICO = {
+    tax: I.tax, finder: I.pick,
+    retire: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    returns: '<path d="M4 20V4M4 20h16M8 16l3-4 3 2 5-7"/>',
+    videos: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/>',
+    books: '<path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10"/>'
+  };
   function renderReport(r) {
     var h = r.h, x = esc;
     var tbl = function (head, rows) {
@@ -488,12 +495,15 @@
         rows.map(function (row) { return '<tr>' + row.map(function (c) { return '<td>' + x(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
     };
     var pts = function (list) { return '<ul class="ml-pts">' + list.map(function (p, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(p.title) + '</b><span>' + x(p.text) + '</span></div></li>'; }).join('') + '</ul>'; };
-    var box = function (k, t, body) { return '<div class="ml-box"><span class="ml-k2">' + x(k) + '</span>' + (t ? '<h4>' + x(t) + '</h4>' : '') + body + '</div>'; };
+    var box = function (k, t, body, acc) { return '<div class="ml-box acc-' + acc + '"><span class="ml-k2">' + x(k) + '</span>' + (t ? '<h4>' + x(t) + '</h4>' : '') + body + '</div>'; };
     var paras = function (list) { return list.map(function (t) { return '<p>' + x(t) + '</p>'; }).join(''); };
     var dlBtn = function (cls) { return '<div class="ml-rep-dl"><button class="' + cls + '" type="button" data-pdf>' + x(r.download) + '</button><p class="ml-fine ml-pdf-msg" aria-live="polite"></p></div>'; };
-    var kv = function (rows) { return rows.length ? '<table class="ml-table ml-kv"><tbody>' + rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
+    var kv = function (rows) { return rows.length ? '<table class="ml-table ml-kv"><tbody>' + rows.map(function (t) { return '<tr' + (t[2] ? ' class="strong"' : '') + '><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
     var planHero = function (p) {
-      return p ? '<div class="ml-plan-hero">' + kv(p.rows) + '<span class="ml-k2">' + x(p.label) + '</span><b>' + x(p.value) + '</b><p>' + x(p.sub) + '</p></div>' : '';
+      if (!p) return '';
+      var sc = p.scenario;
+      return '<div class="ml-plan-hero">' + kv(p.rows.concat([[p.label, p.value, true]])) +
+        (sc ? '<span class="ml-k2">' + x(sc.label) + '</span><div class="ml-plan-vals"><div><small>' + x(sc.nominalLabel) + '</small><b>' + x(sc.nominal) + '</b></div><div><small>' + x(sc.realLabel) + '</small><b>' + x(sc.real) + '</b></div></div><p>' + x(sc.sub) + '</p>' : '') + '</div>';
     };
     var partnerCard = function (p) {
       return '<div class="ml-partner"><div class="ml-partner-top"><b>' + x(p.name) + '</b><span>' + x(p.tagline) + '</span></div>' +
@@ -502,7 +512,7 @@
         '<a class="ml-btn2 ghost" rel="noopener sponsored" target="_blank" href="' + x(p.href) + '">' + x(r.partners.open) + ' ' + x(p.name) + ' →</a></div>';
     };
     var partnerGroup = function (g) {
-      return '<div class="ml-pgroup"><h5 class="ml-rep-h5">' + x(g.title) + '</h5>' + (g.note ? '<p class="ml-pgroup-note">' + x(g.note) + '</p>' : '') + (g.empty ? '<p>' + x(g.empty) + '</p>' : '') +
+      return '<div class="ml-pgroup acc-' + ({ buy: 'orange', custody: 'purple', tax: 'yellow', heirs: 'teal' }[g.id]) + '"><h5 class="ml-rep-h5">' + x(g.title) + '</h5>' + (g.note ? '<p class="ml-pgroup-note">' + x(g.note) + '</p>' : '') + (g.empty ? '<p>' + x(g.empty) + '</p>' : '') +
         (g.list.length ? '<div class="ml-partners">' + g.list.map(partnerCard).join('') + '</div>' : '') +
         '<div class="ml-pgroup-links">' + g.links.map(function (l) { return '<a class="ml-step-tool" href="' + x(l.href) + '">' + x(l.name) + ' →</a>'; }).join('') + '</div></div>';
     };
@@ -510,7 +520,7 @@
     var plain = function (rows) { return rows.length ? '<table class="ml-table"><tbody>' + rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
     var taxEx = function (e) {
       if (!e) return '';
-      return '<h5 class="ml-rep-h5">' + x(e.title || '') + '</h5>' + (e.text ? '<p>' + x(e.text) + '</p>' : '') + (e.rows.length ? tbl(e.head, e.rows) : '') +
+      return '<h5 class="ml-rep-h5">' + x(e.title || '') + '</h5>' + kv(e.kv) + (e.text ? '<p style="margin-top:14px">' + x(e.text) + '</p>' : '') + (e.rows.length ? tbl(e.head, e.rows) : '') +
         e.dates.map(function (t) { return '<p style="margin-top:12px">' + x(t) + '</p>'; }).join('') + (e.note ? note(e.note) : '');
     };
     var docsHtml = function (D) {
@@ -526,21 +536,20 @@
       '<div class="ml-box ml-nums" style="margin-top:30px">' + r.nums.map(function (n) { return '<div><small>' + x(n[0]) + '</small><b>' + x(n[1]) + '</b></div>'; }).join('') + '</div>' +
       '<div class="ml-score-row"><div><div class="n">' + r.score + '<small>/100</small></div><div class="lbl">' + x(r.gradeLine) + '</div></div><div><div class="ml-scale"><span>' + r.scale.map(x).join('</span><span>') + '</span></div><div class="ml-track"><i style="width:' + r.score + '%"></i></div></div></div>' +
       '<div style="text-align:center"><span class="ml-pill">' + x(r.pill) + '</span></div>' +
-      '<div class="ml-box" style="margin-top:44px"><span class="ml-k2">' + x(h.summaryK) + '</span>' + paras(r.summary) + '</div>' +
-      box(h.areasK, h.areas, tbl([h.area, h.points, h.why], r.areas.map(function (a) { return [a.title, a.points + ' / 10', a.why]; }))) +
-      (r.worth ? box(r.worth.k, r.worth.h, kv(r.worth.rows) + (r.worth.note ? note(r.worth.note) : '')) : '') +
-      box(h.fallK, h.fall, paras(r.fall)) +
-      (r.fallTable ? '<div class="ml-box" style="margin-top:-8px">' + tbl(r.fallTable.head, r.fallTable.rows) + note(r.fallTable.note) + '</div>' : '') +
-      box(r.reserveBox.k, r.reserveBox.h, '<p>' + x(r.reserveBox.text) + '</p>') +
-      box(r.retireBox.k, r.retireBox.h, '<div class="ml-retire"><div>' + kv(r.retireBox.rows) + '</div>' + planHero(r.retireBox.plan) + '</div><p style="margin-top:18px">' + x(r.retireBox.text) + '</p>' + (r.retireBox.note ? note(r.retireBox.note) : '')) +
-      box(h.custodyK, h.custody, tbl(r.custody.head, r.custody.rows) + '<p style="margin-top:16px">' + x(r.custody.yours) + '</p>') +
-      box(h.taxK, h.tax, (r.tax.text ? '<p>' + x(r.tax.text) + '</p>' : '') + (r.tax.rows.length ? '<table class="ml-table"><tbody>' + r.tax.rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : '') + (r.tax.note ? note(r.tax.note) : '') + taxEx(r.taxExample)) +
-      (r.fees ? box(r.fees.k, r.fees.h, tbl(r.fees.head, r.fees.rows) + note(r.fees.note)) : '') +
-      box(h.bothK, h.both, '<div class="ml-cols"><div><div class="ml-colh r">' + x(h.wrong) + '</div>' + pts(r.risks) + '</div><div><div class="ml-colh g">' + x(h.solid) + '</div>' + (r.solid.length ? pts(r.solid) : '<p>' + x(r.solidNone) + '</p>') + '</div></div>') +
-      box(h.planK, h.plan, '<ul class="ml-steps">' + r.steps.map(function (s, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(s.title) + '</b><span>' + x(s.text) + '</span>' + (s.tool ? '<a class="ml-step-tool" href="' + x(s.tool.href) + '">' + x(s.tool.name) + ' →</a>' : '') + '</div></li>'; }).join('') + '</ul>') +
-      box(r.partners.k, r.partners.h, '<p>' + x(r.partners.intro) + '</p>' + r.partners.groups.map(partnerGroup).join('')) +
-      box(r.docs.k, r.docs.h, docsHtml(r.docs)) +
-      box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + x(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>') +
+      '<div class="ml-box acc-blue" style="margin-top:44px"><span class="ml-k2">' + x(h.summaryK) + '</span>' + paras(r.summary) + '</div>' +
+      box(h.areasK, h.areas, tbl([h.area, h.points, h.why], r.areas.map(function (a) { return [a.title, a.points + ' / 10', a.why]; })), 'indigo') +
+      (r.worth ? box(r.worth.k, r.worth.h, kv(r.worth.rows) + (r.worth.note ? note(r.worth.note) : ''), 'teal') : '') +
+      box(h.fallK, h.fall, paras(r.fall) + (r.fallTable ? tbl(r.fallTable.head, r.fallTable.rows) + note(r.fallTable.note) : ''), 'pink') +
+      box(r.reserveBox.k, r.reserveBox.h, '<p>' + x(r.reserveBox.text) + '</p>', 'green') +
+      box(r.retireBox.k, r.retireBox.h, '<div class="ml-retire"><div>' + kv(r.retireBox.rows) + '</div>' + planHero(r.retireBox.plan) + '</div><p style="margin-top:18px">' + x(r.retireBox.text) + '</p>' + (r.retireBox.note ? note(r.retireBox.note) : ''), 'orange') +
+      box(h.custodyK, h.custody, tbl(r.custody.head, r.custody.rows) + '<p style="margin-top:16px">' + x(r.custody.yours) + '</p>', 'purple') +
+      box(h.taxK, h.tax, (r.tax.text ? '<p>' + x(r.tax.text) + '</p>' : '') + (r.tax.rows.length ? '<table class="ml-table"><tbody>' + r.tax.rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : '') + (r.tax.note ? note(r.tax.note) : '') + taxEx(r.taxExample), 'yellow') +
+      (r.fees ? box(r.fees.k, r.fees.h, tbl(r.fees.head, r.fees.rows) + note(r.fees.note), 'indigo') : '') +
+      box(h.bothK, h.both, '<div class="ml-cols"><div><div class="ml-colh r">' + x(h.wrong) + '</div>' + pts(r.risks) + '</div><div><div class="ml-colh g">' + x(h.solid) + '</div>' + (r.solid.length ? pts(r.solid) : '<p>' + x(r.solidNone) + '</p>') + '</div></div>', 'pink') +
+      box(h.planK, h.plan, '<ul class="ml-steps">' + r.steps.map(function (s, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(s.title) + '</b><span>' + x(s.text) + '</span>' + (s.tool ? '<a class="ml-step-tool" href="' + x(s.tool.href) + '">' + x(s.tool.name) + ' →</a>' : '') + '</div></li>'; }).join('') + '</ul>', 'green') +
+      box(r.partners.k, r.partners.h, '<p>' + x(r.partners.intro) + '</p>' + r.partners.groups.map(partnerGroup).join(''), 'blue') +
+      box(r.docs.k, r.docs.h, docsHtml(r.docs), 'purple') +
+      box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + x(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>', 'teal') +
       dlBtn('ml-big orange') + '<p class="ml-legal">' + x(r.legal) + '</p>';
   }
   // The same PDF as in the email, from the Worker, while the report is open.
@@ -573,7 +582,6 @@
         setTimeout(function () { URL.revokeObjectURL(u); }, 60000);
       }
     };
-    $('ml').classList.add('ml-paid');
     // The site's cursor spotlight (.spot in site-v2.css) on cards drawn after load.
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) el.addEventListener('pointermove', function (e) {
       var c = e.target.closest && e.target.closest('.ml-box, .ml-partner'); if (!c) return;
