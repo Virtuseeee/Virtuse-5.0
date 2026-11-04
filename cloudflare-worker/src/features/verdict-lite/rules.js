@@ -17,7 +17,7 @@ const ONE_OF = {
 };
 const WORRIES = ['tax', 'keys', 'crash', 'heirs', 'scams', 'fees', 'partner', 'retire'];
 const AGES = ['age', 'retire'];
-const AMOUNTS = ['savings', 'pension', 'retmonthly', 'homeval', 'mortbal', 'btc', 'monthly'];
+const AMOUNTS = ['savings', 'pension', 'retmonthly', 'expenses', 'homeval', 'mortbal', 'btc', 'monthly'];
 const REQUIRED = ['age', 'retire', 'savings', 'btc'];
 
 function number(v, max) {

@@ -8,6 +8,8 @@
 //                              checkout.session.async_payment_succeeded, charge.refunded
 // POST /verdict/report         { session_id, lang } -> the full report, open for
 //                              30 minutes from the first opening; after that the free view
+//                              { ..., format: 'pdf' } (Verdict Lite) -> { filename, pdf } in base64,
+//                              the same PDF as in the email, inside the same 30 minutes
 //
 // The webhook also emails the buyer a purchase confirmation with the report
 // as a PDF (receipt.js, pdf.js), once per Session (emailedAt in the KV record).
@@ -27,7 +29,7 @@ import {
   isVerdictSession, msgLang, pageLang, paymentsOn,
 } from './domain.js';
 import { renderReportPdf } from './pdf.js';
-import { operatorLine, orderNumber, receiptLang, renderReceipt } from './receipt.js';
+import { operatorLine, orderNumber, receiptLang, renderReceipt, reportFilename } from './receipt.js';
 import { createPayStore, newRid } from './store.js';
 import { INTER_BOLD, INTER_REGULAR } from '../../generated/fonts.js';
 
@@ -88,6 +90,14 @@ function toBase64(bytes) {
   return btoa(s);
 }
 
+// The report PDF for one paid Session; the email and the download share it.
+function reportPdf(view, lang, sid, paidAt) {
+  return renderReportPdf(view, {
+    lang, fonts: { regular: fromBase64(INTER_REGULAR), bold: fromBase64(INTER_BOLD) },
+    date: new Date(paidAt), order: orderNumber(sid), operator: operatorLine(lang),
+  });
+}
+
 // Purchase confirmation + report PDF for one paid Session. Returns false when
 // sending failed (the webhook then answers 500 and Stripe retries).
 export async function sendReceipt(ctx, session, rec, store) {
@@ -100,12 +110,9 @@ export async function sendReceipt(ctx, session, rec, store) {
   const lang = receiptLang(session.metadata?.lang);
   try {
     const view = stored.lite
-      ? liteReportView(stored.answers, stored.lang)
+      ? liteReportView(stored.answers, stored.lang, new Date(rec.paidAt || now))
       : reportView(stored.result, stored.profile, verdictOpts(env, pageLang(stored.lang || lang)));
-    const pdf = await renderReportPdf(view, {
-      lang, fonts: { regular: fromBase64(INTER_REGULAR), bold: fromBase64(INTER_BOLD) },
-      date: new Date(rec.paidAt || now), order: orderNumber(session.id), operator: operatorLine(lang),
-    });
+    const pdf = await reportPdf(view, lang, session.id, rec.paidAt || now);
     const mail = renderReceipt({ lang, sid: session.id, amount: rec.amount, currency: rec.currency, paidAt: rec.paidAt || now, lite: !!stored.lite });
     await ctx.services.resend.sendEmail({
       from: env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL,
@@ -180,7 +187,7 @@ export async function paidReport(ctx, sid) {
   } else if (now - rec.usedAt > REPORT_WINDOW_MS) {
     return { used: true, stored };
   }
-  return { report: true, stored, until: rec.usedAt + REPORT_WINDOW_MS };
+  return { report: true, stored, until: rec.usedAt + REPORT_WINDOW_MS, paidAt: rec.paidAt };
 }
 
 export async function handleReport(ctx) {
@@ -203,7 +210,17 @@ export async function handleReport(ctx) {
   if (out.error) return json(out.status, { error: (REPORT_ERRORS[out.error] || REPORT_ERRORS.unpaid)[lang] }, origin);
   if (out.stored.lite) {
     if (out.used) return json(200, { lite: true, reportUsed: true }, origin);
-    return json(200, { ...liteReportView(out.stored.answers, out.stored.lang), paid: true, until: out.until }, origin);
+    const view = liteReportView(out.stored.answers, out.stored.lang, new Date(out.paidAt));
+    if (body.format === 'pdf') {
+      try {
+        const pdf = await reportPdf(view, view.lang, sid, out.paidAt);
+        return json(200, { filename: reportFilename(out.paidAt, sid), pdf: toBase64(pdf) }, origin);
+      } catch (e) {
+        console.error(e);
+        return json(502, { error: PAY_TEXT.fail[lang] }, origin);
+      }
+    }
+    return json(200, { ...view, paid: true, until: out.until }, origin);
   }
   const { result, profile } = out.stored;
   const opts = verdictOpts(env, pageLang(out.stored.lang || page));

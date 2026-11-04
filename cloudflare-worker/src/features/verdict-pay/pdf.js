@@ -169,8 +169,32 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
       para(a.why, { size: 9.5, gap: 10 });
     }
 
+    const table = (head, rows, widths) => {
+      if (head) row(head, widths, { font: bold });
+      rows.forEach((x) => row(x, widths));
+      y -= 6;
+    };
+
+    if (r.worth) {
+      heading(r.worth.h);
+      table(null, r.worth.rows, [0.6, 0.4]);
+      if (r.worth.note) para(r.worth.note, { size: 8.5, color: C.muted, gap: 6 });
+    }
+
     heading(r.h.fallK);
     r.fall.forEach((t) => para(t, { size: 10, gap: 6 }));
+    if (r.fallTable) {
+      table(r.fallTable.head, r.fallTable.rows, [0.2, 0.24, 0.28, 0.28]);
+      para(r.fallTable.note, { size: 8.5, color: C.muted, gap: 6 });
+    }
+
+    heading(r.reserveBox.h);
+    para(r.reserveBox.text, { size: 10, gap: 6 });
+
+    heading(r.retireBox.h);
+    if (r.retireBox.rows.length) table(null, r.retireBox.rows, [0.68, 0.32]);
+    para(r.retireBox.text, { size: 10, gap: 4 });
+    if (r.retireBox.note) para(r.retireBox.note, { size: 8.5, color: C.muted, gap: 6 });
 
     heading(r.h.custody);
     row(r.custody.head, [0.28, 0.36, 0.36], { font: bold });
@@ -182,6 +206,21 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     if (r.tax.text) para(r.tax.text, { size: 10, gap: 6 });
     r.tax.rows.forEach((x) => row(x, [0.24, 0.76], { boldFirst: true }));
     if (r.tax.note) { y -= 4; para(r.tax.note, { size: 8.5, color: C.muted, gap: 6 }); }
+    const ex = r.taxExample;
+    if (ex) {
+      if (ex.title) para(ex.title, { font: bold, size: 10, gap: 4 });
+      if (ex.text) para(ex.text, { size: 10, gap: 6 });
+      if (ex.rows.length) table(ex.head, ex.rows, ex.head.map(() => 1 / ex.head.length));
+      ex.dates.forEach((t) => para(t, { size: 10, gap: 4 }));
+      if (ex.note) para(ex.note, { size: 8.5, color: C.muted, gap: 6 });
+    }
+
+    if (r.fees) {
+      heading(r.fees.h);
+      const w = r.fees.head.length === 4 ? [0.16, 0.2, 0.4, 0.24] : [0.2, 0.28, 0.52];
+      table(r.fees.head, r.fees.rows, w);
+      para(r.fees.note, { size: 8.5, color: C.muted, gap: 6 });
+    }
 
     const points = (list) => list.forEach((x, k) => {
       ensure(40);
@@ -206,6 +245,20 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
       y = Math.min(y, top - 22) - 8;
     }
 
+    heading(r.partners.h);
+    para(r.partners.criteria, { font: bold, size: 9.5, gap: 4 });
+    para(r.partners.intro, { size: 9, color: C.muted, gap: 8 });
+    for (const p of r.partners.list) {
+      ensure(70);
+      para(p.name, { font: bold, size: 11.5, gap: 1 });
+      para(p.tagline, { size: 9.5, gap: 1 });
+      p.facts.forEach((t) => para(t, { size: 9, color: C.muted, gap: 1 }));
+      para(p.site, { size: 9, color: C.blue, gap: 4 });
+      para(p.stepsNote, { size: 8.5, color: C.muted, gap: 3 });
+      p.steps.forEach((s, k) => para(`${k + 1}. ${s.title}: ${s.text}`, { size: 9, gap: 2 }));
+      y -= 8;
+    }
+
     heading(r.h.next);
     for (const x of r.next) {
       ensure(30);
@@ -215,6 +268,54 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
 
     heading(S.legal);
     for (const t of [r.legal, operator]) if (t) para(t, { size: 8.5, color: C.muted, gap: 5 });
+
+    // Documents to fill in: each starts on a new page, so it prints on its own.
+    const D = r.docs;
+    const tall = (cells, widths, h) => {
+      ensure(h + 2);
+      let x = M;
+      cells.forEach((text, k) => {
+        lines(text, reg, 9, CW * widths[k] - 8).forEach((l, i) => page.drawText(l, { x, y: y - 11 - i * 12, size: 9, font: reg, color: C.ink }));
+        x += CW * widths[k];
+      });
+      y -= h;
+      page.drawLine({ start: { x: M, y }, end: { x: W - M, y }, thickness: 0.5, color: C.line });
+      y -= 2;
+    };
+    const blank = (label) => {
+      ensure(46);
+      para(label, { size: 9.5, color: C.muted, gap: 20 });
+      page.drawLine({ start: { x: M, y: y + 6 }, end: { x: W - M, y: y + 6 }, thickness: 0.5, color: C.line });
+      y -= 6;
+    };
+
+    newPage();
+    para(D.h, { font: bold, size: 18, gap: 10 });
+    heading(D.rule.title);
+    para(D.rule.text, { size: 10, gap: 8 });
+    row(D.rule.head, [0.24, 0.24, 0.52], { font: bold });
+    D.rule.rows.forEach((x) => tall(x, [0.24, 0.24, 0.52], 54));
+    y -= 14;
+    heading(D.recovery.title);
+    D.recovery.items.forEach((t) => {
+      ensure(26);
+      page.drawRectangle({ x: M, y: y - 11, width: 10, height: 10, borderColor: C.muted, borderWidth: 0.8 });
+      para(t, { size: 10, x: M + 18, width: CW - 18, gap: 6 });
+    });
+
+    newPage();
+    heading(D.record.title);
+    para(D.record.text, { size: 10, gap: 8 });
+    const rw = [0.13, 0.14, 0.14, 0.13, 0.11, 0.17, 0.18];
+    row(D.record.columns, rw, { font: bold, size: 8.5 });
+    for (let k = 0; k < 16; k++) tall(rw.map(() => ''), rw, 26);
+
+    newPage();
+    heading(D.heirs.title);
+    para(D.heirs.warn, { font: bold, size: 10, color: C.low, gap: 12 });
+    D.heirs.filled.forEach(([k, v]) => para(`${k}: ${v}`, { size: 10, gap: 6 }));
+    y -= 6;
+    D.heirs.fields.forEach(blank);
   };
 
   newPage();

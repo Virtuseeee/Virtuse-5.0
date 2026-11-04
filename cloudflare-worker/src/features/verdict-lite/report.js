@@ -7,6 +7,7 @@
 // source as the tax pages.
 
 import TAX from '../../generated/lite-tax.js';
+import { reportBlocks } from './blocks.js';
 import { bandIndex, calc, gapIds, grade, worryTargets } from './rules.js';
 
 const NBSP = ' ';
@@ -132,13 +133,13 @@ const COPY = {
       reserve: (res) => ['Build a 6-month cash reserve', `You have ${res}. Keep the cash outside Bitcoin, so a fall never forces you to sell at the bottom.`],
       debt: () => ['List your debts and their interest', 'One line per loan, with its rate. Card and consumer-loan interest usually costs more than you can plan to earn.'],
       mortgage: () => ['Keep the mortgage safe in a fall', 'Work out how many months of payments you hold in cash. They should never depend on the Bitcoin price.'],
-      fall: () => ['Write one rule for a fall', 'You said you would sell. Decide now, in one line, what you will do at −70%, and keep it with your records.'],
-      keys: () => ['Practise a recovery with €20', 'Set up the hardware wallet, send a small amount, wipe it and restore it from the backup. Do this before larger amounts go in.'],
+      fall: () => ['Write one rule for a fall', 'You said you would sell. Decide now, in one line, what you will do at −70%. The form is under Documents.'],
+      keys: () => ['Practise a recovery with €20', 'Set up the hardware wallet, send a small amount, wipe it and restore it from the backup, before larger amounts go in. The checklist is under Documents.'],
       custody: () => ['Decide who holds the keys', 'Use the table above. Once you decide, Partner Finder can show the partners that match.'],
       recovery: () => ['Agree the recovery steps with your provider', 'Ask what happens if you lose a key and how long recovery takes, before larger amounts go in.'],
       retire: (y) => ['Keep retirement money out of Bitcoin’s swings', `You plan to retire in ${y} years. Mark what you will need in the next years and keep it outside Bitcoin.`],
-      heirs: () => ['Tell one person how to find your Bitcoin', 'Write down where the instructions are, never the recovery phrase itself, and tell one person you trust.'],
-      records: () => ['Keep a record of every purchase', 'Date, amount and price in one simple table. It makes every later tax return easy.'],
+      heirs: () => ['Tell one person how to find your Bitcoin', 'Write down where the instructions are, never the recovery phrase itself, and tell one person you trust. The letter is under Documents.'],
+      records: () => ['Keep a record of every purchase', 'Date, amount and price in one simple table, under Documents. It makes every later tax return easy.'],
       review: () => ['Check the plan again in a year', 'Your answers leave no big gap today. Run Verdict again once a year, or when your savings change.'],
     },
     tool: { tax: 'Tax Agent', custody: 'Custody guide', finder: 'Partner Finder', retire: 'Retirement Calculator', verdict: 'Verdict' },
@@ -146,6 +147,7 @@ const COPY = {
       tax: (c) => (c ? `${c}, filled in →` : 'Pick a country →'), free: 'Free', finder: 'Partners that match →', compare: 'You compare and choose', custody: 'Hardware wallets →',
     },
     sent: 'A PDF copy is on its way to the email you paid with. This page stays open for 30 minutes.',
+    download: 'Download PDF',
     legal: 'Verdict checks your answers by fixed rules and is not investment, tax or legal advice. Partners are listed because they match the criteria, not ranked; Virtuse may receive a referral fee.',
   },
   sk: {
@@ -263,13 +265,13 @@ const COPY = {
       reserve: (res) => ['Vytvorte si rezervu na 6 mesiacov', `Teraz máte ${res}. Hotovosť držte mimo Bitcoinu, aby vás pokles nikdy neprinútil predávať na dne.`],
       debt: () => ['Spíšte si dlhy a ich úroky', 'Jeden riadok na úver, so sadzbou. Úroky z kariet a spotrebných úverov zvyčajne stoja viac, než môžete rozumne plánovať zarobiť.'],
       mortgage: () => ['Chráňte hypotéku pred poklesom', 'Spočítajte si, na koľko mesiacov splátok máte hotovosť. Nesmú závisieť od ceny Bitcoinu.'],
-      fall: () => ['Napíšte si jedno pravidlo pre pokles', 'Uviedli ste, že by ste predali. Rozhodnite sa teraz, jednou vetou, čo urobíte pri −70 %, a odložte si to k záznamom.'],
-      keys: () => ['Vyskúšajte si obnovu s 20 €', 'Nastavte hardvérovú peňaženku, pošlite malú sumu, peňaženku vymažte a obnovte zo zálohy. Urobte to skôr, než pôjdu do hry väčšie sumy.'],
+      fall: () => ['Napíšte si jedno pravidlo pre pokles', 'Uviedli ste, že by ste predali. Rozhodnite sa teraz, jednou vetou, čo urobíte pri −70 %. Formulár nájdete v časti Dokumenty.'],
+      keys: () => ['Vyskúšajte si obnovu s 20 €', 'Nastavte hardvérovú peňaženku, pošlite malú sumu, peňaženku vymažte a obnovte zo zálohy, skôr než pôjdu do hry väčšie sumy. Postup nájdete v časti Dokumenty.'],
       custody: () => ['Rozhodnite, kto bude držať kľúče', 'Pomôže vám tabuľka vyššie. Keď sa rozhodnete, Partner Finder ukáže partnerov, ktorí spĺňajú kritériá.'],
       recovery: () => ['Dohodnite si s poskytovateľom postup obnovy', 'Opýtajte sa, čo sa stane pri strate kľúča a ako dlho obnova trvá, skôr než pôjdu do hry väčšie sumy.'],
       retire: (y) => ['Peniaze na dôchodok nenechajte na výkyvoch Bitcoinu', `Do dôchodku plánujete ísť o ${y} ${y === 1 ? 'rok' : y > 1 && y < 5 ? 'roky' : 'rokov'}. Označte si, čo budete v najbližších rokoch potrebovať, a držte to mimo Bitcoinu.`],
-      heirs: () => ['Povedzte jednému človeku, ako váš Bitcoin nájsť', 'Zapíšte si, kde sú pokyny, nikdy nie samotnú frázu na obnovu, a povedzte to jednému človeku, ktorému dôverujete.'],
-      records: () => ['Zapisujte si každý nákup', 'Dátum, suma a cena v jednej jednoduchej tabuľke. Každé neskoršie daňové priznanie bude jednoduché.'],
+      heirs: () => ['Povedzte jednému človeku, ako váš Bitcoin nájsť', 'Zapíšte si, kde sú pokyny, nikdy nie samotnú frázu na obnovu, a povedzte to jednému človeku, ktorému dôverujete. List nájdete v časti Dokumenty.'],
+      records: () => ['Zapisujte si každý nákup', 'Dátum, suma a cena v jednej jednoduchej tabuľke, v časti Dokumenty. Každé neskoršie daňové priznanie bude jednoduché.'],
       review: () => ['Pozrite sa na plán znova o rok', 'Vaše odpovede dnes nenechávajú veľkú medzeru. Spustite Verdict raz ročne alebo keď sa zmenia vaše úspory.'],
     },
     tool: { tax: 'Tax Agent', custody: 'Sprievodca úschovou', finder: 'Partner Finder', retire: 'Dôchodková kalkulačka', verdict: 'Verdict' },
@@ -277,6 +279,7 @@ const COPY = {
       tax: (c) => (c ? `${c}, vyplnené →` : 'Vyberte krajinu →'), free: 'Zadarmo', finder: 'Partneri, ktorí sedia →', compare: 'Porovnáte a vyberiete si sami', custody: 'Hardvérové peňaženky →',
     },
     sent: 'Kópia v PDF je na ceste na e-mail, ktorým ste platili. Táto stránka zostane otvorená 30 minút.',
+    download: 'Stiahnuť PDF',
     legal: 'Verdict kontroluje vaše odpovede pevnými pravidlami a nie je to investičné, daňové ani právne poradenstvo. Partnerov uvádzame preto, že spĺňajú kritériá, nie podľa poradia; Virtuse môže od partnera dostať províziu.',
   },
 };
@@ -297,7 +300,8 @@ const tool = (name, lang, file, query) => ({ name, href: page(lang, file, query)
 // In English, country names take no article except the Netherlands.
 const inEn = (id, name) => (id === 'nl' ? 'the Netherlands' : name);
 
-export function liteReportView(answers, rawLang = 'en') {
+// date: the day the report is about (the payment), for dates in the tax block.
+export function liteReportView(answers, rawLang = 'en', date = new Date()) {
   const lang = rawLang === 'sk' ? 'sk' : 'en';
   const T = COPY[lang];
   const { eur, pct } = FMT[lang];
@@ -462,6 +466,8 @@ export function liteReportView(answers, rawLang = 'en') {
     steps,
     next,
     sent: T.sent,
+    download: T.download,
+    ...reportBlocks(A, c, lang, FMT[lang], date, fact?.name || ''),
     legal: T.legal,
   };
 }

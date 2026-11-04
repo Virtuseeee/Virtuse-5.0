@@ -56,7 +56,7 @@
       retireErr: 'Your retirement age is lower than your age.',
       steps: [
         ["Let's start with the basics.", 'Your name only appears in your own report.', { name: ['First name', 'e.g. Anna'], age: ['Your age', 'e.g. 41'], country: ['Where do you pay tax?', 'Tax rules and the partners you can use depend on it.'] }],
-        ['Tell us about your savings and retirement.', 'Be as honest as you can. Round numbers are fine. Your answers stay on this page unless you buy the full report.', { savings: ['Savings and investments (€), without your home and pension', 'e.g. 150000'], pension: ['Retirement savings so far (€): pension pillars, private pension', 'e.g. 40000'], retire: ['At what age do you plan to retire?', 'e.g. 65'], retmonthly: ['How much do you put aside for retirement each month (€)?', 'e.g. 150'], reserve: ['How many months could you live from cash, without Bitcoin?'] }],
+        ['Tell us about your savings and retirement.', 'Be as honest as you can. Round numbers are fine. Your answers stay on this page unless you buy the full report.', { savings: ['Savings and investments (€), without your home and pension', 'e.g. 150000'], pension: ['Retirement savings so far (€): pension pillars, private pension', 'e.g. 40000'], retire: ['At what age do you plan to retire?', 'e.g. 65'], retmonthly: ['How much do you put aside for retirement each month (€)?', 'e.g. 150'], expenses: ['What do you spend in a typical month (€)?', 'e.g. 2000'], reserve: ['How many months could you live from cash, without Bitcoin?'] }],
         ['Do you own your home?', 'Your home is often your biggest asset, and a mortgage changes how much a fall can hurt.', { homeval: ['Estimated home value (€)', 'e.g. 250000'], mortbal: ['Remaining mortgage (€)', 'e.g. 140000'], debt: ['Other debts (consumer loans, cards, leasing)?'] }],
         ["What's your relationship with Bitcoin?", 'No judgement. We work with first-timers, long-time holders and sceptics alike.', { btc: ['How much would you put into Bitcoin (€)?', 'e.g. 20000'], monthly: ['And each month after that (€)?', 'e.g. 200'], custody: ['Who should hold the keys?'], fall: ['Bitcoin drops 70% in a year. What do you do?'] }],
         ['What keeps you up at night about Bitcoin?', 'Pick all that apply. Your plan starts with these.', { tax_known: ['Do you know what the tax office takes when you sell?'] }]
@@ -106,7 +106,7 @@
       tooMany: 'Too many attempts. Please try again in an hour. Your score is below.',
       badAddr: 'We could not deliver to this address. Please check it and try again.',
       wlOk: "You're on the list. We'll email you once, when the report opens.",
-      buyWait: 'Opening secure payment…', buyClosed: 'Payment is not open right now. Leave your email and we will write to you once when it is.', buyCanceled: 'Payment cancelled. Nothing was charged.',
+      buyWait: 'Opening secure payment…', buyClosed: 'Payment is not open right now. Leave your email and we will write to you once when it is.', buyCanceled: 'Payment cancelled. Nothing was charged.', pdfWait: 'Preparing your PDF…', pdfErr: 'The PDF could not be downloaded. Please try again; your copy is also on its way by email.',
       repLoad: 'Preparing your report…', repUsed: 'This report was open for 30 minutes and has now closed. Your PDF copy is in the email you paid with. Cannot find it? Write to info@virtuse.com.', repNet: 'We could not load your report. Please reload this page. Your PDF copy is on its way by email; if it does not arrive, write to info@virtuse.com.',
       demo: { top: 'VERDICT REPORT · SAMPLE', title: 'Anna’s Bitcoin plan check', meta: '41 · Slovakia · first purchase · own keys', scale: ['Basics missing', 'A few gaps', 'Basics in place'], pill: 'B · Basics in place', nums: [['Planned', '€20,000 · 13%'], ['After a 70% fall', '€6,000 left'], ['Monthly', '€200'], ['Cash reserve', '3 to 6 months']], areas: ['Size', 'Reserve', 'Debts', 'Tax', 'Custody', 'Behaviour'] },
       jump: ['Landing', '1 Basics', '2 Savings', '3 Home', '4 Bitcoin', '5 Worries', 'Loading', 'Gate', 'Lite score', 'Sample']
@@ -118,7 +118,7 @@
       retireErr: 'Vek odchodu do dôchodku je nižší ako váš vek.',
       steps: [
         ['Začnime základmi.', 'Vaše meno sa zobrazí len vo vašom vlastnom reporte.', { name: ['Krstné meno', 'napr. Anna'], age: ['Váš vek', 'napr. 41'], country: ['V ktorej krajine platíte dane?', 'Od toho závisia daňové pravidlá aj partneri, ktorých môžete využiť.'] }],
-        ['Povedzte nám o svojich úsporách a dôchodku.', 'Buďte čo najúprimnejší. Stačia zaokrúhlené čísla. Vaše odpovede zostanú na tejto stránke, pokiaľ si nekúpite celý report.', { savings: ['Úspory a investície (€), bez bývania a dôchodku', 'napr. 150000'], pension: ['Doterajšie úspory na dôchodok (€): dôchodkové piliere, súkromné sporenie', 'napr. 40000'], retire: ['V akom veku plánujete ísť do dôchodku?', 'napr. 65'], retmonthly: ['Koľko si mesačne odkladáte na dôchodok (€)?', 'napr. 150'], reserve: ['Koľko mesiacov by ste vyžili z hotovosti, bez Bitcoinu?'] }],
+        ['Povedzte nám o svojich úsporách a dôchodku.', 'Buďte čo najúprimnejší. Stačia zaokrúhlené čísla. Vaše odpovede zostanú na tejto stránke, pokiaľ si nekúpite celý report.', { savings: ['Úspory a investície (€), bez bývania a dôchodku', 'napr. 150000'], pension: ['Doterajšie úspory na dôchodok (€): dôchodkové piliere, súkromné sporenie', 'napr. 40000'], retire: ['V akom veku plánujete ísť do dôchodku?', 'napr. 65'], retmonthly: ['Koľko si mesačne odkladáte na dôchodok (€)?', 'napr. 150'], expenses: ['Koľko minete za bežný mesiac (€)?', 'napr. 2000'], reserve: ['Koľko mesiacov by ste vyžili z hotovosti, bez Bitcoinu?'] }],
         ['Bývate vo vlastnom?', 'Bývanie býva najväčší majetok a hypotéka mení, ako veľmi môže pokles bolieť.', { homeval: ['Odhadovaná hodnota bývania (€)', 'napr. 250000'], mortbal: ['Zostatok hypotéky (€)', 'napr. 140000'], debt: ['Iné dlhy (spotrebné úvery, karty, lízing)?'] }],
         ['Aký máte vzťah k Bitcoinu?', 'Nikoho nesúdime. Pomáhame začiatočníkom, dlhoročným držiteľom aj skeptikom.', { btc: ['Koľko by ste dali do Bitcoinu (€)?', 'napr. 20000'], monthly: ['A potom každý mesiac (€)?', 'napr. 200'], custody: ['Kto má držať kľúče?'], fall: ['Bitcoin za rok klesne o 70 %. Čo urobíte?'] }],
         ['Čo vás na Bitcoine trápi najviac?', 'Vyberte všetko, čo platí. Váš plán začne práve týmto.', { tax_known: ['Viete, koľko si pri predaji vezme daňový úrad?'] }]
@@ -168,7 +168,7 @@
       tooMany: 'Príliš veľa pokusov. Skúste to znova o hodinu. Vaše skóre nájdete nižšie.',
       badAddr: 'Na túto adresu sa e-mail nepodarilo doručiť. Skontrolujte ju a skúste to znova.',
       wlOk: 'Ste na zozname. Napíšeme vám raz, keď report spustíme.',
-      buyWait: 'Otváram zabezpečenú platbu…', buyClosed: 'Platba teraz nie je otvorená. Nechajte nám e-mail a raz vám napíšeme, keď bude.', buyCanceled: 'Platba bola zrušená. Nič sa nestrhlo.',
+      buyWait: 'Otváram zabezpečenú platbu…', buyClosed: 'Platba teraz nie je otvorená. Nechajte nám e-mail a raz vám napíšeme, keď bude.', buyCanceled: 'Platba bola zrušená. Nič sa nestrhlo.', pdfWait: 'Pripravujem PDF…', pdfErr: 'PDF sa nepodarilo stiahnuť. Skúste to znova; kópia je na ceste aj e-mailom.',
       repLoad: 'Pripravujem váš report…', repUsed: 'Tento report bol otvorený 30 minút a teraz je zatvorený. Kópiu v PDF máte v e-maile, ktorým ste platili. Neviete ju nájsť? Napíšte na info@virtuse.com.', repNet: 'Report sa nepodarilo načítať. Znovu načítajte túto stránku. Kópia v PDF je na ceste e-mailom; ak nepríde, napíšte na info@virtuse.com.',
       demo: { top: 'VERDICT REPORT · VZOR', title: 'Plán Bitcoinu: Anna', meta: '41 · Slovensko · prvý nákup · vlastné kľúče', scale: ['Chýbajú základy', 'Pár medzier', 'Základy máte'], pill: 'B · Základy máte', nums: [['Plánuje', '20 000 € · 13 %'], ['Po poklese o 70 %', 'zostane 6 000 €'], ['Mesačne', '200 €'], ['Rezerva', '3 až 6 mesiacov']], areas: ['Veľkosť', 'Rezerva', 'Dlhy', 'Dane', 'Úschova', 'Správanie'] },
       jump: ['Landing', '1 Základ', '2 Úspory', '3 Bývanie', '4 Bitcoin', '5 Obavy', 'Načítanie', 'Brána', 'Lite skóre', 'Vzor']
@@ -179,7 +179,7 @@
   var ICO = { home: [I.home, I.mort, I.rent, I.other], experience: [I.btc, I.seed, I.other], custody: [I.key, I.shield, I.any], fall: [I.crash, I.wait, I.more], worries: [I.tax, I.lock, I.crash, I.heirs, I.scam, I.fees, I.pick, I.ret] };
   var STEPS = [
     { f: [{ k: 'name', type: 'text', opt: 1 }, { k: 'age', type: 'num' }, { k: 'country', type: 'select' }] },
-    { f: [{ k: 'savings', type: 'eur' }, { k: 'pension', type: 'eur', opt: 1 }, { k: 'retire', type: 'num' }, { k: 'retmonthly', type: 'eur', opt: 1 }, { k: 'reserve', type: 'seg' }] },
+    { f: [{ k: 'savings', type: 'eur' }, { k: 'pension', type: 'eur', opt: 1 }, { k: 'retire', type: 'num' }, { k: 'retmonthly', type: 'eur', opt: 1 }, { k: 'expenses', type: 'eur', opt: 1 }, { k: 'reserve', type: 'seg' }] },
     { f: [{ k: 'home', type: 'tiles' }, { k: 'homeval', type: 'eur', opt: 1, when: function () { return A.home === 'own' || A.home === 'mortgage'; } }, { k: 'mortbal', type: 'eur', when: function () { return A.home === 'mortgage'; } }, { k: 'debt', type: 'seg' }] },
     { f: [{ k: 'experience', type: 'tiles', cols: 'c3' }, { k: 'btc', type: 'eur' }, { k: 'monthly', type: 'eur', opt: 1 }, { k: 'custody', type: 'tiles', cols: 'c3', sm: 1 }, { k: 'fall', type: 'tiles', cols: 'c3', sm: 1 }] },
     { f: [{ k: 'worries', type: 'multi', opt: 1 }, { k: 'tax_known', type: 'seg' }] }
@@ -487,7 +487,22 @@
     var pts = function (list) { return '<ul class="ml-pts">' + list.map(function (p, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(p.title) + '</b><span>' + x(p.text) + '</span></div></li>'; }).join('') + '</ul>'; };
     var box = function (k, t, body) { return '<div class="ml-box"><span class="ml-k2">' + x(k) + '</span>' + (t ? '<h4>' + x(t) + '</h4>' : '') + body + '</div>'; };
     var paras = function (list) { return list.map(function (t) { return '<p>' + x(t) + '</p>'; }).join(''); };
-    return '<div class="ml-sent">' + x(r.sent) + '</div>' +
+    var dlBtn = '<div class="ml-rep-dl"><button class="ml-btn2 ghost" type="button" data-pdf>' + x(r.download) + '</button><p class="ml-fine ml-pdf-msg" aria-live="polite"></p></div>';
+    var note = function (t) { return '<p style="font-size:13px;color:var(--dim);margin-top:16px">' + x(t) + '</p>'; };
+    var plain = function (rows) { return rows.length ? '<table class="ml-table"><tbody>' + rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
+    var taxEx = function (e) {
+      if (!e) return '';
+      return '<h5 class="ml-rep-h5">' + x(e.title || '') + '</h5>' + (e.text ? '<p>' + x(e.text) + '</p>' : '') + (e.rows.length ? tbl(e.head, e.rows) : '') +
+        e.dates.map(function (t) { return '<p style="margin-top:12px">' + x(t) + '</p>'; }).join('') + (e.note ? note(e.note) : '');
+    };
+    var docsHtml = function (D) {
+      return '<p>' + x(D.pdfNote) + '</p>' +
+        '<h5 class="ml-rep-h5">' + x(D.rule.title) + '</h5><p>' + x(D.rule.text) + '</p>' + tbl(D.rule.head, D.rule.rows) +
+        '<h5 class="ml-rep-h5">' + x(D.recovery.title) + '</h5><ul class="ml-check">' + D.recovery.items.map(function (t) { return '<li>' + x(t) + '</li>'; }).join('') + '</ul>' +
+        '<h5 class="ml-rep-h5">' + x(D.record.title) + '</h5><p>' + x(D.record.text) + '</p><button class="ml-btn2 ghost" type="button" data-csv>' + x(D.record.csv) + '</button>' +
+        '<h5 class="ml-rep-h5">' + x(D.heirs.title) + '</h5><p><b>' + x(D.heirs.warn) + '</b></p>' + plain(D.heirs.filled) + '<ul class="ml-check plain">' + D.heirs.fields.map(function (t) { return '<li>' + x(t) + '</li>'; }).join('') + '</ul>';
+    };
+    return '<div class="ml-sent">' + x(r.sent) + '</div>' + dlBtn +
       '<div class="ml-k2" style="text-align:center;margin-top:28px">' + x(r.kicker) + '</div>' +
       '<h2 class="ml-rep-h">' + x(r.title) + '</h2><p class="ml-rep-meta">' + x(r.meta) + '</p>' +
       '<div class="ml-box ml-nums" style="margin-top:30px">' + r.nums.map(function (n) { return '<div><small>' + x(n[0]) + '</small><b>' + x(n[1]) + '</b></div>'; }).join('') + '</div>' +
@@ -495,16 +510,55 @@
       '<div style="text-align:center"><span class="ml-pill">' + x(r.pill) + '</span></div>' +
       '<div class="ml-box" style="margin-top:44px"><span class="ml-k2">' + x(h.summaryK) + '</span>' + paras(r.summary) + '</div>' +
       box(h.areasK, h.areas, tbl([h.area, h.points, h.why], r.areas.map(function (a) { return [a.title, a.points + ' / 10', a.why]; }))) +
+      (r.worth ? box(r.worth.k, r.worth.h, plain(r.worth.rows) + (r.worth.note ? note(r.worth.note) : '')) : '') +
       box(h.fallK, h.fall, paras(r.fall)) +
+      (r.fallTable ? '<div class="ml-box" style="margin-top:-8px">' + tbl(r.fallTable.head, r.fallTable.rows) + note(r.fallTable.note) + '</div>' : '') +
+      box(r.reserveBox.k, r.reserveBox.h, '<p>' + x(r.reserveBox.text) + '</p>') +
+      box(r.retireBox.k, r.retireBox.h, plain(r.retireBox.rows) + '<p style="margin-top:14px">' + x(r.retireBox.text) + '</p>' + (r.retireBox.note ? note(r.retireBox.note) : '')) +
       box(h.custodyK, h.custody, tbl(r.custody.head, r.custody.rows) + '<p style="margin-top:16px">' + x(r.custody.yours) + '</p>') +
-      box(h.taxK, h.tax, (r.tax.text ? '<p>' + x(r.tax.text) + '</p>' : '') + (r.tax.rows.length ? '<table class="ml-table"><tbody>' + r.tax.rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : '') + (r.tax.note ? '<p style="font-size:13px;color:var(--dim);margin-top:16px">' + x(r.tax.note) + '</p>' : '')) +
+      box(h.taxK, h.tax, (r.tax.text ? '<p>' + x(r.tax.text) + '</p>' : '') + (r.tax.rows.length ? '<table class="ml-table"><tbody>' + r.tax.rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : '') + (r.tax.note ? note(r.tax.note) : '') + taxEx(r.taxExample)) +
+      (r.fees ? box(r.fees.k, r.fees.h, tbl(r.fees.head, r.fees.rows) + note(r.fees.note)) : '') +
       box(h.bothK, h.both, '<div class="ml-cols"><div><div class="ml-colh r">' + x(h.wrong) + '</div>' + pts(r.risks) + '</div><div><div class="ml-colh g">' + x(h.solid) + '</div>' + (r.solid.length ? pts(r.solid) : '<p>' + x(r.solidNone) + '</p>') + '</div></div>') +
       box(h.planK, h.plan, '<ul class="ml-steps">' + r.steps.map(function (s, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(s.title) + '</b><span>' + x(s.text) + '</span>' + (s.tool ? '<a class="ml-step-tool" href="' + x(s.tool.href) + '">' + x(s.tool.name) + ' →</a>' : '') + '</div></li>'; }).join('') + '</ul>') +
+      box(r.partners.k, r.partners.h, '<p><b>' + x(r.partners.criteria) + '</b></p><p>' + x(r.partners.intro) + '</p><div class="ml-partners">' + r.partners.list.map(function (p) {
+        return '<div class="ml-partner"><div class="ml-partner-top"><div><b>' + x(p.name) + '</b><span>' + x(p.tagline) + '</span></div><a class="ml-btn2 ghost" rel="noopener sponsored" target="_blank" href="' + x(p.href) + '">' + x(r.partners.open) + ' ' + x(p.name) + ' →</a></div>' +
+          '<ul class="ml-partner-facts">' + p.facts.map(function (t) { return '<li>' + x(t) + '</li>'; }).join('') + '</ul>' +
+          '<details><summary>' + x(p.stepsNote) + '</summary><ol>' + p.steps.map(function (s) { return '<li><b>' + x(s.title) + '</b> ' + x(s.text) + '</li>'; }).join('') + '</ol></details></div>';
+      }).join('') + '</div>') +
+      box(r.docs.k, r.docs.h, docsHtml(r.docs)) +
       box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + x(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>') +
-      '<p class="ml-legal">' + x(r.legal) + '</p>';
+      dlBtn + '<p class="ml-legal">' + x(r.legal) + '</p>';
+  }
+  // The same PDF as in the email, from the Worker, while the report is open.
+  function downloadPdf(btn, sid) {
+    var msg = btn.parentNode.querySelector('.ml-pdf-msg');
+    btn.disabled = true; msg.textContent = S.pdfWait;
+    vbApi().then(function (api) { return api.postJson('/verdict/report', { session_id: sid, lang: LANG, format: 'pdf' }); })
+      .then(function (r) {
+        btn.disabled = false;
+        if (!r || !r.ok || !r.data || !r.data.pdf) { msg.textContent = (r && r.data && r.data.reportUsed) ? S.repUsed : (r && r.data && r.data.error) || S.pdfErr; return; }
+        var bin = atob(r.data.pdf), bytes = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+        var u = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
+        var a = document.createElement('a');
+        a.href = u; a.download = r.data.filename; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(u); }, 60000);
+        msg.textContent = '';
+        dl({ event: 'verdict_report_pdf' });
+      })
+      .catch(function () { btn.disabled = false; msg.textContent = S.pdfErr; });
   }
   function loadReport(sid) {
     var el = $('mlReport');
+    el.onclick = function (e) {
+      var b = e.target.closest('[data-pdf]'); if (b) downloadPdf(b, sid);
+      if (e.target.closest('[data-csv]') && el.csv) {
+        var sep = LANG === 'sk' ? ';' : ',';
+        var u = URL.createObjectURL(new Blob(['\ufeff' + el.csv.columns.join(sep) + '\r\n'], { type: 'text/csv;charset=utf-8' }));
+        var a = document.createElement('a'); a.href = u; a.download = el.csv.file; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(u); }, 60000);
+      }
+    };
     el.innerHTML = '<p class="ml-sub" style="text-align:center">' + esc(S.repLoad) + '</p>';
     var say = function (t) { el.innerHTML = '<div class="ml-box"><p>' + esc(t) + '</p></div>'; };
     vbApi().then(function (api) { return api.postJson('/verdict/report', { session_id: sid, lang: LANG }); })
@@ -513,6 +567,7 @@
         if (!r || !r.ok) { say(d.error || S.repNet); return; }
         if (d.reportUsed) { say(S.repUsed); return; }
         el.innerHTML = renderReport(d);
+        el.csv = d.docs.record;
         try { sessionStorage.removeItem(KEY); } catch (e) {}
         dl({ event: 'verdict_report_view', verdict_score: d.score, verdict_grade: d.grade });
       })

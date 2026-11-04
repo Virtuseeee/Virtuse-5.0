@@ -34,6 +34,28 @@ export default {
      "title": "Set up a plan or own wallet",
      "text": "Optionally set up a recurring Bitcoin savings plan, or send your Bitcoin to your own wallet. The app can also transfer automatically to a hardware wallet."
     }
+   ],
+   "sk": [
+    {
+     "title": "Stiahnite si aplikáciu a zaregistrujte sa",
+     "text": "Stiahnite si aplikáciu 21bitcoin a zaregistrujte sa e-mailom. Služba je dostupná pre obyvateľov EHP, Švajčiarska a Spojeného kráľovstva."
+    },
+    {
+     "title": "Overte svoju totožnosť",
+     "text": "Pripravte si platný občiansky preukaz alebo pas a v aplikácii nahrajte krátke selfie video. Kontrola je úplne digitálna a zvyčajne trvá pár minút."
+    },
+    {
+     "title": "Vložte eurá cez SEPA",
+     "text": "Po overení pošlite eurá prevodom SEPA na svoj osobný virtuálny IBAN. Prevod musí prísť z účtu na vaše meno."
+    },
+    {
+     "title": "Nákup Bitcoinu",
+     "text": "Keď vklad príde, môžete v aplikácii nakupovať Bitcoin. 21bitcoin uvádza nákupy od 10 €."
+    },
+    {
+     "title": "Sporiaci plán alebo vlastná peňaženka",
+     "text": "Môžete si nastaviť pravidelné sporenie do Bitcoinu alebo poslať Bitcoin do vlastnej peňaženky. Aplikácia vie prevádzať aj automaticky do hardvérovej peňaženky."
+    }
    ]
   }
  },
@@ -72,6 +94,28 @@ export default {
     {
      "title": "Buy Bitcoin with Spot Trading",
      "text": "Once you are verified, Bybit EU lists Spot Trading among the products available to you. You can use it to buy Bitcoin with your EUR balance."
+    }
+   ],
+   "sk": [
+    {
+     "title": "Stiahnite si aplikáciu a zaregistrujte sa",
+     "text": "Stiahnite si oficiálnu aplikáciu Bybit EU a vyberte krajinu pobytu v EHP. Zadajte e-mail alebo mobilné číslo, potvrďte overovací kód a nastavte heslo."
+    },
+    {
+     "title": "Dokončite štandardné overenie",
+     "text": "Pre používateľov z EHP je povinné. Vyberte rýchle, bankové alebo video overenie, odfoťte prednú aj zadnú stranu platného dokladu a dokončite selfie kontrolu."
+    },
+    {
+     "title": "Vyplňte profilový dotazník",
+     "text": "Po overení odpovedzte na sedem otázok profilového dotazníka a zadajte adresu bydliska. Niekedy môžu chcieť aj nedávny doklad o adrese."
+    },
+    {
+     "title": "Vložte eurá cez SEPA",
+     "text": "V aplikácii prejdite na More, Deposit, Fiat, vyberte EUR a SEPA Transfer. Pošlite ich z účtu na vaše meno a uveďte referenčný kód."
+    },
+    {
+     "title": "Nákup Bitcoinu cez Spot Trading",
+     "text": "Po overení Bybit EU uvádza Spot Trading medzi dostupnými produktmi. Môžete ním nakúpiť Bitcoin zo zostatku v eurách."
     }
    ]
   }
@@ -113,6 +157,28 @@ export default {
      "title": "Withdraw to your own wallet",
      "text": "In Portfolio, tap Withdraw, select Bitcoin and the network your wallet uses. Paste or scan your address, check the details, confirm, and enter your funding 2FA code if asked."
     }
+   ],
+   "sk": [
+    {
+     "title": "Vytvorte si účet",
+     "text": "Otvorte aplikáciu Kraken, ťuknite na Create account a zadajte e-mail, heslo a krajinu pobytu. Potom zadajte aktivačný kód z e-mailu."
+    },
+    {
+     "title": "Overte svoju totožnosť",
+     "text": "Uveďte telefónne číslo, meno, dátum narodenia, adresu a zamestnanie. Nahrajte doklad (občiansky preukaz, pas alebo vodičský preukaz) a doklad o adrese, napríklad faktúru za energie."
+    },
+    {
+     "title": "Vložte eurá",
+     "text": "Kraken uvádza pre vklady v EUR prevody SEPA a SEPA Instant, PayPal a debetné karty, v Holandsku aj iDEAL. Ak pokyny uvádzajú referenciu účtu, doplňte ju."
+    },
+    {
+     "title": "Nákup Bitcoinu",
+     "text": "Ťuknite na + a potom Buy, vyberte Bitcoin, zadajte sumu a spôsob platby. Skontrolujte nákup a ťuknite na Confirm."
+    },
+    {
+     "title": "Výber do vlastnej peňaženky",
+     "text": "V Portfolio ťuknite na Withdraw, vyberte Bitcoin a sieť, ktorú používa vaša peňaženka. Vložte alebo naskenujte adresu, skontrolujte údaje, potvrďte a zadajte 2FA kód, ak ho pýta."
+    }
    ]
   }
  },
@@ -151,6 +217,28 @@ export default {
     {
      "title": "Withdraw to your own wallet",
      "text": "Go to Accounts, Token Wallet, Transfer, Withdraw, External Wallet. Add your wallet address first; if the feature is enabled, a new address is locked for 24 hours."
+    }
+   ],
+   "sk": [
+    {
+     "title": "Stiahnite si aplikáciu a vytvorte účet",
+     "text": "Stiahnite si aplikáciu Crypto.com a ťuknite na Create New Account. Potvrďte e-mail cez poslaný odkaz a overte telefónne číslo 6-miestnym SMS kódom."
+    },
+    {
+     "title": "Overte svoju totožnosť",
+     "text": "Zadajte celé meno, vyberte krajinu vydania a typ dokladu a urobte si selfie. Požiadavky sa môžu líšiť podľa krajiny."
+    },
+    {
+     "title": "Otvorte účet v eurách a vložte peniaze",
+     "text": "Obyvatelia EHP si môžu otvoriť účet v EUR a vkladať cez SEPA s osobnými bankovými údajmi. Môžu chcieť doklad o adrese a údaje o príjme a zamestnaní."
+    },
+    {
+     "title": "Nákup Bitcoinu",
+     "text": "Na domovskej obrazovke ťuknite na Buy a vyberte Bitcoin. Zvoľte spôsob platby, napríklad zostatok alebo kartu, zadajte sumu a potvrďte. K dispozícii je aj Recurring Buy."
+    },
+    {
+     "title": "Výber do vlastnej peňaženky",
+     "text": "Prejdite na Accounts, Token Wallet, Transfer, Withdraw, External Wallet. Najprv pridajte adresu peňaženky; ak je funkcia zapnutá, nová adresa je zamknutá na 24 hodín."
     }
    ]
   }
@@ -192,6 +280,28 @@ export default {
      "title": "Keep or withdraw your Bitcoin",
      "text": "Bitcoin is held by Invity's custodian, BitGo, unless you withdraw it. You can withdraw to your own wallet at any time, or set Auto Send to transfer at a chosen balance."
     }
+   ],
+   "sk": [
+    {
+     "title": "Stiahnite si aplikáciu a zaregistrujte sa",
+     "text": "Stiahnite si aplikáciu Invity z App Store alebo Google Play. Zaregistrujte sa cez účet Google alebo e-mailom a heslom. Invity slúži obyvateľom EHP."
+    },
+    {
+     "title": "Overte svoju totožnosť",
+     "text": "Odfoťte úradný doklad vydaný v EHP alebo Švajčiarsku a urobte si selfie. V Česku môžete použiť aj Bank iD."
+    },
+    {
+     "title": "Vložte peniaze a nakupujte",
+     "text": "Vyberte sumu a spôsob platby; Invity uvádza prevody SEPA a platby kartou. Poplatok sa zobrazí pred potvrdením každého nákupu."
+    },
+    {
+     "title": "Auto Buy, ak chcete",
+     "text": "Auto Buy nakupuje Bitcoin automaticky v pravidelných intervaloch, so sumou a časovaním, ktoré si zvolíte."
+    },
+    {
+     "title": "Držanie alebo výber Bitcoinu",
+     "text": "Bitcoin drží správca Invity, BitGo, kým si ho nevyberiete. Do vlastnej peňaženky si ho môžete vybrať kedykoľvek alebo nastaviť Auto Send pri zvolenom zostatku."
+    }
    ]
   }
  },
@@ -230,6 +340,28 @@ export default {
     {
      "title": "Receive bitcoin in Trezor Suite",
      "text": "Open the Receive tab to generate an address. Before sharing it, confirm it matches the address shown on your Trezor device."
+    }
+   ],
+   "sk": [
+    {
+     "title": "Objednajte si ho od Trezora alebo autorizovaného predajcu",
+     "text": "Objednajte v oficiálnom Trezor Shope, v obchode Trezor na Amazone alebo u autorizovaného predajcu. Trezor upozorňuje, aby ste nikdy nekupovali od neautorizovanej tretej strany."
+    },
+    {
+     "title": "Skontrolujte balenie a holografickú pečať",
+     "text": "Skontrolujte, či je balenie neporušené bez známok manipulácie a či je na mieste holografická pečať vášho modelu. Zariadenia Trezor sa dodávajú bez firmvéru."
+    },
+    {
+     "title": "Nainštalujte Trezor Suite a nastavte zariadenie",
+     "text": "Stiahnite si Trezor Suite z trezor.io/start, pripojte zariadenie a postupujte podľa pokynov na obrazovke. Suite prijme zariadenie, len ak má firmvér podpísaný SatoshiLabs."
+    },
+    {
+     "title": "Zapíšte si zálohu peňaženky",
+     "text": "Slová zapíšte správne a v poradí. Zálohu nikdy nezdieľajte ani neukladajte digitálne (snímky obrazovky, fotky, cloud). Trezor si ju od vás nikdy nevypýta."
+    },
+    {
+     "title": "Prijatie Bitcoinu v Trezor Suite",
+     "text": "Na karte Receive vygenerujte adresu. Pred zdieľaním overte, že sa zhoduje s adresou na zariadení Trezor."
     }
    ]
   }

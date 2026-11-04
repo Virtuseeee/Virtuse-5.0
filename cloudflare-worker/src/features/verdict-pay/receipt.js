@@ -15,7 +15,6 @@ const T = {
     help: 'Questions about your order or a refund: reply to this email or write to info@virtuse.com.',
     note: 'The report rates how complete your thinking is, not whether the decision is right. It is not investment, tax or legal advice.',
     noteLite: 'The report rates how ready your plan is, not whether to buy or sell. It is not investment, tax or legal advice.',
-    file: 'Virtuse-Verdict-report',
   },
   sk: {
     subject: 'Váš report Verdict: platba potvrdená',
@@ -27,7 +26,6 @@ const T = {
     help: 'Otázky k objednávke alebo žiadosť o vrátenie peňazí: odpovedzte na tento e-mail alebo napíšte na info@virtuse.com.',
     note: 'Report hodnotí úplnosť vašej úvahy, nie to, či je rozhodnutie správne. Nejde o investičné, daňové ani právne poradenstvo.',
     noteLite: 'Report hodnotí, ako je váš plán pripravený, nie to, či kúpiť alebo predať. Nejde o investičné, daňové ani právne poradenstvo.',
-    file: 'Virtuse-Verdict-report',
   },
   ru: {
     subject: 'Ваш отчёт Verdict: оплата подтверждена',
@@ -38,7 +36,6 @@ const T = {
     terms: 'Условия использования', privacy: 'Политика конфиденциальности',
     help: 'Вопросы по заказу или возврат денег: ответьте на это письмо или напишите на info@virtuse.com.',
     note: 'Отчёт оценивает полноту ваших размышлений, а не правильность решения. Это не инвестиционная, налоговая или юридическая консультация.',
-    file: 'Virtuse-Verdict-report',
   },
 };
 
@@ -60,6 +57,11 @@ export function formatAmount(minor, currency, lang) {
 
 export function formatDate(ms, lang) {
   return new Date(ms).toLocaleDateString(LOCALE[lang] || 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Bratislava' });
+}
+
+export function reportFilename(paidAt, sid) {
+  const day = new Date(paidAt).toISOString().slice(0, 10).replace(/-/g, '');
+  return `Virtuse-Verdict-report-${day}-${orderNumber(sid)}.pdf`;
 }
 
 // { subject, html, filename } for one paid Session.
@@ -85,6 +87,5 @@ ${row(t.product, t.productV)}${row(t.amount, formatAmount(amount, currency, L))}
 <p style="margin:20px 0 0 0;font-size:12px;line-height:19px;color:#5f6670;">${esc(lite && t.noteLite ? t.noteLite : t.note)}</p>
 <p style="margin:12px 0 28px 0;font-size:11px;line-height:18px;color:#8b949e;">${esc(operatorLine(L))}</p>
 </td></tr></table></td></tr></table></body></html>`;
-  const day = new Date(paidAt).toISOString().slice(0, 10).replace(/-/g, '');
-  return { subject: t.subject, html, filename: `${t.file}-${day}-${orderNumber(sid)}.pdf` };
+  return { subject: t.subject, html, filename: reportFilename(paidAt, sid) };
 }

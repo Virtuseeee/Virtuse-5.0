@@ -190,7 +190,7 @@ test('checklist: every partner has 3-5 steps and sources; unapproved ones are re
   assert.equal(validatePayload('checklist', 'partner_click', { partner: 'nope' }).ok, false);
 });
 
-test('checklist email: steps, partner link, sources; SK frame falls back to EN steps', async () => {
+test('checklist email: steps, partner link, sources; SK steps when translated, else EN', async () => {
   const { default: CHECKLISTS } = await import('../src/generated/checklists.js');
   const saved = CHECKLISTS.kraken.approved;
   CHECKLISTS.kraken.approved = true;
@@ -198,13 +198,17 @@ test('checklist email: steps, partner link, sources; SK frame falls back to EN s
     assert.equal(validatePayload('checklist', 'partner_click', { partner: 'kraken', extra: '<x>' }).ok, true);
     const sk = renderSendEmail({ kind: 'checklist', source: 'partner_click', payload: { partner: 'kraken' }, lang: 'sk', brief: false });
     assert.match(sk.subject, /Registrácia u Kraken/);
-    assert.match(sk.html, /Withdraw to your own wallet/);
+    assert.match(sk.html, /Výber do vlastnej peňaženky/);
     assert.match(sk.html, /proinvite\.kraken\.com\/9f1e\/lj72d37e\?utm_source=email&amp;utm_medium=checklist/);
     assert.match(sk.html, /support\.kraken\.com/);
     assert.match(sk.html, /7\. 10\. 2026/);
     assert.match(renderSendEmail({ kind: 'checklist', source: 'partner_click', payload: { partner: 'kraken' }, lang: 'en', brief: false }).html, /7 October 2026/);
+    CHECKLISTS.ledger.approved = true;
+    const fallback = renderSendEmail({ kind: 'checklist', source: 'partner_click', payload: { partner: 'ledger' }, lang: 'sk', brief: false });
+    assert.ok(fallback.html.includes(CHECKLISTS.ledger.steps.en[0].text.slice(0, 20)));
   } finally {
     CHECKLISTS.kraken.approved = saved;
+    CHECKLISTS.ledger.approved = false;
   }
 });
 
