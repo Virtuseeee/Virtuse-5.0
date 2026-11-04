@@ -5,7 +5,7 @@
 
 import CHECKLISTS from '../../generated/checklists.js';
 import FACTS from '../../generated/lite-facts.js';
-import { PARTNERS, amountBucket, matchingPartners } from './partners.js';
+import { PARTNERS, PRICED, amountBucket, custodyPartners, matchingPartners, taxPartners } from './partners.js';
 
 // Rates for the worked example, the same rates as the country text in lite-tax.js.
 // hold = years until a holding-period exemption applies.
@@ -18,7 +18,7 @@ const LOCALE = { en: 'en-GB', sk: 'sk-SK' };
 
 const COPY = {
   en: {
-    worth: { k: 'The whole picture', h: 'Bitcoin as a share of what you own', savings: 'Savings and investments', pension: 'Retirement savings', home: 'Home minus mortgage', total: 'Total', btc: 'Planned for Bitcoin', debts: 'Consumer debts are not deducted, because you gave them as a range.' },
+    worth: { k: 'The whole picture', h: 'Bitcoin as a share of what you own', savings: 'Savings and investments', pension: 'Retirement savings', home: 'Home minus mortgage', total: 'Total', btc: 'Planned for Bitcoin', ofTotal: (p) => `${p} of the total`, debts: 'Consumer debts are not deducted, because you gave them as a range.' },
     falls: { head: ['Fall', 'High to low', 'Your amount at the low', 'Months back to the old high'], note: 'Bitcoin in USD, month-end prices. Past falls do not predict future ones.' },
     reserve: {
       k: 'Cash reserve', h: 'Your reserve in euros',
@@ -28,7 +28,7 @@ const COPY = {
       none: 'You did not give your monthly spending, so the target stays in months: 6 months. Multiply a typical month by six to get your figure.',
     },
     retire: {
-      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Together, without any returns', plan: (m) => `Bitcoin plan by then${m ? `, with ${m} a month` : ''}`,
+      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Retirement savings together, without returns', lump: 'Planned for Bitcoin', monthly: (e, n) => `Added at ${e} a month, ${n} months`, planTotal: 'Your Bitcoin plan by retirement: total put in', planSub: 'This is what you pay in, not what it will be worth. The Bitcoin price can move either way.',
       longest: (m, left) => `The longest recovery above took ${m} months; you have ${left} months until retirement.`,
       note: 'Simple sums, without returns, inflation or price changes. Not a forecast.', na: 'You did not give a retirement age that can be used here.',
     },
@@ -45,6 +45,7 @@ const COPY = {
       method21: 'Auto-Invest plan', methodBybit: 'Spot trading', methodKraken: 'Pro trading',
       auto: (first) => `€0 on Auto-Invest from day 8; ${first} at 0.99% in the first 7 days`, autoYear: '€0 from day 8',
       note: (q) => `Published entry-level fees, ${q}, in alphabetical order. Spreads, deposit and network fees can add to this. This is not a ranking; check each partner's price list.`,
+      compare: (n) => `For comparison only, not listed for your criteria below: ${n}.`, noRow: (n) => `No row here, the fee is on the partner's site: ${n}.`,
     },
     partners: {
       k: 'Partners', h: 'Partners that match your criteria',
@@ -52,7 +53,11 @@ const COPY = {
       intro: 'Selected by the same fixed rules as Partner Finder and listed alphabetically, not ranked. You compare and choose. Links may be referral links and Virtuse may receive a fee.',
       exp: { new: 'first purchase', hodler: 'already holding Bitcoin' }, cust: { self: 'own keys', assisted: 'own keys, with help', any: 'custody open' },
       amount: { s: 'under €1,000', m: '€1,000 to €10,000', l: '€10,000 to €100,000', xl: 'over €100,000' },
-      licence: 'Licence', open: 'Open', steps: (d) => `First steps, as described on the partner's own pages on ${d}. Screens can change.`,
+      licence: 'Licence', price: "Fees and prices: on the partner's site", open: 'Open',
+      groups: { buy: 'Buying', custody: 'Custody', tax: 'Tax', heirs: 'Inheritance' }, custodyNote: (e) => `Partner Finder's custody rule · ${e}`, taxNote: (c) => `Partner Finder's tax rule · ${c}`, otherCountry: 'other country',
+      heirsEmpty: 'We have no separate partner for inheritance. The readiness check is in Tax Agent, multisig and custody are in the guide, and the letter for your heirs is under Documents.',
+      tools: { finder: 'Partner Finder', tax: 'Tax Agent', custody: 'Custody guide' },
+      steps: (d) => `First steps, as described on the partner's own pages on ${d}. Screens can change.`,
     },
     docs: {
       k: 'Documents', h: 'Documents to fill in', pdfNote: 'All of them are in your PDF, ready to print.',
@@ -71,7 +76,7 @@ const COPY = {
     },
   },
   sk: {
-    worth: { k: 'Celý obraz', h: 'Bitcoin ako podiel toho, čo máte', savings: 'Úspory a investície', pension: 'Úspory na dôchodok', home: 'Bývanie mínus hypotéka', total: 'Spolu', btc: 'Plánujete do Bitcoinu', debts: 'Spotrebné dlhy nie sú odpočítané, lebo ste ich uviedli ako rozpätie.' },
+    worth: { k: 'Celý obraz', h: 'Bitcoin ako podiel toho, čo máte', savings: 'Úspory a investície', pension: 'Úspory na dôchodok', home: 'Bývanie mínus hypotéka', total: 'Spolu', btc: 'Plánujete do Bitcoinu', ofTotal: (p) => `${p} z celku`, debts: 'Spotrebné dlhy nie sú odpočítané, lebo ste ich uviedli ako rozpätie.' },
     falls: { head: ['Pokles', 'Z maxima na minimum', 'Vaša suma na minime', 'Mesiace späť na staré maximum'], note: 'Bitcoin v USD, ceny na konci mesiaca. Minulé poklesy nepredpovedajú budúce.' },
     reserve: {
       k: 'Rezerva v hotovosti', h: 'Vaša rezerva v eurách',
@@ -81,7 +86,7 @@ const COPY = {
       none: 'Neuviedli ste mesačné výdavky, takže cieľ zostáva v mesiacoch: 6 mesiacov. Bežný mesiac vynásobte šiestimi a máte svoju sumu.',
     },
     retire: {
-      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Spolu, bez akýchkoľvek výnosov', plan: (m) => `Plán v Bitcoine dovtedy${m ? `, s ${m} mesačne` : ''}`,
+      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Úspory na dôchodok spolu, bez výnosov', lump: 'Plánujete do Bitcoinu', monthly: (e, n) => `Pridáte pri ${e} mesačne, ${n} mesiacov`, planTotal: 'Váš plán v Bitcoine do dôchodku: vložíte spolu', planSub: 'Toľko vložíte, nie toľko to bude mať hodnotu. Cena Bitcoinu sa môže pohnúť oboma smermi.',
       longest: (m, left) => `Najdlhší návrat vyššie trval ${m} mesiacov; do dôchodku máte ${left} mesiacov.`,
       note: 'Jednoduché súčty bez výnosov, inflácie a zmien ceny. Nejde o predpoveď.', na: 'Neuviedli ste vek odchodu do dôchodku, s ktorým by sa tu dalo počítať.',
     },
@@ -98,6 +103,7 @@ const COPY = {
       method21: 'Sporiaci plán Auto-Invest', methodBybit: 'Spot obchodovanie', methodKraken: 'Pro trading',
       auto: (first) => `0 € na Auto-Invest od 8. dňa; ${first} pri 0,99 % prvých 7 dní`, autoYear: '0 € od 8. dňa',
       note: (q) => `Zverejnené vstupné poplatky, ${q}, abecedne. Môžu sa pridať spready, poplatky za vklad a sieť. Nie je to poradie; pozrite si cenník každého partnera.`,
+      compare: (n) => `Len na porovnanie, pri vašich kritériách nižšie neuvedené: ${n}.`, noRow: (n) => `Bez riadku v tabuľke, poplatok je na stránke partnera: ${n}.`,
     },
     partners: {
       k: 'Partneri', h: 'Partneri, ktorí spĺňajú vaše kritériá',
@@ -105,7 +111,11 @@ const COPY = {
       intro: 'Vybraní rovnakými pevnými pravidlami ako v Partner Finderi a uvedení abecedne, nie podľa poradia. Porovnáte a vyberiete si sami. Odkazy môžu byť odporúčacie a Virtuse môže dostať províziu.',
       exp: { new: 'prvý nákup', hodler: 'Bitcoin už držíte' }, cust: { self: 'vlastné kľúče', assisted: 'vlastné kľúče s pomocou', any: 'úschova otvorená' },
       amount: { s: 'do 1 000 €', m: '1 000 až 10 000 €', l: '10 000 až 100 000 €', xl: 'nad 100 000 €' },
-      licence: 'Licencia', open: 'Otvoriť', steps: (d) => `Prvé kroky, ako ich partner opisoval na vlastných stránkach ${d}. Obrazovky sa môžu zmeniť.`,
+      licence: 'Licencia', price: 'Poplatky a ceny: na stránke partnera', open: 'Otvoriť',
+      groups: { buy: 'Nákup', custody: 'Úschova', tax: 'Dane', heirs: 'Dedičstvo' }, custodyNote: (e) => `Pravidlo pre úschovu v Partner Finderi · ${e}`, taxNote: (c) => `Pravidlo pre dane v Partner Finderi · ${c}`, otherCountry: 'iná krajina',
+      heirsEmpty: 'Samostatného partnera na dedičstvo nemáme. Kontrolu pripravenosti nájdete v Tax Agentovi, multisig a úschovu v sprievodcovi a list pre dedičov v časti Dokumenty.',
+      tools: { finder: 'Partner Finder', tax: 'Tax Agent', custody: 'Sprievodca úschovou' },
+      steps: (d) => `Prvé kroky, ako ich partner opisoval na vlastných stránkach ${d}. Obrazovky sa môžu zmeniť.`,
     },
     docs: {
       k: 'Dokumenty', h: 'Dokumenty na vyplnenie', pdfNote: 'Všetky sú vo vašom PDF, pripravené na tlač.',
@@ -137,7 +147,7 @@ function worth(A, T, { eur, pct }) {
   if (A.pension) rows.push([T.worth.pension, eur(A.pension)]);
   if (equity !== null && A.homeval) rows.push([T.worth.home, equity < 0 ? `−${eur(-equity)}` : eur(equity)]);
   rows.push([T.worth.total, eur(total)]);
-  rows.push([T.worth.btc, `${eur(A.btc || 0)} · ${pct(((A.btc || 0) / total) * 100)}`]);
+  rows.push([T.worth.btc, `${eur(A.btc || 0)} · ${T.worth.ofTotal(pct(((A.btc || 0) / total) * 100))}`]);
   return { k: T.worth.k, h: T.worth.h, rows, note: A.debt !== 'none' ? T.worth.debts : '' };
 }
 
@@ -163,16 +173,24 @@ function reserve(A, T, { eur }) {
 }
 
 function retirement(A, T, years, { eur }) {
-  if (years == null) return { k: T.retire.k, h: T.retire.h, rows: [], text: T.retire.na, note: '' };
+  if (years == null) return { k: T.retire.k, h: T.retire.h, rows: [], plan: null, text: T.retire.na, note: '' };
   const m = years * 12;
   const added = (A.retmonthly || 0) * m;
   const rows = [[T.retire.years, String(years)]];
   if (A.pension) rows.push([T.retire.sofar, eur(A.pension)]);
   if (A.retmonthly) rows.push([T.retire.added(eur(A.retmonthly)), eur(added)]);
   if (A.pension || A.retmonthly) rows.push([T.retire.total, eur((A.pension || 0) + added)]);
-  if (A.btc > 0 || A.monthly > 0) rows.push([T.retire.plan(A.monthly > 0 ? eur(A.monthly) : ''), eur((A.btc || 0) + (A.monthly || 0) * m)]);
+  // The Bitcoin plan stays apart from the savings above: its own lines, then one total.
+  const lump = A.btc > 0 ? A.btc : 0;
+  const paidIn = (A.monthly || 0) * m;
+  let plan = null;
+  if (lump || paidIn) {
+    plan = { rows: [], label: T.retire.planTotal, value: eur(lump + paidIn), sub: T.retire.planSub };
+    if (lump) plan.rows.push([T.retire.lump, eur(lump)]);
+    if (paidIn) plan.rows.push([T.retire.monthly(eur(A.monthly), m), eur(paidIn)]);
+  }
   const longest = Math.max(...FACTS.falls.map((f) => f.monthsBack));
-  return { k: T.retire.k, h: T.retire.h, rows, text: T.retire.longest(longest, m), note: T.retire.note };
+  return { k: T.retire.k, h: T.retire.h, rows, plan, text: T.retire.longest(longest, m), note: T.retire.note };
 }
 
 function taxExample(A, T, date, lang, { eur, pct }) {
@@ -217,24 +235,46 @@ function fees(A, T, { eur }) {
     }
     return cells;
   });
-  return { k: T.fees.k, h: T.fees.h, head, rows, note: T.fees.note(quarter(FACTS.feesAsOf)) };
+  const matched = matchingPartners(A);
+  const names = (ids) => ids.map((id) => PARTNERS[id].name).join(', ');
+  const compare = FACTS.fees.filter((f) => !matched.includes(f.id)).map((f) => f.id);
+  const noRow = matched.filter((id) => !PRICED.includes(id) && id !== 'trezor');
+  const note = [T.fees.note(quarter(FACTS.feesAsOf)), compare.length && T.fees.compare(names(compare)), noRow.length && T.fees.noRow(names(noRow))].filter(Boolean).join(' ');
+  return { k: T.fees.k, h: T.fees.h, head, rows, note };
 }
 
-function partnerBlock(A, T, lang) {
+const toolHref = (lang, file, query) => {
+  const q = query ? `?${new URLSearchParams(query).toString()}` : '';
+  return `${lang === 'sk' ? '/sk/' : '/'}${file}${q}`;
+};
+
+function partnerBlock(A, T, lang, countryName) {
   const P = T.partners;
   const utm = (url, id) => { const u = new URL(url); u.searchParams.set('utm_source', 'verdict'); u.searchParams.set('utm_medium', 'report'); u.searchParams.set('utm_content', id); return u.toString(); };
-  const list = matchingPartners(A).map((id) => {
+  // Every card has the same fields: licence if there is one, the price, one fact.
+  const card = (id, withSteps) => {
     const p = PARTNERS[id];
+    const f = p[lang];
+    const facts = [f.licence && `${P.licence}: ${f.licence}`, ...(PRICED.includes(id) ? [f.fee] : [P.price, f.fee])].filter(Boolean);
     const c = CHECKLISTS[id];
-    const asOf = new Date(`${c.as_of}T12:00:00Z`);
-    return {
-      id, name: p.name, tagline: p[lang].tagline, facts: [p[lang].licence && `${P.licence}: ${p[lang].licence}`, p[lang].fee].filter(Boolean),
-      href: utm(p.url, id), site: new URL(p.url).hostname, stepsNote: P.steps(fmtDate(asOf, lang)),
-      steps: (c.steps[lang] && c.steps[lang].length ? c.steps[lang] : c.steps.en).map(({ title, text }) => ({ title, text })),
-    };
-  }).sort((x, y) => x.name.localeCompare(y.name, 'en'));
+    const steps = withSteps ? (c.steps[lang] && c.steps[lang].length ? c.steps[lang] : c.steps.en).map(({ title, text }) => ({ title, text })) : [];
+    return { id, name: p.name, tagline: f.tagline, facts, href: utm(p.url, id), site: new URL(p.url).hostname, stepsNote: steps.length ? P.steps(fmtDate(new Date(`${c.as_of}T12:00:00Z`), lang)) : '', steps };
+  };
+  const cards = (ids, withSteps) => ids.map((id) => card(id, withSteps)).sort((x, y) => x.name.localeCompare(y.name, 'en'));
   const bucket = amountBucket(A.btc);
-  return { k: P.k, h: P.h, criteria: P.criteria(P.exp[A.experience === 'hodler' ? 'hodler' : 'new'], P.cust[A.custody], bucket ? P.amount[bucket] : ''), intro: P.intro, open: P.open, list };
+  const expLine = P.exp[A.experience === 'hodler' ? 'hodler' : 'new'];
+  const taxQuery = A.country !== 'other' ? { country: A.country } : null;
+  const finder = { pf_goal: 'buy', ...(A.country !== 'other' ? { pf_country: A.country } : {}), pf_experience: A.experience === 'hodler' ? 'hodler' : 'new', pf_custody: A.custody, ...(bucket ? { pf_amount: bucket } : {}) };
+  const link = (id, file, query) => ({ name: P.tools[id], href: toolHref(lang, file, query) });
+  return {
+    k: P.k, h: P.h, intro: P.intro, open: P.open,
+    groups: [
+      { id: 'buy', title: P.groups.buy, note: P.criteria(expLine, P.cust[A.custody], bucket ? P.amount[bucket] : ''), list: cards(matchingPartners(A), true), links: [link('finder', 'concierge.html', finder)] },
+      { id: 'custody', title: P.groups.custody, note: P.custodyNote(expLine), list: cards(custodyPartners(A), false), links: [link('custody', 'secure.html')] },
+      { id: 'tax', title: P.groups.tax, note: P.taxNote(countryName || P.otherCountry), list: cards(taxPartners(A), false), links: [link('tax', 'tax-agent.html', taxQuery)] },
+      { id: 'heirs', title: P.groups.heirs, note: '', empty: P.heirsEmpty, list: [], links: [link('tax', 'tax-agent.html', taxQuery), link('custody', 'secure.html')] },
+    ],
+  };
 }
 
 function docs(A, T, countryName, { eur }) {
@@ -261,7 +301,7 @@ export function reportBlocks(A, c, lang, fmt, date, countryName) {
     retireBox: retirement(A, T, c.years, fmt),
     taxExample: taxExample(A, T, date, lang, fmt),
     fees: fees(A, T, fmt),
-    partners: partnerBlock(A, T, lang),
+    partners: partnerBlock(A, T, lang, countryName),
     docs: docs(A, T, countryName, fmt),
   };
 }

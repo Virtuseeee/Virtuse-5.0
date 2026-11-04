@@ -28,7 +28,7 @@ const COPY = {
     worriedAbout: 'worried about',
     worry: { tax: 'tax', keys: 'losing keys', crash: 'a crash', heirs: 'heirs', scams: 'scams', fees: 'fees', partner: 'picking a partner', retire: 'retirement' },
     n: {
-      savings: 'Savings, without home', planned: 'Planned for Bitcoin', after: 'After a 70% fall', left: (r) => `${r} left`, monthly: 'Monthly addition',
+      savings: 'Savings, without home', planned: 'Planned for Bitcoin', share: (p) => `${p} of savings`, after: 'After a 70% fall', left: (r) => `${r} left`, monthly: 'Monthly addition',
       perYear: (m, y) => `${m} · ${y} a year`, noMonthly: 'None planned', reserve: 'Cash reserve', retire: 'Retirement',
       retired: (s, age, y) => `${s ? `${s} saved · ` : ''}at ${age}, in ${y} ${y === 1 ? 'year' : 'years'}`, retireNa: 'Age not given', home: 'Home',
       homeOwn: (v) => (v ? `${v} · no mortgage` : 'Owned, no mortgage'), homeMort: (v, m, p) => (v ? `${v} · ${m} mortgage (${p})` : `${m} mortgage`), homeRent: 'Rented', homeOther: 'Other',
@@ -160,9 +160,9 @@ const COPY = {
     worriedAbout: 'trápi vás',
     worry: { tax: 'dane', keys: 'strata kľúčov', crash: 'prepad', heirs: 'dedičia', scams: 'podvody', fees: 'poplatky', partner: 'výber partnera', retire: 'dôchodok' },
     n: {
-      savings: 'Úspory bez bývania', planned: 'Plánujete do Bitcoinu', after: 'Po poklese o 70 %', left: (r) => `zostane ${r}`, monthly: 'Mesačne pridáte',
+      savings: 'Úspory bez bývania', planned: 'Plánujete do Bitcoinu', share: (p) => `${p} úspor`, after: 'Po poklese o 70 %', left: (r) => `zostane ${r}`, monthly: 'Mesačne pridáte',
       perYear: (m, y) => `${m} · ${y} ročne`, noMonthly: 'Neplánujete', reserve: 'Rezerva v hotovosti', retire: 'Dôchodok',
-      retired: (s, age, y) => `${s ? `${s} · ` : ''}v ${age} rokoch, o ${y} ${y === 1 ? 'rok' : y > 1 && y < 5 ? 'roky' : 'rokov'}`, retireNa: 'Vek ste neuviedli', home: 'Bývanie',
+      retired: (s, age, y) => `${s ? `${s} úspor · ` : ''}v ${age} rokoch, o ${y} ${y === 1 ? 'rok' : y > 1 && y < 5 ? 'roky' : 'rokov'}`, retireNa: 'Vek ste neuviedli', home: 'Bývanie',
       homeOwn: (v) => (v ? `${v} · bez hypotéky` : 'Vlastné, bez hypotéky'), homeMort: (v, m, p) => (v ? `${v} · hypotéka ${m} (${p})` : `hypotéka ${m}`), homeRent: 'Prenájom', homeOther: 'Iné',
       debts: 'Iné dlhy', debt: { none: 'Žiadne', lt10: 'Do 10 000 €', gt10: 'Nad 10 000 €' },
     },
@@ -332,7 +332,7 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
       : A.home === 'rent' ? T.n.homeRent : T.n.homeOther;
   const nums = [
     [T.n.savings, eur(A.savings || 0)],
-    [T.n.planned, p ? `${eur(A.btc || 0)} · ${p}` : eur(A.btc || 0)],
+    [T.n.planned, p ? `${eur(A.btc || 0)} · ${T.n.share(p)}` : eur(A.btc || 0)],
     [T.n.after, A.btc > 0 ? T.n.left(r) : '–'],
     [T.n.monthly, m ? T.n.perYear(m, eur(A.monthly * 12)) : T.n.noMonthly],
     [T.n.reserve, T.reserveNum[A.reserve]],

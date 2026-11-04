@@ -193,6 +193,16 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
 
     heading(r.retireBox.h);
     if (r.retireBox.rows.length) table(null, r.retireBox.rows, [0.68, 0.32]);
+    if (r.retireBox.plan) {
+      const plan = r.retireBox.plan;
+      table(null, plan.rows, [0.68, 0.32]);
+      ensure(62);
+      page.drawRectangle({ x: M, y: y - 52, width: CW, height: 52, color: C.tint, borderColor: C.line, borderWidth: 0.6 });
+      page.drawText(clean(plan.label), { x: M + 12, y: y - 18, size: 9, font: reg, color: C.muted });
+      page.drawText(clean(plan.value), { x: M + 12, y: y - 42, size: 20, font: bold, color: C.ink });
+      y -= 60;
+      para(plan.sub, { size: 9, color: C.muted, gap: 8 });
+    }
     para(r.retireBox.text, { size: 10, gap: 4 });
     if (r.retireBox.note) para(r.retireBox.note, { size: 8.5, color: C.muted, gap: 6 });
 
@@ -208,6 +218,7 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     if (r.tax.note) { y -= 4; para(r.tax.note, { size: 8.5, color: C.muted, gap: 6 }); }
     const ex = r.taxExample;
     if (ex) {
+      ensure(90); // keep the title with its table
       if (ex.title) para(ex.title, { font: bold, size: 10, gap: 4 });
       if (ex.text) para(ex.text, { size: 10, gap: 6 });
       if (ex.rows.length) table(ex.head, ex.rows, ex.head.map(() => 1 / ex.head.length));
@@ -246,16 +257,25 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     }
 
     heading(r.partners.h);
-    para(r.partners.criteria, { font: bold, size: 9.5, gap: 4 });
     para(r.partners.intro, { size: 9, color: C.muted, gap: 8 });
-    for (const p of r.partners.list) {
+    for (const g of r.partners.groups) {
       ensure(70);
-      para(p.name, { font: bold, size: 11.5, gap: 1 });
-      para(p.tagline, { size: 9.5, gap: 1 });
-      p.facts.forEach((t) => para(t, { size: 9, color: C.muted, gap: 1 }));
-      para(p.site, { size: 9, color: C.blue, gap: 4 });
-      para(p.stepsNote, { size: 8.5, color: C.muted, gap: 3 });
-      p.steps.forEach((s, k) => para(`${k + 1}. ${s.title}: ${s.text}`, { size: 9, gap: 2 }));
+      para(g.title, { font: bold, size: 12, gap: 2 });
+      if (g.note) para(g.note, { size: 9, color: C.muted, gap: 5 });
+      if (g.empty) para(g.empty, { size: 9.5, gap: 4 });
+      for (const p of g.list) {
+        ensure(60);
+        para(p.name, { font: bold, size: 11, gap: 1 });
+        para(p.tagline, { size: 9.5, gap: 1 });
+        p.facts.forEach((t) => para(t, { size: 9, color: C.muted, gap: 1 }));
+        para(p.site, { size: 9, color: C.blue, gap: 4 });
+        if (p.steps.length) {
+          para(p.stepsNote, { size: 8.5, color: C.muted, gap: 3 });
+          p.steps.forEach((s, k) => para(`${k + 1}. ${s.title}: ${s.text}`, { size: 9, gap: 2 }));
+        }
+        y -= 5;
+      }
+      g.links.forEach((x) => para(`${x.name} · ${printed(x.href)}`, { size: 9, color: C.blue, gap: 2 }));
       y -= 8;
     }
 

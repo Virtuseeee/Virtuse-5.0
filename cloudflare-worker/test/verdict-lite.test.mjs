@@ -10,7 +10,7 @@ import { REPORT_WINDOW_MS } from '../src/features/verdict-pay/domain.js';
 import { renderReportPdf } from '../src/features/verdict-pay/pdf.js';
 import { calc, gapIds, grade, validateAnswers } from '../src/features/verdict-lite/rules.js';
 import { liteReportView } from '../src/features/verdict-lite/report.js';
-import { PARTNERS, matchingPartners } from '../src/features/verdict-lite/partners.js';
+import { PARTNERS, custodyPartners, matchingPartners, taxPartners } from '../src/features/verdict-lite/partners.js';
 import { INTER_BOLD, INTER_REGULAR } from '../src/generated/fonts.js';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -80,14 +80,14 @@ test('the Anna report matches the published sample', () => {
   assert.equal(r.score, 75);
   assert.equal(r.grade, 'B');
   assert.deepEqual(r.areas.map((a) => a.points), [7, 7, 10, 6, 6, 10]);
-  assert.deepEqual(r.nums[1], ['Planned for Bitcoin', '€20,000 · 13%']);
+  assert.deepEqual(r.nums[1], ['Planned for Bitcoin', '€20,000 · 13% of savings']);
   assert.deepEqual(r.nums[2], ['After a 70% fall', '€6,000 left']);
   assert.match(r.summary[0], /^Anna, your plan has a sound size\./);
   assert.equal(r.steps.length, 3);
   assert.ok(r.tax.rows.some(([, v]) => /19 to 35%/.test(v)));
   const sk = liteReportView(check(ANNA), 'sk');
   assert.equal(sk.title, 'Plán Bitcoinu: Anna');
-  assert.equal(sk.nums[1][1], '20 000 € · 13 %');
+  assert.equal(sk.nums[1][1], '20 000 € · 13 % úspor');
   assert.ok(sk.tax.rows.some(([, v]) => /19 až 35 %/.test(v)));
   assert.match(sk.next[0].href, /^\/sk\/tax-agent\.html\?country=sk$/);
 });
@@ -267,8 +267,18 @@ test('partners: same list as the built Partner Finder, same published facts, alp
     const want = PF.recommend({ goal: 'buy', country: 'sk', experience: experience === 'hodler' ? 'hodler' : 'new', custody, amount }, 'en').map((x) => x.partner.id).sort();
     const ours = matchingPartners({ experience, custody, btc });
     assert.deepEqual([...ours].sort(), want, `${experience} ${custody} ${btc}`);
-    const list = blocks({ experience, custody, btc }).partners.list.map((p) => p.name);
-    assert.deepEqual(list, [...list].sort((x, y) => x.localeCompare(y, 'en')));
+    const groups = blocks({ experience, custody, btc }).partners.groups;
+    assert.deepEqual(groups.map((g) => g.id), ['buy', 'custody', 'tax', 'heirs']);
+    for (const g of groups) {
+      const list = g.list.map((p) => p.name);
+      assert.deepEqual(list, [...list].sort((x, y) => x.localeCompare(y, 'en')));
+    }
+    const wantCustody = PF.recommend({ goal: 'custody', country: 'sk', experience: experience === 'hodler' ? 'hodler' : 'new', custody, amount }, 'en').map((x) => x.partner.id).sort();
+    assert.deepEqual([...custodyPartners({ experience })].sort(), wantCustody);
+  }
+  for (const country of ['sk', 'cz', 'de', 'at', 'nl', 'es', 'fr', 'other']) {
+    const want = PF.recommend({ goal: 'tax', country, experience: 'new', custody: 'any', amount: 'm' }, 'en').map((x) => x.partner.id).sort();
+    assert.deepEqual([...taxPartners({ country })].sort(), want, country);
   }
   for (const [id, p] of Object.entries(PARTNERS)) {
     const pf = PF.PARTNERS.find((x) => x.id === id);
@@ -283,10 +293,16 @@ test('partners: same list as the built Partner Finder, same published facts, alp
 test('partners: fixed wording, tracked links, translated steps', () => {
   for (const lang of ['en', 'sk']) for (const custody of ['self', 'assisted', 'any']) for (const experience of ['new', 'hodler']) for (const btc of [500, 50000]) {
     const { partners } = blocks({ custody, experience, btc }, lang);
-    for (const p of partners.list) {
-      assert.ok(p.steps.length >= 3, p.id);
-      assert.match(p.href, /utm_source=verdict&utm_medium=report/);
-      if (lang === 'sk') assert.doesNotMatch(p.steps[0].title, /^(Download|Create|Buy|Open)/, p.id);
+    for (const g of partners.groups) {
+      assert.ok(g.list.length > 0 || g.empty, g.id);
+      assert.ok(g.links.length > 0, g.id);
+      for (const p of g.list) {
+        assert.ok(p.facts.length >= 1, p.id);
+        assert.match(p.href, /utm_source=verdict&utm_medium=report/);
+        // Buying cards carry the first steps, already translated.
+        if (g.id === 'buy') { assert.ok(p.steps.length >= 3, p.id); if (lang === 'sk') assert.doesNotMatch(p.steps[0].title, /^(Download|Create|Buy|Open)/, p.id); }
+        else assert.equal(p.steps.length, 0, p.id);
+      }
     }
     assert.doesNotMatch(JSON.stringify(partners), /match score|best|top pick|najlepš/i);
   }
@@ -296,14 +312,17 @@ test('falls, reserve and whole picture are plain arithmetic on the answers', () 
   const r = blocks();
   assert.deepEqual(r.fallTable.rows[0], ['2021–2022', '−73%', '€5,400', '29']);
   assert.deepEqual(r.fallTable.rows[2], ['2013–2015', '−81%', '€3,800', '39']);
-  assert.deepEqual(r.worth.rows.at(-1), ['Planned for Bitcoin', '€20,000 · 7%']);
+  assert.deepEqual(r.worth.rows.at(-1), ['Planned for Bitcoin', '€20,000 · 7% of the total']);
   assert.deepEqual(r.worth.rows.at(-2), ['Total', '€300,000']);
   assert.match(r.reserveBox.text, /did not give/);
   assert.match(blocks({ expenses: 2000 }).reserveBox.text, /6 months is €12,000.*€6,000 to €12,000.*up to €6,000/);
   assert.match(blocks({ expenses: 2000, reserve: '6p' }).reserveBox.text, /target is met/);
   assert.match(blocks({ expenses: 2000, reserve: 'lt1' }).reserveBox.text, /under €2,000/);
-  assert.deepEqual(r.retireBox.rows.at(-2), ['Together, without any returns', '€83,200']);
-  assert.deepEqual(r.retireBox.rows.at(-1), ['Bitcoin plan by then, with €200 a month', '€77,600']);
+  assert.deepEqual(r.retireBox.rows.at(-1), ['Retirement savings together, without returns', '€83,200']);
+  assert.deepEqual(r.retireBox.plan.rows, [['Planned for Bitcoin', '€20,000'], ['Added at €200 a month, 288 months', '€57,600']]);
+  assert.equal(r.retireBox.plan.value, '€77,600');
+  assert.match(r.retireBox.plan.sub, /not what it will be worth/);
+  assert.equal(blocks({ btc: 0, monthly: null }).retireBox.plan, null);
   assert.equal(blocks({ btc: 0 }).fallTable, null);
   assert.equal(blocks({ savings: 0, pension: null, home: 'rent' }).worth, null);
 });
@@ -330,6 +349,8 @@ test('fees: published rates on the amounts, alphabetical, no winner', () => {
   assert.deepEqual(f.rows[1].slice(2), ['€50', '€6']);
   assert.deepEqual(f.rows[2].slice(2), ['€160', '€19']);
   assert.match(f.note, /not a ranking/);
+  assert.match(f.note, /not listed for your criteria below: Kraken\./);
+  assert.match(blocks({ experience: 'hodler', custody: 'assisted', btc: 500000 }).fees.note, /not listed for your criteria below: 21bitcoin\. No row here, the fee is on the partner's site: Invity\./);
   assert.equal(blocks({ btc: 0, monthly: null }).fees, null);
   assert.equal(blocks({ monthly: null }).fees.head.length, 3);
 });
