@@ -9,10 +9,16 @@ import { PARTNERS, PRICED, amountBucket, custodyPartners, matchingPartners, taxP
 
 // Rates for the worked example, the same rates as the country text in lite-tax.js.
 // hold = years until a holding-period exemption applies.
+// brackets = [upper limit, rate]; Slovakia: Financial Administration, tax year 2026.
 const TAX_EXAMPLE = {
-  cz: { rates: [15, 23], hold: 3 }, sk: { rates: [19, 35], levy: 16 }, pl: { rates: [19] }, at: { rates: [27.5] }, de: { rates: [45], upTo: true, hold: 1 },
-  hu: { rates: [15] }, si: { zero: true }, hr: { rates: [12], hold: 2 }, ro: { rates: [16] }, bg: { rates: [10] }, nl: { box3: true }, fr: { rates: [31.4] }, es: { rates: [19, 30] },
+  cz: { rates: [15, 23], hold: 3 },
+  sk: { brackets: [[43983.32, 19], [60349.21, 25], [75010.32, 30], [Infinity, 35]], levy: 16 },
+  pl: { rates: [19] }, at: { rates: [27.5] }, de: { rates: [45], upTo: true, hold: 1 },
+  hu: { rates: [15] }, si: { zero: true }, hr: { rates: [12], hold: 2 }, ro: { rates: [16] }, bg: { rates: [10] }, nl: { box3: true }, fr: { rates: [31.4] },
+  es: { brackets: [[6000, 19], [50000, 21], [200000, 23], [300000, 27], [Infinity, 30]] },
 };
+// The scenario the Retirement Calculator opens with (hypothetical), and the sale in the tax example.
+export const SCENARIO = { growth: 0.2, inflation: 0.04, sellShare: 0.05 };
 const EXAMPLE_GAIN = 10000;
 const LOCALE = { en: 'en-GB', sk: 'sk-SK' };
 
@@ -28,12 +34,16 @@ const COPY = {
       none: 'You did not give your monthly spending, so the target stays in months: 6 months. Multiply a typical month by six to get your figure.',
     },
     retire: {
-      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Retirement savings together, without returns', lump: 'Planned for Bitcoin', monthly: (e, n) => `Added at ${e} a month, ${n} months`, planTotal: 'Your Bitcoin plan by retirement: total put in', planSub: 'This is what you pay in, not what it will be worth. The Bitcoin price can move either way.',
+      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Retirement savings together, without returns', lump: 'Planned for Bitcoin', monthly: (e, n) => `Added at ${e} a month, ${n} months`, planTotal: 'You put into Bitcoin by retirement', scenario: 'Hypothetical scenario: Bitcoin +20% a year, inflation 4%', nominal: (a) => `Value on your first day at ${a}`, real: "The same in today's money", planSub: "Fixed assumptions from the Retirement Calculator, not a forecast. Bitcoin has fallen 70% or more several times, and the real value can be far lower, including a loss.",
       longest: (m, left) => `The longest recovery above took ${m} months; you have ${left} months until retirement.`,
-      note: 'Simple sums, without returns, inflation or price changes. Not a forecast.', na: 'You did not give a retirement age that can be used here.',
+      note: 'Retirement savings are simple sums, without returns or inflation.', na: 'You did not give a retirement age that can be used here.',
     },
     tax: {
       gain: (g) => `Example: a ${g} gain`, rate: 'Rate', taxC: 'Tax', levyC: 'Health levy', left: 'Left', upTo: (r) => `up to ${r}`,
+      sale: (a) => `Example: selling 5% of your Bitcoin in the first year of retirement, at ${a}`, value: 'Bitcoin value in the +20% a year scenario', sold: 'You sell 5%', cost: 'Purchase cost of that part (5% of what you put in)', gainL: 'Taxable gain',
+      band: (r, b) => `Tax at ${r} on ${b}`, taxTotal: 'Tax in total', levy: (r) => `Health levy, ${r} of the gain`, total: 'Tax and levies in total', share: (p) => `${p} of the gain`, leftSale: 'Left from the sale', leftGain: 'Left from the gain',
+      exempt: (n) => `After ${n} ${n === 1 ? 'year' : 'years'} of holding, a sale is exempt under the rule above, so the tax is ${'€'}0. This assumes you sell your oldest purchases first.`,
+      noteSale: (y) => `At today's rates and bands, on this gain alone: no other income, allowances, costs or fees. The purchase cost is 5% of the amounts in this report; Bitcoin you already hold is not counted. Rates can differ in ${y} years, and the scenario is not a forecast. Check with a tax adviser before you file.`,
       note: 'For illustration only, at the rates above. Your actual rate depends on your other income and costs. This is not a forecast of any gain.',
       hold: (n, d) => `A purchase made today would reach the ${n}-year holding period on ${d}.`,
       filing: { sk: (y) => `A sale in ${y} goes into the type B return due 31 March ${y + 1}.`, hr: (y) => `A gain in ${y} goes on the JOPPD form by the end of February ${y + 1}.` },
@@ -41,7 +51,7 @@ const COPY = {
       box3: 'Box 3 taxes a deemed return on your wealth, not each sale, so there is no per-sale example here.',
     },
     fees: {
-      k: 'Fees', h: 'Published fees on your amounts', partner: 'Partner', method: 'Method', one: (b) => `On ${b}`, year: (y) => `On ${y} a year`,
+      k: 'Fees', h: 'Published fees on your amounts', partner: 'Partner', method: 'Method', one: (b) => `One purchase of ${b}`, year: (m) => `${m} a month: fee per year`,
       method21: 'Auto-Invest plan', methodBybit: 'Spot trading', methodKraken: 'Pro trading',
       auto: (first) => `€0 on Auto-Invest from day 8; ${first} at 0.99% in the first 7 days`, autoYear: '€0 from day 8',
       note: (q) => `Published entry-level fees, ${q}, in alphabetical order. Spreads, deposit and network fees can add to this. This is not a ranking; check each partner's price list.`,
@@ -86,12 +96,16 @@ const COPY = {
       none: 'Neuviedli ste mesačné výdavky, takže cieľ zostáva v mesiacoch: 6 mesiacov. Bežný mesiac vynásobte šiestimi a máte svoju sumu.',
     },
     retire: {
-      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Úspory na dôchodok spolu, bez výnosov', lump: 'Plánujete do Bitcoinu', monthly: (e, n) => `Pridáte pri ${e} mesačne, ${n} mesiacov`, planTotal: 'Váš plán v Bitcoine do dôchodku: vložíte spolu', planSub: 'Toľko vložíte, nie toľko to bude mať hodnotu. Cena Bitcoinu sa môže pohnúť oboma smermi.',
+      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Úspory na dôchodok spolu, bez výnosov', lump: 'Plánujete do Bitcoinu', monthly: (e, n) => `Pridáte pri ${e} mesačne, ${n} mesiacov`, planTotal: 'Do Bitcoinu vložíte do dôchodku', scenario: 'Hypotetický scenár: Bitcoin +20 % ročne, inflácia 4 %', nominal: (a) => `Hodnota v prvý deň vo veku ${a} rokov`, real: 'To isté v dnešných cenách', planSub: 'Pevné predpoklady z Dôchodkovej kalkulačky, nie predpoveď. Bitcoin už viackrát klesol o 70 % a viac a skutočná hodnota môže byť oveľa nižšia, vrátane straty.',
       longest: (m, left) => `Najdlhší návrat vyššie trval ${m} mesiacov; do dôchodku máte ${left} mesiacov.`,
-      note: 'Jednoduché súčty bez výnosov, inflácie a zmien ceny. Nejde o predpoveď.', na: 'Neuviedli ste vek odchodu do dôchodku, s ktorým by sa tu dalo počítať.',
+      note: 'Úspory na dôchodok sú jednoduché súčty, bez výnosov a inflácie.', na: 'Neuviedli ste vek odchodu do dôchodku, s ktorým by sa tu dalo počítať.',
     },
     tax: {
       gain: (g) => `Príklad: zisk ${g}`, rate: 'Sadzba', taxC: 'Daň', levyC: 'Zdravotné odvody', left: 'Zostane', upTo: (r) => `do ${r}`,
+      sale: (a) => `Príklad: predaj 5 % Bitcoinu v prvom roku dôchodku, vo veku ${a} rokov`, value: 'Hodnota Bitcoinu v scenári +20 % ročne', sold: 'Predáte 5 %', cost: 'Nákupná cena tejto časti (5 % z vložených súm)', gainL: 'Zdaniteľný zisk',
+      band: (r, b) => `Daň ${r} z ${b}`, taxTotal: 'Daň spolu', levy: (r) => `Zdravotné odvody, ${r} zo zisku`, total: 'Daň a odvody spolu', share: (p) => `${p} zo zisku`, leftSale: 'Z predaja vám zostane', leftGain: 'Zo zisku zostane',
+      exempt: (n) => `Po ${n} ${n === 1 ? 'roku' : 'rokoch'} držby je predaj podľa pravidla vyššie oslobodený, takže daň je 0 €. Počíta sa s tým, že predávate najstaršie nákupy.`,
+      noteSale: (y) => `Pri dnešných sadzbách a pásmach, len z tohto zisku: bez iných príjmov, nezdaniteľnej časti, výdavkov a poplatkov. Nákupná cena je 5 % zo súm v tomto reporte; Bitcoin, ktorý už držíte, sa nepočíta. O ${y} ${y === 1 ? 'rok' : y < 5 ? 'roky' : 'rokov'} môžu byť sadzby iné a scenár nie je predpoveď. Pred podaním priznania sa poraďte s daňovým poradcom.`,
       note: 'Len ako ilustrácia, pri sadzbách uvedených vyššie. Skutočná sadzba závisí od vašich ostatných príjmov a výdavkov. Nejde o predpoveď zisku.',
       hold: (n, d) => `Nákup urobený dnes by dosiahol dobu držby ${n} ${n === 1 ? 'rok' : 'roky'} dňa ${d}.`,
       filing: { sk: (y) => `Predaj v roku ${y} patrí do priznania typu B s termínom 31. marca ${y + 1}.`, hr: (y) => `Zisk v roku ${y} patrí na formulár JOPPD do konca februára ${y + 1}.` },
@@ -99,7 +113,7 @@ const COPY = {
       box3: 'Box 3 zdaňuje predpokladaný výnos z majetku, nie každý predaj, takže príklad na jeden predaj tu nie je.',
     },
     fees: {
-      k: 'Poplatky', h: 'Zverejnené poplatky z vašich súm', partner: 'Partner', method: 'Spôsob', one: (b) => `Z ${b}`, year: (y) => `Z ${y} ročne`,
+      k: 'Poplatky', h: 'Zverejnené poplatky z vašich súm', partner: 'Partner', method: 'Spôsob', one: (b) => `Jednorazový nákup ${b}`, year: (m) => `${m} mesačne: poplatok za rok`,
       method21: 'Sporiaci plán Auto-Invest', methodBybit: 'Spot obchodovanie', methodKraken: 'Pro trading',
       auto: (first) => `0 € na Auto-Invest od 8. dňa; ${first} pri 0,99 % prvých 7 dní`, autoYear: '0 € od 8. dňa',
       note: (q) => `Zverejnené vstupné poplatky, ${q}, abecedne. Môžu sa pridať spready, poplatky za vklad a sieť. Nie je to poradie; pozrite si cenník každého partnera.`,
@@ -139,6 +153,19 @@ const quarter = (asOf) => { const [y, q] = String(asOf).split('-'); return `${q}
 const fmtDate = (d, lang) => d.toLocaleDateString(LOCALE[lang], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Bratislava' });
 const period = (f) => `${f.from.slice(0, 4)}–${f.low.slice(0, 4)}`;
 
+// Same math as simulate() in retirement-calc.js: the amount today grows from day
+// one, each monthly amount from its own month. Pure arithmetic on fixed assumptions.
+export function planScenario(A, years) {
+  if (years == null || years < 1) return null;
+  const lump = A.btc > 0 ? A.btc : 0;
+  const dca = A.monthly > 0 ? A.monthly : 0;
+  if (!lump && !dca) return null;
+  const g = 1 + SCENARIO.growth;
+  let nominal = lump * g ** years;
+  for (let t = 0; t < years; t += 1) for (let m = 0; m < 12; m += 1) nominal += dca * g ** (years - t - m / 12);
+  return { paid: lump + dca * 12 * years, nominal, real: nominal / (1 + SCENARIO.inflation) ** years };
+}
+
 function worth(A, T, { eur, pct }) {
   const equity = A.home === 'own' ? A.homeval || 0 : A.home === 'mortgage' && A.homeval ? A.homeval - (A.mortbal || 0) : null;
   const total = (A.savings || 0) + (A.pension || 0) + (equity || 0);
@@ -172,7 +199,7 @@ function reserve(A, T, { eur }) {
   return { k: T.reserve.k, h: T.reserve.h, text };
 }
 
-function retirement(A, T, years, { eur }) {
+function retirement(A, T, years, { eur }, scen) {
   if (years == null) return { k: T.retire.k, h: T.retire.h, rows: [], plan: null, text: T.retire.na, note: '' };
   const m = years * 12;
   const added = (A.retmonthly || 0) * m;
@@ -185,7 +212,8 @@ function retirement(A, T, years, { eur }) {
   const paidIn = (A.monthly || 0) * m;
   let plan = null;
   if (lump || paidIn) {
-    plan = { rows: [], label: T.retire.planTotal, value: eur(lump + paidIn), sub: T.retire.planSub };
+    plan = { rows: [], label: T.retire.planTotal, value: eur(lump + paidIn) };
+    if (scen) plan.scenario = { label: T.retire.scenario, nominalLabel: T.retire.nominal(A.retire), nominal: eur(scen.nominal), realLabel: T.retire.real, real: eur(scen.real), sub: T.retire.planSub };
     if (lump) plan.rows.push([T.retire.lump, eur(lump)]);
     if (paidIn) plan.rows.push([T.retire.monthly(eur(A.monthly), m), eur(paidIn)]);
   }
@@ -193,28 +221,57 @@ function retirement(A, T, years, { eur }) {
   return { k: T.retire.k, h: T.retire.h, rows, plan, text: T.retire.longest(longest, m), note: T.retire.note };
 }
 
-function taxExample(A, T, date, lang, { eur, pct }) {
+function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
   const ex = TAX_EXAMPLE[A.country];
   if (!ex) return null;
-  if (ex.zero) return { text: T.tax.zero, rows: [], head: [], dates: [] };
-  if (ex.box3) return { text: T.tax.box3, rows: [], head: [], dates: [] };
-  const rate = (r) => (lang === 'sk' ? `${String(r).replace('.', ',')} %` : `${r}%`);
-  const g = EXAMPLE_GAIN;
-  const head = [T.tax.rate, T.tax.taxC, ...(ex.levy ? [T.tax.levyC] : []), T.tax.left];
-  const rows = ex.rates.map((r) => {
-    const tax = (g * r) / 100;
-    const levy = ex.levy ? (g * ex.levy) / 100 : 0;
-    return [ex.upTo ? T.tax.upTo(rate(r)) : rate(r), eur(tax), ...(ex.levy ? [eur(levy)] : []), eur(g - tax - levy)];
-  });
+  if (ex.zero) return { text: T.tax.zero, kv: [], rows: [], head: [], dates: [] };
+  if (ex.box3) return { text: T.tax.box3, kv: [], rows: [], head: [], dates: [] };
+  const rate = (r) => (lang === 'sk' ? `${String(r).replace('.', ',')}\u00a0%` : `${r}%`);
+  const sale = scen ? scen.nominal * SCENARIO.sellShare : 0;
+  const cost = scen ? scen.paid * SCENARIO.sellShare : 0;
+  const worked = scen && sale > cost;
+  const g = worked ? sale - cost : EXAMPLE_GAIN;
+  const base = worked ? sale : g;
+  const kv = worked ? [[T.tax.value, eur(scen.nominal)], [T.tax.sold, eur(sale)], [T.tax.cost, eur(cost)], [T.tax.gainL, eur(g)]] : [];
   const dates = [];
   if (ex.hold) {
     const d = new Date(date);
     d.setFullYear(d.getFullYear() + ex.hold);
     dates.push(T.tax.hold(ex.hold, fmtDate(d, lang)));
   }
+  const saleYear = date.getFullYear() + (worked ? years : 0);
   const filing = T.tax.filing[A.country];
-  if (filing) dates.push(filing(date.getFullYear()));
-  return { title: T.tax.gain(eur(g)), head, rows, dates, note: T.tax.note };
+  if (filing) dates.push(filing(saleYear));
+  const out = { title: worked ? T.tax.sale(A.retire) : T.tax.gain(eur(g)), kv, head: [], rows: [], dates, note: worked ? T.tax.noteSale(years) : T.tax.note };
+  if (worked && ex.hold && years >= ex.hold) {
+    out.text = T.tax.exempt(ex.hold);
+    kv.push([T.tax.total, eur(0), true], [T.tax.leftSale, eur(sale), true]);
+    return out;
+  }
+  const levy = ex.levy ? (g * ex.levy) / 100 : 0;
+  if (ex.brackets || (ex.rates.length === 1 && !ex.upTo)) {
+    const bands = ex.brackets || [[Infinity, ex.rates[0]]];
+    let from = 0;
+    let tax = 0;
+    const lines = [];
+    for (const [to, r] of bands) {
+      const part = Math.min(g, to) - from;
+      if (part <= 0) break;
+      tax += (part * r) / 100;
+      lines.push([T.tax.band(rate(r), eur(part)), eur((part * r) / 100)]);
+      from = to;
+    }
+    kv.push(...lines);
+    if (lines.length > 1) kv.push([T.tax.taxTotal, eur(tax)]);
+    if (ex.levy) kv.push([T.tax.levy(rate(ex.levy)), eur(levy)]);
+    kv.push([T.tax.total, `${eur(tax + levy)} · ${T.tax.share(pct(((tax + levy) / g) * 100))}`, true]);
+    kv.push([worked ? T.tax.leftSale : T.tax.leftGain, eur(base - tax - levy), true]);
+    return out;
+  }
+  // A range without published bands in our data: show each rate.
+  out.head = [T.tax.rate, T.tax.taxC, T.tax.left];
+  out.rows = ex.rates.map((r) => [ex.upTo ? T.tax.upTo(rate(r)) : rate(r), eur((g * r) / 100), eur(base - (g * r) / 100)]);
+  return out;
 }
 
 function fees(A, T, { eur }) {
@@ -223,7 +280,7 @@ function fees(A, T, { eur }) {
   if (!one && !year) return null;
   const method = { '21bitcoin': T.fees.method21, 'bybit-eu': T.fees.methodBybit, kraken: T.fees.methodKraken };
   const money = (x) => eur(x);
-  const head = [T.fees.partner, T.fees.method, ...(one ? [T.fees.one(eur(one))] : []), ...(year ? [T.fees.year(eur(year))] : [])];
+  const head = [T.fees.partner, T.fees.method, ...(one ? [T.fees.one(eur(one))] : []), ...(year ? [T.fees.year(eur(A.monthly))] : [])];
   const rows = FACTS.fees.map((f) => {
     const cells = [f.partner, method[f.id] || ''];
     if (f.id === '21bitcoin') {
@@ -294,12 +351,13 @@ function docs(A, T, countryName, { eur }) {
 
 export function reportBlocks(A, c, lang, fmt, date, countryName) {
   const T = COPY[lang];
+  const scen = planScenario(A, c.years);
   return {
     worth: worth(A, T, fmt),
     fallTable: fallTable(A, T, fmt),
     reserveBox: reserve(A, T, fmt),
-    retireBox: retirement(A, T, c.years, fmt),
-    taxExample: taxExample(A, T, date, lang, fmt),
+    retireBox: retirement(A, T, c.years, fmt, scen),
+    taxExample: taxExample(A, T, date, lang, fmt, c.years, scen),
     fees: fees(A, T, fmt),
     partners: partnerBlock(A, T, lang, countryName),
     docs: docs(A, T, countryName, fmt),

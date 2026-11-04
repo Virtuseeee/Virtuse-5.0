@@ -196,12 +196,20 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     if (r.retireBox.plan) {
       const plan = r.retireBox.plan;
       table(null, plan.rows, [0.68, 0.32]);
-      ensure(62);
-      page.drawRectangle({ x: M, y: y - 52, width: CW, height: 52, color: C.tint, borderColor: C.line, borderWidth: 0.6 });
-      page.drawText(clean(plan.label), { x: M + 12, y: y - 18, size: 9, font: reg, color: C.muted });
-      page.drawText(clean(plan.value), { x: M + 12, y: y - 42, size: 20, font: bold, color: C.ink });
-      y -= 60;
-      para(plan.sub, { size: 9, color: C.muted, gap: 8 });
+      table(null, [[plan.label, plan.value]], [0.68, 0.32]);
+      if (plan.scenario) {
+        const sc = plan.scenario;
+        ensure(112);
+        para(sc.label, { font: bold, size: 9.5, gap: 4 });
+        const half = (CW - 10) / 2;
+        [[sc.nominalLabel, sc.nominal, M], [sc.realLabel, sc.real, M + half + 10]].forEach(([lab, val, x]) => {
+          page.drawRectangle({ x, y: y - 52, width: half, height: 52, color: C.tint, borderColor: C.line, borderWidth: 0.6 });
+          page.drawText(clean(lab), { x: x + 10, y: y - 18, size: 8.5, font: reg, color: C.muted });
+          page.drawText(clean(val), { x: x + 10, y: y - 42, size: 18, font: bold, color: C.ink });
+        });
+        y -= 60;
+        para(sc.sub, { size: 9, color: C.muted, gap: 8 });
+      }
     }
     para(r.retireBox.text, { size: 10, gap: 4 });
     if (r.retireBox.note) para(r.retireBox.note, { size: 8.5, color: C.muted, gap: 6 });
@@ -220,6 +228,7 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     if (ex) {
       ensure(90); // keep the title with its table
       if (ex.title) para(ex.title, { font: bold, size: 10, gap: 4 });
+      if (ex.kv.length) table(null, ex.kv.map((x) => x.slice(0, 2)), [0.62, 0.38]);
       if (ex.text) para(ex.text, { size: 10, gap: 6 });
       if (ex.rows.length) table(ex.head, ex.rows, ex.head.map(() => 1 / ex.head.length));
       ex.dates.forEach((t) => para(t, { size: 10, gap: 4 }));

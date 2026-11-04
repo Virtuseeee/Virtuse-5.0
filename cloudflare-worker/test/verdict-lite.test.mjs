@@ -10,6 +10,7 @@ import { REPORT_WINDOW_MS } from '../src/features/verdict-pay/domain.js';
 import { renderReportPdf } from '../src/features/verdict-pay/pdf.js';
 import { calc, gapIds, grade, validateAnswers } from '../src/features/verdict-lite/rules.js';
 import { liteReportView } from '../src/features/verdict-lite/report.js';
+import { SCENARIO, planScenario } from '../src/features/verdict-lite/blocks.js';
 import { PARTNERS, custodyPartners, matchingPartners, taxPartners } from '../src/features/verdict-lite/partners.js';
 import { INTER_BOLD, INTER_REGULAR } from '../src/generated/fonts.js';
 
@@ -321,29 +322,76 @@ test('falls, reserve and whole picture are plain arithmetic on the answers', () 
   assert.deepEqual(r.retireBox.rows.at(-1), ['Retirement savings together, without returns', '€83,200']);
   assert.deepEqual(r.retireBox.plan.rows, [['Planned for Bitcoin', '€20,000'], ['Added at €200 a month, 288 months', '€57,600']]);
   assert.equal(r.retireBox.plan.value, '€77,600');
-  assert.match(r.retireBox.plan.sub, /not what it will be worth/);
+  assert.match(r.retireBox.plan.scenario.sub, /not a forecast/);
+  assert.match(r.retireBox.plan.scenario.nominalLabel, /first day at 65/);
   assert.equal(blocks({ btc: 0, monthly: null }).retireBox.plan, null);
   assert.equal(blocks({ btc: 0 }).fallTable, null);
   assert.equal(blocks({ savings: 0, pension: null, home: 'rent' }).worth, null);
 });
 
-test('tax example: rates, holding dates, filing dates', () => {
-  const sk = blocks({}, 'sk').taxExample;
-  assert.deepEqual(sk.rows[0], ['19 %', '1 900 €', '1 600 €', '6 500 €']);
-  assert.deepEqual(sk.rows[1], ['35 %', '3 500 €', '1 600 €', '4 900 €']);
-  assert.match(sk.dates[0], /31\. marca 2027/);
-  const cz = blocks({ country: 'cz' }).taxExample;
-  assert.match(cz.dates[0], /3-year holding period on 4 November 2029/);
-  assert.equal(blocks({ country: 'de' }).taxExample.rows[0][0], 'up to 45%');
-  assert.match(blocks({ country: 'hr' }, 'sk').taxExample.dates[0], /2 roky/);
-  assert.equal(blocks({ country: 'si' }).taxExample.rows.length, 0);
+test('scenario: the same math as the Retirement Calculator, inflation on top', () => {
+  const src = readFileSync(path.join(HERE, '..', '..', 'Kimi_Agent_Virtuse%20MiCA%20Partners', 'retirement-calc.js'), 'utf8');
+  const math = src.slice(src.indexOf('function simulate'), src.indexOf('var NEEDED_CAP'));
+  const sim = new Function(`${math}\nreturn simulate;`)();
+  for (const [btc, monthly, age, retire] of [[500000, 300, 53, 65], [20000, 200, 41, 65], [0, 100, 30, 31], [1000, 0, 60, 70]]) {
+    const years = retire - age;
+    const s = planScenario({ btc, monthly }, years);
+    const r = sim(btc / 100, { age, retAge: retire, life: 100, dca: monthly, spend: 0, growth: SCENARIO.growth, inflation: SCENARIO.inflation, price: 100 });
+    assert.ok(Math.abs(s.nominal - r.valueAtRet) < 0.01, `${btc} ${monthly}`);
+    assert.ok(Math.abs(s.real - s.nominal / 1.04 ** years) < 1e-6);
+    assert.equal(s.paid, btc + monthly * 12 * years);
+  }
+  assert.equal(planScenario({ btc: 0, monthly: 0 }, 10), null);
+  assert.equal(planScenario({ btc: 1000 }, 0), null);
+  assert.equal(planScenario({ btc: 1000 }, null), null);
+});
+
+test('tax example: 5% sale in the scenario, by country', () => {
+  const A = { btc: 500000, monthly: 300, age: 53, retire: 65 };
+  const s = planScenario(A, 12);
+  const sale = s.nominal * 0.05;
+  const gain = sale - s.paid * 0.05;
+  const sk = blocks({ ...A, country: 'sk' }, 'sk').taxExample;
+  assert.match(sk.title, /predaj 5 %/);
+  assert.match(sk.title, /vo veku 65 rokov/);
+  const skTax = 43983.32 * 0.19 + (60349.21 - 43983.32) * 0.25 + (75010.32 - 60349.21) * 0.3 + (gain - 75010.32) * 0.35;
+  const nb = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
+  const row = (re) => sk.kv.find((x) => re.test(x[0]));
+  assert.equal(row(/Daň spolu/)[1], `${nb(skTax)}\u00a0€`);
+  assert.equal(row(/Zdravotné/)[1], `${nb(gain * 0.16)}\u00a0€`);
+  assert.equal(row(/Z predaja/)[1], `${nb(sale - skTax - gain * 0.16)}\u00a0€`);
+  assert.match(sk.dates.at(-1), new RegExp(`roku ${new Date().getFullYear() + 12} .*31\\. marca ${new Date().getFullYear() + 13}`));
+  // A small gain stays in the first band.
+  const small = blocks({ btc: 1000, monthly: 0, age: 60, retire: 61, country: 'sk' }, 'sk').taxExample;
+  assert.equal(small.kv.filter((x) => /^Daň \d/.test(x[0])).length, 1);
+  // Flat rate, one line.
+  const at = blocks({ ...A, country: 'at' }).taxExample;
+  assert.match(at.kv[4][0], /Tax at 27.5% on/);
+  assert.equal(at.head.length, 0);
+  // Holding period reached: exempt, sale kept in full.
+  for (const country of ['cz', 'de', 'hr']) {
+    const e = blocks({ ...A, country }).taxExample;
+    assert.match(e.text, /exempt/, country);
+    assert.equal(e.kv.at(-2)[1], '€0', country);
+  }
+  // Holding period not reached, range: each rate.
+  const cz = blocks({ btc: 1000, monthly: 0, age: 60, retire: 62, country: 'cz' }).taxExample;
+  assert.deepEqual(cz.rows.map((x) => x[0]), ['15%', '23%']);
+  assert.match(cz.dates[0], /3-year holding period/);
+  assert.equal(blocks({ btc: 1000, age: 60, retire: 60, country: 'de' }).taxExample.rows[0][0], 'up to 45%');
+  assert.match(blocks({ ...A, country: 'hr' }, 'sk').taxExample.dates[0], /2 roky/);
+  // No plan or no years: the worked example on a fixed gain.
+  const fix = blocks({ btc: 0, monthly: null, country: 'sk' }).taxExample;
+  assert.match(fix.title, /€10,000 gain/);
+  assert.equal(fix.kv[0][1], '€1,900');
+  assert.equal(blocks({ country: 'si' }).taxExample.kv.length, 0);
   assert.equal(blocks({ country: 'nl' }).taxExample.rows.length, 0);
   assert.equal(blocks({ country: 'other' }).taxExample, null);
 });
 
 test('fees: published rates on the amounts, alphabetical, no winner', () => {
   const f = blocks().fees;
-  assert.deepEqual(f.head.slice(2), ['On €20,000', 'On €2,400 a year']);
+  assert.deepEqual(f.head.slice(2), ['One purchase of €20,000', '€200 a month: fee per year']);
   assert.deepEqual(f.rows.map((x) => x[0]), ['21bitcoin', 'Bybit EU', 'Kraken']);
   assert.match(f.rows[0][2], /€0 on Auto-Invest from day 8; €198 at 0\.99%/);
   assert.deepEqual(f.rows[1].slice(2), ['€50', '€6']);

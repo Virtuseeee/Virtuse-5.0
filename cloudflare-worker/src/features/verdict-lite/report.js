@@ -142,9 +142,9 @@ const COPY = {
       records: () => ['Keep a record of every purchase', 'Date, amount and price in one simple table, under Documents. It makes every later tax return easy.'],
       review: () => ['Check the plan again in a year', 'Your answers leave no big gap today. Run Verdict again once a year, or when your savings change.'],
     },
-    tool: { tax: 'Tax Agent', custody: 'Custody guide', finder: 'Partner Finder', retire: 'Retirement Calculator', verdict: 'Verdict' },
+    tool: { tax: 'Tax Agent', custody: 'Custody guide', finder: 'Partner Finder', retire: 'Retirement Calculator', returns: 'Asset Returns', videos: 'Bitcoin videos', books: 'Bitcoin books', verdict: 'Verdict' },
     next: {
-      tax: (c) => (c ? `${c}, filled in →` : 'Pick a country →'), free: 'Free', finder: 'Partners that match →', compare: 'You compare and choose', custody: 'Hardware wallets →',
+      tax: (c) => (c ? `${c}, filled in →` : 'Pick a country →'), free: 'Free', finder: 'Partners that match →', compare: 'You compare and choose', retire: 'Your own assumptions →', returns: 'Year by year since 2016 →', videos: 'Channels and talks →', books: 'What to read →',
     },
     sent: 'A PDF copy is on its way to the email you paid with. This page stays open for 30 minutes.',
     download: 'Download PDF',
@@ -274,9 +274,9 @@ const COPY = {
       records: () => ['Zapisujte si každý nákup', 'Dátum, suma a cena v jednej jednoduchej tabuľke, v časti Dokumenty. Každé neskoršie daňové priznanie bude jednoduché.'],
       review: () => ['Pozrite sa na plán znova o rok', 'Vaše odpovede dnes nenechávajú veľkú medzeru. Spustite Verdict raz ročne alebo keď sa zmenia vaše úspory.'],
     },
-    tool: { tax: 'Tax Agent', custody: 'Sprievodca úschovou', finder: 'Partner Finder', retire: 'Dôchodková kalkulačka', verdict: 'Verdict' },
+    tool: { tax: 'Tax Agent', custody: 'Sprievodca úschovou', finder: 'Partner Finder', retire: 'Dôchodková kalkulačka', returns: 'Výnosy tried aktív', videos: 'Videá o Bitcoine', books: 'Knihy o Bitcoine', verdict: 'Verdict' },
     next: {
-      tax: (c) => (c ? `${c}, vyplnené →` : 'Vyberte krajinu →'), free: 'Zadarmo', finder: 'Partneri, ktorí sedia →', compare: 'Porovnáte a vyberiete si sami', custody: 'Hardvérové peňaženky →',
+      tax: (c) => (c ? `${c}, vyplnené →` : 'Vyberte krajinu →'), free: 'Zadarmo', finder: 'Partneri, ktorí sedia →', compare: 'Porovnáte a vyberiete si sami', retire: 'Vlastné predpoklady →', returns: 'Rok po roku od 2016 →', videos: 'Kanály a prednášky →', books: 'Čo si prečítať →',
     },
     sent: 'Kópia v PDF je na ceste na e-mail, ktorým ste platili. Táto stránka zostane otvorená 30 minút.',
     download: 'Stiahnuť PDF',
@@ -435,7 +435,10 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
   const next = [
     { id: 'tax', name: T.tool.tax, sub: T.next.tax(fact?.name || ''), small: T.next.free, href: page(lang, 'tax-agent.html', taxQuery) },
     { id: 'finder', name: T.tool.finder, sub: T.next.finder, small: T.next.compare, href: page(lang, 'concierge.html', { ...finder, utm_source: 'verdict', utm_medium: 'report' }), print: page(lang, 'concierge.html', finder) },
-    { id: 'custody', name: T.tool.custody, sub: T.next.custody, small: T.next.free, href: page(lang, 'secure.html') },
+    { id: 'retire', name: T.tool.retire, sub: T.next.retire, small: T.next.free, href: page(lang, 'retirement-calculator.html') },
+    { id: 'returns', name: T.tool.returns, sub: T.next.returns, small: T.next.free, href: page(lang, 'asset-returns.html') },
+    { id: 'videos', name: T.tool.videos, sub: T.next.videos, small: T.next.free, href: page(lang, 'ecosystem/videos/') },
+    { id: 'books', name: T.tool.books, sub: T.next.books, small: T.next.free, href: page(lang, 'ecosystem/books/') },
   ];
 
   return {
