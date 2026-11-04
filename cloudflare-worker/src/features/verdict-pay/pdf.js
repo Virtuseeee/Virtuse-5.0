@@ -139,7 +139,7 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     const ds = date.toLocaleDateString(L === 'sk' ? 'sk-SK' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Bratislava' });
     para(`${S.date}: ${ds}${order ? ` · ${S.order}: ${order}` : ''}`, { size: 9, color: C.muted, gap: 12 });
     para(r.title, { font: bold, size: 22, gap: 4, lead: 1.2 });
-    para(r.meta, { size: 10, color: C.muted, gap: 12 });
+    y -= 8;
     const score = String(r.score);
     page.drawText(score, { x: M, y: y - 44, size: 48, font: bold, color: C.ink });
     const sw = bold.widthOfTextAtSize(score, 48);
@@ -156,18 +156,62 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     heading(r.h.summaryK);
     r.summary.forEach((t) => para(t, { size: 10.5, gap: 8 }));
 
-    heading(r.h.areas);
-    for (const a of r.areas) {
-      ensure(48);
-      const pts = `${a.points}/10`;
-      page.drawText(clean(a.title), { x: M, y: y - 11, size: 11, font: bold, color: C.ink });
-      page.drawText(pts, { x: W - M - bold.widthOfTextAtSize(pts, 11), y: y - 11, size: 11, font: bold, color: pointsColor(a.points) });
-      y -= 17;
-      page.drawRectangle({ x: M, y: y - 4, width: CW, height: 4, color: C.track });
-      page.drawRectangle({ x: M, y: y - 4, width: Math.max(2, (CW * a.points) / 10), height: 4, color: pointsColor(a.points) });
-      y -= 12;
-      para(a.why, { size: 9.5, gap: 10 });
+    // The area map and the two groups, as on the Verdict page.
+    const M2 = r.areaMap;
+    ensure(330); // the heading, its text and the map stay on one page
+    heading(`${M2.h[0]} ${M2.h[1]}`);
+    para(`${M2.lead} ${M2.how}`, { size: 9.5, color: C.muted, gap: 8 });
+    ensure(236);
+    const cx = W / 2;
+    const cy = y - 112;
+    const R = 80;
+    const pt = (k, v) => { const t = (-90 + k * 60) * (Math.PI / 180); return [(R * (v / 10)) * Math.cos(t), (R * (v / 10)) * Math.sin(t)]; };
+    const poly = (vals) => `${vals.map((v, k) => { const [px, py] = pt(k, v); return `${k ? 'L' : 'M'}${px.toFixed(2)} ${py.toFixed(2)}`; }).join(' ')} Z`;
+    [2.5, 5, 7.5, 10].forEach((v) => page.drawSvgPath(poly([v, v, v, v, v, v]), { x: cx, y: cy, borderColor: C.line, borderWidth: 0.6 }));
+    r.areas.forEach((_, k) => { const [px, py] = pt(k, 10); page.drawLine({ start: { x: cx, y: cy }, end: { x: cx + px, y: cy - py }, thickness: 0.4, color: C.line }); });
+    page.drawSvgPath(poly(r.areas.map((a) => a.points)), { x: cx, y: cy, color: C.sky, opacity: 0.25, borderColor: C.blue, borderWidth: 1.4 });
+    r.areas.forEach((a, k) => {
+      const [px, py] = pt(k, a.points);
+      page.drawCircle({ x: cx + px, y: cy - py, size: 2.6, color: a.weak ? C.low : C.blue });
+      const [lx, ly] = pt(k, 12.4);
+      const label = `${clean(a.short)} ${a.points}`;
+      const lw = bold.widthOfTextAtSize(label, 9);
+      const tx = cx + lx + (k === 0 || k === 3 ? -lw / 2 : k < 3 ? 0 : -lw);
+      page.drawText(label, { x: tx, y: cy - ly - 3, size: 9, font: bold, color: a.weak ? C.low : C.ink });
+    });
+    y -= 232;
+    for (const g of M2.groups) {
+      ensure(70);
+      para(`${g.k}: ${g.h}`, { font: bold, size: 11, gap: 6 });
+      for (const id of g.ids) {
+        const a = r.areas.find((x) => x.id === id);
+        ensure(58);
+        const pts = `${a.points}/10`;
+        page.drawText(clean(a.title), { x: M, y: y - 11, size: 11, font: bold, color: a.weak ? C.low : C.ink });
+        page.drawText(pts, { x: W - M - bold.widthOfTextAtSize(pts, 11), y: y - 11, size: 11, font: bold, color: pointsColor(a.points) });
+        y -= 17;
+        page.drawRectangle({ x: M, y: y - 4, width: CW, height: 4, color: C.track });
+        page.drawRectangle({ x: M, y: y - 4, width: Math.max(2, (CW * a.points) / 10), height: 4, color: pointsColor(a.points) });
+        y -= 10;
+        para(a.q, { size: 8.5, color: C.muted, gap: 1 });
+        para(a.why, { size: 9.5, gap: 9 });
+      }
     }
+
+    // Two result boxes side by side, for the retirement scenario and the tax example.
+    const valueBoxes = (b) => {
+      ensure(90);
+      para(b.k, { font: bold, size: 9.5, gap: 4 });
+      const half = (CW - 10) / 2;
+      b.vals.forEach(([lab, val], i) => {
+        const x = M + i * (half + 10);
+        page.drawRectangle({ x, y: y - 52, width: half, height: 52, color: C.tint, borderColor: C.line, borderWidth: 0.6 });
+        page.drawText(clean(lab), { x: x + 10, y: y - 18, size: 8.5, font: reg, color: C.muted });
+        page.drawText(clean(val), { x: x + 10, y: y - 42, size: 18, font: bold, color: C.ink });
+      });
+      y -= 60;
+      if (b.sub) para(b.sub, { size: 9, color: C.muted, gap: 8 });
+    };
 
     const table = (head, rows, widths) => {
       if (head) row(head, widths, { font: bold });
@@ -197,19 +241,7 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
       const plan = r.retireBox.plan;
       table(null, plan.rows, [0.68, 0.32]);
       table(null, [[plan.label, plan.value]], [0.68, 0.32]);
-      if (plan.scenario) {
-        const sc = plan.scenario;
-        ensure(112);
-        para(sc.label, { font: bold, size: 9.5, gap: 4 });
-        const half = (CW - 10) / 2;
-        [[sc.nominalLabel, sc.nominal, M], [sc.realLabel, sc.real, M + half + 10]].forEach(([lab, val, x]) => {
-          page.drawRectangle({ x, y: y - 52, width: half, height: 52, color: C.tint, borderColor: C.line, borderWidth: 0.6 });
-          page.drawText(clean(lab), { x: x + 10, y: y - 18, size: 8.5, font: reg, color: C.muted });
-          page.drawText(clean(val), { x: x + 10, y: y - 42, size: 18, font: bold, color: C.ink });
-        });
-        y -= 60;
-        para(sc.sub, { size: 9, color: C.muted, gap: 8 });
-      }
+      if (plan.scenario) valueBoxes(plan.scenario);
     }
     para(r.retireBox.text, { size: 10, gap: 4 });
     if (r.retireBox.note) para(r.retireBox.note, { size: 8.5, color: C.muted, gap: 6 });
@@ -228,7 +260,8 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
     if (ex) {
       ensure(90); // keep the title with its table
       if (ex.title) para(ex.title, { font: bold, size: 10, gap: 4 });
-      if (ex.kv.length) table(null, ex.kv.map((x) => x.slice(0, 2)), [0.62, 0.38]);
+      if (ex.kv.length) table(null, ex.kv, [0.62, 0.38]);
+      if (ex.hero) valueBoxes(ex.hero);
       if (ex.text) para(ex.text, { size: 10, gap: 6 });
       if (ex.rows.length) table(ex.head, ex.rows, ex.head.map(() => 1 / ex.head.length));
       ex.dates.forEach((t) => para(t, { size: 10, gap: 4 }));

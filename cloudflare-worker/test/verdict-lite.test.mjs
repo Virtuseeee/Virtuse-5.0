@@ -93,6 +93,18 @@ test('the Anna report matches the published sample', () => {
   assert.match(sk.next[0].href, /^\/sk\/tax-agent\.html\?country=sk$/);
 });
 
+test('area map: the groups and questions promised on the Verdict pages', () => {
+  for (const [lang, file] of [['en', 'verdict.html'], ['sk', 'sk/verdict.html']]) {
+    const html = readFileSync(path.join(HERE, '..', '..', 'Kimi_Agent_Virtuse%20MiCA%20Partners', ...file.split('/')), 'utf8');
+    const r = liteReportView(check(ANNA), lang);
+    for (const a of r.areas) { assert.ok(html.includes(a.q), a.q); assert.ok(html.includes(`<b>${a.title}</b>`), a.title); }
+    for (const g of r.areaMap.groups) { assert.ok(html.includes(g.k), g.k); assert.ok(html.includes(g.h), g.h); }
+    assert.ok(html.includes(r.areaMap.how), 'how');
+    assert.deepEqual(r.areas.filter((a) => a.weak).map((a) => a.id), ['tax']);
+  }
+  assert.equal(liteReportView(check({ ...ANNA, savings: 1000000, reserve: '6p', tax_known: 'yes', custody: 'self', experience: 'hodler' }), 'en').areas.filter((a) => a.weak).length, 1);
+});
+
 test('every answer combination renders complete text, without advice wording', () => {
   const advice = /\b(you should buy|buy now|sell now|we recommend|recommended|best partner)\b|odporúčame|kúpte|predajte/i;
   const sample = grid().filter((_, i) => i % 7 === 0);
@@ -323,7 +335,7 @@ test('falls, reserve and whole picture are plain arithmetic on the answers', () 
   assert.deepEqual(r.retireBox.plan.rows, [['Planned for Bitcoin', '€20,000'], ['Added at €200 a month, 288 months', '€57,600']]);
   assert.equal(r.retireBox.plan.value, '€77,600');
   assert.match(r.retireBox.plan.scenario.sub, /not a forecast/);
-  assert.match(r.retireBox.plan.scenario.nominalLabel, /first day at 65/);
+  assert.match(r.retireBox.plan.scenario.vals[0][0], /first day at 65/);
   assert.equal(blocks({ btc: 0, monthly: null }).retireBox.plan, null);
   assert.equal(blocks({ btc: 0 }).fallTable, null);
   assert.equal(blocks({ savings: 0, pension: null, home: 'rent' }).worth, null);
@@ -359,7 +371,8 @@ test('tax example: 5% sale in the scenario, by country', () => {
   const row = (re) => sk.kv.find((x) => re.test(x[0]));
   assert.equal(row(/Daň spolu/)[1], `${nb(skTax)}\u00a0€`);
   assert.equal(row(/Zdravotné/)[1], `${nb(gain * 0.16)}\u00a0€`);
-  assert.equal(row(/Z predaja/)[1], `${nb(sale - skTax - gain * 0.16)}\u00a0€`);
+  assert.equal(sk.hero.vals[0][1], `${nb(skTax + gain * 0.16)}\u00a0€`);
+  assert.equal(sk.hero.vals[1][1], `${nb(sale - skTax - gain * 0.16)}\u00a0€`);
   assert.match(sk.dates.at(-1), new RegExp(`roku ${new Date().getFullYear() + 12} .*31\\. marca ${new Date().getFullYear() + 13}`));
   // A small gain stays in the first band.
   const small = blocks({ btc: 1000, monthly: 0, age: 60, retire: 61, country: 'sk' }, 'sk').taxExample;
@@ -372,7 +385,7 @@ test('tax example: 5% sale in the scenario, by country', () => {
   for (const country of ['cz', 'de', 'hr']) {
     const e = blocks({ ...A, country }).taxExample;
     assert.match(e.text, /exempt/, country);
-    assert.equal(e.kv.at(-2)[1], '€0', country);
+    assert.equal(e.hero.vals[0][1], '€0', country);
   }
   // Holding period not reached, range: each rate.
   const cz = blocks({ btc: 1000, monthly: 0, age: 60, retire: 62, country: 'cz' }).taxExample;

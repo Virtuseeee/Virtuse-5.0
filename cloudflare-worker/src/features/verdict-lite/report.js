@@ -21,12 +21,6 @@ const COPY = {
   en: {
     title: (n) => (n ? `${n}'s Bitcoin plan check` : 'Your Bitcoin plan check'),
     kicker: 'Full report',
-    age: (a) => String(a),
-    taxIn: (c) => (c ? `tax in ${c}` : 'tax elsewhere'),
-    exp: { hodler: 'already holding Bitcoin', new: 'first purchase', sceptic: 'still sceptical' },
-    keys: { self: 'own keys', assisted: 'own keys, with help', any: 'custody still open' },
-    worriedAbout: 'worried about',
-    worry: { tax: 'tax', keys: 'losing keys', crash: 'a crash', heirs: 'heirs', scams: 'scams', fees: 'fees', partner: 'picking a partner', retire: 'retirement' },
     n: {
       savings: 'Savings, without home', planned: 'Planned for Bitcoin', share: (p) => `${p} of savings`, after: 'After a 70% fall', left: (r) => `${r} left`, monthly: 'Monthly addition',
       perYear: (m, y) => `${m} · ${y} a year`, noMonthly: 'None planned', reserve: 'Cash reserve', retire: 'Retirement',
@@ -40,12 +34,19 @@ const COPY = {
     gradeLine: (g) => `Grade ${g} · plan readiness`,
     pill: (g, b) => `${g} · ${b}`,
     h: {
-      summaryK: 'Plain-English summary', areasK: 'Area by area', areas: (t) => `Where the ${t} points come from`, area: 'Area', points: 'Points', why: 'Why',
-      fallK: 'A 70% fall', fall: 'What it means in euros', custodyK: 'Custody', custody: 'Your custody options side by side',
+      summaryK: 'Plain-English summary',
+      fallK: 'A 70% fall', fall: 'What it means in euros', custodyK: 'Custody', custody: 'Custody options',
       taxK: (c) => (c ? `Tax in ${c}` : 'Tax'), tax: 'The sale rule in plain words', bothK: 'Both sides', both: 'What can go wrong, and what is already solid', wrong: 'What can go wrong', solid: 'Already solid',
-      planK: 'Your plan', plan: '3 steps for this week', nextK: 'Next on Virtuse', next: 'Put the plan to work',
+      planK: 'Your plan', plan: '3 steps for this week', nextK: 'Next on Virtuse', next: 'Tools to put it into practice',
     },
     area: { size: 'Size', reserve: 'Reserve', debt: 'Debts', tax: 'Tax', custody: 'Custody', fall: 'Behaviour in a fall' },
+    map: {
+      k: 'Six areas', h: ['Six areas.', 'Two groups.'], figure: 'Area map', lead: (t, g) => `Your plan: ${t} out of 100, grade ${g}.`,
+      how: 'Each area is scored 0 to 10; the score is their sum, shown out of 100 and rounded to 5. Grade A or B (70 and up) means basics in place, C (55 to 69) a few gaps, D or E basics missing. It measures how ready your plan is, not whether Bitcoin is a good buy.',
+      survival: ['Survival', 'Can a fall hurt you?'], setup: ['Setup', 'Are you set up?'],
+      short: { size: 'Size', reserve: 'Reserve', debt: 'Debts', tax: 'Tax', custody: 'Custody', fall: 'Behaviour' },
+      q: { size: 'What share of your savings goes into Bitcoin?', reserve: 'How many months could you live from cash?', debt: 'Could a loan force you to sell at the bottom?', tax: 'Do you know how a sale is taxed in your country?', custody: 'Who holds the keys, and is the backup tested?', fall: 'What would you do if Bitcoin fell 70%?' },
+    },
     why: {
       sizeNa: 'You gave no savings, so the size could not be checked.',
       size: (p, r, b) => `${p} of savings. A 70% fall leaves ${r} of ${b}.`,
@@ -153,12 +154,6 @@ const COPY = {
   sk: {
     title: (n) => (n ? `Plán Bitcoinu: ${n}` : 'Váš plán Bitcoinu'),
     kicker: 'Celý report',
-    age: (a) => `${a} ${a === 1 ? 'rok' : a < 5 && a > 1 ? 'roky' : 'rokov'}`,
-    taxIn: (c) => (c ? `dane ${c}` : 'dane v inej krajine'),
-    exp: { hodler: 'Bitcoin už držíte', new: 'prvý nákup', sceptic: 'zatiaľ skepsa' },
-    keys: { self: 'vlastné kľúče', assisted: 'vlastné kľúče s pomocou', any: 'úschova otvorená' },
-    worriedAbout: 'trápi vás',
-    worry: { tax: 'dane', keys: 'strata kľúčov', crash: 'prepad', heirs: 'dedičia', scams: 'podvody', fees: 'poplatky', partner: 'výber partnera', retire: 'dôchodok' },
     n: {
       savings: 'Úspory bez bývania', planned: 'Plánujete do Bitcoinu', share: (p) => `${p} úspor`, after: 'Po poklese o 70 %', left: (r) => `zostane ${r}`, monthly: 'Mesačne pridáte',
       perYear: (m, y) => `${m} · ${y} ročne`, noMonthly: 'Neplánujete', reserve: 'Rezerva v hotovosti', retire: 'Dôchodok',
@@ -172,12 +167,19 @@ const COPY = {
     gradeLine: (g) => `Známka ${g} · pripravenosť plánu`,
     pill: (g, b) => `${g} · ${b}`,
     h: {
-      summaryK: 'Zhrnutie', areasK: 'Oblasť po oblasti', areas: (t) => `Odkiaľ je ${t} bodov`, area: 'Oblasť', points: 'Body', why: 'Prečo',
-      fallK: 'Pokles o 70 %', fall: 'Čo to znamená v eurách', custodyK: 'Úschova', custody: 'Možnosti úschovy vedľa seba',
+      summaryK: 'Zhrnutie',
+      fallK: 'Pokles o 70 %', fall: 'Čo to znamená v eurách', custodyK: 'Úschova', custody: 'Možnosti úschovy',
       taxK: (c) => (c ? `Dane ${c}` : 'Dane'), tax: 'Pravidlo predaja jednoducho', bothK: 'Obe strany', both: 'Čo sa môže pokaziť a čo už máte', wrong: 'Čo sa môže pokaziť', solid: 'Už máte',
-      planK: 'Váš plán', plan: '3 kroky na tento týždeň', nextK: 'Ďalej na Virtuse', next: 'Plán do praxe',
+      planK: 'Váš plán', plan: '3 kroky na tento týždeň', nextK: 'Ďalej na Virtuse', next: 'Nástroje do praxe',
     },
     area: { size: 'Veľkosť', reserve: 'Rezerva', debt: 'Dlhy', tax: 'Dane', custody: 'Úschova', fall: 'Správanie pri poklese' },
+    map: {
+      k: 'Šesť oblastí', h: ['Šesť oblastí.', 'Dve skupiny.'], figure: 'Mapa oblastí', lead: (t, g) => `Váš plán: ${t} zo 100, známka ${g}.`,
+      how: 'Každá oblasť má 0 až 10 bodov; skóre je ich súčet, zo 100 a zaokrúhlený na 5. Známka A alebo B (70 a viac) znamená, že základy máte, C (55 až 69) pár medzier, D alebo E chýbajúce základy. Meria, nakoľko je pripravený váš plán, nie či je Bitcoin dobrý nákup.',
+      survival: ['Odolnosť', 'Môže vám pokles ublížiť?'], setup: ['Príprava', 'Ste pripravení?'],
+      short: { size: 'Veľkosť', reserve: 'Rezerva', debt: 'Dlhy', tax: 'Dane', custody: 'Úschova', fall: 'Správanie' },
+      q: { size: 'Aký podiel úspor ide do Bitcoinu?', reserve: 'Koľko mesiacov by ste vyžili z hotovosti?', debt: 'Môže vás úver prinútiť predať na dne?', tax: 'Viete, ako sa vo vašej krajine zdaní predaj?', custody: 'Kto drží kľúče a je záloha vyskúšaná?', fall: 'Čo by ste urobili, keby Bitcoin klesol o 70 %?' },
+    },
     why: {
       sizeNa: 'Neuviedli ste úspory, takže veľkosť sa nedala posúdiť.',
       size: (p, r) => `${p} úspor. Po poklese o 70 % zostane ${r}.`,
@@ -321,11 +323,6 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
   const res = T.reserveShort[A.reserve];
   const m = A.monthly > 0 ? eur(A.monthly) : '';
 
-  // Header line
-  const worries = A.worries.map((w) => T.worry[w]).join(', ');
-  const meta = [T.age(A.age), T.taxIn(lang === 'en' ? cName : cIn), T.exp[A.experience], T.keys[A.custody]];
-  if (worries) meta.push(`${T.worriedAbout}: ${worries}`);
-
   // Numbers
   const homeValue = A.home === 'own' ? T.n.homeOwn(A.homeval ? eur(A.homeval) : '')
     : A.home === 'mortgage' ? T.n.homeMort(A.homeval ? eur(A.homeval) : '', eur(A.mortbal || 0), ltv == null ? '' : pct(ltv * 100))
@@ -355,7 +352,10 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
     custody: custodyWhy,
     fall: T.why.fall[A.fall],
   };
-  const areas = ORDER.map((id) => ({ id, title: T.area[id], points: sc[id], why: why[id] }));
+  // The lowest area is marked, as on the area map on the page; the first one if tied.
+  const lowest = Math.min(...ORDER.map((id) => sc[id]));
+  const weakId = lowest < 10 ? ORDER.find((id) => sc[id] === lowest) : '';
+  const areas = ORDER.map((id) => ({ id, title: T.area[id], short: T.map.short[id], q: T.map.q[id], points: sc[id], why: why[id], weak: id === weakId }));
 
   // Summary
   const gaps = gapIds(A, c);
@@ -446,7 +446,6 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
     lang,
     kicker: T.kicker,
     title: T.title(name),
-    meta: meta.join(' · '),
     nums,
     score: total,
     grade: g,
@@ -454,12 +453,16 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
     scale: T.scale,
     pill: T.pill(g, band),
     h: {
-      summaryK: T.h.summaryK, areasK: T.h.areasK, areas: T.h.areas(total), area: T.h.area, points: T.h.points, why: T.h.why,
+      summaryK: T.h.summaryK,
       fallK: T.h.fallK, fall: T.h.fall, custodyK: T.h.custodyK, custody: T.h.custody, taxK: T.h.taxK(lang === 'en' ? cName : (cIn || '')), tax: T.h.tax,
       bothK: T.h.bothK, both: T.h.both, wrong: T.h.wrong, solid: T.h.solid, planK: T.h.planK, plan: T.h.plan, nextK: T.h.nextK, next: T.h.next,
     },
     summary: [p1.join(' '), p2.join(' ')],
     areas,
+    areaMap: {
+      k: T.map.k, h: T.map.h, figure: T.map.figure, caption: `${total}/100`, lead: T.map.lead(total, g), how: T.map.how,
+      groups: [{ k: T.map.survival[0], h: T.map.survival[1], color: 'orange', ids: ['size', 'reserve', 'debt'] }, { k: T.map.setup[0], h: T.map.setup[1], color: 'teal', ids: ['tax', 'custody', 'fall'] }],
+    },
     fall: fallParas,
     custody: { head: T.custodyTable.head, rows: T.custodyTable.rows, yours: T.custodyTable.yours[A.custody] },
     tax,

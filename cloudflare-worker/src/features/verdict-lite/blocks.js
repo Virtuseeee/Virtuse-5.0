@@ -25,7 +25,7 @@ const LOCALE = { en: 'en-GB', sk: 'sk-SK' };
 const COPY = {
   en: {
     worth: { k: 'The whole picture', h: 'Bitcoin as a share of what you own', savings: 'Savings and investments', pension: 'Retirement savings', home: 'Home minus mortgage', total: 'Total', btc: 'Planned for Bitcoin', ofTotal: (p) => `${p} of the total`, debts: 'Consumer debts are not deducted, because you gave them as a range.' },
-    falls: { head: ['Fall', 'High to low', 'Your amount at the low', 'Months back to the old high'], note: 'Bitcoin in USD, month-end prices. Past falls do not predict future ones.' },
+    falls: { head: ['Fall', 'High to low', 'Your amount at the low', 'Months it took to get back to the high'], note: 'Bitcoin in USD, month-end prices. Past falls do not predict future ones.' },
     reserve: {
       k: 'Cash reserve', h: 'Your reserve in euros',
       full: (e, t) => `At ${e} a month, 6 months is ${t}. Your reserve of 6 months or more is at least that: the target is met.`,
@@ -40,7 +40,7 @@ const COPY = {
     },
     tax: {
       gain: (g) => `Example: a ${g} gain`, rate: 'Rate', taxC: 'Tax', levyC: 'Health levy', left: 'Left', upTo: (r) => `up to ${r}`,
-      sale: (a) => `Example: selling 5% of your Bitcoin in the first year of retirement, at ${a}`, value: 'Bitcoin value in the +20% a year scenario', sold: 'You sell 5%', cost: 'Purchase cost of that part (5% of what you put in)', gainL: 'Taxable gain',
+      heroK: 'Hypothetical tax on this sale', sale: (a) => `Example: selling 5% of your Bitcoin in the first year of retirement, at ${a}`, value: 'Bitcoin value in the +20% a year scenario', sold: 'You sell 5%', cost: 'Purchase cost of that part (5% of what you put in)', gainL: 'Taxable gain',
       band: (r, b) => `Tax at ${r} on ${b}`, taxTotal: 'Tax in total', levy: (r) => `Health levy, ${r} of the gain`, total: 'Tax and levies in total', share: (p) => `${p} of the gain`, leftSale: 'Left from the sale', leftGain: 'Left from the gain',
       exempt: (n) => `After ${n} ${n === 1 ? 'year' : 'years'} of holding, a sale is exempt under the rule above, so the tax is ${'€'}0. This assumes you sell your oldest purchases first.`,
       noteSale: (y) => `At today's rates and bands, on this gain alone: no other income, allowances, costs or fees. The purchase cost is 5% of the amounts in this report; Bitcoin you already hold is not counted. Rates can differ in ${y} years, and the scenario is not a forecast. Check with a tax adviser before you file.`,
@@ -87,7 +87,7 @@ const COPY = {
   },
   sk: {
     worth: { k: 'Celý obraz', h: 'Bitcoin ako podiel toho, čo máte', savings: 'Úspory a investície', pension: 'Úspory na dôchodok', home: 'Bývanie mínus hypotéka', total: 'Spolu', btc: 'Plánujete do Bitcoinu', ofTotal: (p) => `${p} z celku`, debts: 'Spotrebné dlhy nie sú odpočítané, lebo ste ich uviedli ako rozpätie.' },
-    falls: { head: ['Pokles', 'Z maxima na minimum', 'Vaša suma na minime', 'Mesiace späť na staré maximum'], note: 'Bitcoin v USD, ceny na konci mesiaca. Minulé poklesy nepredpovedajú budúce.' },
+    falls: { head: ['Pokles', 'Z maxima na minimum', 'Vaša suma na minime', 'Koľko mesiacov trvala cesta späť na maximum'], note: 'Bitcoin v USD, ceny na konci mesiaca. Minulé poklesy nepredpovedajú budúce.' },
     reserve: {
       k: 'Rezerva v hotovosti', h: 'Vaša rezerva v eurách',
       full: (e, t) => `Pri ${e} mesačne je 6 mesiacov ${t}. Vaša rezerva 6 mesiacov a viac je aspoň toľko: cieľ je splnený.`,
@@ -102,7 +102,7 @@ const COPY = {
     },
     tax: {
       gain: (g) => `Príklad: zisk ${g}`, rate: 'Sadzba', taxC: 'Daň', levyC: 'Zdravotné odvody', left: 'Zostane', upTo: (r) => `do ${r}`,
-      sale: (a) => `Príklad: predaj 5 % Bitcoinu v prvom roku dôchodku, vo veku ${a} rokov`, value: 'Hodnota Bitcoinu v scenári +20 % ročne', sold: 'Predáte 5 %', cost: 'Nákupná cena tejto časti (5 % z vložených súm)', gainL: 'Zdaniteľný zisk',
+      heroK: 'Hypotetická suma na zdanenie', sale: (a) => `Príklad: predaj 5 % Bitcoinu v prvom roku dôchodku, vo veku ${a} rokov`, value: 'Hodnota Bitcoinu v scenári +20 % ročne', sold: 'Predáte 5 %', cost: 'Nákupná cena tejto časti (5 % z vložených súm)', gainL: 'Zdaniteľný zisk',
       band: (r, b) => `Daň ${r} z ${b}`, taxTotal: 'Daň spolu', levy: (r) => `Zdravotné odvody, ${r} zo zisku`, total: 'Daň a odvody spolu', share: (p) => `${p} zo zisku`, leftSale: 'Z predaja vám zostane', leftGain: 'Zo zisku zostane',
       exempt: (n) => `Po ${n} ${n === 1 ? 'roku' : 'rokoch'} držby je predaj podľa pravidla vyššie oslobodený, takže daň je 0 €. Počíta sa s tým, že predávate najstaršie nákupy.`,
       noteSale: (y) => `Pri dnešných sadzbách a pásmach, len z tohto zisku: bez iných príjmov, nezdaniteľnej časti, výdavkov a poplatkov. Nákupná cena je 5 % zo súm v tomto reporte; Bitcoin, ktorý už držíte, sa nepočíta. O ${y} ${y === 1 ? 'rok' : y < 5 ? 'roky' : 'rokov'} môžu byť sadzby iné a scenár nie je predpoveď. Pred podaním priznania sa poraďte s daňovým poradcom.`,
@@ -213,7 +213,7 @@ function retirement(A, T, years, { eur }, scen) {
   let plan = null;
   if (lump || paidIn) {
     plan = { rows: [], label: T.retire.planTotal, value: eur(lump + paidIn) };
-    if (scen) plan.scenario = { label: T.retire.scenario, nominalLabel: T.retire.nominal(A.retire), nominal: eur(scen.nominal), realLabel: T.retire.real, real: eur(scen.real), sub: T.retire.planSub };
+    if (scen) plan.scenario = { k: T.retire.scenario, vals: [[T.retire.nominal(A.retire), eur(scen.nominal)], [T.retire.real, eur(scen.real)]], sub: T.retire.planSub };
     if (lump) plan.rows.push([T.retire.lump, eur(lump)]);
     if (paidIn) plan.rows.push([T.retire.monthly(eur(A.monthly), m), eur(paidIn)]);
   }
@@ -245,7 +245,7 @@ function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
   const out = { title: worked ? T.tax.sale(A.retire) : T.tax.gain(eur(g)), kv, head: [], rows: [], dates, note: worked ? T.tax.noteSale(years) : T.tax.note };
   if (worked && ex.hold && years >= ex.hold) {
     out.text = T.tax.exempt(ex.hold);
-    kv.push([T.tax.total, eur(0), true], [T.tax.leftSale, eur(sale), true]);
+    out.hero = { k: T.tax.heroK, vals: [[T.tax.total, eur(0)], [T.tax.leftSale, eur(sale)]] };
     return out;
   }
   const levy = ex.levy ? (g * ex.levy) / 100 : 0;
@@ -264,8 +264,7 @@ function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
     kv.push(...lines);
     if (lines.length > 1) kv.push([T.tax.taxTotal, eur(tax)]);
     if (ex.levy) kv.push([T.tax.levy(rate(ex.levy)), eur(levy)]);
-    kv.push([T.tax.total, `${eur(tax + levy)} · ${T.tax.share(pct(((tax + levy) / g) * 100))}`, true]);
-    kv.push([worked ? T.tax.leftSale : T.tax.leftGain, eur(base - tax - levy), true]);
+    out.hero = { k: T.tax.heroK, vals: [[T.tax.total, eur(tax + levy)], [worked ? T.tax.leftSale : T.tax.leftGain, eur(base - tax - levy)]], sub: T.tax.share(pct(((tax + levy) / g) * 100)) };
     return out;
   }
   // A range without published bands in our data: show each rate.

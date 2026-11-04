@@ -408,7 +408,7 @@
 @media (prefers-reduced-motion: reduce) { .ml-paid .ml-box::after, .ml-paid .ml-partner::after { display: none; } }
 
 /* PDF claim, centred with the hero */
-.ml-sent-wrap { text-align: center; margin-top: 18px; }
+.ml-sent-wrap { text-align: center; margin-top: 22px; }
 .ml-sent-wrap .ml-sent { display: inline-block; margin: 0; padding: 9px 16px; border-radius: 999px; background: rgba(63,185,80,.09); border: 1px solid rgba(63,185,80,.28); font-size: 13.5px; line-height: 1.4; }
 .ml-rep-dl .ml-big { padding: 19px 34px; }
 
@@ -425,9 +425,9 @@
 .ml-plan-hero .ml-kv td:first-child { padding-left: 0; }
 .ml-plan-hero .ml-kv td:last-child { padding-right: 0; }
 .ml-plan-hero .ml-k2 { display: block; margin: 0 0 12px; line-height: 1.5; }
-.ml-plan-vals { display: grid; gap: 12px; }
+.ml-plan-vals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .ml-plan-vals small { display: block; font-size: 13px; color: var(--muted); }
-.ml-plan-vals b { display: block; font-size: clamp(30px, 3.6vw, 42px); font-weight: 700; letter-spacing: -.03em; line-height: 1.15; color: var(--c); font-variant-numeric: tabular-nums; }
+.ml-plan-vals b { display: block; margin-top: 6px; font-size: clamp(26px, 2.8vw, 34px); font-weight: 700; letter-spacing: -.03em; line-height: 1.15; color: var(--c); font-variant-numeric: tabular-nums; }
 .ml-plan-hero > p { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 12px 0 0; }
 
 /* Partners by category */
@@ -470,3 +470,34 @@
 /* Brief panel at the end of the page, same card as on the homepage */
 .ml-brief { padding-top: 40px; }
 .ml .ml-land .vl .hero { padding-top: 32px; }
+
+/* Six areas: same look as #signals on the page */
+.ml-paid .ml-areas-top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; align-items: center; margin-bottom: 30px; }
+.ml-paid .ml-areas h4 { font-size: clamp(30px, 3.6vw, 42px); font-weight: 700; letter-spacing: -.025em; line-height: 1.1; margin: 0 0 16px; }
+.ml-paid .ml-areas h4 span { color: var(--muted); font-weight: 400; }
+.ml-paid .ml-areas-lead { color: var(--text); font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+.ml-paid .ml-areas-top p:not(.ml-areas-lead) { font-size: 14px; line-height: 1.55; }
+.ml-paid .ml-areas .sig-row .why { color: var(--text); opacity: .82; margin-top: 6px; }
+.ml-paid .ml-areas .sig-groups { gap: 32px; }
+
+/* Retirement and tax example: both columns end together */
+.ml-retire { align-items: stretch; }
+.ml-retire-l { display: flex; flex-direction: column; }
+.ml-retire-note { margin-top: auto; padding-top: 16px; }
+.ml-retire-note p { margin-bottom: 6px; }
+
+/* Brief panel: the sign-up card fills its height, illustration on top */
+.ml-brief .brief { align-items: stretch; }
+.ml-brief .signup { display: flex; flex-direction: column; gap: 14px; }
+.ml-scooter { flex: 1 1 auto; min-height: 150px; display: flex; align-items: center; justify-content: center; padding: 16px 18px; border-radius: 12px; background: radial-gradient(100% 120% at 0% 0%, rgba(247,147,26,.14), transparent 70%), var(--inset); }
+.ml-scooter svg { width: 100%; max-width: 420px; height: auto; display: block; }
+
+@media (max-width: 960px) {
+  .ml-paid .ml-areas-top { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}
+@media (max-width: 640px) {
+  .ml-plan-vals { grid-template-columns: minmax(0, 1fr); }
+}
+
+.ml-paid .ml-areas .ml-k2 { color: var(--blue); }
+@media (max-width: 640px) { .ml-paid .ml-areas .radar text, .ml-paid .ml-areas .radar text .sc { font-size: 13px; } }

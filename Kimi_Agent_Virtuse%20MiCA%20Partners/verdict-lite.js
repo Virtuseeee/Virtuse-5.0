@@ -499,11 +499,31 @@
     var paras = function (list) { return list.map(function (t) { return '<p>' + x(t) + '</p>'; }).join(''); };
     var dlBtn = function (cls) { return '<div class="ml-rep-dl"><button class="' + cls + '" type="button" data-pdf>' + x(r.download) + '</button><p class="ml-fine ml-pdf-msg" aria-live="polite"></p></div>'; };
     var kv = function (rows) { return rows.length ? '<table class="ml-table ml-kv"><tbody>' + rows.map(function (t) { return '<tr' + (t[2] ? ' class="strong"' : '') + '><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
+    var heroVals = function (b) {
+      return '<span class="ml-k2">' + x(b.k) + '</span><div class="ml-plan-vals">' + b.vals.map(function (v) { return '<div><small>' + x(v[0]) + '</small><b>' + x(v[1]) + '</b></div>'; }).join('') + '</div>' + (b.sub ? '<p>' + x(b.sub) + '</p>' : '');
+    };
     var planHero = function (p) {
-      if (!p) return '';
-      var sc = p.scenario;
-      return '<div class="ml-plan-hero">' + kv(p.rows.concat([[p.label, p.value, true]])) +
-        (sc ? '<span class="ml-k2">' + x(sc.label) + '</span><div class="ml-plan-vals"><div><small>' + x(sc.nominalLabel) + '</small><b>' + x(sc.nominal) + '</b></div><div><small>' + x(sc.realLabel) + '</small><b>' + x(sc.real) + '</b></div></div><p>' + x(sc.sub) + '</p>' : '') + '</div>';
+      return p ? '<div class="ml-plan-hero">' + kv(p.rows.concat([[p.label, p.value, true]])) + (p.scenario ? heroVals(p.scenario) : '') + '</div>' : '';
+    };
+    // The area map and the two groups, same markup and classes as #signals on the page.
+    var areaSection = function () {
+      var M = r.areaMap, A = r.areas, c = [230, 200], R = 130;
+      var xy = function (k, v) { var t = (-90 + k * 60) * Math.PI / 180; return [(c[0] + R * v / 10 * Math.cos(t)).toFixed(1), (c[1] + R * v / 10 * Math.sin(t)).toFixed(1)]; };
+      var ring = function (v) { return [0, 1, 2, 3, 4, 5].map(function (k) { return xy(k, v).join(','); }).join(' '); };
+      var labels = [[230, 28, 'middle'], [366.8, 121, 'start'], [366.8, 279, 'start'], [230, 358, 'middle'], [93.2, 279, 'end'], [93.2, 121, 'end']];
+      var svgMap = '<svg viewBox="-40 -6 540 422" role="img" aria-label="' + x(M.figure + ', ' + M.caption) + '">' +
+        [2.5, 5, 7.5, 10].map(function (v) { return '<polygon class="rg" points="' + ring(v) + '"/>'; }).join('') +
+        A.map(function (a, k) { var e = xy(k, 10); return '<line class="sp" x1="230" y1="200" x2="' + e[0] + '" y2="' + e[1] + '"/>'; }).join('') +
+        '<polygon class="ar" points="' + A.map(function (a, k) { return xy(k, a.points).join(','); }).join(' ') + '"/>' +
+        A.map(function (a, k) { var e = xy(k, a.points); return '<circle class="dt' + (a.weak ? ' wk' : '') + '" cx="' + e[0] + '" cy="' + e[1] + '" r="4"/>'; }).join('') +
+        A.map(function (a, k) { var l = labels[k]; return '<text class="lb' + (a.weak ? ' wk' : '') + '" x="' + l[0] + '" y="' + l[1] + '" text-anchor="' + l[2] + '"><tspan>' + x(a.short) + '</tspan><tspan class="sc" x="' + l[0] + '" dy="15">' + a.points + '</tspan></text>'; }).join('') + '</svg>';
+      var row = function (id) {
+        var a = A.filter(function (z) { return z.id === id; })[0];
+        return '<li class="sig-row' + (a.weak ? ' weak' : '') + '"><div><b>' + x(a.title) + '</b><span>' + x(a.q) + '</span><span class="why">' + x(a.why) + '</span></div><div class="sig-val"><i><em style="width:' + a.points * 10 + '%"></em></i><b>' + a.points + '</b></div></li>';
+      };
+      return '<div class="ml-box acc-blue ml-areas vl"><div class="ml-areas-top"><div><span class="ml-k2">' + x(M.k) + '</span><h4>' + x(M.h[0]) + ' <span>' + x(M.h[1]) + '</span></h4><p class="ml-areas-lead">' + x(M.lead) + '</p><p>' + x(M.how) + '</p></div>' +
+        '<figure class="radar in"><figcaption><span class="eyebrow blue"><i></i>' + x(M.figure) + '</span><b>' + x(M.caption) + '</b></figcaption>' + svgMap + '</figure></div>' +
+        '<div class="sig-groups ml-g2">' + M.groups.map(function (g) { return '<div class="sig-group" style="--c: var(--' + g.color + ')"><div class="k">' + x(g.k) + '</div><h3>' + x(g.h) + '</h3><ul>' + g.ids.map(row).join('') + '</ul></div>'; }).join('') + '</div></div>';
     };
     var partnerCard = function (p) {
       return '<div class="ml-partner"><div class="ml-partner-top"><b>' + x(p.name) + '</b><span>' + x(p.tagline) + '</span></div>' +
@@ -520,8 +540,9 @@
     var plain = function (rows) { return rows.length ? '<table class="ml-table"><tbody>' + rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : ''; };
     var taxEx = function (e) {
       if (!e) return '';
-      return '<h5 class="ml-rep-h5">' + x(e.title || '') + '</h5>' + kv(e.kv) + (e.text ? '<p style="margin-top:14px">' + x(e.text) + '</p>' : '') + (e.rows.length ? tbl(e.head, e.rows) : '') +
-        e.dates.map(function (t) { return '<p style="margin-top:12px">' + x(t) + '</p>'; }).join('') + (e.note ? note(e.note) : '');
+      var side = (e.hero ? '<div class="ml-plan-hero">' + heroVals(e.hero) + '</div>' : '') + (e.text ? '<p style="margin-top:14px">' + x(e.text) + '</p>' : '') + (e.rows.length ? tbl(e.head, e.rows) : '') +
+        e.dates.map(function (t) { return '<p style="margin-top:14px">' + x(t) + '</p>'; }).join('') + (e.note ? note(e.note) : '');
+      return '<h5 class="ml-rep-h5">' + x(e.title || '') + '</h5>' + (e.kv.length ? '<div class="ml-retire"><div>' + kv(e.kv) + '</div><div>' + side + '</div></div>' : side);
     };
     var docsHtml = function (D) {
       return '<p>' + x(D.pdfNote) + '</p>' +
@@ -531,17 +552,17 @@
         '<h5 class="ml-rep-h5">' + x(D.heirs.title) + '</h5><p><b>' + x(D.heirs.warn) + '</b></p>' + plain(D.heirs.filled) + '<ul class="ml-check plain">' + D.heirs.fields.map(function (t) { return '<li>' + x(t) + '</li>'; }).join('') + '</ul>';
     };
     return '<div class="ml-k2" style="text-align:center">' + x(r.kicker) + '</div>' +
-      '<h2 class="ml-rep-h">' + x(r.title) + '</h2><p class="ml-rep-meta">' + x(r.meta) + '</p>' +
-      '<div class="ml-sent-wrap"><span class="ml-sent">' + x(r.sent) + '</span></div>' + dlBtn('ml-btn2 ghost') +
+      '<h2 class="ml-rep-h">' + x(r.title) + '</h2>' +
       '<div class="ml-box ml-nums" style="margin-top:30px">' + r.nums.map(function (n) { return '<div><small>' + x(n[0]) + '</small><b>' + x(n[1]) + '</b></div>'; }).join('') + '</div>' +
+      '<div class="ml-sent-wrap"><span class="ml-sent">' + x(r.sent) + '</span></div>' + dlBtn('ml-big orange') +
       '<div class="ml-score-row"><div><div class="n">' + r.score + '<small>/100</small></div><div class="lbl">' + x(r.gradeLine) + '</div></div><div><div class="ml-scale"><span>' + r.scale.map(x).join('</span><span>') + '</span></div><div class="ml-track"><i style="width:' + r.score + '%"></i></div></div></div>' +
       '<div style="text-align:center"><span class="ml-pill">' + x(r.pill) + '</span></div>' +
       '<div class="ml-box acc-blue" style="margin-top:44px"><span class="ml-k2">' + x(h.summaryK) + '</span>' + paras(r.summary) + '</div>' +
-      box(h.areasK, h.areas, tbl([h.area, h.points, h.why], r.areas.map(function (a) { return [a.title, a.points + ' / 10', a.why]; })), 'indigo') +
+      areaSection() +
       (r.worth ? box(r.worth.k, r.worth.h, kv(r.worth.rows) + (r.worth.note ? note(r.worth.note) : ''), 'teal') : '') +
       box(h.fallK, h.fall, paras(r.fall) + (r.fallTable ? tbl(r.fallTable.head, r.fallTable.rows) + note(r.fallTable.note) : ''), 'pink') +
       box(r.reserveBox.k, r.reserveBox.h, '<p>' + x(r.reserveBox.text) + '</p>', 'green') +
-      box(r.retireBox.k, r.retireBox.h, '<div class="ml-retire"><div>' + kv(r.retireBox.rows) + '</div>' + planHero(r.retireBox.plan) + '</div><p style="margin-top:18px">' + x(r.retireBox.text) + '</p>' + (r.retireBox.note ? note(r.retireBox.note) : ''), 'orange') +
+      box(r.retireBox.k, r.retireBox.h, '<div class="ml-retire"><div class="ml-retire-l">' + kv(r.retireBox.rows) + '<div class="ml-retire-note"><p>' + x(r.retireBox.text) + '</p>' + (r.retireBox.note ? note(r.retireBox.note) : '') + '</div></div>' + planHero(r.retireBox.plan) + '</div>', 'orange') +
       box(h.custodyK, h.custody, tbl(r.custody.head, r.custody.rows) + '<p style="margin-top:16px">' + x(r.custody.yours) + '</p>', 'purple') +
       box(h.taxK, h.tax, (r.tax.text ? '<p>' + x(r.tax.text) + '</p>' : '') + (r.tax.rows.length ? '<table class="ml-table"><tbody>' + r.tax.rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : '') + (r.tax.note ? note(r.tax.note) : '') + taxEx(r.taxExample), 'yellow') +
       (r.fees ? box(r.fees.k, r.fees.h, tbl(r.fees.head, r.fees.rows) + note(r.fees.note), 'indigo') : '') +
