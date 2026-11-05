@@ -242,7 +242,7 @@ for (const rel of htmlFiles) {
     // "Related tools" block: Tax Agent (?country= on country pages), Loan Copilot, Partner Finder
     // and a buy page, all in the page's own language and all existing files.
     const toolsBlock = (html.match(/<div class="seo-tools">([\s\S]*?)<\/div>/) || [, ''])[1];
-    const toolHrefs = [...toolsBlock.matchAll(/<a href="([^"]+)">/g)].map((x) => x[1].replace(/&amp;/g, '&'));
+    const toolHrefs = [...toolsBlock.matchAll(/<a href="([^"]+)"(?: class="[^"]*")?>/g)].map((x) => x[1].replace(/&amp;/g, '&'));
     if (toolHrefs.length < 3 || toolHrefs.length > 4) fail(`${rel} related tools block has ${toolHrefs.length} cards (need 3-4)`);
     const agentHref = toolHrefs.find((h) => /tax-agent\.html/.test(h)) || '';
     if (!agentHref) fail(`${rel} related tools miss the Tax & Inheritance Agent`);

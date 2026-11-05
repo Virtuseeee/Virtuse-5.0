@@ -218,7 +218,7 @@
   var CARDS = '.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .promises > *, .ask-side > div, .audit-card, #buy .panel, .demo, .chat-panel, .code';
 
   // spotlight works with or without motion
-  document.querySelectorAll('.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo, .bd-v3 .bd-m, .bd-v3 .bd-card, .bd-v3 .bd-chart, .gcard, .pf-card, .lg-card, .ab-card, .acc .seo .seo-tools a, .acc .seo .related a').forEach(function (c) {
+  document.querySelectorAll('.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo, .bd-v3 .bd-m, .bd-v3 .bd-card, .bd-v3 .bd-chart, .gcard, .pf-card, .lg-card, .ab-card, .acc .seo .seo-tools a, .acc .seo .related a, .ab-stat, .ab-founder, .ab-cfo, .rc-box, .rc-verdict, .rc-cfo, .rc-cta').forEach(function (c) {
     c.classList.add('spot');
     // .pm = the pointer really moved over the card: no glow on a card that a scroll or anchor jump slid under a still cursor
     var raf = 0, px = 0, py = 0; c.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(function () { raf = 0; c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (px - r.left) + 'px'); c.style.setProperty('--my', (py - r.top) + 'px'); }); }, { passive: true });

@@ -9,6 +9,8 @@ module.exports = {
       },
       colors: {
         bitcoin: "#F7931A",
+        // Services accent map (site-v2.css): one colour per tool / section, never orange as a default
+        v: { orange: "#f7931a", blue: "#5faede", green: "#3fb950", teal: "#2dd4bf", purple: "#a78bfa", pink: "#f472b6", indigo: "#818cf8", yellow: "#f2c94c" },
         // Homepage design tokens (neutral-gray dark palette, see index.html :root)
         canvas: "#08090a",
         panel: { DEFAULT: "#141414", hover: "#1c1c1c" },

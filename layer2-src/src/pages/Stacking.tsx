@@ -221,7 +221,7 @@ function AmountField(props: { value: number; min: number; max: number; label: st
           e.currentTarget.blur();
         }
       }}
-      className="ml-auto w-32 rounded-md border border-line-strong bg-canvas px-2 py-1 text-right text-sm font-semibold text-bitcoin outline-none focus:border-bitcoin/60"
+      className="ml-auto w-32 rounded-md border border-line-strong bg-canvas px-2 py-1 text-right text-sm font-semibold text-v-green outline-none focus:border-v-green/60"
     />
   );
 }
@@ -294,7 +294,7 @@ export default function Stacking() {
     <div className="text-ink">
       <div className="grid gap-6 lg:grid-cols-[340px_1fr]">
         {/* controls */}
-        <div className="min-w-0 space-y-6 rounded-2xl border border-line bg-panel p-5">
+        <div className="l2-panel l2-glow l2-acc-green min-w-0 space-y-6 rounded-2xl border border-line bg-panel p-5">
           <div>
             <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
               <Label className="text-ink-muted">{initialLabel}</Label>
@@ -335,8 +335,8 @@ export default function Stacking() {
                   onClick={() => changeFrequency(f.id)}
                   className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition ${
                     frequency === f.id
-                      ? 'border-bitcoin bg-bitcoin text-black'
-                      : 'border-line-strong text-ink-muted hover:border-bitcoin/50 hover:text-ink'
+                      ? 'border-v-green bg-v-green text-black'
+                      : 'border-line-strong text-ink-muted hover:border-v-green/50 hover:text-ink'
                   }`}
                 >
                   {L(f.label, lang)}
@@ -348,7 +348,7 @@ export default function Stacking() {
           <div>
             <div className="mb-2 flex items-center justify-between">
               <Label className="text-ink-muted">{t(lang, 'Horizon', 'Horizont', 'Horizont')}</Label>
-              <span className="text-sm font-semibold text-bitcoin">{years} {t(lang, 'years', 'rokov', 'let')}</span>
+              <span className="text-sm font-semibold text-v-green">{years} {t(lang, 'years', 'rokov', 'let')}</span>
             </div>
             <Slider value={[years]} onValueChange={([v]) => setYears(v)} min={YEARS_LIMITS.min} max={YEARS_LIMITS.max} step={1} aria-label={t(lang, 'Horizon in years', 'Horizont v rokoch', 'Horizont v letech')} />
           </div>
@@ -365,8 +365,8 @@ export default function Stacking() {
                   onClick={() => setPreset(p.id)}
                   className={`rounded-lg border px-3 py-2 text-left text-sm font-medium transition ${
                     preset === p.id
-                      ? 'border-bitcoin bg-bitcoin text-black'
-                      : 'border-line-strong text-ink-muted hover:border-bitcoin/50 hover:text-ink'
+                      ? 'border-v-green bg-v-green text-black'
+                      : 'border-line-strong text-ink-muted hover:border-v-green/50 hover:text-ink'
                   }`}
                 >
                   {tv(lang, '{0}: {1}/yr', '{0}: {1}/rok', '{0}: {1}/rok', [L(p.label, lang), pct((p.annual * 100).toFixed(0), lang)])}
@@ -378,7 +378,7 @@ export default function Stacking() {
               ))}
             </div>
             <p className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-ink-muted">
-              <Calculator className="mt-0.5 h-3.5 w-3.5 shrink-0 text-bitcoin" />
+              <Calculator className="mt-0.5 h-3.5 w-3.5 shrink-0 text-v-green" />
               {t(lang,
                 "Scenarios, not forecasts. Not investment advice. Past performance doesn't guarantee future results.",
                 'Scenáre, nie predpovede. Nejde o investičné poradenstvo. Minulá výkonnosť nezaručuje budúce výsledky.',
@@ -388,7 +388,7 @@ export default function Stacking() {
         </div>
 
         {/* projection */}
-        <div className="min-w-0 rounded-2xl border border-line bg-panel p-5">
+        <div className="l2-panel l2-glow l2-acc-orange min-w-0 rounded-2xl border border-line bg-panel p-5">
           <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="min-w-0">
               <div className="text-xs uppercase tracking-wide text-ink-muted">{t(lang, 'Total invested', 'Celkovo investované', 'Celkově investováno')}</div>
@@ -451,7 +451,7 @@ export default function Stacking() {
 
       {/* Virtuse CFO, only for larger plans */}
       {showCfo && (
-        <div className="mt-6 flex flex-col gap-4 rounded-2xl border border-line-strong bg-panel p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="l2-panel l2-glow l2-acc-orange mt-6 flex flex-col gap-4 rounded-2xl border border-line bg-panel p-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm leading-relaxed text-ink">
             {tv(lang,
               'Planning a larger allocation? Verdict: check for free what you left out of your decision. The CFO then tracks fees and risks. Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: {0}/month or {1}/year.',
@@ -471,7 +471,7 @@ export default function Stacking() {
 
       {/* fee comparison */}
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_340px]">
-        <div className="min-w-0 rounded-2xl border border-line bg-panel p-5">
+        <div className="l2-panel l2-glow l2-acc-green min-w-0 rounded-2xl border border-line bg-panel p-5">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
             {t(lang, 'Fee arbitrage', 'Porovnanie poplatkov', 'Porovnání poplatků')} · {eur(contribution)} {freqLabel}
           </h2>
@@ -490,12 +490,12 @@ export default function Stacking() {
               <div
                 key={f.id}
                 className={`grid grid-cols-2 gap-x-3 gap-y-2 rounded-xl border border-line p-4 text-sm md:grid-cols-[minmax(0,2.2fr)_1fr_1fr_1fr_1.2fr_auto] md:items-center md:rounded-none md:border-0 md:border-b md:px-0 md:py-3 ${
-                  i === 0 ? 'bg-bitcoin/5' : ''
+                  i === 0 ? 'bg-v-green/5' : ''
                 }`}
               >
                 <div className="col-span-2 min-w-0 md:col-span-1">
                   <div className="flex items-center gap-2 font-medium text-ink">
-                    {i === 0 && <Trophy className="h-3.5 w-3.5 shrink-0 text-bitcoin" />}
+                    {i === 0 && <Trophy className="h-3.5 w-3.5 shrink-0 text-v-green" />}
                     {f.partner}
                   </div>
                   <div className="mt-0.5 text-[11px] leading-relaxed text-ink-muted">
@@ -521,7 +521,7 @@ export default function Stacking() {
                 </div>
                 <div className="md:text-right">
                   <div className="text-[11px] text-ink-muted md:hidden">{colNet}</div>
-                  <div className="font-semibold text-bitcoin">{fmtEur(f.netPer1000, 2, lang)}</div>
+                  <div className={`font-semibold ${i === 0 ? 'text-v-green' : 'text-ink'}`}>{fmtEur(f.netPer1000, 2, lang)}</div>
                 </div>
                 <div className="col-span-2 md:col-span-1 md:w-28">
                   <a
@@ -563,19 +563,19 @@ export default function Stacking() {
         </div>
 
         {/* lowest fee */}
-        <div className="flex flex-col rounded-2xl border border-bitcoin/30 bg-bitcoin/5 p-5">
+        <div className="l2-panel l2-glow l2-acc-green flex flex-col rounded-2xl border border-v-green/30 bg-v-green/5 p-5">
           <div className="flex items-center gap-2">
-            <Bot className="h-4 w-4 text-bitcoin" />
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-bitcoin">{t(lang, 'Lowest fee at your amount', 'Najnižší poplatok pri vašej sume', 'Nejnižší poplatek při vaší částce')}</h2>
+            <Bot className="h-4 w-4 text-v-green" />
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-v-green">{t(lang, 'Lowest fee at your amount', 'Najnižší poplatok pri vašej sume', 'Nejnižší poplatek při vaší částce')}</h2>
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <span className="text-lg font-bold text-ink">{advice.winner.partner}</span>
-            <Badge className="bg-bitcoin text-black hover:bg-bitcoin">{pct(fmtNum(advice.winner.effectivePct * 100, 2, lang), lang)} {t(lang, 'eff.', 'ef.', 'ef.')}</Badge>
+            <Badge className="bg-v-green text-black hover:bg-v-green">{pct(fmtNum(advice.winner.effectivePct * 100, 2, lang), lang)} {t(lang, 'eff.', 'ef.', 'ef.')}</Badge>
           </div>
           <ul className="mt-3 flex-1 space-y-2">
             {advice.reasons.map((r, i) => (
               <li key={i} className="flex items-start gap-2 text-xs leading-relaxed text-ink">
-                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-bitcoin" />
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-v-green" />
                 {r}
               </li>
             ))}
@@ -584,7 +584,7 @@ export default function Stacking() {
             {annualSavingsVsAverage > 0 ? (
               <>
                 {t(lang, 'Staying on the cheapest route saves you', 'Zotrvaním na najlacnejšej trase ušetríte', 'Setrváním na nejlevnější trase ušetříte')}{' '}
-                <span className="font-semibold text-bitcoin">{eur(annualSavingsVsAverage)}</span>{' '}
+                <span className="font-semibold text-v-green">{eur(annualSavingsVsAverage)}</span>{' '}
                 {t(lang, 'per year in fees vs the average of the other routes.', 'ročne na poplatkoch oproti priemeru ostatných trás.', 'ročně na poplatcích oproti průměru ostatních tras.')}
               </>
             ) : (

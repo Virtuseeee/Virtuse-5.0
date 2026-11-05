@@ -846,10 +846,10 @@ function guideTools(spec) {
   return {
     heading: T.h,
     items: [
-      { href: to(`${pre}${TAX_AGENT}${c ? `?country=${c.id}` : ''}`), title: 'Tax & Inheritance Agent', text: T.tax },
-      { href: to(`${pre}loan.html`), title: 'Loan & Liquidity Copilot', text: T.loanP },
-      { href: to(`${pre}concierge.html`), title: 'Partner Finder', text: T.pfP },
-      buy
+      { href: to(`${pre}${TAX_AGENT}${c ? `?country=${c.id}` : ''}`), title: 'Tax & Inheritance Agent', text: T.tax, acc: 'blue' },
+      { href: to(`${pre}loan.html`), title: 'Loan & Liquidity Copilot', text: T.loanP, acc: 'purple' },
+      { href: to(`${pre}concierge.html`), title: 'Partner Finder', text: T.pfP, acc: 'pink' },
+      { ...buy, acc: 'green' }
     ]
   };
 }
@@ -874,6 +874,8 @@ function pushPage(spec) {
   const html = renderPage({
     ...spec,
     accent: spec.accent || accentFor(spec.relFile),
+    // related guide links in their own family's accent (design-align Batch C, 2026-11-05); none = the page accent
+    related: (spec.related || []).map((r) => ({ ...r, acc: r.acc || accentFor(r.href) || null })),
     origin: ORIGIN,
     asOfLabel: spec.asOfLabel || (isFeePage(spec.relFile)
       ? (spec.lang === 'fr' ? feeAsOfFr : spec.lang === 'es' ? feeAsOfEs : spec.lang === 'de' ? feeAsOfDe : feeAsOfEn)

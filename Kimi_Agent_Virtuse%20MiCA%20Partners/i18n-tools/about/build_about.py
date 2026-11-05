@@ -131,7 +131,8 @@ def build(L):
     def page_url(p):   # the language's own page when it exists
         return loc(p) if L == 'en' or os.path.exists(os.path.join(SITE, L, p)) else '/' + p
 
-    stats = '<div class="ab-stats"><div class="ab-stat"><b>%s</b><span>%s</span></div><div class="ab-stat"><b>%d</b><span>%s</span></div></div>' % (
+    # Batch C (2026-11-05): a colour per card (.acc-<colour> + .glow, site-v2.css accent map), founder indigo
+    stats = '<div class="ab-stats"><div class="ab-stat acc-orange glow"><b>%s</b><span>%s</span></div><div class="ab-stat acc-blue glow"><b>%d</b><span>%s</span></div></div>' % (
         t['stat_founded_n'], t['stat_founded'], n, t['stat_partners'].replace('{date}', date).replace('{n}', str(n)))
 
     timeline = ''.join('''      <div class="how-log-item">
@@ -145,7 +146,7 @@ def build(L):
 '''.format(y=t['t%d_year' % i], tt=t['t%d_t' % i], pp=t['t%d_p' % i]) for i in range(1, 5))
 
     links = ''.join('<a href="%s" rel="me noopener" target="_blank">%s</a>' % (u, t[k]) for k, u in SAME_AS)
-    founder = '''<div class="ab-founder">
+    founder = '''<div class="ab-founder acc-indigo glow">
       <picture><source srcset="{p}.webp" type="image/webp"><img src="{p}.jpg" width="400" height="496" alt="{alt}" loading="lazy"></picture>
       <div>
         <h3>{name}</h3>
@@ -156,19 +157,20 @@ def build(L):
     </div>'''.format(p=PHOTO, alt=esc(t['founder_alt']), name=t['founder_name'], role=t['founder_role'], bio=t['founder_bio'],
                      ll=esc(t['founder_links_label']), links=links)
 
-    card = lambda k: '<div class="ab-card"><b>%s</b><p>%s</p></div>' % (t[k + '_t'], t[k + '_p'])
-    values = ''.join(card('v%d' % i) for i in range(1, 4))
-    vet = ''.join(card('k%d' % i) for i in range(1, 5))
+    card = lambda k, acc: '<div class="ab-card acc-%s glow"><b>%s</b><p>%s</p></div>' % (acc, t[k + '_t'], t[k + '_p'])
+    values = ''.join(card('v%d' % i, a) for i, a in [(1, 'orange'), (2, 'teal'), (3, 'green')])
+    vet = ''.join(card('k%d' % i, a) for i, a in [(1, 'blue'), (2, 'teal'), (3, 'purple'), (4, 'yellow')])
     pf = page_url('concierge.html')
 
-    gc = lambda u, k: '<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (u, t[k + '_t'], t[k + '_p'])
-    tools = ''.join(gc(page_url(p), k) for p, k in [('concierge.html', 'x_pf'), ('stacking.html', 'x_stack'), ('loan.html', 'x_loan'),
-                                                     ('tax-agent.html', 'x_tax'), ('retirement-calculator.html', 'x_ret'), ('news.html', 'x_brief')])
-    services = ''.join(gc(page_url(p), k) for p, k in [('buy-bitcoin.html', 'x_buy'), ('secure.html', 'x_sec'), ('lending.html', 'x_loans'),
-                                                        ('mining.html', 'x_mining'), ('treasury.html', 'x_treasury'), ('tax.html', 'x_taxrep'),
-                                                        ('bots.html', 'x_bots')])
+    # Explore cards in their target page's accent (accent map in site-v2.css)
+    gc = lambda u, k, acc: '<a class="gcard acc-%s glow" href="%s"><b>%s</b><span>%s</span></a>' % (acc, u, t[k + '_t'], t[k + '_p'])
+    tools = ''.join(gc(page_url(p), k, a) for p, k, a in [('concierge.html', 'x_pf', 'pink'), ('stacking.html', 'x_stack', 'green'), ('loan.html', 'x_loan', 'purple'),
+                                                           ('tax-agent.html', 'x_tax', 'blue'), ('retirement-calculator.html', 'x_ret', 'teal'), ('news.html', 'x_brief', 'orange')])
+    services = ''.join(gc(page_url(p), k, a) for p, k, a in [('buy-bitcoin.html', 'x_buy', 'green'), ('secure.html', 'x_sec', 'teal'), ('lending.html', 'x_loans', 'purple'),
+                                                              ('mining.html', 'x_mining', 'yellow'), ('treasury.html', 'x_treasury', 'indigo'), ('tax.html', 'x_taxrep', 'blue'),
+                                                              ('bots.html', 'x_bots', 'pink')])
     cfo_href = page_url('cfo.html') + '?utm_source=about&utm_medium=cta&utm_campaign=cfo#waitForm'
-    cfo = '<div class="ab-cfo"><p><b>%s</b><br>%s</p><a href="%s" data-cta="cfo">%s</a></div>' % (t['cfo_label'], t['cfo_text'], cfo_href, t['cfo_link'])
+    cfo = '<div class="ab-cfo acc-orange glow"><p><b>%s</b><br>%s</p><a href="%s" data-cta="cfo">%s</a></div>' % (t['cfo_label'], t['cfo_text'], cfo_href, t['cfo_link'])
 
     out += '''<body class="page-buy page-fee page-pf page-about no-split">
 {nav}
@@ -178,7 +180,7 @@ def build(L):
   <!-- 1. HERO -->
   <div class="buy-hero2 pf-hero">
     <div class="eyebrow"><i></i>{eyebrow}</div>
-    <h1>{h1} <span class="h1-grey">{h1o}</span></h1>
+    <h1><span class="grad">{h1}</span> <span class="h1-grey">{h1o}</span></h1>
     <p class="sp-lead">{lead}</p>
     {stats}
   </div>

@@ -204,6 +204,11 @@
 
     var css = getComputedStyle(document.documentElement);
     var cOrange = css.getPropertyValue('--orange').trim() || '#f7931a';
+    // saving years in the page accent (--c on <main>, teal on the retirement page); orange where no accent is set
+    var cAcc = '';
+    try { var mainEl = document.querySelector('main'); cAcc = mainEl ? getComputedStyle(mainEl).getPropertyValue('--c').trim() : ''; } catch (e) { cAcc = ''; }
+    if (/^var\(/.test(cAcc)) cAcc = css.getPropertyValue(cAcc.slice(4, -1).trim()).trim();
+    if (!cAcc) cAcc = cOrange;
     var cText = css.getPropertyValue('--text').trim() || '#e6edf3';
     var cLine = css.getPropertyValue('--line-strong').trim() || 'rgba(255,255,255,.14)';
     var cDim = css.getPropertyValue('--dim').trim() || '#7d8590';
@@ -253,7 +258,7 @@
       ctx.lineTo(x(pts[pts.length - 1].age), y(0)); ctx.lineTo(x(pts[0].age), y(0)); ctx.closePath();
       ctx.globalAlpha = 0.12; ctx.fillStyle = color; ctx.fill(); ctx.globalAlpha = 1;
     }
-    phase(true, cOrange);
+    phase(true, cAcc);
     phase(false, cText);
   }
 

@@ -13,8 +13,8 @@ import {
 const CHROME_V2 = JSON.parse(fs.readFileSync(new URL('../data/chrome-v2.json', import.meta.url), 'utf8'));
 // ONE cache-buster for the shared site-v2 files on every page; same numbers as SITE_CSS_V / SITE_JS_V in
 // Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/speed.py (design-align Batch A Part 1, 2026-10-26).
-export const SITE_CSS_V = '20';
-export const SITE_JS_V = '13';
+export const SITE_CSS_V = '21';
+export const SITE_JS_V = '14';
 export const SITE_V2 = SITE_JS_V;
 // Cloudflare Web Analytics (cookieless, no consent, never on staging). Same string as
 // SNIPPET in Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/cf_analytics.py; its --check compares the pages.
@@ -201,14 +201,14 @@ export function renderPage({
 
   const relatedHtml = related.length
     ? `<h2>${esc(chrome.relatedHeading)}</h2><div class="related">${related.map((r) =>
-      `<a href="${esc(r.href)}">${esc(r.label)}</a>`
+      `<a href="${esc(r.href)}"${r.acc ? ` class="acc-${r.acc}"` : ''}>${esc(r.label)}</a>`
     ).join('')}</div>`
     : '';
 
   // "Related tools" cards (tax guides): descriptive anchors to the same-language tools.
   const toolsHtml = tools && tools.items.length
     ? `<h2>${esc(tools.heading)}</h2><div class="seo-tools">${tools.items.map((x) =>
-      `<a href="${esc(x.href)}"><b>${esc(x.title)}</b><span>${esc(x.text)}</span></a>`
+      `<a href="${esc(x.href)}"${x.acc ? ` class="acc-${x.acc}"` : ''}><b>${esc(x.title)}</b><span>${esc(x.text)}</span></a>`
     ).join('')}</div>`
     : '';
 
