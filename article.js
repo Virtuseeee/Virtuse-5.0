@@ -18,6 +18,7 @@
         inStory: 'In this story', onVirtuse: 'On Virtuse', ovAlt: 'Not sure? Compare partners in 60 seconds →',
         ovNote: 'Partner services. Not financial advice.',
         capKicker: 'Get the Brief', capDek: 'Every Monday. Bitcoin-only. No tokens. No PR.', capBtn: 'Get the Brief',
+        briefCtaBtn: 'Get the Brief', briefCtaDek: 'Bitcoin-only, every Monday. No tokens. No PR.', followVirtuse: 'Follow Virtuse',
         subscribe: 'Subscribe', more: 'More from the desk', moreAll: 'All stories', readMore: 'Read',
         emailReq: 'Email is required.', sending: 'Sending', subOk: 'You are on the list. Check your inbox.',
         subErr: 'Could not join the list. Try again.', netErr: 'Network error. Try again.',
@@ -47,6 +48,7 @@
         inStory: 'V tomto článku', onVirtuse: 'Na Virtuse', ovAlt: 'Neviete si rady? Porovnajte partnerov za 60 sekúnd →',
         ovNote: 'Služby partnerov. Nie je to finančné poradenstvo.',
         capKicker: 'Získaj Brief', capDek: 'Každý pondelok. Iba Bitcoin. Žiadne tokeny. Žiadne PR.', capBtn: 'Získať Brief',
+        briefCtaBtn: 'Odoberaj Brief', briefCtaDek: 'Iba Bitcoin, každý pondelok. Žiadne tokeny. Žiadne PR.', followVirtuse: 'Sledujte Virtuse',
         subscribe: 'Odoberať', more: 'Ďalšie články', moreAll: 'Všetky články', readMore: 'Čítať',
         emailReq: 'Zadajte e-mail.', sending: 'Odosielam', subOk: 'Hotovo. Skontrolujte si schránku.',
         subErr: 'Prihlásenie sa nepodarilo. Skúste to znova.', netErr: 'Chyba siete. Skúste to znova.',
@@ -331,8 +333,29 @@
   for (var ck in CTL) if (L.ui[ck] == null) L.ui[ck] = CTL[ck];
   window.VB_CHROME_T = CTL;
 
+  function briefCampaignSource() {
+    var story = HTML.getAttribute('data-story') || '';
+    var parts = story.split('/').filter(Boolean);
+    if (parts.length) {
+      var slug = parts[parts.length - 1];
+      var prefix = parts[0] === 'sk' || parts[0] === 'ru' ? parts[0] + '-' : '';
+      return prefix + slug;
+    }
+    var s = HTML.getAttribute('data-slug') || new URLSearchParams(location.search).get('slug') || 'article';
+    s = String(s).toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '') || 'article';
+    if (langCode === 'sk' || langCode === 'ru') s = langCode + '-' + s;
+    return s;
+  }
+  function applyBriefCta() {
+    var a = $('briefCtaLink');
+    if (!a) return;
+    a.href = (ROOT || '') + 'news.html?utm_source=' + encodeURIComponent(briefCampaignSource()) + '&utm_medium=cta&utm_campaign=brief_d';
+  }
   function localizeChrome() {
     document.documentElement.lang = langCode;
+    if (L.ui.briefCtaBtn == null) L.ui.briefCtaBtn = L.ui.capBtn;
+    if (L.ui.briefCtaDek == null) L.ui.briefCtaDek = L.ui.capDek;
+    if (L.ui.followVirtuse == null) L.ui.followVirtuse = 'LinkedIn';
     window.VB_UI = L.ui;
     window.VB_LANG = L.worker;
     [].forEach.call(document.querySelectorAll('[data-ui]'), function (n) {
@@ -347,6 +370,7 @@
     // Hub, legal pages and the service card point at the page language.
     [].forEach.call(document.querySelectorAll('[data-hub]'), function (a) { a.href = ROOT + L.dir + a.getAttribute('data-hub'); });
     $('ovAlt').href = ROOT + (L.concierge ? L.dir : '') + 'concierge.html?utm_source=concierge&utm_medium=article';
+    applyBriefCta();
     if (window.VB_THEME_LABEL) window.VB_THEME_LABEL();
   }
   localizeChrome();
@@ -390,7 +414,8 @@
       });
     }
     clean(doc.body);
-    return doc.body.innerHTML;
+    // WordPress still has a mistyped personal LinkedIn slug on one old post.
+    return doc.body.innerHTML.replace(/rastislav-ras-vasilisin/g, 'rastislav-vasilisin');
   }
 
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
@@ -628,7 +653,8 @@
     function url(src) {
       var q = 'utm_source=' + src + '&utm_medium=social_share&utm_campaign=brief_article';
       if (sharePath) return base + '/' + sharePath + '?' + (langCode !== own ? 'lang=' + langCode + '&' : '') + q;
-      return base + '/article.html?slug=' + encodeURIComponent(slug) + (langCode !== 'en' ? '&lang=' + langCode : '') + '&' + q;
+      var hub = (langCode === 'sk' || langCode === 'ru') ? langCode + '/stories/' : 'stories/';
+      return base + '/' + hub + '?' + q;
     }
     var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
     var canNative = !!navigator.share;
@@ -671,7 +697,7 @@
     var grid = $('moreGrid');
     posts.filter(function (p) { return p.id !== currentId; }).slice(0, 3).forEach(function (p) {
       var a = el('a', 'blog-card');
-      a.href = ROOT + 'article.html?slug=' + encodeURIComponent(p.slug) + L.suffix;
+      a.href = ROOT + storyPath(p);
       var src = imgOf(p);
       if (src) { var img = el('img'); img.loading = 'lazy'; setImg(img, p, CARD_SIZES); img.alt = ''; a.appendChild(img); }
       var b = el('div', 'blog-card-body');
@@ -704,10 +730,10 @@
       });
   }
 
-  // article.html?slug=… is what the server answers while a story has no static page yet
-  // (seo-ops/virtuse.com.htaccess): render the WordPress post. A slug WordPress does not
-  // know either goes to the stories hub of the requested language, as the server did
-  // before 2026-10-26. Story pages and network errors keep the error box.
+  // The server 301s article.html?slug= to the story page, or to the language hub when
+  // that page is not on disk (Bod C). This reader still renders a post if it is opened
+  // directly. A slug WordPress does not know goes to the stories hub. Story pages and
+  // network errors keep the error box.
   var askedLang = langCode;
   function notFound() {
     if (STORY) { showError(); return; }
