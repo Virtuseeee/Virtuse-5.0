@@ -68,6 +68,13 @@
     if (n == null || isNaN(n)) return NA;
     return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 2 }).format(n);
   }
+  /* Network hashrate from H/s: "982 EH/s" below one zettahash, "1.03 ZH/s" from there. */
+  function hashrate(hs) {
+    if (hs == null || isNaN(hs) || hs <= 0) return NA;
+    var eh = hs / 1e18;
+    if (eh >= 1000) return (eh / 1000).toFixed(2) + ' ZH/s';
+    return num(eh, eh >= 100 ? 0 : 1) + ' EH/s';
+  }
   function fmtDate(iso) {
     var d = new Date(iso);
     if (isNaN(d.getTime())) return '';
@@ -127,37 +134,25 @@
     if (satVb <= 20) return 'normal';
     return 'high';
   }
+  /* "Updated today · 06:31" only when the Pulse timestamp is today (Europe/Paris);
+     an older Pulse says its date, so a stale desk never reads as fresh. */
+  var PULSE_UNAVAILABLE = 'Pulse unavailable';
   function formatPulseUpdated(iso) {
     var d = new Date(iso);
-    if (isNaN(d.getTime())) return 'Updated today · ' + NA;
-    var hhmm = d.toLocaleTimeString('en-GB', {
-      timeZone: 'Europe/Paris',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
-    });
-    return 'Updated today · ' + hhmm;
+    if (!iso || isNaN(d.getTime())) return PULSE_UNAVAILABLE;
+    var tz = { timeZone: 'Europe/Paris' };
+    var hhmm = d.toLocaleTimeString('en-GB', { timeZone: tz.timeZone, hour: '2-digit', minute: '2-digit', hour12: false });
+    var day = d.toLocaleDateString('en-CA', tz);
+    var today = new Date().toLocaleDateString('en-CA', tz);
+    if (day === today) return 'Updated today · ' + hhmm;
+    return 'Updated ' + d.toLocaleDateString('en-GB', { timeZone: tz.timeZone, day: 'numeric', month: 'short' }) + ' · ' + hhmm;
   }
-  /* Edition line follows the Pulse date (Europe/Paris). Static HTML date stays if the Pulse is missing or older. */
-  function applyEditionDate(iso) {
+  /* The edition line in the strip names the latest issue, like the featured eyebrow. */
+  function applyEditionDate(ymd, label) {
     var t = document.querySelector('.edition time');
-    var d = new Date(iso);
-    if (!t || !iso || isNaN(d.getTime()) || typeof Intl === 'undefined') return;
-    try {
-      var p = {};
-      new Intl.DateTimeFormat('en-US', {
-        timeZone: 'Europe/Paris', weekday: 'short', month: 'short', day: 'numeric', year: 'numeric'
-      }).formatToParts(d).forEach(function (x) { p[x.type] = x.value; });
-      var n = {};
-      new Intl.DateTimeFormat('en-US', {
-        timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit'
-      }).formatToParts(d).forEach(function (x) { n[x.type] = x.value; });
-      var ymd = n.year + '-' + n.month + '-' + n.day;
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd) || !p.weekday || !p.month || !p.day || !p.year) return;
-      if (ymd <= (t.getAttribute('datetime') || '')) return;
-      t.setAttribute('datetime', ymd);
-      t.textContent = p.weekday + ', ' + p.month + ' ' + p.day + ', ' + p.year;
-    } catch (e) {}
+    if (!t || !ymd || !label) return;
+    t.setAttribute('datetime', ymd);
+    t.textContent = label;
   }
   function applyFearGreed(fg) {
     var fine = $('numbersFine');
@@ -227,7 +222,6 @@
   function applyPulseMeta(data) {
     var updated = data && data.updated;
     setText('pulseUpdated', formatPulseUpdated(updated));
-    applyEditionDate(updated);
     var moved = (data && (data.what_moved || data.moved)) || '';
     var movedEl = $('pulseMoved');
     if (movedEl) {
@@ -291,14 +285,17 @@
     apply(current(), false);
   })();
 
-  /* Subscribe: existing Worker, ENG list. */
+  /* Subscribe: existing Worker, ENG list. Same address check as the Worker (config.js EMAIL_RE). */
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   function bindSubscribe(form, msg) {
     if (!form) return;
     var btn = form.querySelector('button[type="submit"]');
     if (!btn) return;
     var label = btn.textContent;
+    var busy = false;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (busy) return;
       var email = form.elements.email.value.trim();
       var hp = form.elements.website.value;
       if (msg) {
@@ -312,6 +309,14 @@
         }
         return;
       }
+      if (!EMAIL_RE.test(email)) {
+        if (msg) {
+          msg.textContent = 'Please enter a valid email address.';
+          msg.classList.add('err');
+        }
+        return;
+      }
+      busy = true;
       btn.disabled = true;
       btn.textContent = 'Sending';
       vbApi().then(function (api) {
@@ -333,6 +338,7 @@
           msg.classList.add('err');
         }
       }).then(function () {
+        busy = false;
         btn.disabled = false;
         btn.textContent = label;
       });
@@ -390,6 +396,10 @@
       }
       return g;
     }
+    var allMissing = parts.every(function (p) { return p[1] === NA; });
+    if (allMissing && stats.settled) {
+      parts = [['Live figures', 'unavailable', '']];
+    }
     host.textContent = '';
     var probe = makeGroup(1);
     host.appendChild(probe);
@@ -399,7 +409,9 @@
     var copies = Math.max(1, Math.ceil((viewW + 1) / Math.max(rowW, 1)));
     host.textContent = '';
     host.appendChild(makeGroup(copies));
-    host.appendChild(makeGroup(copies));
+    var loop = makeGroup(copies);
+    loop.setAttribute('aria-hidden', 'true');
+    host.appendChild(loop);
   }
 
   window.addEventListener('resize', function () {
@@ -409,80 +421,93 @@
     }, 150);
   });
 
+  var LIVE_MS = 8000;
+  var UNAVAILABLE = 'n/a';
+  /* A figure that never arrived reads "n/a" after its fetch fails; a later failure keeps the last good value. */
+  var lastGood = {};
+  function liveFail(stats, key, id) {
+    if (lastGood[key]) return;
+    stats[key] = UNAVAILABLE;
+    setText(id, UNAVAILABLE);
+    renderTicker(stats);
+  }
+  function liveOk(stats, key, id, value) {
+    lastGood[key] = true;
+    stats[key] = value;
+    setText(id, value);
+  }
   function refreshMarket() {
     var stats = {
       price: NA, sats: NA, chg: NA, chgClass: '', hash: NA, fee: NA, height: NA,
-      priceRaw: null, chgRaw: null, feeRaw: null
+      priceRaw: null, chgRaw: null, feeRaw: null, settled: false
     };
+    var pending = 5;
+    function done() { pending -= 1; if (pending <= 0) { stats.settled = true; renderTicker(stats); } }
 
-    j(MP + '/v1/prices').then(function (p) {
+    j(MP + '/v1/prices', LIVE_MS).then(function (p) {
       stats.priceRaw = p.USD;
-      stats.price = usd(p.USD);
-      stats.sats = p.USD ? num(Math.round(1e8 / p.USD)) : NA;
-      setText('tilePrice', stats.price);
-      setText('tileSats', stats.sats);
+      liveOk(stats, 'price', 'tilePrice', usd(p.USD));
+      liveOk(stats, 'sats', 'tileSats', p.USD ? num(Math.round(1e8 / p.USD)) : NA);
       renderTicker(stats);
-    }).catch(function () {});
+    }).catch(function () {
+      liveFail(stats, 'price', 'tilePrice');
+      liveFail(stats, 'sats', 'tileSats');
+    }).then(done);
 
-    j('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT').then(function (t) {
+    j('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT', LIVE_MS).then(function (t) {
       var last = parseFloat(t.lastPrice);
       var n = parseFloat(t.priceChangePercent);
       if (!isNaN(last)) {
         stats.priceRaw = last;
-        stats.price = usd(last);
-        stats.sats = num(Math.round(1e8 / last));
-        setText('tilePrice', stats.price);
-        setText('tileSats', stats.sats);
+        liveOk(stats, 'price', 'tilePrice', usd(last));
+        liveOk(stats, 'sats', 'tileSats', num(Math.round(1e8 / last)));
       }
+      if (isNaN(n)) throw new Error('no change');
       stats.chgRaw = n;
-      stats.chg = signedPct(n);
+      liveOk(stats, 'chg', 'tileChg', signedPct(n));
       stats.chgClass = pctClass(n);
-      setText('tileChg', stats.chg);
       var el = $('tileChg');
       if (el) el.className = 'tile-value ' + stats.chgClass;
       renderTicker(stats);
     }).catch(function () {
-      return j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true').then(function (g) {
+      return j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true', LIVE_MS).then(function (g) {
         var n = g.bitcoin && g.bitcoin.usd_24h_change;
         var px = g.bitcoin && g.bitcoin.usd;
         if (px != null && !isNaN(px)) {
           stats.priceRaw = px;
-          stats.price = usd(px);
-          stats.sats = num(Math.round(1e8 / px));
-          setText('tilePrice', stats.price);
-          setText('tileSats', stats.sats);
+          liveOk(stats, 'price', 'tilePrice', usd(px));
+          liveOk(stats, 'sats', 'tileSats', num(Math.round(1e8 / px)));
         }
+        if (n == null || isNaN(n)) throw new Error('no change');
         stats.chgRaw = n;
-        stats.chg = signedPct(n);
+        liveOk(stats, 'chg', 'tileChg', signedPct(n));
         stats.chgClass = pctClass(n);
-        setText('tileChg', stats.chg);
         var el = $('tileChg');
         if (el) el.className = 'tile-value ' + stats.chgClass;
         renderTicker(stats);
       });
-    }).catch(function () {});
+    }).catch(function () {
+      liveFail(stats, 'chg', 'tileChg');
+    }).then(done);
 
-    j(MP + '/blocks/tip/height').then(function (h) {
-      stats.height = num(h);
-      setText('tileHeight', stats.height);
+    j(MP + '/blocks/tip/height', LIVE_MS).then(function (h) {
+      liveOk(stats, 'height', 'tileHeight', num(h));
       renderTicker(stats);
-    }).catch(function () {});
+    }).catch(function () { liveFail(stats, 'height', 'tileHeight'); }).then(done);
 
-    j(MP + '/v1/fees/recommended').then(function (f) {
+    j(MP + '/v1/fees/recommended', LIVE_MS).then(function (f) {
       stats.feeRaw = f.fastestFee;
-      var feeTxt = f.fastestFee != null ? f.fastestFee + ' sat/vB · ' + feeBand(f.fastestFee) : NA;
-      stats.fee = feeTxt;
-      setText('tileFee', feeTxt);
+      if (f.fastestFee == null) throw new Error('no fee');
+      liveOk(stats, 'fee', 'tileFee', f.fastestFee + ' sat/vB · ' + feeBand(f.fastestFee));
       renderTicker(stats);
-    }).catch(function () {});
+    }).catch(function () { liveFail(stats, 'fee', 'tileFee'); }).then(done);
 
-    j(MP + '/v1/mining/hashrate/3d').then(function (m) {
-      stats.hash = compact(m.currentHashrate / 1e18) + ' EH/s';
-      setText('tileHash', stats.hash);
+    j(MP + '/v1/mining/hashrate/3d', LIVE_MS).then(function (m) {
+      liveOk(stats, 'hash', 'tileHash', hashrate(m.currentHashrate));
       renderTicker(stats);
-    }).catch(function () {});
+    }).catch(function () { liveFail(stats, 'hash', 'tileHash'); }).then(done);
   }
-  renderTicker({ price: NA, sats: NA, chg: NA, chgClass: '', hash: NA, fee: NA, height: NA });
+  renderTicker({ price: NA, sats: NA, chg: NA, chgClass: '', hash: NA, fee: NA, height: NA, settled: false });
   refreshMarket();
   setInterval(refreshMarket, 60000);
 
@@ -605,7 +630,7 @@
       applyPulseMeta(data || {});
       var local = (data && data.items) || [];
       if (data && data.feed) {
-        return j(data.feed).then(function (remote) {
+        return j(data.feed, 5000).then(function (remote) {
           var items = (remote && remote.items) || remote;
           renderPulse(Array.isArray(items) && items.length ? items : local);
         }).catch(function () { renderPulse(local); });
@@ -613,6 +638,7 @@
       renderPulse(local);
     }).catch(function () {
       applyPulseMeta({});
+      setText('pulseUpdated', PULSE_UNAVAILABLE);
       renderPulse([]);
     });
   }
@@ -869,6 +895,7 @@
       t.setAttribute('datetime', issue.date);
       t.textContent = label;
     }
+    applyEditionDate(issue.date, label);
     var img = card.querySelector('.featured-cover img');
     if (img && issue.image) {
       img.removeAttribute('width');
@@ -902,9 +929,13 @@
   function ownCover(issue) {
     return !!(issue && issue.image && !/^https?:\/\/blog\.virtuse\.com\//.test(issue.image));
   }
+  /* The server-rendered cover (/news/covers/, already painted, the LCP image) is never swapped for the WordPress copy. */
+  function ownCoverPainted(img) {
+    return /^\/news\/covers\//.test(img.getAttribute('src') || '');
+  }
   function applyFeaturedCover(post) {
     var img = document.querySelector('#featured .featured-cover img');
-    if (!img || !post || ownCover(LATEST_ISSUE)) return;
+    if (!img || !post || ownCover(LATEST_ISSUE) || ownCoverPainted(img)) return;
     var url = imgOf(post);
     if (!url || img.getAttribute('src') === url) return;
     sizedImg(img, url, FEATURED_SIZES);
@@ -1023,7 +1054,8 @@
       list.appendChild(treasuryRow(c.name, c.total_holdings, (c.total_holdings / max) * 100));
     });
     if (dek) {
-      var parts = ['Top corporate BTC holders.'];
+      var asOf = data.as_of ? fmtDate(data.as_of) : '';
+      var parts = [asOf ? 'Top corporate BTC holders, as of ' + asOf + '.' : 'Top corporate BTC holders.'];
       if (data.total_holdings != null && !isNaN(data.total_holdings)) {
         parts.push(num(Math.round(data.total_holdings)) + ' BTC across public companies.');
       }
