@@ -1980,3 +1980,68 @@ html.vc-embed .acc .pf-app::before { display: none; }
 .acc .seo td { font-variant-numeric: tabular-nums; }
 @media (max-width: 640px) { .acc .seo tr { border-color: transparent; border-radius: 14px; } }
 @media print { .acc .seo .answer { background: #f4f4f4; border-color: #ccc; } .acc .seo > .asof::before { display: none; } }
+
+/* ===== DESIGN-ALIGN Batch C (2026-11-05): colour and metal on Stacking, Retirement, About and the SEO guides =====
+   The Services / Ecosystem language reused on the pages that were still orange-only or black and white:
+   accent per card via .acc-<colour> (map above), .glow = the Ecosystem card background (accent corner glow over
+   the card), the Services shelf square before a card title, .grad = the homepage headline gradient on one phrase.
+   Cards keep the pcard2 alias (metallic top edge, hover glow, cursor spotlight bound in site-v2.js).
+   Stacking's own panels get the same look inside the React app (layer2-src/src/index.css, .l2-panel). */
+.grad, .grad .w { background: linear-gradient(90deg, #ffb347 0%, var(--orange) 40%, var(--blue) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+body .glow { background-image: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c, var(--orange)) 10%, transparent), transparent 62%); }
+.sheen { position: relative; }
+.sheen::before { content: ""; position: absolute; left: 12px; right: 12px; top: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.22) 50%, rgba(255,255,255,.04)); }
+
+/* About: a colour per section. Stats (orange, blue), timeline in four colours, founder card indigo, the three
+   "how we work" cards and the four vetting points each with their own accent, Explore cards in their target
+   page's accent (buy green, custody teal, loans purple, mining yellow, treasury indigo, tax blue, bots pink). */
+.page-about :is(.ab-stat, .ab-founder, .ab-cfo) { position: relative; border-color: rgba(255,255,255,.06); transition: border-color .2s, box-shadow .2s; }
+.page-about :is(.ab-stat, .ab-founder, .ab-cfo)::before { content: ""; position: absolute; left: 12px; right: 12px; top: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.22) 50%, rgba(255,255,255,.04)); }
+.page-about :is(.ab-stat, .ab-founder, .ab-cfo).pm:hover { border-color: color-mix(in srgb, var(--c, #c9d1d9) 35%, transparent); box-shadow: 0 18px 50px -28px color-mix(in srgb, var(--c, #c9d1d9) 55%, transparent); }
+.page-about .ab-stat b { color: var(--c, var(--text)); }
+.page-about :is(.ab-card, .gcard) b { display: flex; align-items: center; gap: 10px; }
+.page-about :is(.ab-card, .gcard) b::before { content: ""; width: 9px; height: 9px; border-radius: 3px; flex: none; background: var(--c, var(--orange)); box-shadow: 0 0 14px color-mix(in srgb, var(--c, var(--orange)) 60%, transparent); }
+.page-about .how-log-item:nth-child(2) { --c: var(--blue); } .page-about .how-log-item:nth-child(3) { --c: var(--purple); } .page-about .how-log-item:nth-child(4) { --c: var(--green); }
+.page-about .how-log-item .how-log-dot, .page-about .how-log-item .how-log-dot::before { background: var(--c, var(--orange)); }
+.page-about .how-log-item .how-log-num { color: var(--c, var(--orange)); }
+.page-about .ab-founder h3 { display: flex; align-items: center; gap: 10px; }
+.page-about .ab-founder h3::before { content: ""; width: 9px; height: 9px; border-radius: 3px; flex: none; background: var(--c, var(--indigo)); box-shadow: 0 0 14px color-mix(in srgb, var(--c, var(--indigo)) 60%, transparent); }
+@media (max-width: 768px) { .page-about .how-log-item .how-log-dot { box-shadow: 0 0 10px 2px color-mix(in srgb, var(--c, var(--orange)) 60%, transparent); } }
+@media (hover: none) { .page-about :is(.ab-stat, .ab-founder, .ab-cfo):hover { border-color: rgba(255,255,255,.06); box-shadow: none; } }
+
+/* Retirement (page-ret, teal): the question under the title in the headline gradient, inputs and the pressed
+   scenario in the page accent, result boxes each with their own glow (teal, blue, yellow, purple), the verdict
+   green or orange, every small card with the metallic top edge. Chart: saving years in the accent (retirement-calc.js). */
+.page-ret :is(.rc-box, .rc-verdict, .rc-cfo, .rc-cta) { position: relative; border-color: rgba(255,255,255,.06); transition: border-color .2s, box-shadow .2s; }
+.page-ret :is(.rc-box, .rc-verdict, .rc-cfo, .rc-cta)::before { content: ""; position: absolute; left: 12px; right: 12px; top: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.22) 50%, rgba(255,255,255,.04)); }
+.page-ret :is(.rc-box, .rc-verdict, .rc-cfo, .rc-cta).pm:hover { border-color: color-mix(in srgb, var(--c, #c9d1d9) 35%, transparent); box-shadow: 0 18px 50px -28px color-mix(in srgb, var(--c, #c9d1d9) 55%, transparent); }
+.page-ret .rc-verdict { --c: var(--good); } .page-ret .rc-verdict.bad { --c: #f0883e; }
+.page-ret .rc-box p { display: flex; align-items: center; gap: 8px; }
+.page-ret .rc-box p::before { content: ""; width: 6px; height: 6px; border-radius: 50%; flex: none; background: var(--c, var(--teal)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c, var(--teal)) 18%, transparent); }
+@media (hover: none) { .page-ret :is(.rc-box, .rc-verdict, .rc-cfo, .rc-cta):hover { border-color: rgba(255,255,255,.06); box-shadow: none; } }
+
+/* SEO guides (body.page-seo, accent from seo-build/generate.mjs ACCENTS): mono accent eyebrow, a glow behind the
+   title, the Services square before every h2, accent table headers and row hover, country links in the accent on
+   hover, tool and guide cards in their own target's accent (class acc-<colour> from the generator). */
+.acc .seo { position: relative; isolation: isolate; }
+.acc .seo::before { content: ""; position: absolute; left: 50%; top: -140px; width: min(820px, 100%); height: 360px; transform: translateX(-50%); z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--c) 14%, transparent), transparent); }
+.acc .seo > .asof:not(.updated) { font: 500 11px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--c); }
+.acc .seo h2 { display: flex; align-items: center; gap: 10px; }
+.acc .seo h2::before { content: ""; width: 9px; height: 9px; border-radius: 3px; flex: none; background: var(--c); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 60%, transparent); }
+.acc .seo .answer { background: radial-gradient(70% 110% at 50% 0%, color-mix(in srgb, var(--c) 14%, transparent), transparent 70%), var(--card); }
+.acc .seo th { color: var(--c); }
+.acc .seo tbody td { transition: background-color .15s; }
+.acc .seo tbody tr:hover td { background-color: color-mix(in srgb, var(--c) 6%, transparent); }
+.acc .seo td:first-child a { text-decoration-color: color-mix(in srgb, var(--c) 55%, transparent); }
+.acc .seo td:first-child a:hover { color: var(--c); text-decoration-color: var(--c); }
+.acc .seo :is(.seo-tools, .related) a { background-image: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c) 10%, transparent), transparent 62%); }
+.acc .seo .seo-tools b { display: flex; align-items: center; gap: 10px; }
+.acc .seo .seo-tools b::before, .acc .seo .related a::after { content: ""; width: 9px; height: 9px; border-radius: 3px; flex: none; background: var(--c); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 60%, transparent); }
+.acc .seo .related a::after { order: -1; margin-right: 10px; }
+.acc .seo .cta-secondary:hover { border-color: color-mix(in srgb, var(--c) 45%, transparent); }
+@media (max-width: 640px) { .acc .seo::before { top: -80px; height: 260px; } }
+@media print { .acc .seo::before, .acc .seo h2::before, .acc .seo .seo-tools b::before, .acc .seo .related a::after { display: none; } .acc .seo > .asof:not(.updated), .acc .seo th { color: #111; } }

@@ -15,7 +15,7 @@
     if (window.VB_API) return Promise.resolve(window.VB_API);
     return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
       var s = document.createElement('script');
-      s.src = '/vb-api.js?v=2';
+      s.src = '/vb-api.js?v=1';
       s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
       s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
       document.head.appendChild(s);
@@ -168,10 +168,11 @@
     fetch(root + 'news/issues.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
       var iss = (d.issues || []).filter(function (x) { return x && x.slug && x.title && !x.essay; })[0]; if (!iss) return;
       var when = new Date(iss.date + 'T12:00:00Z').toLocaleDateString(LOC, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-      card.href = root + 'article.html?slug=' + encodeURIComponent(iss.slug) + (LANG !== 'en' ? '&lang=' + LANG : '');
-      // the static story page when it exists (EN story; Slovak only with its own slug_sk); the reader link stays as the fallback
-      var sp = LANG === 'sk' ? (iss.slug_sk ? '/sk/stories/' + encodeURIComponent(iss.slug_sk) + '/' : '') : '/stories/' + encodeURIComponent(iss.slug) + '/';
-      if (sp) fetch(sp, { method: 'HEAD' }).then(function (r) { if (r.ok) card.href = sp; }).catch(function () {});
+      // Canonical story URL (no article.html hop). Slovak issues use slug_sk; everyone else reads the EN story.
+      var hub = LANG === 'sk' ? '/sk/stories/' : (LANG === 'ru' ? '/ru/stories/' : (LANG === 'en' || LANG === 'it' ? '/stories/' : '/' + LANG + '/blog.html'));
+      var sp = (LANG === 'sk' && iss.slug_sk) ? '/sk/stories/' + encodeURIComponent(iss.slug_sk) + '/' : '/stories/' + encodeURIComponent(iss.slug) + '/';
+      card.href = sp;
+      fetch(sp, { method: 'HEAD' }).then(function (r) { if (!r.ok) card.href = hub; }).catch(function () {});
       document.getElementById('briefMeta').textContent = t('latestBrief', 'Latest Brief · ') + when + ' · ' + (iss.read_min || 3) + t('min', ' min');
       document.getElementById('briefTitle').textContent = iss.title + t('briefLangNote', '');
       document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
@@ -217,7 +218,7 @@
   var CARDS = '.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .promises > *, .ask-side > div, .audit-card, #buy .panel, .demo, .chat-panel, .code';
 
   // spotlight works with or without motion
-  document.querySelectorAll('.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo, .bd-v3 .bd-m, .bd-v3 .bd-card, .bd-v3 .bd-chart, .gcard, .pf-card, .lg-card, .ab-card, .acc .seo .seo-tools a, .acc .seo .related a').forEach(function (c) {
+  document.querySelectorAll('.pcard2, .shelf6 > a, .tile, .plan, .problem-card, .tool, .audit-card, #buy .panel, .demo, .bd-v3 .bd-m, .bd-v3 .bd-card, .bd-v3 .bd-chart, .gcard, .pf-card, .lg-card, .ab-card, .acc .seo .seo-tools a, .acc .seo .related a, .ab-stat, .ab-founder, .ab-cfo, .rc-box, .rc-verdict, .rc-cfo, .rc-cta').forEach(function (c) {
     c.classList.add('spot');
     // .pm = the pointer really moved over the card: no glow on a card that a scroll or anchor jump slid under a still cursor
     var raf = 0, px = 0, py = 0; c.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; if (!raf) raf = requestAnimationFrame(function () { raf = 0; c.classList.add('pm'); var r = c.getBoundingClientRect(); c.style.setProperty('--mx', (px - r.left) + 'px'); c.style.setProperty('--my', (py - r.top) + 'px'); }); }, { passive: true });

@@ -145,11 +145,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=20">
+<link rel="stylesheet" href="/site-v2.min.css?v=21">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Menü megnyitása", "closeMenu": "Menü bezárása", "latestBrief": "Legújabb Brief · ", "min": " perc", "coverImage": "Borítókép: ", "badEmail": "Kérjük, adjon meg érvényes e-mail-címet.", "sending": "Küldés...", "subscribed": "Kész. A Brief hétfőn érkezik.", "error": "Hiba történt. Kérjük, próbálja újra.", "netError": "Hálózati hiba. Kérjük, próbálja újra.", "briefLangNote": " (angol nyelven)"};</script>
 <style>
-.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;color:var(--btc-orange,#f7931a);margin:12px auto 0;max-width:760px}
+/* Batch C (2026-11-05): the question in the headline gradient, inputs and the pressed scenario in the page accent (--c, teal) */
+.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;margin:12px auto 0;max-width:760px;width:fit-content;background:linear-gradient(90deg,#ffb347 0%,var(--orange) 40%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 /* RETIREMENT CALCULATOR (static calculator, logic in /retirement-calc.js) */
 .rc [hidden] { display: none !important; }
 .rc { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
@@ -159,10 +160,10 @@
 .rc-field:first-of-type { border-top: 0; padding-top: 0; }
 .rc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .rc-head label, .rc-lbl { font-size: 14px; color: var(--text); }
-.rc-head output { font: 600 14px var(--sans); color: var(--orange); white-space: nowrap; }
-.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--orange); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
-.rc-num:focus { border-color: var(--orange); outline: none; }
-.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--orange); height: 18px; }
+.rc-head output { font: 600 14px var(--sans); color: var(--c, var(--orange)); white-space: nowrap; }
+.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--c, var(--orange)); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
+.rc-num:focus { border-color: var(--c, var(--orange)); outline: none; }
+.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--c, var(--orange)); height: 18px; }
 .rc-hint { margin: 6px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
 .rc-hint a { color: var(--muted); }
 .rc-err { margin: 6px 0 0; font-size: 12px; color: #f0883e; }
@@ -170,8 +171,9 @@
 .rc-btn { background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 10px; font: 500 13px var(--sans); cursor: pointer; text-align: left; line-height: 1.3; }
 .rc-btn small { display: block; color: var(--dim); font-size: 11px; }
 .rc-btn:hover { background: var(--card-hover); }
-.rc-btn[aria-pressed=true] { background: var(--orange); border-color: var(--orange); color: #0d0902; }
-.rc-btn[aria-pressed=true] small { color: #3a2506; }
+.rc-btn:hover { border-color: color-mix(in srgb, var(--c, var(--orange)) 45%, transparent); }
+.rc-btn[aria-pressed=true] { background: var(--c, var(--orange)); border-color: var(--c, var(--orange)); color: #06201c; }
+.rc-btn[aria-pressed=true] small { color: rgba(0,0,0,.6); }
 .rc-custom { margin-top: 12px; }
 .rc-reset { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; font: inherit; cursor: pointer; }
 .rc-res { display: grid; gap: 16px; min-width: 0; }
@@ -184,13 +186,13 @@
 .rc-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
 .rc-box p { margin: 0; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
 .rc-box strong { display: block; margin-top: 8px; font-size: 22px; font-weight: 700; overflow-wrap: anywhere; }
-.rc-box strong.o { color: var(--orange); }
+.rc-box strong.o { color: var(--c, var(--orange)); }
 .rc-box small { display: block; margin-top: 4px; font-size: 12px; color: var(--dim); }
 .rc-cfo, .rc-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 16px; padding: 18px 20px; }
 .rc-cfo p, .rc-cta p { margin: 0; font-size: 14px; line-height: 1.5; min-width: 0; }
 .rc-cfo b { font-weight: 600; }
 .rc-link { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 16px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; }
-.rc-link:hover { background: var(--card-hover); border-color: rgba(255,255,255,.3); }
+.rc-link:hover { background: var(--card-hover); border-color: color-mix(in srgb, var(--c, var(--orange)) 50%, transparent); }
 .rc-chart canvas { display: block; width: 100%; height: 280px; }
 .rc-share { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; margin-top: 12px; }
 .rc-share input { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; color: var(--text); font: 13px var(--sans); }
@@ -312,12 +314,12 @@
     </form>
 
     <div class="rc-res">
-      <div class="rc-verdict" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
+      <div class="rc-verdict glow" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
       <div class="rc-grid" aria-live="polite">
-        <div class="rc-box"><p>BTC a nyugdíjba vonuláskor</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
-        <div class="rc-box"><p>Érték a nyugdíjba vonuláskor</p><strong id="rc-r-val">&hellip;</strong><small>kivetített, nominális euró</small></div>
-        <div class="rc-box"><p>Első évi kiadás</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
-        <div class="rc-box"><p id="rc-r-need-l">Ma szükséges BTC, hogy 50 évesen további megtakarítás nélkül nyugdíjba mehessen</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
+        <div class="rc-box acc-teal glow"><p>BTC a nyugdíjba vonuláskor</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
+        <div class="rc-box acc-blue glow"><p>Érték a nyugdíjba vonuláskor</p><strong id="rc-r-val">&hellip;</strong><small>kivetített, nominális euró</small></div>
+        <div class="rc-box acc-yellow glow"><p>Első évi kiadás</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
+        <div class="rc-box acc-purple glow"><p id="rc-r-need-l">Ma szükséges BTC, hogy 50 évesen további megtakarítás nélkül nyugdíjba mehessen</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
       </div>
       <div class="rc-cfo" id="rc-cfo" hidden>
         <p><b>Virtuse CFO</b><br>A Verdict ingyenes; a díjaudit a Virtuse CFO-val érkezik. Fizetős csomagok indulás után: havi 9 € vagy évi 90 €.</p>
@@ -325,7 +327,7 @@
       </div>
       <div class="rc-panel rc-chart">
         <h2>Portfólió-kivetítés</h2>
-        <div class="rc-legend"><span><i style="background:var(--orange)"></i>Megtakarítási évek</span><span><i style="background:var(--text)"></i>Kivétek nyugdíjban</span></div>
+        <div class="rc-legend"><span><i style="background:var(--c,var(--orange))"></i>Megtakarítási évek</span><span><i style="background:var(--text)"></i>Kivétek nyugdíjban</span></div>
         <canvas id="rc-chart" role="img" aria-label="Diagram a Bitcoinja kivetített értékéről életkor szerint"></canvas>
       </div>
       <p class="rc-simp">Egyszerűsített modell: állandó növekedés, ingadozás és medvepiacok nélkül. Eladáskor nincs adó. A kiadást évente egyszer, minden év elején vonjuk le. Az összegek nominálisak. <a href="/hu/bitcoin-adozas/">Bitcoin-adózási útmutatók</a></p>
@@ -380,8 +382,8 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Csak Bitcoin, minden hétfőn.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=hu">
-        <img id="briefImg" src="/news/og/brief-20261019.jpg" alt="A Virtuse Brief futára robogón hozza a 2026. okt. 5-i számot" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/11/virtuse-brief-2026-11-02-hero-20261102.jpg" alt="A Virtuse Brief futára robogón hozza a 2026. okt. 5-i számot" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Legújabb Brief</span>
           <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (angol nyelven)</h3>
@@ -409,9 +411,9 @@
   </section>
 
   <!-- 5. RELATED TOOLS -->
-  <section id="related">
-    <div class="sec-head one"><div class="sec-copy"><h2>Kapcsolódó <span>eszközök</span></h2></div></div>
-    <div class="gcards"><a class="gcard" href="/hu/stacking.html"><b>Stacking Strategist</b><span>Tervezzen rendszeres vásárlást, és hasonlítsa össze a díjakat.</span></a><a class="gcard" href="/hu/bitcoin-dijindex/"><b>Díjindex</b><span>A havi Bitcoin-vásárlás teljes költsége.</span></a><a class="gcard" href="/hu/concierge.html"><b>Partner Finder</b><span>Az Ön szempontjaihoz illő partnerek.</span></a><a class="gcard" href="/hu/bitcoin-dca-kalkulator/"><b>DCA-kalkulátor</b><span>Díjak egy rendszeres tervben, az első évben.</span></a><a class="gcard" href="/hu/bitcoin-adozas/"><b>Bitcoin-adózási útmutatók</b><span>A Bitcoin eladásának szabályai 13 EU-országban.</span></a><a class="gcard" href="/verdict.html"><b>Verdict</b><span>Nézze meg ingyen, mit hagyott ki a döntéséből. A CFO ezután követi a díjakat és a kockázatokat.</span></a></div>
+  <section id="related" class="hub-related" aria-labelledby="relatedLabel">
+    <div class="sec-head one"><div class="sec-copy"><h2 id="relatedLabel">Kapcsolódó eszközök <span>és útmutatók</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/hu/stacking.html"><b>Stacking Strategist</b><span>Tervezzen rendszeres vásárlást, és hasonlítsa össze a díjakat.</span></a><a class="gcard" href="/hu/bitcoin-data.html"><b>Bitcoin-adatok</b><span>Árfolyam, díjak és hálózati adatok, élőben.</span></a><a class="gcard" href="/news.html"><b>Virtuse Brief</b><span>A heti Bitcoin-hírlevél Európának (angol nyelven).</span></a><a class="gcard" href="/hu/concierge.html"><b>Partner Finder</b><span>Az Ön szempontjaihoz illő partnerek.</span></a></div>
     <p class="tx-fine fi-disc">Csak oktatási célra. Nem befektetési tanács. A kivetítések állandó növekedési és inflációs rátával számolnak; a Bitcoin valós hozamai ingadozók, és a múltbeli teljesítmény nem garantálja a jövőbeli eredményeket. Az összegek nominálisak.</p>
   </section>
 
@@ -435,8 +437,8 @@
 </main>
 
 <script type="application/json" id="rc-i18n">{"c_plan": "Az Ön terve", "c_age": "Jelenlegi életkor", "c_ret_age": "Nyugdíjba vonulás életkora", "c_life": "Várható élettartam", "c_years": "{0} év", "c_stack": "Jelenlegi Bitcoin-állomány (BTC)", "c_lump": "Opcionálisan hozzáadott készpénz (€)", "c_lump_note": "Mai árfolyamon BTC-re váltjuk, és hozzáadjuk az állományához.", "c_dca": "Havi megtakarítás Bitcoinba (€)", "c_spend": "Éves kiadás nyugdíjban (mai €)", "c_growth": "A Bitcoin árfolyamának éves növekedése", "c_conservative": "Óvatos", "c_base": "Alap", "c_optimistic": "Optimista", "c_custom": "Egyéni", "c_hypothetical": "(feltételezett)", "c_custom_label": "Az Ön éves növekedési rátája (0 és 30% között)", "c_inflation": "Éves infláció", "c_inflation_src": "Alapértelmezés 2%: az EKB árstabilitási célja, ellenőrizve 2026. október 13-án", "c_price": "A Bitcoin mai árfolyama (€)", "c_price_loading": "Az élő árfolyam betöltése...", "c_price_live": "Árfolyam {0} állapot szerint", "c_price_fallback": "Tartalék árfolyam, 2026. október 13. állapot szerint", "c_price_manual": "A saját árfolyamát használjuk.", "c_price_reset": "Élő árfolyam használata", "c_per_year": "{0}/év", "c_err_number": "Adjon meg egy számot, például 250k vagy 2.5M.", "c_err_max": "A maximum {0}. A maximumot használtuk.", "c_err_min": "A minimum {0}. A minimumot használtuk.", "c_ok_title": "Jó úton halad a nyugdíjhoz {0} évesen", "c_ok_sub": "Ebben a forgatókönyvben a Bitcoinja {0} éves koráig fedezi a kiadásait.", "c_bad_title": "Az állománya {0} éves korában elfogy", "c_bad_sub": "Takarítson meg többet, menjen később nyugdíjba, vagy költsön kevesebbet, hogy a terv {0} éves koráig kitartson.", "c_res_btc": "BTC a nyugdíjba vonuláskor", "c_res_btc_sub": "{0} év gyűjtés után", "c_res_btc_sub_now": "most megy nyugdíjba, nincs több gyűjtés", "c_res_value": "Érték a nyugdíjba vonuláskor", "c_res_value_sub": "kivetített, nominális euró", "c_res_spend": "Első évi kiadás", "c_res_spend_sub": "a kiadása {0} évesen, inflációval", "c_res_needed": "Ma szükséges BTC, hogy {0} évesen további megtakarítás nélkül nyugdíjba mehessen", "c_res_needed_sub": "{0} mai árfolyamon", "c_res_needed_more": "több mint {0}", "c_chart": "Portfólió-kivetítés", "c_chart_aria": "Diagram a Bitcoinja kivetített értékéről életkor szerint", "c_legend_acc": "Megtakarítási évek", "c_legend_ret": "Kivétek nyugdíjban", "c_age_axis": "Életkor", "c_simplify": "Egyszerűsített modell: állandó növekedés, ingadozás és medvepiacok nélkül. Eladáskor nincs adó. A kiadást évente egyszer, minden év elején vonjuk le. Az összegek nominálisak.", "c_tax_link": "Bitcoin-adózási útmutatók", "c_cfo_label": "Virtuse CFO", "c_cfo_text": "A Verdict ingyenes; a díjaudit a Virtuse CFO-val érkezik. Fizetős csomagok indulás után: havi 9 € vagy évi 90 €.", "c_cfo_link": "Értesítést kérek →", "c_cta_text": "A Partner Finder megmutatja az Ön szempontjaihoz illő vásárlási partnereket.", "c_cta": "Kezdje el a gyűjtést →", "c_share": "Link másolása ehhez az eredményhez", "c_share_done": "Link kimásolva", "c_share_field": "Link ehhez az eredményhez"}</script>
-<script src="/retirement-calc.js?v=3" defer></script>
-<script src="/site-v2.js?v=12" defer></script>
+<script src="/retirement-calc.js?v=4" defer></script>
+<script src="/site-v2.js?v=14" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

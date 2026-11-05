@@ -68,7 +68,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="../site-v2.min.css?v=20">
+<link rel="stylesheet" href="../site-v2.min.css?v=21">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Відкрити меню", "closeMenu": "Закрити меню", "latestBrief": "Останній Brief · ", "min": " хв", "coverImage": "Обкладинка: ", "badEmail": "Введіть дійсну адресу електронної пошти.", "sending": "Надсилання...", "subscribed": "Готово! Brief вийде в понеділок.", "error": "Щось пішло не так. Спробуйте ще раз.", "netError": "Помилка мережі. Спробуйте ще раз.", "briefLangNote": " (англійською)"};</script>
 </head>
@@ -191,7 +191,7 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Лише Біткоїн, щопонеділка.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="../" href="../article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=uk">
+      <a class="issue" id="briefIssue" data-root="../" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
         <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="Кур'єр Virtuse Brief на скутері доставляє випуск від 5 жовтня 2026" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Останній Brief</span>
@@ -216,6 +216,12 @@
   </section>
   <p class="bd-disclaimer">Дані лише для інформації та можуть надходити із затримкою. Не є інвестиційною порадою.</p>
 
+  <!-- RELATED-TOOLS -->
+  <section id="related" class="hub-related" aria-labelledby="relatedLabel">
+    <div class="sec-head one"><div class="sec-copy"><h2 id="relatedLabel">Пов’язані інструменти <span>та довідники</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/uk/btc-monthly-returns.html"><b>Місячна прибутковість</b><span>Прибутковість Біткоїна за кожен місяць від 2010 року.</span></a><a class="gcard" href="/news.html"><b>Virtuse Brief</b><span>Щотижнева розсилка про Біткоїн для Європи (англійською).</span></a><a class="gcard" href="/stories/"><b>Історії про Біткоїн</b><span>Довгі тексти редакції Brief (англійською).</span></a><a class="gcard" href="/uk/retirement-calculator.html"><b>Пенсійний калькулятор Біткоїна</b><span>Коли заощадження в Біткоїні можуть фінансувати вашу пенсію.</span></a></div>
+  </section>
+
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
@@ -236,7 +242,7 @@
 </main>
 <script type="application/json" id="bdI18n">{"updated": "Оновлено", "fees_equal": "Комісії: {n} sat/vB для всіх пріоритетів", "stale": "Із затримкою", "unavailable": "Дані недоступні", "retry": "Повторити", "n_block_ago": "видобуто {t} тому", "n_unknown": "Невідомий пул", "s_halving_sub": "блоків залишилось · орієнтовно {d}", "p_chart": "Ціна за останні {n} днів", "p_sats": "Сатоші за $1", "p_sats_eur": "Сатоші за €1", "u_s": "с", "u_min": "хв", "u_h": "год", "u_days": "днів", "u_years": "років", "locale": "uk-UA", "pct": "%", "cur": "EUR", "raw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json", "local": "../data/asset-returns.json", "goldRaw": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json", "goldLocal": "../data/bitcoin-vs-commodities.json", "g_oz": "унц."}</script>
 <script src="../btc-data.js?v=4" defer></script>
-<script src="../site-v2.js?v=12" defer></script>
+<script src="../site-v2.js?v=14" defer></script>
 <script src="../concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

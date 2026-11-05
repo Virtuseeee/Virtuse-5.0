@@ -145,11 +145,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=20">
+<link rel="stylesheet" href="/site-v2.min.css?v=21">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Abrir menú", "closeMenu": "Cerrar menú", "latestBrief": "Último Brief · ", "min": " min", "coverImage": "Imagen de portada: ", "badEmail": "Introduzca un correo electrónico válido.", "sending": "Enviando...", "subscribed": "Listo. El Brief sale el lunes.", "error": "Algo salió mal. Inténtelo de nuevo.", "netError": "Error de red. Inténtelo de nuevo.", "briefLangNote": " (en inglés)"};</script>
 <style>
-.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;color:var(--btc-orange,#f7931a);margin:12px auto 0;max-width:760px}
+/* Batch C (2026-11-05): the question in the headline gradient, inputs and the pressed scenario in the page accent (--c, teal) */
+.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;margin:12px auto 0;max-width:760px;width:fit-content;background:linear-gradient(90deg,#ffb347 0%,var(--orange) 40%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 /* RETIREMENT CALCULATOR (static calculator, logic in /retirement-calc.js) */
 .rc [hidden] { display: none !important; }
 .rc { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
@@ -159,10 +160,10 @@
 .rc-field:first-of-type { border-top: 0; padding-top: 0; }
 .rc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .rc-head label, .rc-lbl { font-size: 14px; color: var(--text); }
-.rc-head output { font: 600 14px var(--sans); color: var(--orange); white-space: nowrap; }
-.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--orange); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
-.rc-num:focus { border-color: var(--orange); outline: none; }
-.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--orange); height: 18px; }
+.rc-head output { font: 600 14px var(--sans); color: var(--c, var(--orange)); white-space: nowrap; }
+.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--c, var(--orange)); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
+.rc-num:focus { border-color: var(--c, var(--orange)); outline: none; }
+.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--c, var(--orange)); height: 18px; }
 .rc-hint { margin: 6px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
 .rc-hint a { color: var(--muted); }
 .rc-err { margin: 6px 0 0; font-size: 12px; color: #f0883e; }
@@ -170,8 +171,9 @@
 .rc-btn { background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 10px; font: 500 13px var(--sans); cursor: pointer; text-align: left; line-height: 1.3; }
 .rc-btn small { display: block; color: var(--dim); font-size: 11px; }
 .rc-btn:hover { background: var(--card-hover); }
-.rc-btn[aria-pressed=true] { background: var(--orange); border-color: var(--orange); color: #0d0902; }
-.rc-btn[aria-pressed=true] small { color: #3a2506; }
+.rc-btn:hover { border-color: color-mix(in srgb, var(--c, var(--orange)) 45%, transparent); }
+.rc-btn[aria-pressed=true] { background: var(--c, var(--orange)); border-color: var(--c, var(--orange)); color: #06201c; }
+.rc-btn[aria-pressed=true] small { color: rgba(0,0,0,.6); }
 .rc-custom { margin-top: 12px; }
 .rc-reset { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; font: inherit; cursor: pointer; }
 .rc-res { display: grid; gap: 16px; min-width: 0; }
@@ -184,13 +186,13 @@
 .rc-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
 .rc-box p { margin: 0; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
 .rc-box strong { display: block; margin-top: 8px; font-size: 22px; font-weight: 700; overflow-wrap: anywhere; }
-.rc-box strong.o { color: var(--orange); }
+.rc-box strong.o { color: var(--c, var(--orange)); }
 .rc-box small { display: block; margin-top: 4px; font-size: 12px; color: var(--dim); }
 .rc-cfo, .rc-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 16px; padding: 18px 20px; }
 .rc-cfo p, .rc-cta p { margin: 0; font-size: 14px; line-height: 1.5; min-width: 0; }
 .rc-cfo b { font-weight: 600; }
 .rc-link { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 16px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; }
-.rc-link:hover { background: var(--card-hover); border-color: rgba(255,255,255,.3); }
+.rc-link:hover { background: var(--card-hover); border-color: color-mix(in srgb, var(--c, var(--orange)) 50%, transparent); }
 .rc-chart canvas { display: block; width: 100%; height: 280px; }
 .rc-share { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; margin-top: 12px; }
 .rc-share input { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; color: var(--text); font: 13px var(--sans); }
@@ -312,12 +314,12 @@
     </form>
 
     <div class="rc-res">
-      <div class="rc-verdict" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
+      <div class="rc-verdict glow" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
       <div class="rc-grid" aria-live="polite">
-        <div class="rc-box"><p>BTC al jubilarse</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
-        <div class="rc-box"><p>Valor al jubilarse</p><strong id="rc-r-val">&hellip;</strong><small>proyectado, euros nominales</small></div>
-        <div class="rc-box"><p>Gasto del primer año</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
-        <div class="rc-box"><p id="rc-r-need-l">BTC necesarios hoy para jubilarse a los 50 sin ahorrar más</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
+        <div class="rc-box acc-teal glow"><p>BTC al jubilarse</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
+        <div class="rc-box acc-blue glow"><p>Valor al jubilarse</p><strong id="rc-r-val">&hellip;</strong><small>proyectado, euros nominales</small></div>
+        <div class="rc-box acc-yellow glow"><p>Gasto del primer año</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
+        <div class="rc-box acc-purple glow"><p id="rc-r-need-l">BTC necesarios hoy para jubilarse a los 50 sin ahorrar más</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
       </div>
       <div class="rc-cfo" id="rc-cfo" hidden>
         <p><b>Virtuse CFO</b><br>Verdict es gratuito; la auditoría de comisiones llegará con Virtuse CFO. Planes de pago, cuando abran: 9 €/mes o 90 €/año.</p>
@@ -325,7 +327,7 @@
       </div>
       <div class="rc-panel rc-chart">
         <h2>Proyección de la cartera</h2>
-        <div class="rc-legend"><span><i style="background:var(--orange)"></i>Años de ahorro</span><span><i style="background:var(--text)"></i>Retiradas en la jubilación</span></div>
+        <div class="rc-legend"><span><i style="background:var(--c,var(--orange))"></i>Años de ahorro</span><span><i style="background:var(--text)"></i>Retiradas en la jubilación</span></div>
         <canvas id="rc-chart" role="img" aria-label="Gráfico del valor proyectado de su Bitcoin por edad"></canvas>
       </div>
       <p class="rc-simp">Modelo simplificado: crecimiento constante sin volatilidad ni mercados bajistas. Sin impuestos sobre las ventas. El gasto se retira una vez al año, al inicio de cada año. Las cifras son nominales. <a href="/es/bitcoin-impuestos/">Guías fiscales de Bitcoin</a></p>
@@ -380,8 +382,8 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Solo Bitcoin, cada lunes.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/article.html?slug=bitcoin-beat-the-war-november-still-gets-a-vote&amp;lang=es">
-        <img id="briefImg" src="/news/og/brief-20261019.jpg" alt="Repartidor del Virtuse Brief en scooter entregando la edición del 5 oct 2026" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/11/virtuse-brief-2026-11-02-hero-20261102.jpg" alt="Repartidor del Virtuse Brief en scooter entregando la edición del 5 oct 2026" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Último Brief</span>
           <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (en inglés)</h3>
@@ -409,9 +411,9 @@
   </section>
 
   <!-- 5. RELATED TOOLS -->
-  <section id="related">
-    <div class="sec-head one"><div class="sec-copy"><h2>Herramientas <span>relacionadas</span></h2></div></div>
-    <div class="gcards"><a class="gcard" href="/es/stacking.html"><b>Stacking Strategist</b><span>Planifique una compra periódica y compare comisiones.</span></a><a class="gcard" href="/es/bitcoin-indice-comisiones/"><b>Índice de comisiones</b><span>Coste total de comprar Bitcoin cada mes.</span></a><a class="gcard" href="/es/concierge.html"><b>Partner Finder</b><span>Partners que encajan con sus criterios.</span></a><a class="gcard" href="/es/bitcoin-calculadora-dca/"><b>Calculadora DCA</b><span>Comisiones de un plan regular, el primer año.</span></a><a class="gcard" href="/es/bitcoin-impuestos/"><b>Guías fiscales de Bitcoin</b><span>Normas para vender Bitcoin en 13 países de la UE.</span></a><a class="gcard" href="/verdict.html"><b>Verdict</b><span>Compruebe gratis qué ha pasado por alto en su decisión. Después, el CFO sigue las comisiones y los riesgos.</span></a></div>
+  <section id="related" class="hub-related" aria-labelledby="relatedLabel">
+    <div class="sec-head one"><div class="sec-copy"><h2 id="relatedLabel">Herramientas y guías <span>relacionadas</span></h2></div></div>
+    <div class="gcards"><a class="gcard" href="/es/stacking.html"><b>Stacking Strategist</b><span>Planifique una compra periódica y compare comisiones.</span></a><a class="gcard" href="/es/bitcoin-data.html"><b>Datos de Bitcoin</b><span>Precio, comisiones y datos de la red, en directo.</span></a><a class="gcard" href="/news.html"><b>Virtuse Brief</b><span>El boletín semanal de Bitcoin para Europa (en inglés).</span></a><a class="gcard" href="/es/concierge.html"><b>Partner Finder</b><span>Partners que encajan con sus criterios.</span></a></div>
     <p class="tx-fine fi-disc">Solo con fines educativos. No es asesoramiento financiero. Las proyecciones usan tasas de crecimiento e inflación constantes; la rentabilidad real de Bitcoin es volátil y la rentabilidad pasada no garantiza resultados futuros. Las cifras son nominales.</p>
   </section>
 
@@ -435,8 +437,8 @@
 </main>
 
 <script type="application/json" id="rc-i18n">{"c_plan": "Su plan", "c_age": "Edad actual", "c_ret_age": "Edad de jubilación", "c_life": "Esperanza de vida", "c_years": "{0} años", "c_stack": "Saldo actual de Bitcoin (BTC)", "c_lump": "Efectivo adicional opcional (€)", "c_lump_note": "Se convierte a BTC al precio de hoy y se suma a su saldo.", "c_dca": "Ahorro mensual en Bitcoin (€)", "c_spend": "Gasto anual en la jubilación (€ de hoy)", "c_growth": "Crecimiento anual del precio de Bitcoin", "c_conservative": "Prudente", "c_base": "Base", "c_optimistic": "Optimista", "c_custom": "Personalizado", "c_hypothetical": "(hipotético)", "c_custom_label": "Su tasa de crecimiento anual (del 0 al 30 %)", "c_inflation": "Inflación anual", "c_inflation_src": "2 % por defecto: objetivo de estabilidad de precios del BCE, comprobado el 13 oct. 2026", "c_price": "Precio de Bitcoin hoy (€)", "c_price_loading": "Cargando el precio en directo...", "c_price_live": "Precio a {0}", "c_price_fallback": "Precio de respaldo a 13 oct. 2026", "c_price_manual": "Se usa su propio precio.", "c_price_reset": "Usar el precio en directo", "c_per_year": "{0}/año", "c_err_number": "Introduzca un número, por ejemplo 250k o 2,5M.", "c_err_max": "El máximo es {0}. Hemos usado el máximo.", "c_err_min": "El mínimo es {0}. Hemos usado el mínimo.", "c_ok_title": "En camino de jubilarse a los {0}", "c_ok_sub": "En este escenario, su Bitcoin cubre su gasto hasta los {0} años.", "c_bad_title": "Su saldo se agota a los {0} años", "c_bad_sub": "Ahorre más, jubílese más tarde o gaste menos para que el plan dure hasta los {0} años.", "c_res_btc": "BTC al jubilarse", "c_res_btc_sub": "tras {0} años acumulando", "c_res_btc_sub_now": "se jubila ya, sin acumular más", "c_res_value": "Valor al jubilarse", "c_res_value_sub": "proyectado, euros nominales", "c_res_spend": "Gasto del primer año", "c_res_spend_sub": "su gasto a los {0} años, tras la inflación", "c_res_needed": "BTC necesarios hoy para jubilarse a los {0} sin ahorrar más", "c_res_needed_sub": "{0} al precio de hoy", "c_res_needed_more": "más de {0}", "c_chart": "Proyección de la cartera", "c_chart_aria": "Gráfico del valor proyectado de su Bitcoin por edad", "c_legend_acc": "Años de ahorro", "c_legend_ret": "Retiradas en la jubilación", "c_age_axis": "Edad", "c_simplify": "Modelo simplificado: crecimiento constante sin volatilidad ni mercados bajistas. Sin impuestos sobre las ventas. El gasto se retira una vez al año, al inicio de cada año. Las cifras son nominales.", "c_tax_link": "Guías fiscales de Bitcoin", "c_cfo_label": "Virtuse CFO", "c_cfo_text": "Verdict es gratuito; la auditoría de comisiones llegará con Virtuse CFO. Planes de pago, cuando abran: 9 €/mes o 90 €/año.", "c_cfo_link": "Avisarme →", "c_cta_text": "Partner Finder muestra los partners de compra que encajan con sus criterios.", "c_cta": "Empezar a acumular →", "c_share": "Copiar el enlace a este resultado", "c_share_done": "Enlace copiado", "c_share_field": "Enlace a este resultado"}</script>
-<script src="/retirement-calc.js?v=3" defer></script>
-<script src="/site-v2.js?v=12" defer></script>
+<script src="/retirement-calc.js?v=4" defer></script>
+<script src="/site-v2.js?v=14" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
