@@ -6,7 +6,9 @@
   --accent: #F7931A;
   --accent-hot: #E8820D;
   --accent-deep: #C46A0C;
-  --btn-text: #FFFFFF;
+  --btn-text: #0D0902;
+  --accent-text: #F7931A;
+  --accent-text-hover: #E8820D;
   --bg: #111110;
   --bg-band: #1C1C19;
   --bg-card: #181816;
@@ -52,6 +54,8 @@
 
 [data-theme="light"] {
   color-scheme: light;
+  --accent-text: #9A5208;
+  --accent-text-hover: #7A3F06;
   --bg: #FBFBFA;
   --bg-band: #F2F0EB;
   --bg-card: #FFFFFF;
@@ -202,13 +206,13 @@ ul { list-style: none; }
 }
 .btn.btn-accent-outline {
   background: transparent;
-  color: var(--accent);
-  border-color: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent-text);
 }
 .btn.btn-accent-outline:hover {
   background: transparent;
-  color: var(--accent-hot);
-  border-color: var(--accent-hot);
+  color: var(--accent-text-hover);
+  border-color: var(--accent-text-hover);
 }
 
 .text-link {
@@ -216,10 +220,10 @@ ul { list-style: none; }
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
 }
-.text-link:hover { color: var(--accent-hot); }
+.text-link:hover { color: var(--accent-text-hover); }
 
 /* —— Live ticker (dark reverse, Gazette rail, full-bleed loop) —— */
 .ticker {
@@ -333,8 +337,8 @@ ul { list-style: none; }
 }
 .nav-links a:not(.btn):hover { color: var(--text); }
 .nav-links .btn.btn-accent-outline,
-.nav-links .btn.btn-accent-outline:hover { color: var(--accent); }
-.nav-links .btn.btn-accent-outline:hover { color: var(--accent-hot); }
+.nav-links .btn.btn-accent-outline:hover { color: var(--accent-text); }
+.nav-links .btn.btn-accent-outline:hover { color: var(--accent-text-hover); }
 .site-nav .btn {
   height: 1.6rem;
   min-height: 1.6rem;
@@ -490,7 +494,7 @@ ul { list-style: none; }
   letter-spacing: -0.02em;
   margin: 0 0 16px;
 }
-.hero-feature .featured-title a:hover { color: var(--accent-hot); }
+.hero-feature .featured-title a:hover { color: var(--accent-text-hover); }
 
 .featured-brief-facts { margin: 0 0 22px; }
 .featured-brief-facts li {
@@ -540,7 +544,7 @@ ul { list-style: none; }
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .pulse-tag svg {
   width: 13px;
@@ -561,10 +565,10 @@ ul { list-style: none; }
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
 }
-.pulse-item .read:hover { color: var(--accent-hot); }
+.pulse-item .read:hover { color: var(--accent-text-hover); }
 
 .desk-status {
   display: flex;
@@ -687,6 +691,17 @@ ul { list-style: none; }
 }
 .subscribe-msg.ok { color: var(--up); }
 .subscribe-msg.err { color: var(--down); }
+.subscribe-msg:empty { display: none; }
+.capture-fine {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: var(--text-faint);
+}
+.capture-fine a { color: var(--text-muted); text-decoration: underline; }
+.capture-fine a:hover { color: var(--text); }
 
 /* —— Sections —— */
 .section { padding: 48px 0; }
@@ -757,7 +772,7 @@ ul { list-style: none; }
   color: var(--text);
   padding: 0 14px;
 }
-.archive-card:hover h3 { color: var(--accent-hot); }
+.archive-card:hover h3 { color: var(--accent-text-hover); }
 .archive-card p {
   color: var(--text-muted);
   font-size: var(--t-deck);
@@ -794,8 +809,8 @@ ul { list-style: none; }
   flex-direction: column;
   min-height: 0;
   box-sizing: border-box;
-  flex: 1 1 0;
-  overflow: hidden;
+  flex: 0 0 auto;
+  overflow: visible;
 }
 .data-desk .desk-label { margin-bottom: 8px; }
 .data-desk .desk-cta { align-self: flex-start; margin-bottom: 18px; }
@@ -894,7 +909,7 @@ ul { list-style: none; }
 
 /* —— Partner promo (right rail, issues row 2 → column bottom) —— */
 .partner-promo {
-  flex: 1 1 0;
+  flex: 1 0 auto;
   min-height: 0;
   margin-top: 0;
   background: var(--record-bg);
@@ -979,11 +994,13 @@ ul { list-style: none; }
 .partner-promo-note {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  color: var(--text-faint);
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
   flex-shrink: 0;
 }
+.partner-promo-note a { text-decoration: underline; }
 
 /* —— Blog / Ras Take —— */
 .ras-take[hidden] { display: none; }
@@ -1028,7 +1045,7 @@ ul { list-style: none; }
   line-height: var(--lh-head);
   color: var(--text);
 }
-.blog-card:hover h3 { color: var(--accent-hot); }
+.blog-card:hover h3 { color: var(--accent-text-hover); }
 .blog-card .read {
   margin-top: auto;
   padding-top: 10px;
@@ -1036,7 +1053,7 @@ ul { list-style: none; }
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 600;
 }
 .blog-more {
@@ -1160,9 +1177,9 @@ ul { list-style: none; }
     padding: 0;
     border: 0;
   }
-  .hero-pulse { order: 2; border-top: 1px solid var(--line); padding-top: 24px; }
+  .hero-pulse { order: 3; border-top: 1px solid var(--line); padding-top: 24px; }
   .hero-feature { order: 1; }
-  .hero-rail { order: 3; border-top: 1px solid var(--line); padding-top: 24px; }
+  .hero-rail { order: 2; border-top: 1px solid var(--line); padding-top: 24px; }
   .issues-band {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
@@ -1234,7 +1251,7 @@ ul { list-style: none; }
   color: var(--text-muted);
   padding: 4px 0;
 }
-.pulse-archive a:hover { color: var(--accent-hot); }
+.pulse-archive a:hover { color: var(--accent-text-hover); }
 .quick-media {
   padding-top: 28px;
   padding-bottom: 8px;
@@ -1249,10 +1266,8 @@ ul { list-style: none; }
   font-weight: 600;
   line-height: var(--lh-head);
 }
-.quick-media-item a:hover { color: var(--accent-hot); }
+.quick-media-item a:hover { color: var(--accent-text-hover); }
 
 /* —— Google preferred source (preferred-source.js): under Pulse and at the page end —— */
 .vb-pref { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .pulse-pref { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
-.pref-section { padding-top: 0; padding-bottom: 40px; }
-.pref-section .vb-pref { justify-content: center; }
