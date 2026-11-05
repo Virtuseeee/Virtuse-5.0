@@ -13,8 +13,8 @@ gets it, with no change to the builders themselves:
 """
 import re
 
-SITE_CSS_V = '20'
-SITE_JS_V = '13'
+SITE_CSS_V = '21'
+SITE_JS_V = '14'
 CSS_RE = re.compile(r'(href="[^"]*?)site-v2(?:\.min)?\.css\?v=\d+"')
 JS_RE = re.compile(r'(src="[^"]*?)site-v2\.js\?v=\d+"')
 

@@ -18,7 +18,7 @@ import build_fee_index as F
 import related_hubs
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']   # hreflang order as before
-JS_V = '3'
+JS_V = '4'   # 4: saving-years chart colour from the page accent (--c), 2026-11-05
 FALLBACK_PRICE = 74649          # BTC/EUR, 13 Oct 2026 (CoinGecko); the JS replaces it with the live price
 
 # typed limits (data-min/max) and the smaller slider ranges
@@ -31,7 +31,8 @@ FIELDS = {
 }
 
 CSS = '''<style>
-.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;color:var(--btc-orange,#f7931a);margin:12px auto 0;max-width:760px}
+/* Batch C (2026-11-05): the question in the headline gradient, inputs and the pressed scenario in the page accent (--c, teal) */
+.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;margin:12px auto 0;max-width:760px;width:fit-content;background:linear-gradient(90deg,#ffb347 0%,var(--orange) 40%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 /* RETIREMENT CALCULATOR (static calculator, logic in /retirement-calc.js) */
 .rc [hidden] { display: none !important; }
 .rc { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
@@ -41,10 +42,10 @@ CSS = '''<style>
 .rc-field:first-of-type { border-top: 0; padding-top: 0; }
 .rc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .rc-head label, .rc-lbl { font-size: 14px; color: var(--text); }
-.rc-head output { font: 600 14px var(--sans); color: var(--orange); white-space: nowrap; }
-.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--orange); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
-.rc-num:focus { border-color: var(--orange); outline: none; }
-.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--orange); height: 18px; }
+.rc-head output { font: 600 14px var(--sans); color: var(--c, var(--orange)); white-space: nowrap; }
+.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--c, var(--orange)); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
+.rc-num:focus { border-color: var(--c, var(--orange)); outline: none; }
+.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--c, var(--orange)); height: 18px; }
 .rc-hint { margin: 6px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
 .rc-hint a { color: var(--muted); }
 .rc-err { margin: 6px 0 0; font-size: 12px; color: #f0883e; }
@@ -52,8 +53,9 @@ CSS = '''<style>
 .rc-btn { background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 10px; font: 500 13px var(--sans); cursor: pointer; text-align: left; line-height: 1.3; }
 .rc-btn small { display: block; color: var(--dim); font-size: 11px; }
 .rc-btn:hover { background: var(--card-hover); }
-.rc-btn[aria-pressed=true] { background: var(--orange); border-color: var(--orange); color: #0d0902; }
-.rc-btn[aria-pressed=true] small { color: #3a2506; }
+.rc-btn:hover { border-color: color-mix(in srgb, var(--c, var(--orange)) 45%, transparent); }
+.rc-btn[aria-pressed=true] { background: var(--c, var(--orange)); border-color: var(--c, var(--orange)); color: #06201c; }
+.rc-btn[aria-pressed=true] small { color: rgba(0,0,0,.6); }
 .rc-custom { margin-top: 12px; }
 .rc-reset { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; font: inherit; cursor: pointer; }
 .rc-res { display: grid; gap: 16px; min-width: 0; }
@@ -66,13 +68,13 @@ CSS = '''<style>
 .rc-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
 .rc-box p { margin: 0; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
 .rc-box strong { display: block; margin-top: 8px; font-size: 22px; font-weight: 700; overflow-wrap: anywhere; }
-.rc-box strong.o { color: var(--orange); }
+.rc-box strong.o { color: var(--c, var(--orange)); }
 .rc-box small { display: block; margin-top: 4px; font-size: 12px; color: var(--dim); }
 .rc-cfo, .rc-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 16px; padding: 18px 20px; }
 .rc-cfo p, .rc-cta p { margin: 0; font-size: 14px; line-height: 1.5; min-width: 0; }
 .rc-cfo b { font-weight: 600; }
 .rc-link { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 16px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; }
-.rc-link:hover { background: var(--card-hover); border-color: rgba(255,255,255,.3); }
+.rc-link:hover { background: var(--card-hover); border-color: color-mix(in srgb, var(--c, var(--orange)) 50%, transparent); }
 .rc-chart canvas { display: block; width: 100%; height: 280px; }
 .rc-share { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; margin-top: 12px; }
 .rc-share input { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; color: var(--text); font: 13px var(--sans); }
@@ -157,12 +159,12 @@ def calculator(L, t, links):
     </form>
 
     <div class="rc-res">
-      <div class="rc-verdict" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
+      <div class="rc-verdict glow" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
       <div class="rc-grid" aria-live="polite">
-        <div class="rc-box"><p>{r_btc}</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
-        <div class="rc-box"><p>{r_val}</p><strong id="rc-r-val">&hellip;</strong><small>{r_val_s}</small></div>
-        <div class="rc-box"><p>{r_sp}</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
-        <div class="rc-box"><p id="rc-r-need-l">{r_need}</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
+        <div class="rc-box acc-teal glow"><p>{r_btc}</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
+        <div class="rc-box acc-blue glow"><p>{r_val}</p><strong id="rc-r-val">&hellip;</strong><small>{r_val_s}</small></div>
+        <div class="rc-box acc-yellow glow"><p>{r_sp}</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
+        <div class="rc-box acc-purple glow"><p id="rc-r-need-l">{r_need}</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
       </div>
       <div class="rc-cfo" id="rc-cfo" hidden>
         <p><b>{cfo_lbl}</b><br>{cfo_text}</p>
@@ -170,7 +172,7 @@ def calculator(L, t, links):
       </div>
       <div class="rc-panel rc-chart">
         <h2>{chart}</h2>
-        <div class="rc-legend"><span><i style="background:var(--orange)"></i>{leg_acc}</span><span><i style="background:var(--text)"></i>{leg_ret}</span></div>
+        <div class="rc-legend"><span><i style="background:var(--c,var(--orange))"></i>{leg_acc}</span><span><i style="background:var(--text)"></i>{leg_ret}</span></div>
         <canvas id="rc-chart" role="img" aria-label="{chart_aria}"></canvas>
       </div>
       <p class="rc-simp">{simp} <a href="{tax_href}">{tax_link}</a></p>

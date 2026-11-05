@@ -145,10 +145,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=20">
+<link rel="stylesheet" href="/site-v2.min.css?v=21">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <style>
-.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;color:var(--btc-orange,#f7931a);margin:12px auto 0;max-width:760px}
+/* Batch C (2026-11-05): the question in the headline gradient, inputs and the pressed scenario in the page accent (--c, teal) */
+.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;margin:12px auto 0;max-width:760px;width:fit-content;background:linear-gradient(90deg,#ffb347 0%,var(--orange) 40%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 /* RETIREMENT CALCULATOR (static calculator, logic in /retirement-calc.js) */
 .rc [hidden] { display: none !important; }
 .rc { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
@@ -158,10 +159,10 @@
 .rc-field:first-of-type { border-top: 0; padding-top: 0; }
 .rc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .rc-head label, .rc-lbl { font-size: 14px; color: var(--text); }
-.rc-head output { font: 600 14px var(--sans); color: var(--orange); white-space: nowrap; }
-.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--orange); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
-.rc-num:focus { border-color: var(--orange); outline: none; }
-.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--orange); height: 18px; }
+.rc-head output { font: 600 14px var(--sans); color: var(--c, var(--orange)); white-space: nowrap; }
+.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--c, var(--orange)); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
+.rc-num:focus { border-color: var(--c, var(--orange)); outline: none; }
+.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--c, var(--orange)); height: 18px; }
 .rc-hint { margin: 6px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
 .rc-hint a { color: var(--muted); }
 .rc-err { margin: 6px 0 0; font-size: 12px; color: #f0883e; }
@@ -169,8 +170,9 @@
 .rc-btn { background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 10px; font: 500 13px var(--sans); cursor: pointer; text-align: left; line-height: 1.3; }
 .rc-btn small { display: block; color: var(--dim); font-size: 11px; }
 .rc-btn:hover { background: var(--card-hover); }
-.rc-btn[aria-pressed=true] { background: var(--orange); border-color: var(--orange); color: #0d0902; }
-.rc-btn[aria-pressed=true] small { color: #3a2506; }
+.rc-btn:hover { border-color: color-mix(in srgb, var(--c, var(--orange)) 45%, transparent); }
+.rc-btn[aria-pressed=true] { background: var(--c, var(--orange)); border-color: var(--c, var(--orange)); color: #06201c; }
+.rc-btn[aria-pressed=true] small { color: rgba(0,0,0,.6); }
 .rc-custom { margin-top: 12px; }
 .rc-reset { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; font: inherit; cursor: pointer; }
 .rc-res { display: grid; gap: 16px; min-width: 0; }
@@ -183,13 +185,13 @@
 .rc-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
 .rc-box p { margin: 0; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
 .rc-box strong { display: block; margin-top: 8px; font-size: 22px; font-weight: 700; overflow-wrap: anywhere; }
-.rc-box strong.o { color: var(--orange); }
+.rc-box strong.o { color: var(--c, var(--orange)); }
 .rc-box small { display: block; margin-top: 4px; font-size: 12px; color: var(--dim); }
 .rc-cfo, .rc-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 16px; padding: 18px 20px; }
 .rc-cfo p, .rc-cta p { margin: 0; font-size: 14px; line-height: 1.5; min-width: 0; }
 .rc-cfo b { font-weight: 600; }
 .rc-link { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 16px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; }
-.rc-link:hover { background: var(--card-hover); border-color: rgba(255,255,255,.3); }
+.rc-link:hover { background: var(--card-hover); border-color: color-mix(in srgb, var(--c, var(--orange)) 50%, transparent); }
 .rc-chart canvas { display: block; width: 100%; height: 280px; }
 .rc-share { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; margin-top: 12px; }
 .rc-share input { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; color: var(--text); font: 13px var(--sans); }
@@ -226,7 +228,7 @@
       </div>
       <div class="nav-group" id="ng-tools">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Tools</button>
-        <div class="nav-drop" id="nd-tools"><a href="/verdict.html" id="navVerdict"><span class="nd-t">Verdict <span class="nav-badge cfo-badge">Free</span></span><span class="nd-d">Rate your decision, free</span></a><a href="/cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO</span><span class="nd-d">Fees, loans and tax over time · planned</span></a><a href="/concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partners that match your answers</span></a><a href="/bitcoin-fee-index/"><span class="nd-t">Fee Index</span><span class="nd-d">Total cost of buying, compared</span></a><a href="/stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plan regular buys, compare fees</span></a><a href="/loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Sell or borrow against your Bitcoin</span></a><a href="/tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Country rules and an inheritance check</span></a><a href="/retirement-calculator.html" aria-current="page"><span class="nd-t">Retirement Calculator</span><span class="nd-d">How much Bitcoin for retirement</span></a></div>
+        <div class="nav-drop" id="nd-tools"><a href="/verdict.html" id="navVerdict"><span class="nd-t">Verdict <span class="nav-badge">Free</span></span><span class="nd-d">Rate your decision, free</span></a><a href="/concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Partners that match your answers</span></a><a href="/bitcoin-fee-index/"><span class="nd-t">Fee Index</span><span class="nd-d">Total cost of buying, compared</span></a><a href="/stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">Plan regular buys, compare fees</span></a><a href="/loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Sell or borrow against your Bitcoin</span></a><a href="/tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Country rules and an inheritance check</span></a><a href="/retirement-calculator.html" aria-current="page"><span class="nd-t">Retirement Calculator</span><span class="nd-d">How much Bitcoin for retirement</span></a></div>
       </div>
       <div class="nav-group" id="ng-eco">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Ecosystem</button>
@@ -311,12 +313,12 @@
     </form>
 
     <div class="rc-res">
-      <div class="rc-verdict" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
+      <div class="rc-verdict glow" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
       <div class="rc-grid" aria-live="polite">
-        <div class="rc-box"><p>BTC at retirement</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
-        <div class="rc-box"><p>Value at retirement</p><strong id="rc-r-val">&hellip;</strong><small>projected, nominal euros</small></div>
-        <div class="rc-box"><p>First-year spending</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
-        <div class="rc-box"><p id="rc-r-need-l">BTC needed today to retire at 50 without more savings</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
+        <div class="rc-box acc-teal glow"><p>BTC at retirement</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
+        <div class="rc-box acc-blue glow"><p>Value at retirement</p><strong id="rc-r-val">&hellip;</strong><small>projected, nominal euros</small></div>
+        <div class="rc-box acc-yellow glow"><p>First-year spending</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
+        <div class="rc-box acc-purple glow"><p id="rc-r-need-l">BTC needed today to retire at 50 without more savings</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
       </div>
       <div class="rc-cfo" id="rc-cfo" hidden>
         <p><b>Virtuse CFO</b><br>Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: €9/month or €90/year.</p>
@@ -324,7 +326,7 @@
       </div>
       <div class="rc-panel rc-chart">
         <h2>Portfolio projection</h2>
-        <div class="rc-legend"><span><i style="background:var(--orange)"></i>Saving years</span><span><i style="background:var(--text)"></i>Retirement withdrawals</span></div>
+        <div class="rc-legend"><span><i style="background:var(--c,var(--orange))"></i>Saving years</span><span><i style="background:var(--text)"></i>Retirement withdrawals</span></div>
         <canvas id="rc-chart" role="img" aria-label="Chart of the projected value of your Bitcoin by age"></canvas>
       </div>
       <p class="rc-simp">Simplified model: constant growth with no volatility or bear markets. No tax on sales. Spending is withdrawn once a year at the start of each year. Figures are nominal. <a href="/bitcoin-tax/">Bitcoin tax guides</a></p>
@@ -380,7 +382,7 @@
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2></div></div>
     <div class="brief brief-slim">
       <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261019.jpg" alt="Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue" loading="lazy">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/11/virtuse-brief-2026-11-02-hero-20261102.jpg" alt="Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Latest Brief</span>
           <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote.</h3>
@@ -405,6 +407,13 @@
         <div class="fine">Unsubscribe anytime. Not advice. <a href="/news.html?utm_source=brief&amp;utm_medium=retirement_brief" style="color:var(--muted)">All issues and the blog →</a></div>
       </div>
     </div>
+    <!-- brief-d-cta:start -->
+    <aside class="brief-d-cta" aria-label="Virtuse Brief" style="margin:8px 0 4px;padding:16px 0 0;border-top:1px solid rgba(255,255,255,.08)">
+      <p style="margin:0 0 6px;font-weight:700">Get the Brief</p>
+      <p style="margin:0 0 14px;color:var(--muted)">Bitcoin-only, every Monday. No tokens. No PR.</p>
+      <a class="btn btn-ghost" href="/news.html?utm_source=retirement&amp;utm_medium=cta&amp;utm_campaign=brief_d">Get the Brief</a>
+    </aside>
+    <!-- brief-d-cta:end -->
   </section>
 
   <!-- 5. RELATED TOOLS -->
@@ -417,7 +426,7 @@
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="/buy-bitcoin.html">Buy Bitcoin</a><a href="/secure.html">Custody</a><a href="/mining.html">Mining</a><a href="/lending.html">Loans</a><a href="/treasury.html">Treasury</a><a href="/tax.html">Tax</a><a href="/bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="/about.html">About Us</a><a href="/faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="/verdict.html">Verdict <span class="soon cfo-foot-badge">Free</span></a><a href="/cfo.html">Virtuse CFO</a><a href="/concierge.html">Partner Finder</a><a href="/stacking.html">Stacking Strategist</a><a href="/loan.html">Loan &amp; Liquidity Copilot</a><a href="/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="/news.html">Virtuse Brief</a><a href="/blog.html">Blog</a><a href="/bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Ecosystem</h4><a href="/ecosystem/">Bitcoin Ecosystem</a><a href="/ecosystem/what-is-bitcoin/">What is Bitcoin?</a><a href="/ecosystem/books/">Books</a><a href="/ecosystem/podcasts/">Podcasts</a><a href="/ecosystem/videos/">Videos</a><a href="/ecosystem/conferences/">Conferences</a><a href="/ecosystem/privacy/">Bitcoin Privacy</a><a href="/ecosystem/spend-bitcoin/">Spend Bitcoin</a><a href="/ecosystem/store-tools/">Store Tools</a><a href="/ecosystem/dev-tools/">Dev Tools</a><a href="/ecosystem/jobs/">Bitcoin Jobs</a><a href="/ecosystem/peers/">Bitcoin Peers</a><a href="/ecosystem/promote/">Promote</a></div><div class="footer-col"><h4>Legal</h4><a href="/terms-and-conditions.html">Terms &amp; Conditions</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/aml-compliance.html">AML &amp; Compliance</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Services</h4><a href="/buy-bitcoin.html">Buy Bitcoin</a><a href="/secure.html">Custody</a><a href="/mining.html">Mining</a><a href="/lending.html">Loans</a><a href="/treasury.html">Treasury</a><a href="/tax.html">Tax</a><a href="/bots.html">Bots</a></div><div class="footer-col"><h4>Company</h4><a href="/about.html">About Us</a><a href="/faq.html">FAQ</a><a href="https://www.linkedin.com/company/virtuse-exchange/?utm_source=virtuse&amp;utm_medium=footer&amp;utm_campaign=linkedin_follow" rel="noopener noreferrer" target="_blank">Follow Virtuse</a></div><div class="footer-col"><h4>Tools</h4><a href="/verdict.html">Verdict <span class="soon foot-badge">Free</span></a><a href="/concierge.html">Partner Finder</a><a href="/stacking.html">Stacking Strategist</a><a href="/loan.html">Loan &amp; Liquidity Copilot</a><a href="/tax-agent.html">Tax &amp; Inheritance Agent</a><a href="/retirement-calculator.html">Retirement Calculator</a></div><div class="footer-col"><h4>Guides</h4><a href="/news.html">Virtuse Brief</a><a href="/blog.html">Blog</a><a href="/bitcoin-data.html">Bitcoin Data</a><a href="/bitcoin-tax/">Bitcoin tax</a><a href="/bitcoin-fee-index/">Fee Index</a><a href="/bitcoin-dca-calculator/">DCA calculator</a><a href="/sell-vs-borrow-bitcoin/">Sell vs borrow</a><a href="/bitcoin-inheritance/">Inheritance</a></div><div class="footer-col"><h4>Ecosystem</h4><a href="/ecosystem/">Bitcoin Ecosystem</a><a href="/ecosystem/what-is-bitcoin/">What is Bitcoin?</a><a href="/ecosystem/books/">Books</a><a href="/ecosystem/podcasts/">Podcasts</a><a href="/ecosystem/videos/">Videos</a><a href="/ecosystem/conferences/">Conferences</a><a href="/ecosystem/privacy/">Bitcoin Privacy</a><a href="/ecosystem/spend-bitcoin/">Spend Bitcoin</a><a href="/ecosystem/store-tools/">Store Tools</a><a href="/ecosystem/dev-tools/">Dev Tools</a><a href="/ecosystem/jobs/">Bitcoin Jobs</a><a href="/ecosystem/peers/">Bitcoin Peers</a><a href="/ecosystem/promote/">Promote</a></div><div class="footer-col"><h4>Legal</h4><a href="/terms-and-conditions.html">Terms &amp; Conditions</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/aml-compliance.html">AML &amp; Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. All rights reserved.</p>
@@ -434,8 +443,8 @@
 </main>
 
 <script type="application/json" id="rc-i18n">{"c_plan": "Your plan", "c_age": "Current age", "c_ret_age": "Retirement age", "c_life": "Life expectancy", "c_years": "{0} years", "c_stack": "Current Bitcoin stack (BTC)", "c_lump": "Optional cash to add (€)", "c_lump_note": "Converted to BTC at today's price and added to your stack.", "c_dca": "Monthly savings into Bitcoin (€)", "c_spend": "Yearly spending in retirement (today's €)", "c_growth": "Bitcoin price growth per year", "c_conservative": "Conservative", "c_base": "Base", "c_optimistic": "Optimistic", "c_custom": "Custom", "c_hypothetical": "(hypothetical)", "c_custom_label": "Your growth rate per year (0 to 30%)", "c_inflation": "Inflation per year", "c_inflation_src": "Default 2%: ECB price stability target, checked 13 Oct 2026", "c_price": "Bitcoin price today (€)", "c_price_loading": "Loading the live price…", "c_price_live": "Price as of {0}", "c_price_fallback": "Fallback price as of 13 Oct 2026", "c_price_manual": "Your own price is used.", "c_price_reset": "Use the live price", "c_per_year": "{0}/yr", "c_err_number": "Enter a number, for example 250k or 2.5M.", "c_err_max": "Maximum is {0}. We used the maximum.", "c_err_min": "Minimum is {0}. We used the minimum.", "c_ok_title": "On track to retire at {0}", "c_ok_sub": "Your Bitcoin covers your spending until age {0} in this scenario.", "c_bad_title": "Your stack runs out at age {0}", "c_bad_sub": "Save more, retire later or spend less to make the plan last until age {0}.", "c_res_btc": "BTC at retirement", "c_res_btc_sub": "after {0} years of stacking", "c_res_btc_sub_now": "you retire now, no more stacking", "c_res_value": "Value at retirement", "c_res_value_sub": "projected, nominal euros", "c_res_spend": "First-year spending", "c_res_spend_sub": "your spending at age {0}, after inflation", "c_res_needed": "BTC needed today to retire at {0} without more savings", "c_res_needed_sub": "{0} at today's price", "c_res_needed_more": "more than {0}", "c_chart": "Portfolio projection", "c_chart_aria": "Chart of the projected value of your Bitcoin by age", "c_legend_acc": "Saving years", "c_legend_ret": "Retirement withdrawals", "c_age_axis": "Age", "c_simplify": "Simplified model: constant growth with no volatility or bear markets. No tax on sales. Spending is withdrawn once a year at the start of each year. Figures are nominal.", "c_tax_link": "Bitcoin tax guides", "c_cfo_label": "Virtuse CFO", "c_cfo_text": "Verdict is free; the fee audit comes with Virtuse CFO. Paid plans, once they open: €9/month or €90/year.", "c_cfo_link": "Get notified →", "c_cta_text": "Partner Finder shows the buy partners that fit your criteria.", "c_cta": "Start stacking →", "c_share": "Copy link to this result", "c_share_done": "Link copied", "c_share_field": "Link to this result"}</script>
-<script src="/retirement-calc.js?v=3" defer></script>
-<script src="/site-v2.js?v=13" defer></script>
+<script src="/retirement-calc.js?v=4" defer></script>
+<script src="/site-v2.js?v=14" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

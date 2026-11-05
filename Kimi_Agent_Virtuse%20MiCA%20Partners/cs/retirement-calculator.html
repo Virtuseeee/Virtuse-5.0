@@ -145,11 +145,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=20">
+<link rel="stylesheet" href="/site-v2.min.css?v=21">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Otevřít menu", "closeMenu": "Zavřít menu", "latestBrief": "Nejnovější Brief · ", "min": " min", "coverImage": "Titulní obrázek: ", "badEmail": "Zadejte platnou e-mailovou adresu.", "sending": "Odesílání...", "subscribed": "Jste přihlášeni. Brief vychází v pondělí.", "error": "Něco se pokazilo. Zkuste to prosím znovu.", "netError": "Chyba sítě. Zkuste to prosím znovu.", "briefLangNote": " (v angličtině)"};</script>
 <style>
-.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;color:var(--btc-orange,#f7931a);margin:12px auto 0;max-width:760px}
+/* Batch C (2026-11-05): the question in the headline gradient, inputs and the pressed scenario in the page accent (--c, teal) */
+.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;margin:12px auto 0;max-width:760px;width:fit-content;background:linear-gradient(90deg,#ffb347 0%,var(--orange) 40%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 /* RETIREMENT CALCULATOR (static calculator, logic in /retirement-calc.js) */
 .rc [hidden] { display: none !important; }
 .rc { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
@@ -159,10 +160,10 @@
 .rc-field:first-of-type { border-top: 0; padding-top: 0; }
 .rc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .rc-head label, .rc-lbl { font-size: 14px; color: var(--text); }
-.rc-head output { font: 600 14px var(--sans); color: var(--orange); white-space: nowrap; }
-.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--orange); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
-.rc-num:focus { border-color: var(--orange); outline: none; }
-.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--orange); height: 18px; }
+.rc-head output { font: 600 14px var(--sans); color: var(--c, var(--orange)); white-space: nowrap; }
+.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--c, var(--orange)); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
+.rc-num:focus { border-color: var(--c, var(--orange)); outline: none; }
+.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--c, var(--orange)); height: 18px; }
 .rc-hint { margin: 6px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
 .rc-hint a { color: var(--muted); }
 .rc-err { margin: 6px 0 0; font-size: 12px; color: #f0883e; }
@@ -170,8 +171,9 @@
 .rc-btn { background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 10px; font: 500 13px var(--sans); cursor: pointer; text-align: left; line-height: 1.3; }
 .rc-btn small { display: block; color: var(--dim); font-size: 11px; }
 .rc-btn:hover { background: var(--card-hover); }
-.rc-btn[aria-pressed=true] { background: var(--orange); border-color: var(--orange); color: #0d0902; }
-.rc-btn[aria-pressed=true] small { color: #3a2506; }
+.rc-btn:hover { border-color: color-mix(in srgb, var(--c, var(--orange)) 45%, transparent); }
+.rc-btn[aria-pressed=true] { background: var(--c, var(--orange)); border-color: var(--c, var(--orange)); color: #06201c; }
+.rc-btn[aria-pressed=true] small { color: rgba(0,0,0,.6); }
 .rc-custom { margin-top: 12px; }
 .rc-reset { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; font: inherit; cursor: pointer; }
 .rc-res { display: grid; gap: 16px; min-width: 0; }
@@ -184,13 +186,13 @@
 .rc-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
 .rc-box p { margin: 0; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
 .rc-box strong { display: block; margin-top: 8px; font-size: 22px; font-weight: 700; overflow-wrap: anywhere; }
-.rc-box strong.o { color: var(--orange); }
+.rc-box strong.o { color: var(--c, var(--orange)); }
 .rc-box small { display: block; margin-top: 4px; font-size: 12px; color: var(--dim); }
 .rc-cfo, .rc-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 16px; padding: 18px 20px; }
 .rc-cfo p, .rc-cta p { margin: 0; font-size: 14px; line-height: 1.5; min-width: 0; }
 .rc-cfo b { font-weight: 600; }
 .rc-link { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 16px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; }
-.rc-link:hover { background: var(--card-hover); border-color: rgba(255,255,255,.3); }
+.rc-link:hover { background: var(--card-hover); border-color: color-mix(in srgb, var(--c, var(--orange)) 50%, transparent); }
 .rc-chart canvas { display: block; width: 100%; height: 280px; }
 .rc-share { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; margin-top: 12px; }
 .rc-share input { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; color: var(--text); font: 13px var(--sans); }
@@ -312,12 +314,12 @@
     </form>
 
     <div class="rc-res">
-      <div class="rc-verdict" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
+      <div class="rc-verdict glow" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
       <div class="rc-grid" aria-live="polite">
-        <div class="rc-box"><p>BTC při odchodu do důchodu</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
-        <div class="rc-box"><p>Hodnota při odchodu do důchodu</p><strong id="rc-r-val">&hellip;</strong><small>projekce, nominální eura</small></div>
-        <div class="rc-box"><p>Výdaje v prvním roce</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
-        <div class="rc-box"><p id="rc-r-need-l">BTC potřebné dnes na důchod v 50 letech bez dalšího spoření</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
+        <div class="rc-box acc-teal glow"><p>BTC při odchodu do důchodu</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
+        <div class="rc-box acc-blue glow"><p>Hodnota při odchodu do důchodu</p><strong id="rc-r-val">&hellip;</strong><small>projekce, nominální eura</small></div>
+        <div class="rc-box acc-yellow glow"><p>Výdaje v prvním roce</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
+        <div class="rc-box acc-purple glow"><p id="rc-r-need-l">BTC potřebné dnes na důchod v 50 letech bez dalšího spoření</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
       </div>
       <div class="rc-cfo" id="rc-cfo" hidden>
         <p><b>Virtuse CFO</b><br>Verdict je zdarma, audit poplatků přijde s Virtuse CFO. Placené plány po spuštění: 9 €/měsíc nebo 90 €/rok.</p>
@@ -325,7 +327,7 @@
       </div>
       <div class="rc-panel rc-chart">
         <h2>Projekce portfolia</h2>
-        <div class="rc-legend"><span><i style="background:var(--orange)"></i>Roky spoření</span><span><i style="background:var(--text)"></i>Výběry v důchodu</span></div>
+        <div class="rc-legend"><span><i style="background:var(--c,var(--orange))"></i>Roky spoření</span><span><i style="background:var(--text)"></i>Výběry v důchodu</span></div>
         <canvas id="rc-chart" role="img" aria-label="Graf projekce hodnoty vašeho Bitcoinu podle věku"></canvas>
       </div>
       <p class="rc-simp">Zjednodušený model: stálý růst bez volatility a medvědích trhů. Bez daně z prodeje. Výdaje se vybírají jednou ročně na začátku roku. Částky jsou nominální. <a href="/cs/bitcoin-dane/">Daně z Bitcoinu</a></p>
@@ -381,7 +383,7 @@
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Jen Bitcoin, každé pondělí.</span></h2></div></div>
     <div class="brief brief-slim">
       <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261019.jpg" alt="Kurýr Virtuse Brief na skútru doručuje vydání z 5. 10. 2026" loading="lazy">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/11/virtuse-brief-2026-11-02-hero-20261102.jpg" alt="Kurýr Virtuse Brief na skútru doručuje vydání z 5. 10. 2026" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Nejnovější Brief</span>
           <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (v angličtině)</h3>
@@ -435,8 +437,8 @@
 </main>
 
 <script type="application/json" id="rc-i18n">{"c_plan": "Váš plán", "c_age": "Současný věk", "c_ret_age": "Věk odchodu do důchodu", "c_life": "Očekávaný věk dožití", "c_years": "{0} let", "c_stack": "Současný Bitcoin (BTC)", "c_lump": "Volitelná hotovost navíc (€)", "c_lump_note": "Přepočte se na BTC podle dnešní ceny a přičte k vašemu Bitcoinu.", "c_dca": "Měsíční úspory do Bitcoinu (€)", "c_spend": "Roční výdaje v důchodu (v dnešních €)", "c_growth": "Roční růst ceny Bitcoinu", "c_conservative": "Konzervativní", "c_base": "Základní", "c_optimistic": "Optimistický", "c_custom": "Vlastní", "c_hypothetical": "(hypotetický)", "c_custom_label": "Váš roční růst (0 až 30 %)", "c_inflation": "Roční inflace", "c_inflation_src": "Výchozí 2 %: cíl cenové stability ECB, ověřeno 13. 10. 2026", "c_price": "Dnešní cena Bitcoinu (€)", "c_price_loading": "Načítá se aktuální cena...", "c_price_live": "Cena k {0}", "c_price_fallback": "Záložní cena k 13. 10. 2026", "c_price_manual": "Používá se vaše vlastní cena.", "c_price_reset": "Použít aktuální cenu", "c_per_year": "{0}/rok", "c_err_number": "Zadejte číslo, například 250k nebo 2,5M.", "c_err_max": "Maximum je {0}. Použili jsme maximum.", "c_err_min": "Minimum je {0}. Použili jsme minimum.", "c_ok_title": "Do důchodu můžete jít v {0} letech", "c_ok_sub": "V tomto scénáři váš Bitcoin pokryje výdaje do věku {0} let.", "c_bad_title": "Bitcoin vám dojde ve věku {0} let", "c_bad_sub": "Spořte víc, jděte do důchodu později nebo utrácejte méně, aby plán vydržel do věku {0} let.", "c_res_btc": "BTC při odchodu do důchodu", "c_res_btc_sub": "po {0} letech nakupování", "c_res_btc_sub_now": "do důchodu jdete hned, bez dalších nákupů", "c_res_value": "Hodnota při odchodu do důchodu", "c_res_value_sub": "projekce, nominální eura", "c_res_spend": "Výdaje v prvním roce", "c_res_spend_sub": "vaše výdaje ve věku {0} let po inflaci", "c_res_needed": "BTC potřebné dnes na důchod v {0} letech bez dalšího spoření", "c_res_needed_sub": "{0} při dnešní ceně", "c_res_needed_more": "více než {0}", "c_chart": "Projekce portfolia", "c_chart_aria": "Graf projekce hodnoty vašeho Bitcoinu podle věku", "c_legend_acc": "Roky spoření", "c_legend_ret": "Výběry v důchodu", "c_age_axis": "Věk", "c_simplify": "Zjednodušený model: stálý růst bez volatility a medvědích trhů. Bez daně z prodeje. Výdaje se vybírají jednou ročně na začátku roku. Částky jsou nominální.", "c_tax_link": "Daně z Bitcoinu", "c_cfo_label": "Virtuse CFO", "c_cfo_text": "Verdict je zdarma, audit poplatků přijde s Virtuse CFO. Placené plány po spuštění: 9 €/měsíc nebo 90 €/rok.", "c_cfo_link": "Dejte mi vědět →", "c_cta_text": "Partner Finder ukáže partnery pro nákup, kteří odpovídají vašim kritériím.", "c_cta": "Začněte nakupovat →", "c_share": "Kopírovat odkaz na výsledek", "c_share_done": "Odkaz zkopírován", "c_share_field": "Odkaz na výsledek"}</script>
-<script src="/retirement-calc.js?v=3" defer></script>
-<script src="/site-v2.js?v=13" defer></script>
+<script src="/retirement-calc.js?v=4" defer></script>
+<script src="/site-v2.js?v=14" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

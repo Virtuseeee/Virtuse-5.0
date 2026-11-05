@@ -145,11 +145,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=20">
+<link rel="stylesheet" href="/site-v2.min.css?v=21">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Открыть меню", "closeMenu": "Закрыть меню", "latestBrief": "Последний Brief · ", "min": " мин", "coverImage": "Обложка: ", "badEmail": "Введите действительный адрес электронной почты.", "sending": "Отправка...", "subscribed": "Готово. Brief выходит в понедельник.", "error": "Что-то пошло не так. Попробуйте ещё раз.", "netError": "Ошибка сети. Попробуйте ещё раз.", "briefLangNote": " (на английском)"};</script>
 <style>
-.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;color:var(--btc-orange,#f7931a);margin:12px auto 0;max-width:760px}
+/* Batch C (2026-11-05): the question in the headline gradient, inputs and the pressed scenario in the page accent (--c, teal) */
+.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;margin:12px auto 0;max-width:760px;width:fit-content;background:linear-gradient(90deg,#ffb347 0%,var(--orange) 40%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 /* RETIREMENT CALCULATOR (static calculator, logic in /retirement-calc.js) */
 .rc [hidden] { display: none !important; }
 .rc { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
@@ -159,10 +160,10 @@
 .rc-field:first-of-type { border-top: 0; padding-top: 0; }
 .rc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .rc-head label, .rc-lbl { font-size: 14px; color: var(--text); }
-.rc-head output { font: 600 14px var(--sans); color: var(--orange); white-space: nowrap; }
-.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--orange); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
-.rc-num:focus { border-color: var(--orange); outline: none; }
-.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--orange); height: 18px; }
+.rc-head output { font: 600 14px var(--sans); color: var(--c, var(--orange)); white-space: nowrap; }
+.rc-num { width: 132px; flex: none; background: var(--inset); color: var(--c, var(--orange)); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
+.rc-num:focus { border-color: var(--c, var(--orange)); outline: none; }
+.rc input[type=range] { width: 100%; margin: 12px 0 2px; accent-color: var(--c, var(--orange)); height: 18px; }
 .rc-hint { margin: 6px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
 .rc-hint a { color: var(--muted); }
 .rc-err { margin: 6px 0 0; font-size: 12px; color: #f0883e; }
@@ -170,8 +171,9 @@
 .rc-btn { background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 10px; font: 500 13px var(--sans); cursor: pointer; text-align: left; line-height: 1.3; }
 .rc-btn small { display: block; color: var(--dim); font-size: 11px; }
 .rc-btn:hover { background: var(--card-hover); }
-.rc-btn[aria-pressed=true] { background: var(--orange); border-color: var(--orange); color: #0d0902; }
-.rc-btn[aria-pressed=true] small { color: #3a2506; }
+.rc-btn:hover { border-color: color-mix(in srgb, var(--c, var(--orange)) 45%, transparent); }
+.rc-btn[aria-pressed=true] { background: var(--c, var(--orange)); border-color: var(--c, var(--orange)); color: #06201c; }
+.rc-btn[aria-pressed=true] small { color: rgba(0,0,0,.6); }
 .rc-custom { margin-top: 12px; }
 .rc-reset { background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; font: inherit; cursor: pointer; }
 .rc-res { display: grid; gap: 16px; min-width: 0; }
@@ -184,13 +186,13 @@
 .rc-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
 .rc-box p { margin: 0; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
 .rc-box strong { display: block; margin-top: 8px; font-size: 22px; font-weight: 700; overflow-wrap: anywhere; }
-.rc-box strong.o { color: var(--orange); }
+.rc-box strong.o { color: var(--c, var(--orange)); }
 .rc-box small { display: block; margin-top: 4px; font-size: 12px; color: var(--dim); }
 .rc-cfo, .rc-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 16px; padding: 18px 20px; }
 .rc-cfo p, .rc-cta p { margin: 0; font-size: 14px; line-height: 1.5; min-width: 0; }
 .rc-cfo b { font-weight: 600; }
 .rc-link { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 16px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; }
-.rc-link:hover { background: var(--card-hover); border-color: rgba(255,255,255,.3); }
+.rc-link:hover { background: var(--card-hover); border-color: color-mix(in srgb, var(--c, var(--orange)) 50%, transparent); }
 .rc-chart canvas { display: block; width: 100%; height: 280px; }
 .rc-share { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; margin-top: 12px; }
 .rc-share input { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; color: var(--text); font: 13px var(--sans); }
@@ -312,12 +314,12 @@
     </form>
 
     <div class="rc-res">
-      <div class="rc-verdict" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
+      <div class="rc-verdict glow" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
       <div class="rc-grid" aria-live="polite">
-        <div class="rc-box"><p>BTC к выходу на пенсию</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
-        <div class="rc-box"><p>Стоимость к выходу на пенсию</p><strong id="rc-r-val">&hellip;</strong><small>прогноз, номинальные евро</small></div>
-        <div class="rc-box"><p>Расходы первого года</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
-        <div class="rc-box"><p id="rc-r-need-l">BTC, нужные сегодня для пенсии в возрасте 50 без дальнейших сбережений</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
+        <div class="rc-box acc-teal glow"><p>BTC к выходу на пенсию</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
+        <div class="rc-box acc-blue glow"><p>Стоимость к выходу на пенсию</p><strong id="rc-r-val">&hellip;</strong><small>прогноз, номинальные евро</small></div>
+        <div class="rc-box acc-yellow glow"><p>Расходы первого года</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
+        <div class="rc-box acc-purple glow"><p id="rc-r-need-l">BTC, нужные сегодня для пенсии в возрасте 50 без дальнейших сбережений</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
       </div>
       <div class="rc-cfo" id="rc-cfo" hidden>
         <p><b>Virtuse CFO</b><br>Verdict бесплатный; аудит комиссий появится в Virtuse CFO. Платные планы после запуска: 9 €/мес. или 90 €/год.</p>
@@ -325,7 +327,7 @@
       </div>
       <div class="rc-panel rc-chart">
         <h2>Прогноз портфеля</h2>
-        <div class="rc-legend"><span><i style="background:var(--orange)"></i>Годы накопления</span><span><i style="background:var(--text)"></i>Снятие на пенсии</span></div>
+        <div class="rc-legend"><span><i style="background:var(--c,var(--orange))"></i>Годы накопления</span><span><i style="background:var(--text)"></i>Снятие на пенсии</span></div>
         <canvas id="rc-chart" role="img" aria-label="График прогнозируемой стоимости вашего Биткоина по возрасту"></canvas>
       </div>
       <p class="rc-simp">Упрощённая модель: постоянный рост без волатильности и медвежьих рынков. Без налога на продажу. Расходы списываются раз в год, в начале каждого года. Суммы номинальные. <a href="/ru/bitcoin-nalogi/">Налоговые справочники по Биткоину</a></p>
@@ -381,7 +383,7 @@
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Только Биткоин, каждый понедельник.</span></h2></div></div>
     <div class="brief brief-slim">
       <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261019.jpg" alt="Курьер Virtuse Brief на скутере доставляет выпуск от 5 октября 2026" loading="lazy">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/11/virtuse-brief-2026-11-02-hero-20261102.jpg" alt="Курьер Virtuse Brief на скутере доставляет выпуск от 5 октября 2026" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Последний Brief</span>
           <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (на английском)</h3>
@@ -435,8 +437,8 @@
 </main>
 
 <script type="application/json" id="rc-i18n">{"c_plan": "Ваш план", "c_age": "Текущий возраст", "c_ret_age": "Возраст выхода на пенсию", "c_life": "Ожидаемая продолжительность жизни", "c_years": "{0} г.", "c_stack": "Текущий запас Биткоина (BTC)", "c_lump": "Дополнительные наличные, необязательно (€)", "c_lump_note": "Конвертируются в BTC по сегодняшней цене и добавляются к вашему запасу.", "c_dca": "Ежемесячные сбережения в Биткоине (€)", "c_spend": "Годовые расходы на пенсии (в сегодняшних €)", "c_growth": "Рост цены Биткоина в год", "c_conservative": "Консервативный", "c_base": "Базовый", "c_optimistic": "Оптимистичный", "c_custom": "Свой", "c_hypothetical": "(гипотетический)", "c_custom_label": "Ваша ставка роста в год (от 0 до 30%)", "c_inflation": "Инфляция в год", "c_inflation_src": "По умолчанию 2%: цель ЕЦБ по ценовой стабильности, проверено 13 октября 2026", "c_price": "Цена Биткоина сегодня (€)", "c_price_loading": "Загрузка актуальной цены…", "c_price_live": "Цена на {0}", "c_price_fallback": "Резервная цена на 13 октября 2026", "c_price_manual": "Используется ваша собственная цена.", "c_price_reset": "Использовать актуальную цену", "c_per_year": "{0}/год", "c_err_number": "Введите число, например 250k или 2.5M.", "c_err_max": "Максимум: {0}. Мы использовали максимум.", "c_err_min": "Минимум: {0}. Мы использовали минимум.", "c_ok_title": "Вы на пути к пенсии в возрасте {0}", "c_ok_sub": "В этом сценарии ваш Биткоин покрывает расходы до возраста {0}.", "c_bad_title": "Ваш запас закончится в возрасте {0}", "c_bad_sub": "Сберегайте больше, выйдите на пенсию позже или тратьте меньше, чтобы план продержался до возраста {0}.", "c_res_btc": "BTC к выходу на пенсию", "c_res_btc_sub": "после накопления в течение {0} г.", "c_res_btc_sub_now": "вы выходите на пенсию сейчас, без дальнейшего накопления", "c_res_value": "Стоимость к выходу на пенсию", "c_res_value_sub": "прогноз, номинальные евро", "c_res_spend": "Расходы первого года", "c_res_spend_sub": "ваши расходы в возрасте {0} с учётом инфляции", "c_res_needed": "BTC, нужные сегодня для пенсии в возрасте {0} без дальнейших сбережений", "c_res_needed_sub": "{0} по сегодняшней цене", "c_res_needed_more": "более {0}", "c_chart": "Прогноз портфеля", "c_chart_aria": "График прогнозируемой стоимости вашего Биткоина по возрасту", "c_legend_acc": "Годы накопления", "c_legend_ret": "Снятие на пенсии", "c_age_axis": "Возраст", "c_simplify": "Упрощённая модель: постоянный рост без волатильности и медвежьих рынков. Без налога на продажу. Расходы списываются раз в год, в начале каждого года. Суммы номинальные.", "c_tax_link": "Налоговые справочники по Биткоину", "c_cfo_label": "Virtuse CFO", "c_cfo_text": "Verdict бесплатный; аудит комиссий появится в Virtuse CFO. Платные планы после запуска: 9 €/мес. или 90 €/год.", "c_cfo_link": "Сообщить мне →", "c_cta_text": "Partner Finder показывает партнёров для покупки, которые подходят под ваши критерии.", "c_cta": "Начать накопление →", "c_share": "Скопировать ссылку на результат", "c_share_done": "Ссылка скопирована", "c_share_field": "Ссылка на этот результат"}</script>
-<script src="/retirement-calc.js?v=3" defer></script>
-<script src="/site-v2.js?v=13" defer></script>
+<script src="/retirement-calc.js?v=4" defer></script>
+<script src="/site-v2.js?v=14" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
