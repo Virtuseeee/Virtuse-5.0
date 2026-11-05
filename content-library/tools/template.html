@@ -1,0 +1,343 @@
+<title>Knižnica článkov Rasa Vasilisina</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one sticky toolbar (tabs + filters), one wide data table, detail drawer under the row. Reads like a newsroom index, not a dashboard. */
+:root{
+  --bg:#f7f6f3; --panel:#ffffff; --ink:#17181c; --muted:#6b6e76; --line:#e2e0da; --line-strong:#c9c6bd;
+  --accent:#d97b12; --accent-ink:#8a4d05; --accent-soft:#fbead6;
+  --chip:#efede7; --ok:#2f7d4f; --warn:#b4681a; --font:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1012; --panel:#17181b; --ink:#e8e6e1; --muted:#9a9ca4; --line:#2a2c31; --line-strong:#3d4047;
+  --accent:#f0a040; --accent-ink:#f7c27a; --accent-soft:#2b2115; --chip:#222428; --ok:#6fcf97; --warn:#e9a858; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1012; --panel:#17181b; --ink:#e8e6e1; --muted:#9a9ca4; --line:#2a2c31; --line-strong:#3d4047;
+  --accent:#f0a040; --accent-ink:#f7c27a; --accent-soft:#2b2115; --chip:#222428; --ok:#6fcf97; --warn:#e9a858; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.45;margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:var(--accent-ink);text-decoration:none}a:hover{text-decoration:underline}
+h1{font-size:26px;font-weight:700;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2{font-size:18px;font-weight:600;margin:0 0 8px}
+.wrap{max-width:1500px;margin:0 auto}
+header{padding:22px 0 12px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between}
+header p{margin:4px 0 0;color:var(--muted);max-width:70ch}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0 14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.tile b{display:block;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tile span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:2px;overflow-x:auto;padding-top:4px}
+nav.tabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);font:inherit;font-weight:500;padding:10px 12px;cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs button:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.view{display:none;padding-top:14px}.view.on{display:block}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.filters input[type=search],.filters select,.pipe input,.pipe select,.edit input,.edit select,.edit textarea,.pipe textarea{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line-strong);border-radius:6px;padding:7px 9px;min-width:0}
+.filters input[type=search]{flex:1 1 220px}
+.filters .count{color:var(--muted);font-variant-numeric:tabular-nums;margin-left:auto}
+.btn{font:inherit;font-weight:500;background:var(--panel);color:var(--ink);border:1px solid var(--line-strong);border-radius:6px;padding:7px 11px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#1a1205}
+.btn:disabled{opacity:.5;cursor:default}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:900px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--panel);cursor:pointer;user-select:none;white-space:nowrap}
+th .dir{color:var(--accent)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:12.5px}
+td.date{font-family:var(--mono);font-size:12.5px;white-space:nowrap;color:var(--muted)}
+tr.row{cursor:pointer}tr.row:hover td{background:var(--chip)}
+tr.row.open td{background:var(--accent-soft)}
+.title{font-weight:500}
+.chip{display:inline-block;background:var(--chip);border-radius:999px;padding:1px 8px;font-size:12px;margin:1px 3px 1px 0;white-space:nowrap}
+.chip.lang{font-family:var(--mono);font-weight:500}
+.chip.st-publikovane{color:var(--ok)}.chip.st-repurpose{color:var(--warn)}.chip.st-evergreen{color:var(--accent-ink)}
+tr.detail td{background:var(--bg);padding:14px 16px 16px}
+.detail-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+@media (max-width:800px){.detail-grid{grid-template-columns:1fr}}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:4px 10px;font-size:13px}
+.kv dt{color:var(--muted)}.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.edit{display:grid;gap:8px}
+.edit label{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+.edit .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.note{color:var(--muted);font-size:12.5px}
+.outlets{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.card h3{margin:0 0 4px;font-size:15px}
+.card .meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.bars{display:grid;gap:6px;max-width:720px}
+.bar{display:grid;grid-template-columns:230px 1fr 60px;gap:10px;align-items:center;font-size:13px}
+.bar i{display:block;height:10px;background:var(--accent);border-radius:3px;min-width:2px}
+.bar b{font-variant-numeric:tabular-nums;font-weight:500;text-align:right}
+.pipe{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;align-items:end;margin-bottom:12px}
+.pipe label{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+.prose{max-width:72ch}.prose li{margin-bottom:4px}
+.status{color:var(--muted);font-size:12.5px;margin:8px 0}
+code{font-family:var(--mono);font-size:12.5px;background:var(--chip);padding:1px 4px;border-radius:3px}
+@media (prefers-reduced-motion:no-preference){tr.row td{transition:background .12s}}
+</style>
+
+<div class="wrap">
+<header>
+  <div>
+    <h1>Knižnica článkov Rasa Vasilisina</h1>
+    <p>Všetky texty publikované ako Ras / Rastislav Vasilisin: blog.virtuse.com (EN, SK, RU, UK), mediálne stĺpčeky a externé platformy. Zoradené podľa dátumu, s jazykom, miestom publikovania, prekladovými dvojičkami a pozretiami tam, kde ich platforma zverejňuje.</p>
+  </div>
+  <div class="note" id="meta"></div>
+</header>
+
+<div class="tiles" id="tiles"></div>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" data-view="clanky" aria-selected="true">Články</button>
+  <button role="tab" data-view="externe">Externé publikácie</button>
+  <button role="tab" data-view="media">Médiá a outlety</button>
+  <button role="tab" data-view="temy">Témy a roky</button>
+  <button role="tab" data-view="archiv">Archív Crypto News</button>
+  <button role="tab" data-view="pipeline">Nápady a pipeline</button>
+  <button role="tab" data-view="udrzba">Zdroje a údržba</button>
+</nav>
+
+<section class="view on" id="v-clanky">
+  <div class="filters">
+    <input type="search" id="q" placeholder="Hľadať v názve, témach, URL…" aria-label="Hľadať">
+    <select id="f-lang" aria-label="Jazyk"><option value="">Jazyk: všetky</option></select>
+    <select id="f-type" aria-label="Typ"><option value="">Typ: všetky</option></select>
+    <select id="f-year" aria-label="Rok"><option value="">Rok: všetky</option></select>
+    <select id="f-topic" aria-label="Téma"><option value="">Téma: všetky</option></select>
+    <select id="f-status" aria-label="Stav"><option value="">Stav: všetky</option></select>
+    <select id="f-pair" aria-label="Preklad"><option value="">Preklad: všetky</option><option value="yes">má dvojičku</option><option value="no">bez prekladu</option></select>
+    <button class="btn" id="export">Export CSV</button>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="tablewrap"><table id="t-articles"><thead><tr>
+    <th data-k="d">Dátum</th><th data-k="t">Názov</th><th data-k="l">Jazyk</th><th data-k="ty">Typ</th><th data-k="o">Kde</th><th data-k="tp">Témy</th><th data-k="w" class="num">Slová</th><th data-k="views" class="num">Pozretia</th><th data-k="st">Stav</th>
+  </tr></thead><tbody></tbody></table></div>
+  <p class="status" id="db-status"></p>
+</section>
+
+<section class="view" id="v-externe">
+  <div class="filters">
+    <input type="search" id="q-ext" placeholder="Hľadať…" aria-label="Hľadať v externých">
+    <select id="f-ext-outlet" aria-label="Outlet"><option value="">Outlet: všetky</option></select>
+    <select id="f-ext-lang" aria-label="Jazyk"><option value="">Jazyk: všetky</option></select>
+    <button class="btn" id="export-ext">Export CSV</button>
+    <span class="count" id="count-ext"></span>
+  </div>
+  <div class="tablewrap"><table id="t-ext"><thead><tr>
+    <th data-k="d">Dátum</th><th data-k="t">Názov</th><th data-k="o">Outlet</th><th data-k="l">Jazyk</th><th data-k="ty">Typ</th><th data-k="views" class="num">Pozretia</th><th data-k="vs">Metrika</th><th data-k="m">Na blogu</th>
+  </tr></thead><tbody></tbody></table></div>
+  <p class="note" id="ext-notes"></p>
+</section>
+
+<section class="view" id="v-media"><div class="outlets" id="outlets"></div></section>
+
+<section class="view" id="v-temy">
+  <div class="detail-grid">
+    <div><h2>Témy (podľa kľúčových slov v názve)</h2><div class="bars" id="bars-topics"></div></div>
+    <div><h2>Rok a jazyk</h2><div class="tablewrap"><table id="t-years"><thead><tr><th>Rok</th><th class="num">EN</th><th class="num">SK</th><th class="num">RU</th><th class="num">UK</th><th class="num">Externé</th><th class="num">Spolu</th></tr></thead><tbody></tbody></table></div>
+    <p class="note">Témy sú priradené automaticky podľa kľúčových slov v názve a perexe, maximálne tri na článok. Ručné témy a štítky sa dajú doplniť v detaile článku (pole Štítky).</p></div>
+  </div>
+</section>
+
+<section class="view" id="v-archiv">
+  <p class="note prose">Krátke správy z kategórií Crypto News (EN) a Krypto novinky (SK), 2020 až 2023. Od 7. októbra 2026 sú na blogu <code>noindex</code>. Nie sú to autorské stĺpčeky, ale v Yoaste je ako autor pri časti z nich uvedený Ras Vasilisin, preto sú tu ako samostatný archív.</p>
+  <div class="filters"><input type="search" id="q-news" placeholder="Hľadať v archíve…" aria-label="Hľadať v archíve"><select id="f-news-lang" aria-label="Jazyk"><option value="">Jazyk: všetky</option><option>EN</option><option>SK</option></select><span class="count" id="count-news"></span></div>
+  <div class="tablewrap"><table id="t-news"><thead><tr><th data-k="d">Dátum</th><th data-k="t">Názov</th><th data-k="l">Jazyk</th><th data-k="a">Autor (WP)</th><th data-k="w" class="num">Slová</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section class="view" id="v-pipeline">
+  <h2>Nápady, rozpísané texty a plán publikovania</h2>
+  <p class="note prose">Záznamy sa ukladajú do databázy tejto stránky a vidí ich každý, kto má prístup. Stav: nápad → draft → na schválenie → publikované.</p>
+  <div class="pipe" id="pipe-form">
+    <label>Názov / téma<input id="p-title"></label>
+    <label>Jazyk<select id="p-lang"><option>SK</option><option>EN</option><option>SK + EN</option><option>RU</option><option>UK</option></select></label>
+    <label>Cieľový outlet<input id="p-outlet" placeholder="Denník N, HackerNoon, blog…"></label>
+    <label>Stav<select id="p-status"><option>nápad</option><option>draft</option><option>na schválenie</option><option>publikované</option></select></label>
+    <label>Termín<input id="p-due" type="date"></label>
+    <label>Poznámka<input id="p-note"></label>
+    <button class="btn primary" id="p-add">Pridať</button>
+  </div>
+  <div class="tablewrap"><table id="t-pipe"><thead><tr><th>Stav</th><th>Názov</th><th>Jazyk</th><th>Outlet</th><th>Termín</th><th>Poznámka</th><th></th></tr></thead><tbody></tbody></table></div>
+  <p class="status" id="pipe-status"></p>
+</section>
+
+<section class="view" id="v-udrzba"><div class="prose" id="udrzba"></div></section>
+</div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function(){
+const DATA=JSON.parse(document.getElementById('data').textContent);
+const ART=DATA.articles, EXT=DATA.external, NEWS=DATA.news, OUT=DATA.outlets, GEN=DATA.generated;
+const STATUSES=["","publikované","repurpose","evergreen","aktualizovať","archív"];
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const byId={}; ART.forEach(a=>byId[a.id]=a);
+const edits={}; // overlay from db: key -> {status,views,viewsSource,notes,tags}
+let db=null, canWrite=null, dl=null;
+
+/* ---------- tiles ---------- */
+function tiles(){
+  const n=l=>ART.filter(a=>a.l===l).length;
+  const t=[["Články spolu",ART.length],["EN",n("EN")],["SK",n("SK")],["RU + UK",n("RU")+n("UK")],["Externé publikácie",EXT.length],["Outlety",OUT.length],["Archív news",NEWS.length]];
+  $("#tiles").innerHTML=t.map(([k,v])=>`<div class="tile"><b>${v}</b><span>${k}</span></div>`).join("");
+  $("#meta").textContent="Stav dát: "+GEN;
+}
+/* ---------- helpers ---------- */
+function opts(sel,values,label){const s=$(sel);values.forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=label?label(v):v;s.appendChild(o)});}
+function uniq(arr){return [...new Set(arr.filter(Boolean))];}
+function sortBy(rows,k,dir){return rows.slice().sort((a,b)=>{let x=a[k],y=b[k];if(x==null||x==="")return 1;if(y==null||y==="")return -1;if(typeof x==="number"&&typeof y==="number")return dir*(x-y);return dir*String(x).localeCompare(String(y),"sk")});}
+function csv(rows,hdr){const q=v=>'"'+String(v==null?"":v).replace(/"/g,'""')+'"';return [hdr.map(q).join(","),...rows.map(r=>r.map(q).join(","))].join("\n");}
+async function download(name,text){if(!dl){alert_("Export nie je v tomto zobrazení dostupný. Súbory CSV sú aj v projekte: content-library/.");return;}try{await dl.save({filename:name,data:"﻿"+text});}catch(e){if(e&&e.code!=="declined")alert_("Export sa nepodaril ("+(e.code||"")+").");}}
+function alert_(m){const s=$("#db-status");s.textContent=m;setTimeout(()=>{if(s.textContent===m)s.textContent=""},5000);}
+function viewsOf(a){const e=edits[a.key];if(e&&e.views!=null&&e.views!=="")return Number(e.views);return a.views!=null?a.views:null;}
+function statusOf(a){const e=edits[a.key];return e&&e.status||"";}
+function tagsOf(a){const e=edits[a.key];return e&&e.tags||"";}
+
+/* ---------- articles table ---------- */
+let sortK="d",sortDir=-1,openKey=null;
+function filtered(){
+  const q=$("#q").value.trim().toLowerCase(),l=$("#f-lang").value,ty=$("#f-type").value,y=$("#f-year").value,tp=$("#f-topic").value,st=$("#f-status").value,pr=$("#f-pair").value;
+  return ART.filter(a=>(!l||a.l===l)&&(!ty||a.ty===ty)&&(!y||a.d.slice(0,4)===y)&&(!tp||(a.tp||"").includes(tp))&&(!st||statusOf(a)===st)&&(!pr||(pr==="yes"?!!a.p:!a.p))&&(!q||(a.t+" "+(a.tp||"")+" "+a.u+" "+(a.orig||"")+" "+tagsOf(a)+" "+((edits[a.key]||{}).notes||"")).toLowerCase().includes(q)));
+}
+function renderArticles(){
+  let rows=filtered().map(a=>Object.assign({},a,{views:viewsOf(a),st:statusOf(a)}));
+  rows=sortBy(rows,sortK,sortDir);
+  $("#count").textContent=rows.length+" z "+ART.length;
+  $$("#t-articles th").forEach(th=>{th.innerHTML=esc(th.textContent.replace(/[▲▼]/g,"").trim())+(th.dataset.k===sortK?` <span class="dir">${sortDir>0?"▲":"▼"}</span>`:"")});
+  const tb=$("#t-articles tbody");
+  tb.innerHTML=rows.map(a=>`<tr class="row${openKey===a.key?" open":""}" data-key="${a.key}">
+    <td class="date">${a.d}</td><td class="title">${esc(a.t)}${a.p?' <span class="chip" title="má preklad">⇄</span>':""}</td>
+    <td><span class="chip lang">${a.l}</span></td><td>${esc(a.ty)}</td><td>${esc(a.o)}${a.orig?`<div class="note">pôvodne: ${esc(a.orig)}</div>`:""}</td>
+    <td>${(a.tp||"").split("; ").filter(Boolean).map(t=>`<span class="chip">${esc(t)}</span>`).join("")}${tagsOf(a)?tagsOf(a).split(",").map(t=>`<span class="chip" style="border:1px solid var(--line-strong)">${esc(t.trim())}</span>`).join(""):""}</td>
+    <td class="num">${a.w||""}</td><td class="num">${a.views!=null?a.views.toLocaleString("sk-SK"):""}</td><td>${a.st?`<span class="chip st-${esc(a.st)}">${esc(a.st)}</span>`:""}</td></tr>`+(openKey===a.key?detailRow(a):"")).join("");
+}
+function pairLinks(a){if(!a.p)return "";return a.p.split("; ").map(s=>{const m=s.match(/^(\w+) (\d+)( \(odhad\))?/);if(!m)return esc(s);const o=byId[m[2]];return o?`<a href="${esc(o.u)}" target="_blank" rel="noopener">${m[1]}: ${esc(o.t)}</a>${m[3]?' <span class="note">(odhad)</span>':""}`:esc(s)}).join("<br>");}
+function detailRow(a){
+  const e=edits[a.key]||{};
+  return `<tr class="detail"><td colspan="9"><div class="detail-grid">
+    <dl class="kv">
+      <dt>URL</dt><dd><a href="${esc(a.u)}" target="_blank" rel="noopener">${esc(a.u)}</a></dd>
+      ${a.s?`<dt>Story na virtuse.com</dt><dd><a href="${esc(a.s)}" target="_blank" rel="noopener">${esc(a.s)}</a></dd>`:""}
+      <dt>Kategória (WP)</dt><dd>${esc(a.c)}</dd>
+      <dt>Autor vo WP</dt><dd>${esc(a.a)} · ID ${a.id}</dd>
+      ${a.p?`<dt>Preklad / dvojička</dt><dd>${pairLinks(a)}</dd>`:""}
+      ${a.orig?`<dt>Pôvodne publikované</dt><dd>${esc(a.orig)}</dd>`:""}
+      ${a.ext&&a.ext.length?`<dt>Odkazy v texte</dt><dd>${a.ext.map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/,"").slice(0,60))}</a>`).join("<br>")}</dd>`:""}
+      ${a.x&&a.x.length?`<dt>Externé verzie</dt><dd>${a.x.map(i=>`<a href="${esc(EXT[i].u)}" target="_blank" rel="noopener">${esc(EXT[i].o)}</a>${EXT[i].views!=null?` · ${EXT[i].views.toLocaleString("sk-SK")} ${esc(EXT[i].vs||"")}`:""}`).join("<br>")}</dd>`:""}
+    </dl>
+    <form class="edit" data-key="${a.key}">
+      <div class="row2">
+        <label>Stav<select name="status">${STATUSES.map(s=>`<option value="${s}"${(e.status||"")===s?" selected":""}>${s||"—"}</option>`).join("")}</select></label>
+        <label>Pozretia (ručne)<input name="views" type="number" min="0" value="${e.views!=null?esc(e.views):""}"></label>
+      </div>
+      <div class="row2">
+        <label>Zdroj pozretí<input name="viewsSource" value="${esc(e.viewsSource||"")}" placeholder="GA4, Search Console, Medium…"></label>
+        <label>Štítky (čiarkou)<input name="tags" value="${esc(e.tags||"")}"></label>
+      </div>
+      <label>Poznámka<textarea name="notes" rows="3">${esc(e.notes||"")}</textarea></label>
+      <div><button class="btn primary" type="submit"${canWrite===false?" disabled":""}>Uložiť</button> <span class="note">${canWrite===false?"Len na čítanie: na úpravy treba prístup Contributor alebo vyšší.":(e.updatedAt?"Uložené "+e.updatedAt.slice(0,10):"")}</span></div>
+    </form></div></td></tr>`;
+}
+$("#t-articles tbody").addEventListener("click",ev=>{
+  if(ev.target.closest("form, a"))return;
+  const tr=ev.target.closest("tr.row");if(!tr)return;
+  openKey=openKey===tr.dataset.key?null:tr.dataset.key;renderArticles();
+});
+$("#t-articles tbody").addEventListener("submit",async ev=>{
+  ev.preventDefault();const f=ev.target;const key=f.dataset.key;
+  const body={status:f.status.value,views:f.views.value===""?null:Number(f.views.value),viewsSource:f.viewsSource.value.trim(),tags:f.tags.value.trim(),notes:f.notes.value.trim(),updatedAt:new Date().toISOString()};
+  if(!db){alert_("Databáza nie je dostupná, zmeny sa neuložia.");return;}
+  try{await db.doc("edits/"+key).set(body);edits[key]=body;alert_("Uložené.");renderArticles();}
+  catch(e){if(e&&e.code==="invalid_argument"){canWrite=false;alert_("Nemáte právo zapisovať (potrebný prístup Contributor).");renderArticles();}else alert_("Uloženie zlyhalo: "+(e&&e.code||""));}
+});
+$$("#t-articles th").forEach(th=>th.addEventListener("click",()=>{const k=th.dataset.k;if(sortK===k)sortDir*=-1;else{sortK=k;sortDir=k==="d"||k==="w"||k==="views"?-1:1}renderArticles()}));
+["#q","#f-lang","#f-type","#f-year","#f-topic","#f-status","#f-pair"].forEach(s=>$(s).addEventListener("input",renderArticles));
+$("#export").addEventListener("click",()=>{const rows=sortBy(filtered().map(a=>Object.assign({},a,{views:viewsOf(a),st:statusOf(a)})),sortK,sortDir);download("clanky.csv",csv(rows.map(a=>[a.d,a.t,a.l,a.ty,a.o,a.c,a.u,a.s,a.p,a.tp,a.w,a.views,(edits[a.key]||{}).viewsSource||"",a.orig,a.a,a.id,a.st,tagsOf(a),(edits[a.key]||{}).notes||""]),["Dátum","Názov","Jazyk","Typ","Kde publikované","Kategória","URL","Story na virtuse.com","Preklad","Témy","Slová","Pozretia","Zdroj pozretí","Pôvodne publikované","Autor WP","WP ID","Stav","Štítky","Poznámka"]));});
+
+/* ---------- external table ---------- */
+let esK="d",esDir=-1;
+function renderExt(){
+  const q=$("#q-ext").value.trim().toLowerCase(),o=$("#f-ext-outlet").value,l=$("#f-ext-lang").value;
+  let rows=EXT.map((x,i)=>Object.assign({i},x)).filter(x=>(!o||x.o===o)&&(!l||x.l===l)&&(!q||(x.t+" "+x.o+" "+x.u).toLowerCase().includes(q)));
+  rows=sortBy(rows,esK,esDir);$("#count-ext").textContent=rows.length+" z "+EXT.length;
+  $$("#t-ext th").forEach(th=>{th.innerHTML=esc(th.textContent.replace(/[▲▼]/g,"").trim())+(th.dataset.k===esK?` <span class="dir">${esDir>0?"▲":"▼"}</span>`:"")});
+  $("#t-ext tbody").innerHTML=rows.map(x=>`<tr><td class="date">${esc(x.d||"")}</td><td class="title"><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a>${x.n?`<div class="note">${esc(x.n)}</div>`:""}</td><td>${esc(x.o)}</td><td><span class="chip lang">${esc(x.l)}</span></td><td>${esc(x.ty)}</td><td class="num">${x.views!=null?Number(x.views).toLocaleString("sk-SK"):""}</td><td class="note">${esc(x.vs||"")}</td><td>${x.m!=null&&byId[x.m]?`<a href="${esc(byId[x.m].u)}" target="_blank" rel="noopener">WP ${x.m}</a>`:""}</td></tr>`).join("");
+}
+$$("#t-ext th").forEach(th=>th.addEventListener("click",()=>{const k=th.dataset.k;if(esK===k)esDir*=-1;else{esK=k;esDir=k==="d"||k==="views"?-1:1}renderExt()}));
+["#q-ext","#f-ext-outlet","#f-ext-lang"].forEach(s=>$(s).addEventListener("input",renderExt));
+$("#export-ext").addEventListener("click",()=>download("externe-publikacie.csv",csv(EXT.map(x=>[x.d,x.t,x.o,x.l,x.ty,x.u,x.views,x.vs,x.m,x.n]),["Dátum","Názov","Outlet","Jazyk","Typ","URL","Pozretia","Metrika","WP ID","Poznámka"])));
+$("#ext-notes").textContent=DATA.extNotes||"";
+
+/* ---------- outlets ---------- */
+function renderOutlets(){
+  $("#outlets").innerHTML=OUT.map(o=>`<div class="card"><h3>${o.url?`<a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.name)}</a>`:esc(o.name)}</h3><div class="meta">${esc(o.lang)} · ${o.count} ${o.count===1?"položka":o.count<5?"položky":"položiek"}${o.range?" · "+esc(o.range):""}</div><p class="note" style="margin:6px 0 0">${esc(o.note||"")}</p></div>`).join("");
+}
+/* ---------- topics / years ---------- */
+function renderTopics(){
+  const c={};ART.forEach(a=>(a.tp||"").split("; ").filter(Boolean).forEach(t=>c[t]=(c[t]||0)+1));
+  const arr=Object.entries(c).sort((a,b)=>b[1]-a[1]);const max=arr[0]?arr[0][1]:1;
+  $("#bars-topics").innerHTML=arr.map(([t,n])=>`<div class="bar"><span>${esc(t)}</span><i style="width:${(n/max*100).toFixed(1)}%"></i><b>${n}</b></div>`).join("")+`<div class="bar"><span class="note">bez priradenej témy</span><i style="width:${(ART.filter(a=>!a.tp).length/max*100).toFixed(1)}%;background:var(--line-strong)"></i><b>${ART.filter(a=>!a.tp).length}</b></div>`;
+  const y={};ART.forEach(a=>{const k=a.d.slice(0,4);y[k]=y[k]||{EN:0,SK:0,RU:0,UK:0,X:0};y[k][a.l]++});EXT.forEach(x=>{if(!x.d)return;const k=x.d.slice(0,4);y[k]=y[k]||{EN:0,SK:0,RU:0,UK:0,X:0};y[k].X++});
+  const ys=Object.keys(y).sort().reverse();const tot={EN:0,SK:0,RU:0,UK:0,X:0};
+  $("#t-years tbody").innerHTML=ys.map(k=>{const r=y[k];["EN","SK","RU","UK","X"].forEach(q=>tot[q]+=r[q]);const s=r.EN+r.SK+r.RU+r.UK+r.X;return `<tr><td class="date">${k}</td><td class="num">${r.EN}</td><td class="num">${r.SK}</td><td class="num">${r.RU}</td><td class="num">${r.UK}</td><td class="num">${r.X}</td><td class="num"><b>${s}</b></td></tr>`}).join("")+`<tr><td><b>Spolu</b></td><td class="num">${tot.EN}</td><td class="num">${tot.SK}</td><td class="num">${tot.RU}</td><td class="num">${tot.UK}</td><td class="num">${tot.X}</td><td class="num"><b>${tot.EN+tot.SK+tot.RU+tot.UK+tot.X}</b></td></tr>`;
+}
+/* ---------- news ---------- */
+let nK="d",nDir=-1;
+function renderNews(){
+  const q=$("#q-news").value.trim().toLowerCase(),l=$("#f-news-lang").value;
+  let rows=NEWS.filter(x=>(!l||x.l===l)&&(!q||x.t.toLowerCase().includes(q)));rows=sortBy(rows,nK,nDir);
+  $("#count-news").textContent=rows.length+" z "+NEWS.length;
+  $("#t-news tbody").innerHTML=rows.map(x=>`<tr><td class="date">${x.d}</td><td><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></td><td><span class="chip lang">${x.l}</span></td><td class="note">${esc(x.a)}</td><td class="num">${x.w}</td></tr>`).join("");
+}
+$$("#t-news th").forEach(th=>th.addEventListener("click",()=>{const k=th.dataset.k;if(nK===k)nDir*=-1;else{nK=k;nDir=k==="d"||k==="w"?-1:1}renderNews()}));
+["#q-news","#f-news-lang"].forEach(s=>$(s).addEventListener("input",renderNews));
+
+/* ---------- pipeline (db) ---------- */
+let pipe=[];
+function renderPipe(){
+  const order={"nápad":0,"draft":1,"na schválenie":2,"publikované":3};
+  const rows=pipe.slice().sort((a,b)=>(order[a.status]??9)-(order[b.status]??9)||String(a.due||"").localeCompare(String(b.due||"")));
+  $("#t-pipe tbody").innerHTML=rows.length?rows.map(p=>`<tr><td><span class="chip">${esc(p.status)}</span></td><td class="title">${esc(p.title)}</td><td>${esc(p.lang)}</td><td>${esc(p.outlet||"")}</td><td class="date">${esc(p.due||"")}</td><td class="note">${esc(p.note||"")}</td><td><button class="btn" data-del="${p.id}"${canWrite===false?" disabled":""}>Zmazať</button></td></tr>`).join(""):`<tr><td colspan="7" class="note">Zatiaľ žiadne nápady. Pridajte prvý cez formulár vyššie.</td></tr>`;
+}
+$("#p-add").addEventListener("click",async()=>{
+  const title=$("#p-title").value.trim();if(!title){$("#pipe-status").textContent="Zadajte názov.";return;}
+  if(!db){$("#pipe-status").textContent="Databáza nie je dostupná.";return;}
+  const body={title,lang:$("#p-lang").value,outlet:$("#p-outlet").value.trim(),status:$("#p-status").value,due:$("#p-due").value,note:$("#p-note").value.trim(),createdAt:new Date().toISOString()};
+  try{await db.collection("pipeline").add(body);$("#p-title").value="";$("#p-note").value="";$("#pipe-status").textContent="Pridané.";}
+  catch(e){$("#pipe-status").textContent=e&&e.code==="invalid_argument"?"Nemáte právo zapisovať.":"Nepodarilo sa uložiť.";}
+});
+$("#t-pipe tbody").addEventListener("click",async ev=>{const b=ev.target.closest("button[data-del]");if(!b||!db)return;b.disabled=true;try{await db.doc("pipeline/"+b.dataset.del).delete();}catch(e){$("#pipe-status").textContent="Zmazanie zlyhalo.";b.disabled=false;}});
+
+/* ---------- maintenance ---------- */
+$("#udrzba").innerHTML=DATA.maintenanceHtml;
+
+/* ---------- tabs ---------- */
+const VIEWS=["clanky","externe","media","temy","archiv","pipeline","udrzba"];
+function show(v){if(!VIEWS.includes(v))v="clanky";$$("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.view===v)));$$(".view").forEach(s=>s.classList.toggle("on",s.id==="v-"+v));if(location.hash.replace("#","")!==v&&v!=="clanky")history.replaceState(null,"","#"+v);}
+$$("nav.tabs button").forEach(b=>b.addEventListener("click",()=>show(b.dataset.view)));
+window.addEventListener("hashchange",()=>show(location.hash.replace("#","")));
+
+/* ---------- init ---------- */
+tiles();
+opts("#f-lang",uniq(ART.map(a=>a.l)));opts("#f-type",uniq(ART.map(a=>a.ty)).sort());opts("#f-year",uniq(ART.map(a=>a.d.slice(0,4))).sort().reverse());
+opts("#f-topic",uniq(ART.flatMap(a=>(a.tp||"").split("; "))).sort());opts("#f-status",STATUSES.filter(Boolean));
+opts("#f-ext-outlet",uniq(EXT.map(x=>x.o)).sort());opts("#f-ext-lang",uniq(EXT.map(x=>x.l)));
+renderArticles();renderExt();renderOutlets();renderTopics();renderNews();renderPipe();show(location.hash.replace("#",""));
+
+(async()=>{
+  const dlp=claude.use("downloads").then(x=>{dl=x;if(!dl){$("#export").disabled=true;$("#export-ext").disabled=true;}});
+  const user=await claude.use("user");
+  if(user){try{canWrite=await user.can("data.write");}catch(e){canWrite=null;}}
+  db=await claude.use("db");
+  if(!db){$("#db-status").textContent="Poznámky a stavy sa v tomto zobrazení nedajú uložiť (databáza nedostupná). Dáta článkov sú kompletné.";renderPipe();return;}
+  let loaded=false;const timer=setTimeout(()=>{if(!loaded)$("#db-status").textContent="Uložené poznámky sa zatiaľ nepodarilo načítať.";},10000);
+  db.collection("edits").onSnapshot(snap=>{loaded=true;clearTimeout(timer);$("#db-status").textContent="";snap.docs.forEach(d=>{if(d.exists)edits[d.id]=d.data();});snap.docChanges().forEach(ch=>{if(ch.type==="removed")delete edits[ch.doc.id];});renderArticles();},e=>{clearTimeout(timer);$("#db-status").textContent="Poznámky sa nepodarilo načítať ("+e.code+").";});
+  db.collection("pipeline").onSnapshot(snap=>{pipe=snap.docs.filter(d=>d.exists).map(d=>Object.assign({id:d.id},d.data()));renderPipe();},e=>{$("#pipe-status").textContent="Pipeline sa nepodarilo načítať ("+e.code+").";});
+  await dlp;
+})();
+})();
+</script>

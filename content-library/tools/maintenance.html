@@ -1,0 +1,26 @@
+
+<h2>Odkiaľ sú dáta</h2>
+<ul>
+<li><b>blog.virtuse.com</b>: WordPress REST API (<code>/wp-json/wp/v2/posts</code>, jazyky en/sk/ru/uk cez WPML). Zahrnuté sú kategórie Blog, Media Columns, Guides, Blog SK, Mediálne komentáre, Bitcoin University, Návody, Oznamy. Crypto News / Krypto novinky sú v samostatnom archíve.</li>
+<li><b>virtuse.com/stories</b>: mapa WP ID → story URL zo súboru <code>stories/wp-canonical.json</code> v repozitári.</li>
+<li><b>Externé platformy</b>: autorské stránky na Medium, HackerNoon, Denník N, SME blog, Trend, Seeking Alpha, Investing.com a ďalších; detaily a medzery sú v záložke Externé publikácie.</li>
+<li><b>Autor</b>: vo WordPresse sú články pod štyrmi účtami, ktoré Yoast zobrazuje ako „Ras Vasilisin“ (ID 3, 25, 30, 36), a pod účtami Virtuse Admin / Virtusenews. Stĺpec „Autor (WP)“ to zachováva.</li>
+</ul>
+<h2>Pozretia</h2>
+<ul>
+<li>WordPress na blogu nemá počítadlo pozretí a REST API žiadne nevracia. Pozretia pri blogových článkoch sú preto prázdne a dajú sa doplniť ručne v detaile článku (pole Pozretia + Zdroj).</li>
+<li>Odporúčanie: raz mesačne vyexportovať zo Search Console (property virtuse.com aj blog.virtuse.com) kliky a zobrazenia na URL a doplniť ich sem; alebo nainštalovať plugin Post Views Counter a číslo prevziať z API.</li>
+<li>Externé platformy: Medium ukazuje claps, HackerNoon reads, SME blog „Prečítané“. Tam, kde to platforma zverejňuje, je číslo uvedené spolu s názvom metriky.</li>
+</ul>
+<h2>Ako knižnicu aktualizovať</h2>
+<ol>
+<li>Spustiť <code>content-library/build_library.py</code> v repozitári (stiahne WP, prepočíta témy a páry, zapíše CSV + XLSX a novú verziu tejto stránky).</li>
+<li>Poznámky, stavy, štítky a ručné pozretia sú v databáze tejto stránky (kolekcia <code>edits</code>, kľúč <code>wp-&lt;ID&gt;</code>) a prežijú každú novú verziu.</li>
+<li>Prekladové dvojičky: istá väzba = rovnaký titulný obrázok vo WP; „odhad“ = rovnaký dátum ±4 dni a rovnaké číslo v názve. Chybný odhad stačí prepísať v poznámke.</li>
+</ol>
+<h2>Čo chýba</h2>
+<ul>
+<li>LinkedIn články a príspevky na X nie sú zahrnuté (vyžadujú prihlásenie).</li>
+<li>Rozhovory v TV a podcastoch sú zahrnuté len tam, kde sa našla verejná stránka epizódy.</li>
+<li>Staršie SK stĺpčeky (2019–2022) boli publikované aj v Trende, Denníku N a Pravde; na blogu je pri nich odkaz na pôvodný zdroj len výnimočne, preto je outlet pri väčšine „blog.virtuse.com/sk“ a pôvodné médium treba doplniť ručne alebo z archívu outletu.</li>
+</ul>

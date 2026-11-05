@@ -8,3 +8,6 @@ cloudflare-worker/src/generated/fonts.js
 cloudflare-worker/src/generated/build-info.js
 cloudflare-worker/node_modules/
 .wrangler/
+
+# raw WordPress export used by content-library/tools/build_library.py (67 MB, regenerable)
+content-library/data/posts_all.json
