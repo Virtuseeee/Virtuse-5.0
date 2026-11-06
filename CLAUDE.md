@@ -2,10 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Session status (2026-11-06) — Brief desk shows today's date (branch `fix/brief-today-date`, **live on staging only**, gh-pages `11d6d038`, 3/3 md5-verified; **production not touched, merge waits for Ras's "áno"**)
+## Session status (2026-11-06) — Brief desk shows today's date (branch `fix/brief-today-date`, PR #161 merged, main `06b6e5e4`; **live on production** — user ran `deploy_site.sh 4cfa0c2c6 06b6e5e44` 2026-11-06, `DEPLOY OK` 3 files md5-verified on virtuse.com and staging)
 
 - `news/news.js`: new `applyTodayStrip()` sets the strip under the logo to "Today · <date>" (Europe/Bratislava) on every load; `paintFeatured` no longer writes the issue date there, the featured eyebrow keeps it. Pulse header is "Updated today · HH:MM" whenever items render (feed time if its stamp is today, else page-open time); no items = "Pulse unavailable". This reverses the 2026-11-05 audit's rule that an old Pulse says its date, at Ras's decision. `news-pulse.json` fallback refreshed from the live Worker feed; nothing keeps it fresh, so the header would call it "today" if the Worker fails after it ages.
-- Screenshots live on the throwaway branch `pr-assets/brief-today-date` (delete after the PR). No `gh` on this Mac and Claude in Chrome is not signed in to GitHub, so the PR is opened from a prefilled compare link.
+- Screenshots live on the throwaway branch `pr-assets/brief-today-date` (delete after the PR). No `gh` on this Mac and Claude in Chrome is not signed in to GitHub, so the PR is opened from a prefilled compare link. **Deploy from a fresh worktree of origin/main:** the OneDrive folder's local main is 700+ commits behind with 2 local-only commits, so `deploy_site.sh` stops there, and `git pull --rebase` should not be run in it.
 
 ## Session status (2026-11-06) — Signed legal + tax reviews applied, VAT per the accountant (main `70a780cb`; **live on production** 2026-11-06 at Ras's decision to launch without an opinion on the +20% scenario and partners: he ran `deploy_worker.sh`, live `/version` = `70a780cb`, and `deploy_site.sh 2f68187a 70a780cb`. Claude's check: 61 files md5 OK, funnel EN + SK to `cs_live_` checkout, 10 pages without overflow or page errors. Live €14 purchase + refund still to do)
 
