@@ -25,6 +25,12 @@
   var eur = function (n) { var s = Math.round(n).toLocaleString(LOC); return LANG === 'sk' ? s + ' €' : '€' + s; };
   var $ = function (id) { return document.getElementById(id); };
   var dl = function (o) { (window.dataLayer = window.dataLayer || []).push(o); };
+  // Analytics carries the grade and the weakest areas only (privacy section 9).
+  var weakAreas = function (sc) {
+    var ids = ['size', 'reserve', 'debt', 'tax', 'custody', 'fall'];
+    var low = Math.min.apply(null, ids.map(function (k) { return sc[k]; }));
+    return low < 10 ? ids.filter(function (k) { return sc[k] === low; }).join(',') : '';
+  };
   var MOCK = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 
   var I = {
@@ -388,7 +394,7 @@
     set(5, S.blur.partners, S.blur.partnersTxt);
     var amt = !A.btc ? '' : A.btc < 1000 ? 's' : A.btc < 10000 ? 'm' : A.btc < 100000 ? 'l' : 'xl';
     $('mlPf').href = P('concierge.html') + '?pf_goal=buy&pf_country=' + (A.country || '') + '&pf_experience=' + (A.experience === 'hodler' ? 'hodler' : 'new') + '&pf_custody=' + (A.custody || '') + '&pf_amount=' + amt + '&utm_source=verdict&utm_medium=lite';
-    dl({ event: 'verdict_result', verdict_mode: 'lite', verdict_score: t, verdict_grade: gr });
+    dl({ event: 'verdict_result', verdict_mode: 'lite', verdict_grade: gr, verdict_weakest: weakAreas(sc) });
   }
   function load() {
     stepper($('mlStepper2'), 3);
@@ -647,7 +653,7 @@
         el.innerHTML = renderReport(d);
         el.csv = d.docs.record;
         try { sessionStorage.removeItem(KEY); } catch (e) {}
-        dl({ event: 'verdict_report_view', verdict_score: d.score, verdict_grade: d.grade });
+        dl({ event: 'verdict_report_view', verdict_grade: d.grade });
       })
       .catch(function () { say(S.repNet); });
   }
