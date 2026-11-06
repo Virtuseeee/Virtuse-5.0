@@ -64,6 +64,8 @@ export async function handleCheckout(ctx) {
       custom_text: { submit: { message: LITE_TERMS[lang] } },
       // Billing address + the card's country + ip_country: evidence of the customer's country (VAT).
       billing_address_collection: 'required',
+      // Terms 5a says "by card" (Apple Pay and Google Pay count), and the card's country is VAT evidence.
+      payment_method_types: ['card'],
     }, request.cf?.country);
   } else {
     rid = typeof body?.rid === 'string' ? body.rid : '';
