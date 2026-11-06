@@ -469,7 +469,9 @@
 
 /* Brief panel at the end of the page, same card as on the homepage */
 .ml-brief { padding-top: 40px; }
-.ml .ml-land .vl .hero { padding-top: 32px; }
+/* Same gap under the nav as the other pages' heroes (.buy-hero2 in site-v2.css): 72 px, 32 px on phones */
+.ml .ml-land .vl .hero { padding-top: 72px; }
+@media (max-width: 640px) { .ml .ml-land .vl .hero { padding-top: 32px; } }
 
 /* Six areas: same look as #signals on the page */
 .ml-paid .ml-areas-top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; align-items: center; margin-bottom: 30px; }
