@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-11-06) — Brief desk shows today's date (branch `fix/brief-today-date`, **live on staging only**, gh-pages `11d6d038`, 3/3 md5-verified; **production not touched, merge waits for Ras's "áno"**)
+
+- `news/news.js`: new `applyTodayStrip()` sets the strip under the logo to "Today · <date>" (Europe/Bratislava) on every load; `paintFeatured` no longer writes the issue date there, the featured eyebrow keeps it. Pulse header is "Updated today · HH:MM" whenever items render (feed time if its stamp is today, else page-open time); no items = "Pulse unavailable". This reverses the 2026-11-05 audit's rule that an old Pulse says its date, at Ras's decision. `news-pulse.json` fallback refreshed from the live Worker feed; nothing keeps it fresh, so the header would call it "today" if the Worker fails after it ages.
+- Screenshots live on the throwaway branch `pr-assets/brief-today-date` (delete after the PR). No `gh` on this Mac and Claude in Chrome is not signed in to GitHub, so the PR is opened from a prefilled compare link.
+
 ## Session status (2026-11-06) — Signed legal + tax reviews applied, VAT per the accountant (main `70a780cb`; **live on production** 2026-11-06 at Ras's decision to launch without an opinion on the +20% scenario and partners: he ran `deploy_worker.sh`, live `/version` = `70a780cb`, and `deploy_site.sh 2f68187a 70a780cb`. Claude's check: 61 files md5 OK, funnel EN + SK to `cs_live_` checkout, 10 pages without overflow or page errors. Live €14 purchase + refund still to do)
 
 - **Fix after launch, 2026-11-06 (main `02a54460`, live: Ras ran `deploy_site.sh 70a780cb 02a54460`, 3/3 md5 on production):** the hero sample card's score labels overlapped on phones (up to 51 px at 320 px, EN up to 400 px, SK up to 414 px). Under 480 px `.dm-score` is one column and `.dm-lbl` may wrap; `verdict-lite.css?v=18`. Measured on production: no overlap or overflow at 320 to 1440 px, EN + SK. Checked, no change: the waitlist form stays hidden unless `/verdict/checkout` answers 503; the CSP-blocked `google.sk/ads/ga-audiences` pixel appears only after marketing consent (turning off Google Signals in GA4 would remove it, Ras's call).
