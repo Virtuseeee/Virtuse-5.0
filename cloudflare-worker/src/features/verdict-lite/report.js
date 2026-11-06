@@ -103,7 +103,7 @@ const COPY = {
       yours: { self: 'You chose own keys. The recovery test in your plan is the part to do before larger amounts go in.', assisted: 'You chose assisted custody, so you do not carry the keys alone. Before larger amounts go in, ask your provider exactly how recovery works.', any: 'You have not decided yet. This table is the decision to make.' },
     },
     tax: {
-      gain: 'Tax on a gain', levy: 'Also payable', levyNeutral: 'Health insurance contributions; the rate and base depend on your situation', exempt: 'Exemption', filing: 'Tax return', note: 'Worth knowing',
+      gain: 'Tax on a gain', esGain: "On Spain's savings income scale; the bands depend on the size of the gain", levy: 'Also payable', levyNeutral: 'Health insurance contributions; the rate and base depend on your situation', exempt: 'Exemption', filing: 'Tax return', note: 'Worth knowing',
       asOf: (q) => `Indicative, as shown in the Virtuse Tax Agent (${q}). Check with a tax adviser before you file.`,
       other: 'Your country is not among the 13 we cover. Ask a tax adviser how a sale and a swap between coins are taxed where you live, and keep a record of every purchase from day one.',
     },
@@ -239,7 +239,7 @@ const COPY = {
       yours: { self: 'Zvolili ste vlastné kľúče. Skúška obnovy z vášho plánu patrí pred väčšie sumy.', assisted: 'Zvolili ste asistovanú úschovu, takže na kľúče nie ste sami. Pred väčšími sumami sa poskytovateľa opýtajte, ako presne funguje obnova.', any: 'Ešte ste sa nerozhodli. Táto tabuľka je rozhodnutie, ktoré máte pred sebou.' },
     },
     tax: {
-      gain: 'Daň zo zisku', levy: 'Navyše', levyNeutral: 'Zdravotné odvody; sadzba a základ závisia od vašej situácie', exempt: 'Oslobodenie', filing: 'Priznanie', note: 'Dobré vedieť',
+      gain: 'Daň zo zisku', esGain: 'Podľa španielskej stupnice príjmov z úspor; pásma závisia od výšky zisku', levy: 'Navyše', levyNeutral: 'Zdravotné odvody; sadzba a základ závisia od vašej situácie', exempt: 'Oslobodenie', filing: 'Priznanie', note: 'Dobré vedieť',
       asOf: (q) => `Orientačne, podľa Tax Agenta od Virtuse (${q}). Pred podaním priznania sa poraďte s daňovým poradcom.`,
       other: 'Vaša krajina nie je medzi 13, ktoré pokrývame. Opýtajte sa daňového poradcu, ako sa u vás zdaňuje predaj a výmena kryptomien, a od prvého dňa si zapisujte každý nákup.',
     },
@@ -396,7 +396,7 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
   // Tax
   const tax = fact
     ? {
-        rows: [[T.tax.gain, fact.gainTax], fact.healthLevy && [T.tax.levy, T.tax.levyNeutral], [T.tax.exempt, fact.exemption], fact.filing && [T.tax.filing, fact.filing], fact.note && [T.tax.note, fact.note]].filter(Boolean),
+        rows: [[T.tax.gain, A.country === 'es' ? T.tax.esGain : fact.gainTax], fact.healthLevy && [T.tax.levy, T.tax.levyNeutral], [T.tax.exempt, fact.exemption], fact.filing && [T.tax.filing, fact.filing], fact.note && [T.tax.note, fact.note]].filter(Boolean),
         note: T.tax.asOf(quarter(TAX.asOf)),
       }
     : { rows: [], text: T.tax.other };

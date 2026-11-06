@@ -12,10 +12,11 @@ import { PARTNERS, PRICED, amountBucket, custodyPartners, matchingPartners, taxP
 // brackets = [upper limit, rate]; Slovakia: Financial Administration, tax year 2026.
 const TAX_EXAMPLE = {
   cz: { rates: [15, 23], hold: 3 },
-  sk: { brackets: [[43983.32, 19], [60349.21, 25], [75010.32, 30], [Infinity, 35]], levy: 16 },
+  sk: { brackets: [[43983.32, 19], [60349.21, 25], [75010.32, 30], [Infinity, 35]], levyOut: true },
   pl: { rates: [19] }, at: { rates: [27.5] }, de: { rates: [45], upTo: true, hold: 1 },
   hu: { rates: [15] }, si: { zero: true }, hr: { rates: [12], hold: 2 }, ro: { rates: [16] }, bg: { rates: [10] }, nl: { box3: true }, fr: { rates: [31.4] },
-  es: { brackets: [[6000, 19], [50000, 21], [200000, 23], [300000, 27], [Infinity, 30]] },
+  // Spain's bands were outside the signed tax review of 5 Nov 2026: no worked figures until they are checked.
+  es: { noExample: true },
 };
 // The scenario the Retirement Calculator opens with (hypothetical), and the sale in the tax example.
 export const SCENARIO = { growth: 0.2, inflation: 0.04, sellShare: 0.05 };
@@ -34,19 +35,20 @@ const COPY = {
       none: 'You did not give your monthly spending, so the target stays in months: 6 months. Multiply a typical month by six to get your figure.',
     },
     retire: {
-      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Retirement savings together, without returns', lump: 'Planned for Bitcoin', monthly: (e, n) => `Added at ${e} a month, ${n} months`, planTotal: 'You put into Bitcoin by retirement', scenario: 'Hypothetical scenario: Bitcoin +20% a year, inflation 4%', nominal: (a) => `Hypothetical value on your first day at ${a}`, real: "The same in today's money", planSub: "Fixed assumptions from the Retirement Calculator, not a forecast. Bitcoin has fallen 70% or more several times, and the real value can be far lower, including a loss. Crypto-assets are not covered by deposit guarantee or investor compensation schemes.",
+      k: 'Retirement', h: 'Retirement in plain numbers', years: 'Years left', sofar: 'Retirement savings so far', added: (m) => `Added by then at ${m} a month`, total: 'Retirement savings together, without returns', lump: 'Planned for Bitcoin', monthly: (e, n) => `Added at ${e} a month, ${n} months`, planTotal: 'You put into Bitcoin by retirement', scenario: 'Hypothetical scenario: Bitcoin +20% a year, inflation 4%', nominal: (a) => `Hypothetical value on your first day at ${a}`, real: "The same in today's money", planSub: "Fixed assumptions from the Retirement Calculator, not a forecast. Bitcoin has fallen 70% or more several times, and the real value can be far lower, including a loss. Crypto-assets are not covered by deposit guarantee or investor compensation schemes. For comparison: Strategy's public credit tool uses 10% a year as its default (checked 6 Nov 2026), and Michael Saylor, whose company holds Bitcoin, has said he expects about 30% a year over the next 20 years. Those are their figures; +20% is an assumption and not a forecast by Virtuse.",
       longest: (m, left) => `The longest recovery above took ${m} months; you have ${left} months until retirement.`,
       statBack: 'Longest way back to the high', statLeft: 'Months until you retire', months: (m) => `${m} months`,
       note: 'Retirement savings are simple sums, without returns or inflation.', na: 'You did not give a retirement age that can be used here.',
     },
     tax: {
-      gain: (g) => `Example: a ${g} gain`, rate: 'Rate', taxC: 'Tax', levyC: 'Health levy', left: 'Left', upTo: (r) => `up to ${r}`,
+      gain: (g) => `Example: a ${g} gain`, rate: 'Rate', taxC: 'Tax', left: 'Left', upTo: (r) => `up to ${r}`,
       heroK: 'Hypothetical tax on this sale', sale: (a) => `Example: selling 5% of your Bitcoin in the first year of retirement, at ${a}`, value: 'Bitcoin value in the +20% a year scenario', sold: 'You sell 5%', cost: 'Purchase cost of that part (5% of what you put in)', gainL: 'Taxable gain',
-      band: (r, b) => `Tax at ${r} on ${b}`, taxTotal: 'Tax in total', levy: (r) => `Health levy, ${r} of the gain`, total: 'Tax and levies in total', share: (p, g) => `That is ${p} of the ${g} gain.`, leftSale: 'Left from the sale', leftGain: 'Left from the gain',
+      band: (r, b) => `Tax at ${r} on ${b}`, taxTotal: 'Tax in total', share: (p, g) => `That is ${p} of the ${g} gain.`, leftSale: 'Left from the sale', leftGain: 'Left from the gain',
       scale: (first, rest) => `${first} applies to the part of the gain over ${rest}`, scaleAnd: 'and', bandHead: ['Part of the gain', 'Amount', 'Rate', 'Tax'], bandFrom: (x) => `up to ${x}`, bandBetween: (a, b) => `${a} to ${b}`, bandOver: (x) => `over ${x}`,
       exempt: (n) => `After ${n} ${n === 1 ? 'year' : 'years'} of holding, a sale is exempt under the rule above, so the tax is ${'€'}0. This assumes you sell your oldest purchases first.`,
       noteSale: (y) => `At today's rates and bands, on this gain alone: no other income, allowances, costs or fees. The purchase cost is 5% of the amounts in this report; Bitcoin you already hold is not counted. Rates can differ in ${y} years, and the scenario is not a forecast. Check with a tax adviser before you file.`,
-      levyNote: 'The health levy uses the general 16% rate; the rate and base depend on your situation, for example if you receive a pension.',
+      levyNote: 'Health insurance contributions are not included: their rate and base depend on your situation, for example if you receive a pension.',
+      noExample: "Spain taxes these gains on its savings scale, and the amount depends on the size of the gain. This report shows no worked figures for Spain: ask a tax adviser for the current bands.",
       note: 'For illustration only, at the rates above. Your actual rate depends on your other income and costs. This is not a forecast of any gain.',
       hold: (n, d) => `A purchase made today would reach the ${n}-year holding period on ${d}.`,
       filing: { sk: (y) => `A sale in ${y} goes into the type B return due 31 March ${y + 1}.`, hr: (y) => `A gain in ${y} goes on the JOPPD form by the end of February ${y + 1}.` },
@@ -99,19 +101,20 @@ const COPY = {
       none: 'Neuviedli ste mesačné výdavky, takže cieľ zostáva v mesiacoch: 6 mesiacov. Bežný mesiac vynásobte šiestimi a máte svoju sumu.',
     },
     retire: {
-      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Úspory na dôchodok spolu, bez výnosov', lump: 'Plánujete do Bitcoinu', monthly: (e, n) => `Pridáte pri ${e} mesačne, ${n} mesiacov`, planTotal: 'Do Bitcoinu vložíte do dôchodku', scenario: 'Hypotetický scenár: Bitcoin +20 % ročne, inflácia 4 %', nominal: (a) => `Hypotetická hodnota v prvý deň vo veku ${a} rokov`, real: 'To isté v dnešných cenách', planSub: 'Pevné predpoklady z Dôchodkovej kalkulačky, nie predpoveď. Bitcoin už viackrát klesol o 70 % a viac a skutočná hodnota môže byť oveľa nižšia, vrátane straty. Kryptoaktíva nie sú kryté systémom ochrany vkladov ani systémom náhrad pre investorov.',
+      k: 'Dôchodok', h: 'Dôchodok v číslach', years: 'Zostáva rokov', sofar: 'Doterajšie úspory na dôchodok', added: (m) => `Pridáte dovtedy pri ${m} mesačne`, total: 'Úspory na dôchodok spolu, bez výnosov', lump: 'Plánujete do Bitcoinu', monthly: (e, n) => `Pridáte pri ${e} mesačne, ${n} mesiacov`, planTotal: 'Do Bitcoinu vložíte do dôchodku', scenario: 'Hypotetický scenár: Bitcoin +20 % ročne, inflácia 4 %', nominal: (a) => `Hypotetická hodnota v prvý deň vo veku ${a} rokov`, real: 'To isté v dnešných cenách', planSub: 'Pevné predpoklady z Dôchodkovej kalkulačky, nie predpoveď. Bitcoin už viackrát klesol o 70 % a viac a skutočná hodnota môže byť oveľa nižšia, vrátane straty. Kryptoaktíva nie sú kryté systémom ochrany vkladov ani systémom náhrad pre investorov. Pre porovnanie: verejný kreditný nástroj spoločnosti Strategy má predvolených 10 % ročne (overené 6. 11. 2026) a Michael Saylor, ktorého spoločnosť drží Bitcoin, uviedol, že počas nasledujúcich 20 rokov očakáva približne 30 % ročne. Sú to ich údaje; +20 % je predpoklad, nie predpoveď Virtuse.',
       longest: (m, left) => `Najdlhší návrat vyššie trval ${m} mesiacov; do dôchodku máte ${left} mesiacov.`,
       statBack: 'Najdlhšia cesta späť na maximum', statLeft: 'Do dôchodku vám zostáva', months: (m) => `${m} mesiacov`,
       note: 'Úspory na dôchodok sú jednoduché súčty, bez výnosov a inflácie.', na: 'Neuviedli ste vek odchodu do dôchodku, s ktorým by sa tu dalo počítať.',
     },
     tax: {
-      gain: (g) => `Príklad: zisk ${g}`, rate: 'Sadzba', taxC: 'Daň', levyC: 'Zdravotné odvody', left: 'Zostane', upTo: (r) => `do ${r}`,
+      gain: (g) => `Príklad: zisk ${g}`, rate: 'Sadzba', taxC: 'Daň', left: 'Zostane', upTo: (r) => `do ${r}`,
       heroK: 'Hypotetická suma na zdanenie', sale: (a) => `Príklad: predaj 5 % Bitcoinu v prvom roku dôchodku, vo veku ${a} rokov`, value: 'Hodnota Bitcoinu v scenári +20 % ročne', sold: 'Predáte 5 %', cost: 'Nákupná cena tejto časti (5 % z vložených súm)', gainL: 'Zdaniteľný zisk',
-      band: (r, b) => `Daň ${r} z ${b}`, taxTotal: 'Daň spolu', levy: (r) => `Zdravotné odvody, ${r} zo zisku`, total: 'Daň a odvody spolu', share: (p, g) => `To je ${p} zo zisku ${g}.`, leftSale: 'Z predaja vám zostane', leftGain: 'Zo zisku zostane',
+      band: (r, b) => `Daň ${r} z ${b}`, taxTotal: 'Daň spolu', share: (p, g) => `To je ${p} zo zisku ${g}.`, leftSale: 'Z predaja vám zostane', leftGain: 'Zo zisku zostane',
       scale: (first, rest) => `${first} platí pre časť zisku nad ${rest}`, scaleAnd: 'a', bandHead: ['Časť zisku', 'Suma', 'Sadzba', 'Daň'], bandFrom: (x) => `do ${x}`, bandBetween: (a, b) => `${a} až ${b}`, bandOver: (x) => `nad ${x}`,
       exempt: (n) => `Po ${n} ${n === 1 ? 'roku' : 'rokoch'} držby je predaj podľa pravidla vyššie oslobodený, takže daň je 0 €. Počíta sa s tým, že predávate najstaršie nákupy.`,
       noteSale: (y) => `Pri dnešných sadzbách a pásmach, len z tohto zisku: bez iných príjmov, nezdaniteľnej časti, výdavkov a poplatkov. Nákupná cena je 5 % zo súm v tomto reporte; Bitcoin, ktorý už držíte, sa nepočíta. O ${y} ${y === 1 ? 'rok' : y < 5 ? 'roky' : 'rokov'} môžu byť sadzby iné a scenár nie je predpoveď. Pred podaním priznania sa poraďte s daňovým poradcom.`,
-      levyNote: 'Zdravotné odvody sú počítané všeobecnou sadzbou 16 %; sadzba a základ závisia od vašej situácie, napríklad ak poberáte dôchodok.',
+      levyNote: 'Zdravotné odvody nie sú započítané: ich sadzba a základ závisia od vašej situácie, napríklad ak poberáte dôchodok.',
+      noExample: 'Španielsko zdaňuje tieto zisky podľa stupnice príjmov z úspor a suma závisí od výšky zisku. Tento report pre Španielsko neuvádza prepočet: aktuálne pásma si overte u daňového poradcu.',
       note: 'Len ako ilustrácia, pri sadzbách uvedených vyššie. Skutočná sadzba závisí od vašich ostatných príjmov a výdavkov. Nejde o predpoveď zisku.',
       hold: (n, d) => `Nákup urobený dnes by dosiahol dobu držby ${n} ${n === 1 ? 'rok' : 'roky'} dňa ${d}.`,
       filing: { sk: (y) => `Predaj v roku ${y} patrí do priznania typu B s termínom 31. marca ${y + 1}.`, hr: (y) => `Zisk v roku ${y} patrí na formulár JOPPD do konca februára ${y + 1}.` },
@@ -233,6 +236,7 @@ function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
   if (!ex) return null;
   if (ex.zero) return { text: T.tax.zero, kv: [], after: [], bands: null, rows: [], head: [], dates: [] };
   if (ex.box3) return { text: T.tax.box3, kv: [], after: [], bands: null, rows: [], head: [], dates: [] };
+  if (ex.noExample) return { text: T.tax.noExample, kv: [], after: [], bands: null, rows: [], head: [], dates: [] };
   const rate = (r) => (lang === 'sk' ? `${String(r).replace('.', ',')}\u00a0%` : `${r}%`);
   // Every printed line adds up: whole euros are rounded once, then only added and taken away.
   const share = rate(SCENARIO.sellShare * 100);
@@ -260,7 +264,7 @@ function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
   const out = { title: worked ? T.tax.sale(A.retire) : T.tax.gain(eur(g)), kv, after: [], bands: null, head: [], rows: [], dates, note: worked ? T.tax.noteSale(years) : T.tax.note };
   if (worked && ex.hold && years >= ex.hold) {
     out.text = T.tax.exempt(ex.hold);
-    out.hero = { k: T.tax.heroK, vals: [[T.tax.total, eur(0)], [T.tax.leftSale, eur(sale)]] };
+    out.hero = { k: T.tax.heroK, vals: [[T.tax.taxTotal, eur(0)], [T.tax.leftSale, eur(sale)]] };
     return out;
   }
   if (ex.brackets || (ex.rates.length === 1 && !ex.upTo)) {
@@ -293,14 +297,11 @@ function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
     } else {
       kv.push([T.tax.band(rate(lines[0].r), eur(lines[0].part)), eur(lines[0].due)]);
     }
-    const levy = ex.levy ? Math.round((g * ex.levy) / 100) : 0;
-    if (ex.levy) out.note = `${T.tax.levyNote} ${out.note}`;
-    const all = tax + levy;
-    if (ex.levy) out.after.push([T.tax.levy(rate(ex.levy)), eur(levy), false, `${rate(ex.levy)} × ${eur(g)}`]);
-    if (ex.levy) out.after.push([T.tax.total, eur(all), true, `${eur(tax)} + ${eur(levy)}`]);
+    if (ex.levyOut) out.note = `${T.tax.levyNote} ${out.note}`;
+    const all = tax;
     const leftLabel = worked ? T.tax.leftSale : T.tax.leftGain;
     out.after.push([leftLabel, eur(base - all), true, `${eur(base)} − ${eur(all)}`]);
-    out.hero = { k: T.tax.heroK, vals: [[ex.levy ? T.tax.total : T.tax.taxTotal, eur(all)], [leftLabel, eur(base - all)]], sub: T.tax.share(pct((all / g) * 100), eur(g)) };
+    out.hero = { k: T.tax.heroK, vals: [[T.tax.taxTotal, eur(all)], [leftLabel, eur(base - all)]], sub: T.tax.share(pct((all / g) * 100), eur(g)) };
     return out;
   }
   // A range without published bands in our data: show each rate.

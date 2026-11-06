@@ -2,7 +2,7 @@
 //   verdict:res:<rid>    { result, profile, lang }    24 h; the scored result, never the decision text
 //                        { lite: true, answers, lang } 24 h; Verdict Lite: the validated answers, no email
 //   verdict:paid:<cs_id> { rid, status, usedAt, ... } 30 days
-//   verdict:pi:<pi_id>   cs_id                        90 days, for charge.refunded
+//   verdict:pi:<pi_id>   cs_id                        30 days, for charge.refunded
 
 import { PAID_TTL, PI_TTL, RESULT_TTL, paidRecord } from './domain.js';
 

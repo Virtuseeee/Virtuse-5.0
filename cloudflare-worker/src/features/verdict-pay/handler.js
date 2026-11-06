@@ -62,9 +62,9 @@ export async function handleCheckout(ctx) {
       customer_email: email,
       expires_at: Math.floor(ctx.now / 1000) + LITE_SESSION_S,
       custom_text: { submit: { message: LITE_TERMS[lang] } },
-      // With the card's country, the second piece of evidence of the customer's country (VAT).
+      // Billing address + the card's country + ip_country: evidence of the customer's country (VAT).
       billing_address_collection: 'required',
-    });
+    }, request.cf?.country);
   } else {
     rid = typeof body?.rid === 'string' ? body.rid : '';
     if (!RID_RE.test(rid)) return json(400, { error: 'Invalid rid' }, origin);
@@ -102,6 +102,18 @@ function reportPdf(view, lang, sid, paidAt) {
   });
 }
 
+// The Stripe invoice page for the email. Without it the buyer still gets Stripe's own invoice email.
+async function invoiceLink(ctx, session) {
+  if (typeof session.invoice !== 'string') return null;
+  try {
+    const r = await stripeFor(ctx).request('GET', `/invoices/${encodeURIComponent(session.invoice)}`);
+    return (r.ok && r.data.hosted_invoice_url) || null;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+}
+
 // Purchase confirmation + report PDF for one paid Session. Returns false when
 // sending failed (the webhook then answers 500 and Stripe retries).
 export async function sendReceipt(ctx, session, rec, store) {
@@ -117,7 +129,8 @@ export async function sendReceipt(ctx, session, rec, store) {
       ? liteReportView(stored.answers, stored.lang, new Date(rec.paidAt || now))
       : reportView(stored.result, stored.profile, verdictOpts(env, pageLang(stored.lang || lang)));
     const pdf = await reportPdf(view, lang, session.id, rec.paidAt || now);
-    const mail = renderReceipt({ lang, sid: session.id, amount: rec.amount, currency: rec.currency, paidAt: rec.paidAt || now, lite: !!stored.lite });
+    const invoiceUrl = await invoiceLink(ctx, session);
+    const mail = renderReceipt({ lang, sid: session.id, amount: rec.amount, currency: rec.currency, paidAt: rec.paidAt || now, lite: !!stored.lite, vat: session.total_details?.amount_tax, invoiceUrl });
     await ctx.services.resend.sendEmail({
       from: env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL,
       to: [to],

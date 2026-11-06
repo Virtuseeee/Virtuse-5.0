@@ -395,11 +395,12 @@ test('tax example: 5% sale in the scenario, by country', () => {
   assert.match(sk.bands.rows[0][0], /^do /);
   assert.match(sk.bands.rows[1][0], / až /);
   assert.match(sk.bands.rows[3][0], /^nad /);
-  const levy = digits(row(/Zdravotné/)[1]);
-  assert.equal(levy, Math.round(profit * 0.16));
-  assert.equal(digits(sk.hero.vals[0][1]), taxSum + levy);
-  assert.equal(digits(sk.hero.vals[1][1]), sold - taxSum - levy);
-  assert.equal(digits(row(/Z predaja/)[1]), sold - taxSum - levy);
+  // Signed tax review: the 16% levy cannot be confirmed for someone on a pension, so it is named, not computed.
+  assert.equal(row(/Zdravotné/), undefined);
+  assert.match(sk.note, /Zdravotné odvody nie sú započítané/);
+  assert.equal(digits(sk.hero.vals[0][1]), taxSum);
+  assert.equal(digits(sk.hero.vals[1][1]), sold - taxSum);
+  assert.equal(digits(row(/Z predaja/)[1]), sold - taxSum);
   assert.match(sk.hero.sub, /zo zisku/);
   assert.match(sk.dates.at(-1), new RegExp(`roku ${new Date().getFullYear() + 12} .*31\\. marca ${new Date().getFullYear() + 13}`));
   // A small gain stays in the first band.
@@ -471,4 +472,22 @@ test('the bigger PDF still renders, with and without every optional answer', asy
     const pdf = await renderReportPdf(blocks(a, lang), { lang, fonts, date: new Date(0), order: 'X', operator: 'Op' });
     assert.equal(new TextDecoder().decode(pdf.slice(0, 5)), '%PDF-');
   }
+});
+
+test('signed tax review: Spain has no worked figures and no bands in the report', () => {
+  const es = liteReportView(check({ ...ANNA, country: 'es' }), 'en');
+  assert.match(es.taxExample.text, /no worked figures/);
+  assert.equal(es.taxExample.hero, undefined);
+  assert.doesNotMatch(JSON.stringify(es.tax), /19|30\s?%/);
+  const sk = liteReportView(check({ ...ANNA, country: 'es' }), 'sk');
+  assert.match(sk.taxExample.text, /neuvádza prepočet/);
+});
+
+test('the +20% scenario says it is an assumption and carries the MiCA warning, in both languages', () => {
+  const en = JSON.stringify(liteReportView(check({ ...ANNA, country: 'at' }), 'en'));
+  assert.match(en, /not covered by deposit guarantee or investor compensation schemes/);
+  assert.match(en, /\+20% is an assumption and not a forecast by Virtuse/);
+  const sk = JSON.stringify(liteReportView(check({ ...ANNA, country: 'at' }), 'sk'));
+  assert.match(sk, /nie sú kryté systémom ochrany vkladov/);
+  assert.match(sk, /\+20 % je predpoklad, nie predpoveď Virtuse/);
 });

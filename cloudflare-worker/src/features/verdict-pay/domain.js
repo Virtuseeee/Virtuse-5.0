@@ -13,8 +13,9 @@ export const REPORT_WINDOW_MS = 30 * 60 * 1000;
 export const SIGNATURE_TOLERANCE_S = 300;
 export const PRODUCT = 'verdict_report';
 // The wording of terms 5a, the withdrawal page and privacy section 9 at the time of a purchase:
-// the commit history holds each version, the Stripe metadata and the order record hold this date.
-export const TERMS_VERSION = '2026-11-04';
+// legal-archive/<date>/ holds each version (a test fails if the pages change without a new date),
+// the Stripe metadata and the order record hold this date.
+export const TERMS_VERSION = '2026-11-06';
 export const RID_RE = /^[a-f0-9]{32}$/;
 export const SESSION_RE = /^cs_(test|live)_[A-Za-z0-9]{10,200}$/;
 
@@ -34,10 +35,50 @@ export function isVerdictSession(s) {
   return !!(s && s.object === 'checkout.session' && s.metadata && s.metadata.product === PRODUCT && RID_RE.test(s.metadata.rid || ''));
 }
 
+const INVOICE_TEXT = {
+  en: {
+    fields: [['Company ID', '36 709 042'], ['Tax ID', '2022293042'], ['VAT ID', 'SK2022293042']],
+    footer: "Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Slovakia. Registered in the Commercial Register of the Municipal Court Bratislava III, section Sa, file 4452/B. If the buyer's EU VAT ID is shown on this invoice, the VAT is reverse charged (Art. 196 of Directive 2006/112/EC).",
+  },
+  sk: {
+    fields: [['IČO', '36 709 042'], ['DIČ', '2022293042'], ['IČ DPH', 'SK2022293042']],
+    footer: 'Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka. Zapísaná v obchodnom registri Mestského súdu Bratislava III, oddiel Sa, vložka č. 4452/B. Ak je na faktúre uvedené IČ DPH odberateľa z EÚ, ide o prenesenie daňovej povinnosti (čl. 196 smernice 2006/112/ES).',
+  },
+};
+
+// VAT, as the accountant set it out on 6 Nov 2026. Stripe Tax, with a "small seller" registration
+// in Slovakia, charges Slovak VAT on EU consumers up to 10,000 EUR a year of cross-border sales, then
+// their country's VAT through OSS once the Union OSS registration is added in the Dashboard (no
+// code change). An EU business with a VAT ID: reverse charge. Outside the EU: no VAT.
+// The 14 EUR price is VAT-inclusive (tax_behavior inclusive on the Price).
+function taxParams(env, metadata, page) {
+  const out = {};
+  if (env.STRIPE_AUTOMATIC_TAX === '1') {
+    out.automatic_tax = { enabled: true };
+    out.tax_id_collection = { enabled: true };
+  }
+  if (env.STRIPE_INVOICE === '1') {
+    const text = INVOICE_TEXT[page] || INVOICE_TEXT.en;
+    out.invoice_creation = {
+      enabled: true,
+      invoice_data: {
+        metadata,
+        footer: text.footer,
+        custom_fields: text.fields.map(([name, value]) => ({ name, value })),
+        rendering_options: { amount_tax_display: 'include_inclusive_tax' },
+      },
+    };
+  }
+  return out;
+}
+
 // Checkout Session params for one stored result (rid) and page language.
 // extra (Verdict Lite): prefilled email, a short expiry (the answers are kept
-// only 24 h) and the terms line above the pay button.
-export function checkoutParams(env, origin, rid, page, extra = {}) {
+// only 24 h) and the terms line above the pay button. ipCountry: Cloudflare's country of the
+// request, kept on the payment as evidence of the customer's country (VAT), never the IP itself.
+export function checkoutParams(env, origin, rid, page, extra = {}, ipCountry = null) {
+  const metadata = { product: PRODUCT, rid, lang: page, terms_version: TERMS_VERSION };
+  if (ipCountry) metadata.ip_country = ipCountry;
   const pageUrl = `${origin}${page === 'en' ? '' : '/' + page}/verdict.html`;
   return {
     mode: 'payment',
@@ -45,10 +86,10 @@ export function checkoutParams(env, origin, rid, page, extra = {}) {
     success_url: `${pageUrl}?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${pageUrl}?canceled=1`,
     client_reference_id: rid,
-    metadata: { product: PRODUCT, rid, lang: page, terms_version: TERMS_VERSION },
+    metadata,
+    payment_intent_data: { metadata },
     locale: page,
-    automatic_tax: env.STRIPE_AUTOMATIC_TAX === '1' ? { enabled: true } : undefined,
-    invoice_creation: env.STRIPE_INVOICE === '1' ? { enabled: true } : undefined,
+    ...taxParams(env, metadata, page),
     ...extra,
   };
 }

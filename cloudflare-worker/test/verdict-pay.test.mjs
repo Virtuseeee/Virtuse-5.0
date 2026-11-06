@@ -4,6 +4,7 @@ import worker from '../src/index.js';
 import { SIGNALS } from '../src/features/verdict/index.js';
 import { stripeSignature, stripeForm } from '../src/infra/stripe.js';
 import { paymentsOn, REPORT_WINDOW_MS } from '../src/features/verdict-pay/domain.js';
+import { renderReceipt } from '../src/features/verdict-pay/receipt.js';
 
 const STAGING = 'https://staging.virtuse.com';
 const WHSEC = 'whsec_test_secret';
@@ -134,7 +135,34 @@ test('checkout: Stripe Tax and invoices only when switched on', withApis(async (
   assert.equal(p.get('automatic_tax[enabled]'), 'true');
   assert.equal(p.get('invoice_creation[enabled]'), 'true');
   assert.equal(p.get('success_url'), `${STAGING}/verdict.html?session_id={CHECKOUT_SESSION_ID}`);
+  // Accountant 2026-11-06: an EU business enters its VAT ID (reverse charge).
+  assert.equal(p.get('tax_id_collection[enabled]'), 'true');
+  // The invoice names the seller as Slovak VAT law asks and shows the VAT inside the price.
+  assert.equal(p.get('invoice_creation[invoice_data][custom_fields][2][value]'), 'SK2022293042');
+  assert.match(p.get('invoice_creation[invoice_data][footer]'), /Bratislava III.*reverse charged/);
+  assert.equal(p.get('invoice_creation[invoice_data][rendering_options][amount_tax_display]'), 'include_inclusive_tax');
+  assert.equal(p.get('payment_intent_data[metadata][product]'), 'verdict_report');
 }, () => ({ status: 200, body: { id: 'cs_test_x', url: 'https://checkout.stripe.com/x' } })));
+
+test('checkout: Slovak invoice labels', withApis(async (calls) => {
+  const e = env({ STRIPE_INVOICE: '1' });
+  const { rid } = await freeVerdict(e);
+  await worker.fetch(post('/verdict/checkout', { rid, lang: 'sk' }), e);
+  const p = new URLSearchParams(calls.find((c) => c.url.endsWith('/checkout/sessions')).init.body);
+  assert.equal(p.get('invoice_creation[invoice_data][custom_fields][0][name]'), 'IČO');
+  assert.match(p.get('invoice_creation[invoice_data][footer]'), /prenesenie daňovej povinnosti/);
+  assert.equal(p.get('tax_id_collection[enabled]'), null);
+}, () => ({ status: 200, body: { id: 'cs_test_x', url: 'https://checkout.stripe.com/x' } })));
+
+test('receipt shows the VAT and the invoice link only when they exist', () => {
+  const base = { lang: 'sk', sid: 'cs_test_abcdefghijkl', amount: 1400, currency: 'eur', paidAt: 1793923200000, lite: true };
+  const plain = renderReceipt(base).html;
+  assert.doesNotMatch(plain, /z toho DPH|Otvoriť faktúru/);
+  const full = renderReceipt({ ...base, vat: 262, invoiceUrl: 'https://invoice.stripe.com/i/x' }).html;
+  assert.match(full, /z toho DPH/);
+  assert.match(full, /2,62/);
+  assert.match(full, /href="https:\/\/invoice\.stripe\.com\/i\/x"/);
+});
 
 test('checkout refuses an unknown rid, a bad rid, a foreign Origin, and payments off', withApis(async () => {
   const e = env();

@@ -10,7 +10,7 @@ const T = {
     hi: 'Thank you for your purchase.',
     lead: 'Your full Verdict report is attached to this email as a PDF. Keep it: on the website the report stays open for 30 minutes after you first open it.',
     order: 'Order summary', product: 'Product', productV: 'Verdict · full report (one-off, no subscription)',
-    amount: 'Amount paid', date: 'Date', ref: 'Order number', method: 'Payment', methodV: 'Card, via Stripe',
+    amount: 'Amount paid', vat: 'of which VAT', invoice: 'Invoice', invoiceLink: 'Open the invoice', date: 'Date', ref: 'Order number', method: 'Payment', methodV: 'Card, via Stripe',
     terms: 'Terms and conditions', privacy: 'Privacy policy',
     withdraw: 'Your 14-day right of withdrawal applies even after you have opened the report.', withdrawLink: 'Withdraw from the contract here',
     help: 'Questions about your order or a refund: reply to this email or write to info@virtuse.com.',
@@ -22,7 +22,7 @@ const T = {
     hi: 'Ďakujeme za nákup.',
     lead: 'Celý report Verdict nájdete v prílohe tohto e-mailu ako PDF. Uschovajte si ho: na webe zostáva report otvorený 30 minút od prvého otvorenia.',
     order: 'Zhrnutie objednávky', product: 'Produkt', productV: 'Verdict · celý report (jednorazovo, bez predplatného)',
-    amount: 'Zaplatená suma', date: 'Dátum', ref: 'Číslo objednávky', method: 'Platba', methodV: 'Kartou cez Stripe',
+    amount: 'Zaplatená suma', vat: 'z toho DPH', invoice: 'Faktúra', invoiceLink: 'Otvoriť faktúru', date: 'Dátum', ref: 'Číslo objednávky', method: 'Platba', methodV: 'Kartou cez Stripe',
     terms: 'Obchodné podmienky', privacy: 'Ochrana osobných údajov',
     withdraw: 'Vaše 14-dňové právo odstúpiť od zmluvy platí aj po otvorení reportu.', withdrawLink: 'Odstúpiť od zmluvy tu',
     help: 'Otázky k objednávke alebo žiadosť o vrátenie peňazí: odpovedzte na tento e-mail alebo napíšte na info@virtuse.com.',
@@ -72,7 +72,7 @@ export function reportFilename(paidAt, sid) {
 }
 
 // { subject, html, filename } for one paid Session.
-export function renderReceipt({ lang, sid, amount, currency, paidAt, lite = false }) {
+export function renderReceipt({ lang, sid, amount, currency, paidAt, lite = false, vat = 0, invoiceUrl = null }) {
   const L = receiptLang(lang);
   const t = T[L];
   const site = `https://virtuse.com${L === 'en' ? '' : '/' + L}`;
@@ -87,8 +87,9 @@ export function renderReceipt({ lang, sid, amount, currency, paidAt, lite = fals
 <p style="margin:0 0 20px 0;font-size:15px;line-height:24px;color:#2b2f36;">${esc(t.lead)}</p>
 <p style="margin:0 0 6px 0;font-size:13px;font-weight:700;color:#121417;text-transform:uppercase;letter-spacing:.04em;">${esc(t.order)}</p>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-${row(t.product, t.productV)}${row(t.amount, formatAmount(amount, currency, L))}${row(t.date, formatDate(paidAt, L))}${row(t.ref, orderNumber(sid))}${row(t.method, t.methodV)}
+${row(t.product, t.productV)}${row(t.amount, formatAmount(amount, currency, L))}${vat > 0 && t.vat ? row(t.vat, formatAmount(vat, currency, L)) : ''}${row(t.date, formatDate(paidAt, L))}${row(t.ref, orderNumber(sid))}${row(t.method, t.methodV)}
 </table>
+${invoiceUrl && t.invoice ? `<p style="margin:20px 0 0 0;font-size:14px;line-height:22px;color:#2b2f36;">${esc(t.invoice)}: <a href="${esc(invoiceUrl)}" style="color:#2b62c0;">${esc(t.invoiceLink)}</a></p>` : ''}
 <p style="margin:20px 0 0 0;font-size:14px;line-height:22px;color:#2b2f36;">${esc(t.help)}</p>
 ${lite && t.withdraw ? `<p style="margin:12px 0 0 0;font-size:14px;line-height:22px;color:#2b2f36;">${esc(t.withdraw)} <a href="${site}/withdrawal.html?order=${encodeURIComponent(orderNumber(sid))}" style="color:#2b62c0;">${esc(t.withdrawLink)}</a></p>` : ''}
 <p style="margin:12px 0 0 0;font-size:14px;line-height:22px;"><a href="${site}/terms-and-conditions.html" style="color:#2b62c0;">${esc(t.terms)}</a> · <a href="${site}/privacy-policy.html#verdict-cfo" style="color:#2b62c0;">${esc(t.privacy)}</a></p>

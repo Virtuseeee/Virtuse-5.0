@@ -320,8 +320,32 @@ Code in `src/features/verdict-pay/` and `src/infra/stripe.js`. Routes: `POST /ve
 
 - On only when `VERDICT_PAYMENTS = "1"` and all three secrets are set: `STRIPE_SECRET_KEY` (prefer a restricted `rk_live_…` key), `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_ID_VERDICT`. With payments on, `/verdict` keeps the scored result (not the decision text) 24 hours in KV under a random `rid`, and the report preview is off.
 - `STRIPE_TEST_ONLY = "1"` (staging) refuses live keys.
-- Off until the accountant decides: `STRIPE_AUTOMATIC_TAX = "1"`, `STRIPE_INVOICE = "1"`.
+- VAT and invoices: `STRIPE_AUTOMATIC_TAX = "1"`, `STRIPE_INVOICE = "1"` (see below). On in production `wrangler.toml`; staging turns them on once the test-mode Dashboard is set up.
 - Secrets in your own terminal, production without `--env`, staging with `--env staging`: `npx wrangler secret put STRIPE_SECRET_KEY` (same for the other two).
+
+### VAT and invoices (accountant, TOBIÁŠ s.r.o., 2026-11-06; tax review of 2026-11-05)
+
+- EU consumer: Slovak VAT while cross-border B2C sales stay under 10,000 EUR a year; above that the customer country's VAT through OSS.
+- EU business with a VAT ID: reverse charge, invoice without VAT. A VAT-inclusive price does not fall: Stripe keeps 14 EUR, with no VAT in it.
+- Outside the EU: no Slovak VAT. Watch local thresholds (Stripe Tax monitors them).
+- Evidence of the customer's country: billing address, card country (both in Stripe), `metadata.ip_country` on the Session and the payment.
+
+**Do this in the Dashboard before these flags reach a Worker, or Checkout fails and nobody can pay (test mode first, then live):**
+1. Tax → Settings: head office Borinka 65, 900 32 Borinka; prices include tax (inclusive); default tax code `txcd_10000000` (General, Electronically Supplied Services). Accountant confirms the code.
+2. Tax → Locations → Add Slovakia, domestic registration, IČ DPH SK2022293042: answer **Yes** to "small seller". Stripe then applies Slovak VAT to EU B2C digital sales and tracks the 10,000 EUR.
+3. The Verdict Price (`STRIPE_PRICE_ID_VERDICT`): tax behaviour inclusive (cannot be changed afterwards), the product carries the tax code.
+4. Settings → Business → Customer emails: successful payments on, so Stripe emails the invoice. Settings → Billing → Invoices: numbering as the accountant wants.
+5. Staging: `npx wrangler deploy --env staging --var STRIPE_AUTOMATIC_TAX:1 --var STRIPE_INVOICE:1`, test card, check the invoice (seller details, VAT line, a reverse-charge purchase with a test VAT ID).
+
+Over 10,000 EUR: register for OSS with the Financial Administration, then in Tax → Locations end the small-seller registration, add Slovakia again with **No**, add Union OSS. No code change. Fees to expect: Stripe Tax 0.5% + post-payment invoice 0.4% on top of the card fee (stripe.com/en-sk/pricing, checked 2026-11-06), about 0.13 EUR on 14 EUR.
+
+**Monthly, to the accountant:** all issued invoices of the month (Invoices, filter by date, export + PDFs), Stripe's fee invoice (Settings → Documents), the complete monthly statement (Reports → Balance, download). A refund or withdrawal: refund in the payment, then issue a credit note on its invoice.
+
+**Monthly, retention proof:** `node scripts/audit-retention.mjs` (key names and expiry only); production runs add a line to `legal-archive/retention-audit.log`.
+
+**Quarterly and at legislative events:** review the tax texts in `seo-build/data/seo-data.json` + `meta.json` (tax review, checklist). Reminders are in Ras's Outlook for 2027.
+
+**Wording:** a change to terms 5a, the withdrawal page or privacy section 9 needs a new `TERMS_VERSION` and `node legal-archive/snapshot.mjs`, or the tests fail. The signed PDFs stay outside this public repo (iCloud `VWM 5.0/Verdict/`).
 
 Test set against the real API (costs money, about $0.05 a call; the runner prints an estimate and needs `--yes`):
 
