@@ -34,7 +34,7 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 
 | File | What to edit |
 |---|---|
-| `news-pulse.json` | Pulse shorts from original outlets. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) drives the monoline icon. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
+| `news-pulse.json` | Fallback when the Worker's `/pulse.json` fails. Pulse shorts from original outlets. The header says `Updated today · HH:MM` whenever items render, whatever the file's `updated` stamp says, so keep this copy recent. The strip under the logo is today's date (Europe/Bratislava), set by `news.js`; only the featured eyebrow carries the issue date. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) drives the monoline icon. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
 | `issues.json` | Weekly issue archive (date, title, excerpt, slug, `image`). The Latest issues band renders 4 weekly issues (featured Brief excluded). A row with `"essay": true` paints the Blog / Ras Take grid first; related WP posts fill remaining columns. `sponsor` is unused on this layout. |
 | `treasury-ledger.json` | Last-known public-company BTC holdings (CoinGecko snapshot + `as_of`). Live fetch from `api.coingecko.com` overwrites this when it succeeds. Never invent holdings. |
 | `firefish-promo.png` | Official Firefish OG creative, cover-cropped as the Partners rail poster. |
