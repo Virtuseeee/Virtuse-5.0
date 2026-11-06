@@ -335,7 +335,8 @@ Code in `src/features/verdict-pay/` and `src/infra/stripe.js`. Routes: `POST /ve
 2. Tax → Locations → Add Slovakia, "I've already registered", domestic registration: No for imported goods, **Yes** for sales to other EU consumers under 10,000 EUR (Stripe lists it as Slovakia - Small Seller), IČ DPH SK2022293042. Stripe then applies Slovak VAT to EU B2C digital sales and tracks the 10,000 EUR. Checked in the sandbox: SK, AT, CZ 2.62 EUR VAT in 14 EUR, CH none.
 3. The Verdict Price (`STRIPE_PRICE_ID_VERDICT`), Edit, Include tax in price = **Yes** (cannot be changed afterwards). **Required:** a price left on Unspecified makes Stripe answer 400, whatever the account default says (found on staging 2026-11-06), and nobody can pay. Check that Tax behavior reads Inclusive. The product picks up the preset tax code.
 4. Settings → Business → Customer emails: successful payments on, so Stripe emails the invoice. Settings → Billing → Invoices: numbering as the accountant wants.
-5. Staging: test card, check the invoice (seller details, VAT line, a reverse-charge purchase with a test VAT ID).
+5. Settings → Payment methods: leave cards and wallets (Apple Pay, Google Pay) on, turn the others off (MB WAY, Bancontact, EPS, Satispay and so on). Terms 5a says "by card" and the card's country is VAT evidence. This is Dashboard only: Stripe refuses `payment_method_types` on a Checkout Session (400).
+6. Staging: test card, check the invoice (seller details, VAT line, a reverse-charge purchase with a test VAT ID).
 
 Over 10,000 EUR: register for OSS with the Financial Administration, then in Tax → Locations end the small-seller registration, add Slovakia again with **No**, add Union OSS. No code change. Fees to expect: Stripe Tax 0.5% + post-payment invoice 0.4% on top of the card fee (stripe.com/en-sk/pricing, checked 2026-11-06), about 0.13 EUR on 14 EUR.
 
