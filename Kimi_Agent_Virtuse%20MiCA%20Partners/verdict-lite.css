@@ -545,6 +545,10 @@
 .ml-peek > .demo { min-width: 0; max-width: 100%; }
 .dm-lbl span:nth-child(2) { text-align: center; }
 .dm-lbl span:nth-child(3) { text-align: right; }
+@media (max-width: 480px) {   /* phones: the scale gets the full card width, so the three labels never touch */
+  .dm-score { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .dm-lbl { white-space: normal; }
+}
 
 /* Six areas */
 .ml-paid .ml-areas-sum { color: var(--text); font-size: 14px; font-weight: 600; margin-top: 10px; }
