@@ -134,26 +134,34 @@
     if (satVb <= 20) return 'normal';
     return 'high';
   }
-  /* "Updated today · 06:31" only when the Pulse timestamp is today (Europe/Paris);
-     an older Pulse says its date, so a stale desk never reads as fresh. */
+  /* The desk's clock is Europe/Bratislava, for both the strip and the Pulse header
+     (not the visitor's zone, and not Paris or the issue's UTC noon). */
+  var DESK_TZ = 'Europe/Bratislava';
+  function deskYmd(d) { return d.toLocaleDateString('en-CA', { timeZone: DESK_TZ }); }
+  function deskHhmm(d) { return d.toLocaleTimeString('en-GB', { timeZone: DESK_TZ, hour: '2-digit', minute: '2-digit', hour12: false }); }
+  /* Pulse header while the desk has items: always "Updated today · HH:MM" (Ras, 2026-11-06).
+     HH:MM is the feed's own stamp when that stamp is today, otherwise the time the page opened.
+     No items at all stays "Pulse unavailable" (renderPulse). */
   var PULSE_UNAVAILABLE = 'Pulse unavailable';
   function formatPulseUpdated(iso) {
+    var now = new Date();
     var d = new Date(iso);
-    if (!iso || isNaN(d.getTime())) return PULSE_UNAVAILABLE;
-    var tz = { timeZone: 'Europe/Paris' };
-    var hhmm = d.toLocaleTimeString('en-GB', { timeZone: tz.timeZone, hour: '2-digit', minute: '2-digit', hour12: false });
-    var day = d.toLocaleDateString('en-CA', tz);
-    var today = new Date().toLocaleDateString('en-CA', tz);
-    if (day === today) return 'Updated today · ' + hhmm;
-    return 'Updated ' + d.toLocaleDateString('en-GB', { timeZone: tz.timeZone, day: 'numeric', month: 'short' }) + ' · ' + hhmm;
+    var fresh = iso && !isNaN(d.getTime()) && deskYmd(d) === deskYmd(now);
+    return 'Updated today · ' + deskHhmm(fresh ? d : now);
   }
-  /* The edition line in the strip names the latest issue, like the featured eyebrow. */
-  function applyEditionDate(ymd, label) {
-    var t = document.querySelector('.edition time');
-    if (!t || !ymd || !label) return;
-    t.setAttribute('datetime', ymd);
-    t.textContent = label;
+  /* The strip under the logo is today's date, on every load, whatever issues.json holds.
+     The latest issue's own date lives only on the featured eyebrow (paintFeatured). */
+  function applyTodayStrip() {
+    var p = document.querySelector('.edition-strip .edition');
+    if (!p) return;
+    var now = new Date();
+    var t = document.createElement('time');
+    t.setAttribute('datetime', deskYmd(now));
+    t.textContent = now.toLocaleDateString('en-US', { timeZone: DESK_TZ, weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    p.textContent = 'Today · ';
+    p.appendChild(t);
   }
+  applyTodayStrip();
   function applyFearGreed(fg) {
     var fine = $('numbersFine');
     if (!fine || !fg) return;
@@ -219,9 +227,9 @@
     });
     host.hidden = false;
   }
+  var pulseStamp;
   function applyPulseMeta(data) {
-    var updated = data && data.updated;
-    setText('pulseUpdated', formatPulseUpdated(updated));
+    pulseStamp = data && data.updated;
     var moved = (data && (data.what_moved || data.moved)) || '';
     var movedEl = $('pulseMoved');
     if (movedEl) {
@@ -578,9 +586,11 @@
       return it && !isDeskStory(it) && isBitcoinOnly(it);
     }).slice(0, PULSE_MAX);
     if (!shorts.length) {
+      setText('pulseUpdated', PULSE_UNAVAILABLE);
       empty.hidden = false;
       return;
     }
+    setText('pulseUpdated', formatPulseUpdated(pulseStamp));
     empty.hidden = true;
     shorts.forEach(function (it) {
       var article = document.createElement('article');
@@ -607,7 +617,7 @@
       list.appendChild(article);
     });
   }
-  var PULSE_LOCAL = 'news/news-pulse.json?v=20260928b';
+  var PULSE_LOCAL = 'news/news-pulse.json?v=20261106';
   /* Worker GET /pulse.json, 3 s limit (the local copy is the fallback). */
   function fetchPulseRemote() {
     return vbApi().then(function (api) {
@@ -638,7 +648,6 @@
       renderPulse(local);
     }).catch(function () {
       applyPulseMeta({});
-      setText('pulseUpdated', PULSE_UNAVAILABLE);
       renderPulse([]);
     });
   }
@@ -895,7 +904,6 @@
       t.setAttribute('datetime', issue.date);
       t.textContent = label;
     }
-    applyEditionDate(issue.date, label);
     var img = card.querySelector('.featured-cover img');
     if (img && issue.image) {
       img.removeAttribute('width');
