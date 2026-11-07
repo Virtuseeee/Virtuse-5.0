@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T02:13:54.375Z",
+ "generated": "2026-11-07T17:12:32.266Z",
  "asOf": "2026-11-07",
  "years": [
   2016,
@@ -46,10 +46,10 @@
     1.5542,
     1.2105,
     -0.0634,
-    -0.1316
+    -0.1349
    ],
-   "cumulative": 175.4897,
-   "annualized": 0.6107
+   "cumulative": 174.8212,
+   "annualized": 0.6101
   },
   {
    "ticker": "DBC",
@@ -122,10 +122,10 @@
     0.145,
     0.1006,
     0.1661,
-    0.0351
+    0.036
    ],
-   "cumulative": 1.9012,
-   "annualized": 0.1031
+   "cumulative": 1.9038,
+   "annualized": 0.1032
   },
   {
    "ticker": "IWM",
@@ -274,10 +274,10 @@
     0.0494,
     0.0519,
     0.0415,
-    0.0246
+    0.0275
    ],
-   "cumulative": 0.2536,
-   "annualized": 0.021
+   "cumulative": 0.2572,
+   "annualized": 0.0213
   },
   {
    "ticker": "HYG",
@@ -293,10 +293,10 @@
     0.1154,
     0.0797,
     0.0859,
-    -0.0032
+    0.0013
    ],
-   "cumulative": 0.6914,
-   "annualized": 0.0496
+   "cumulative": 0.699,
+   "annualized": 0.0501
   },
   {
    "ticker": "PFF",
@@ -312,10 +312,10 @@
     0.0922,
     0.0724,
     0.0487,
-    -0.0554
+    -0.0502
    ],
-   "cumulative": 0.3282,
-   "annualized": 0.0265
+   "cumulative": 0.3354,
+   "annualized": 0.027
   },
   {
    "ticker": "TIP",
@@ -350,10 +350,10 @@
     0.1062,
     0.0554,
     0.1386,
-    -0.0111
+    -0.0063
    ],
-   "cumulative": 0.4502,
-   "annualized": 0.0348
+   "cumulative": 0.4573,
+   "annualized": 0.0353
   },
   {
    "ticker": "BND",
@@ -369,10 +369,10 @@
     0.0565,
     0.0138,
     0.0708,
-    -0.0073
+    -0.0037
    ],
-   "cumulative": 0.215,
-   "annualized": 0.0181
+   "cumulative": 0.2193,
+   "annualized": 0.0184
   },
   {
    "ticker": "GLD",
@@ -448,10 +448,10 @@
     0.1092,
     -0.0434,
     0.1379,
-    -0.0598
+    -0.0613
    ],
-   "cumulative": 0.0163,
-   "annualized": 0.0015
+   "cumulative": 0.0146,
+   "annualized": 0.0013
   },
   {
    "ticker": "EUN5",
@@ -468,9 +468,9 @@
     0.116,
     -0.0164,
     0.1629,
-    -0.047
+    -0.0473
    ],
-   "cumulative": 0.1682,
+   "cumulative": 0.1678,
    "annualized": 0.0144
   }
  ]
