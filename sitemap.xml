@@ -10860,7 +10860,7 @@
 <!-- STORIES-HUBS:START -->
   <url>
     <loc>https://virtuse.com/stories/</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -10872,11 +10872,11 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/3/</loc>
-    <lastmod>2022-09-08</lastmod>
+    <lastmod>2022-09-28</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/4/</loc>
-    <lastmod>2022-03-21</lastmod>
+    <lastmod>2022-03-30</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/5/</loc>
@@ -10895,8 +10895,12 @@
     <lastmod>2026-10-08</lastmod>
   </url>
   <url>
+    <loc>https://virtuse.com/stories/page/9/</loc>
+    <lastmod>2019-11-10</lastmod>
+  </url>
+  <url>
     <loc>https://virtuse.com/sk/stories/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -11400,6 +11404,13 @@
   <url>
     <loc>https://virtuse.com/sk/stories/krvavy-kupel-na-trhu-preco-je-pad-bitcoinu-pod-67-000-obrovskou-prilezitostou/</loc>
     <lastmod>2026-02-06</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/who-actually-controls-your-money/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/stories/who-actually-controls-your-money/"/>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu/</loc>
@@ -12480,6 +12491,13 @@
   <url>
     <loc>https://virtuse.com/stories/when-will-we-travel-to-the-moon-despite-everything-crypto-is-still-more-popular/</loc>
     <lastmod>2019-12-03</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/who-actually-controls-your-money/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/who-actually-controls-your-money/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/stories/who-actually-controls-your-money/"/>
   </url>
   <url>
     <loc>https://virtuse.com/stories/who-really-owns-web3/</loc>
