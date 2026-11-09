@@ -7,7 +7,7 @@ Usage (repo root): python3 "Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/verd
 import os, re, sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 LANGS = ('sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu', 'uk', 'ru')
-OWN = ('en', 'sk', 'ru')
+OWN = ('en', 'sk', 'ru', 'uk')
 VNAME = {}   # sk/cs said 'Verdikt' until the SK/CS proofreading rounds (2026-10-29): Verdict in every language
 CFO_D = {'en': 'Fees, loans and tax over time · planned', 'sk': 'Poplatky, pôžičky a dane v čase · pripravujeme',
          'cs': 'Poplatky, půjčky a daně v čase · připravujeme', 'de': 'Gebühren, Kredite und Steuern im Blick · in Planung',

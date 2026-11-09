@@ -38,6 +38,7 @@
 -mkdir public_html/stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013
 -mkdir public_html/stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin
 -mkdir public_html/stories/bitcoin-fell-below-77000-etfs-sold-fed-looms
+-mkdir public_html/stories/bitcoin-in-gold-not-dollars
 -mkdir public_html/stories/bitcoin-investors-refuse-to-sell-their-bitcoin
 -mkdir public_html/stories/bitcoin-is-a-paradigm-shift-of-a-decade
 -mkdir public_html/stories/bitcoin-is-an-antidote-against-cbdcs
@@ -172,6 +173,7 @@
 -mkdir public_html/stories/whats-the-end-game-of-all-this-money-printing-2
 -mkdir public_html/stories/whats-the-number-one-thing-missing-from-blockchain-technology
 -mkdir public_html/stories/when-will-we-travel-to-the-moon-despite-everything-crypto-is-still-more-popular
+-mkdir public_html/stories/who-actually-controls-your-money
 -mkdir public_html/stories/who-really-owns-web3
 -mkdir public_html/stories/why-bitcoin-is-not-a-ponzi-scheme
 -mkdir public_html/stories/why-bitcoin-skyrocketed-on-sunday
@@ -314,6 +316,7 @@
 -mkdir public_html/sk/stories/krypto-priemysel-stratil-svoje-tri-hlavne-banky-v-usa
 -mkdir public_html/sk/stories/kryptobanky-su-novodoby-fenomen-prinasaju-aj-riziko
 -mkdir public_html/sk/stories/kryptoburza-gemini-ma-problemy-caka-nas-dalsi-dominovy-efekt
+-mkdir public_html/sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi
 -mkdir public_html/sk/stories/kto-vlastni-web3
 -mkdir public_html/sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu
 -mkdir public_html/sk/stories/last-chance-to-buy-tesla
@@ -360,6 +363,7 @@
 -mkdir public_html/sk/stories/preco-sa-teraz-oplati-investovat-do-bitcoinu-ras-vasilisin
 -mkdir public_html/sk/stories/preco-saylor-a-wall-street-predpovedaju-bitcoin-od-150-tisic-az-po-10-milionov
 -mkdir public_html/sk/stories/preco-vas-nehnutelnost-robi-chudobnejsimi-a-ako-sa-z-toho-von
+-mkdir public_html/sk/stories/prestan-sledovat-bitcoin-v-dolaroch
 -mkdir public_html/sk/stories/pri-investovani-vas-k-velkym-peniazom-privedu-aj-male-sumy-2
 -mkdir public_html/sk/stories/prichadza-najvacsia-zmena-paradigmy-od-internetu
 -mkdir public_html/sk/stories/pripravi-bitcoin-zlato-o-slavu
@@ -538,6 +542,7 @@ put sk/stories/krypto-otvara-nove-moznosti-pre-obchodovanie-s-komoditami/index.h
 put sk/stories/krypto-priemysel-stratil-svoje-tri-hlavne-banky-v-usa/index.html public_html/sk/stories/krypto-priemysel-stratil-svoje-tri-hlavne-banky-v-usa/index.html
 put sk/stories/kryptobanky-su-novodoby-fenomen-prinasaju-aj-riziko/index.html public_html/sk/stories/kryptobanky-su-novodoby-fenomen-prinasaju-aj-riziko/index.html
 put sk/stories/kryptoburza-gemini-ma-problemy-caka-nas-dalsi-dominovy-efekt/index.html public_html/sk/stories/kryptoburza-gemini-ma-problemy-caka-nas-dalsi-dominovy-efekt/index.html
+put sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi/index.html public_html/sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi/index.html
 put sk/stories/kto-vlastni-web3/index.html public_html/sk/stories/kto-vlastni-web3/index.html
 put sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu/index.html public_html/sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu/index.html
 put sk/stories/last-chance-to-buy-tesla/index.html public_html/sk/stories/last-chance-to-buy-tesla/index.html
@@ -584,6 +589,7 @@ put sk/stories/preco-sa-mmf-boji-kryptoizacie/index.html public_html/sk/stories/
 put sk/stories/preco-sa-teraz-oplati-investovat-do-bitcoinu-ras-vasilisin/index.html public_html/sk/stories/preco-sa-teraz-oplati-investovat-do-bitcoinu-ras-vasilisin/index.html
 put sk/stories/preco-saylor-a-wall-street-predpovedaju-bitcoin-od-150-tisic-az-po-10-milionov/index.html public_html/sk/stories/preco-saylor-a-wall-street-predpovedaju-bitcoin-od-150-tisic-az-po-10-milionov/index.html
 put sk/stories/preco-vas-nehnutelnost-robi-chudobnejsimi-a-ako-sa-z-toho-von/index.html public_html/sk/stories/preco-vas-nehnutelnost-robi-chudobnejsimi-a-ako-sa-z-toho-von/index.html
+put sk/stories/prestan-sledovat-bitcoin-v-dolaroch/index.html public_html/sk/stories/prestan-sledovat-bitcoin-v-dolaroch/index.html
 put sk/stories/pri-investovani-vas-k-velkym-peniazom-privedu-aj-male-sumy-2/index.html public_html/sk/stories/pri-investovani-vas-k-velkym-peniazom-privedu-aj-male-sumy-2/index.html
 put sk/stories/prichadza-najvacsia-zmena-paradigmy-od-internetu/index.html public_html/sk/stories/prichadza-najvacsia-zmena-paradigmy-od-internetu/index.html
 put sk/stories/pripravi-bitcoin-zlato-o-slavu/index.html public_html/sk/stories/pripravi-bitcoin-zlato-o-slavu/index.html
@@ -677,6 +683,7 @@ put stories/bitcoin-beat-the-war-november-still-gets-a-vote/index.html public_ht
 put stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013/index.html public_html/stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013/index.html
 put stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin/index.html public_html/stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin/index.html
 put stories/bitcoin-fell-below-77000-etfs-sold-fed-looms/index.html public_html/stories/bitcoin-fell-below-77000-etfs-sold-fed-looms/index.html
+put stories/bitcoin-in-gold-not-dollars/index.html public_html/stories/bitcoin-in-gold-not-dollars/index.html
 put stories/bitcoin-investors-refuse-to-sell-their-bitcoin/index.html public_html/stories/bitcoin-investors-refuse-to-sell-their-bitcoin/index.html
 put stories/bitcoin-is-a-paradigm-shift-of-a-decade/index.html public_html/stories/bitcoin-is-a-paradigm-shift-of-a-decade/index.html
 put stories/bitcoin-is-an-antidote-against-cbdcs/index.html public_html/stories/bitcoin-is-an-antidote-against-cbdcs/index.html
@@ -811,6 +818,7 @@ put stories/whats-happening-with-bitcoin/index.html public_html/stories/whats-ha
 put stories/whats-the-end-game-of-all-this-money-printing-2/index.html public_html/stories/whats-the-end-game-of-all-this-money-printing-2/index.html
 put stories/whats-the-number-one-thing-missing-from-blockchain-technology/index.html public_html/stories/whats-the-number-one-thing-missing-from-blockchain-technology/index.html
 put stories/when-will-we-travel-to-the-moon-despite-everything-crypto-is-still-more-popular/index.html public_html/stories/when-will-we-travel-to-the-moon-despite-everything-crypto-is-still-more-popular/index.html
+put stories/who-actually-controls-your-money/index.html public_html/stories/who-actually-controls-your-money/index.html
 put stories/who-really-owns-web3/index.html public_html/stories/who-really-owns-web3/index.html
 put stories/why-bitcoin-is-not-a-ponzi-scheme/index.html public_html/stories/why-bitcoin-is-not-a-ponzi-scheme/index.html
 put stories/why-bitcoin-skyrocketed-on-sunday/index.html public_html/stories/why-bitcoin-skyrocketed-on-sunday/index.html
@@ -841,6 +849,7 @@ put stories/youll-know-why-bitcoin-lost-80000-and-what-friday-actually-tests/ind
 -mkdir public_html/stories/page/6
 -mkdir public_html/stories/page/7
 -mkdir public_html/stories/page/8
+-mkdir public_html/stories/page/9
 -mkdir public_html/sk/stories/page/2
 -mkdir public_html/sk/stories/page/3
 -mkdir public_html/sk/stories/page/4
@@ -857,6 +866,7 @@ put stories/page/5/index.html public_html/stories/page/5/index.html
 put stories/page/6/index.html public_html/stories/page/6/index.html
 put stories/page/7/index.html public_html/stories/page/7/index.html
 put stories/page/8/index.html public_html/stories/page/8/index.html
+put stories/page/9/index.html public_html/stories/page/9/index.html
 put sk/stories/index.html public_html/sk/stories/index.html
 put sk/stories/page/2/index.html public_html/sk/stories/page/2/index.html
 put sk/stories/page/3/index.html public_html/sk/stories/page/3/index.html
