@@ -52,9 +52,11 @@ const WP_CANONICAL_REMOTE = '/_sub/blog/wp-content/mu-plugins/virtuse-story-cano
 // stories kept readable but noindex and out of the sitemap/hubs.
 const CLEANUP = JSON.parse(fs.readFileSync(path.join(HERE, 'cleanup.json'), 'utf8'));
 // SERP title + description for pages whose WordPress title/excerpt is a poor
-// snippet. Applied only to <title>, meta description and the og/twitter mirrors.
-// The H1, image alt, breadcrumbs and Article JSON-LD stay the WordPress title
-// and excerpt. The daily stories build would otherwise put the excerpt back.
+// snippet. The title goes only into <title> (60-character limit); the description
+// into the meta description and the og/twitter descriptions. The H1, og/twitter
+// titles, image alt, breadcrumbs and Article JSON-LD stay the WordPress title, so
+// a share card shows the full headline. The daily stories build would otherwise
+// put the excerpt back.
 const SEO_HEAD = JSON.parse(fs.readFileSync(path.join(HERE, 'seo-head.json'), 'utf8'));
 const FALLBACK_IMAGE = { url: ORIGIN + '/news/og-card.png?v=20260921', width: 1200, height: 630 };
 
@@ -438,7 +440,7 @@ function render(template, feed, post, inferDesk) {
     if (!/ \| Virtuse( Brief)?$/.test(seo.title)) throw new Error('seo title is missing the Virtuse suffix: ' + storyPath);
   }
   const headTitle = seo ? seo.title : `${title} | Virtuse Brief`;
-  const socialTitle = seo ? seo.title : title;
+  const socialTitle = title;
   const headDescription = seo ? seo.description : description;
   const img = imageOf(post);
   const ogImg = img || FALLBACK_IMAGE;

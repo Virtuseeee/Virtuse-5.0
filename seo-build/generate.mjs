@@ -970,7 +970,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: `Bitcoin-Steuern in ${N} EU-Ländern`,
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
+      { name: 'Startseite', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Bitcoin-Steuern', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -1044,12 +1044,13 @@ ${faqHtml(faqs, 'FAQ')}
   // d.review is an internal note for content ops / the tax advisor; never published.
   pushPage({
     relFile: deRel, lang: 'de', guide: true,
-    title: assertTitle(`Bitcoin-Steuern ${nameDe(c.id)} (${asOfDe})`),
-    description: assertDescription(`Bitcoin-Steuern ${inDe(c.id)} (${asOfDe}): ${lcDe(gainFull(d))}. Keine Steuerberatung.`),
+    // titleHook / seoDescription in meta.taxDe: same search-led pattern as the EN pages (GSC 2026-11).
+    title: assertTitle(d.titleHook ? `Bitcoin-Steuern ${nameDe(c.id)} ${AS_OF_YEAR}: ${d.titleHook} | Virtuse` : `Bitcoin-Steuern ${nameDe(c.id)} (${asOfDe})`),
+    description: assertDescription(d.seoDescription || `Bitcoin-Steuern ${inDe(c.id)} (${asOfDe}): ${lcDe(gainFull(d))}. Keine Steuerberatung.`),
     h1: `Bitcoin-Steuern ${inDe(c.id)}`,
     answerHtml: esc(answerDe),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(deRel, 'de/index.html'), abs: abs('de/index.html') },
+      { name: 'Startseite', href: toRoot(deRel, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Bitcoin-Steuern', href: toRoot(deRel, 'de/bitcoin-steuern/'), abs: abs('de/bitcoin-steuern/index.html') },
       { name: nameDe(c.id), abs: abs(deRel) }
     ],
@@ -1256,7 +1257,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: 'Bitcoin-DCA-Rechner',
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
+      { name: 'Startseite', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'DCA-Rechner', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -1375,7 +1376,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: 'Bitcoin verkaufen oder beleihen',
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
+      { name: 'Startseite', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Verkaufen oder beleihen', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -1500,7 +1501,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: 'Bitcoin-Erbfolge: Checkliste',
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
+      { name: 'Startseite', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Erbrecht', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -1804,7 +1805,7 @@ ${faqHtml(faqs, 'FAQ')}
     h1: 'Bitcoin-Gebührenindex',
     answerHtml: esc(answer),
     breadcrumbs: [
-      { name: 'Start', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
+      { name: 'Startseite', href: toRoot(relFile, 'de/index.html'), abs: abs('de/index.html') },
       { name: 'Gebührenindex', abs: abs(relFile) }
     ],
     hreflang: hrefLangPair(enFile, relFile),
@@ -4193,8 +4194,9 @@ for (const c of COUNTRIES) {
   ], 'fr', 'guide');
   pushPage({
     relFile, lang: 'fr', guide: true,
-    title: assertTitle(`Fiscalité du Bitcoin ${inN} (${asOfFr})`),
-    description: assertDescription(descFit(`Fiscalité du Bitcoin ${inN} (${asOfFr}) : ${lcFr(gainFull(t))}.`, 'Pas un conseil fiscal.')),
+    // titleHook / seoDescription in meta.taxFr: same search-led pattern as the EN pages (GSC 2026-11).
+    title: assertTitle(t.titleHook ? `Fiscalité du Bitcoin ${inN} ${AS_OF_YEAR} : ${t.titleHook} | Virtuse` : `Fiscalité du Bitcoin ${inN} (${asOfFr})`),
+    description: assertDescription(t.seoDescription || descFit(`Fiscalité du Bitcoin ${inN} (${asOfFr}) : ${lcFr(gainFull(t))}.`, 'Pas un conseil fiscal.')),
     h1: `Fiscalité du Bitcoin ${inN}`,
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -4784,7 +4786,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
 const BUY_LANG = {
   sk: { home: skHome, pct: formatPctSk, eur: formatEurSk, method: methodSk, asOf: feeAsOfSk, tax: meta.taxSk },
   cs: { home: csHome, pct: formatPctSk, eur: formatEurSk, method: methodCs, asOf: feeAsOfCs, tax: meta.taxCs },
-  de: { home: (rel) => ({ name: 'Start', href: toRoot(rel, 'de/index.html'), abs: abs('de/index.html') }), pct: formatPctDe, eur: formatEurDe, method: methodDe, asOf: feeAsOfDe, tax: meta.taxDe }
+  de: { home: (rel) => ({ name: 'Startseite', href: toRoot(rel, 'de/index.html'), abs: abs('de/index.html') }), pct: formatPctDe, eur: formatEurDe, method: methodDe, asOf: feeAsOfDe, tax: meta.taxDe }
 };
 for (const pg of Object.values(BUY_COUNTRY)) {
   const L = BUY_LANG[pg.lang];

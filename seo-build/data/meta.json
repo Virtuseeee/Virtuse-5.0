@@ -403,7 +403,9 @@
       "gainTax": "27,5 % KESt (Kapitalertragsteuer)",
       "exemption": "Nach 1 Jahr steuerfrei nur für Altvermögen (gekauft vor März 2021); spätere Käufe ohne Befreiung",
       "filing": "Steuererklärung für Gewinne über ausländische Börsen; österreichische Anbieter behalten die KESt ein",
-      "note": "Krypto-zu-Krypto-Tausch ist steuerneutral. Einkünfte aus Verleihen (Lending) und Mining werden bei Zufluss besteuert, Staking-Erträge und Airdrops erst beim Verkauf, mit Anschaffungskosten von null."
+      "note": "Krypto-zu-Krypto-Tausch ist steuerneutral. Einkünfte aus Verleihen (Lending) und Mining werden bei Zufluss besteuert, Staking-Erträge und Airdrops erst beim Verkauf, mit Anschaffungskosten von null.",
+      "titleHook": "27,5 % KESt",
+      "seoDescription": "Bitcoin-Steuern in Österreich 2026: 27,5 % KESt auf Gewinne; Befreiung nach 1 Jahr nur für Altvermögen (gekauft vor März 2021). Keine Steuerberatung."
     },
     "de": {
       "gainTax": "Bis zu 45 % Einkommensteuer (progressiv)",
@@ -452,7 +454,9 @@
       "gainTax": "31,4 % Pauschalsteuer (PFU: 12,8 % Einkommensteuer + 18,6 % Sozialabgaben, 2026)",
       "exemption": "Keine Haltedauer-Befreiung; Verkäufe bis insgesamt 305 € pro Jahr sind steuerfrei",
       "filing": "Jährliche Steuererklärung mit Formular 2086; Auslandskonten auf Formular 3916-bis",
-      "note": "Krypto-zu-Krypto-Tausch ist steuerfrei: besteuert werden nur Verkäufe gegen Euro, Waren oder Dienstleistungen."
+      "note": "Krypto-zu-Krypto-Tausch ist steuerfrei: besteuert werden nur Verkäufe gegen Euro, Waren oder Dienstleistungen.",
+      "titleHook": "31,4 % PFU",
+      "seoDescription": "Bitcoin-Steuern in Frankreich 2026: 31,4 % Pauschalsteuer (PFU) auf Gewinne; Krypto-zu-Krypto-Tausch ist steuerfrei. Keine Steuerberatung."
     },
     "es": {
       "gainTax": "19 bis 30 % progressive Steuer auf Kapitalerträge",
@@ -1424,7 +1428,9 @@
       "gainTax": "Prélèvement forfaitaire unique de 31,4 % (12,8 % d'impôt sur le revenu + 18,6 % de prélèvements sociaux, 2026)",
       "exemption": "Aucune exonération liée à la durée de détention ; exonération si le total annuel des cessions ne dépasse pas 305 €",
       "filing": "Déclaration annuelle avec le formulaire 2086 ; comptes à l'étranger sur le formulaire 3916-bis",
-      "note": "Les échanges crypto contre crypto ne sont pas imposés : seules les ventes contre des euros, des biens ou des services le sont."
+      "note": "Les échanges crypto contre crypto ne sont pas imposés : seules les ventes contre des euros, des biens ou des services le sont.",
+      "titleHook": "PFU 31,4 %",
+      "seoDescription": "Fiscalité du Bitcoin en France 2026 : prélèvement forfaitaire unique de 31,4 % ; échanges crypto contre crypto non imposés. Pas un conseil fiscal."
     },
     "es": {
       "gainTax": "Impôt progressif de 19 à 30 % sur les revenus de l'épargne",
