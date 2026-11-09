@@ -38,6 +38,7 @@
 -mkdir public_html/stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013
 -mkdir public_html/stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin
 -mkdir public_html/stories/bitcoin-fell-below-77000-etfs-sold-fed-looms
+-mkdir public_html/stories/bitcoin-in-gold-not-dollars
 -mkdir public_html/stories/bitcoin-investors-refuse-to-sell-their-bitcoin
 -mkdir public_html/stories/bitcoin-is-a-paradigm-shift-of-a-decade
 -mkdir public_html/stories/bitcoin-is-an-antidote-against-cbdcs
@@ -677,6 +678,7 @@ put stories/bitcoin-beat-the-war-november-still-gets-a-vote/index.html public_ht
 put stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013/index.html public_html/stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013/index.html
 put stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin/index.html public_html/stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin/index.html
 put stories/bitcoin-fell-below-77000-etfs-sold-fed-looms/index.html public_html/stories/bitcoin-fell-below-77000-etfs-sold-fed-looms/index.html
+put stories/bitcoin-in-gold-not-dollars/index.html public_html/stories/bitcoin-in-gold-not-dollars/index.html
 put stories/bitcoin-investors-refuse-to-sell-their-bitcoin/index.html public_html/stories/bitcoin-investors-refuse-to-sell-their-bitcoin/index.html
 put stories/bitcoin-is-a-paradigm-shift-of-a-decade/index.html public_html/stories/bitcoin-is-a-paradigm-shift-of-a-decade/index.html
 put stories/bitcoin-is-an-antidote-against-cbdcs/index.html public_html/stories/bitcoin-is-an-antidote-against-cbdcs/index.html
