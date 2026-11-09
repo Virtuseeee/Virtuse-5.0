@@ -215,10 +215,12 @@
   .ml-big { padding: 18px 22px; font-size: 16px; }
   .ml-table { font-size: 14px; }
   .ml-table th, .ml-table td { padding-left: 6px; padding-right: 6px; }
+  .ml-table th { letter-spacing: .04em; overflow-wrap: anywhere; }
+  .ml-table td { hyphens: auto; }
 }
 
 /* variant B: direct inputs */
-.ml-fields { display: grid; gap: 26px; }
+.ml-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; }
 .ml-lab { display: block; color: var(--muted); font-size: 15px; margin-bottom: 10px; }
 .ml-lab em { font-style: normal; color: var(--dim); font-size: 13px; margin-left: 6px; }
 .ml-field .ml-input { width: 100%; font-size: 18px; padding: 17px 18px; background: var(--inset); }
@@ -241,7 +243,7 @@
 .ml-nums b { display: block; font-size: 18px; font-weight: 600; margin-top: 6px; }
 @media (max-width: 760px) {
   .ml-nums { grid-template-columns: 1fr; }
-  .ml-tiles.multi { grid-template-columns: 1fr 1fr; }
+  .ml-tiles.multi { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .ml-seg button { min-width: 0; flex-basis: calc(50% - 5px); }
 }
 
@@ -328,14 +330,16 @@
 .ml-tiles.sm .ml-tile svg { width: 34px; height: 34px; padding: 7px; margin: 0; }
 .ml-tiles.sm .ml-tile b { font-size: 15px; }
 .ml-tiles.sm .ml-tile small { font-size: 13px; }
-.ml-tiles.multi .ml-tile { grid-template-columns: auto 1fr; align-items: center; gap: 12px; }
+.ml-tiles.multi .ml-tile { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 12px; }
+/* Long words (SK, RU, UK) wrap inside the tile instead of pushing the grid past the screen */
+.ml-tiles.multi .ml-tile b { overflow-wrap: break-word; hyphens: auto; }
 .ml-tiles.multi .ml-tile svg { margin: 0; width: 36px; height: 36px; padding: 8px; }
 .ml-card { --k: var(--orange); }
 .ml-card.k-blue { --k: var(--blue); } .ml-card.k-green { --k: var(--green); } .ml-card.k-purple { --k: var(--purple); } .ml-card.k-orange { --k: var(--orange); } .ml-card.k-pink { --k: var(--pink); }
 .ml-card .ml-kick { color: var(--k); }
 .ml-card .ml-seg button.sel { border-color: var(--k); color: var(--k); background: color-mix(in srgb, var(--k) 8%, var(--inset)); }
 .ml-card .ml-input:focus { border-color: var(--k); }
-.ml-tiles.multi { grid-template-columns: repeat(2, 1fr); }
+.ml-tiles.multi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 /* hero card: compact so it ends level with the left column */
 .vl .hero .ml-demo { gap: 12px; padding: 20px 22px; }
