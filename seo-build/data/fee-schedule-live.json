@@ -22,7 +22,7 @@
       "pct": 0.0025,
       "fixed": 0,
       "monthly": 0,
-      "note": "Spot taker fee 0.25% (0.1% maker) – EU-licensed in Vienna, with deep order books for manual recurring buys.",
+      "note": "Spot fee 0.25%, the same for maker and taker orders since 5 Oct 2026 – EU-licensed in Vienna, with deep order books for manual recurring buys.",
       "speed": "Same day",
       "url": "https://partner.bybit.eu/b/VIRTUSE",
       "kind": "manual"
