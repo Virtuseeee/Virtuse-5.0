@@ -3,15 +3,518 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://api.coingecko.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://cloudflareinsights.com https://virtuse-newsletter.virtuse-ai.workers.dev https://virtuse-newsletter-staging.virtuse-ai.workers.dev; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- vb-consent -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
+<script src="/cookie-consent.js" defer></script>
+<script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=0;function load(){if(done)return;done=1;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){(w.requestIdleCallback||function(f){setTimeout(f,200)})(load,{timeout:2000});}if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:true});['pointerdown','keydown','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'dataLayer','GTM-KXX4Q6WH');}</script>
+<title>Verdict: проверьте свой план по Биткоину за 3 минуты | Virtuse</title>
+<meta name="description" content="Укажите сбережения, цели и опасения. Сразу получите оценку из 100, уровень и 3 самых больших пробела. Lite-оценка бесплатна. Не инвестиционная консультация.">
 <meta name="robots" content="noindex, follow">
-<title>Verdict | Virtuse</title>
-<link rel="canonical" href="https://virtuse.com/verdict.html">
-<meta http-equiv="refresh" content="0; url=/verdict.html">
-<!-- Verdict in Russian is switched off for now (2026-11-03): the new five-step Verdict exists in English and Slovak only. -->
-<script>location.replace('/verdict.html' + location.hash);</script>
-<style>body{background:#08090a;color:#e6edf3;font:16px/1.5 Inter,-apple-system,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;padding:24px;text-align:center}a{color:#5faede}</style>
+<!-- TODO(launch): set vb-verdict to on, remove noindex, add to sitemap + hreflang -->
+<meta name="vb-verdict" content="on">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://virtuse.com/ru/verdict.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virtuse">
+<meta property="og:title" content="Verdict: проверьте свой план по Биткоину за 3 минуты | Virtuse">
+<meta property="og:description" content="Укажите сбережения, цели и опасения. Сразу получите оценку из 100, уровень и 3 самых больших пробела. Lite-оценка бесплатна. Не инвестиционная консультация.">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://virtuse.com/ru/verdict.html">
+<meta property="og:image" content="https://virtuse.com/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="/site-v2.min.css?v=21">
+<script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
+<!-- VLH:START -->
+<link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html">
+<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html">
+<link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html">
+<link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html">
+<link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
+<link rel="stylesheet" href="/verdict-landing.css?v=20261104">
+<link rel="stylesheet" href="/verdict-lite.css?v=20">
+<!-- VLH:END -->
+<script>window.VB_I18N = {"openMenu": "Открыть меню", "closeMenu": "Закрыть меню", "latestBrief": "Последний Brief · ", "min": " мин", "coverImage": "Обложка: ", "badEmail": "Введите действительный адрес электронной почты.", "sending": "Отправка...", "subscribed": "Готово. Brief выходит в понедельник.", "error": "Что-то пошло не так. Попробуйте ещё раз.", "netError": "Ошибка сети. Попробуйте ещё раз.", "briefLangNote": " (на английском)"};</script>
 </head>
-<body>
-<p>Verdict временно доступен только на английском и словацком.<br><a href="/verdict.html">Открыть Verdict на английском →</a></p>
+<body class="page-verdict no-split">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html" aria-label="Главная Virtuse">
+      <svg viewBox="0 0 760 483" style="height:24px;width:auto" aria-hidden="true"><defs><linearGradient id="vA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vB)" d="M510 0h245L645 205H400Z"/></svg>
+      <span>Virtuse</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
+      <div class="nav-group" id="ng-services">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-services">Услуги</button>
+        <div class="nav-drop" id="nd-services"><a href="buy-bitcoin.html">Купить Биткоин</a><a href="secure.html">Хранение</a><a href="lending.html">Займы</a><a href="mining.html">Майнинг</a><a href="treasury.html">Treasury</a><a href="tax.html">Налоги</a><a href="bots.html">Боты</a></div>
+      </div>
+      <div class="nav-group" id="ng-learn">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-learn">Материалы</button>
+        <div class="nav-drop" id="nd-learn"><a href="../news.html?utm_source=brief&amp;utm_medium=nav"><span class="nd-t">Virtuse Brief</span><span class="nd-d">Новости о Биткоине по понедельникам</span></a><a href="/ru/stories/"><span class="nd-t">Статьи</span><span class="nd-d">Большие статьи и аналитика</span></a><a href="blog.html"><span class="nd-t">Блог</span><span class="nd-d">Свежие публикации Virtuse</span></a><a href="bitcoin-data.html"><span class="nd-t">Данные о Биткоине</span><span class="nd-d">Текущая цена, сеть и графики</span></a><a href="/ru/bitcoin-nalogi/"><span class="nd-t">Налоговые гиды по странам</span><span class="nd-d">Налоговые правила в 13 странах ЕС</span></a><a href="faq.html"><span class="nd-t">FAQ</span><span class="nd-d">Ответы о Virtuse и партнёрах</span></a></div>
+      </div>
+      <div class="nav-group current" id="ng-tools">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-tools">Инструменты</button>
+        <div class="nav-drop" id="nd-tools"><a href="verdict.html" id="navVerdict"><span class="nd-t">Verdict <span class="nav-badge cfo-badge">Бесплатно</span></span><span class="nd-d">Бесплатная оценка вашего решения</span></a><a href="cfo.html" id="navCfo"><span class="nd-t">Virtuse CFO</span><span class="nd-d">Комиссии, займы и налоги со временем · готовим</span></a><a href="concierge.html?utm_source=concierge&amp;utm_medium=nav"><span class="nd-t">Partner Finder</span><span class="nd-d">Партнёры по вашим ответам</span></a><a href="/ru/bitcoin-indeks-komissiy/"><span class="nd-t">Индекс комиссий</span><span class="nd-d">Полная стоимость покупки в сравнении</span></a><a href="stacking.html"><span class="nd-t">Stacking Strategist</span><span class="nd-d">План регулярных покупок и комиссии</span></a><a href="loan.html"><span class="nd-t">Loan &amp; Liquidity Copilot</span><span class="nd-d">Продать или занять под залог Биткоина</span></a><a href="tax-agent.html"><span class="nd-t">Tax &amp; Inheritance Agent</span><span class="nd-d">Правила стран и проверка наследства</span></a><a href="retirement-calculator.html"><span class="nd-t">Пенсионный калькулятор</span><span class="nd-d">Сколько Биткоина нужно на пенсию</span></a></div>
+      </div>
+      <div class="nav-group" id="ng-eco">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-controls="nd-eco">Экосистема</button>
+        <div class="nav-drop" id="nd-eco"><a href="/ru/ecosystem/"><span class="nd-t">Обзор</span><span class="nd-d">Все ресурсы только о Биткоине</span></a><a href="/ru/ecosystem/what-is-bitcoin/"><span class="nd-t">Что такое Биткоин?</span><span class="nd-d">Объяснение простыми словами</span></a><a href="/ru/ecosystem/books/"><span class="nd-t">Книги</span><span class="nd-d">Подборка книг для чтения</span></a><a href="/ru/ecosystem/podcasts/"><span class="nd-t">Подкасты</span><span class="nd-d">Шоу только о Биткоине</span></a><a href="/ru/ecosystem/videos/"><span class="nd-t">Видео</span><span class="nd-d">Каналы и документальные фильмы</span></a><a href="/ru/ecosystem/conferences/"><span class="nd-t">Конференции</span><span class="nd-d">События о Биткоине в Европе</span></a><a href="/ru/ecosystem/privacy/"><span class="nd-t">Приватность в Биткоине</span><span class="nd-d">Законные инструменты приватности</span></a><a href="/ru/ecosystem/spend-bitcoin/"><span class="nd-t">Тратить Биткоин</span><span class="nd-d">Магазины, карты и подарочные карты</span></a><a href="/ru/ecosystem/store-tools/"><span class="nd-t">Для магазинов</span><span class="nd-d">Приём Биткоина в магазине</span></a><a href="/ru/ecosystem/dev-tools/"><span class="nd-t">Разработчикам</span><span class="nd-d">Библиотеки и SDK</span></a><a href="/ru/ecosystem/jobs/"><span class="nd-t">Работа</span><span class="nd-d">Вакансии, гранты и стипендии</span></a><a href="/ru/ecosystem/peers/"><span class="nd-t">Единомышленники</span><span class="nd-d">Другие проекты только о Биткоине</span></a><a href="/ru/ecosystem/promote/"><span class="nd-t">Продвижение</span><span class="nd-d">Добавить свой проект в подборку</span></a></div>
+      </div>
+      <a class="nav-top" href="about.html">О нас</a>
+    </nav>
+    <div class="lang-menu" id="langMenu">
+      <button type="button" class="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Язык страницы: русский"><span aria-hidden="true">&#127479;&#127482;</span><span class="lang-code">RU</span></button>
+      <div class="lang-menu-panel" role="menu"><a href="../verdict.html" class="lang-opt" lang="en" hreflang="en" role="menuitem">English</a><a href="../sk/verdict.html" class="lang-opt" lang="sk" hreflang="sk" role="menuitem">Slovenčina</a><a href="verdict.html" class="lang-opt active" lang="ru" hreflang="ru" role="menuitem">Русский</a><a href="../uk/verdict.html" class="lang-opt" lang="uk" hreflang="uk" role="menuitem">Українська</a></div>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><line class="m1" x1="3" y1="7" x2="17" y2="7"/><line class="m2" x1="3" y1="13" x2="17" y2="13"/></svg></button>
+    <a class="nav-cta" href="concierge.html?utm_source=concierge&amp;utm_medium=nav">Найти партнёров</a>
+  </div>
+</header>
+<main class="wrap" id="top">
+<div class="ml" id="ml">
+
+  <!-- 0 LANDING -->
+  <section class="ml-screen ml-land" data-s="0">
+<div class="vl">
+<div class="hero"><div>
+<span class="eyebrow blue"><i></i>Verdict</span>
+<h1>Проверьте свой план по Биткоину <em>за 3 минуты.</em></h1>
+<p class="px">Укажите сбережения, цели и опасения. Сразу получите оценку из 100, уровень и 3 самых больших пробела. Lite-оценка бесплатна.</p>
+<div class="ctas"><button class="b bp" type="button" data-go="1">Получить бесплатную Lite-оценку →</button></div>
+<p class="ml-land-note">Около 3 минут · без аккаунта · Lite-оценка за ваш e-mail · не инвестиционная консультация</p>
+</div><div>
+<div class="demo ml-demo" id="mlDemo" aria-describedby="mlDemoAlt"></div>
+<p class="sr-only" id="mlDemoAlt">Образец отчёта для вымышленной клиентки Анны: 75 из 100, уровень B, основа есть. Запланированные 20 000 € составляют 13% её сбережений; после падения на 70% осталось бы 6 000 €. Самые слабые области: налоги и хранение.</p>
+</div></div>
+
+<section class="v1sec" id="see"><span class="eyebrow blue"><i></i>Посмотрите Verdict в действии</span><h2>От пяти коротких шагов к ясной проверке плана.</h2>
+<p class="sub">Посмотрите, как Verdict оценивает план, называет самые большие пробелы и показывает следующий шаг, никому не советуя покупать или продавать.</p>
+<div class="vid has-video"><video controls playsinline preload="none" poster="/media/verdict-promo-en-v2-poster.jpg" aria-label="Видеообзор Verdict (на английском, с русскими субтитрами)"><source src="/media/verdict-promo-en-v2.mp4" type="video/mp4"><track kind="captions" src="/media/verdict-promo-en-v2-ru.vtt" srclang="ru" label="Русский" default></video></div>
+<p class="cap">Иллюстративный пример · вымышленная клиентка · не совет · 1:48 · видео на английском с субтитрами</p></section>
+
+<section class="v1sec" id="proof"><span class="eyebrow blue"><i></i>Для начинающих</span><h2>Ваше первое решение о Биткоине, проверенное за минуты</h2>
+<p class="sub">Без сложных терминов, и ничего не нужно писать своими словами. Достаточно округлённых чисел.</p>
+<div class="g3"><div class="cd"><div class="n">5</div><p>Коротких шагов</p></div><a class="cd" href="#signals"><div class="n">6</div><p>Областей оценки</p></a><div class="cd"><div class="n">13</div><p>Стран ЕС с налоговыми правилами</p></div></div></section>
+
+<section id="problem"><div class="sec-head"><div class="eyebrow orange"><i></i>Проблема</div><h2>Купить Биткоин стало легко. <span>Выбрать надёжный план легче не стало.</span></h2>
+<p class="sec-sub">Приложения упростили нажатие на кнопку «Купить». Но они не скажут, выдержит ли ваш план падение на 70%, налоговое правило, потерю резервной копии или неподходящего партнёра.</p></div>
+<div class="g4 g2"><div class="tile" style="--c: var(--orange)"><h3>Любой план звучит хорошо</h3><p>Пока его не проверят падение, налоговый счёт или потерянная резервная копия.</p></div><div class="tile" style="--c: var(--blue)"><h3>Теперь дорого обходится выбор</h3><p>Когда покупка занимает одно нажатие, дороже всего обходится привязка к неудачной схеме.</p></div></div></section>
+
+<section id="signals"><div class="sig-top"><div class="sec-head"><div class="eyebrow blue"><i></i>Шесть областей</div><h2>Шесть областей. <span>Две группы.</span></h2>
+<p class="sec-sub">Каждый план оценивается по одним и тем же шести областям в двух группах: может ли падение навредить вам и всё ли у вас подготовлено. Карта областей показывает всю картину с первого взгляда.</p>
+<p class="sig-how">Каждая область получает от 0 до 10 баллов, всего не больше 60. Оценка равна этой сумме в пересчёте на 100 с округлением до 5: 45 из 60 дают 75. Уровень A или B (от 70) значит, что основа есть, C (от 55 до 69) что есть пробелы, D или E (меньше 55) что не хватает основы. Оценка показывает, насколько готов ваш план, а не то, выгодна ли покупка Биткоина.</p></div>
+<figure class="radar"><figcaption><span class="eyebrow blue"><i></i>Карта областей</span><b>Образец отчёта · 75/100</b></figcaption><svg viewBox="-40 -6 540 422" role="img" aria-label="Образец отчёта, 75 из 100. Баллы областей из 10: размер 7, резерв 7, долги 10, налоги 6 (самая слабая), хранение 6, поведение при падении 10."><polygon class="rg" points="230.0,167.5 258.1,183.8 258.1,216.2 230.0,232.5 201.9,216.2 201.9,183.8"/><polygon class="rg" points="230.0,135.0 286.3,167.5 286.3,232.5 230.0,265.0 173.7,232.5 173.7,167.5"/><polygon class="rg" points="230.0,102.5 314.4,151.2 314.4,248.8 230.0,297.5 145.6,248.8 145.6,151.2"/><polygon class="rg" points="230.0,70.0 342.6,135.0 342.6,265.0 230.0,330.0 117.4,265.0 117.4,135.0"/><line class="sp" x1="230" y1="200" x2="230.0" y2="70.0"/><line class="sp" x1="230" y1="200" x2="342.6" y2="135.0"/><line class="sp" x1="230" y1="200" x2="342.6" y2="265.0"/><line class="sp" x1="230" y1="200" x2="230.0" y2="330.0"/><line class="sp" x1="230" y1="200" x2="117.4" y2="265.0"/><line class="sp" x1="230" y1="200" x2="117.4" y2="135.0"/><polygon class="ar" points="230.0,109.0 308.8,154.5 342.6,265.0 230.0,278.0 162.5,239.0 117.4,135.0"/><circle class="dt" cx="230.0" cy="109.0" r="4"/><circle class="dt" cx="308.8" cy="154.5" r="4"/><circle class="dt" cx="342.6" cy="265.0" r="4"/><circle class="dt wk" cx="230.0" cy="278.0" r="4"/><circle class="dt" cx="162.5" cy="239.0" r="4"/><circle class="dt" cx="117.4" cy="135.0" r="4"/><text class="lb" x="230.0" y="28.0" text-anchor="middle"><tspan>Размер</tspan><tspan class="sc" x="230.0" dy="15">7</tspan></text><text class="lb" x="366.8" y="121.0" text-anchor="start"><tspan>Резерв</tspan><tspan class="sc" x="366.8" dy="15">7</tspan></text><text class="lb" x="366.8" y="279.0" text-anchor="start"><tspan>Долги</tspan><tspan class="sc" x="366.8" dy="15">10</tspan></text><text class="lb wk" x="230.0" y="358.0" text-anchor="middle"><tspan>Налоги</tspan><tspan class="sc" x="230.0" dy="15">6</tspan></text><text class="lb" x="93.2" y="279.0" text-anchor="end"><tspan>Хранение</tspan><tspan class="sc" x="93.2" dy="15">6</tspan></text><text class="lb" x="93.2" y="121.0" text-anchor="end"><tspan>Поведение</tspan><tspan class="sc" x="93.2" dy="15">10</tspan></text></svg></figure></div>
+<div class="sig-groups ml-g2">
+<div class="sig-group" style="--c: var(--orange)"><div class="k">Выживание</div><h3>Может ли падение навредить вам?</h3><ul><li class="sig-row"><div><b>Размер</b><span>Какая доля ваших сбережений идёт в Биткоин?</span></div><div class="sig-val"><i><em style="width:70%"></em></i><b>7</b></div></li><li class="sig-row"><div><b>Резерв</b><span>Сколько месяцев вы могли бы жить на наличные?</span></div><div class="sig-val"><i><em style="width:70%"></em></i><b>7</b></div></li><li class="sig-row"><div><b>Долги</b><span>Может ли заём заставить вас продать на дне?</span></div><div class="sig-val"><i><em style="width:100%"></em></i><b>10</b></div></li></ul></div>
+<div class="sig-group" style="--c: var(--teal)"><div class="k">Подготовка</div><h3>Ко всему ли вы готовы?</h3><ul><li class="sig-row weak"><div><b>Налоги</b><span>Знаете ли вы, как в вашей стране облагается продажа?</span></div><div class="sig-val"><i><em style="width:60%"></em></i><b>6</b></div></li><li class="sig-row"><div><b>Хранение</b><span>Кто хранит ключи и проверена ли резервная копия?</span></div><div class="sig-val"><i><em style="width:60%"></em></i><b>6</b></div></li><li class="sig-row"><div><b>Поведение при падении</b><span>Что вы сделаете, если Биткоин упадёт на 70%?</span></div><div class="sig-val"><i><em style="width:100%"></em></i><b>10</b></div></li></ul></div>
+</div>
+<p class="sig-note">Показаны баллы из образца отчёта (Анна, вымышленная клиентка). Это иллюстрация, а не совет.</p>
+</section>
+
+<section id="tools"><div class="sec-head"><div class="eyebrow teal"><i></i>Инструменты</div><h2>Мы проведём вас <span>на следующий шаг в нашем хабе.</span></h2></div><div class="tiles t3"><a class="tile" href="/ru/bitcoin-indeks-komissiy/" style="--c: var(--teal)"><h3>Индекс комиссий</h3><p>Полная стоимость покупки в сравнении.</p><div class="meta"><span>Бесплатный инструмент</span><b>Открыть →</b></div></a><a class="tile" href="/ru/concierge.html" style="--c: var(--blue)"><h3>Подбор партнёров</h3><p>Партнёры по вашим ответам.</p><div class="meta"><span>Бесплатный инструмент</span><b>Открыть →</b></div></a><a class="tile" href="/ru/tax-agent.html" style="--c: var(--orange)"><h3>Налоги и наследство</h3><p>Правила стран и проверка наследования.</p><div class="meta"><span>Бесплатный инструмент</span><b>Открыть →</b></div></a><a class="tile" href="/ru/stacking.html" style="--c: var(--blue)"><h3>Стратегия накопления</h3><p>План регулярных покупок и сравнение комиссий.</p><div class="meta"><span>Бесплатный инструмент</span><b>Открыть →</b></div></a><a class="tile" href="/ru/secure.html" style="--c: var(--purple)"><h3>Гид по хранению</h3><p>Аппаратные кошельки и хранение с поддержкой.</p><div class="meta"><span>Бесплатный гид</span><b>Открыть →</b></div></a><a class="tile" href="/ru/loan.html" style="--c: var(--purple)"><h3>Заём или продажа</h3><p>Продать или взять заём под залог Биткоина.</p><div class="meta"><span>Бесплатный инструмент</span><b>Открыть →</b></div></a></div></section>
+
+<section id="pricing">
+    <div class="sec-head"><div class="eyebrow orange"><i></i>Цены</div>
+      <h2>Два уровня. <span>Начните с бесплатной Lite-оценки.</span></h2>
+      <p class="sec-sub">Lite-оценка бесплатна за ваш e-mail. Полный отчёт стоит 14 € разово, без подписки.</p>
+    </div>
+    <div class="plans3 ml-plans2">
+      <div class="plan">
+        <span class="layer">Бесплатно</span>
+        <h3>Lite-оценка</h3>
+        <div class="price">0 € <small>за ваш e-mail</small></div>
+        <p class="for">Быстрый взгляд на то, насколько готов ваш план.</p>
+        <ul><li>Уровень от A до E и оценка из 100</li><li>Карта шести областей с баллами</li><li>3 области, которые стоит улучшить в первую очередь</li><li>Ваши ответы по областям</li></ul>
+        <a class="btn btn-ghost" href="?s=1" data-go="1">Получить бесплатную Lite-оценку</a>
+      </div>
+      <div class="plan pro">
+        <span class="founding">Разово · без подписки</span>
+        <h3>Полный отчёт</h3>
+        <div class="price">14 € <small>разово</small></div>
+        <p class="for">Ваши пробелы превращаются в план, который останется у вас.</p>
+        <ul><li>Баллы и причины по каждой из 6 областей</li><li>Что падение на 70% значит в евро для вашей суммы</li><li>Правило продажи в вашей стране простыми словами</li><li>Варианты хранения рядом</li><li>3 шага на эту неделю</li><li>Партнёры для покупки, хранения и налогов по вашим критериям; сравниваете и выбираете вы</li><li>Прошлые падения Биткоина в евро, налоговый пример и опубликованные комиссии для ваших сумм</li><li>Документы для заполнения: запись о покупке, чек-лист восстановления, письмо наследникам</li><li>PDF, который останется у вас</li></ul>
+        <a class="btn btn-primary" href="?s=9" data-go="9">Посмотреть образец отчёта</a>
+      </div>
+    </div>
+    <div class="terms">
+      <p class="terms-k">Условия</p>
+      <div class="assure-row">
+        <span class="ic ic-green"><b>Возврат денег в течение 30 дней</b>Без вопросов и без формы.</span>
+        <span class="ic ic-orange"><b>Оплата картой</b>Один платёж, без подписки.</span>
+        <span class="ic ic-blue"><b>14 дней на отказ по закону ЕС</b>Ваше законное право на отказ действует дополнительно.</span>
+      </div>
+      <p class="terms-fine">Цены включают НДС, где он применяется.</p>
+    </div>
+  </section>
+
+<section id="faq">
+<div class="sec-head faq-head"><div class="eyebrow blue"><i></i>FAQ</div><h2>Частые <span>вопросы.</span></h2></div>
+<div class="faq">
+<details open><summary>Скажет ли Verdict, покупать ли мне Биткоин?</summary><p>Нет. Он оценивает, насколько готов ваш план. Что делать, решаете вы. Verdict не рекомендует ни покупку, ни продажу, ни заём, ни какого-либо партнёра.</p></details>
+<details><summary>Сколько это стоит?</summary><p>Lite-оценка бесплатна за ваш e-mail. Полный отчёт стоит 14 € разово.</p></details>
+<details><summary>Что входит в полный отчёт?</summary><p>Баллы и причина по каждой из шести областей, что падение на 70% значит в евро для вашей суммы, правило продажи в вашей стране простыми словами, варианты хранения рядом и три шага на эту неделю, в виде PDF, который останется у вас. <a href="?s=9" data-go="9">Посмотреть образец отчёта</a>.</p></details>
+<details><summary>Зачем вам мой e-mail?</summary><p>Ваш e-mail открывает Lite-оценку. Virtuse Brief вы получите, только если отметите галочку.</p></details>
+<details><summary>Что будет с моими числами?</summary><p>Для Lite-оценки ваши числа остаются в браузере; на наш сервер уходят только оценка, уровень, баллы областей и названия пробелов, чтобы отправить вам письмо. Если вы купите полный отчёт, мы храним ваши ответы 24 часа, чтобы его составить, а затем удаляем. Подробности в <a href="/privacy-policy.html#verdict-cfo">Политике конфиденциальности (на английском)</a>.</p></details>
+<details><summary>Читает ли ИИ мои ответы?</summary><p>Нет. Verdict оценивает ваши ответы по фиксированным правилам, одинаковым для всех.</p></details>
+<details><summary>Нужен ли мне аккаунт или карта?</summary><p>Аккаунт не нужен. Для Lite-оценки нужен только e-mail; карта нужна только для полного отчёта, платёж обрабатывает Stripe.</p></details>
+<details><summary>Могу ли я отказаться после покупки?</summary><p>Да. Вы можете отказаться в течение 14 дней без объяснения причин, даже если уже открыли отчёт, и дополнительно действует возврат денег в течение 30 дней. <a href="/withdrawal.html">Отказаться от договора здесь (на английском)</a>.</p></details>
+<details><summary>Это инвестиционная или налоговая консультация?</summary><p>Нет. Verdict оценивает, насколько готов ваш план. С налоговыми вопросами обращайтесь к налоговому консультанту.</p></details>
+</div>
+</section>
+</div>
+  </section>
+
+<!-- 1-5 STEPS (rendered by verdict-lite.js) -->
+  <section class="ml-screen" data-s="q">
+    <div class="ml-stepper" id="mlStepper"></div>
+    <div class="ml-prog"><span id="mlStepTxt"></span><span id="mlPct"></span></div>
+    <div class="ml-bar"><i id="mlBar" style="width:0"></i></div>
+    <div class="ml-card" id="mlQ"></div>
+    <div class="ml-nav"><button class="ml-back" id="mlBack" type="button">← Назад</button><button class="ml-big" id="mlNext" type="button" disabled>Продолжить →</button></div>
+    <p class="ml-fine ml-need" id="mlNeed" aria-live="polite" hidden>Заполните обязательные поля, чтобы продолжить.</p>
+  </section>
+
+  <!-- 6 LOADING -->
+  <section class="ml-screen" data-s="6">
+    <div class="ml-stepper" id="mlStepper2"></div>
+    <div class="ml-load">
+      <div class="ml-spin"></div>
+      <h2>Проверяем ваши ответы</h2>
+      <p class="ml-sub">Фиксированные правила, одинаковые для всех. Пока ничего никуда не отправляется.</p>
+      <ul class="ml-checks" id="mlChecks">
+        <li>Размер: что падение на 70% значило бы в евро</li>
+        <li>Резерв и долги: может ли падение заставить вас продать?</li>
+        <li>Налоги: правило продажи в вашей стране</li>
+        <li>Хранение: кто хранит ключи</li>
+        <li>Партнёры для покупки, хранения и налогов по вашим критериям</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7 GATE: FREE LITE SCORE OR FULL REPORT -->
+  <section class="ml-screen" data-s="7">
+    <div class="ml-center">
+      <div class="ml-lock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+      <div class="ml-tag">Проверка завершена</div>
+      <h2 class="ml-h">Ваши ответы оценены. <span>Выберите, как их получить.</span></h2>
+      <p class="ml-sub">Посмотрите бесплатную Lite-оценку сейчас или получите полный отчёт, который превратит ваши пробелы в план.</p>
+    </div>
+    <div class="ml-two">
+      <div class="ml-plan">
+        <h3>Lite-оценка</h3>
+        <div class="ml-price">0 € <small>за ваш e-mail</small></div>
+        <ul class="ml-list">
+          <li>Ваш <b>уровень (от A до E)</b> и оценка из 100</li>
+          <li>Карта ваших <b>шести областей</b>, с баллами</li>
+          <li><b>3 области для улучшения</b> в первую очередь</li>
+          <li>Ваши ответы по областям</li>
+        </ul>
+        <div class="ml-spacer"></div>
+        <form class="ml-form" id="mlGate" novalidate>
+          <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="E-mail" autocomplete="email">
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="ml-opt"><input type="checkbox" name="brief"> Также присылайте мне Virtuse Brief каждый понедельник (необязательно).</label>
+          <button class="ml-btn2 light" type="submit">Показать мою Lite-оценку</button>
+          <p class="ml-fine" id="mlGateMsg" aria-live="polite"></p>
+        </form>
+        <p class="ml-fine">Мы используем ваш e-mail только для вашего Verdict, а для Brief только если вы отметите галочку. <a href="/privacy-policy.html#verdict-cfo" style="color:inherit">Конфиденциальность</a></p>
+      </div>
+      <div class="ml-plan pro" data-buybox>
+        <span class="ml-badge">Полный отчёт</span>
+        <h3>Полный отчёт</h3>
+        <div class="ml-price">14 € <small>разово · без подписки</small></div>
+        <ul class="ml-list">
+          <li>Всё из Lite-оценки, а также <b>баллы и причины по каждой области</b></li>
+          <li>Что <b>падение на 70%</b> значит в евро для вашей суммы</li>
+          <li>В вашей стране: <b>правило продажи простыми словами</b></li>
+          <li><b>Варианты хранения рядом</b> с учётом ваших ответов</li>
+          <li><b>План из 3 шагов на эту неделю</b></li>
+          <li>Партнёры для покупки, хранения и налогов по вашим критериям; сравниваете и выбираете вы</li>
+          <li>Прошлые падения Биткоина в евро, налоговый пример и опубликованные комиссии для ваших сумм</li><li>Документы для заполнения: запись о покупке, чек-лист восстановления, письмо наследникам</li><li>PDF, который останется у вас</li>
+        </ul>
+        <div class="ml-spacer"></div>
+        <p class="ml-data">Ваши ответы покидают устройство, только если вы покупаете полный отчёт: мы храним их на сервере до 24 часов, чтобы его составить, а затем автоматически удаляем.</p>
+        <button class="ml-btn2 orange" type="button" data-buy>Получить полный отчёт · 14 €</button>
+        <p class="ml-fine ml-data-s">Только теперь ваши ответы уходят на наш сервер: хранятся 24 часа, затем удаляются.</p>
+        <button class="ml-btn2 ghost" type="button" data-go="9">Сначала посмотреть образец отчёта</button>
+        <p class="ml-fine ml-buy-msg" aria-live="polite"></p>
+        <form class="ml-form" data-wl novalidate hidden>
+          <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="E-mail" autocomplete="email">
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="ml-btn2 ghost" type="submit">Записаться в список ожидания за 14 €</button>
+          <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
+        </form>
+        <p class="ml-fine">Безопасная оплата картой через Stripe. Отчёт откроется сразу, а PDF придёт на e-mail. Возврат денег в течение 30 дней. <a href="/withdrawal.html" style="color:inherit">Право на отказ</a>.</p>
+      </div>
+    </div>
+    <div class="ml-peek">
+      <div>
+        <span class="ml-k2">Образец · вымышленная клиентка</span>
+        <h3>Посмотрите, что Анна получила за 14 €.</h3>
+        <p>Анне 41 год, она платит налоги в Словакии, имеет 150 000 € сбережений и планирует 20 000 € на свой первый Биткоин, на собственных ключах. Её полный отчёт, страница за страницей.</p>
+        <a class="tlink" href="?s=9" data-go="9">Открыть образец отчёта <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="demo ml-demo ml-demo-sm" id="mlDemo2" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 8 LITE SCORE (filled by verdict-lite.js; empty until then) -->
+  <section class="ml-screen" data-s="8">
+    <div class="ml-res-top" id="mlResTop">
+      <div class="ml-grade" id="mlGrade"></div>
+      <h2 class="ml-h" style="margin-top:22px"><span id="mlWho" style="color:var(--text)"></span> оценка: <b id="mlScore"></b>/100</h2>
+      <div class="ml-band" id="mlBandH"></div>
+      <div class="ml-sent" id="mlSent" aria-live="polite"></div>
+    </div>
+    <div class="ml-box acc-blue ml-areas vl" id="mlFreeMap"></div>
+    <div class="ml-box">
+      <h3>3 области, которые стоит улучшить в первую очередь</h3>
+      <ol class="ml-gaps" id="mlGaps"></ol>
+    </div>
+    <div class="ml-box">
+      <h3>Ваши ответы</h3>
+      <ul class="ml-read" id="mlRead"></ul>
+    </div>
+
+    <div class="ml-box ml-consult" id="consult">
+      <div><h4>Обсудите это бесплатно.</h4><p>15-минутный звонок с Virtuse. Возьмите эту оценку, и мы пройдём ваши пробелы. Без продаж.</p></div>
+      <button class="ml-big" type="button" data-consultation-trigger data-consultation-lang="en">Записаться на бесплатный звонок на 15 минут</button>
+    </div>
+
+    <div class="ml-box ml-locked">
+      <h3>В вашем полном отчёте</h3>
+      <div class="ml-blur" aria-hidden="true">
+        <div class="ml-blur-row"><b></b><span></span></div>
+        <div class="ml-blur-row"><b></b><span></span></div>
+        <div class="ml-blur-row"><b></b><span></span></div>
+        <div class="ml-blur-row"><b></b><span></span></div>
+        <div class="ml-blur-row"><b></b><span></span></div>
+        <div class="ml-blur-row"><b></b><span></span></div>
+      </div>
+      <div class="ml-lockover" data-buybox>
+        <div class="ml-lock" style="width:60px;height:60px;margin:0 auto 14px;border-radius:16px"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+        <div class="ml-gap1" id="mlGap1" style="margin:0 0 8px"></div>
+        <p class="ml-sub" style="margin:0 auto 20px;font-size:15px">Полный отчёт объясняет каждый балл, переводит ваши числа в евро, показывает партнёров по вашим критериям и превращает пробелы в 3 шага и документы, которые останутся у вас в PDF.</p>
+        <p class="ml-data">Ваши ответы покидают устройство, только если вы покупаете полный отчёт: мы храним их на сервере до 24 часов, чтобы его составить, а затем автоматически удаляем.</p>
+        <button class="ml-big orange" type="button" data-buy>Получить полный отчёт · 14 € →</button>
+        <p class="ml-fine ml-data-s">Только теперь ваши ответы уходят на наш сервер: хранятся 24 часа, затем удаляются.</p>
+        <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
+        <form class="ml-form" data-wl novalidate hidden>
+          <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="E-mail" autocomplete="email">
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="ml-btn2 orange" type="submit">Записаться в список ожидания за 14 €</button>
+          <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
+        </form>
+        <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">Посмотреть образец отчёта</a> · Разово · картой через Stripe · возврат денег в течение 30 дней · <a href="/withdrawal.html" style="color:inherit">Право на отказ</a></p>
+      </div>
+    </div>
+
+    <div class="ml-box" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <div><b style="font-size:17px">Партнёры по вашим ответам</b><p style="margin:4px 0 0;color:var(--muted);font-size:15px">Partner Finder откроется с уже заполненными страной, суммой, опытом и способом хранения. Сравниваете и выбираете вы.</p></div>
+      <a class="tlink" id="mlPf" href="/ru/concierge.html">Открыть Partner Finder <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <p class="ml-legal">Verdict проверяет ваши ответы по фиксированным правилам; их не читает никакая модель ИИ. Это не инвестиционная, налоговая или юридическая консультация. Партнёры показаны потому, что соответствуют вашим критериям, без рейтинга; Virtuse может получить реферальное вознаграждение. © 2018–2026 Virtuse Wealth Management, a.s.</p>
+  </section>
+
+  <!-- 9 SAMPLE FULL REPORT (static, fictional client) -->
+  <section class="ml-screen" data-s="9">
+    <div class="ml-sample-flag"><span>Образец отчёта · вымышленная клиентка · иллюстративные числа</span><a href="?s=0" data-go="0" style="color:inherit">← Назад к Verdict</a></div>
+    <div class="ml-k2" style="text-align:center">Полный отчёт · образец</div>
+    <h2 class="ml-rep-h">Проверка плана Анны по Биткоину</h2>
+    <div class="ml-box ml-nums" style="margin-top:30px">
+      <div><small>Сбережения, без жилья</small><b>150 000 €</b></div><div><small>Запланировано на Биткоин</small><b>20 000 € · 13% сбережений</b></div><div><small>После падения на 70%</small><b>останется 6 000 €</b></div><div><small>Ежемесячно</small><b>200 € · 2 400 € в год</b></div><div><small>Резерв наличных</small><b>3–6 месяцев · цель 6</b></div><div><small>Пенсия</small><b>накоплено 40 000 € · в 65 лет, через 24 года</b></div><div><small>Жильё</small><b>250 000 € · ипотека 140 000 € (56%)</b></div><div><small>Другие долги</small><b>Нет</b></div>
+    </div>
+
+    <div class="ml-score-row">
+      <div><div class="n">75<small>/100</small></div><div class="lbl">Уровень B · 46 из 60 баллов</div></div>
+      <div>
+        <div class="ml-scale"><span>Не хватает основы<small>меньше 55 · D, E</small></span><span>Есть пробелы<small>от 55 до 69 · C</small></span><span class="on">Основа есть<small>от 70 · A, B</small></span></div>
+        <div class="ml-track"><i style="width:75%"></i></div>
+      </div>
+    </div>
+    <div style="text-align:center"><span class="ml-pill">B · Основа есть · несколько деталей ещё открыты</span></div>
+
+    <div class="ml-box acc-blue" style="margin-top:44px">
+      <span class="ml-k2">Резюме простыми словами</span>
+      <p>Анна, у вашего плана разумный размер. 20 000 € составляют 13% ваших сбережений: после падения на 70% осталось бы 6 000 €, это было бы больно, но не разрушило бы ваши финансы. Кроме ипотеки, долгов у вас нет, и вы сказали, что при падении подождёте, а не продадите.</p>
+      <p>Ещё три пункта остаются открытыми, и два из них касаются того, что вас беспокоит. В Словакии облагается налогом каждая продажа и каждый обмен одних монет на другие, поэтому записи важны с первой покупки. При собственных ключах и первой покупке чаще всего подводит резервная копия. И ваш резерв наличных составляет 3–6 месяцев; 6 месяцев оставляют падению меньше власти над вами.</p>
+    </div>
+
+    <div class="ml-box acc-blue ml-areas vl"><div class="ml-areas-top"><div><span class="ml-k2">Шесть областей</span><h4>Шесть областей. <span>Две группы.</span></h4><p class="ml-areas-lead">План Анны: 75 из 100, уровень B.</p><p>Каждая область получает от 0 до 10 баллов, всего не больше 60. Оценка равна этой сумме в пересчёте на 100 с округлением до 5: 45 из 60 дают 75. Уровень A или B (от 70) значит, что основа есть, C (от 55 до 69) что есть пробелы, D или E (меньше 55) что не хватает основы. Оценка показывает, насколько готов ваш план, а не то, выгодна ли покупка Биткоина.</p><p class="ml-areas-sum">Баллы Анны: 7 + 7 + 10 + 6 + 6 + 10 = 46 из 60, что в пересчёте с округлением даёт 75 из 100.</p></div><figure class="radar in"><figcaption><span class="eyebrow blue"><i></i>Карта областей</span><b>Образец отчёта · 75/100</b></figcaption><svg viewBox="-40 -6 540 422" role="img" aria-label="Образец отчёта, 75 из 100. Баллы областей из 10: размер 7, резерв 7, долги 10, налоги 6 (самая слабая), хранение 6, поведение при падении 10."><polygon class="rg" points="230.0,167.5 258.1,183.8 258.1,216.2 230.0,232.5 201.9,216.2 201.9,183.8"/><polygon class="rg" points="230.0,135.0 286.3,167.5 286.3,232.5 230.0,265.0 173.7,232.5 173.7,167.5"/><polygon class="rg" points="230.0,102.5 314.4,151.2 314.4,248.8 230.0,297.5 145.6,248.8 145.6,151.2"/><polygon class="rg" points="230.0,70.0 342.6,135.0 342.6,265.0 230.0,330.0 117.4,265.0 117.4,135.0"/><line class="sp" x1="230" y1="200" x2="230.0" y2="70.0"/><line class="sp" x1="230" y1="200" x2="342.6" y2="135.0"/><line class="sp" x1="230" y1="200" x2="342.6" y2="265.0"/><line class="sp" x1="230" y1="200" x2="230.0" y2="330.0"/><line class="sp" x1="230" y1="200" x2="117.4" y2="265.0"/><line class="sp" x1="230" y1="200" x2="117.4" y2="135.0"/><polygon class="ar" points="230.0,109.0 308.8,154.5 342.6,265.0 230.0,278.0 162.5,239.0 117.4,135.0"/><circle class="dt" cx="230.0" cy="109.0" r="4"/><circle class="dt" cx="308.8" cy="154.5" r="4"/><circle class="dt" cx="342.6" cy="265.0" r="4"/><circle class="dt wk" cx="230.0" cy="278.0" r="4"/><circle class="dt" cx="162.5" cy="239.0" r="4"/><circle class="dt" cx="117.4" cy="135.0" r="4"/><text class="lb" x="230.0" y="28.0" text-anchor="middle"><tspan>Размер</tspan><tspan class="sc" x="230.0" dy="15">7</tspan></text><text class="lb" x="366.8" y="121.0" text-anchor="start"><tspan>Резерв</tspan><tspan class="sc" x="366.8" dy="15">7</tspan></text><text class="lb" x="366.8" y="279.0" text-anchor="start"><tspan>Долги</tspan><tspan class="sc" x="366.8" dy="15">10</tspan></text><text class="lb wk" x="230.0" y="358.0" text-anchor="middle"><tspan>Налоги</tspan><tspan class="sc" x="230.0" dy="15">6</tspan></text><text class="lb" x="93.2" y="279.0" text-anchor="end"><tspan>Хранение</tspan><tspan class="sc" x="93.2" dy="15">6</tspan></text><text class="lb" x="93.2" y="121.0" text-anchor="end"><tspan>Поведение</tspan><tspan class="sc" x="93.2" dy="15">10</tspan></text></svg></figure></div><div class="sig-groups ml-g2">
+<div class="sig-group" style="--c: var(--orange)"><div class="k">Выживание</div><h3>Может ли падение навредить вам?</h3><ul><li class="sig-row"><div><b>Размер</b><span>Какая доля ваших сбережений идёт в Биткоин?</span><span class="why">13% сбережений. Падение на 70% оставляет 6 000 € из 20 000 €.</span></div><div class="sig-val"><i><em style="width:70%"></em></i><b>7<small>/10</small></b></div></li><li class="sig-row"><div><b>Резерв</b><span>Сколько месяцев вы могли бы жить на наличные?</span><span class="why">Наличных на 3–6 месяцев. Цель: 6.</span></div><div class="sig-val"><i><em style="width:70%"></em></i><b>7<small>/10</small></b></div></li><li class="sig-row"><div><b>Долги</b><span>Может ли заём заставить вас продать на дне?</span><span class="why">Ипотека 56% стоимости жилья. Потребительских долгов нет.</span></div><div class="sig-val"><i><em style="width:100%"></em></i><b>10<small>/10</small></b></div></li></ul></div>
+<div class="sig-group" style="--c: var(--teal)"><div class="k">Подготовка</div><h3>Ко всему ли вы готовы?</h3><ul><li class="sig-row weak"><div><b>Налоги</b><span>Знаете ли вы, как в вашей стране облагается продажа?</span><span class="why">Вы примерно знаете правило. Ещё открыто: ставка на вашу прибыль, что считается продажей и что идёт в налоговую декларацию.</span></div><div class="sig-val"><i><em style="width:60%"></em></i><b>6<small>/10</small></b></div></li><li class="sig-row"><div><b>Хранение</b><span>Кто хранит ключи и проверена ли резервная копия?</span><span class="why">Выбраны собственные ключи. Восстановление ещё не отработано.</span></div><div class="sig-val"><i><em style="width:60%"></em></i><b>6<small>/10</small></b></div></li><li class="sig-row"><div><b>Поведение при падении</b><span>Что вы сделаете, если Биткоин упадёт на 70%?</span><span class="why">Вы подождёте, а не продадите.</span></div><div class="sig-val"><i><em style="width:100%"></em></i><b>10<small>/10</small></b></div></li></ul></div>
+</div></div>
+
+    <div class="ml-box acc-purple">
+      <span class="ml-k2">Хранение</span>
+      <h4>Варианты хранения</h4>
+      <table class="ml-table">
+        <thead><tr><th></th><th>Собственные ключи</th><th>Хранение с поддержкой</th></tr></thead>
+        <tbody>
+          <tr><td>Кто хранит ключи</td><td>Вы, на аппаратном кошельке</td><td>Вы и провайдер (мультиподпись)</td></tr>
+          <tr><td>Если вы потеряете ключ или резервную копию</td><td>Никто не сможет их восстановить</td><td>Провайдер помогает восстановить</td></tr>
+          <tr><td>Что вы платите</td><td>Разовая цена устройства</td><td>Комиссия, которую устанавливает провайдер</td></tr>
+          <tr><td>Подходит, когда</td><td>Вы сначала отрабатываете восстановление</td><td>Вы хотите помощи с восстановлением и наследниками</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ml-box acc-yellow">
+      <span class="ml-k2">Налоги в Словакии</span>
+      <h4>Правило продажи простыми словами</h4>
+      <p>В Словакии нет освобождения по сроку владения. Прибыль от продажи облагается как доход по ставке от 19 до 35%, плюс взносы на медицинское страхование (ставка и база зависят от вашей ситуации). Считается каждая продажа и каждый обмен одних монет на другие. Прибыль указывается в декларации типа B, срок подачи 31 марта.</p>
+      <p style="font-size:13px;color:var(--dim)">Ориентировочно, как показано в Virtuse Tax Agent (Q3 2026). Перед подачей декларации уточните у налогового консультанта.</p>
+    </div>
+
+    <div class="ml-box acc-pink">
+      <span class="ml-k2">Обе стороны</span>
+      <h4>Что может пойти не так и что уже надёжно</h4>
+      <div class="ml-cols">
+        <div><div class="ml-colh r">Что может пойти не так</div><ul class="ml-pts">
+          <li><i>1</i><div><b>Налоговый сюрприз</b><span>Каждый обмен тоже облагается налогом. Без записей с первого дня первая продажа превращается в догадки.</span></div></li>
+          <li><i>2</i><div><b>Потерянная резервная копия</b><span>При первой настройке собственных ключей обычная ошибка: фраза восстановления записана один раз и ни разу не проверена.</span></div></li>
+          <li><i>3</i><div><b>Падение на 70%</b><span>Биткоин уже несколько раз падал на 70% и больше. От 20 000 € осталось бы около 6 000 €.</span></div></li>
+        </ul></div>
+        <div><div class="ml-colh g">Уже надёжно</div><ul class="ml-pts">
+          <li><i>1</i><div><b>Разумный размер</b><span>13% ваших сбережений. Падение будет болезненным, но не разрушит ваши планы.</span></div></li>
+          <li><i>2</i><div><b>Хранение выбрано</b><span>Вы знаете, что хотите собственные ключи, поэтому можете сравнивать подходящих партнёров.</span></div></li>
+          <li><i>3</i><div><b>Нет потребительских долгов</b><span>Ничто не заставит вас продавать при падении, и вы сказали, что подождёте.</span></div></li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="ml-box acc-green">
+      <span class="ml-k2">Ваш план</span>
+      <h4>3 шага на эту неделю</h4>
+      <ul class="ml-steps">
+        <li><i>1</i><div><b>Проверьте правило продажи в Словакии</b><span>Откройте Tax Agent с уже выбранной Словакией. Около 10 минут. Начните простую запись каждой покупки.</span></div></li>
+        <li><i>2</i><div><b>Отработайте восстановление на 20 €</b><span>Настройте аппаратный кошелёк, отправьте небольшую сумму, сбросьте его и восстановите из резервной копии. Затем переведите остальное.</span></div></li>
+        <li><i>3</i><div><b>Пополните резерв, затем автоматизируйте 200 €</b><span>Сначала доведите наличные до 6 месяцев. Затем настройте 200 € в месяц в определённый день и запишите одну строку о том, когда вы не стали бы продавать.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="ml-box acc-teal">
+      <span class="ml-k2">Дальше на Virtuse</span>
+      <h4>Инструменты, чтобы применить это на практике</h4>
+      <div class="ml-next">
+        <a href="/ru/tax-agent.html?country=sk"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg><b>Tax Agent</b><span>Словакия уже выбрана →</span><small>Бесплатно</small></a>
+        <a href="/ru/concierge.html?pf_goal=buy&amp;pf_country=sk&amp;pf_experience=new&amp;pf_custody=self&amp;pf_amount=l&amp;utm_source=verdict&amp;utm_medium=sample"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><b>Подбор партнёров</b><span>Подходящие партнёры →</span><small>Сравниваете и выбираете вы</small></a>
+        <a href="/ru/retirement-calculator.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Пенсионный калькулятор</b><span>Ваши собственные предположения →</span><small>Бесплатно</small></a>
+        <a href="/ru/asset-returns.html"><svg viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16l3-4 3 2 5-7"/></svg><b>Доходность активов</b><span>По годам с 2016 →</span><small>Бесплатно</small></a>
+        <a href="/ru/ecosystem/videos/"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg><b>Видео о Биткоине</b><span>Каналы и выступления →</span><small>Бесплатно</small></a>
+        <a href="/ru/ecosystem/books/"><svg viewBox="0 0 24 24"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10"/></svg><b>Книги о Биткоине</b><span>Что почитать →</span><small>Бесплатно</small></a>
+      </div>
+    </div>
+
+
+    <div class="ml-box acc-orange">
+      <span class="ml-k2">Также в вашем собственном отчёте</span>
+      <ul class="ml-check plain" style="margin-top:6px">
+        <li>Биткоин как доля всего, чем вы владеете</li>
+        <li>Прошлые падения Биткоина на 70% и больше для вашей суммы и сколько длился путь обратно</li>
+        <li>Ваш резерв и пенсия в евро</li>
+        <li>Налоговый пример шаг за шагом: продажа 5% вашего Биткоина в первый год пенсии, с датами для вашей страны</li>
+        <li>Опубликованные комиссии для ваших сумм</li>
+        <li>Партнёры для покупки, хранения и налогов по вашим критериям; сравниваете и выбираете вы</li>
+        <li>Для заполнения: ваше правило на случай падения, чек-лист восстановления, запись о покупке, письмо наследникам</li>
+      </ul>
+    </div>
+
+    <div class="ml-box" id="waitlist" data-buybox style="text-align:center">
+      <h4>Хотите такой отчёт для своего плана?</h4>
+      <p>14 € разово, без подписки. Если вы ещё не отвечали, сначала пройдёте пять коротких шагов. Возврат денег в течение 30 дней.</p>
+      <p class="ml-data">Ваши ответы покидают устройство, только если вы покупаете полный отчёт: мы храним их на сервере до 24 часов, чтобы его составить, а затем автоматически удаляем.</p>
+      <button class="ml-big orange" type="button" data-buy>Получить мой отчёт · 14 €</button>
+      <p class="ml-fine ml-data-s">Только теперь ваши ответы уходят на наш сервер: хранятся 24 часа, затем удаляются.</p>
+      <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
+      <form class="ml-form" data-wl novalidate hidden style="max-width:420px;margin:0 auto">
+        <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="E-mail" autocomplete="email">
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="ml-btn2 orange" type="submit">Записаться в список ожидания за 14 €</button>
+        <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="ml-box ml-consult">
+      <div><h4>Хотите пройти его вместе с нами?</h4><p>Возьмите свой отчёт на бесплатный 15-минутный звонок. Мы ответим на вопросы, решаете вы.</p></div>
+      <button class="ml-big" type="button" data-consultation-trigger data-consultation-lang="en">Записаться на бесплатный звонок на 15 минут</button>
+    </div>
+    <p class="ml-legal">Образец отчёта для вымышленной клиентки. Числа иллюстративные. Verdict проверяет ваши ответы по фиксированным правилам и не является инвестиционной, налоговой или юридической консультацией. Партнёры перечислены потому, что соответствуют критериям, без рейтинга; Virtuse может получить реферальное вознаграждение. © 2018–2026 Virtuse Wealth Management, a.s.</p>
+  </section>
+
+  <!-- 10 THE BOUGHT REPORT (filled by verdict-lite.js from POST /verdict/report) -->
+  <section class="ml-screen" data-s="10">
+    <div id="mlReport"></div>
+    <div class="ml-box ml-consult">
+      <div><h4>Хотите пройти его вместе с нами?</h4><p>Возьмите свой отчёт на бесплатный 15-минутный звонок. Мы ответим на вопросы, решаете вы.</p></div>
+      <button class="ml-big orange" type="button" data-consultation-trigger data-consultation-lang="en">Записаться на бесплатный звонок на 15 минут</button>
+    </div>
+  </section>
+
+  <nav class="ml-jump" aria-label="Экраны для просмотра" hidden><b>Экраны для просмотра:</b></nav>
+</div>
+
+    <!-- brief-d-cta:start -->
+    <section id="brief" class="ml-brief">
+      <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Только Биткоин, каждый понедельник.</span></h2></div></div>
+      <div class="brief">
+        <a class="issue" id="briefIssue" data-root="../" href="../news.html?utm_source=ru-verdict&amp;utm_medium=cta&amp;utm_campaign=brief_d">
+          <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="Обложка" loading="lazy" onerror="this.remove()">
+          <div class="issue-body">
+            <span class="k" id="briefMeta">Последний выпуск Brief</span>
+            <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote.</h3>
+            <p id="briefExcerpt">Up 65% against gold since the February low and ahead of every major asset since the war began.</p>
+            <span class="more">Читать выпуск (на английском) →</span>
+          </div>
+        </a>
+        <div class="signup">
+          <div class="btc-spark" id="btcSpark" hidden>
+          <div class="btc-top"><span>BTC / EUR · 90 дней</span><b id="btcLast"></b><em id="btcChg"></em></div>
+          <svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="btcFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".35"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient></defs><path id="btcArea" fill="url(#btcFill)"/><path id="btcLine" fill="none" stroke="#f7931a" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+        </div>
+          <h3>Получайте Brief. <span>Бесплатно.</span></h3>
+          <p>Рынок, регулирование, майнинг. Без токенов и пиара. Одно письмо каждый понедельник.</p>
+          <form class="brief-form" id="briefForm" data-brief-form data-source="verdict_page" novalidate>
+            <label for="briefEmail" style="position:absolute;left:-9999px">Адрес e-mail</label>
+            <input id="briefEmail" name="email" type="email" placeholder="Адрес e-mail" autocomplete="email" required>
+            <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-primary" type="submit">Получать Brief</button>
+          </form>
+          <div class="brief-msg" id="briefMsg" aria-live="polite"></div>
+          <div class="fine">Отписаться можно в любой момент. Не совет. <a href="../news.html?utm_source=ru-verdict&amp;utm_medium=cta&amp;utm_campaign=brief_d" style="color:var(--muted)">Все выпуски и блог →</a></div>
+        </div>
+      </div>
+    </section>
+    <!-- brief-d-cta:end -->
+
+<footer class="footer-main">
+    <div class="footer-inner">
+      <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
+      <div class="footer-columns"><div class="footer-col"><h4>Услуги</h4><a href="buy-bitcoin.html">Купить Биткоин</a><a href="secure.html">Хранение</a><a href="mining.html">Майнинг</a><a href="lending.html">Займы</a><a href="treasury.html">Treasury</a><a href="tax.html">Налоги</a><a href="bots.html">Боты</a></div><div class="footer-col"><h4>Компания</h4><a href="about.html">О нас</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Инструменты</h4><a href="verdict.html">Verdict <span class="soon cfo-foot-badge">Бесплатно</span></a><a href="cfo.html">Virtuse CFO</a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Пенсионный калькулятор</a></div><div class="footer-col"><h4>Материалы</h4><a href="../news.html">Virtuse Brief</a><a href="blog.html">Блог</a><a href="bitcoin-data.html">Данные о Биткоине</a><a href="/ru/bitcoin-nalogi/">Налоги на Биткоин</a><a href="/ru/bitcoin-indeks-komissiy/">Индекс комиссий</a><a href="/ru/bitcoin-kalkulyator-dca/">DCA-калькулятор</a><a href="/ru/bitcoin-prodat-ili-zanyat/">Продать или занять</a><a href="/ru/bitcoin-nasledstvo/">Наследование</a></div><div class="footer-col"><h4>Экосистема</h4><a href="/ru/ecosystem/">Экосистема Биткоина</a><a href="/ru/ecosystem/what-is-bitcoin/">Что такое Биткоин?</a><a href="/ru/ecosystem/books/">Книги</a><a href="/ru/ecosystem/podcasts/">Подкасты</a><a href="/ru/ecosystem/videos/">Видео</a><a href="/ru/ecosystem/conferences/">Конференции</a><a href="/ru/ecosystem/privacy/">Приватность в Биткоине</a><a href="/ru/ecosystem/spend-bitcoin/">Тратить Биткоин</a><a href="/ru/ecosystem/store-tools/">Для магазинов</a><a href="/ru/ecosystem/dev-tools/">Разработчикам</a><a href="/ru/ecosystem/jobs/">Работа</a><a href="/ru/ecosystem/peers/">Единомышленники</a><a href="/ru/ecosystem/promote/">Продвижение</a></div><div class="footer-col"><h4>Информация</h4><a href="terms-and-conditions.html">Условия использования</a><a href="privacy-policy.html">Политика конфиденциальности</a><a href="aml-compliance.html">AML и комплаенс</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Все права защищены.</p>
+<p class="footer-operator"><a href="operator.html">Оператор</a>: Virtuse Wealth Management, a.s., Borinka 65, 900 32 Borinka, Словакия · Идентификационный номер (IČO) 36 709 042 · Номер плательщика НДС SK2022293042 · зарегистрирована в Торговом реестре Городского суда Братислава III, раздел Sa, № 4452/B · info@virtuse.com</p>
+      <p class="footer-bottom-brief">Virtuse Brief &mdash; еженедельный дайджест от Virtuse. <a href="../news.html">Читать &rarr;</a></p>
+      <nav class="footer-langs" aria-label="Языки"><a href="../verdict.html" hreflang="en">English</a><a href="../sk/verdict.html" hreflang="sk">Slovenčina</a><a href="verdict.html" hreflang="ru" aria-current="page">Русский</a><a href="../uk/verdict.html" hreflang="uk">Українська</a></nav>
+      <p class="legal">Virtuse — независимый хаб для сравнения. Он не хранит средства или ключи клиентов, не исполняет ордера и не даёт инвестиционных советов. Услуги предоставляют указанные партнёры по собственным лицензиям. Комиссии указаны так, как их публикует каждый партнёр, и могут меняться.</p>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">
+      <span class="footer-wordmark-icon-wrap"><svg class="footer-wordmark-icon" viewBox="0 0 760 483" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vlgWA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgWB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgWA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgWB)" d="M510 0h245L645 205H400Z"/></svg></span>
+      <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
+    </div>
+  </footer>
+</main>
+<script src="/vb-api.js?v=2" defer></script>
+<script src="/site-v2.js?v=15" defer></script>
+<script src="/consultation-lazy.js?v=5" defer></script>
+<script src="/verdict-lite.js?v=18" defer></script>
+<!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

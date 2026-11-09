@@ -97,7 +97,7 @@ FROM_JSON = {
 }
 
 # New cards. news.html is English only; stories hubs exist for en/sk/ru.
-# Verdict has its own page in en/sk/ru; other languages use /verdict.html.
+# Verdict has its own page in en/sk/ru/uk; other languages use /verdict.html.
 NEWS = {
     'en': ('Virtuse Brief', 'The weekly Bitcoin newsletter for Europe.'),
     'sk': ('Virtuse Brief', 'Týždenný newsletter o Bitcoine pre Európu (v angličtine).'),
@@ -237,7 +237,7 @@ def href_of(key, L):
             return '/%s/stories/' % L
         return '/stories/'
     if key == 'verdict':
-        if L in ('sk', 'ru'):
+        if L in ('sk', 'ru', 'uk'):
             return '/%s/verdict.html' % L
         return '/verdict.html'
     if key == 'fee':
