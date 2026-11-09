@@ -98,6 +98,10 @@ def build(L, cfg, en, sk):
     main = main.replace('id="briefIssue" data-root=""', 'id="briefIssue" data-root="../"').replace('utm_source=verdict&amp;utm_medium=cta', 'utm_source=%s-verdict&amp;utm_medium=cta' % L)
     t = '<track kind="captions" src="/media/verdict-promo-en-v2.vtt" srclang="en" label="English">'; assert main.count(t) == 1, 'track'
     main = main.replace(t, '<track kind="captions" src="/media/verdict-promo-en-v2-%s.vtt" srclang="%s" label="%s" default>' % (L, L, cfg['label']))
+    # site-v2.js labels (menu, Latest Brief, Brief form) in this language, from its own pages
+    i18n = re.search(r'<script>window\.VB_I18N = .*?</script>', chrome).group(0)
+    main = re.sub(r'<script>window\.VB_I18N = .*?</script>', '', main)
+    head = head.replace('</head>', i18n + '\n</head>', 1) if '</head>' in head else head + i18n + '\n'
     tail = sk[sk.index('</footer>') + len('</footer>'):]
     body = re.search(r'<body[^>]*>', sk).group(0)
     write(L + '/verdict.html', set_menus(head + body + '\n' + nav + '\n' + main + foot + tail, L))
