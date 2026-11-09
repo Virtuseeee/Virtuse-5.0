@@ -89,6 +89,13 @@ def build(L, cfg, en, sk):
     if real: sys.exit('%s: untranslated: %r' % (L, real[:8]))
     main = re.sub(r'€(\d[\d,]*)', lambda m: m.group(1).replace(',', ' ') + ' €', main)
     main = re.sub(r'\bhref="(/[^"]*)"', lambda m: 'href="%s"' % localise_href(L, cfg, m.group(1)), main)
+    # Relative links point into the language folder: keep the ones that exist there, the rest go up a level
+    def rel(m):
+        u = m.group(2)
+        if re.match(r'(https?:|mailto:|data:|#|\?)', u) or not u: return m.group(0)
+        return '%s="%s"' % (m.group(1), u if os.path.exists(os.path.join(SITE, L, u.split('?')[0].split('#')[0])) else '../' + u)
+    main = re.sub(r'\b(href|src)="([^"/][^"]*)"', rel, main)
+    main = main.replace('id="briefIssue" data-root=""', 'id="briefIssue" data-root="../"').replace('utm_source=verdict&amp;utm_medium=cta', 'utm_source=%s-verdict&amp;utm_medium=cta' % L)
     t = '<track kind="captions" src="/media/verdict-promo-en-v2.vtt" srclang="en" label="English">'; assert main.count(t) == 1, 'track'
     main = main.replace(t, '<track kind="captions" src="/media/verdict-promo-en-v2-%s.vtt" srclang="%s" label="%s" default>' % (L, L, cfg['label']))
     tail = sk[sk.index('</footer>') + len('</footer>'):]
