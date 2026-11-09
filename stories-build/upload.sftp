@@ -363,6 +363,7 @@
 -mkdir public_html/sk/stories/preco-sa-teraz-oplati-investovat-do-bitcoinu-ras-vasilisin
 -mkdir public_html/sk/stories/preco-saylor-a-wall-street-predpovedaju-bitcoin-od-150-tisic-az-po-10-milionov
 -mkdir public_html/sk/stories/preco-vas-nehnutelnost-robi-chudobnejsimi-a-ako-sa-z-toho-von
+-mkdir public_html/sk/stories/prestan-sledovat-bitcoin-v-dolaroch
 -mkdir public_html/sk/stories/pri-investovani-vas-k-velkym-peniazom-privedu-aj-male-sumy-2
 -mkdir public_html/sk/stories/prichadza-najvacsia-zmena-paradigmy-od-internetu
 -mkdir public_html/sk/stories/pripravi-bitcoin-zlato-o-slavu
@@ -588,6 +589,7 @@ put sk/stories/preco-sa-mmf-boji-kryptoizacie/index.html public_html/sk/stories/
 put sk/stories/preco-sa-teraz-oplati-investovat-do-bitcoinu-ras-vasilisin/index.html public_html/sk/stories/preco-sa-teraz-oplati-investovat-do-bitcoinu-ras-vasilisin/index.html
 put sk/stories/preco-saylor-a-wall-street-predpovedaju-bitcoin-od-150-tisic-az-po-10-milionov/index.html public_html/sk/stories/preco-saylor-a-wall-street-predpovedaju-bitcoin-od-150-tisic-az-po-10-milionov/index.html
 put sk/stories/preco-vas-nehnutelnost-robi-chudobnejsimi-a-ako-sa-z-toho-von/index.html public_html/sk/stories/preco-vas-nehnutelnost-robi-chudobnejsimi-a-ako-sa-z-toho-von/index.html
+put sk/stories/prestan-sledovat-bitcoin-v-dolaroch/index.html public_html/sk/stories/prestan-sledovat-bitcoin-v-dolaroch/index.html
 put sk/stories/pri-investovani-vas-k-velkym-peniazom-privedu-aj-male-sumy-2/index.html public_html/sk/stories/pri-investovani-vas-k-velkym-peniazom-privedu-aj-male-sumy-2/index.html
 put sk/stories/prichadza-najvacsia-zmena-paradigmy-od-internetu/index.html public_html/sk/stories/prichadza-najvacsia-zmena-paradigmy-od-internetu/index.html
 put sk/stories/pripravi-bitcoin-zlato-o-slavu/index.html public_html/sk/stories/pripravi-bitcoin-zlato-o-slavu/index.html

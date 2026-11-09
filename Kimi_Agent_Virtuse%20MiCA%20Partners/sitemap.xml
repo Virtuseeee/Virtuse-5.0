@@ -10936,7 +10936,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/page/9/</loc>
-    <lastmod>2020-07-16</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/ru/stories/</loc>
@@ -11585,6 +11585,13 @@
     <lastmod>2026-05-29</lastmod>
   </url>
   <url>
+    <loc>https://virtuse.com/sk/stories/prestan-sledovat-bitcoin-v-dolaroch/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/bitcoin-in-gold-not-dollars/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/prestan-sledovat-bitcoin-v-dolaroch/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/stories/bitcoin-in-gold-not-dollars/"/>
+  </url>
+  <url>
     <loc>https://virtuse.com/sk/stories/pri-investovani-vas-k-velkym-peniazom-privedu-aj-male-sumy-2/</loc>
     <lastmod>2026-03-11</lastmod>
   </url>
@@ -11946,6 +11953,9 @@
   <url>
     <loc>https://virtuse.com/stories/bitcoin-in-gold-not-dollars/</loc>
     <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/bitcoin-in-gold-not-dollars/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/prestan-sledovat-bitcoin-v-dolaroch/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/stories/bitcoin-in-gold-not-dollars/"/>
   </url>
   <url>
     <loc>https://virtuse.com/stories/bitcoin-investors-refuse-to-sell-their-bitcoin/</loc>
