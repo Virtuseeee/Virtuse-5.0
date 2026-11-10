@@ -25,8 +25,10 @@
   var THEME_KEY = 'vb-theme-blog';
   var THEME_DARK = '#08090a';
   var THEME_LIGHT = '#FBFBFA';
-  var PULSE_MAX = 3;
-  var PULSE_TAGS = ['ETF', 'Fed', 'Policy', 'Mining', 'Security'];
+  var PULSE_MAX = 4;
+  var PULSE_TAGS = ['ETF', 'Macro', 'World', 'Policy', 'Mining', 'Security'];
+  /* Tags that may run without Bitcoin in the text (world and macro news). */
+  var PULSE_OPEN_TAGS = ['Macro', 'World'];
   var BLOG_CATS = '13,15';
   var BLOG_MAX = 3;
   var ISSUES_MAX = 4;
@@ -230,17 +232,6 @@
   var pulseStamp;
   function applyPulseMeta(data) {
     pulseStamp = data && data.updated;
-    var moved = (data && (data.what_moved || data.moved)) || '';
-    var movedEl = $('pulseMoved');
-    if (movedEl) {
-      if (moved) {
-        movedEl.textContent = moved;
-        movedEl.hidden = false;
-      } else {
-        movedEl.textContent = '';
-        movedEl.hidden = true;
-      }
-    }
     renderArchive(data && data.archive);
     renderQuickMedia(data && data.quick_media);
     applyFearGreed(data && data.fear_greed);
@@ -553,6 +544,7 @@
   }
   function inferTag(item) {
     var explicit = item && item.tag ? String(item.tag).trim() : '';
+    if (/^fed$/i.test(explicit)) return 'Macro';
     if (explicit) {
       var hit = PULSE_TAGS.filter(function (t) {
         return t.toLowerCase() === explicit.toLowerCase();
@@ -561,7 +553,7 @@
     }
     var blob = (((item && item.title) || '') + ' ' + ((item && item.excerpt) || '')).toLowerCase();
     if (/\betfs?\b|ishares|spot fund/.test(blob)) return 'ETF';
-    if (/\bfed\b|fomc|powell|jackson hole/.test(blob)) return 'Fed';
+    if (/\bfed\b|fomc|powell|jackson hole|\bcpi\b|inflation|interest rate|central bank|\becb\b|\bgdp\b|recession|bond yield|treasury yield/.test(blob)) return 'Macro';
     if (/miner|hashrate|hash rate|difficulty adjustment/.test(blob)) return 'Mining';
     if (/hack|exploit|stolen|custody breach|\bsecurity\b/.test(blob)) return 'Security';
     return 'Policy';
@@ -583,7 +575,8 @@
     if (!list || !empty) return;
     list.textContent = '';
     var shorts = (items || []).filter(function (it) {
-      return it && !isDeskStory(it) && isBitcoinOnly(it);
+      if (!it || isDeskStory(it)) return false;
+      return PULSE_OPEN_TAGS.indexOf(inferTag(it)) !== -1 || isBitcoinOnly(it);
     }).slice(0, PULSE_MAX);
     if (!shorts.length) {
       setText('pulseUpdated', PULSE_UNAVAILABLE);
@@ -617,7 +610,7 @@
       list.appendChild(article);
     });
   }
-  var PULSE_LOCAL = 'news/news-pulse.json?v=20261106';
+  var PULSE_LOCAL = 'news/news-pulse.json?v=20261110';
   /* Worker GET /pulse.json, 3 s limit (the local copy is the fallback). */
   function fetchPulseRemote() {
     return vbApi().then(function (api) {

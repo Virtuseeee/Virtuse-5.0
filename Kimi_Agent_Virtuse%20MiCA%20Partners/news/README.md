@@ -34,7 +34,7 @@ Unsubscribe in the footer points at `#subscribe` (the live list-unsub route need
 
 | File | What to edit |
 |---|---|
-| `news-pulse.json` | Fallback when the Worker's `/pulse.json` fails. Pulse shorts from original outlets. The header says `Updated today · HH:MM` whenever items render, whatever the file's `updated` stamp says, so keep this copy recent. The strip under the logo is today's date (Europe/Bratislava), set by `news.js`; only the featured eyebrow carries the issue date. Optional `tag` (`ETF`, `Fed`, `Policy`, `Mining`, `Security`) drives the monoline icon. CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
+| `news-pulse.json` | Fallback when the Worker's `/pulse.json` fails. Pulse shorts from original outlets. The header says `Updated today · HH:MM` whenever items render, whatever the file's `updated` stamp says, so keep this copy recent. The strip under the logo is today's date (Europe/Bratislava), set by `news.js`; only the featured eyebrow carries the issue date. Optional `tag` (`ETF`, `Macro`, `World`, `Policy`, `Mining`, `Security`; legacy `Fed` shows as `Macro`) drives the monoline icon. `Macro` and `World` items may run without Bitcoin in the text; every other tag goes through the Bitcoin-only filter. The `what_moved` line is no longer shown (2026-11-10). CTAs render as `Read at {Outlet}` or `Full story`. Empty `items` shows the desk figure + “Desk updating.” Optional `feed` URL is fetched first if set. Cap is 4–5. Bitcoin-only filter is applied in `news.js`. |
 | `issues.json` | Weekly issue archive (date, title, excerpt, slug, `image`). The Latest issues band renders 4 weekly issues (featured Brief excluded). A row with `"essay": true` paints the Blog / Ras Take grid first; related WP posts fill remaining columns. `sponsor` is unused on this layout. |
 | `treasury-ledger.json` | Last-known public-company BTC holdings (CoinGecko snapshot + `as_of`). Live fetch from `api.coingecko.com` overwrites this when it succeeds. Never invent holdings. |
 | `firefish-promo.png` | Official Firefish OG creative, cover-cropped as the Partners rail poster. |
@@ -79,7 +79,7 @@ On desktop the right rail (`#issuesRail`) matches the Latest issues cards’ hei
 | `brief-nav-logo-on-light.svg` / `.png` | Same lockup in dark ink, light nav |
 | `brief-mark.png` | Face pictogram, light knockout (kept; not used in nav) |
 | `brief-mark-dark.png` | Face pictogram, dark ink (kept; not used in nav) |
-| `pulse-icons.svg` | ETF, Fed, Policy, Mining, Security (sprite in `news.html`) |
+| `pulse-icons.svg` | ETF, Macro, World, Policy, Mining, Security (sprite in `news.html`) |
 | `desk-updating.svg` | Empty / loading desk figure |
 | `og-card.png` / `og-card.svg` | Wordmark + mark on `--bg` |
 | `firefish-promo.png` | Official Firefish OG (“Never sell your Bitcoin. Borrow against it.”) |

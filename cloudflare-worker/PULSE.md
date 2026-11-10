@@ -80,10 +80,17 @@ Checked against `news/news-pulse.json` on `gh-pages` (snapshot in
   milliseconds). Not more than 36 hours in the future.
 - `market`: object with finite numbers `btc_usd`, `change_24h_pct`,
   `fee_sat_vb`, and non-empty strings `fees` and `sources`.
-- `items`: array of 1 to 3. Each item has `title` (1–120 characters),
+- `items`: array of 1 to 4. Each item has `title` (1–120 characters),
   `excerpt` (string), `source` (non-empty), `url` (`https://`), `tag`
-  one of `ETF`, `Fed`, `Policy`, `Mining`, `Security`, and `published`
-  (same ISO UTC form). `title` + `excerpt` must match `/bitcoin|\bbtc\b/i`.
+  one of `ETF`, `Macro`, `World`, `Policy`, `Mining`, `Security`, and
+  `published` (same ISO UTC form). `title` + `excerpt` must match
+  `/bitcoin|\bbtc\b/i`, except for `Macro` (world macroeconomic news:
+  central banks, inflation, rates, bond markets, debt crises) and `World`
+  (geopolitics: wars, sanctions, financial-system crises, US politics),
+  which may run without Bitcoin. `Fed` is still accepted as a legacy tag
+  and shown as `Macro`.
+- `what_moved` is still accepted but no longer shown on the page (removed
+  2026-11-10).
 - `archive.items`: the yesterday array, length at most 2. Each entry has
   the same fields as a pulse item except `excerpt` and the Bitcoin check.
 - When present: `what_moved` is a string of at most 300 characters;

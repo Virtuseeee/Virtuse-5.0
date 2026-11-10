@@ -4,7 +4,10 @@
 
 export const PULSE_MAX_BYTES = 16 * 1024;
 const PULSE_FUTURE_MS = 36 * 60 * 60 * 1000;
-const PULSE_TAGS = ['ETF', 'Fed', 'Policy', 'Mining', 'Security'];
+// 'Fed' is kept so older publishers keep passing; the page shows it as Macro.
+const PULSE_TAGS = ['ETF', 'Macro', 'World', 'Policy', 'Mining', 'Security', 'Fed'];
+// World and macro news may run without Bitcoin in the text.
+const PULSE_OPEN_TAGS = ['Macro', 'World'];
 const PULSE_BTC_RE = /bitcoin|\bbtc\b/i;
 const PULSE_ISO_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/;
 
@@ -88,8 +91,8 @@ export function pulseErrors(data, now = Date.now()) {
     }
   }
 
-  if (!Array.isArray(data.items) || data.items.length < 1 || data.items.length > 3) {
-    errors.push('items must be an array of 1 to 3 pulse items');
+  if (!Array.isArray(data.items) || data.items.length < 1 || data.items.length > 4) {
+    errors.push('items must be an array of 1 to 4 pulse items');
   }
   const items = Array.isArray(data.items) ? data.items : [];
   items.forEach((it, i) => {
@@ -100,7 +103,7 @@ export function pulseErrors(data, now = Date.now()) {
       }
       const title = typeof it.title === 'string' ? it.title : '';
       const excerpt = typeof it.excerpt === 'string' ? it.excerpt : '';
-      if ((title || excerpt) && !PULSE_BTC_RE.test(`${title} ${excerpt}`)) {
+      if ((title || excerpt) && !PULSE_OPEN_TAGS.includes(it.tag) && !PULSE_BTC_RE.test(`${title} ${excerpt}`)) {
         errors.push(`items[${i}] title+excerpt must mention Bitcoin or BTC`);
       }
     }

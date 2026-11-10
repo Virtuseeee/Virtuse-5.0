@@ -84,9 +84,21 @@ test('pulseErrors rejects schema violations', () => {
   noBtc.items[0].excerpt = 'Equities led the session.';
   assert.ok(pulseErrors(noBtc, NOW).some((e) => e.includes('Bitcoin or BTC')));
 
-  const four = validPulse();
-  four.items = [...four.items, ...four.items, ...four.items, ...four.items];
-  assert.ok(pulseErrors(four, NOW).some((e) => e.includes('1 to 3')));
+  const five = validPulse();
+  five.items = [...five.items, ...five.items, ...five.items, ...five.items, ...five.items];
+  assert.ok(pulseErrors(five, NOW).some((e) => e.includes('1 to 4')));
+
+  // World and Macro items may run without Bitcoin in the text.
+  for (const tag of ['World', 'Macro']) {
+    const open = validPulse();
+    open.items[0].tag = tag;
+    open.items[0].title = 'Paraguay freezes bank withdrawals as peso slides';
+    open.items[0].excerpt = 'The central bank capped daily withdrawals.';
+    assert.deepEqual(pulseErrors(open, NOW), []);
+  }
+  const legacyFed = validPulse();
+  legacyFed.items[0].tag = 'Fed';
+  assert.deepEqual(pulseErrors(legacyFed, NOW), []);
 
   const yesterday = validPulse();
   const yItem = {
