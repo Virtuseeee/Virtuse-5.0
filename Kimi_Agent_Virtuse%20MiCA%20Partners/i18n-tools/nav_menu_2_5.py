@@ -24,7 +24,7 @@ def item(href, label, desc, extra=''):
 
 LEARN = ''.join([
     item('news.html?utm_source=brief&amp;utm_medium=nav', 'Virtuse Brief', 'Weekly Bitcoin news, every Monday'),
-    item('/stories/', 'Stories', 'Long reads and analysis'),
+    item('/stories/', 'Blog', 'Long reads and analysis'),
     item('bitcoin-data.html', 'Bitcoin Data', 'Live price, network and charts'),
     item('/bitcoin-tax/', 'Country tax guides', 'Tax rules in 13 EU countries'),
     item('faq.html', 'FAQ', 'Answers about Virtuse and partners'),
@@ -50,7 +50,7 @@ CSS_NEW = '''/* Menu items with a one-line description on desktop (checklist 2.5
 @media (max-width: 1180px) { .nav-drop .nd-d { display: none; } }'''
 
 T = {  # new strings; existing keys in a language file are kept
-    'Stories': dict(sk='Príbehy', cs='Příběhy', de='Artikel', fr='Articles', es='Artículos', pl='Artykuły', hu='Cikkek', uk='Статті', ru='Статьи'),
+    'Blog': dict(sk='Blog', cs='Blog', de='Blog', fr='Blog', es='Blog', pl='Blog', hu='Blog', uk='Блог', ru='Блог'),
     'Country tax guides': dict(sk='Daňové návody podľa krajín', cs='Daňové průvodce podle zemí', de='Steuerratgeber nach Land',
                                fr='Guides fiscaux par pays', es='Guías fiscales por país', pl='Przewodniki podatkowe według krajów',
                                hu='Adózási útmutatók országonként', uk='Податкові гіди за країнами', ru='Налоговые гиды по странам'),

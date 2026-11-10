@@ -10,7 +10,7 @@
  * offline run give the same files.
  *
  * What it does:
- *  1. Story pages (every path in manifest.json): breadcrumb "Stories" pointing
+ *  1. Story pages (every path in manifest.json): breadcrumb "Blog" pointing
  *     at the language's hub (markup + BreadcrumbList JSON-LD), back/more links
  *     to the hub, and a "Related tools and guides" block (2-3 links to tools and
  *     guides in the story's language, picked from the story's words) between
@@ -55,8 +55,8 @@ const HUB_LANGS = {
 
 const STRINGS = {
   en: {
-    crumb: 'Stories', h1: 'All stories', kicker: 'Virtuse Brief',
-    title: 'Bitcoin stories from the Virtuse Brief desk',
+    crumb: 'Blog', h1: 'Blog', kicker: 'Virtuse Brief',
+    title: 'Virtuse Blog: Bitcoin stories from the Brief desk',
     desc: (n) => `Every Virtuse Brief story in English, newest first: Bitcoin markets, policy, mining, custody and treasury. ${n} stories.`,
     count: (n) => (n === 1 ? 'story' : 'stories'),
     page: 'page', Page: 'Page', of: 'of', newest: 'Newest first',
@@ -64,8 +64,8 @@ const STRINGS = {
     related: 'Related tools and guides', home: 'Virtuse',
   },
   sk: {
-    crumb: 'Články', h1: 'Všetky články', kicker: 'Virtuse Brief',
-    title: 'Články o Bitcoine od redakcie Virtuse Brief',
+    crumb: 'Blog', h1: 'Blog', kicker: 'Virtuse Brief',
+    title: 'Blog Virtuse: články o Bitcoine od redakcie Virtuse Brief',
     desc: (n) => `Všetky články Virtuse Brief po slovensky, od najnovších: trhy, regulácia, ťažba, úschova a treasury. Spolu ${n} ${skPlural(n)}.`,
     count: skPlural,
     page: 'strana', Page: 'Strana', of: 'z', newest: 'Od najnovších',
@@ -73,8 +73,8 @@ const STRINGS = {
     related: 'Súvisiace nástroje a návody', home: 'Virtuse',
   },
   ru: {
-    crumb: 'Статьи', h1: 'Все статьи', kicker: 'Virtuse Brief',
-    title: 'Статьи о Биткоине от редакции Virtuse Brief',
+    crumb: 'Блог', h1: 'Блог', kicker: 'Virtuse Brief',
+    title: 'Блог Virtuse: статьи о Биткоине от редакции Virtuse Brief',
     desc: (n) => `Все статьи Virtuse Brief на русском, сначала новые: рынки, регулирование, майнинг, хранение и treasury. Всего ${n} ${ruPlural(n)}.`,
     count: ruPlural,
     page: 'страница', Page: 'Страница', of: 'из', newest: 'Сначала новые',
