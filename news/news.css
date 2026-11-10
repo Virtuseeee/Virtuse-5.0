@@ -1244,21 +1244,34 @@ ul { list-style: none; }
   padding: 4px 0;
 }
 .pulse-archive a:hover { color: var(--accent-text-hover); }
-.quick-media {
-  padding-top: 28px;
-  padding-bottom: 8px;
-  border-top: 0;
+.markets-section { border-top: 1px solid var(--line); }
+.markets-intro {
+  margin: 0 0 8px;
+  font-size: var(--t-deck);
+  line-height: var(--lh-deck);
+  color: var(--text-muted);
 }
-.quick-media[hidden] { display: none; }
-.quick-media .desk-label { margin-bottom: 10px; }
-.quick-media-item {
+.markets-list {
+  list-style: none;
+  counter-reset: mk;
   margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--t-head-list);
-  font-weight: 600;
-  line-height: var(--lh-head);
+  padding: 0;
+  max-width: 54rem;
 }
-.quick-media-item a:hover { color: var(--accent-text-hover); }
+.markets-list li {
+  counter-increment: mk;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  color: var(--text);
+}
+.markets-list li:last-child { border-bottom: 0; }
+.markets-list li::before { content: counter(mk) ". "; font-weight: 700; }
+.markets-lead { color: var(--accent-text); font-weight: 700; }
+.markets-list a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 2px; }
+.markets-list a:hover { color: var(--accent-text-hover); }
 
 /* —— Google preferred source (preferred-source.js): under Pulse and at the page end —— */
 .vb-pref { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }

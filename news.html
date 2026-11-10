@@ -42,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="news/news.css?v=20261105">
+<link rel="stylesheet" href="news/news.css?v=20261110">
 <style>
 /* One Brief theme: dark by default (same key and palette as blog + stories). */
 :root[data-theme-key="vb-theme-blog"][data-theme="dark"] {
@@ -503,7 +503,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Virtuse Brief">
       <a href="#pulse">Pulse</a>
-      <a href="#issues">Latest issues</a>
+      <a href="#news-markets">News &amp; Markets</a>
+      <a href="#blog">Magazine</a>
+      <a href="#issues">Newsletter</a>
       <a href="/bitcoin-data.html?utm_source=brief&amp;utm_medium=nav">Bitcoin Data</a>
       <a href="/">Virtuse hub</a>
       <a class="btn btn-accent-outline" href="#get-the-brief">Get the Brief</a>
@@ -599,17 +601,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
-  <section class="section quick-media" id="quickMedia" hidden aria-label="Quick Media">
+  <section class="section markets-section" id="news-markets" aria-label="News & Markets">
     <div class="page-inner">
-      <p class="desk-label">Quick Media</p>
-      <p class="quick-media-item" id="quickMediaItem"></p>
+      <div class="section-head">
+        <h2>News &amp; Markets</h2>
+      </div>
+      <!-- news-markets:start -->
+      <p class="markets-intro">Other Bitcoin news from the past week, in one line each.</p>
+      <ol class="markets-list" data-issue="2026-11-09">
+        <li><strong class="markets-lead">France</strong> scrapped a €100,000 self-custody reporting rule <a href="https://cryptobriefing.com/france-drops-self-custody-crypto-reporting-rule/" target="_blank" rel="noopener noreferrer">when the Assembly rejected the 2027 budget revenue section</a></li>
+        <li><strong class="markets-lead">Moscow Exchange</strong> will list Bitcoin (plus ETH, USDT) <a href="https://www.coindesk.com/markets/2026/11/04/u-s-sanctioned-moscow-exchange-to-list-bitcoin-and-tether-s-usdt-in-december" target="_blank" rel="noopener noreferrer">for trading from 1 December, with retail caps for non-qualified investors</a></li>
+        <li><strong class="markets-lead">The FBI</strong> named North Korea’s TraderTraitor <a href="https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses" target="_blank" rel="noopener noreferrer">behind the Binance heist and urged industry blocks on laundering addresses</a></li>
+        <li><strong class="markets-lead">Strategy’s STRC</strong> returned to $100 par <a href="https://www.sec.gov/Archives/edgar/data/1050446/000119312526442833/d124693d424b5.htm" target="_blank" rel="noopener noreferrer">after ~$2.25B in buybacks; November dividend rate 12% paid each business day</a></li>
+        <li><strong class="markets-lead">Tether’s CEO</strong> said the firm holds ~150,000 BTC; <a href="https://www.coindesk.com/business/2026/11/03/tether-holds-150-000-bitcoin-worth-usd11-5-billion-ceo-paolo-ardoino-says" target="_blank" rel="noopener noreferrer">its latest reserve report implies ~100,060, different dates, read carefully</a></li>
+      </ol>
+      <!-- news-markets:end -->
     </div>
   </section>
+
+  <section class="section ras-take" id="blog" hidden>
+    <div class="page-inner">
+      <div class="section-head">
+        <h2>Magazine</h2>
+      </div>
+      <div class="blog-grid" id="blogGrid"></div>
+      <div class="blog-more">
+        <a class="text-link" href="stories/">All stories</a>
+      </div>
+    </div>
+  </section>
+
 
   <section class="section issues-section" id="issues">
     <div class="page-inner">
       <div class="section-head">
-        <h2>Latest issues</h2>
+        <h2>Newsletter</h2>
       </div>
       <div class="issues-band">
         <div class="archive" id="archiveGrid"></div>
@@ -658,18 +684,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
-  <section class="section ras-take" id="blog" hidden>
-    <div class="page-inner">
-      <div class="section-head">
-        <p class="kicker">Ras Vasilisin’s Take</p>
-        <h2>Stories</h2>
-      </div>
-      <div class="blog-grid" id="blogGrid"></div>
-      <div class="blog-more">
-        <a class="text-link" href="stories/">All stories</a>
-      </div>
-    </div>
-  </section>
 
 </main>
 
@@ -703,7 +717,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="/preferred-source.js" defer></script>
-<script src="news/news.js?v=20261110" defer></script>
+<script src="news/news.js?v=20261110b" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

@@ -173,24 +173,6 @@
     if (!bits.length) return;
     fine.textContent = bits.join(' · ') + ' · Run the numbers. Not a recommendation.';
   }
-  function renderQuickMedia(qm) {
-    var section = $('quickMedia');
-    var item = $('quickMediaItem');
-    if (!section || !item) return;
-    if (!qm || !qm.title || !qm.url) {
-      section.hidden = true;
-      item.textContent = '';
-      return;
-    }
-    item.textContent = '';
-    var a = document.createElement('a');
-    a.href = qm.url;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.textContent = undash(qm.title);
-    item.appendChild(a);
-    section.hidden = false;
-  }
   function compactArchiveTitle(it) {
     var title = ((it && it.title) || '').replace(/\s+/g, ' ').trim();
     if (title.length > 72) title = title.slice(0, 69).replace(/\s+\S*$/, '') + '…';
@@ -233,7 +215,6 @@
   function applyPulseMeta(data) {
     pulseStamp = data && data.updated;
     renderArchive(data && data.archive);
-    renderQuickMedia(data && data.quick_media);
     applyFearGreed(data && data.fear_greed);
   }
 
@@ -646,7 +627,7 @@
   }
   loadPulse();
 
-  /* Latest issues with cover images. */
+  /* Newsletter issues with cover images. */
   function issueHref(issue) {
     return issue.slug ? issueLink(issue.slug) : (issue.url || '#');
   }
@@ -693,7 +674,7 @@
     });
   }
 
-  /* Right rail matches Latest issues height.
+  /* Right rail matches the Newsletter list height.
      Data desk fills row 1; Partners top aligns with issues row 2. */
   var deskAlignTimer = null;
   function issuesRow2Top(cards) {
@@ -747,7 +728,7 @@
     }
   }
 
-  /* Blog / Ras Take: essay + related WP posts, no empty placeholders. */
+  /* Magazine: essay + related WP posts, no empty placeholders. */
   function imgOf(post) {
     try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; }
   }
