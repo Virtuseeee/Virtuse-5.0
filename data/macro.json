@@ -1,0 +1,148 @@
+{
+ "generated": "2026-11-10T21:19:02.299Z",
+ "quotes": {
+  "gold": {
+   "value": 4038.3,
+   "prev": 4114.5,
+   "change_pct": -1.85,
+   "date": "2026-11-10",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
+  },
+  "brent": {
+   "value": 91.91,
+   "prev": 92.57,
+   "change_pct": -0.71,
+   "date": "2026-11-10",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
+  },
+  "spx": {
+   "value": 7520.93,
+   "prev": 7549.94,
+   "change_pct": -0.38,
+   "date": "2026-11-10",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
+  },
+  "us10y": {
+   "value": 4.983,
+   "prev": 4.864,
+   "change_pct": 2.45,
+   "date": "2026-11-10",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/%5ETNX"
+  },
+  "eurusd": {
+   "value": 1.1167,
+   "prev": 1.1147,
+   "change_pct": 0.18,
+   "date": "2026-11-10",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+  }
+ },
+ "inflation": {
+  "ea": {
+   "value": 4,
+   "month": "2026-10",
+   "source": "Eurostat, HICP euro area",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
+  },
+  "us": {
+   "value": 3.7,
+   "month": "2026-09",
+   "latest_index_month": "2026-10",
+   "source": "U.S. Bureau of Labor Statistics, CPI-U",
+   "source_url": "https://www.bls.gov/cpi/"
+  }
+ },
+ "central_banks": {
+  "ecb": {
+   "rate": "2.50%",
+   "low": 2.5,
+   "high": 2.5,
+   "date": "2026-11-10",
+   "label": "Deposit facility rate",
+   "source": "European Central Bank",
+   "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
+   "next_meeting": "2026-12-17",
+   "calendar_url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html"
+  },
+  "boe": {
+   "rate": "4.00%",
+   "low": 4,
+   "high": 4,
+   "date": "2026-11-09",
+   "label": "Bank Rate",
+   "source": "Bank of England",
+   "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
+   "next_meeting": "2026-12-17",
+   "calendar_url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates"
+  },
+  "fed": {
+   "rate": "3.75–4.00%",
+   "low": 3.75,
+   "high": 4,
+   "date": "2026-11-09",
+   "label": "Fed funds target",
+   "source": "Federal Reserve Bank of New York",
+   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
+   "next_meeting": "2026-12-09",
+   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  },
+  "boj": {
+   "rate": "1.25%",
+   "low": 1.25,
+   "high": 1.25,
+   "date": "2026-10",
+   "label": "Policy rate (overnight call rate target)",
+   "source": "Bank of Japan",
+   "source_url": "https://www.boj.or.jp/en/mopo/index.htm",
+   "next_meeting": "2026-12-18",
+   "calendar_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm"
+  }
+ },
+ "calendar": [
+  {
+   "date": "2026-12-09",
+   "title": "Fed rate decision (FOMC)",
+   "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  },
+  {
+   "date": "2026-12-17",
+   "title": "ECB rate decision",
+   "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html"
+  },
+  {
+   "date": "2026-12-17",
+   "title": "Bank of England rate decision",
+   "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates"
+  },
+  {
+   "date": "2026-12-18",
+   "title": "Bank of Japan rate decision",
+   "url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm"
+  },
+  {
+   "date": "2027-01-27",
+   "title": "Fed rate decision (FOMC)",
+   "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  },
+  {
+   "date": "2027-02-04",
+   "title": "ECB rate decision",
+   "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html"
+  },
+  {
+   "date": "2027-02-04",
+   "title": "Bank of England rate decision",
+   "url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates"
+  },
+  {
+   "date": "2027-03-17",
+   "title": "Fed rate decision (FOMC)",
+   "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  }
+ ]
+}

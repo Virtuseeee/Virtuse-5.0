@@ -817,97 +817,16 @@ ul { list-style: none; }
 .data-desk .desk-label { margin-bottom: 8px; }
 .data-desk .desk-cta { align-self: flex-start; margin-bottom: 18px; }
 
-/* —— Treasury ledger (Gazette stamp + compressed bars) —— */
-.treasury-ledger {
-  margin-top: 8px;
-  padding-top: 0;
-  min-height: 0;
-}
-.treasury-stamp {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  width: 100%;
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  line-height: 1.2;
-  padding-bottom: 0.3rem;
-  margin: 0 0 6px;
-  border-bottom: 1px solid var(--line);
-}
-.treasury-stamp::before {
-  content: "";
-  width: 0.375rem;
-  height: 0.375rem;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-.treasury-dek {
-  margin: 0 0 6px;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  line-height: 1.35;
-  color: var(--text-faint);
-}
-.treasury-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: treasury;
-}
-.treasury-list li {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(48px, 1fr) auto;
-  align-items: center;
-  gap: 8px;
-  min-height: 18px;
-  counter-increment: treasury;
-}
-.treasury-name {
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.treasury-name::before {
-  content: counter(treasury) ". ";
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  color: var(--text-faint);
-}
-.treasury-bar-track {
-  display: block;
-  height: 5px;
-  background: var(--line);
-  min-width: 0;
-}
-.treasury-bar {
-  display: block;
-  height: 100%;
-  background: var(--accent);
-  min-width: 0;
-}
-.treasury-btc {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--text-muted);
-  white-space: nowrap;
-  text-align: right;
-}
+/* —— Central banks (Newsletter rail) —— */
+.cb-table { margin-top: 4px; }
+.cb-dek { margin: 0 0 8px; font-size: 13px; line-height: 1.4; color: var(--text-muted); }
+.cb-table table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 13px; }
+.cb-table th, .cb-table td { padding: 7px 0; border-bottom: 1px solid var(--line); text-align: left; font-weight: 500; }
+.cb-table thead th { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; padding-top: 0; }
+.cb-table tbody th { font-weight: 600; color: var(--text); }
+.cb-table td:nth-child(2) { color: var(--text); }
+.cb-table td:last-child, .cb-table th:last-child { text-align: right; color: var(--text-muted); }
+.cb-note { margin: 8px 0 14px; font-size: 11px; line-height: 1.4; color: var(--text-faint); }
 
 /* —— Partner promo (right rail, issues row 2 → column bottom) —— */
 .partner-promo {
@@ -1428,3 +1347,20 @@ ul { list-style: none; }
 /* —— Google preferred source (preferred-source.js): under Pulse and at the page end —— */
 .vb-pref { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .pulse-pref { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+
+/* —— By the numbers: sub line + macro column —— */
+.tile-sub { margin-top: 2px; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+.tile-sub.up { color: var(--up); }
+.tile-sub.down { color: var(--down); }
+
+/* —— Coming up (under Pulse) —— */
+.pulse-calendar { margin-top: 16px; }
+.pulse-calendar[hidden] { display: none; }
+.cal-list { list-style: none; margin: 0; padding: 0; }
+.cal-list li { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13px; line-height: 1.35; }
+.cal-list li:last-child { border-bottom: 0; }
+.cal-list time { flex: 0 0 52px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-text); padding-top: 1px; }
+.cal-list a { color: var(--text); }
+.cal-list a:hover { color: var(--accent-text-hover); }
+.data-strip .tile-value { white-space: nowrap; }
+#tileInfl { font-size: 88%; letter-spacing: -0.01em; }

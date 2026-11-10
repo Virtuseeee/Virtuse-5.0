@@ -165,13 +165,9 @@
   }
   applyTodayStrip();
   function applyFearGreed(fg) {
-    var fine = $('numbersFine');
-    if (!fine || !fg) return;
-    var bits = [];
-    if (fg.value != null && fg.value !== '') bits.push('Fear & Greed ' + fg.value);
-    if (fg.label) bits.push(String(fg.label));
-    if (!bits.length) return;
-    fine.textContent = bits.join(' · ') + ' · Run the numbers. Not a recommendation.';
+    if (!fg || fg.value == null || fg.value === '') return;
+    setText('tileFg', String(fg.value) + ' / 100');
+    setText('tileFgLabel', fg.label ? String(fg.label) : 'alternative.me');
   }
   function compactArchiveTitle(it) {
     var title = ((it && it.title) || '').replace(/\s+/g, ' ').trim();
@@ -327,6 +323,103 @@
   bindSubscribe($('subscribeStripForm'), $('subscribeStripMsg'));
   bindSubscribe($('subscribeForm'), $('subscribeMsg'));
 
+  /* Macro figures: data/macro.json (macro-build/build.mjs, daily via the
+     Asset returns Action). Read from GitHub first so production stays fresh
+     without an upload; the site's own copy is the fallback. */
+  var MACRO_RAW = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/macro.json';
+  var macro = null;
+  var btcUsd = null;
+  function fmtNum(n, d) { return n == null || isNaN(n) ? NA : Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function monthShort(ym) {
+    if (!ym) return '';
+    var d = new Date(ym.length === 7 ? ym + '-01T12:00:00Z' : ym + 'T12:00:00Z');
+    return isNaN(d.getTime()) ? ym : d.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+  }
+  function dayShort(ymd) {
+    var d = new Date(ymd + 'T12:00:00Z');
+    return isNaN(d.getTime()) ? ymd : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+  }
+  function setChg(id, pct) {
+    var el = $(id);
+    if (!el) return;
+    if (pct == null || isNaN(pct)) { el.textContent = NA; return; }
+    el.textContent = signedPct(pct) + ' · 1d';
+    el.className = 'tile-sub ' + pctClass(pct);
+  }
+  function paintGold() {
+    var g = macro && macro.quotes && macro.quotes.gold;
+    if (!g || !btcUsd) return;
+    setText('tileGold', fmtNum(btcUsd / g.value, 1) + ' oz');
+    setText('tileGoldSub', 'Gold $' + fmtNum(g.value, 0) + '/oz');
+  }
+  function macroTicker() {
+    var q = macro && macro.quotes;
+    if (!q) return [];
+    var out = [];
+    function add(label, x, d, prefix, suffix) {
+      if (!x) return;
+      var v = (prefix || '') + fmtNum(x.value, d) + (suffix || '');
+      out.push([label, x.change_pct == null ? v : v + ' ' + signedPct(x.change_pct), pctClass(x.change_pct)]);
+    }
+    add('S&P 500', q.spx, 0);
+    add('Gold', q.gold, 0, '$');
+    add('Brent', q.brent, 2, '$');
+    add('EUR/USD', q.eurusd, 4);
+    if (q.us10y) {
+      var bp = q.us10y.prev != null ? Math.round((q.us10y.value - q.us10y.prev) * 100) : null;
+      out.push(['US 10Y', fmtNum(q.us10y.value, 2) + '%' + (bp == null ? '' : ' ' + (bp > 0 ? '+' : '') + bp + ' bp'), bp == null ? '' : pctClass(bp)]);
+    }
+    return out;
+  }
+  function paintMacro(m) {
+    macro = m;
+    var q = m.quotes || {};
+    if (q.spx) { setText('tileSpx', fmtNum(q.spx.value, 0)); setChg('tileSpxChg', q.spx.change_pct); }
+    if (q.eurusd) { setText('tileEur', fmtNum(q.eurusd.value, 4)); setChg('tileEurChg', q.eurusd.change_pct); }
+    var inf = m.inflation || {};
+    if (inf.us || inf.ea) {
+      setText('tileInfl', (inf.us ? fmtNum(inf.us.value, 1) : NA) + ' / ' + (inf.ea ? fmtNum(inf.ea.value, 1) : NA) + '%');
+      setText('tileInflSub', 'y/y · US ' + (inf.us ? monthShort(inf.us.month) : '') + ' · EU ' + (inf.ea ? monthShort(inf.ea.month) : ''));
+    }
+    paintGold();
+    var rows = document.querySelectorAll('#cbRows tr[data-cb]');
+    var cb = m.central_banks || {};
+    Array.prototype.forEach.call(rows, function (tr) {
+      var b = cb[tr.getAttribute('data-cb')];
+      var tds = tr.querySelectorAll('td');
+      if (!b || tds.length < 2) return;
+      tds[0].textContent = b.rate;
+      tds[0].title = b.label + ' · ' + b.source;
+      tds[1].textContent = b.next_meeting ? dayShort(b.next_meeting) : NA;
+    });
+    var cal = (m.calendar || []).filter(function (e) { return e.date >= deskYmd(new Date()); }).slice(0, 4);
+    var list = $('calList');
+    var box = $('pulseCalendar');
+    if (list && box && cal.length) {
+      list.textContent = '';
+      cal.forEach(function (e) {
+        var li = document.createElement('li');
+        var t = document.createElement('time');
+        t.setAttribute('datetime', e.date);
+        t.textContent = dayShort(e.date);
+        var a = document.createElement(e.url ? 'a' : 'span');
+        if (e.url) { a.href = e.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+        a.textContent = e.title;
+        li.appendChild(t);
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      box.hidden = false;
+    }
+    if (lastTickerStats) renderTicker(lastTickerStats);
+  }
+  function loadMacro() {
+    j(MACRO_RAW, 6000).catch(function () { return j('data/macro.json?v=' + Date.now().toString().slice(0, 6)); })
+      .then(function (m) { if (m && m.quotes) paintMacro(m); })
+      .catch(function () { /* tiles keep their placeholders */ });
+  }
+  loadMacro();
+
   /* Ticker + by-the-numbers tiles. */
   var lastTickerStats = null;
   var tickerResizeTimer = null;
@@ -342,6 +435,7 @@
       ['Sats/$', stats.sats || NA, ''],
       ['Block', stats.height || NA, '']
     ];
+    macroTicker().forEach(function (m) { parts.push(m); });
     function row() {
       var frag = document.createDocumentFragment();
       parts.forEach(function (p, i) {
@@ -426,6 +520,7 @@
 
     j(MP + '/v1/prices', LIVE_MS).then(function (p) {
       stats.priceRaw = p.USD;
+      btcUsd = p.USD; paintGold();
       liveOk(stats, 'price', 'tilePrice', usd(p.USD));
       liveOk(stats, 'sats', 'tileSats', p.USD ? num(Math.round(1e8 / p.USD)) : NA);
       renderTicker(stats);
@@ -439,6 +534,7 @@
       var n = parseFloat(t.priceChangePercent);
       if (!isNaN(last)) {
         stats.priceRaw = last;
+        btcUsd = last; paintGold();
         liveOk(stats, 'price', 'tilePrice', usd(last));
         liveOk(stats, 'sats', 'tileSats', num(Math.round(1e8 / last)));
       }
@@ -447,7 +543,7 @@
       liveOk(stats, 'chg', 'tileChg', signedPct(n));
       stats.chgClass = pctClass(n);
       var el = $('tileChg');
-      if (el) el.className = 'tile-value ' + stats.chgClass;
+      if (el) el.className = 'tile-sub ' + stats.chgClass;
       renderTicker(stats);
     }).catch(function () {
       return j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true', LIVE_MS).then(function (g) {
@@ -455,6 +551,7 @@
         var px = g.bitcoin && g.bitcoin.usd;
         if (px != null && !isNaN(px)) {
           stats.priceRaw = px;
+          btcUsd = px; paintGold();
           liveOk(stats, 'price', 'tilePrice', usd(px));
           liveOk(stats, 'sats', 'tileSats', num(Math.round(1e8 / px)));
         }
@@ -463,7 +560,7 @@
         liveOk(stats, 'chg', 'tileChg', signedPct(n));
         stats.chgClass = pctClass(n);
         var el = $('tileChg');
-        if (el) el.className = 'tile-value ' + stats.chgClass;
+        if (el) el.className = 'tile-sub ' + stats.chgClass;
         renderTicker(stats);
       });
     }).catch(function () {
@@ -984,81 +1081,4 @@
     paintBlog([], []);
   });
 
-  /* Treasury ledger: CoinGecko live, last-known JSON fallback. No invented figures. */
-  var TREASURY_MAX = 6;
-  function fmtHoldings(n) {
-    if (n == null || isNaN(n)) return NA;
-    var digits = n >= 100 ? 0 : 2;
-    return n.toLocaleString('en-US', { maximumFractionDigits: digits }) + ' BTC';
-  }
-  function treasuryRow(name, holdings, pct) {
-    var li = document.createElement('li');
-    var nm = document.createElement('span');
-    nm.className = 'treasury-name';
-    nm.textContent = name || NA;
-    var track = document.createElement('span');
-    track.className = 'treasury-bar-track';
-    var bar = document.createElement('span');
-    bar.className = 'treasury-bar';
-    var width = (pct > 0 && !isNaN(pct)) ? Math.max(2, Math.min(100, pct)) : 0;
-    bar.style.width = width + '%';
-    track.appendChild(bar);
-    var btc = document.createElement('span');
-    btc.className = 'treasury-btc';
-    btc.textContent = fmtHoldings(holdings);
-    li.appendChild(nm);
-    li.appendChild(track);
-    li.appendChild(btc);
-    return li;
-  }
-  function emptyTreasuryRows() {
-    var frag = document.createDocumentFragment();
-    for (var i = 0; i < TREASURY_MAX; i++) {
-      frag.appendChild(treasuryRow(NA, null, 0));
-    }
-    return frag;
-  }
-  function paintTreasury(data) {
-    var list = $('treasuryList');
-    var dek = $('treasuryDek');
-    if (!list) return;
-    list.textContent = '';
-    var companies = ((data && data.companies) || []).filter(function (c) {
-      return c && c.name && c.total_holdings != null && !isNaN(c.total_holdings) && c.total_holdings > 0;
-    }).slice(0, TREASURY_MAX);
-    if (!companies.length) {
-      list.appendChild(emptyTreasuryRows());
-      if (dek) dek.textContent = 'Top corporate BTC holders.';
-      return;
-    }
-    var max = companies[0].total_holdings || 1;
-    companies.forEach(function (c) {
-      list.appendChild(treasuryRow(c.name, c.total_holdings, (c.total_holdings / max) * 100));
-    });
-    if (dek) {
-      var asOf = data.as_of ? fmtDate(data.as_of) : '';
-      var parts = [asOf ? 'Top corporate BTC holders, as of ' + asOf + '.' : 'Top corporate BTC holders.'];
-      if (data.total_holdings != null && !isNaN(data.total_holdings)) {
-        parts.push(num(Math.round(data.total_holdings)) + ' BTC across public companies.');
-      }
-      dek.textContent = parts.join(' ');
-    }
-  }
-  function loadTreasury() {
-    paintTreasury({ companies: [] });
-    j('news/treasury-ledger.json').then(function (local) {
-      paintTreasury(local);
-      return j('https://api.coingecko.com/api/v3/companies/public_treasury/bitcoin', 8000).then(function (live) {
-        if (!live || !Array.isArray(live.companies) || !live.companies.length) return;
-        paintTreasury({
-          as_of: new Date().toISOString().slice(0, 10),
-          source: 'CoinGecko public-company treasuries',
-          total_holdings: live.total_holdings,
-          market_cap_dominance: live.market_cap_dominance,
-          companies: live.companies
-        });
-      }).catch(function () { /* keep last-known JSON */ });
-    }).catch(function () { /* dashes already painted */ });
-  }
-  loadTreasury();
 })();
