@@ -210,13 +210,9 @@ and have to be deleted on the server by hand.
 - `.htaccess` (seo-ops): `/a/<slug>` and `article.html?slug=<slug>[&lang=sk]` 301 to the story page when it exists. Otherwise (since 2026-10-26; 14–26 Oct they went to the hub): an old WordPress post from `seo-ops/wp-posts-inventory.csv` that never got a story page → the stories hub (301); any other slug → the reader `article.html?slug=` (200, `X-Robots-Tag: noindex, follow`; `/a/` and `/xx/article.html` reach it by 302). The reader renders the WordPress post, so a post published after the last production upload opens as the article, not the hub; a slug WordPress does not know → `location.replace` to the hub (`stories/`, `sk/stories/`, `ru/stories/`). `article.js` points article.html's canonical at the story page when it exists, else at the WordPress original.
 - WordPress: `virtuse-story-canonical.php` points each post's canonical at its virtuse.com copy (reads `stories/wp-canonical.json`); `virtuse-brief-link.php` adds a fixed "Read the Brief on virtuse.com" bar at the top of those posts (printed in `wp_footer`, front end only; it pads `<body>` and pushes the theme's pinned header/menu down by the bar height).
 
-## Blog list pages (blogs.mjs)
+## Blog list pages (removed 2026-11-10)
 
-The 10 blog list pages (`blog.html`, `blog-sk.html`, `<lang>/blog.html`) ship a
-pre-rendered lead story + cards that their own script replaces with page 1 of
-the WordPress feed. `build.mjs` now refreshes that static first view on every
-run (`blogs.mjs`, from the feeds it already fetched), with the same posts and
-markup the script renders, so visitors no longer see old stories first. The
-Action commits them with the story pages and copies them to gh-pages;
-`upload.sftp` puts them on production.
-
+`blog.html`, `blog-sk.html` and `<lang>/blog.html` showed the same WordPress
+feeds as the story hubs, so the menu item was dropped and the 10 pages are now
+noindex redirects to `stories/`, `sk/stories/` or `ru/stories/` (other languages:
+the EN hub). The build no longer writes them (`blogs.mjs` is gone).

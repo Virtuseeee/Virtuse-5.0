@@ -6,7 +6,7 @@ cfo.html), adds the description CSS there and to site-v2.css, and adds the new s
 and CFO translation files (home/, cfo/ <lang>.json + en_strings.json). Then rebuild as usual:
 build_lang.py, build_cfo.py and every v2 builder (they copy the nav from the language's homepage).
 
-  Learn: Virtuse Brief, Stories, Blog, Bitcoin Data, Country tax guides, FAQ
+  Learn: Virtuse Brief, Stories, Bitcoin Data, Country tax guides, FAQ
   Tools: Virtuse CFO · Verdict, Partner Finder, Fee Index, Stacking Strategist, Loan & Liquidity Copilot,
          Tax & Inheritance Agent, Retirement Calculator
 """
@@ -25,7 +25,6 @@ def item(href, label, desc, extra=''):
 LEARN = ''.join([
     item('news.html?utm_source=brief&amp;utm_medium=nav', 'Virtuse Brief', 'Weekly Bitcoin news, every Monday'),
     item('/stories/', 'Stories', 'Long reads and analysis'),
-    item('blog.html', 'Blog', 'Latest posts from Virtuse'),
     item('bitcoin-data.html', 'Bitcoin Data', 'Live price, network and charts'),
     item('/bitcoin-tax/', 'Country tax guides', 'Tax rules in 13 EU countries'),
     item('faq.html', 'FAQ', 'Answers about Virtuse and partners'),

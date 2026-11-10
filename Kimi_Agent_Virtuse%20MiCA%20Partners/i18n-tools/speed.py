@@ -14,7 +14,7 @@ gets it, with no change to the builders themselves:
 import re
 
 SITE_CSS_V = '21'
-SITE_JS_V = '15'
+SITE_JS_V = '16'
 CSS_RE = re.compile(r'(href="[^"]*?)site-v2(?:\.min)?\.css\?v=\d+"')
 JS_RE = re.compile(r'(src="[^"]*?)site-v2\.js\?v=\d+"')
 

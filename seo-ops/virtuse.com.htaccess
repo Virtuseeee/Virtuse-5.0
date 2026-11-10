@@ -154,39 +154,18 @@ RewriteCond %{QUERY_STRING} (?:^|&)slug=
 RewriteCond %{ENV:VB_AL} ^ru$
 RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/ru/stories/? [R=301,L]
 RewriteCond %{QUERY_STRING} (?:^|&)slug=
-RewriteCond %{ENV:VB_AL} ^de$
-RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/de/blog.html? [R=301,L]
-RewriteCond %{QUERY_STRING} (?:^|&)slug=
-RewriteCond %{ENV:VB_AL} ^es$
-RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/es/blog.html? [R=301,L]
-RewriteCond %{QUERY_STRING} (?:^|&)slug=
-RewriteCond %{ENV:VB_AL} ^fr$
-RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/fr/blog.html? [R=301,L]
-RewriteCond %{QUERY_STRING} (?:^|&)slug=
-RewriteCond %{ENV:VB_AL} ^pl$
-RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/pl/blog.html? [R=301,L]
-RewriteCond %{QUERY_STRING} (?:^|&)slug=
-RewriteCond %{ENV:VB_AL} ^hu$
-RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/hu/blog.html? [R=301,L]
-RewriteCond %{QUERY_STRING} (?:^|&)slug=
-RewriteCond %{ENV:VB_AL} ^cs$
-RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/cs/blog.html? [R=301,L]
-RewriteCond %{QUERY_STRING} (?:^|&)slug=
-RewriteCond %{ENV:VB_AL} ^uk$
-RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com/uk/blog.html? [R=301,L]
-RewriteCond %{QUERY_STRING} (?:^|&)slug=
 RewriteRule ^(?:(?:de|es|fr|pl|hu|cs|sk|uk|ru|it)/)?article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
 # 6. /xx/article.html without a slug (no such file) → that language's blog hub.
 #    The bare root /article.html (no slug) stays the reader page (200).
-RewriteRule ^de/article\.html$ https://virtuse.com/de/blog.html? [R=301,L]
-RewriteRule ^es/article\.html$ https://virtuse.com/es/blog.html? [R=301,L]
-RewriteRule ^fr/article\.html$ https://virtuse.com/fr/blog.html? [R=301,L]
-RewriteRule ^pl/article\.html$ https://virtuse.com/pl/blog.html? [R=301,L]
-RewriteRule ^hu/article\.html$ https://virtuse.com/hu/blog.html? [R=301,L]
-RewriteRule ^cs/article\.html$ https://virtuse.com/cs/blog.html? [R=301,L]
+RewriteRule ^de/article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
+RewriteRule ^es/article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
+RewriteRule ^fr/article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
+RewriteRule ^pl/article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
+RewriteRule ^hu/article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
+RewriteRule ^cs/article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
 RewriteRule ^sk/article\.html$ https://virtuse.com%{ENV:VB_HUB_SK}? [R=301,L]
-RewriteRule ^uk/article\.html$ https://virtuse.com/uk/blog.html? [R=301,L]
-RewriteRule ^ru/article\.html$ https://virtuse.com/ru/blog.html? [R=301,L]
+RewriteRule ^uk/article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
+RewriteRule ^ru/article\.html$ https://virtuse.com/ru/stories/? [R=301,L]
 RewriteRule ^it/article\.html$ https://virtuse.com%{ENV:VB_HUB_EN}? [R=301,L]
 
 # The table (all languages: /xx/<old>/ → /xx/<target> if it exists, else EN)
@@ -258,15 +237,15 @@ RewriteRule ^ru/(?:what-is-a-bitcoin-treasury(?:/.*)?)$ https://virtuse.com/ru/t
 RewriteRule ^it/(?:what-is-a-bitcoin-treasury(?:/.*)?)$ https://virtuse.com/treasury.html [R=301,L]
 RewriteRule ^sk/(?:zdanovanie-kryptomien(?:/.*)?)$ https://virtuse.com/sk/bitcoin-dane/slovensko/ [R=301,L]
 RewriteRule ^(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
-RewriteRule ^de/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com/de/blog.html [R=301,L]
-RewriteRule ^es/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com/es/blog.html [R=301,L]
-RewriteRule ^fr/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com/fr/blog.html [R=301,L]
-RewriteRule ^pl/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com/pl/blog.html [R=301,L]
-RewriteRule ^hu/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com/hu/blog.html [R=301,L]
-RewriteRule ^cs/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com/cs/blog.html [R=301,L]
+RewriteRule ^de/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^es/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^fr/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^pl/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^hu/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^cs/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteRule ^sk/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|novinky(?:/.*)?|virtuse-news(?:/.*)?|virtuse-report(?:/.*)?|home(?:/.*)?|bitcoin-vo-vasom-vrecku(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_SK} [R=301,L]
-RewriteRule ^uk/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com/uk/blog.html [R=301,L]
-RewriteRule ^ru/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com/ru/blog.html [R=301,L]
+RewriteRule ^uk/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^ru/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com/ru/stories/ [R=301,L]
 RewriteRule ^it/(?:blog(?:/.*)?|category(?:/.*)?|tag(?:/.*)?|author(?:/.*)?|page/[0-9]+(?:/.*)?|home(?:/.*)?)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteRule ^(?:contact(?:/.*)?)$ https://blog.virtuse.com/contact/ [R=301,L]
 RewriteRule ^sk/(?:contact(?:/.*)?)$ https://blog.virtuse.com/sk/contact/ [R=301,L]
@@ -786,8 +765,18 @@ RewriteRule ^(de|es|fr|pl|hu|cs|sk|uk|ru|it)/stories/([a-z0-9-]+)/?$ https://vir
 RewriteCond %{DOCUMENT_ROOT}/$1/stories/$2 !-f
 RewriteCond %{DOCUMENT_ROOT}/$1/stories/$2 !-d
 RewriteRule ^(de|es|fr|pl|hu|cs|uk|it)/stories/(.+)$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
-# /xx/blog.html where that language has none → its blog hub
+# Blog list pages, merged into Stories 2026-11-10 → the language's stories hub
+RewriteRule ^blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^blog-sk\.html$ https://virtuse.com%{ENV:VB_HUB_SK} [R=301,L]
+RewriteRule ^de/blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^es/blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^fr/blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^pl/blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^hu/blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^cs/blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 RewriteRule ^sk/blog\.html$ https://virtuse.com%{ENV:VB_HUB_SK} [R=301,L]
+RewriteRule ^uk/blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
+RewriteRule ^ru/blog\.html$ https://virtuse.com/ru/stories/ [R=301,L]
 RewriteRule ^it/blog\.html$ https://virtuse.com%{ENV:VB_HUB_EN} [R=301,L]
 
 # Old WordPress posts (seo-ops/wp-posts-inventory.csv)

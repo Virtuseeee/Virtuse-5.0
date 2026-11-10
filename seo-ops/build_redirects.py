@@ -21,9 +21,10 @@ Pattern rules in the CSV:
   /name*  /*name*/  prefix / contains match of the first segment; generated after the post
                     rules and never applied to real files or directories.
   /name.html        that exact file (root + language prefixes).
-  target BLOG_HUB   the language's blog hub (EN: /stories/ once stories/index.html exists,
+  target BLOG_HUB   the language's stories hub (EN: /stories/ once stories/index.html exists,
                     else /blog.html; SK: /sk/stories/ once it exists, else /blog-sk.html;
-                    other languages: /<lang>/blog.html, else the EN hub).
+                    other languages: /<lang>/stories/, else the EN hub). The blog list pages
+                    were merged into Stories on 2026-11-10 and 301 to these hubs.
   target https://…  external, root/that language only (no language expansion).
   status hold       not generated (waits for Ras), listed as a comment.
 """
@@ -65,14 +66,14 @@ def hub_static(lang):
     """Hub as it resolves right now (for old-paths.txt)."""
     if lang in ('', 'en'): return '/stories/' if exists('/stories/index.html') else '/blog.html'
     if lang == 'sk': return '/sk/stories/' if exists('/sk/stories/index.html') else '/blog-sk.html'
-    return f'/{lang}/blog.html' if exists(f'/{lang}/blog.html') else hub_static('')
+    return f'/{lang}/stories/' if exists(f'/{lang}/stories/index.html') else hub_static('')
 
 
 def hub_rule(lang):
     """Hub as a substitution (EN and SK resolve at request time)."""
     if lang in ('', 'en'): return '%{ENV:VB_HUB_EN}'
     if lang == 'sk': return '%{ENV:VB_HUB_SK}'
-    return f'/{lang}/blog.html' if exists(f'/{lang}/blog.html') else '%{ENV:VB_HUB_EN}'
+    return f'/{lang}/stories/' if exists(f'/{lang}/stories/index.html') else '%{ENV:VB_HUB_EN}'
 
 
 def localise(target, lang):
@@ -285,11 +286,11 @@ def article_rules(ps):
                   'RewriteCond %{ENV:VB_AL} ^ru$',
                   f'RewriteRule ^{L}article\\.html$ {HOST}/ru/stories/? [R=301,L]']
     for lg in LANGS:
-        if lg in ('sk', 'ru') or not exists(f'/{lg}/blog.html'):
+        if lg in ('sk', 'ru') or not exists(f'/{lg}/stories/index.html'):
             continue
         lines += ['RewriteCond %{QUERY_STRING} (?:^|&)slug=',
                   f'RewriteCond %{{ENV:VB_AL}} ^{lg}$',
-                  f'RewriteRule ^{L}article\\.html$ {HOST}/{lg}/blog.html? [R=301,L]']
+                  f'RewriteRule ^{L}article\\.html$ {HOST}/{lg}/stories/? [R=301,L]']
     lines += ['RewriteCond %{QUERY_STRING} (?:^|&)slug=',
               f'RewriteRule ^{L}article\\.html$ {HOST}%{{ENV:VB_HUB_EN}}? [R=301,L]',
               '# 6. /xx/article.html without a slug (no such file) → that language\'s blog hub.',
@@ -315,10 +316,11 @@ def lang_hub_rules():
     lines += [f'RewriteCond %{{DOCUMENT_ROOT}}/$1/stories/$2 !-f',
               f'RewriteCond %{{DOCUMENT_ROOT}}/$1/stories/$2 !-d',
               f'RewriteRule ^({"|".join(nohub)})/stories/(.+)$ {HOST}%{{ENV:VB_HUB_EN}} [R=301,L]']
-    lines.append('# /xx/blog.html where that language has none → its blog hub')
+    lines.append('# Blog list pages, merged into Stories 2026-11-10 → the language\'s stories hub')
+    lines.append(f'RewriteRule ^blog\\.html$ {url(hub_rule(""))} [R=301,L]')
+    lines.append(f'RewriteRule ^blog-sk\\.html$ {url(hub_rule("sk"))} [R=301,L]')
     for lg in LANGS:
-        if not exists(f'/{lg}/blog.html'):
-            lines.append(f'RewriteRule ^{lg}/blog\\.html$ {url(hub_rule(lg))} [R=301,L]')
+        lines.append(f'RewriteRule ^{lg}/blog\\.html$ {url(hub_rule(lg))} [R=301,L]')
     return lines
 
 
@@ -506,7 +508,8 @@ def old_paths(rows, ps):
     add('/compound-interest-calculator', 301, '/stacking.html')
     add('/sk/compound-interest-calculator/', 301, '/sk/stacking.html')
     # must stay 200 / 404
-    for s in ('/', '/index.html', '/bots.html', '/blog-sk.html', '/blog.html', '/sk/about.html',
+    add('/blog.html', 301, hub_static('')); add('/blog-sk.html', 301, hub_static('sk')); add('/de/blog.html', 301, hub_static('de'))
+    for s in ('/', '/index.html', '/bots.html', '/sk/about.html',
               '/stories/what-is-a-bitcoin-treasury/', '/sk/bitcoin-dane/slovensko/', '/bitcoin-tax/slovakia/',
               '/de/bitcoin-steuern/slowakei/', '/asset-returns.html', '/sitemap.xml'):
         add(s, 200, '')

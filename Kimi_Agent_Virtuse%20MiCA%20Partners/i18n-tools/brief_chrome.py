@@ -10,9 +10,8 @@ import html, json, os, re, sys
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # page -> (language, link to that language's CFO page)
-BLOGS = {'blog.html': ('en', 'cfo.html'), 'blog-sk.html': ('sk', 'sk/cfo.html')}
-for _l in ('uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu'):
-    BLOGS['%s/blog.html' % _l] = (_l, 'cfo.html')
+# The blog pages were merged into Stories on 2026-11-10 (now redirect stubs): nothing to patch.
+BLOGS = {}
 CFO_QS = '?utm_source=brief&amp;utm_medium=nav'
 
 

@@ -230,5 +230,6 @@ def build(lang, src_path, out_path):
 
 
 if __name__ == '__main__':
+    sys.exit('Retired 2026-11-10: the blog pages were merged into Stories and are now redirects to the story hubs.')
     lang, src = sys.argv[1], sys.argv[2]
     build(lang, src, sys.argv[3] if len(sys.argv) > 3 else src)
