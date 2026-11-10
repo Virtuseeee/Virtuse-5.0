@@ -6,11 +6,11 @@
   var LANGS = {
     en: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'blog.html', suffix: '', locale: 'en-GB', worker: 'en', dir: '', concierge: true,
+      listPage: 'stories/', suffix: '', locale: 'en-GB', worker: 'en', dir: '', concierge: true,
       desks: { mining: 'Mining', treasury: 'Treasury', custody: 'Custody', policy: 'Policy', macro: 'Macro', markets: 'Markets' },
       ui: {
-        navIssues: 'Latest issues', navBlog: 'Blog', navData: 'Bitcoin Data', navHub: 'Virtuse hub', navGet: 'Get the Brief',
-        crumbList: 'Blog', crumbStories: 'Stories', by: 'By', desk: ' desk', block: 'Block', readTime: ' min',
+        navIssues: 'Latest issues', navBlog: 'Stories', navData: 'Bitcoin Data', navHub: 'Virtuse hub', navGet: 'Get the Brief',
+        crumbList: 'Stories', crumbStories: 'Stories', by: 'By', desk: ' desk', block: 'Block', readTime: ' min',
         image: 'Image', sources: 'Sources', aboutAuthor: 'About the author',
         authorBio: 'Founder & CEO of Virtuse. Writing on Bitcoin, macro, and the future of money.',
         share: 'Share', shareOn: 'Share on', copyLink: 'Copy link', copied: 'Link copied', copyFailed: 'Could not copy. Copy the address from the browser bar.', moreShare: 'More sharing options',
@@ -36,11 +36,11 @@
     },
     sk: {
       api: 'https://blog.virtuse.com/sk/wp-json/wp/v2/posts', category: 26,
-      listPage: 'blog-sk.html', suffix: '&lang=sk', locale: 'sk-SK', worker: 'sk', dir: 'sk/', concierge: true,
+      listPage: 'sk/stories/', suffix: '&lang=sk', locale: 'sk-SK', worker: 'sk', dir: 'sk/', concierge: true,
       desks: { mining: 'Ťažba', treasury: 'Treasury', custody: 'Úschova', policy: 'Regulácia', macro: 'Makro', markets: 'Trhy' },
       ui: {
-        navIssues: 'Posledné vydania', navBlog: 'Blog', navData: 'Bitcoin dáta', navHub: 'Virtuse hub', navGet: 'Získať Brief',
-        crumbList: 'Blog', crumbStories: 'Články', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
+        navIssues: 'Posledné vydania', navBlog: 'Články', navData: 'Bitcoin dáta', navHub: 'Virtuse hub', navGet: 'Získať Brief',
+        crumbList: 'Články', crumbStories: 'Články', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
         image: 'Obrázok', sources: 'Zdroje', aboutAuthor: 'O autorovi',
         authorBio: 'Zakladateľ a CEO Virtuse. Píše o Bitcoine, makroekonomike a budúcnosti peňazí.',
         share: 'Zdieľať', shareOn: 'Zdieľať na', copyLink: 'Kopírovať odkaz', copied: 'Odkaz skopírovaný', copyFailed: 'Kopírovanie zlyhalo. Skopírujte adresu z prehliadača.', moreShare: 'Ďalšie možnosti zdieľania',
@@ -68,11 +68,11 @@
     // explicit lang=ru query param (no /ru/wp-json/ alias like sk has).
     ru: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 57, lang: 'ru',
-      listPage: 'ru/blog.html', suffix: '&lang=ru', locale: 'ru-RU', worker: 'ru', dir: 'ru/', concierge: true,
+      listPage: 'ru/stories/', suffix: '&lang=ru', locale: 'ru-RU', worker: 'ru', dir: 'ru/', concierge: true,
       desks: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Хранение', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
       ui: {
-        navIssues: 'Последние выпуски', navBlog: 'Блог', navData: 'Данные о Биткоине', navHub: 'Virtuse', navGet: 'Получить Brief',
-        crumbList: 'Блог', crumbStories: 'Статьи', by: 'Автор', desk: '', block: 'Блок', readTime: ' мин',
+        navIssues: 'Последние выпуски', navBlog: 'Статьи', navData: 'Данные о Биткоине', navHub: 'Virtuse', navGet: 'Получить Brief',
+        crumbList: 'Статьи', crumbStories: 'Статьи', by: 'Автор', desk: '', block: 'Блок', readTime: ' мин',
         image: 'Фото', sources: 'Источники', aboutAuthor: 'Об авторе',
         authorBio: 'Основатель и CEO Virtuse. Пишет о Биткоине, макроэкономике и будущем денег.',
         share: 'Поделиться', shareOn: 'Поделиться в', copyLink: 'Копировать ссылку', copied: 'Ссылка скопирована', copyFailed: 'Не удалось скопировать. Скопируйте адрес из браузера.', moreShare: 'Другие способы поделиться',
@@ -100,11 +100,11 @@
     // links are in the page language.
     uk: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'uk/blog.html', suffix: '&lang=uk', locale: 'uk-UA', worker: 'uk', dir: 'uk/', concierge: true,
+      listPage: 'stories/', suffix: '&lang=uk', locale: 'uk-UA', worker: 'uk', dir: 'uk/', concierge: true,
       desks: { mining: 'Майнінг', treasury: 'Казначейство', custody: 'Зберігання', policy: 'Регулювання', macro: 'Макро', markets: 'Ринки' },
       ui: {
-        navIssues: 'Останні випуски', navBlog: 'Блог', navData: 'Біткоїн-дані', navHub: 'Virtuse', navGet: 'Отримати Brief',
-        crumbList: 'Блог', by: 'Автор', desk: '', block: 'Блок', readTime: ' хв',
+        navIssues: 'Останні випуски', navBlog: 'Статті', navData: 'Біткоїн-дані', navHub: 'Virtuse', navGet: 'Отримати Brief',
+        crumbList: 'Статті', by: 'Автор', desk: '', block: 'Блок', readTime: ' хв',
         image: 'Фото', sources: 'Джерела', aboutAuthor: 'Про автора',
         authorBio: 'Засновник і CEO Virtuse. Пише про Біткоїн, макроекономіку та майбутнє грошей.',
         share: 'Поділитися', shareOn: 'Поділитися в', copyLink: 'Копіювати посилання', copied: 'Посилання скопійовано',
@@ -130,11 +130,11 @@
     },
     de: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'de/blog.html', suffix: '&lang=de', locale: 'de-DE', worker: 'de', dir: 'de/', concierge: true,
+      listPage: 'stories/', suffix: '&lang=de', locale: 'de-DE', worker: 'de', dir: 'de/', concierge: true,
       desks: { mining: 'Mining', treasury: 'Treasury', custody: 'Verwahrung', policy: 'Regulierung', macro: 'Makro', markets: 'Märkte' },
       ui: {
-        navIssues: 'Neueste Ausgaben', navBlog: 'Blog', navData: 'Bitcoin-Daten', navHub: 'Virtuse Hub', navGet: 'Brief erhalten',
-        crumbList: 'Blog', by: 'Von', desk: '', block: 'Block', readTime: ' Min.',
+        navIssues: 'Neueste Ausgaben', navBlog: 'Artikel', navData: 'Bitcoin-Daten', navHub: 'Virtuse Hub', navGet: 'Brief erhalten',
+        crumbList: 'Artikel', by: 'Von', desk: '', block: 'Block', readTime: ' Min.',
         image: 'Bild', sources: 'Quellen', aboutAuthor: 'Über den Autor',
         authorBio: 'Gründer und CEO von Virtuse. Schreibt über Bitcoin, Makroökonomie und die Zukunft des Geldes.',
         share: 'Teilen', shareOn: 'Teilen auf', copyLink: 'Link kopieren', copied: 'Link kopiert',
@@ -160,11 +160,11 @@
     },
     fr: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'fr/blog.html', suffix: '&lang=fr', locale: 'fr-FR', worker: 'fr', dir: 'fr/', concierge: true,
+      listPage: 'stories/', suffix: '&lang=fr', locale: 'fr-FR', worker: 'fr', dir: 'fr/', concierge: true,
       desks: { mining: 'Minage', treasury: 'Treasury', custody: 'Conservation', policy: 'Réglementation', macro: 'Macro', markets: 'Marchés' },
       ui: {
-        navIssues: 'Derniers numéros', navBlog: 'Blog', navData: 'Données Bitcoin', navHub: 'Hub Virtuse', navGet: 'Recevoir le Brief',
-        crumbList: 'Blog', by: 'Par', desk: '', block: 'Bloc', readTime: ' min',
+        navIssues: 'Derniers numéros', navBlog: 'Articles', navData: 'Données Bitcoin', navHub: 'Hub Virtuse', navGet: 'Recevoir le Brief',
+        crumbList: 'Articles', by: 'Par', desk: '', block: 'Bloc', readTime: ' min',
         image: 'Image', sources: 'Sources', aboutAuthor: 'L’auteur',
         authorBio: 'Fondateur et CEO de Virtuse. Écrit sur le Bitcoin, la macroéconomie et l’avenir de la monnaie.',
         share: 'Partager', shareOn: 'Partager sur', copyLink: 'Copier le lien', copied: 'Lien copié',
@@ -190,11 +190,11 @@
     },
     es: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'es/blog.html', suffix: '&lang=es', locale: 'es-ES', worker: 'es', dir: 'es/', concierge: true,
+      listPage: 'stories/', suffix: '&lang=es', locale: 'es-ES', worker: 'es', dir: 'es/', concierge: true,
       desks: { mining: 'Minería', treasury: 'Treasury', custody: 'Custodia', policy: 'Regulación', macro: 'Macro', markets: 'Mercados' },
       ui: {
-        navIssues: 'Últimos números', navBlog: 'Blog', navData: 'Datos de Bitcoin', navHub: 'Hub de Virtuse', navGet: 'Recibir el Brief',
-        crumbList: 'Blog', by: 'Por', desk: '', block: 'Bloque', readTime: ' min',
+        navIssues: 'Últimos números', navBlog: 'Artículos', navData: 'Datos de Bitcoin', navHub: 'Hub de Virtuse', navGet: 'Recibir el Brief',
+        crumbList: 'Artículos', by: 'Por', desk: '', block: 'Bloque', readTime: ' min',
         image: 'Imagen', sources: 'Fuentes', aboutAuthor: 'Sobre el autor',
         authorBio: 'Fundador y CEO de Virtuse. Escribe sobre Bitcoin, macroeconomía y el futuro del dinero.',
         share: 'Compartir', shareOn: 'Compartir en', copyLink: 'Copiar enlace', copied: 'Enlace copiado',
@@ -220,11 +220,11 @@
     },
     pl: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'pl/blog.html', suffix: '&lang=pl', locale: 'pl-PL', worker: 'pl', dir: 'pl/', concierge: true,
+      listPage: 'stories/', suffix: '&lang=pl', locale: 'pl-PL', worker: 'pl', dir: 'pl/', concierge: true,
       desks: { mining: 'Kopanie', treasury: 'Treasury', custody: 'Przechowywanie', policy: 'Regulacje', macro: 'Makro', markets: 'Rynki' },
       ui: {
-        navIssues: 'Najnowsze wydania', navBlog: 'Blog', navData: 'Dane o Bitcoinie', navHub: 'Hub Virtuse', navGet: 'Zapisz się',
-        crumbList: 'Blog', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
+        navIssues: 'Najnowsze wydania', navBlog: 'Artykuły', navData: 'Dane o Bitcoinie', navHub: 'Hub Virtuse', navGet: 'Zapisz się',
+        crumbList: 'Artykuły', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
         image: 'Zdjęcie', sources: 'Źródła', aboutAuthor: 'O autorze',
         authorBio: 'Założyciel i CEO Virtuse. Pisze o Bitcoinie, makroekonomii i przyszłości pieniądza.',
         share: 'Udostępnij', shareOn: 'Udostępnij w', copyLink: 'Kopiuj link', copied: 'Link skopiowany',
@@ -250,11 +250,11 @@
     },
     cs: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'cs/blog.html', suffix: '&lang=cs', locale: 'cs-CZ', worker: 'cs', dir: 'cs/', concierge: true,
+      listPage: 'stories/', suffix: '&lang=cs', locale: 'cs-CZ', worker: 'cs', dir: 'cs/', concierge: true,
       desks: { mining: 'Těžba', treasury: 'Treasury', custody: 'Úschova', policy: 'Regulace', macro: 'Makro', markets: 'Trhy' },
       ui: {
-        navIssues: 'Nejnovější vydání', navBlog: 'Blog', navData: 'Bitcoin data', navHub: 'Virtuse hub', navGet: 'Odebírat Brief',
-        crumbList: 'Blog', by: 'Autor:', desk: '', block: 'Blok', readTime: ' min',
+        navIssues: 'Nejnovější vydání', navBlog: 'Příběhy', navData: 'Bitcoin data', navHub: 'Virtuse hub', navGet: 'Odebírat Brief',
+        crumbList: 'Příběhy', by: 'Autor:', desk: '', block: 'Blok', readTime: ' min',
         image: 'Obrázek', sources: 'Zdroje', aboutAuthor: 'O autorovi',
         authorBio: 'Zakladatel a CEO Virtuse. Píše o Bitcoinu, makroekonomii a budoucnosti peněz.',
         share: 'Sdílet', shareOn: 'Sdílet na', copyLink: 'Kopírovat odkaz', copied: 'Odkaz zkopírován',
@@ -280,11 +280,11 @@
     },
     hu: {
       api: 'https://blog.virtuse.com/wp-json/wp/v2/posts', category: 13, lang: 'en',
-      listPage: 'hu/blog.html', suffix: '&lang=hu', locale: 'hu-HU', worker: 'hu', dir: 'hu/', concierge: true,
+      listPage: 'stories/', suffix: '&lang=hu', locale: 'hu-HU', worker: 'hu', dir: 'hu/', concierge: true,
       desks: { mining: 'Bányászat', treasury: 'Treasury', custody: 'Letétkezelés', policy: 'Szabályozás', macro: 'Makró', markets: 'Piacok' },
       ui: {
-        navIssues: 'Legutóbbi számok', navBlog: 'Blog', navData: 'Bitcoin-adatok', navHub: 'Virtuse hub', navGet: 'Feliratkozás',
-        crumbList: 'Blog', by: 'Szerző:', desk: '', block: 'Blokk', readTime: ' perc',
+        navIssues: 'Legutóbbi számok', navBlog: 'Cikkek', navData: 'Bitcoin-adatok', navHub: 'Virtuse hub', navGet: 'Feliratkozás',
+        crumbList: 'Cikkek', by: 'Szerző:', desk: '', block: 'Blokk', readTime: ' perc',
         image: 'Kép', sources: 'Források', aboutAuthor: 'A szerzőről',
         authorBio: 'A Virtuse alapítója és vezérigazgatója. Bitcoinról, makrogazdaságról és a pénz jövőjéről ír.',
         share: 'Megosztás', shareOn: 'Megosztás:', copyLink: 'Link másolása', copied: 'Link kimásolva',
@@ -365,7 +365,7 @@
     $('authorBio').textContent = L.ui.authorBio;
     ['navBlog', 'footBlog'].forEach(function (id) { $(id).href = ROOT + L.listPage; });
     // Story pages: breadcrumb, back and "all stories" go to the story's own
-    // language hub (stories/, sk/stories/, ru/stories/); article.html to the blog.
+    // language hub (stories/, sk/stories/, ru/stories/); article.html to its language's hub.
     ['crumbList', 'backLink', 'moreAll'].forEach(function (id) { $(id).href = ROOT + (HUB || L.listPage); });
     // Hub, legal pages and the service card point at the page language.
     [].forEach.call(document.querySelectorAll('[data-hub]'), function (a) { a.href = ROOT + L.dir + a.getAttribute('data-hub'); });

@@ -169,7 +169,7 @@
       var iss = (d.issues || []).filter(function (x) { return x && x.slug && x.title && !x.essay; })[0]; if (!iss) return;
       var when = new Date(iss.date + 'T12:00:00Z').toLocaleDateString(LOC, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
       // Canonical story URL (no article.html hop). Slovak issues use slug_sk; everyone else reads the EN story.
-      var hub = LANG === 'sk' ? '/sk/stories/' : (LANG === 'ru' ? '/ru/stories/' : (LANG === 'en' || LANG === 'it' ? '/stories/' : '/' + LANG + '/blog.html'));
+      var hub = LANG === 'sk' ? '/sk/stories/' : (LANG === 'ru' ? '/ru/stories/' : '/stories/');
       var sp = (LANG === 'sk' && iss.slug_sk) ? '/sk/stories/' + encodeURIComponent(iss.slug_sk) + '/' : '/stories/' + encodeURIComponent(iss.slug) + '/';
       card.href = sp;
       fetch(sp, { method: 'HEAD' }).then(function (r) { if (!r.ok) card.href = hub; }).catch(function () {});
