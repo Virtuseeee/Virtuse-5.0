@@ -7,7 +7,7 @@ Replaces the block between <!-- news-markets:start --> and
     python3 seo-ops/news_markets.py          # write
     python3 seo-ops/news_markets.py --check  # exit 1 if news.html is stale
 
-Each item: lead (bold, accent), text (plain), link (underlined, url).
+Exactly 4 items: category (kicker), title, excerpt, date (YYYY-MM-DD), source, url.
 """
 import html, json, pathlib, re, sys
 
@@ -15,19 +15,27 @@ SITE = pathlib.Path(__file__).resolve().parent.parent / "Kimi_Agent_Virtuse%20Mi
 SRC, PAGE = SITE / "news/news-markets.json", SITE / "news.html"
 START, END = "<!-- news-markets:start -->", "<!-- news-markets:end -->"
 
+MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+
 def render(d):
     e = html.escape
-    out = [START,
-           f'      <p class="markets-intro">{e(d["intro"])}</p>',
-           f'      <ol class="markets-list" data-issue="{e(d["issue_date"])}">']
-    for it in d["items"]:
-        for k in ("lead", "text", "link", "url"):
+    items = d["items"]
+    assert len(items) == 4, "News & Markets shows exactly 4 cards"
+    out = [START, '      <div class="markets-grid" data-issue="%s">' % e(d["issue_date"])]
+    for it in items:
+        for k in ("category", "title", "excerpt", "date", "source", "url"):
             assert it.get(k), f"item missing {k}: {it}"
         assert it["url"].startswith("https://"), it["url"]
-        out.append(
-            f'        <li><strong class="markets-lead">{e(it["lead"])}</strong> {e(it["text"])} '
-            f'<a href="{e(it["url"])}" target="_blank" rel="noopener noreferrer">{e(it["link"])}</a></li>')
-    out += ["      </ol>", "      " + END]
+        y, m, dd = it["date"].split("-")
+        human = f"{int(dd)} {MONTHS[int(m) - 1]} {y}"
+        out += [
+            '        <article class="markets-card">',
+            f'          <p class="markets-kicker">{e(it["category"])}</p>',
+            f'          <h3 class="markets-title"><a href="{e(it["url"])}" target="_blank" rel="noopener noreferrer">{e(it["title"])}</a></h3>',
+            f'          <p class="markets-deck">{e(it["excerpt"])}</p>',
+            f'          <p class="markets-filing"><time datetime="{e(it["date"])}">{human}</time><span>{e(it["source"])}</span></p>',
+            '        </article>']
+    out += ["      </div>", "      " + END]
     return "\n".join(out)
 
 def main():
