@@ -1,30 +1,72 @@
 {
-  "updated": "2026-11-06T07:19:34Z",
+  "updated": "2026-11-10T05:32:50Z",
   "feed": null,
   "items": [
     {
-      "title": "Bitcoin crashes ~6% to a 7-week low near $75.5K as Nasdaq selloff erases midterm gains",
-      "source": "Cointelegraph",
-      "tag": "Policy",
-      "url": "https://cointelegraph.com/markets/bitcoin-price-crashes-7-week-low-stocks-election-gains",
-      "published": "2026-11-05T16:48:41Z",
-      "excerpt": "BTC fell to about $75.5K (lowest since mid-September) as US equities reversed post-election gains and crypto liquidations mounted."
+      "title": "Bitcoin faces US CPI test as analysts warn inflation relief may not be enough",
+      "source": "CoinDesk",
+      "tag": "Macro",
+      "url": "https://www.coindesk.com/markets/2026/11/10/bitcoin-faces-u-s-cpi-test-as-analysts-warn-inflation-relief-may-not-be-enough",
+      "published": "2026-11-10T03:22:26Z",
+      "excerpt": "BTC trades near $74,750 ahead of October CPI; analysts say lasting recovery needs spot Bitcoin ETF inflows, with $73,000 as key support."
     },
     {
-      "title": "Spot Bitcoin ETFs reverse to a $430.2M net outflow on Nov 5 after one day of inflows",
-      "source": "TokenPost (SoSoValue)",
-      "tag": "ETF",
-      "url": "https://www.tokenpost.com/news/investing/49862",
-      "published": "2026-11-06T05:34:00Z",
-      "excerpt": "SoSoValue: FBTC −$199.9M and IBIT −$105.0M led the $430.2M spot Bitcoin ETF outflow, wiping Nov 4's $74.6M inflow."
-    },
-    {
-      "title": "Core Scientific to exit Bitcoin mining by year-end as AI colocation takes over",
-      "source": "Bitcoin Magazine",
+      "title": "Bitcoin miner MARA sold 13,597 BTC for $1.1 billion in six weeks, plans to sell more",
+      "source": "CoinDesk",
       "tag": "Mining",
-      "url": "https://bitcoinmagazine.com/news/core-scientific-exits-bitcoin-year-end",
-      "published": "2026-11-05T18:00:00Z",
-      "excerpt": "Management says mining wind-down finishes in Q4; colocation hit $215.4M last quarter while self-mining fell to $12.3M."
+      "url": "https://www.coindesk.com/markets/2026/11/10/bitcoin-miner-mara-sold-13-597-btc-for-usd1-1-billion-in-six-weeks-plans-to-sell-more",
+      "published": "2026-11-10T05:18:31Z",
+      "excerpt": "MARA sold 40% of its BTC holdings at about $81K, repaid $750M of Bitcoin-backed loans and will keep selling to fund AI infrastructure."
+    },
+    {
+      "title": "Bitcoin holds near $75,000 after flash crash as spot ETF outflows persist",
+      "source": "Proactive Investors",
+      "tag": "ETF",
+      "url": "https://www.proactiveinvestors.com/companies/news/1101473/on-the-chain-bitcoin-holds-near-us-75-000-after-flash-crash-as-etf-pressure-persists-1101473.html",
+      "published": "2026-11-10T00:41:00Z",
+      "excerpt": "US spot Bitcoin ETFs saw about $1.28B of outflows over five sessions as BTC logged a fifth straight weekly decline."
     }
-  ]
+  ],
+  "archive": {
+    "label": "Yesterday",
+    "from": "2026-11-09T05:30:57Z",
+    "items": [
+      {
+        "title": "Binance's Bitcoin mining pool finds just one block in a week as shutdown nears",
+        "source": "CoinDesk",
+        "tag": "Mining",
+        "url": "https://www.coindesk.com/tech/2026/11/09/binance-s-bitcoin-mining-pool-finds-just-one-block-in-a-week-as-shutdown-nears",
+        "published": "2026-11-09T04:54:39Z"
+      },
+      {
+        "title": "Bitcoin drops, then pops as Nvidia scandal and failed Iran talks trigger volatility",
+        "source": "CoinDesk",
+        "tag": "Policy",
+        "url": "https://www.coindesk.com/markets/2026/11/09/bitcoin-drops-then-pops-as-nvidia-cheating-scandal-and-failed-iran-talks-trigger-volatility",
+        "published": "2026-11-09T03:21:49Z"
+      }
+    ]
+  },
+  "what_moved": "BTC ~$74.7K (+0.5% 24h on Bitstamp, range ~$73.7K–$75.5K) is flat ahead of US October CPI; spot Bitcoin ETFs saw ~$1.28B outflows over five sessions and MARA disclosed $1.1B of BTC sales. Fear & Greed Fear (32); fees ~1 sat/vB.",
+  "quick_media": {
+    "title": "Simply Bitcoin EP 1596 — Bitcoin EXPLODES Past $86,000",
+    "url": "https://www.youtube.com/watch?v=-PvlHscb9cg",
+    "note": "Keep — still this week's pick; below-hero slot."
+  },
+  "fear_greed": {
+    "value": 32,
+    "label": "Fear",
+    "source": "alternative.me"
+  },
+  "dominance": {
+    "btc_pct": 57.58,
+    "source": "Coinpaprika global"
+  },
+  "market": {
+    "btc_usd": 74674,
+    "change_24h_pct": 0.5,
+    "fees": "low",
+    "fee_sat_vb": 1,
+    "sources": "Bitstamp $74,674 (+0.49% 24h, high $75,462, low $73,650); Kraken $74,681; Coinpaprika $74,717; mempool.space 1 sat/vB = low."
+  }
 }

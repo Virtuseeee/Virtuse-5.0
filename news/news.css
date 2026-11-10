@@ -1224,14 +1224,6 @@ ul { list-style: none; }
 }
 
 
-.pulse-moved {
-  margin: 0 0 8px;
-  font-size: var(--t-deck);
-  line-height: var(--lh-deck);
-  color: var(--text-muted);
-}
-
-.pulse-moved[hidden] { display: none; }
 .pulse-archive {
   margin-top: 6px;
   padding-top: 0;
