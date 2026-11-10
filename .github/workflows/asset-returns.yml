@@ -1,5 +1,6 @@
 name: Asset returns
 
+# Also rebuilds data/macro.json + data/btc-treasuries.json (macro-build/).
 # Rebuilds data/asset-returns.json (the table on asset-returns.html) from
 # Yahoo Finance, and data/btc-monthly-returns.json (the heatmap on
 # btc-monthly-returns.html) from CoinMetrics, every weekday after the US close, commits it to main and
@@ -19,6 +20,7 @@ on:
     paths:
       - 'asset-returns-build/build.mjs'
       - 'btc-monthly-build/build.mjs'
+      - 'macro-build/**'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/btc-returns/build_returns.py'
       - '.github/workflows/asset-returns.yml'
 
@@ -34,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SITE: Kimi_Agent_Virtuse%20MiCA%20Partners
-      FILES: data/asset-returns.json data/btc-monthly-returns.json
+      FILES: data/asset-returns.json data/btc-monthly-returns.json data/macro.json data/btc-treasuries.json
       # written by i18n-tools/btc-returns/build_returns.py; PUBLISH = the part that goes to gh-pages
       PAGES: bitcoin-returns btc-monthly-returns.html sitemap.xml i18n-tools/legacy/src/en/btc-monthly-returns.html i18n-tools/btc-returns/state.json
       PUBLISH: bitcoin-returns btc-monthly-returns.html sitemap.xml
@@ -58,6 +60,14 @@ jobs:
         working-directory: main
         continue-on-error: true
         run: node btc-monthly-build/build.mjs
+
+      # Brief macro figures (S&P 500, EUR/USD, gold, Brent, US 10Y, inflation,
+      # central bank rates, meeting calendar) and the public-company Bitcoin
+      # treasury list for bitcoin-data.html. Separate sources; must not block.
+      - name: Build macro and treasury data
+        working-directory: main
+        continue-on-error: true
+        run: node macro-build/build.mjs
 
       # Month and year pages: only when a month has closed since the last build.
       - name: Build Bitcoin returns pages

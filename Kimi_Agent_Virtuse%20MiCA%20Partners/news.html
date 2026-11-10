@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#08090a">
 <script>(function(){var D="#08090a",L="#FBFBFA";try{var t=localStorage.getItem("vb-theme-blog");if(t!=="light"&&t!=="dark")t="dark";document.documentElement.setAttribute("data-theme",t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="light"?L:D);}catch(e){document.documentElement.setAttribute("data-theme","dark");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",D);}})();</script>
 <script src="brand/logo-loader.js"></script>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com https://news.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.gstatic.com; connect-src 'self' https://blog.virtuse.com https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev https://virtuse-newsletter-staging.virtuse-ai.workers.dev https://cloudflareinsights.com; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com https://news.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com https://news.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog.virtuse.com https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.gstatic.com; connect-src 'self' https://raw.githubusercontent.com https://blog.virtuse.com https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://api.coingecko.com https://api.binance.com https://mempool.space https://virtuse-newsletter.virtuse-ai.workers.dev https://virtuse-newsletter-staging.virtuse-ai.workers.dev https://cloudflareinsights.com; frame-src 'self' https://widget.firefish.io https://www.youtube.com https://www.youtube-nocookie.com https://open.spotify.com https://platform.twitter.com https://twitter.com https://x.com https://news.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- vb-consent -->
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','ads_data_redaction',true);(function(){try{var c=JSON.parse(localStorage.getItem('vb-consent'));if(c&&c.v===1&&Date.now()-c.t<31536000000){var g=function(x){return x?'granted':'denied'};gtag('consent','update',{analytics_storage:g(c.a),ad_storage:g(c.m),ad_user_data:g(c.m),ad_personalization:g(c.m)});}}catch(e){}})();</script>
@@ -18,7 +18,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KXX4Q6WH');}</script>
 <title>Virtuse Brief: weekly Bitcoin newsletter for Europe</title>
-<meta name="description" content="Virtuse Brief is a weekly Bitcoin-only newsletter for Europe. Every Monday: markets, ETFs, policy and mining in plain words. No tokens. No PR.">
+<meta name="description" content="Weekly newsletter for Europe on Bitcoin and the macro that moves it: markets, rates, inflation, ETFs and policy. Every Monday. No tokens. No PR.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://virtuse.com/news.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -42,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="news/news.css?v=20261110d">
+<link rel="stylesheet" href="news/news.css?v=20261111">
 <style>
 /* One Brief theme: dark by default (same key and palette as blog + stories). */
 :root[data-theme-key="vb-theme-blog"][data-theme="dark"] {
@@ -569,6 +569,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </svg>
           <p>Desk updating</p>
         </div>
+        <div class="pulse-calendar" id="pulseCalendar" hidden>
+          <p class="desk-label">Coming up</p>
+          <ol class="cal-list" id="calList"></ol>
+        </div>
         <div class="vb-pref pulse-pref" data-pref-source data-pref-themes="dark light">
           <a class="text-link" data-pref-link href="https://www.google.com/preferences/source?q=virtuse.com" target="_blank" rel="noopener">Add Virtuse as a preferred source on Google</a>
         </div>
@@ -598,19 +602,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <aside class="hero-col hero-rail" aria-label="By the numbers and subscribe">
         <div class="numbers-block">
           <p class="desk-label">By the numbers</p>
-          <div class="data-strip" aria-label="Live figures">
-            <div class="tile"><div class="tile-label">BTC/USD</div><div class="tile-value" id="tilePrice">…</div></div>
-            <div class="tile"><div class="tile-label">24h</div><div class="tile-value" id="tileChg">…</div></div>
-            <div class="tile"><div class="tile-label">Hashrate · 3d</div><div class="tile-value" id="tileHash">…</div></div>
-            <div class="tile"><div class="tile-label">Fees</div><div class="tile-value" id="tileFee">…</div></div>
-            <div class="tile"><div class="tile-label">Sats / $</div><div class="tile-value" id="tileSats">…</div></div>
-            <div class="tile"><div class="tile-label">Block</div><div class="tile-value" id="tileHeight">…</div></div>
+          <div class="data-strip" aria-label="Bitcoin and macro figures">
+            <div class="tile"><div class="tile-label">BTC/USD</div><div class="tile-value" id="tilePrice">…</div><div class="tile-sub" id="tileChg">…</div></div>
+            <div class="tile tile-macro"><div class="tile-label">S&amp;P 500</div><div class="tile-value" id="tileSpx">…</div><div class="tile-sub" id="tileSpxChg">…</div></div>
+            <div class="tile"><div class="tile-label">1 BTC in gold</div><div class="tile-value" id="tileGold">…</div><div class="tile-sub" id="tileGoldSub">…</div></div>
+            <div class="tile tile-macro"><div class="tile-label">EUR/USD</div><div class="tile-value" id="tileEur">…</div><div class="tile-sub" id="tileEurChg">…</div></div>
+            <div class="tile"><div class="tile-label">Fear &amp; Greed</div><div class="tile-value" id="tileFg">…</div><div class="tile-sub" id="tileFgLabel">…</div></div>
+            <div class="tile tile-macro"><div class="tile-label">Inflation US · EU</div><div class="tile-value" id="tileInfl">…</div><div class="tile-sub" id="tileInflSub">…</div></div>
           </div>
-          <p class="numbers-fine" id="numbersFine">Run the numbers. Not a recommendation.</p>
+          <p class="numbers-fine" id="numbersFine">Bitcoin live; macro at the last daily close. Sources: Yahoo Finance, BLS, Eurostat, alternative.me. Not a recommendation.</p>
         </div>
         <div class="brief-capture atlantic" id="get-the-brief">
           <p class="capture-kicker">Get the Brief</p>
-          <p class="capture-dek">Monday. Bitcoin-only.</p>
+          <p class="capture-dek">Monday. Bitcoin and the macro that moves it.</p>
           <form class="atlantic-form" id="subscribeStripForm" method="post" novalidate>
             <label class="sr-only" for="heroEmail">Email</label>
             <input id="heroEmail" type="email" name="email" placeholder="Email address" required autocomplete="email">
@@ -633,28 +637,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <!-- news-markets:start -->
       <div class="markets-grid" data-issue="2026-11-09">
         <article class="markets-card">
-          <p class="markets-kicker">Policy</p>
-          <h3 class="markets-title"><a href="https://cryptobriefing.com/france-drops-self-custody-crypto-reporting-rule/" target="_blank" rel="noopener noreferrer">France drops its €100,000 self-custody reporting rule</a></h3>
-          <p class="markets-deck">The rule went out when the National Assembly rejected the revenue section of the 2027 budget.</p>
-          <p class="markets-filing"><time datetime="2026-11-05">5 Nov 2026</time><span>Crypto Briefing</span></p>
+          <p class="markets-kicker">Macro</p>
+          <h3 class="markets-title"><a href="https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261105~6495a0df6f.en.html" target="_blank" rel="noopener noreferrer">ECB confirms a 12-month digital-euro pilot</a></h3>
+          <p class="markets-deck">Piero Cipollone said the pilot starts in the second half of 2027 with 36 payment providers. A new payment rail; the monetary framework stays the same.</p>
+          <p class="markets-filing"><time datetime="2026-11-05">5 Nov 2026</time><span>European Central Bank</span></p>
+        </article>
+        <article class="markets-card">
+          <p class="markets-kicker">World</p>
+          <h3 class="markets-title"><a href="https://www.theguardian.com/world/2026/nov/07/paraguay-ueno-bank-collapse-santiago-pena" target="_blank" rel="noopener noreferrer">Paraguay&#x27;s Ueno Bank collapse locks out nearly three million customers</a></h3>
+          <p class="markets-deck">The bank was ordered into resolution. Deposit-guarantee payouts have started; customers&#x27; bills did not wait.</p>
+          <p class="markets-filing"><time datetime="2026-11-07">7 Nov 2026</time><span>The Guardian</span></p>
         </article>
         <article class="markets-card">
           <p class="markets-kicker">Markets</p>
-          <h3 class="markets-title"><a href="https://www.coindesk.com/markets/2026/11/04/u-s-sanctioned-moscow-exchange-to-list-bitcoin-and-tether-s-usdt-in-december" target="_blank" rel="noopener noreferrer">Moscow Exchange will list Bitcoin from 1 December</a></h3>
-          <p class="markets-deck">ETH and USDT come too. Non-qualified retail investors get caps on how much they can buy.</p>
-          <p class="markets-filing"><time datetime="2026-11-04">4 Nov 2026</time><span>CoinDesk</span></p>
+          <h3 class="markets-title"><a href="https://farside.co.uk/btc/" target="_blank" rel="noopener noreferrer">US spot Bitcoin ETFs lose $1.28B in five sessions</a></h3>
+          <p class="markets-deck">Net outflows of $1,281.7 million from 2 to 6 November. Four of five days were negative; Friday alone was −$411.9M, led by IBIT.</p>
+          <p class="markets-filing"><time datetime="2026-11-06">6 Nov 2026</time><span>Farside Investors</span></p>
         </article>
         <article class="markets-card">
-          <p class="markets-kicker">Security</p>
-          <h3 class="markets-title"><a href="https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses" target="_blank" rel="noopener noreferrer">FBI names North Korea&#x27;s TraderTraitor behind the Binance heist</a></h3>
-          <p class="markets-deck">The bureau asked the industry to block the addresses used to launder the stolen funds.</p>
-          <p class="markets-filing"><time datetime="2026-10-31">31 Oct 2026</time><span>CoinDesk</span></p>
-        </article>
-        <article class="markets-card">
-          <p class="markets-kicker">Treasury</p>
-          <h3 class="markets-title"><a href="https://www.coindesk.com/business/2026/11/03/tether-holds-150-000-bitcoin-worth-usd11-5-billion-ceo-paolo-ardoino-says" target="_blank" rel="noopener noreferrer">Tether&#x27;s CEO says the firm holds about 150,000 BTC</a></h3>
-          <p class="markets-deck">Its latest reserve report implies about 100,060. The two figures are from different dates, so read them carefully.</p>
-          <p class="markets-filing"><time datetime="2026-11-03">3 Nov 2026</time><span>CoinDesk</span></p>
+          <p class="markets-kicker">Regulation</p>
+          <h3 class="markets-title"><a href="https://cryptobriefing.com/france-drops-self-custody-crypto-reporting-rule/" target="_blank" rel="noopener noreferrer">France drops its €100,000 self-custody reporting rule</a></h3>
+          <p class="markets-deck">The rule went out when the National Assembly rejected the revenue section of the 2027 budget.</p>
+          <p class="markets-filing"><time datetime="2026-11-05">5 Nov 2026</time><span>Crypto Briefing</span></p>
         </article>
       </div>
       <!-- news-markets:end -->
@@ -683,20 +687,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="archive" id="archiveGrid"></div>
         <div class="issues-rail" id="issuesRail">
           <aside class="data-desk" id="data-desk">
-          <p class="desk-label">Bitcoin data</p>
-          <a class="btn btn-quiet desk-cta" href="/bitcoin-data.html?utm_source=brief&amp;utm_medium=desk">Open Bitcoin Data <span aria-hidden="true">→</span></a>
-            <section class="treasury-ledger" id="treasuryLedger" aria-label="The treasury ledger">
-              <h3 class="treasury-stamp">The treasury ledger</h3>
-              <p class="treasury-dek" id="treasuryDek">Top corporate BTC holders.</p>
-              <ol class="treasury-list" id="treasuryList">
-                <li><span class="treasury-name">…</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">…</span></li>
-                <li><span class="treasury-name">…</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">…</span></li>
-                <li><span class="treasury-name">…</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">…</span></li>
-                <li><span class="treasury-name">…</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">…</span></li>
-                <li><span class="treasury-name">…</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">…</span></li>
-                <li><span class="treasury-name">…</span><span class="treasury-bar-track"><span class="treasury-bar" style="width:0"></span></span><span class="treasury-btc">…</span></li>
-              </ol>
+          <p class="desk-label">Central banks</p>
+            <section class="cb-table" id="cbTable" aria-label="Central bank policy rates">
+              <p class="cb-dek">Policy rate and the next rate decision.</p>
+              <table>
+                <thead><tr><th scope="col">Bank</th><th scope="col">Rate</th><th scope="col">Next</th></tr></thead>
+                <tbody id="cbRows">
+                  <tr data-cb="fed"><th scope="row">Fed</th><td>…</td><td>…</td></tr>
+                  <tr data-cb="ecb"><th scope="row">ECB</th><td>…</td><td>…</td></tr>
+                  <tr data-cb="boe"><th scope="row">BoE</th><td>…</td><td>…</td></tr>
+                  <tr data-cb="boj"><th scope="row">BoJ</th><td>…</td><td>…</td></tr>
+                </tbody>
+              </table>
+              <p class="cb-note" id="cbNote">Sources: Federal Reserve Bank of New York, ECB, Bank of England, Bank of Japan.</p>
             </section>
+          <a class="btn btn-quiet desk-cta" href="/bitcoin-data.html?utm_source=brief&amp;utm_medium=desk#treasuries">Bitcoin treasury companies <span aria-hidden="true">→</span></a>
           </aside>
           <aside class="partner-promo" aria-label="Partners (advertisement)">
             <p class="partner-promo-label">Partners</p>
@@ -753,15 +758,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </a>
         </li>
         <li>
-          <a class="tool-card" href="/stacking.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-stacking">
-            <h3 class="tool-title" id="tool-stacking">Stacking Strategist</h3>
-            <p class="tool-dek">Plan a regular Bitcoin buy</p>
+          <a class="tool-card" href="/asset-returns.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-returns">
+            <h3 class="tool-title" id="tool-returns">Asset Class Returns</h3>
+            <p class="tool-dek">Bitcoin against every asset class</p>
             <div class="tool-diagram" aria-hidden="true">
-              <div class="tool-flow"><span class="tool-cell">Amount<small>€</small></span><span>×</span><span class="tool-cell">Rhythm<small>weekly · monthly</small></span><span>=</span><span class="tool-cell is-result">Fee cost<small>€ / year</small></span></div>
-              <p>Scenario projection, partner by partner</p>
+              <div class="tool-flow"><span class="tool-cell">Bitcoin<small>BTC</small></span><span>vs</span><span class="tool-cell">Stocks · bonds<small>gold · cash</small></span><span>=</span><span class="tool-cell is-result">Returns<small>per year</small></span></div>
+              <p>Calendar-year returns in USD or EUR, updated daily</p>
             </div>
-            <p class="tool-desc">See a scenario projection and what each partner&#x27;s fee costs you a year.</p>
-            <span class="tool-action">Stacking Strategist <span aria-hidden="true">→</span></span>
+            <p class="tool-desc">Ten years of Bitcoin, US and European stocks and bonds, gold, commodities and cash. Best and worst asset each year.</p>
+            <span class="tool-action">Asset Class Returns <span aria-hidden="true">→</span></span>
           </a>
         </li>
         <li>
@@ -784,7 +789,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <footer class="site-footer">
   <div class="page-inner footer-inner">
-    <p class="footer-tagline">Virtuse Brief. Bitcoin-only. No tokens. No PR.</p>
+    <p class="footer-tagline">Virtuse Brief. Bitcoin and the macro that moves it. No tokens. No PR.</p>
     <div class="footer-signup" id="subscribe">
       <form class="lenny-form" id="subscribeForm" method="post" novalidate>
         <label class="sr-only" for="footerEmail">Email</label>
@@ -812,7 +817,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="/preferred-source.js" defer></script>
-<script src="news/news.js?v=20261110c" defer></script>
+<script src="news/news.js?v=20261111" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

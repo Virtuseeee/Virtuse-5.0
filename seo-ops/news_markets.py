@@ -7,7 +7,7 @@ Replaces the block between <!-- news-markets:start --> and
     python3 seo-ops/news_markets.py          # write
     python3 seo-ops/news_markets.py --check  # exit 1 if news.html is stale
 
-Exactly 4 items: category (kicker), title, excerpt, date (YYYY-MM-DD), source, url.
+Exactly 4 items, categories Macro, World, Markets, Regulation in that order: category (kicker), title, excerpt, date (YYYY-MM-DD), source, url.
 """
 import html, json, pathlib, re, sys
 
@@ -15,12 +15,15 @@ SITE = pathlib.Path(__file__).resolve().parent.parent / "Kimi_Agent_Virtuse%20Mi
 SRC, PAGE = SITE / "news/news-markets.json", SITE / "news.html"
 START, END = "<!-- news-markets:start -->", "<!-- news-markets:end -->"
 
+CATEGORIES = ["Macro", "World", "Markets", "Regulation"]
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 
 def render(d):
     e = html.escape
     items = d["items"]
     assert len(items) == 4, "News & Markets shows exactly 4 cards"
+    cats = [it.get("category") for it in items]
+    assert cats == CATEGORIES, f"categories must be {CATEGORIES} in this order, got {cats}"
     out = [START, '      <div class="markets-grid" data-issue="%s">' % e(d["issue_date"])]
     for it in items:
         for k in ("category", "title", "excerpt", "date", "source", "url"):
