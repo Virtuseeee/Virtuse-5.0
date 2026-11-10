@@ -2,6 +2,21 @@
   "sponsor": null,
   "issues": [
     {
+      "date": "2026-11-09",
+      "title": "Who Actually Controls Your Money?",
+      "excerpt": "A banking failure in Paraguay, Bitcoin ETF outflows and the digital euro bring the same question into focus: who gets the final say over your money?",
+      "slug": "who-actually-controls-your-money",
+      "image": "https://blog.virtuse.com/wp-content/uploads/2026/11/who-controls-your-money-illustration.jpg",
+      "read_min": 4,
+      "author": "Ras Vasilisin",
+      "og_image": "https://blog.virtuse.com/wp-content/uploads/2026/11/who-controls-your-money-illustration.jpg",
+      "facts": [
+        "Paraguay's Ueno Bank left nearly three million customers without access to their money",
+        "US spot Bitcoin ETFs saw about $1.28B of net outflows from 2 to 6 November",
+        "The ECB outlined a digital-euro pilot"
+      ]
+    },
+    {
       "date": "2026-11-02",
       "title": "Binance lost $6.3B. Bitcoin didn't flinch.",
       "excerpt": "Someone drained $6.3 billion from Binance on Thursday night. Bitcoin fell to $76,000. The network didn't flinch.",
