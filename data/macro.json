@@ -1,22 +1,6 @@
 {
- "generated": "2026-11-10T21:19:02.299Z",
+ "generated": "2026-11-10T21:24:46.320Z",
  "quotes": {
-  "gold": {
-   "value": 4038.3,
-   "prev": 4114.5,
-   "change_pct": -1.85,
-   "date": "2026-11-10",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
-  },
-  "brent": {
-   "value": 91.91,
-   "prev": 92.57,
-   "change_pct": -0.71,
-   "date": "2026-11-10",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
-  },
   "spx": {
    "value": 7520.93,
    "prev": 7549.94,
@@ -24,6 +8,22 @@
    "date": "2026-11-10",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
+  },
+  "eurusd": {
+   "value": 1.1168,
+   "prev": 1.1147,
+   "change_pct": 0.19,
+   "date": "2026-11-10",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+  },
+  "brent": {
+   "value": 91.96,
+   "prev": 92.57,
+   "change_pct": -0.66,
+   "date": "2026-11-10",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
   "us10y": {
    "value": 4.983,
@@ -33,31 +33,42 @@
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5ETNX"
   },
-  "eurusd": {
-   "value": 1.1167,
-   "prev": 1.1147,
-   "change_pct": 0.18,
+  "gold": {
+   "value": 4038.8,
+   "prev": 4114.5,
+   "change_pct": -1.84,
    "date": "2026-11-10",
    "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
   }
  },
  "inflation": {
-  "ea": {
-   "value": 4,
-   "month": "2026-10",
-   "source": "Eurostat, HICP euro area",
-   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
-  },
   "us": {
    "value": 3.7,
    "month": "2026-09",
    "latest_index_month": "2026-10",
    "source": "U.S. Bureau of Labor Statistics, CPI-U",
    "source_url": "https://www.bls.gov/cpi/"
+  },
+  "ea": {
+   "value": 4,
+   "month": "2026-10",
+   "source": "Eurostat, HICP euro area",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
   }
  },
  "central_banks": {
+  "fed": {
+   "rate": "3.75–4.00%",
+   "low": 3.75,
+   "high": 4,
+   "date": "2026-11-09",
+   "label": "Fed funds target",
+   "source": "Federal Reserve Bank of New York",
+   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
+   "next_meeting": "2026-12-09",
+   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  },
   "ecb": {
    "rate": "2.50%",
    "low": 2.5,
@@ -79,17 +90,6 @@
    "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
    "next_meeting": "2026-12-17",
    "calendar_url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates"
-  },
-  "fed": {
-   "rate": "3.75–4.00%",
-   "low": 3.75,
-   "high": 4,
-   "date": "2026-11-09",
-   "label": "Fed funds target",
-   "source": "Federal Reserve Bank of New York",
-   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
-   "next_meeting": "2026-12-09",
-   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
   },
   "boj": {
    "rate": "1.25%",
