@@ -1,36 +1,37 @@
 {
   "issue_date": "2026-11-09",
   "issue_title": "Who Actually Controls Your Money?",
-  "intro": "Other Bitcoin news from the past week, in one line each.",
   "items": [
     {
-      "lead": "France",
-      "text": "scrapped a €100,000 self-custody reporting rule",
-      "link": "when the Assembly rejected the 2027 budget revenue section",
+      "category": "Policy",
+      "title": "France drops its €100,000 self-custody reporting rule",
+      "excerpt": "The rule went out when the National Assembly rejected the revenue section of the 2027 budget.",
+      "date": "2026-11-05",
+      "source": "Crypto Briefing",
       "url": "https://cryptobriefing.com/france-drops-self-custody-crypto-reporting-rule/"
     },
     {
-      "lead": "Moscow Exchange",
-      "text": "will list Bitcoin (plus ETH, USDT)",
-      "link": "for trading from 1 December, with retail caps for non-qualified investors",
+      "category": "Markets",
+      "title": "Moscow Exchange will list Bitcoin from 1 December",
+      "excerpt": "ETH and USDT come too. Non-qualified retail investors get caps on how much they can buy.",
+      "date": "2026-11-04",
+      "source": "CoinDesk",
       "url": "https://www.coindesk.com/markets/2026/11/04/u-s-sanctioned-moscow-exchange-to-list-bitcoin-and-tether-s-usdt-in-december"
     },
     {
-      "lead": "The FBI",
-      "text": "named North Korea’s TraderTraitor",
-      "link": "behind the Binance heist and urged industry blocks on laundering addresses",
+      "category": "Security",
+      "title": "FBI names North Korea's TraderTraitor behind the Binance heist",
+      "excerpt": "The bureau asked the industry to block the addresses used to launder the stolen funds.",
+      "date": "2026-10-31",
+      "source": "CoinDesk",
       "url": "https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses"
     },
     {
-      "lead": "Strategy’s STRC",
-      "text": "returned to $100 par",
-      "link": "after ~$2.25B in buybacks; November dividend rate 12% paid each business day",
-      "url": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526442833/d124693d424b5.htm"
-    },
-    {
-      "lead": "Tether’s CEO",
-      "text": "said the firm holds ~150,000 BTC;",
-      "link": "its latest reserve report implies ~100,060, different dates, read carefully",
+      "category": "Treasury",
+      "title": "Tether's CEO says the firm holds about 150,000 BTC",
+      "excerpt": "Its latest reserve report implies about 100,060. The two figures are from different dates, so read them carefully.",
+      "date": "2026-11-03",
+      "source": "CoinDesk",
       "url": "https://www.coindesk.com/business/2026/11/03/tether-holds-150-000-bitcoin-worth-usd11-5-billion-ceo-paolo-ardoino-says"
     }
   ]

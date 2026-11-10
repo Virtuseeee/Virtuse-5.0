@@ -42,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="news/news.css?v=20261110">
+<link rel="stylesheet" href="news/news.css?v=20261110b">
 <style>
 /* One Brief theme: dark by default (same key and palette as blog + stories). */
 :root[data-theme-key="vb-theme-blog"][data-theme="dark"] {
@@ -630,18 +630,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <section class="section markets-section" id="news-markets" aria-label="News & Markets">
     <div class="page-inner">
-      <div class="section-head">
+      <div class="section-head section-head-row">
         <h2>News &amp; Markets</h2>
+        <a class="head-link" href="#issues">From the Brief <span aria-hidden="true">→</span></a>
       </div>
       <!-- news-markets:start -->
-      <p class="markets-intro">Other Bitcoin news from the past week, in one line each.</p>
-      <ol class="markets-list" data-issue="2026-11-09">
-        <li><strong class="markets-lead">France</strong> scrapped a €100,000 self-custody reporting rule <a href="https://cryptobriefing.com/france-drops-self-custody-crypto-reporting-rule/" target="_blank" rel="noopener noreferrer">when the Assembly rejected the 2027 budget revenue section</a></li>
-        <li><strong class="markets-lead">Moscow Exchange</strong> will list Bitcoin (plus ETH, USDT) <a href="https://www.coindesk.com/markets/2026/11/04/u-s-sanctioned-moscow-exchange-to-list-bitcoin-and-tether-s-usdt-in-december" target="_blank" rel="noopener noreferrer">for trading from 1 December, with retail caps for non-qualified investors</a></li>
-        <li><strong class="markets-lead">The FBI</strong> named North Korea’s TraderTraitor <a href="https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses" target="_blank" rel="noopener noreferrer">behind the Binance heist and urged industry blocks on laundering addresses</a></li>
-        <li><strong class="markets-lead">Strategy’s STRC</strong> returned to $100 par <a href="https://www.sec.gov/Archives/edgar/data/1050446/000119312526442833/d124693d424b5.htm" target="_blank" rel="noopener noreferrer">after ~$2.25B in buybacks; November dividend rate 12% paid each business day</a></li>
-        <li><strong class="markets-lead">Tether’s CEO</strong> said the firm holds ~150,000 BTC; <a href="https://www.coindesk.com/business/2026/11/03/tether-holds-150-000-bitcoin-worth-usd11-5-billion-ceo-paolo-ardoino-says" target="_blank" rel="noopener noreferrer">its latest reserve report implies ~100,060, different dates, read carefully</a></li>
-      </ol>
+      <div class="markets-grid" data-issue="2026-11-09">
+        <article class="markets-card">
+          <p class="markets-kicker">Policy</p>
+          <h3 class="markets-title"><a href="https://cryptobriefing.com/france-drops-self-custody-crypto-reporting-rule/" target="_blank" rel="noopener noreferrer">France drops its €100,000 self-custody reporting rule</a></h3>
+          <p class="markets-deck">The rule went out when the National Assembly rejected the revenue section of the 2027 budget.</p>
+          <p class="markets-filing"><time datetime="2026-11-05">5 Nov 2026</time><span>Crypto Briefing</span></p>
+        </article>
+        <article class="markets-card">
+          <p class="markets-kicker">Markets</p>
+          <h3 class="markets-title"><a href="https://www.coindesk.com/markets/2026/11/04/u-s-sanctioned-moscow-exchange-to-list-bitcoin-and-tether-s-usdt-in-december" target="_blank" rel="noopener noreferrer">Moscow Exchange will list Bitcoin from 1 December</a></h3>
+          <p class="markets-deck">ETH and USDT come too. Non-qualified retail investors get caps on how much they can buy.</p>
+          <p class="markets-filing"><time datetime="2026-11-04">4 Nov 2026</time><span>CoinDesk</span></p>
+        </article>
+        <article class="markets-card">
+          <p class="markets-kicker">Security</p>
+          <h3 class="markets-title"><a href="https://www.coindesk.com/policy/2026/10/31/fbi-confirms-north-korea-s-role-in-usd6-billion-binance-hack-asks-defi-community-to-block-btc-eth-sol-addresses" target="_blank" rel="noopener noreferrer">FBI names North Korea&#x27;s TraderTraitor behind the Binance heist</a></h3>
+          <p class="markets-deck">The bureau asked the industry to block the addresses used to launder the stolen funds.</p>
+          <p class="markets-filing"><time datetime="2026-10-31">31 Oct 2026</time><span>CoinDesk</span></p>
+        </article>
+        <article class="markets-card">
+          <p class="markets-kicker">Treasury</p>
+          <h3 class="markets-title"><a href="https://www.coindesk.com/business/2026/11/03/tether-holds-150-000-bitcoin-worth-usd11-5-billion-ceo-paolo-ardoino-says" target="_blank" rel="noopener noreferrer">Tether&#x27;s CEO says the firm holds about 150,000 BTC</a></h3>
+          <p class="markets-deck">Its latest reserve report implies about 100,060. The two figures are from different dates, so read them carefully.</p>
+          <p class="markets-filing"><time datetime="2026-11-03">3 Nov 2026</time><span>CoinDesk</span></p>
+        </article>
+      </div>
       <!-- news-markets:end -->
     </div>
   </section>
@@ -711,6 +730,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
+
+  <section class="section tools-section" id="tools" aria-labelledby="tools-head">
+    <div class="page-inner">
+      <div class="section-head section-head-row">
+        <h2 id="tools-head">Tools</h2>
+        <a class="head-link" href="/bitcoin-data.html?utm_source=brief&amp;utm_medium=tools">Bitcoin Data <span aria-hidden="true">→</span></a>
+      </div>
+      <ul class="tools-grid">
+        <li>
+          <a class="tool-card" href="/retirement-calculator.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-retirement">
+            <h3 class="tool-title" id="tool-retirement">Retirement Calculator</h3>
+            <p class="tool-dek">Will your Bitcoin last?</p>
+            <div class="tool-diagram" aria-hidden="true">
+              <div class="tool-flow"><span class="tool-cell">Stack<small>BTC</small></span><span>+</span><span class="tool-cell">Spending<small>€ / year</small></span><span>=</span><span class="tool-cell is-result">Runway<small>years</small></span></div>
+              <p>Year by year, until your Bitcoin runs out or lasts for life</p>
+            </div>
+            <p class="tool-desc">Enter your BTC stack, savings and spending in euros. Free, no sign-up.</p>
+            <span class="tool-action">Retirement Calculator <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="tool-card" href="/verdict.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-verdict">
+            <h3 class="tool-title" id="tool-verdict">Verdict</h3>
+            <p class="tool-dek">Score your Bitcoin plan</p>
+            <div class="tool-diagram" aria-hidden="true">
+              <div class="tool-flow"><span class="tool-cell">Answers</span><span>→</span><span class="tool-cell">Gaps<small>top 3</small></span><span>→</span><span class="tool-cell is-result">Score<small>/ 100</small></span></div>
+              <p>Savings, goals and worries, in about 3 minutes</p>
+            </div>
+            <p class="tool-desc">An instant score with a letter grade and your 3 biggest gaps. Lite score free.</p>
+            <span class="tool-action">Verdict <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="tool-card" href="/stacking.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-stacking">
+            <h3 class="tool-title" id="tool-stacking">Stacking Strategist</h3>
+            <p class="tool-dek">Plan a regular Bitcoin buy</p>
+            <div class="tool-diagram" aria-hidden="true">
+              <div class="tool-flow"><span class="tool-cell">Amount<small>€</small></span><span>×</span><span class="tool-cell">Rhythm<small>weekly · monthly</small></span><span>=</span><span class="tool-cell is-result">Fee cost<small>€ / year</small></span></div>
+              <p>Scenario projection, partner by partner</p>
+            </div>
+            <p class="tool-desc">See a scenario projection and what each partner&#x27;s fee costs you a year.</p>
+            <span class="tool-action">Stacking Strategist <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+        <li>
+          <a class="tool-card" href="/tax-agent.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-tax">
+            <h3 class="tool-title" id="tool-tax">Tax &amp; Inheritance Agent</h3>
+            <p class="tool-dek">Check your country&#x27;s rules</p>
+            <div class="tool-diagram" aria-hidden="true">
+              <div class="tool-flow"><span class="tool-cell">Country<small>13 EU</small></span><span>→</span><span class="tool-cell">Tax rules</span><span>→</span><span class="tool-cell is-result">Heirs<small>readiness</small></span></div>
+              <p>Official sources, as of Q3 2026. Not tax advice.</p>
+            </div>
+            <p class="tool-desc">Bitcoin tax rules for 13 EU countries and a check of how ready your Bitcoin is for your heirs.</p>
+            <span class="tool-action">Tax &amp; Inheritance Agent <span aria-hidden="true">→</span></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
 </main>
 
