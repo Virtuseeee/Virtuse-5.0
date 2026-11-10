@@ -1404,9 +1404,24 @@ ul { list-style: none; }
 }
 .tool-card:hover .tool-title,
 .tool-card:hover .tool-action { color: var(--accent-text-hover); }
+/* Same height for every diagram and the text under it: each card shares the
+   grid's rows (title, dek, diagram, description, action). */
+@supports (grid-template-rows: subgrid) {
+  .tools-grid { grid-auto-rows: auto; row-gap: 0; }
+  .tools-grid > li { display: grid; grid-row: span 5; grid-template-rows: subgrid; }
+  .tool-card { display: grid; grid-row: span 5; grid-template-rows: subgrid; gap: 12px; }
+  .tool-diagram { justify-content: center; }
+  .tool-action { margin-top: 0; align-self: end; }
+}
+.tool-flow { align-items: stretch; }
+.tool-flow > span:not(.tool-cell) { align-self: center; }
+.tool-cell { justify-content: center; }
 @media (max-width: 1000px) {
   .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; border-top: 0; }
   .tool-card { border-top: 3px solid var(--text); }
+  .tools-grid > li { display: block; grid-row: auto; }
+  .tools-grid > li > .tool-card { display: flex; grid-row: auto; }
+  .tools-grid > li > .tool-card .tool-action { margin-top: auto; }
 }
 @media (max-width: 600px) { .tools-grid { grid-template-columns: 1fr; } }
 
