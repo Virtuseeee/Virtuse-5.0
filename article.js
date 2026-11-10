@@ -9,7 +9,7 @@
       listPage: 'stories/', suffix: '', locale: 'en-GB', worker: 'en', dir: '', concierge: true,
       desks: { mining: 'Mining', treasury: 'Treasury', custody: 'Custody', policy: 'Policy', macro: 'Macro', markets: 'Markets' },
       ui: {
-        navIssues: 'Latest issues', navBlog: 'Blog', navData: 'Bitcoin Data', navHub: 'Virtuse hub', navGet: 'Get the Brief',
+        navIssues: 'Newsletter', navBlog: 'Blog', navData: 'Bitcoin Data', navHub: 'Hub', navGet: 'Subscribe',
         crumbList: 'Blog', crumbStories: 'Blog', by: 'By', desk: ' desk', block: 'Block', readTime: ' min',
         image: 'Image', sources: 'Sources', aboutAuthor: 'About the author',
         authorBio: 'Founder & CEO of Virtuse. Writing on Bitcoin, macro, and the future of money.',
@@ -39,7 +39,7 @@
       listPage: 'sk/stories/', suffix: '&lang=sk', locale: 'sk-SK', worker: 'sk', dir: 'sk/', concierge: true,
       desks: { mining: 'Ťažba', treasury: 'Treasury', custody: 'Úschova', policy: 'Regulácia', macro: 'Makro', markets: 'Trhy' },
       ui: {
-        navIssues: 'Posledné vydania', navBlog: 'Blog', navData: 'Bitcoin dáta', navHub: 'Virtuse hub', navGet: 'Získať Brief',
+        navIssues: 'Newsletter', navBlog: 'Blog', navData: 'Bitcoin dáta', navHub: 'Hub', navGet: 'Odoberať',
         crumbList: 'Blog', crumbStories: 'Blog', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
         image: 'Obrázok', sources: 'Zdroje', aboutAuthor: 'O autorovi',
         authorBio: 'Zakladateľ a CEO Virtuse. Píše o Bitcoine, makroekonomike a budúcnosti peňazí.',
@@ -71,7 +71,7 @@
       listPage: 'ru/stories/', suffix: '&lang=ru', locale: 'ru-RU', worker: 'ru', dir: 'ru/', concierge: true,
       desks: { mining: 'Майнинг', treasury: 'Treasury', custody: 'Хранение', policy: 'Регулирование', macro: 'Макро', markets: 'Рынки' },
       ui: {
-        navIssues: 'Последние выпуски', navBlog: 'Блог', navData: 'Данные о Биткоине', navHub: 'Virtuse', navGet: 'Получить Brief',
+        navIssues: 'Рассылка', navBlog: 'Блог', navData: 'Данные о Биткоине', navHub: 'Хаб', navGet: 'Подписаться',
         crumbList: 'Блог', crumbStories: 'Блог', by: 'Автор', desk: '', block: 'Блок', readTime: ' мин',
         image: 'Фото', sources: 'Источники', aboutAuthor: 'Об авторе',
         authorBio: 'Основатель и CEO Virtuse. Пишет о Биткоине, макроэкономике и будущем денег.',
@@ -103,7 +103,7 @@
       listPage: 'stories/', suffix: '&lang=uk', locale: 'uk-UA', worker: 'uk', dir: 'uk/', concierge: true,
       desks: { mining: 'Майнінг', treasury: 'Казначейство', custody: 'Зберігання', policy: 'Регулювання', macro: 'Макро', markets: 'Ринки' },
       ui: {
-        navIssues: 'Останні випуски', navBlog: 'Блог', navData: 'Біткоїн-дані', navHub: 'Virtuse', navGet: 'Отримати Brief',
+        navIssues: 'Розсилка', navBlog: 'Блог', navData: 'Біткоїн-дані', navHub: 'Хаб', navGet: 'Підписатися',
         crumbList: 'Блог', by: 'Автор', desk: '', block: 'Блок', readTime: ' хв',
         image: 'Фото', sources: 'Джерела', aboutAuthor: 'Про автора',
         authorBio: 'Засновник і CEO Virtuse. Пише про Біткоїн, макроекономіку та майбутнє грошей.',
@@ -133,7 +133,7 @@
       listPage: 'stories/', suffix: '&lang=de', locale: 'de-DE', worker: 'de', dir: 'de/', concierge: true,
       desks: { mining: 'Mining', treasury: 'Treasury', custody: 'Verwahrung', policy: 'Regulierung', macro: 'Makro', markets: 'Märkte' },
       ui: {
-        navIssues: 'Neueste Ausgaben', navBlog: 'Blog', navData: 'Bitcoin-Daten', navHub: 'Virtuse Hub', navGet: 'Brief erhalten',
+        navIssues: 'Newsletter', navBlog: 'Blog', navData: 'Bitcoin-Daten', navHub: 'Hub', navGet: 'Abonnieren',
         crumbList: 'Blog', by: 'Von', desk: '', block: 'Block', readTime: ' Min.',
         image: 'Bild', sources: 'Quellen', aboutAuthor: 'Über den Autor',
         authorBio: 'Gründer und CEO von Virtuse. Schreibt über Bitcoin, Makroökonomie und die Zukunft des Geldes.',
@@ -163,7 +163,7 @@
       listPage: 'stories/', suffix: '&lang=fr', locale: 'fr-FR', worker: 'fr', dir: 'fr/', concierge: true,
       desks: { mining: 'Minage', treasury: 'Treasury', custody: 'Conservation', policy: 'Réglementation', macro: 'Macro', markets: 'Marchés' },
       ui: {
-        navIssues: 'Derniers numéros', navBlog: 'Blog', navData: 'Données Bitcoin', navHub: 'Hub Virtuse', navGet: 'Recevoir le Brief',
+        navIssues: 'Newsletter', navBlog: 'Blog', navData: 'Données Bitcoin', navHub: 'Hub', navGet: 'S\'abonner',
         crumbList: 'Blog', by: 'Par', desk: '', block: 'Bloc', readTime: ' min',
         image: 'Image', sources: 'Sources', aboutAuthor: 'L’auteur',
         authorBio: 'Fondateur et CEO de Virtuse. Écrit sur le Bitcoin, la macroéconomie et l’avenir de la monnaie.',
@@ -193,7 +193,7 @@
       listPage: 'stories/', suffix: '&lang=es', locale: 'es-ES', worker: 'es', dir: 'es/', concierge: true,
       desks: { mining: 'Minería', treasury: 'Treasury', custody: 'Custodia', policy: 'Regulación', macro: 'Macro', markets: 'Mercados' },
       ui: {
-        navIssues: 'Últimos números', navBlog: 'Blog', navData: 'Datos de Bitcoin', navHub: 'Hub de Virtuse', navGet: 'Recibir el Brief',
+        navIssues: 'Newsletter', navBlog: 'Blog', navData: 'Datos de Bitcoin', navHub: 'Hub', navGet: 'Suscribirse',
         crumbList: 'Blog', by: 'Por', desk: '', block: 'Bloque', readTime: ' min',
         image: 'Imagen', sources: 'Fuentes', aboutAuthor: 'Sobre el autor',
         authorBio: 'Fundador y CEO de Virtuse. Escribe sobre Bitcoin, macroeconomía y el futuro del dinero.',
@@ -223,7 +223,7 @@
       listPage: 'stories/', suffix: '&lang=pl', locale: 'pl-PL', worker: 'pl', dir: 'pl/', concierge: true,
       desks: { mining: 'Kopanie', treasury: 'Treasury', custody: 'Przechowywanie', policy: 'Regulacje', macro: 'Makro', markets: 'Rynki' },
       ui: {
-        navIssues: 'Najnowsze wydania', navBlog: 'Blog', navData: 'Dane o Bitcoinie', navHub: 'Hub Virtuse', navGet: 'Zapisz się',
+        navIssues: 'Newsletter', navBlog: 'Blog', navData: 'Dane o Bitcoinie', navHub: 'Hub', navGet: 'Zapisz się',
         crumbList: 'Blog', by: 'Autor', desk: '', block: 'Blok', readTime: ' min',
         image: 'Zdjęcie', sources: 'Źródła', aboutAuthor: 'O autorze',
         authorBio: 'Założyciel i CEO Virtuse. Pisze o Bitcoinie, makroekonomii i przyszłości pieniądza.',
@@ -253,7 +253,7 @@
       listPage: 'stories/', suffix: '&lang=cs', locale: 'cs-CZ', worker: 'cs', dir: 'cs/', concierge: true,
       desks: { mining: 'Těžba', treasury: 'Treasury', custody: 'Úschova', policy: 'Regulace', macro: 'Makro', markets: 'Trhy' },
       ui: {
-        navIssues: 'Nejnovější vydání', navBlog: 'Blog', navData: 'Bitcoin data', navHub: 'Virtuse hub', navGet: 'Odebírat Brief',
+        navIssues: 'Newsletter', navBlog: 'Blog', navData: 'Bitcoin data', navHub: 'Hub', navGet: 'Odebírat',
         crumbList: 'Blog', by: 'Autor:', desk: '', block: 'Blok', readTime: ' min',
         image: 'Obrázek', sources: 'Zdroje', aboutAuthor: 'O autorovi',
         authorBio: 'Zakladatel a CEO Virtuse. Píše o Bitcoinu, makroekonomii a budoucnosti peněz.',
@@ -283,7 +283,7 @@
       listPage: 'stories/', suffix: '&lang=hu', locale: 'hu-HU', worker: 'hu', dir: 'hu/', concierge: true,
       desks: { mining: 'Bányászat', treasury: 'Treasury', custody: 'Letétkezelés', policy: 'Szabályozás', macro: 'Makró', markets: 'Piacok' },
       ui: {
-        navIssues: 'Legutóbbi számok', navBlog: 'Blog', navData: 'Bitcoin-adatok', navHub: 'Virtuse hub', navGet: 'Feliratkozás',
+        navIssues: 'Hírlevél', navBlog: 'Blog', navData: 'Bitcoin-adatok', navHub: 'Hub', navGet: 'Feliratkozás',
         crumbList: 'Blog', by: 'Szerző:', desk: '', block: 'Blokk', readTime: ' perc',
         image: 'Kép', sources: 'Források', aboutAuthor: 'A szerzőről',
         authorBio: 'A Virtuse alapítója és vezérigazgatója. Bitcoinról, makrogazdaságról és a pénz jövőjéről ír.',
