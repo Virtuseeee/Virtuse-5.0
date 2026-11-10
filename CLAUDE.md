@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - Order under the hero: **News & Markets** (`#news-markets`, the newsletter's "What else have you missed?" list), **Magazine** (`#blog`, was "Ras Vasilisin's Take / Stories"), **Newsletter** (`#issues`, was "Latest issues"). Nav links all three. Quick Media render code + CSS removed (Worker still accepts `quick_media`).
 - Weekly update: edit `news/news-markets.json` (`lead`, `text`, `link`, `url` per item, from the issue's Resend broadcast), then `python3 seo-ops/news_markets.py` writes static HTML between the `news-markets` markers in `news.html` (`--check` for CI). Seeded from the 9 Nov 2026 EN broadcast.
-- Not done: `news/issues.json` still ends at the 2 Nov issue, so the featured card shows 2 Nov although the 9 Nov issue ("Who Actually Controls Your Money?", slug `who-actually-controls-your-money`) was sent.
+- 9 Nov issue ("Who Actually Controls Your Money?", `who-actually-controls-your-money`) added as the featured issue (main `bee213653`, **live on production**, 7 files md5-verified): `issues.json` top entry, featured card + facts, og/twitter, JSON-LD, local cover `news/covers/brief-20261109*.jpg` and OG `news/og/brief-20261109*` cropped from the WP illustration, `FEATURED_SLUG`, `issues.json?v=20261110`. Recipe for the next issue: same files, then `python3 seo-ops/news_jsonld.py`.
 
 ## Session status (2026-11-10) — Brief Pulse: what-moved line removed, Fed → Macro, new World tag (main `e822610e9`, gh-pages `ba948c575`, **live on production** — user ran `deploy_site.sh e822610e9^ 44132b77c` 2026-11-10, DEPLOY OK 5 files md5; **Worker deployed**, `/version` = `44132b7`)
 
