@@ -26,7 +26,7 @@ import { aiJson } from '../verdict/handler.js';
 import { liteReportView } from '../verdict-lite/report.js';
 import { validateAnswers } from '../verdict-lite/rules.js';
 import {
-  LITE_CHECKOUT_PER_HOUR, LITE_SESSION_S, LITE_TERMS, PAY_TEXT, REPORT_ERRORS, REPORT_WINDOW_MS, RID_RE, SESSION_RE, SIGNATURE_TOLERANCE_S, checkoutParams,
+  LITE_CHECKOUT_PER_HOUR, LITE_SESSION_S, localizedLineItem, LITE_TERMS, PAY_TEXT, REPORT_ERRORS, REPORT_WINDOW_MS, RID_RE, SESSION_RE, SIGNATURE_TOLERANCE_S, checkoutParams,
   isVerdictSession, msgLang, pageLang, paymentsOn,
 } from './domain.js';
 import { renderReportPdf } from './pdf.js';
@@ -36,6 +36,22 @@ import { deliveryAlert, renderFailedNotice } from './alerts.js';
 import { INTER_BOLD, INTER_REGULAR } from '../../generated/fonts.js';
 
 const stripeFor = (ctx) => createStripeClient(ctx.env.STRIPE_SECRET_KEY, ctx.fetch);
+
+// The Price, read once per Worker instance for a localized product name (domain.js
+// localizedLineItem). Any failure: null, and Checkout uses the Price ID as before.
+let priceCache = null;
+async function verdictPrice(ctx) {
+  const id = ctx.env.STRIPE_PRICE_ID_VERDICT;
+  if (priceCache && priceCache.id === id) return priceCache;
+  try {
+    const r = await stripeFor(ctx).request('GET', `/prices/${encodeURIComponent(id)}?expand[]=product`);
+    if (r.ok && r.data && r.data.id === id) priceCache = r.data;
+    return r.ok ? r.data : null;
+  } catch (e) {
+    console.error('verdict price', e);
+    return null;
+  }
+}
 
 export async function handleCheckout(ctx) {
   const { request, env, origin } = ctx;
@@ -72,6 +88,8 @@ export async function handleCheckout(ctx) {
     if (!(await createPayStore(env.RATE_LIMIT_KV).hasResult(rid))) return json(404, { error: PAY_TEXT.expiredRun[lang] }, origin);
     params = checkoutParams(env, origin, rid, page);
   }
+  const named = localizedLineItem(await verdictPrice(ctx), page);
+  if (named) params.line_items = [named];
   // Same rid + lang within 24 h -> the same Session (a double click or a
   // return from cancel_url does not create a second one).
   let r;

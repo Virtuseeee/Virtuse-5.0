@@ -197,7 +197,7 @@ test('checkout stores the answers without the email and opens a short Stripe ses
     assert.equal(stored.lite, true);
     assert.equal(stored.lang, 'sk');
     assert.doesNotMatch(JSON.stringify(stored), /buyer@example/);
-    const form = new URLSearchParams(api.calls[0].init.body);
+    const form = new URLSearchParams(api.calls.find((c) => c.init.method === 'POST').init.body);
     assert.equal(form.get('customer_email'), 'buyer@example.com');
     assert.equal(form.get('metadata[lang]'), 'sk');
     assert.equal(form.get('metadata[rid]'), key.split(':')[2]);
@@ -205,6 +205,34 @@ test('checkout stores the answers without the email and opens a short Stripe ses
     assert.match(form.get('custom_text[submit][message]'), /30 dní/);
     assert.ok(+form.get('expires_at') - Date.now() / 1000 <= 2 * 3600 + 5);
   } finally { api.restore(); }
+});
+
+test('checkout: SK Checkout names the product in Slovak, same amount and tax; EN keeps the Price', async () => {
+  const PRICE = { id: 'price_123', object: 'price', unit_amount: 1400, currency: 'eur', tax_behavior: 'inclusive', product: { id: 'prod_1', name: 'Verdict - full report', tax_code: 'txcd_10000000' } };
+  const api = mockApis({ handler: (u, init) => (init.method === 'GET' && u.includes('/prices/price_123') ? { status: 200, body: PRICE } : { status: 200, body: { id: SID, url: `https://checkout.stripe.com/c/pay/${SID}` } }) });
+  try {
+    let res = await worker.fetch(post('/verdict/checkout', { answers: ANNA, lang: 'sk', email: 'a@example.com' }, '5.5.5.5'), env());
+    assert.equal(res.status, 200);
+    let form = new URLSearchParams(api.calls.filter((c) => c.init.method === 'POST').pop().init.body);
+    assert.equal(form.get('line_items[0][price_data][product_data][name]'), 'Verdict – celý report');
+    assert.equal(form.get('line_items[0][price_data][unit_amount]'), '1400');
+    assert.equal(form.get('line_items[0][price_data][currency]'), 'eur');
+    assert.equal(form.get('line_items[0][price_data][tax_behavior]'), 'inclusive');
+    assert.equal(form.get('line_items[0][price_data][product_data][tax_code]'), 'txcd_10000000');
+    assert.equal(form.get('line_items[0][price]'), null);
+    assert.equal(form.get('customer_email'), 'a@example.com');
+    res = await worker.fetch(post('/verdict/checkout', { answers: ANNA, lang: 'en' }, '5.5.5.6'), env());
+    form = new URLSearchParams(api.calls.filter((c) => c.init.method === 'POST').pop().init.body);
+    assert.equal(form.get('line_items[0][price]'), 'price_123');
+    assert.equal(form.get('line_items[0][price_data][product_data][name]'), null);
+  } finally { api.restore(); }
+  // Stripe cannot be read: the Price ID, as before
+  const down = mockApis({ handler: (u, init) => (init.method === 'GET' ? { status: 500, body: {} } : { status: 200, body: { id: SID, url: `https://checkout.stripe.com/c/pay/${SID}` } }) });
+  try {
+    const { localizedLineItem } = await import('../src/features/verdict-pay/domain.js');
+    assert.equal(localizedLineItem({ id: 'x' }, 'sk'), null);
+    assert.equal(localizedLineItem({ id: 'x', unit_amount: 1400, currency: 'eur' }, 'en'), null);
+  } finally { down.restore(); }
 });
 
 test('checkout: closed payments, bad answers and too many attempts', async () => {

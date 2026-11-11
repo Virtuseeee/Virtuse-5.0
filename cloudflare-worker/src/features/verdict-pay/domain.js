@@ -115,6 +115,31 @@ export function paidRecord(s, old, now) {
 // A Lite Checkout Session expires after 2 hours, well inside the 24 h the
 // answers are kept, so a late payment always finds them.
 export const LITE_SESSION_S = 2 * 60 * 60;
+
+// Checkout shows the Price's product name in every language. A page language
+// listed here gets its own name: the line item is sent as price_data copied
+// from the Price (amount, currency, VAT-inclusive, the product's tax code), so
+// tax and the amount stay exactly as on the Price. Other languages (en) keep
+// the Price itself.
+export const PRODUCT_NAME = { sk: 'Verdict – celý report' };
+
+// line_items[0] for a page language, from the Price as Stripe returns it
+// (GET /prices/{id}?expand[]=product). null = use the Price ID.
+export function localizedLineItem(price, page) {
+  const name = PRODUCT_NAME[page];
+  if (!name || !price || !Number.isInteger(price.unit_amount) || typeof price.currency !== 'string') return null;
+  const product = price.product && typeof price.product === 'object' ? price.product : {};
+  const taxCode = typeof product.tax_code === 'string' ? product.tax_code : product.tax_code?.id;
+  return {
+    price_data: {
+      currency: price.currency,
+      unit_amount: price.unit_amount,
+      ...(price.tax_behavior && price.tax_behavior !== 'unspecified' ? { tax_behavior: price.tax_behavior } : {}),
+      product_data: { name, ...(taxCode ? { tax_code: taxCode } : {}), metadata: { product: PRODUCT, price: price.id || '' } },
+    },
+    quantity: 1,
+  };
+}
 export const LITE_CHECKOUT_PER_HOUR = 20;
 
 export const LITE_TERMS = {
