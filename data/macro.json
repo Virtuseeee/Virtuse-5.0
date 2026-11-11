@@ -1,27 +1,19 @@
 {
- "generated": "2026-11-10T21:24:46.320Z",
+ "generated": "2026-11-11T02:07:18.272Z",
  "quotes": {
-  "spx": {
-   "value": 7520.93,
-   "prev": 7549.94,
-   "change_pct": -0.38,
-   "date": "2026-11-10",
+  "gold": {
+   "value": 4054,
+   "prev": 4114.5,
+   "change_pct": -1.47,
+   "date": "2026-11-11",
    "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
-  },
-  "eurusd": {
-   "value": 1.1168,
-   "prev": 1.1147,
-   "change_pct": 0.19,
-   "date": "2026-11-10",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
   },
   "brent": {
-   "value": 91.96,
+   "value": 91.91,
    "prev": 92.57,
-   "change_pct": -0.66,
-   "date": "2026-11-10",
+   "change_pct": -0.71,
+   "date": "2026-11-11",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
@@ -33,13 +25,21 @@
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5ETNX"
   },
-  "gold": {
-   "value": 4038.8,
-   "prev": 4114.5,
-   "change_pct": -1.84,
+  "eurusd": {
+   "value": 1.1173,
+   "prev": 1.1222,
+   "change_pct": -0.44,
+   "date": "2026-11-11",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+  },
+  "spx": {
+   "value": 7520.93,
+   "prev": 7549.94,
+   "change_pct": -0.38,
    "date": "2026-11-10",
    "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
+   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
   }
  },
  "inflation": {
@@ -73,7 +73,7 @@
    "rate": "2.50%",
    "low": 2.5,
    "high": 2.5,
-   "date": "2026-11-10",
+   "date": "2026-11-11",
    "label": "Deposit facility rate",
    "source": "European Central Bank",
    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
