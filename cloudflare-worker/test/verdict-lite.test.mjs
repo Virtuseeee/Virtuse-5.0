@@ -207,32 +207,21 @@ test('checkout stores the answers without the email and opens a short Stripe ses
   } finally { api.restore(); }
 });
 
-test('checkout: SK Checkout names the product in Slovak, same amount and tax; EN keeps the Price', async () => {
-  const PRICE = { id: 'price_123', object: 'price', unit_amount: 1400, currency: 'eur', tax_behavior: 'inclusive', product: { id: 'prod_1', name: 'Verdict - full report', tax_code: 'txcd_10000000' } };
-  const api = mockApis({ handler: (u, init) => (init.method === 'GET' && u.includes('/prices/price_123') ? { status: 200, body: PRICE } : { status: 200, body: { id: SID, url: `https://checkout.stripe.com/c/pay/${SID}` } }) });
+test('checkout: the SK page uses its own Price when set, else the EN Price; EN never changes', async () => {
+  const api = mockApis();
+  const priceOf = () => new URLSearchParams(api.calls.filter((c) => c.init.method === 'POST').pop().init.body).get('line_items[0][price]');
   try {
-    let res = await worker.fetch(post('/verdict/checkout', { answers: ANNA, lang: 'sk', email: 'a@example.com' }, '5.5.5.5'), env());
-    assert.equal(res.status, 200);
-    let form = new URLSearchParams(api.calls.filter((c) => c.init.method === 'POST').pop().init.body);
-    assert.equal(form.get('line_items[0][price_data][product_data][name]'), 'Verdict – celý report');
-    assert.equal(form.get('line_items[0][price_data][unit_amount]'), '1400');
-    assert.equal(form.get('line_items[0][price_data][currency]'), 'eur');
-    assert.equal(form.get('line_items[0][price_data][tax_behavior]'), 'inclusive');
-    assert.equal(form.get('line_items[0][price_data][product_data][tax_code]'), 'txcd_10000000');
-    assert.equal(form.get('line_items[0][price]'), null);
-    assert.equal(form.get('customer_email'), 'a@example.com');
-    res = await worker.fetch(post('/verdict/checkout', { answers: ANNA, lang: 'en' }, '5.5.5.6'), env());
-    form = new URLSearchParams(api.calls.filter((c) => c.init.method === 'POST').pop().init.body);
-    assert.equal(form.get('line_items[0][price]'), 'price_123');
-    assert.equal(form.get('line_items[0][price_data][product_data][name]'), null);
+    let n = 0;
+    const call = (lang, e) => worker.fetch(post('/verdict/checkout', { answers: ANNA, lang }, `6.6.6.${++n}`), e);
+    assert.equal((await call('sk', env({ STRIPE_PRICE_ID_VERDICT_SK: 'price_sk' }))).status, 200);
+    assert.equal(priceOf(), 'price_sk');
+    await call('en', env({ STRIPE_PRICE_ID_VERDICT_SK: 'price_sk' }));
+    assert.equal(priceOf(), 'price_123');
+    await call('sk', env());
+    assert.equal(priceOf(), 'price_123');
+    assert.ok(!api.calls.some((c) => c.init.method === 'GET'), 'no extra Stripe call');
+    assert.ok(!api.calls.some((c) => /price_data/.test(c.init.body || '')), 'no ad-hoc products');
   } finally { api.restore(); }
-  // Stripe cannot be read: the Price ID, as before
-  const down = mockApis({ handler: (u, init) => (init.method === 'GET' ? { status: 500, body: {} } : { status: 200, body: { id: SID, url: `https://checkout.stripe.com/c/pay/${SID}` } }) });
-  try {
-    const { localizedLineItem } = await import('../src/features/verdict-pay/domain.js');
-    assert.equal(localizedLineItem({ id: 'x' }, 'sk'), null);
-    assert.equal(localizedLineItem({ id: 'x', unit_amount: 1400, currency: 'eur' }, 'en'), null);
-  } finally { down.restore(); }
 });
 
 test('checkout: closed payments, bad answers and too many attempts', async () => {

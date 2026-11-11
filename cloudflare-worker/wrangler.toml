@@ -50,6 +50,7 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 # Checkout session (EUR 14); a live key here switches payments off. With payments
 # on, VERDICT_REPORT_PREVIEW is ignored. Secrets, each with --env staging (never
 # in chat, git or this file): STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_ID_VERDICT.
+# Optional: STRIPE_PRICE_ID_VERDICT_SK (Slovak product name in Checkout; not set = the EN Price).
 # Purchase confirmation + report PDF (webhook): needs RESEND_API_KEY (--env staging);
 # VERDICT_RECEIPT_TO sends every staging confirmation to that address, never the buyer's.
 [env.staging]

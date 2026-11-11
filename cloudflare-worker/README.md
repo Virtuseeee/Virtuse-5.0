@@ -318,6 +318,7 @@ On launch day: `npx wrangler secret put VERDICT_ENABLED` and type `1` (or set it
 
 Code in `src/features/verdict-pay/` and `src/infra/stripe.js`. Routes: `POST /verdict/checkout` (`{rid, lang}` → Checkout URL), `POST /verdict/stripe-webhook` (signature-checked; events `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `charge.refunded`), `POST /verdict/report` (`{session_id}` → full report; 402 unpaid or refunded; after 30 minutes from first opening only the free view).
 
+- Optional secret `STRIPE_PRICE_ID_VERDICT_SK`: the Slovak page's own Price (product "Verdict – celý report", 14 EUR, Include tax in price = Yes, tax code txcd_10000000), so the SK Checkout shows the Slovak product name. Not set: the SK page uses `STRIPE_PRICE_ID_VERDICT`.
 - On only when `VERDICT_PAYMENTS = "1"` and all three secrets are set: `STRIPE_SECRET_KEY` (prefer a restricted `rk_live_…` key), `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_ID_VERDICT`. With payments on, `/verdict` keeps the scored result (not the decision text) 24 hours in KV under a random `rid`, and the report preview is off.
 - `STRIPE_TEST_ONLY = "1"` (staging) refuses live keys.
 - VAT and invoices: `STRIPE_AUTOMATIC_TAX = "1"`, `STRIPE_INVOICE = "1"` (see below). On in `wrangler.toml` for production and staging. Staging uses the sandbox `Virtuse Wealth Management, a.s. sandbox` (acct_1ULaF0B1WoPAPWMD), not the account's plain test mode.

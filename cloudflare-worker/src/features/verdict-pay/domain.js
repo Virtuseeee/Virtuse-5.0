@@ -82,7 +82,7 @@ export function checkoutParams(env, origin, rid, page, extra = {}, ipCountry = n
   const pageUrl = `${origin}${page === 'en' ? '' : '/' + page}/verdict.html`;
   return {
     mode: 'payment',
-    line_items: [{ price: env.STRIPE_PRICE_ID_VERDICT, quantity: 1 }],
+    line_items: [{ price: priceFor(env, page), quantity: 1 }],
     success_url: `${pageUrl}?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${pageUrl}?canceled=1`,
     client_reference_id: rid,
@@ -116,30 +116,11 @@ export function paidRecord(s, old, now) {
 // answers are kept, so a late payment always finds them.
 export const LITE_SESSION_S = 2 * 60 * 60;
 
-// Checkout shows the Price's product name in every language. A page language
-// listed here gets its own name: the line item is sent as price_data copied
-// from the Price (amount, currency, VAT-inclusive, the product's tax code), so
-// tax and the amount stay exactly as on the Price. Other languages (en) keep
-// the Price itself.
-export const PRODUCT_NAME = { sk: 'Verdict – celý report' };
-
-// line_items[0] for a page language, from the Price as Stripe returns it
-// (GET /prices/{id}?expand[]=product). null = use the Price ID.
-export function localizedLineItem(price, page) {
-  const name = PRODUCT_NAME[page];
-  if (!name || !price || !Number.isInteger(price.unit_amount) || typeof price.currency !== 'string') return null;
-  const product = price.product && typeof price.product === 'object' ? price.product : {};
-  const taxCode = typeof product.tax_code === 'string' ? product.tax_code : product.tax_code?.id;
-  return {
-    price_data: {
-      currency: price.currency,
-      unit_amount: price.unit_amount,
-      ...(price.tax_behavior && price.tax_behavior !== 'unspecified' ? { tax_behavior: price.tax_behavior } : {}),
-      product_data: { name, ...(taxCode ? { tax_code: taxCode } : {}), metadata: { product: PRODUCT, price: price.id || '' } },
-    },
-    quantity: 1,
-  };
-}
+// The Price per page language. Checkout shows the Price's product name, so the
+// Slovak page uses its own Price (product "Verdict – celý report", 14 EUR,
+// VAT-inclusive, tax code txcd_10000000), set as the secret
+// STRIPE_PRICE_ID_VERDICT_SK. Not set: the EN Price, as before.
+export const priceFor = (env, page) => (page === 'sk' && env.STRIPE_PRICE_ID_VERDICT_SK) || env.STRIPE_PRICE_ID_VERDICT;
 export const LITE_CHECKOUT_PER_HOUR = 20;
 
 export const LITE_TERMS = {
