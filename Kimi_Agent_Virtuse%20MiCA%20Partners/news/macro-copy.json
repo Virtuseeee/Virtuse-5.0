@@ -1,0 +1,42 @@
+{
+  "_note": "One line under each By the numbers tile (handover A1). First matching rule wins; 'else' is the fallback. Explains context, never predicts a price or says buy/sell. Max ~90 characters. Approval: Ras (PR).",
+  "rules": {
+    "btc_24h": [
+      { "gte": 3, "en": "Up over 3% in a day. Big daily swings are normal for Bitcoin.", "sk": "Za deň viac ako +3 %. Veľké denné výkyvy sú pri Bitcoine bežné." },
+      { "lte": -3, "en": "Down over 3% in a day. Big daily swings are normal for Bitcoin.", "sk": "Za deň viac ako −3 %. Veľké denné výkyvy sú pri Bitcoine bežné." },
+      { "else": true, "en": "A calm day by Bitcoin standards.", "sk": "Na pomery Bitcoinu pokojný deň." }
+    ],
+    "spx_1d": [
+      { "lte": -1, "en": "Stocks fell. On risk-off days BTC often moves with them.", "sk": "Akcie klesli. V dňoch útekov od rizika ide BTC často s nimi." },
+      { "gte": 1, "en": "Stocks rose. On risk-on days BTC often moves with them.", "sk": "Akcie rástli. Keď trh berie riziko, BTC ide často s nimi." },
+      { "else": true, "en": "Stocks barely moved: little signal for BTC from equities.", "sk": "Akcie sa takmer nepohli: pre BTC z nich málo signálu." }
+    ],
+    "gold_1d": [
+      { "gte": 1, "en": "Gold rose: one BTC buys fewer ounces unless BTC keeps up.", "sk": "Zlato zdraželo: BTC kúpi menej uncí, ak s ním nedrží krok." },
+      { "lte": -1, "en": "Gold fell: one BTC buys more ounces if BTC holds its price.", "sk": "Zlato zlacnelo: BTC kúpi viac uncí, ak si udrží cenu." },
+      { "else": true, "en": "Gold steady: the ratio follows the BTC price.", "sk": "Zlato stabilné: pomer sleduje cenu BTC." }
+    ],
+    "eurusd_1d": [
+      { "gte": 0.3, "en": "Stronger euro: BTC priced in euros is a bit cheaper today.", "sk": "Silnejšie euro: BTC v eurách je dnes o niečo lacnejší." },
+      { "lte": -0.3, "en": "Weaker euro: BTC priced in euros is a bit dearer today.", "sk": "Slabšie euro: BTC v eurách je dnes o niečo drahší." },
+      { "else": true, "en": "Euro steady: BTC in euros tracks BTC in dollars.", "sk": "Euro stabilné: BTC v eurách kopíruje BTC v dolároch." }
+    ],
+    "fear_greed": [
+      { "lte": 25, "en": "Extreme fear. Sentiment is not a timing signal.", "sk": "Extrémny strach. Nálada nie je signál na načasovanie." },
+      { "lte": 45, "en": "Fear: a cautious mood. Sentiment is not a timing signal.", "sk": "Strach: opatrná nálada. Nie je to signál na načasovanie." },
+      { "lte": 55, "en": "A neutral mood. Sentiment is not a timing signal.", "sk": "Neutrálna nálada. Nie je to signál na načasovanie." },
+      { "lte": 75, "en": "Greed: an upbeat mood. Sentiment is not a timing signal.", "sk": "Chamtivosť: optimistická nálada. Nie je to signál na načasovanie." },
+      { "else": true, "en": "Extreme greed. Sentiment is not a timing signal.", "sk": "Extrémna chamtivosť. Nálada nie je signál na načasovanie." }
+    ],
+    "infl_us": [
+      { "gte": 3, "en": "Inflation above 3% keeps central banks cautious, a weight on risk assets.", "sk": "Inflácia nad 3 % drží centrálne banky opatrné, čo tlačí na rizikové aktíva." },
+      { "lte": 2.5, "en": "Inflation near target gives central banks room to cut rates.", "sk": "Inflácia blízko cieľa dáva centrálnym bankám priestor znižovať sadzby." },
+      { "else": true, "en": "Inflation above target keeps rate cuts on hold.", "sk": "Inflácia nad cieľom odkladá znižovanie sadzieb." }
+    ],
+    "us10y": [
+      { "gte": 4.75, "en": "Expensive money weighs on risk assets, including BTC.", "sk": "Drahé peniaze tlačia na rizikové aktíva vrátane BTC." },
+      { "lte": 4, "en": "Cheaper money tends to support risk assets, including BTC.", "sk": "Lacnejšie peniaze zvyčajne podporujú rizikové aktíva vrátane BTC." },
+      { "else": true, "en": "Yields in a middle range: no strong push either way for BTC.", "sk": "Výnosy v strednom pásme: pre BTC bez silného tlaku jedným smerom." }
+    ]
+  }
+}
