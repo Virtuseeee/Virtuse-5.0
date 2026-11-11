@@ -1,29 +1,29 @@
 {
- "generated": "2026-11-11T10:33:23.124Z",
+ "generated": "2026-11-11T10:42:29.412Z",
  "quotes": {
+  "gold": {
+   "value": 4059.7,
+   "prev": 4030.2,
+   "change_pct": 0.73,
+   "date": "2026-11-11",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
+  },
   "eurusd": {
-   "value": 1.1146,
+   "value": 1.1145,
    "prev": 1.1222,
-   "change_pct": -0.68,
+   "change_pct": -0.69,
    "date": "2026-11-11",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
   },
   "brent": {
-   "value": 93.29,
+   "value": 93.44,
    "prev": 91.49,
-   "change_pct": 1.97,
+   "change_pct": 2.13,
    "date": "2026-11-11",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
-  },
-  "us10y": {
-   "value": 4.983,
-   "prev": 4.864,
-   "change_pct": 2.45,
-   "date": "2026-11-10",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/%5ETNX"
   },
   "spx": {
    "value": 7520.93,
@@ -33,32 +33,16 @@
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
   },
-  "gold": {
-   "value": 4056.5,
-   "prev": 4030.2,
-   "change_pct": 0.65,
-   "date": "2026-11-11",
+  "us10y": {
+   "value": 4.983,
+   "prev": 4.864,
+   "change_pct": 2.45,
+   "date": "2026-11-10",
    "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
+   "source_url": "https://finance.yahoo.com/quote/%5ETNX"
   }
  },
  "inflation": {
-  "ea": {
-   "value": 4,
-   "month": "2026-10",
-   "flash": true,
-   "status_flag": "e",
-   "source": "Eurostat, HICP euro area",
-   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
-  },
-  "sk": {
-   "value": 2.9,
-   "month": "2026-10",
-   "flash": true,
-   "status_flag": "e",
-   "source": "Eurostat, HICP SK",
-   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
-  },
   "us": {
    "value": 3.7,
    "month": "2026-09",
@@ -71,36 +55,25 @@
    "note_url": "https://www.bls.gov/cpi/additional-resources/2025-federal-government-shutdown-impact-cpi-faq.htm",
    "source": "U.S. Bureau of Labor Statistics, CPI-U",
    "source_url": "https://www.bls.gov/cpi/"
+  },
+  "sk": {
+   "value": 2.9,
+   "month": "2026-10",
+   "flash": true,
+   "status_flag": "e",
+   "source": "Eurostat, HICP SK",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
+  },
+  "ea": {
+   "value": 4,
+   "month": "2026-10",
+   "flash": true,
+   "status_flag": "e",
+   "source": "Eurostat, HICP euro area",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
   }
  },
  "central_banks": {
-  "ecb": {
-   "rate": "2.50%",
-   "low": 2.5,
-   "high": 2.5,
-   "date": "2026-11-11",
-   "last_move": {
-    "dir": "up",
-    "bp": 25,
-    "date": "2026-09-16",
-    "effective": true,
-    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
-   },
-   "label": "Deposit facility rate",
-   "source": "European Central Bank",
-   "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
-   "next_meeting": "2026-12-17",
-   "calendar_url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "expects": {
-    "scenario": "Hike 25 bp",
-    "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 92,
-    "meeting": "2026-12-17",
-    "as_of": "2026-11-11",
-    "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
-   }
-  },
   "fed": {
    "rate": "3.75–4.00%",
    "low": 3.75,
@@ -128,31 +101,31 @@
     "source_url": "https://kalshi.com/markets/kxfeddecision"
    }
   },
-  "boe": {
-   "rate": "4.00%",
-   "low": 4,
-   "high": 4,
-   "date": "2026-11-10",
+  "ecb": {
+   "rate": "2.50%",
+   "low": 2.5,
+   "high": 2.5,
+   "date": "2026-11-11",
    "last_move": {
     "dir": "up",
     "bp": 25,
-    "date": "2026-11-05",
+    "date": "2026-09-16",
     "effective": true,
-    "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
+    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
    },
-   "label": "Bank Rate",
-   "source": "Bank of England",
-   "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
+   "label": "Deposit facility rate",
+   "source": "European Central Bank",
+   "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
    "next_meeting": "2026-12-17",
-   "calendar_url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
+   "calendar_url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 67,
+    "prob": 92,
     "meeting": "2026-12-17",
     "as_of": "2026-11-11",
     "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
+    "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
    }
   },
   "boj": {
@@ -180,6 +153,33 @@
     "as_of": "2026-11-11",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
+   }
+  },
+  "boe": {
+   "rate": "4.00%",
+   "low": 4,
+   "high": 4,
+   "date": "2026-11-10",
+   "last_move": {
+    "dir": "up",
+    "bp": 25,
+    "date": "2026-11-05",
+    "effective": true,
+    "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
+   },
+   "label": "Bank Rate",
+   "source": "Bank of England",
+   "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
+   "next_meeting": "2026-12-17",
+   "calendar_url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
+   "expects": {
+    "scenario": "Hike 25 bp",
+    "scenario_sk": "Zvýšenie o 25 bp",
+    "prob": 67,
+    "meeting": "2026-12-17",
+    "as_of": "2026-11-11",
+    "source": "Kalshi prediction market",
+    "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
    }
   }
  },
