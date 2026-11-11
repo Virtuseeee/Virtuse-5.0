@@ -614,7 +614,8 @@
 .ml-plan .ml-pay, .plan-cta .ml-pay { text-align: center; }
 
 /* Payments closed (Worker 503 or RU/UK): no card/Stripe sentence and no buy button anywhere */
-[data-pay="closed"] [data-pay-copy], [data-pay="closed"] [data-buybox] .ml-data, [data-pay="closed"] [data-buybox] .ml-data-s { display: none !important; }
+/* CSS fallback: once data-pay=closed is set, no buy button or payment sentence shows even if a later script fails */
+[data-pay="closed"] [data-buy], [data-pay="closed"] [data-pay-copy], [data-pay="closed"] [data-buybox] .ml-data, [data-pay="closed"] [data-buybox] .ml-data-s { display: none !important; }
 
 /* After "Get my full report" on the pricing card, step 7 leads with the purchase */
 .ml-screen[data-s="7"][data-intent] .ml-plan.pro { order: -1; }
