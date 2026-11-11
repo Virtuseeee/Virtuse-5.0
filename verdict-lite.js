@@ -637,7 +637,10 @@
     var from = ''; try { from = sessionStorage.getItem(INTENT) || ''; } catch (e) {}
     btn.disabled = true; say(S.buyWait);
     dl({ event: 'verdict_checkout_start', verdict_cta: cta, verdict_cta_first: from || cta });
-    vbApi().then(function (api) { return api.postJson('/verdict/checkout', { answers: answers, lang: LANG, email: A.email || undefined }); })
+    // Prefill Checkout: the Lite email, else a valid address already typed on the gate (step 7)
+    var gateEm = (($('mlGate') && $('mlGate').email && $('mlGate').email.value) || '').trim();
+    var payEm = A.email || (EMAIL.test(gateEm) ? gateEm : '');
+    vbApi().then(function (api) { return api.postJson('/verdict/checkout', { answers: answers, lang: LANG, email: payEm || undefined }); })
       .then(function (r) {
         if (r && r.ok && r.data && r.data.url) { try { sessionStorage.removeItem(INTENT); } catch (e) {} location.href = r.data.url; return; }
         btn.disabled = false;
