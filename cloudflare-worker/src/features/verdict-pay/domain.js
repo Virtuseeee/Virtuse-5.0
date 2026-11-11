@@ -107,6 +107,8 @@ export function paidRecord(s, old, now) {
     paidAt: (old && old.paidAt) || now,
     usedAt: (old && old.usedAt) || null,
     emailedAt: (old && old.emailedAt) || null,
+    ...(old && old.sendingAt ? { sendingAt: old.sendingAt } : {}),
+    ...(old && old.failNoticeAt ? { failNoticeAt: old.failNoticeAt } : {}),
   };
 }
 

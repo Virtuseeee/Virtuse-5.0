@@ -32,6 +32,7 @@ import {
 import { renderReportPdf } from './pdf.js';
 import { operatorLine, orderNumber, receiptLang, renderReceipt, reportFilename } from './receipt.js';
 import { createPayStore, newRid } from './store.js';
+import { deliveryAlert, renderFailedNotice } from './alerts.js';
 import { INTER_BOLD, INTER_REGULAR } from '../../generated/fonts.js';
 
 const stripeFor = (ctx) => createStripeClient(ctx.env.STRIPE_SECRET_KEY, ctx.fetch);
@@ -116,14 +117,44 @@ async function invoiceLink(ctx, session) {
 
 // Purchase confirmation + report PDF for one paid Session. Returns false when
 // sending failed (the webhook then answers 500 and Stripe retries).
+// At most one email per Session: emailedAt in KV, a 60 s claim (sendingAt) against
+// a parallel delivery of the same event, and Resend's Idempotency-Key.
+export const SENDING_CLAIM_MS = 60 * 1000;
 export async function sendReceipt(ctx, session, rec, store) {
   const { env, now } = ctx;
   if (rec.emailedAt) return true;
-  const to = env.VERDICT_RECEIPT_TO || session.customer_details?.email || session.customer_email;
-  if (!to) { console.error('verdict receipt: no email on session'); return true; }
-  const stored = await store.getResult(rec.rid);
-  if (!stored) { console.error('verdict receipt: result expired', rec.rid); return true; }
+  if (rec.sendingAt && now - rec.sendingAt < SENDING_CLAIM_MS) return false;   // another run is sending; Stripe retries
   const lang = receiptLang(session.metadata?.lang);
+  const buyer = session.customer_details?.email || session.customer_email;
+  const to = env.VERDICT_RECEIPT_TO || buyer;
+  const alert = (kind, detail) => deliveryAlert(ctx, { kind, sid: session.id, rid: rec.rid, lang, email: buyer, detail });
+  if (!to) { console.error('verdict receipt: no email on session'); await alert('no_email'); return true; }
+  const stored = await store.getResult(rec.rid);
+  if (!stored) {
+    console.error('verdict receipt: result expired', rec.rid);
+    if (!rec.failNoticeAt) {
+      try {
+        const n = renderFailedNotice(lang, session.id);
+        await ctx.services.resend.sendEmail({
+          from: env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL, to: [to], reply_to: env.RESEND_REPLY_TO || 'info@virtuse.com',
+          subject: n.subject, html: n.html, tags: [{ name: 'kind', value: 'verdict_receipt' }],
+        }, 'Resend verdict notice failed', { idempotencyKey: `verdict-notice-${session.id}` });
+        rec.failNoticeAt = now;
+        await store.putPaid(session.id, rec);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    await alert('result_expired');
+    return true;
+  }
+  // Re-read just before claiming: a parallel run may have sent or claimed meanwhile.
+  // KV is not atomic, so Resend's Idempotency-Key below is the final guard.
+  const fresh = await store.getPaid(session.id);
+  if (fresh?.emailedAt) return true;
+  if (fresh?.sendingAt && now - fresh.sendingAt < SENDING_CLAIM_MS) return false;
+  rec.sendingAt = now;
+  await store.putPaid(session.id, rec);
   try {
     const view = stored.lite
       ? liteReportView(stored.answers, stored.lang, new Date(rec.paidAt || now), { partners: env.VERDICT_REPORT_PARTNERS === '1' })
@@ -139,11 +170,15 @@ export async function sendReceipt(ctx, session, rec, store) {
       html: mail.html,
       attachments: [{ filename: mail.filename, content: toBase64(pdf) }],
       tags: [{ name: 'kind', value: 'verdict_receipt' }],
-    }, 'Resend verdict receipt failed');
+    }, 'Resend verdict receipt failed', { idempotencyKey: `verdict-receipt-${session.id}` });
   } catch (e) {
     console.error(e);
+    delete rec.sendingAt;
+    await store.putPaid(session.id, rec);
+    await alert('send_failed', e?.message);
     return false;
   }
+  delete rec.sendingAt;
   rec.emailedAt = now;
   await store.putPaid(session.id, rec);
   return true;
