@@ -232,7 +232,10 @@
   function applyFearGreed(fg) {
     if (!fg || fg.value == null || fg.value === '') return;
     setText('tileFg', String(fg.value) + ' / 100');
-    setText('tileFgLabel', fg.label ? String(fg.label) : 'alternative.me');
+    var FG_SK = { 'extreme fear': 'Extrémny strach', 'fear': 'Strach', 'neutral': 'Neutrálne', 'greed': 'Chamtivosť', 'extreme greed': 'Extrémna chamtivosť' };
+    var fgLabel = fg.label ? String(fg.label) : 'alternative.me';
+    if (LANG === 'sk' && FG_SK[fgLabel.toLowerCase()]) fgLabel = FG_SK[fgLabel.toLowerCase()];
+    setText('tileFgLabel', fgLabel);
     setCtx('fear_greed', Number(fg.value));
   }
   function compactArchiveTitle(it) {

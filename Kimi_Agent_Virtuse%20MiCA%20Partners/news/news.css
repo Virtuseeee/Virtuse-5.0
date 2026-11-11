@@ -1419,3 +1419,8 @@ ul { list-style: none; }
 .nav-lang a { padding: 4px 6px; border: 1px solid transparent; color: var(--text-muted); }
 .nav-lang a[aria-current="true"] { border-color: var(--line-strong); color: var(--text); }
 .featured-alt-lang[hidden] { display: none; }
+/* One tile per row on phones, so each "what it means for BTC" line fits in two lines. */
+@media (max-width: 480px) {
+  .data-strip { grid-template-columns: 1fr; }
+  .tile-ctx { font-size: 12.5px; }
+}
