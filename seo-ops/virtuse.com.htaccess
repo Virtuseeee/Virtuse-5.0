@@ -18,8 +18,7 @@ RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !=https
 RewriteRule ^(.*)$ https://virtuse.com/$1 [R=301,L]
 
-# No Slovak Brief page exists (the Brief is EN-only): old /sk/news.html hits go to /news.html
-RewriteRule ^sk/news\.html$ https://virtuse.com/news.html [R=301,L]
+# /sk/news.html is the Slovak Brief since 2026-11-11 (no redirect).
 
 # Brief articles. The static page /stories/<slug>/ (sk/stories/) is the canonical copy.
 # Short links /a/<slug> 301 there when the page exists. A slug with no story page 301s
@@ -965,7 +964,7 @@ RewriteRule ^sk/burza-ako-ziadna-ina/?$ - [G,L]
 # Same choice as /compound-interest-calculator/: Stacking Strategist in Slovak.
 RewriteRule ^sk/compound-interest-calculator/?$ https://virtuse.com/sk/stacking.html [R=301,L]
 RewriteRule ^sk/dakujeme-za-priazen/?$ - [G,L]
-RewriteRule ^sk/dakujeme/?$ https://virtuse.com/news.html [R=301,L]
+RewriteRule ^sk/dakujeme/?$ https://virtuse.com/sk/news.html [R=301,L]
 RewriteRule ^sk/dashboard/?$ https://virtuse.com/sk/bitcoin-data.html [R=301,L]
 RewriteRule ^sk/etfs/?$ - [G,L]
 RewriteRule ^sk/faq/?$ https://virtuse.com/sk/faq.html [R=301,L]
@@ -1005,8 +1004,8 @@ RewriteRule ^sk/umiestnovanie-tokenov/?$ - [G,L]
 # so a later rebuild of this block cannot 410 a path that should be one hop to concierge.html.
 # virtuse-exchange-token-listing-guidelines stays 410 (not in the approved map).
 RewriteRule ^sk/virtu-token/?$ https://virtuse.com/sk/concierge.html [R=301,L]
-RewriteRule ^sk/virtuse-news/?$ https://virtuse.com/news.html [R=301,L]
-RewriteRule ^sk/virtuse-report/?$ https://virtuse.com/news.html [R=301,L]
+RewriteRule ^sk/virtuse-news/?$ https://virtuse.com/sk/news.html [R=301,L]
+RewriteRule ^sk/virtuse-report/?$ https://virtuse.com/sk/news.html [R=301,L]
 RewriteRule ^sk/virtusex-platformy/?$ https://virtuse.com/sk/concierge.html [R=301,L]
 RewriteRule ^sk/vyvoj-krypto-burzy/?$ - [G,L]
 RewriteRule ^sk/wealth-management/?$ https://virtuse.com/sk/index.html [R=301,L]

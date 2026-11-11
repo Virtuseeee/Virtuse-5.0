@@ -1364,3 +1364,15 @@ ul { list-style: none; }
 .cal-list a:hover { color: var(--accent-text-hover); }
 .data-strip .tile-value { white-space: nowrap; }
 #tileInfl { font-size: 88%; letter-spacing: -0.01em; }
+
+/* —— 2026-11-11: Pulse freshness, inflation note, language switch (SK Brief) —— */
+.pulse-stale { margin: -4px 0 10px; font-size: 12px; color: var(--accent-text); }
+.pulse-stale[hidden] { display: none; }
+.pulse-item.is-before { opacity: 0.72; }
+.pulse-before { margin-left: 8px; padding: 1px 6px; border: 1px solid var(--line-strong); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+.tile-note { margin-top: 4px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.35; color: var(--text-muted); }
+.tile-note[hidden] { display: none; }
+.tile-note a { color: var(--accent-text); text-decoration: underline; }
+.nav-lang { display: inline-flex; gap: 2px; margin-left: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; }
+.nav-lang a { padding: 4px 6px; border: 1px solid transparent; color: var(--text-muted); }
+.nav-lang a[aria-current="true"] { border-color: var(--line-strong); color: var(--text); }
