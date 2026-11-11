@@ -281,6 +281,7 @@
 -mkdir public_html/sk/stories/damoklov-mec-nad-financnymi-trhmi
 -mkdir public_html/sk/stories/desat-odvaznych-prognoz-na-rok-2021-pre-ochranu-vasho-majetku
 -mkdir public_html/sk/stories/desat-predpovedi-pre-pochmurny-rok-2023
+-mkdir public_html/sk/stories/digitalne-euro-kto-bude-urcovat-pravidla-vasich-penazi
 -mkdir public_html/sk/stories/digitalne-meny-centralnych-bank-a-bretton-woods-moment
 -mkdir public_html/sk/stories/do-roku-2023-mozete-na-akciach-zarabat-aj-so-zatvorenymi-ocami
 -mkdir public_html/sk/stories/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities
@@ -507,6 +508,7 @@ put sk/stories/co-sa-deje-s-bitcoinom/index.html public_html/sk/stories/co-sa-de
 put sk/stories/damoklov-mec-nad-financnymi-trhmi/index.html public_html/sk/stories/damoklov-mec-nad-financnymi-trhmi/index.html
 put sk/stories/desat-odvaznych-prognoz-na-rok-2021-pre-ochranu-vasho-majetku/index.html public_html/sk/stories/desat-odvaznych-prognoz-na-rok-2021-pre-ochranu-vasho-majetku/index.html
 put sk/stories/desat-predpovedi-pre-pochmurny-rok-2023/index.html public_html/sk/stories/desat-predpovedi-pre-pochmurny-rok-2023/index.html
+put sk/stories/digitalne-euro-kto-bude-urcovat-pravidla-vasich-penazi/index.html public_html/sk/stories/digitalne-euro-kto-bude-urcovat-pravidla-vasich-penazi/index.html
 put sk/stories/digitalne-meny-centralnych-bank-a-bretton-woods-moment/index.html public_html/sk/stories/digitalne-meny-centralnych-bank-a-bretton-woods-moment/index.html
 put sk/stories/do-roku-2023-mozete-na-akciach-zarabat-aj-so-zatvorenymi-ocami/index.html public_html/sk/stories/do-roku-2023-mozete-na-akciach-zarabat-aj-so-zatvorenymi-ocami/index.html
 put sk/stories/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities/index.html public_html/sk/stories/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities/index.html
