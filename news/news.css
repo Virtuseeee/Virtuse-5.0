@@ -1364,3 +1364,58 @@ ul { list-style: none; }
 .cal-list a:hover { color: var(--accent-text-hover); }
 .data-strip .tile-value { white-space: nowrap; }
 #tileInfl { font-size: 88%; letter-spacing: -0.01em; }
+
+/* —— Handover 2026-11-11: macro context, freshness, Europe, Slovak —— */
+.tile-ctx { margin-top: 6px; font-size: 12px; line-height: 1.35; color: var(--text-muted); font-family: var(--font-display); }
+.tile-ctx[hidden], .tile-note[hidden] { display: none; }
+.tile-note { margin-top: 4px; font-family: var(--font-mono); font-size: 10.5px; line-height: 1.35; color: var(--text-muted); }
+.tile-note a { color: var(--accent-text); text-decoration: underline; }
+.ctx-10y { margin: 10px 0 0; font-size: 12.5px; line-height: 1.4; color: var(--text-muted); }
+.ctx-10y[hidden] { display: none; }
+.ctx-10y-val { font-family: var(--font-mono); font-weight: 600; color: var(--text); }
+.numbers-fine a { color: inherit; text-decoration: underline; }
+
+.pulse-stale { margin: -4px 0 10px; font-size: 12px; color: var(--accent-text); }
+.pulse-stale[hidden] { display: none; }
+.pulse-item.is-before { opacity: 0.72; }
+.pulse-before { margin-left: 8px; padding: 1px 6px; border: 1px solid var(--line-strong); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+
+/* Central banks: two lines per bank */
+.cb-table tbody th, .cb-table tbody td { border-bottom: 0; padding-bottom: 2px; }
+.cb-table tbody tr.cb-detail td { padding: 0 0 8px; border-bottom: 1px solid var(--line); text-align: left !important; font-size: 11px; color: var(--text-muted); white-space: normal; }
+.cb-detail span { display: block; line-height: 1.45; }
+.cb-detail a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line-strong); }
+.cb-note.is-stale { color: var(--down); }
+.cb-note a { color: inherit; text-decoration: underline; }
+
+/* Macro of the week */
+.macro-week-section { border-top: 1px solid var(--line); }
+.macro-week-section[hidden] { display: none; }
+.mw-draft { display: none; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--down); padding-bottom: 0.375rem; }
+.macro-week-section.is-draft .mw-draft { display: inline; }
+.mw-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.mw-list li { border-top: 3px solid var(--text); padding-top: 14px; }
+.mw-fact { margin: 0 0 8px; font-family: var(--font-display); font-size: var(--t-body); line-height: 1.5; }
+.mw-btc { margin: 0 0 8px; font-size: 14px; line-height: 1.45; color: var(--accent-text); }
+.mw-src { margin: 0; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+.mw-src a { color: inherit; text-decoration: underline; }
+.mw-fine { margin: 16px 0 0; font-size: 12px; color: var(--text-muted); }
+@media (max-width: 900px) { .mw-list { grid-template-columns: 1fr; } }
+
+/* Europe card */
+.europe-section { border-top: 1px solid var(--line); }
+.eu-list { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 24px; }
+.eu-row { padding: 12px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.eu-row dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+.eu-row dd { margin: 0; }
+.eu-val { display: block; font-family: var(--font-display); font-size: 16px; line-height: 1.4; color: var(--text); }
+.eu-row:not(.eu-manual) .eu-val { font-family: var(--font-mono); font-weight: 600; }
+.eu-src { display: block; margin-top: 4px; font-size: 11px; color: var(--text-muted); }
+.eu-src a { color: inherit; text-decoration: underline; }
+@media (max-width: 900px) { .eu-list { grid-template-columns: 1fr; } }
+
+/* Language switch in the nav */
+.nav-lang { display: inline-flex; gap: 2px; margin-left: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; }
+.nav-lang a { padding: 4px 6px; border: 1px solid transparent; color: var(--text-muted); }
+.nav-lang a[aria-current="true"] { border-color: var(--line-strong); color: var(--text); }
+.featured-alt-lang[hidden] { display: none; }
