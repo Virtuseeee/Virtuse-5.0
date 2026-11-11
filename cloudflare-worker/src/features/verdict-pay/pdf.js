@@ -313,6 +313,7 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
       y = Math.min(y, top - 22) - 8;
     }
 
+    if (r.partners) {
     heading(r.partners.h);
     para(r.partners.intro, { size: 9, color: C.muted, gap: 8 });
     for (const g of r.partners.groups) {
@@ -334,6 +335,7 @@ export async function renderReportPdf(r, { lang = 'en', fonts, date = new Date()
       }
       g.links.forEach((x) => para(`${x.name} · ${printed(x.href)}`, { size: 9, color: C.blue, gap: 2 }));
       y -= 8;
+    }
     }
 
     heading(r.h.next);

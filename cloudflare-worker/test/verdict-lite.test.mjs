@@ -197,13 +197,30 @@ test('checkout stores the answers without the email and opens a short Stripe ses
     assert.equal(stored.lite, true);
     assert.equal(stored.lang, 'sk');
     assert.doesNotMatch(JSON.stringify(stored), /buyer@example/);
-    const form = new URLSearchParams(api.calls[0].init.body);
+    const form = new URLSearchParams(api.calls.find((c) => c.init.method === 'POST').init.body);
     assert.equal(form.get('customer_email'), 'buyer@example.com');
     assert.equal(form.get('metadata[lang]'), 'sk');
     assert.equal(form.get('metadata[rid]'), key.split(':')[2]);
     assert.match(form.get('success_url'), /\/sk\/verdict\.html\?session_id=/);
     assert.match(form.get('custom_text[submit][message]'), /30 dní/);
     assert.ok(+form.get('expires_at') - Date.now() / 1000 <= 2 * 3600 + 5);
+  } finally { api.restore(); }
+});
+
+test('checkout: the SK page uses its own Price when set, else the EN Price; EN never changes', async () => {
+  const api = mockApis();
+  const priceOf = () => new URLSearchParams(api.calls.filter((c) => c.init.method === 'POST').pop().init.body).get('line_items[0][price]');
+  try {
+    let n = 0;
+    const call = (lang, e) => worker.fetch(post('/verdict/checkout', { answers: ANNA, lang }, `6.6.6.${++n}`), e);
+    assert.equal((await call('sk', env({ STRIPE_PRICE_ID_VERDICT_SK: 'price_sk' }))).status, 200);
+    assert.equal(priceOf(), 'price_sk');
+    await call('en', env({ STRIPE_PRICE_ID_VERDICT_SK: 'price_sk' }));
+    assert.equal(priceOf(), 'price_123');
+    await call('sk', env());
+    assert.equal(priceOf(), 'price_123');
+    assert.ok(!api.calls.some((c) => c.init.method === 'GET'), 'no extra Stripe call');
+    assert.ok(!api.calls.some((c) => /price_data/.test(c.init.body || '')), 'no ad-hoc products');
   } finally { api.restore(); }
 });
 
@@ -278,6 +295,32 @@ test('an unpaid session gets no report', async () => {
 
 // The concrete blocks
 const blocks = (over = {}, lang = 'en', date = new Date('2026-11-04T12:00:00Z')) => liteReportView(check({ ...ANNA, ...over }), lang, date);
+// Partners and fees exist only behind VERDICT_REPORT_PARTNERS=1 (hub logic kept for a
+// future opinion that covers them); the tests below check that variant.
+const withPartners = (over = {}, lang = 'en', date = new Date('2026-11-04T12:00:00Z')) => liteReportView(check({ ...ANNA, ...over }), lang, date, { partners: true });
+
+test('paid report: no fees, partners, Partner Finder tile or referral sentence by default', async () => {
+  const fonts = { regular: Uint8Array.from(atob(INTER_REGULAR), (c) => c.charCodeAt(0)), bold: Uint8Array.from(atob(INTER_BOLD), (c) => c.charCodeAt(0)) };
+  for (const lang of ['en', 'sk']) for (const custody of ['self', 'assisted', 'any']) {
+    const r = blocks({ custody }, lang);
+    assert.equal(r.fees, undefined);
+    assert.equal(r.partners, undefined);
+    assert.ok(!r.next.some((n) => n.id === 'finder'), 'no Partner Finder tile');
+    const s = JSON.stringify(r);
+    assert.doesNotMatch(s, /referral|províz|sponsored|Partner Finder|Partners that match|Partneri, ktorí|compare the right partners|porovnáte správnych partnerov/i, `${lang} ${custody}`);
+    const pdf = await renderReportPdf(r, { lang, fonts, date: new Date(0), order: 'ABC', operator: 'Operator line' });
+    assert.ok(pdf.length > 1000);
+  }
+  for (const [lang, href] of [['en', '/secure.html'], ['sk', '/sk/secure.html']]) {
+    const step = blocks({ custody: 'any' }, lang).steps.find((x) => x.id === 'custody');
+    assert.equal(step.tool.href, href, `${lang}: custody step links the custody guide`);
+  }
+  const on = withPartners();
+  assert.ok(on.fees && on.partners && on.next.some((n) => n.id === 'finder'));
+  assert.match(on.legal, /referral fee/);
+  const pdfOn = await renderReportPdf(on, { lang: 'en', fonts, date: new Date(0), order: 'ABC', operator: 'Operator line' });
+  assert.ok(pdfOn.length > 1000);
+});
 
 test('partners: same list as the built Partner Finder, same published facts, alphabetical', () => {
   const src = readFileSync(path.join(HERE, '..', '..', 'Kimi_Agent_Virtuse%20MiCA%20Partners', 'pf-recommend.js'), 'utf8');
@@ -287,7 +330,7 @@ test('partners: same list as the built Partner Finder, same published facts, alp
     const want = PF.recommend({ goal: 'buy', country: 'sk', experience: experience === 'hodler' ? 'hodler' : 'new', custody, amount }, 'en').map((x) => x.partner.id).sort();
     const ours = matchingPartners({ experience, custody, btc });
     assert.deepEqual([...ours].sort(), want, `${experience} ${custody} ${btc}`);
-    const groups = blocks({ experience, custody, btc }).partners.groups;
+    const groups = withPartners({ experience, custody, btc }).partners.groups;
     assert.deepEqual(groups.map((g) => g.id), ['buy', 'custody', 'tax', 'heirs']);
     for (const g of groups) {
       const list = g.list.map((p) => p.name);
@@ -312,7 +355,7 @@ test('partners: same list as the built Partner Finder, same published facts, alp
 
 test('partners: fixed wording, tracked links, translated steps', () => {
   for (const lang of ['en', 'sk']) for (const custody of ['self', 'assisted', 'any']) for (const experience of ['new', 'hodler']) for (const btc of [500, 50000]) {
-    const { partners } = blocks({ custody, experience, btc }, lang);
+    const { partners } = withPartners({ custody, experience, btc }, lang);
     for (const g of partners.groups) {
       assert.ok(g.list.length > 0 || g.empty, g.id);
       assert.ok(g.links.length > 0, g.id);
@@ -345,7 +388,7 @@ test('falls, reserve and whole picture are plain arithmetic on the answers', () 
   assert.match(r.retireBox.plan.scenario.sub, /not a forecast/);
   assert.match(r.retireBox.plan.scenario.vals[0][0], /first day at 65/);
   assert.equal(blocks({ btc: 0, monthly: null }).retireBox.plan, null);
-  for (const lang of ['en', 'sk']) assert.doesNotMatch(JSON.stringify(blocks({ custody: 'assisted' }, lang).partners) + JSON.stringify(blocks({ custody: 'assisted' }, lang).docs), /with help|s pomocou/);
+  for (const lang of ['en', 'sk']) assert.doesNotMatch(JSON.stringify(withPartners({ custody: 'assisted' }, lang).partners) + JSON.stringify(blocks({ custody: 'assisted' }, lang).docs), /with help|s pomocou/);
   assert.equal(blocks({ btc: 0 }).fallTable, null);
   assert.equal(blocks({ savings: 0, pension: null, home: 'rent' }).worth, null);
 });
@@ -436,7 +479,7 @@ test('tax example: 5% sale in the scenario, by country', () => {
 });
 
 test('fees: published rates on the amounts, alphabetical, no winner', () => {
-  const f = blocks().fees;
+  const f = withPartners().fees;
   assert.deepEqual(f.head.slice(2), ['One purchase of €20,000', '€200 a month: fee per year']);
   assert.deepEqual(f.rows.map((x) => x[0]), ['21bitcoin', 'Bybit EU', 'Kraken']);
   assert.match(f.rows[0][2], /€0 on Auto-Invest from day 8; €198 at 0\.99%/);
@@ -445,14 +488,14 @@ test('fees: published rates on the amounts, alphabetical, no winner', () => {
   assert.match(f.note, /not a ranking/);
   assert.match(f.note, /Outside your criteria, for comparison only: Kraken\./);
   // Every partner that matches has a row; a fee kept for comparison says so.
-  const hod = blocks({ experience: 'hodler', custody: 'assisted', btc: 500000 }).fees;
+  const hod = withPartners({ experience: 'hodler', custody: 'assisted', btc: 500000 }).fees;
   assert.deepEqual(hod.rows.map((x) => x[0]), ['21bitcoin', 'Bybit EU', 'Invity', 'Kraken']);
   assert.match(hod.rows[0][1], /for comparison only/);
   assert.equal(hod.rows[2][2], "on the partner's site");
   assert.doesNotMatch(hod.rows[3][1], /comparison/);
   assert.match(hod.note, /Outside your criteria, for comparison only: 21bitcoin\./);
-  assert.equal(blocks({ btc: 0, monthly: null }).fees, null);
-  assert.equal(blocks({ monthly: null }).fees.head.length, 3);
+  assert.equal(withPartners({ btc: 0, monthly: null }).fees, null);
+  assert.equal(withPartners({ monthly: null }).fees.head.length, 3);
 });
 
 test('documents: the buyer writes the rule, the letter never asks for the phrase', () => {

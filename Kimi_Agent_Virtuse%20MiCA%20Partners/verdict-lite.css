@@ -587,3 +587,46 @@
 /* One strong action per screen (2026-11-05): on the Verdict pages the shared nav CTA is quiet */
 .page-verdict .nav-cta { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
 .page-verdict .nav-cta:hover, .page-verdict .nav-cta:focus-visible { background: var(--card-hover); }
+
+/* 2026-11-11 polish ---------------------------------------------------------- */
+/* Pricing cards: the two buttons on one line (subgrid rows), the €14 card buys */
+.vl .ml-plans2 .plan-body { display: flex; flex-direction: column; gap: 12px; }
+.vl .ml-plans2 .plan-up { margin: 0; font-size: 13.5px; color: var(--muted); }
+.vl .ml-plans2 .plan-cta { display: flex; flex-direction: column; gap: 10px; }
+.vl .ml-plans2 .plan-cta .btn { width: 100%; }
+.vl .ml-plans2 .plan-pre { margin: 0; font-size: 13px; color: var(--muted); text-align: center; }
+.vl .ml-plans2 .plan-sample { align-self: center; font-size: 14px; }
+.vl .ml-plans2 .plan-cta .ml-buy-msg:empty { display: none; }
+@supports (grid-template-rows: subgrid) {
+  .vl .ml-plans2 .plan { display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 14px; align-content: start; }
+  .vl .ml-plans2 .plan > .layer, .vl .ml-plans2 .plan > .founding { justify-self: start; }
+}
+
+/* One payment block under every €14 button */
+.ml-pay { margin: 14px auto 0; max-width: 46ch; font-size: 12.5px; line-height: 1.55; color: var(--muted); text-align: center; }
+.ml-pay p { margin: 0 0 4px; }
+.ml-pay a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.ml-pay-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 8px; color: var(--text); font-weight: 600; }
+.ml-pay-top > svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+.ml-pms { display: inline-flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+.ml-pms i { font-style: normal; font: 600 10.5px/20px var(--mono, ui-monospace, monospace); height: 20px; padding: 0 7px; border-radius: 5px; border: 1px solid var(--line-strong, rgba(255,255,255,.18)); color: var(--muted); letter-spacing: .02em; white-space: nowrap; }
+.ml-pay-b2b { font-size: 11.5px; color: var(--dim); }
+.ml-plan .ml-pay, .plan-cta .ml-pay { text-align: center; }
+
+/* Payments closed (Worker 503 or RU/UK): no card/Stripe sentence and no buy button anywhere */
+/* CSS fallback: once data-pay=closed is set, no buy button or payment sentence shows even if a later script fails */
+[data-pay="closed"] [data-buy], [data-pay="closed"] [data-pay-copy], [data-pay="closed"] [data-buybox] .ml-data, [data-pay="closed"] [data-buybox] .ml-data-s { display: none !important; }
+
+/* After "Get my full report" on the pricing card, step 7 leads with the purchase */
+.ml-screen[data-s="7"][data-intent] .ml-plan.pro { order: -1; }
+
+/* Score bands on phones: a legend under the bar, a dot and the range per band */
+@media (max-width: 480px) {
+  .ml-score-row > div:last-child { display: flex; flex-direction: column; }
+  .ml-score-row .ml-scale { order: 2; display: grid; grid-template-columns: 1fr; gap: 10px; margin: 12px 0 0; font-size: 13px; }
+  .ml-score-row .ml-scale span { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; text-align: left !important; }
+  .ml-score-row .ml-scale span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--dim); flex: 0 0 8px; align-self: center; }
+  .ml-score-row .ml-scale span.on::before { background: var(--orange); box-shadow: 0 0 0 3px rgba(247,147,26,.2); }
+  .ml-score-row .ml-scale small { margin: 0; font-size: 12px; white-space: nowrap; }
+  .dm-lbl { gap: 10px; white-space: normal; }
+}

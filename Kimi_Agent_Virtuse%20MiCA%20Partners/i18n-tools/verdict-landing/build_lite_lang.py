@@ -81,12 +81,12 @@ def build(L, cfg, en, sk):
     main = en[a:b]
     for x, y in cfg['patch'].items():
         assert main.count(x) == 1, x; main = main.replace(x, y)
-    x = '<li>A <b>3-step plan for this week</b></li>'; assert main.count(x) == 1
+    x = '<li>A <b>3-step plan for this week</b></li>'   # older gate list only (before 2026-11-11)
     main = main.replace(x, '<li><b>3-step plan for this week</b></li>')
     tr['3-step plan for this week'] = tr.pop('3-step plan for this week', None) or {'ru': 'План из 3 шагов на эту неделю', 'uk': 'План із 3 кроків на цей тиждень'}[L]
     main, missing = apply('<body>' + main, tr); main = main[len('<body>'):]
     real = sorted({m for m in missing if re.search(r'[A-Za-z]{2}', m)})
-    if real: sys.exit('%s: untranslated: %r' % (L, real[:8]))
+    if real: sys.exit('%s: untranslated (%d): %s' % (L, len(real), json.dumps(real, ensure_ascii=False, indent=1)))
     main = re.sub(r'€(\d[\d,]*)', lambda m: m.group(1).replace(',', ' ') + ' €', main)
     main = re.sub(r'\bhref="(/[^"]*)"', lambda m: 'href="%s"' % localise_href(L, cfg, m.group(1)), main)
     # Relative links point into the language folder: keep the ones that exist there, the rest go up a level

@@ -18,6 +18,13 @@ export async function hmacSha256(secret, message) {
   return new Uint8Array(await crypto.subtle.sign('HMAC', key, encoder.encode(message)));
 }
 
+// HMAC-SHA256 with a raw byte key, as base64 (Svix / Resend webhooks).
+export async function hmacSha256Base64(keyBytes, message) {
+  const key = await crypto.subtle.importKey('raw', keyBytes, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const sig = new Uint8Array(await crypto.subtle.sign('HMAC', key, encoder.encode(message)));
+  return btoa(String.fromCharCode(...sig));
+}
+
 export async function hmacSha256Hex(secret, message) {
   return toHex(await hmacSha256(secret, message));
 }

@@ -85,7 +85,7 @@ const COPY = {
       },
       heirs: {
         title: 'Letter for your heirs', warn: 'Never write the recovery phrase, PIN or passwords in this letter. Keep it with your will or with your lawyer.',
-        fields: ['My name and the date', 'What exists: Bitcoin, about how much, which wallets or accounts', 'Where the instructions and backups are (the place, not the content)', 'Partners and accounts I use', 'Who can help: a person I trust, my lawyer', 'Where this letter is kept'],
+        fields: ['My name and the date', 'What exists: Bitcoin, about how much, which wallets or accounts', 'Where the instructions and backups are (the place, not the content)', 'Exchanges, wallets and accounts I use', 'Who can help: a person I trust, my lawyer', 'Where this letter is kept'],
         country: 'Country where I pay tax', custody: 'How I hold my keys',
       },
     },
@@ -151,7 +151,7 @@ const COPY = {
       },
       heirs: {
         title: 'List pre dedičov', warn: 'Do tohto listu nikdy nepíšte frázu na obnovu, PIN ani heslá. Uložte ho so závetom alebo u právnika.',
-        fields: ['Moje meno a dátum', 'Čo existuje: Bitcoin, približne koľko, ktoré peňaženky alebo účty', 'Kde sú pokyny a zálohy (miesto, nie obsah)', 'Partneri a účty, ktoré používam', 'Kto môže pomôcť: osoba, ktorej dôverujem, môj právnik', 'Kde je tento list uložený'],
+        fields: ['Moje meno a dátum', 'Čo existuje: Bitcoin, približne koľko, ktoré peňaženky alebo účty', 'Kde sú pokyny a zálohy (miesto, nie obsah)', 'Burzy, peňaženky a účty, ktoré používam', 'Kto môže pomôcť: osoba, ktorej dôverujem, môj právnik', 'Kde je tento list uložený'],
         country: 'Krajina, kde platím dane', custody: 'Ako držím kľúče',
       },
     },
@@ -392,7 +392,8 @@ function docs(A, T, countryName, { eur }) {
   };
 }
 
-export function reportBlocks(A, c, lang, fmt, date, countryName) {
+// partners: see liteReportView (VERDICT_REPORT_PARTNERS). Off by default.
+export function reportBlocks(A, c, lang, fmt, date, countryName, partners = false) {
   const T = COPY[lang];
   const scen = planScenario(A, c.years);
   return {
@@ -401,8 +402,7 @@ export function reportBlocks(A, c, lang, fmt, date, countryName) {
     reserveBox: reserve(A, T, fmt),
     retireBox: retirement(A, T, c.years, fmt, scen),
     taxExample: taxExample(A, T, date, lang, fmt, c.years, scen),
-    fees: fees(A, T, fmt),
-    partners: partnerBlock(A, T, lang, countryName),
+    ...(partners ? { fees: fees(A, T, fmt), partners: partnerBlock(A, T, lang, countryName) } : {}),
     docs: docs(A, T, countryName, fmt),
   };
 }

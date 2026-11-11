@@ -108,13 +108,13 @@
         custody: { selfNew: '<b>Own keys, first time.</b> The backup is not tested yet.', self: '<b>Own keys.</b> You hold your Bitcoin yourself.', assisted: '<b>Assisted custody.</b> You get help with keys and recovery.', any: '<b>Custody open.</b> You have not decided who holds the keys.' },
         fall: { more: '<b>Calm in a fall.</b> You would buy more at a lower price.', wait: '<b>Calm in a fall.</b> You would wait, not sell.', sell: '<b>Risky in a fall.</b> You would sell some or all to stop the loss.' }
       },
-      blur: { retire: 'Retirement in plain numbers', retireTxt: function (s, p) { return (s ? s + ' retirement savings' : 'Retirement savings') + (p ? ' · ' + p + ' put into your Bitcoin plan by then' : ''); }, partners: 'Partners by your criteria', partnersTxt: 'Buying, custody, tax, inheritance: listed by fixed rules, you choose', pts: 'Where your points come from', fall: 'What a 70% fall means for you', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', against your reserve and debts' : 'Your amount in euros, against your reserve and debts'; }, rule: function (c) { return 'The sale rule in ' + c; }, ruleTxt: 'Holding period, exemption limit, what counts as a sale', steps: '3 steps for this week', yourCountry: 'your country' },
+      blur: { retire: 'Retirement in plain numbers', retireTxt: function (s, p) { return s ? s + ' retirement savings' + (p ? ' · ' + p + ' put into your Bitcoin plan by then' : '') : 'No retirement savings entered' + (p ? ' · ' + p + ' paid into your Bitcoin plan by then' : ''); }, docs: 'Documents to fill in', docsTxt: 'Purchase record, recovery checklist, letter for heirs', pts: 'Where your points come from', fall: 'What a 70% fall means for you', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', against your reserve and debts' : 'Your amount in euros, against your reserve and debts'; }, rule: function (c) { return 'The sale rule in ' + c; }, ruleTxt: 'Holding period, exemption limit, what counts as a sale', steps: '3 steps for this week', yourCountry: 'your country' },
       gateErr: 'Enter a valid email.', net: 'Something went wrong. Please try again.',
       sent: 'Your Lite score is on its way to your inbox.', notSent: 'We could not send the email right now. Your score is below.',
       tooMany: 'Too many attempts. Please try again in an hour. Your score is below.',
       badAddr: 'We could not deliver to this address. Please check it and try again.',
       wlOk: "You're on the list. We'll email you once, when the report opens.",
-      buyWait: 'Opening secure payment…', buyClosed: 'Payment is not open right now. Leave your email and we will write to you once when it is.', buyCanceled: 'Payment cancelled. Nothing was charged.', pdfWait: 'Preparing your PDF…', pdfErr: 'The PDF could not be downloaded. Please try again; your copy is also on its way by email.',
+      buyWait: 'Opening secure payment…', buyClosed: 'Payment is not open right now. Leave your email and we will write to you once when it is. The 30-day refund and the right of withdrawal apply once you buy.', buyCanceled: 'Payment cancelled. Nothing was charged.', pdfWait: 'Preparing your PDF…', pdfErr: 'The PDF could not be downloaded. Please try again; your copy is also on its way by email.',
       repLoad: 'Preparing your report…', repUsed: 'This report was open for 30 minutes and has now closed. Your PDF copy is in the email you paid with. Cannot find it? Write to info@virtuse.com.', repNet: 'We could not load your report. Please reload this page. Your PDF copy is on its way by email; if it does not arrive, write to info@virtuse.com.',
       demo: { top: 'VERDICT REPORT · SAMPLE', title: 'Anna’s Bitcoin plan check', meta: '41 · Slovakia · first purchase · own keys', scale: ['Basics missing', 'A few gaps', 'Basics in place'], pill: 'B · Basics in place', nums: [['Planned', '€20,000 · 13%'], ['After a 70% fall', '€6,000 left'], ['Monthly', '€200'], ['Cash reserve', '3 to 6 months']], areas: ['Size', 'Reserve', 'Debts', 'Tax', 'Custody', 'Behaviour'] },
       jump: ['Landing', '1 Basics', '2 Savings', '3 Home', '4 Bitcoin', '5 Worries', 'Loading', 'Gate', 'Lite score', 'Sample']
@@ -171,13 +171,13 @@
         custody: { selfNew: '<b>Vlastné kľúče, prvýkrát.</b> Záloha ešte nie je vyskúšaná.', self: '<b>Vlastné kľúče.</b> Bitcoin držíte sami.', assisted: '<b>Asistovaná úschova.</b> S kľúčmi a obnovou vám pomáhajú.', any: '<b>Úschova otvorená.</b> Ešte ste sa nerozhodli, kto bude držať kľúče.' },
         fall: { more: '<b>Pokojný pri poklese.</b> Prikúpili by ste za nižšiu cenu.', wait: '<b>Pokojný pri poklese.</b> Počkali by ste, nepredávali.', sell: '<b>Riziko pri poklese.</b> Predali by ste časť alebo všetko, aby ste zastavili stratu.' }
       },
-      blur: { retire: 'Dôchodok v číslach', retireTxt: function (s, p) { return (s ? s + ' úspor na dôchodok' : 'Úspory na dôchodok') + (p ? ' · ' + p + ' vložených do plánu v Bitcoine' : ''); }, partners: 'Partneri podľa vašich kritérií', partnersTxt: 'Nákup, úschova, dane, dedičstvo: podľa pevných pravidiel, vyberáte vy', pts: 'Odkiaľ sú vaše body', fall: 'Čo pre vás znamená pokles o 70 %', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', oproti vašej rezerve a dlhom' : 'Vaša suma v eurách, oproti rezerve a dlhom'; }, rule: function (c) { return 'Pravidlo predaja: ' + c; }, ruleTxt: 'Doba držby, oslobodenie, čo sa ráta ako predaj', steps: '3 kroky na tento týždeň', yourCountry: 'vaša krajina' },
+      blur: { retire: 'Dôchodok v číslach', retireTxt: function (s, p) { return s ? s + ' úspor na dôchodok' + (p ? ' · ' + p + ' vložených do plánu v Bitcoine' : '') : 'Úspory na dôchodok neuvedené' + (p ? ' · do plánu v Bitcoine vložíte ' + p : ''); }, docs: 'Dokumenty na vyplnenie', docsTxt: 'Záznam nákupov, skúška obnovy, list pre dedičov', pts: 'Odkiaľ sú vaše body', fall: 'Čo pre vás znamená pokles o 70 %', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', oproti vašej rezerve a dlhom' : 'Vaša suma v eurách, oproti rezerve a dlhom'; }, rule: function (c) { return 'Pravidlo predaja: ' + c; }, ruleTxt: 'Doba držby, oslobodenie, čo sa ráta ako predaj', steps: '3 kroky na tento týždeň', yourCountry: 'vaša krajina' },
       gateErr: 'Zadajte platný e-mail.', net: 'Niečo sa pokazilo. Skúste to znova.',
       sent: 'Lite skóre vám posielame e-mailom.', notSent: 'E-mail sa teraz nepodarilo odoslať. Vaše skóre nájdete nižšie.',
       tooMany: 'Príliš veľa pokusov. Skúste to znova o hodinu. Vaše skóre nájdete nižšie.',
       badAddr: 'Na túto adresu sa e-mail nepodarilo doručiť. Skontrolujte ju a skúste to znova.',
       wlOk: 'Ste na zozname. Napíšeme vám raz, keď report spustíme.',
-      buyWait: 'Otváram zabezpečenú platbu…', buyClosed: 'Platba teraz nie je otvorená. Nechajte nám e-mail a raz vám napíšeme, keď bude.', buyCanceled: 'Platba bola zrušená. Nič sa nestrhlo.', pdfWait: 'Pripravujem PDF…', pdfErr: 'PDF sa nepodarilo stiahnuť. Skúste to znova; kópia je na ceste aj e-mailom.',
+      buyWait: 'Otváram zabezpečenú platbu…', buyClosed: 'Platba teraz nie je otvorená. Nechajte nám e-mail a raz vám napíšeme, keď bude. Vrátenie peňazí do 30 dní a odstúpenie od zmluvy platia až po kúpe.', buyCanceled: 'Platba bola zrušená. Nič sa nestrhlo.', pdfWait: 'Pripravujem PDF…', pdfErr: 'PDF sa nepodarilo stiahnuť. Skúste to znova; kópia je na ceste aj e-mailom.',
       repLoad: 'Pripravujem váš report…', repUsed: 'Tento report bol otvorený 30 minút a teraz je zatvorený. Kópiu v PDF máte v e-maile, ktorým ste platili. Neviete ju nájsť? Napíšte na info@virtuse.com.', repNet: 'Report sa nepodarilo načítať. Znovu načítajte túto stránku. Kópia v PDF je na ceste e-mailom; ak nepríde, napíšte na info@virtuse.com.',
       demo: { top: 'VERDICT REPORT · VZOR', title: 'Plán Bitcoinu: Anna', meta: '41 · Slovensko · prvý nákup · vlastné kľúče', scale: ['Chýbajú základy', 'Pár medzier', 'Základy máte'], pill: 'B · Základy máte', nums: [['Plánuje', '20 000 € · 13 %'], ['Po poklese o 70 %', 'zostane 6 000 €'], ['Mesačne', '200 €'], ['Rezerva', '3 až 6 mesiacov']], areas: ['Veľkosť', 'Rezerva', 'Dlhy', 'Dane', 'Úschova', 'Správanie'] },
       jump: ['Landing', '1 Základ', '2 Úspory', '3 Bývanie', '4 Bitcoin', '5 Obavy', 'Načítanie', 'Brána', 'Lite skóre', 'Vzor']
@@ -234,13 +234,13 @@
         custody: { selfNew: '<b>Собственные ключи, впервые.</b> Резервная копия ещё не проверена.', self: '<b>Собственные ключи.</b> Вы сами храните свой Биткоин.', assisted: '<b>Хранение с поддержкой.</b> Вам помогают с ключами и восстановлением.', any: '<b>Хранение не решено.</b> Вы ещё не решили, кто будет хранить ключи.' },
         fall: { more: '<b>Спокойствие при падении.</b> Вы докупили бы по более низкой цене.', wait: '<b>Спокойствие при падении.</b> Вы подождёте, а не продадите.', sell: '<b>Риск при падении.</b> Вы продали бы часть или всё, чтобы остановить убыток.' }
       },
-      blur: { retire: 'Пенсия в простых числах', retireTxt: function (s, p) { return (s ? s + ' пенсионных накоплений' : 'Пенсионные накопления') + (p ? ' · ' + p + ' вложено в план по Биткоину к тому времени' : ''); }, partners: 'Партнёры по вашим критериям', partnersTxt: 'Покупка, хранение, налоги, наследование: по фиксированным правилам, выбираете вы', pts: 'Откуда взялись ваши баллы', fall: 'Что падение на 70% значит для вас', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', в сравнении с резервом и долгами' : 'Ваша сумма в евро в сравнении с резервом и долгами'; }, rule: function (c) { return 'Правило продажи: ' + c; }, ruleTxt: 'Срок владения, необлагаемый лимит, что считается продажей', steps: '3 шага на эту неделю', yourCountry: 'ваша страна' },
+      blur: { retire: 'Пенсия в простых числах', retireTxt: function (s, p) { return s ? s + ' пенсионных накоплений' + (p ? ' · ' + p + ' вложено в план по Биткоину к тому времени' : '') : 'Пенсионные накопления не указаны' + (p ? ' · к тому времени в план по Биткоину будет вложено ' + p : ''); }, docs: 'Документы для заполнения', docsTxt: 'Запись покупок, проверка восстановления, письмо наследникам', pts: 'Откуда взялись ваши баллы', fall: 'Что падение на 70% значит для вас', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', в сравнении с резервом и долгами' : 'Ваша сумма в евро в сравнении с резервом и долгами'; }, rule: function (c) { return 'Правило продажи: ' + c; }, ruleTxt: 'Срок владения, необлагаемый лимит, что считается продажей', steps: '3 шага на эту неделю', yourCountry: 'ваша страна' },
       gateErr: 'Введите действительный e-mail.', net: 'Что-то пошло не так. Попробуйте ещё раз.',
       sent: 'Ваша Lite-оценка уже летит на вашу почту.', notSent: 'Сейчас не удалось отправить письмо. Ваша оценка ниже.',
       tooMany: 'Слишком много попыток. Попробуйте снова через час. Ваша оценка ниже.',
       badAddr: 'Не удалось доставить письмо на этот адрес. Проверьте его и попробуйте ещё раз.',
       wlOk: 'Вы в списке. Мы напишем один раз, когда отчёт откроется.',
-      buyWait: 'Открываем безопасную оплату…', buyClosed: 'Полный отчёт пока доступен только на английском и словацком. Оставьте e-mail, и мы напишем один раз, когда он появится на русском.', buyCanceled: 'Оплата отменена. Деньги не списаны.', pdfWait: 'Готовим ваш PDF…', pdfErr: 'Не удалось скачать PDF. Попробуйте ещё раз; копия также придёт на e-mail.',
+      buyWait: 'Открываем безопасную оплату…', buyClosed: 'Полный отчёт пока доступен только на английском и словацком. Оставьте e-mail, и мы напишем один раз, когда он появится на русском. Возврат денег в течение 30 дней и право на отказ от договора действуют только после покупки.', buyCanceled: 'Оплата отменена. Деньги не списаны.', pdfWait: 'Готовим ваш PDF…', pdfErr: 'Не удалось скачать PDF. Попробуйте ещё раз; копия также придёт на e-mail.',
       repLoad: 'Готовим ваш отчёт…', repUsed: 'Этот отчёт был открыт 30 минут и теперь закрыт. Копия в PDF находится в письме на адрес, с которого вы платили. Не можете найти? Напишите на info@virtuse.com.', repNet: 'Не удалось загрузить отчёт. Перезагрузите страницу. Копия в PDF уже идёт на e-mail; если она не придёт, напишите на info@virtuse.com.',
       demo: { top: 'ОТЧЁТ VERDICT · ОБРАЗЕЦ', title: 'Проверка плана Анны по Биткоину', meta: '41 · Словакия · первая покупка · собственные ключи', scale: ['Не хватает основы', 'Есть пробелы', 'Основа есть'], pill: 'B · Основа есть', nums: [['Запланировано', '20 000 € · 13%'], ['После падения на 70%', 'останется 6 000 €'], ['Ежемесячно', '200 €'], ['Резерв наличных', '3–6 месяцев']], areas: ['Размер', 'Резерв', 'Долги', 'Налоги', 'Хранение', 'Поведение'] },
       jump: ['Лендинг', '1 Основное', '2 Сбережения', '3 Жильё', '4 Биткоин', '5 Опасения', 'Загрузка', 'Форма', 'Lite-оценка', 'Образец']
@@ -297,13 +297,13 @@
         custody: { selfNew: '<b>Власні ключі, вперше.</b> Резервну копію ще не перевірено.', self: '<b>Власні ключі.</b> Ви самі зберігаєте свій Біткоїн.', assisted: '<b>Зберігання з підтримкою.</b> Вам допомагають із ключами та відновленням.', any: '<b>Зберігання не вирішено.</b> Ви ще не вирішили, хто зберігатиме ключі.' },
         fall: { more: '<b>Спокій під час падіння.</b> Ви докупили б за нижчою ціною.', wait: '<b>Спокій під час падіння.</b> Ви зачекаєте, а не продасте.', sell: '<b>Ризик під час падіння.</b> Ви продали б частину або все, щоб зупинити збиток.' }
       },
-      blur: { retire: 'Пенсія у простих числах', retireTxt: function (s, p) { return (s ? s + ' пенсійних накопичень' : 'Пенсійні накопичення') + (p ? ' · ' + p + ' вкладено в план щодо Біткоїна на той час' : ''); }, partners: 'Партнери за вашими критеріями', partnersTxt: 'Купівля, зберігання, податки, спадщина: за фіксованими правилами, обираєте ви', pts: 'Звідки взялися ваші бали', fall: 'Що падіння на 70% означає для вас', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', порівняно з резервом і боргами' : 'Ваша сума в євро порівняно з резервом і боргами'; }, rule: function (c) { return 'Правило продажу: ' + c; }, ruleTxt: 'Строк володіння, неоподатковуваний ліміт, що вважається продажем', steps: '3 кроки на цей тиждень', yourCountry: 'ваша країна' },
+      blur: { retire: 'Пенсія у простих числах', retireTxt: function (s, p) { return s ? s + ' пенсійних накопичень' + (p ? ' · ' + p + ' вкладено в план щодо Біткоїна на той час' : '') : 'Пенсійні накопичення не вказано' + (p ? ' · на той час у план щодо Біткоїна буде вкладено ' + p : ''); }, docs: 'Документи для заповнення', docsTxt: 'Запис покупок, перевірка відновлення, лист спадкоємцям', pts: 'Звідки взялися ваші бали', fall: 'Що падіння на 70% означає для вас', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', порівняно з резервом і боргами' : 'Ваша сума в євро порівняно з резервом і боргами'; }, rule: function (c) { return 'Правило продажу: ' + c; }, ruleTxt: 'Строк володіння, неоподатковуваний ліміт, що вважається продажем', steps: '3 кроки на цей тиждень', yourCountry: 'ваша країна' },
       gateErr: 'Введіть дійсну електронну пошту.', net: 'Щось пішло не так. Спробуйте ще раз.',
       sent: 'Ваша Lite-оцінка вже прямує на вашу пошту.', notSent: 'Зараз не вдалося надіслати лист. Ваша оцінка нижче.',
       tooMany: 'Забагато спроб. Спробуйте знову за годину. Ваша оцінка нижче.',
       badAddr: 'Не вдалося доставити лист на цю адресу. Перевірте її та спробуйте ще раз.',
       wlOk: 'Ви в списку. Ми напишемо один раз, коли звіт відкриється.',
-      buyWait: 'Відкриваємо безпечну оплату…', buyClosed: 'Повний звіт поки доступний лише англійською та словацькою. Залиште електронну пошту, і ми напишемо один раз, коли він з’явиться українською.', buyCanceled: 'Оплату скасовано. Гроші не списано.', pdfWait: 'Готуємо ваш PDF…', pdfErr: 'Не вдалося завантажити PDF. Спробуйте ще раз; копія також надійде на електронну пошту.',
+      buyWait: 'Відкриваємо безпечну оплату…', buyClosed: 'Повний звіт поки доступний лише англійською та словацькою. Залиште електронну пошту, і ми напишемо один раз, коли він з’явиться українською. Повернення коштів протягом 30 днів і право на відмову від договору діють лише після купівлі.', buyCanceled: 'Оплату скасовано. Гроші не списано.', pdfWait: 'Готуємо ваш PDF…', pdfErr: 'Не вдалося завантажити PDF. Спробуйте ще раз; копія також надійде на електронну пошту.',
       repLoad: 'Готуємо ваш звіт…', repUsed: 'Цей звіт був відкритий 30 хвилин і тепер закритий. Копія в PDF є в листі на адресу, з якої ви платили. Не можете знайти? Напишіть на info@virtuse.com.', repNet: 'Не вдалося завантажити звіт. Перезавантажте сторінку. Копія в PDF уже прямує на електронну пошту; якщо вона не надійде, напишіть на info@virtuse.com.',
       demo: { top: 'ЗВІТ VERDICT · ЗРАЗОК', title: 'Перевірка плану Анни щодо Біткоїна', meta: '41 · Словаччина · перша купівля · власні ключі', scale: ['Бракує основи', 'Є прогалини', 'Основа є'], pill: 'B · Основа є', nums: [['Заплановано', '20 000 € · 13%'], ['Після падіння на 70%', 'залишиться 6 000 €'], ['Щомісяця', '200 €'], ['Резерв готівки', '3–6 місяців']], areas: ['Розмір', 'Резерв', 'Борги', 'Податки', 'Зберігання', 'Поведінка'] },
       jump: ['Лендинг', '1 Основне', '2 Заощадження', '3 Житло', '4 Біткоїн', '5 Побоювання', 'Завантаження', 'Форма', 'Lite-оцінка', 'Зразок']
@@ -386,6 +386,7 @@
     if (s === 0) demoLoop(); else clearTimeout(demoLoop.t);
     if (key === 'q') { cur = s - 1; renderQ(); dl({ event: 'verdict_step', verdict_step: s }); }
     if (s === 6) load();
+    if (s === 7) { var it = ''; try { it = sessionStorage.getItem(INTENT) || ''; } catch (e) {} scr.toggleAttribute('data-intent', !!it); }
     if (s === 8) result();
     window.scrollTo(0, 0);
   }
@@ -517,7 +518,7 @@
     set(3, S.blur.steps, g.map(function (x, i) { return (i + 1) + '. ' + x[0]; }).join(' · '));
     var planIn = (A.btc || 0) + (c.years != null ? (A.monthly || 0) * c.years * 12 : 0);
     set(4, S.blur.retire, S.blur.retireTxt(A.pension ? eur(A.pension) : '', planIn ? eur(planIn) : ''));
-    set(5, S.blur.partners, S.blur.partnersTxt);
+    set(5, S.blur.docs, S.blur.docsTxt);
     var amt = !A.btc ? '' : A.btc < 1000 ? 's' : A.btc < 10000 ? 'm' : A.btc < 100000 ? 'l' : 'xl';
     $('mlPf').href = P('concierge.html') + '?pf_goal=buy&pf_country=' + (A.country || '') + '&pf_experience=' + (A.experience === 'hodler' ? 'hodler' : 'new') + '&pf_custody=' + (A.custody || '') + '&pf_amount=' + amt + '&utm_source=verdict&utm_medium=lite';
     dl({ event: 'verdict_result', verdict_mode: 'lite', verdict_grade: gr, verdict_weakest: weakAreas(sc) });
@@ -613,30 +614,37 @@
       .catch(function () { done8(S.notSent); });
   };
   // €14 full report: the answers go to the Worker only here, then on to Stripe.
+  // Payments closed (Worker 503, or RU/UK): every box at once shows the waitlist, and no
+  // sentence about card payment, Stripe or a buy button is left anywhere ([data-pay-copy]).
+  function payClosed() {
+    document.documentElement.setAttribute('data-pay', 'closed');
+    document.querySelectorAll('[data-buy]').forEach(function (b) { b.hidden = true; });
+    document.querySelectorAll('form[data-wl]').forEach(function (f) { f.hidden = false; });
+    document.querySelectorAll('[data-buybox] .ml-buy-msg').forEach(function (m) { m.textContent = S.buyClosed; });
+  }
+  var INTENT = 'vb-verdict-intent';
   function buy(btn) {
-    if (!done) { goStep(1); return; }     // the sample page, before the funnel
+    var cta = btn.getAttribute('data-cta') || '';
+    if (LANG === 'ru' || LANG === 'uk') {   // sold in EN and SK only (signed legal scope)
+      dl({ event: 'verdict_checkout_waitlist', verdict_lang: LANG, verdict_cta: cta }); payClosed(); return;
+    }
+    // Before the funnel (pricing card, sample): the checkout needs the answers. Remember the
+    // wish so step 7 leads with the purchase.
+    if (!done) { try { sessionStorage.setItem(INTENT, cta || 'buy'); } catch (e) {} dl({ event: 'verdict_buy_intent', verdict_cta: cta }); goStep(1); return; }
     var box = btn.closest('[data-buybox]'), msg = box && box.querySelector('.ml-buy-msg');
     var say = function (t) { if (msg) msg.textContent = t; };
     var answers = {}; Object.keys(A).forEach(function (k) { if (k !== 'email') answers[k] = A[k]; });
-    // RU/UK: the report is sold in EN and SK only (signed legal scope), so the waitlist instead of checkout
-    if (LANG === 'ru' || LANG === 'uk') {
-      say(S.buyClosed); dl({ event: 'verdict_checkout_waitlist', verdict_lang: LANG });
-      var wl0 = box && box.querySelector('form[data-wl]');
-      if (wl0) { wl0.hidden = false; btn.hidden = true; }
-      return;
-    }
+    var from = ''; try { from = sessionStorage.getItem(INTENT) || ''; } catch (e) {}
     btn.disabled = true; say(S.buyWait);
-    dl({ event: 'verdict_checkout_start' });
-    vbApi().then(function (api) { return api.postJson('/verdict/checkout', { answers: answers, lang: LANG, email: A.email || undefined }); })
+    dl({ event: 'verdict_checkout_start', verdict_cta: cta, verdict_cta_first: from || cta });
+    // Prefill Checkout: the Lite email, else a valid address already typed on the gate (step 7)
+    var gateEm = (($('mlGate') && $('mlGate').email && $('mlGate').email.value) || '').trim();
+    var payEm = A.email || (EMAIL.test(gateEm) ? gateEm : '');
+    vbApi().then(function (api) { return api.postJson('/verdict/checkout', { answers: answers, lang: LANG, email: payEm || undefined }); })
       .then(function (r) {
-        if (r && r.ok && r.data && r.data.url) { location.href = r.data.url; return; }
+        if (r && r.ok && r.data && r.data.url) { try { sessionStorage.removeItem(INTENT); } catch (e) {} location.href = r.data.url; return; }
         btn.disabled = false;
-        if (r && r.status === 503) {          // payments closed on this Worker: the waitlist instead
-          say(S.buyClosed);
-          var wl = box && box.querySelector('form[data-wl]');
-          if (wl) { wl.hidden = false; btn.hidden = true; }
-          return;
-        }
+        if (r && r.status === 503) { payClosed(); return; }   // payments closed on this Worker
         say((r && r.data && r.data.error) || S.net);
       })
       .catch(function () { btn.disabled = false; say(S.net); });
@@ -735,7 +743,7 @@
       (r.fees ? box(r.fees.k, r.fees.h, '<div class="ml-table-scroll">' + tbl(r.fees.head, r.fees.rows) + '</div>' + note(r.fees.note), 'indigo') : '') +
       box(h.bothK, h.both, '<div class="ml-cols"><div><div class="ml-colh r">' + x(h.wrong) + '</div>' + pts(r.risks) + '</div><div><div class="ml-colh g">' + x(h.solid) + '</div>' + (r.solid.length ? pts(r.solid) : '<p>' + x(r.solidNone) + '</p>') + '</div></div>', 'pink') +
       box(h.planK, h.plan, '<ul class="ml-steps">' + r.steps.map(function (s, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(s.title) + '</b><span>' + x(s.text) + '</span>' + (s.tool ? '<a class="ml-step-tool" href="' + x(s.tool.href) + '">' + x(s.tool.name) + ' →</a>' : '') + '</div></li>'; }).join('') + '</ul>', 'green') +
-      box(r.partners.k, r.partners.h, '<p>' + x(r.partners.intro) + '</p>' + r.partners.groups.map(partnerGroup).join(''), 'blue') +
+      (r.partners ? box(r.partners.k, r.partners.h, '<p>' + x(r.partners.intro) + '</p>' + r.partners.groups.map(partnerGroup).join(''), 'blue') : '') +
       box(r.docs.k, r.docs.h, docsHtml(r.docs), 'purple') +
       box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + x(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>', 'teal') +
       dlBtn('ml-big orange wide') + (r.withdraw ? '<p class="ml-legal">' + x(r.withdraw.text) + ' <a href="' + x(r.withdraw.href) + '">' + x(r.withdraw.label) + ' →</a></p>' : '') + '<p class="ml-legal">' + x(r.legal) + '</p>';

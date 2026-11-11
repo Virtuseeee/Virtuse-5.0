@@ -39,7 +39,7 @@
 <link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
 <link rel="stylesheet" href="/verdict-landing.css?v=20261104">
-<link rel="stylesheet" href="/verdict-lite.css?v=20">
+<link rel="stylesheet" href="/verdict-lite.css?v=21">
 <!-- VLH:END -->
 <script>window.VB_I18N = {"openMenu": "Открыть меню", "closeMenu": "Закрыть меню", "latestBrief": "Последний Brief · ", "min": " мин", "coverImage": "Обложка: ", "badEmail": "Введите действительный адрес электронной почты.", "sending": "Отправка...", "subscribed": "Готово. Brief выходит в понедельник.", "error": "Что-то пошло не так. Попробуйте ещё раз.", "netError": "Ошибка сети. Попробуйте ещё раз.", "briefLangNote": " (на английском)"};</script>
 </head>
@@ -131,23 +131,35 @@
         <h3>Lite-оценка</h3>
         <div class="price">0 € <small>за ваш e-mail</small></div>
         <p class="for">Быстрый взгляд на то, насколько готов ваш план.</p>
-        <ul><li>Уровень от A до E и оценка из 100</li><li>Карта шести областей с баллами</li><li>3 области, которые стоит улучшить в первую очередь</li><li>Ваши ответы по областям</li></ul>
-        <a class="btn btn-ghost" href="?s=1" data-go="1">Получить бесплатную Lite-оценку</a>
+        <div class="plan-body"><ul><li>Уровень от A до E и оценка из 100</li><li>Карта шести областей с баллами</li><li>3 области, которые стоит улучшить в первую очередь</li><li>Ваши ответы по областям</li></ul><p class="plan-up" data-pay-copy>Перейти на полный отчёт за 14 € можно в любой момент</p></div>
+        <div class="plan-cta"><a class="btn btn-ghost" href="?s=1" data-go="1">Получить бесплатную Lite-оценку</a></div>
       </div>
       <div class="plan pro">
         <span class="founding">Разово · без подписки</span>
         <h3>Полный отчёт</h3>
         <div class="price">14 € <small>разово</small></div>
         <p class="for">Ваши пробелы превращаются в план, который останется у вас.</p>
-        <ul><li>Баллы и причины по каждой из 6 областей</li><li>Что падение на 70% значит в евро для вашей суммы</li><li>Правило продажи в вашей стране простыми словами</li><li>Варианты хранения рядом</li><li>3 шага на эту неделю</li><li>Партнёры для покупки, хранения и налогов по вашим критериям; сравниваете и выбираете вы</li><li>Прошлые падения Биткоина в евро, налоговый пример и опубликованные комиссии для ваших сумм</li><li>Документы для заполнения: запись о покупке, чек-лист восстановления, письмо наследникам</li><li>PDF, который останется у вас</li></ul>
-        <a class="btn btn-primary" href="?s=9" data-go="9">Посмотреть образец отчёта</a>
+        <ul><li>Баллы и причины по каждой из 6 областей</li><li>Что падение на 70% значит в евро для вашей суммы</li><li>Правило продажи в вашей стране простыми словами</li><li>Варианты хранения рядом</li><li>3 шага на эту неделю</li><li>Ваш резерв и пенсия в евро</li><li>Прошлые падения Биткоина на 70% и более на вашей сумме и налоговый пример для вашей страны</li><li>Документы для заполнения: запись о покупке, чек-лист восстановления, письмо наследникам</li><li>PDF, который останется у вас</li></ul>
+        <div class="plan-cta" data-buybox>
+        <button class="btn btn-primary" type="button" data-buy data-cta="pricing">Получить мой полный отчёт · 14 €</button>
+        <p class="plan-pre" data-pay-copy>Сначала 5 коротких шагов, затем безопасная оплата.</p>
+        <a class="tlink plan-sample" href="?s=9" data-go="9">Посмотреть образец отчёта →</a>
+        <p class="ml-fine ml-buy-msg" aria-live="polite"></p>
+        <form class="ml-form" data-wl novalidate hidden>
+          <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="E-mail" autocomplete="email">
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="ml-btn2 ghost" type="submit">Записаться в список ожидания за 14 €</button>
+          <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
+        </form>
+        <div class="ml-pay" data-pay-copy><p class="ml-pay-top"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Безопасная оплата через Stripe</span><span class="ml-pms" aria-label="Способы оплаты: Visa, Mastercard, Apple Pay, Google Pay"><i>Visa</i><i>Mastercard</i><i>Apple Pay</i><i>Google Pay</i></span></p><p>НДС включён · счёт по e-mail · PDF сразу + по e-mail</p><p>Возврат денег в течение 30 дней · <a href="/terms-and-conditions.html#verdict-report">Условия</a> · <a href="/privacy-policy.html#verdict-cfo">Конфиденциальность</a> · <a href="/withdrawal.html">Право на отказ</a></p><p class="ml-pay-b2b">Компания с номером плательщика НДС в ЕС: обратное начисление НДС при оплате.</p></div>
+        </div>
       </div>
     </div>
     <div class="terms">
       <p class="terms-k">Условия</p>
       <div class="assure-row">
         <span class="ic ic-green"><b>Возврат денег в течение 30 дней</b>Без вопросов и без формы.</span>
-        <span class="ic ic-orange"><b>Оплата картой</b>Один платёж, без подписки.</span>
+        <span class="ic ic-orange" data-pay-copy><b>Картой, через Apple Pay или Google Pay</b>Один платёж, без подписки.</span>
         <span class="ic ic-blue"><b>14 дней на отказ по закону ЕС</b>Ваше законное право на отказ действует дополнительно.</span>
       </div>
       <p class="terms-fine">Цены включают НДС, где он применяется.</p>
@@ -193,7 +205,6 @@
         <li>Резерв и долги: может ли падение заставить вас продать?</li>
         <li>Налоги: правило продажи в вашей стране</li>
         <li>Хранение: кто хранит ключи</li>
-        <li>Партнёры для покупки, хранения и налогов по вашим критериям</li>
       </ul>
     </div>
   </section>
@@ -231,17 +242,19 @@
         <h3>Полный отчёт</h3>
         <div class="ml-price">14 € <small>разово · без подписки</small></div>
         <ul class="ml-list">
-          <li>Всё из Lite-оценки, а также <b>баллы и причины по каждой области</b></li>
-          <li>Что <b>падение на 70%</b> значит в евро для вашей суммы</li>
-          <li>В вашей стране: <b>правило продажи простыми словами</b></li>
-          <li><b>Варианты хранения рядом</b> с учётом ваших ответов</li>
-          <li><b>План из 3 шагов на эту неделю</b></li>
-          <li>Партнёры для покупки, хранения и налогов по вашим критериям; сравниваете и выбираете вы</li>
-          <li>Прошлые падения Биткоина в евро, налоговый пример и опубликованные комиссии для ваших сумм</li><li>Документы для заполнения: запись о покупке, чек-лист восстановления, письмо наследникам</li><li>PDF, который останется у вас</li>
+          <li>Баллы и причины по каждой из 6 областей</li>
+          <li>Что падение на 70% значит в евро для вашей суммы</li>
+          <li>Правило продажи в вашей стране простыми словами</li>
+          <li>Варианты хранения рядом</li>
+          <li>3 шага на эту неделю</li>
+          <li>Ваш резерв и пенсия в евро</li>
+          <li>Прошлые падения Биткоина на 70% и более на вашей сумме и налоговый пример для вашей страны</li>
+          <li>Документы для заполнения: запись о покупке, чек-лист восстановления, письмо наследникам</li>
+          <li>PDF, который останется у вас</li>
         </ul>
         <div class="ml-spacer"></div>
         <p class="ml-data">Ваши ответы покидают устройство, только если вы покупаете полный отчёт: мы храним их на сервере до 24 часов, чтобы его составить, а затем автоматически удаляем.</p>
-        <button class="ml-btn2 orange" type="button" data-buy>Получить полный отчёт · 14 €</button>
+        <button class="ml-btn2 orange" type="button" data-buy data-cta="gate">Получить мой полный отчёт · 14 €</button>
         <p class="ml-fine ml-data-s">Только теперь ваши ответы уходят на наш сервер: хранятся 24 часа, затем удаляются.</p>
         <button class="ml-btn2 ghost" type="button" data-go="9">Сначала посмотреть образец отчёта</button>
         <p class="ml-fine ml-buy-msg" aria-live="polite"></p>
@@ -251,7 +264,7 @@
           <button class="ml-btn2 ghost" type="submit">Записаться в список ожидания за 14 €</button>
           <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
         </form>
-        <p class="ml-fine">Безопасная оплата картой через Stripe. Отчёт откроется сразу, а PDF придёт на e-mail. Возврат денег в течение 30 дней. <a href="/withdrawal.html" style="color:inherit">Право на отказ</a>.</p>
+        <div class="ml-pay" data-pay-copy><p class="ml-pay-top"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Безопасная оплата через Stripe</span><span class="ml-pms" aria-label="Способы оплаты: Visa, Mastercard, Apple Pay, Google Pay"><i>Visa</i><i>Mastercard</i><i>Apple Pay</i><i>Google Pay</i></span></p><p>НДС включён · счёт по e-mail · PDF сразу + по e-mail</p><p>Возврат денег в течение 30 дней · <a href="/terms-and-conditions.html#verdict-report">Условия</a> · <a href="/privacy-policy.html#verdict-cfo">Конфиденциальность</a> · <a href="/withdrawal.html">Право на отказ</a></p><p class="ml-pay-b2b">Компания с номером плательщика НДС в ЕС: обратное начисление НДС при оплате.</p></div>
       </div>
     </div>
     <div class="ml-peek">
@@ -301,9 +314,9 @@
       <div class="ml-lockover" data-buybox>
         <div class="ml-lock" style="width:60px;height:60px;margin:0 auto 14px;border-radius:16px"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
         <div class="ml-gap1" id="mlGap1" style="margin:0 0 8px"></div>
-        <p class="ml-sub" style="margin:0 auto 20px;font-size:15px">Полный отчёт объясняет каждый балл, переводит ваши числа в евро, показывает партнёров по вашим критериям и превращает пробелы в 3 шага и документы, которые останутся у вас в PDF.</p>
+        <p class="ml-sub" style="margin:0 auto 20px;font-size:15px">Полный отчёт объясняет каждый балл, показывает ваши цифры в евро и превращает пробелы в 3 шага и документы, которые остаются у вас в PDF.</p>
         <p class="ml-data">Ваши ответы покидают устройство, только если вы покупаете полный отчёт: мы храним их на сервере до 24 часов, чтобы его составить, а затем автоматически удаляем.</p>
-        <button class="ml-big orange" type="button" data-buy>Получить полный отчёт · 14 € →</button>
+        <button class="ml-big orange" type="button" data-buy data-cta="result">Получить мой полный отчёт · 14 € →</button>
         <p class="ml-fine ml-data-s">Только теперь ваши ответы уходят на наш сервер: хранятся 24 часа, затем удаляются.</p>
         <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
         <form class="ml-form" data-wl novalidate hidden>
@@ -312,7 +325,8 @@
           <button class="ml-btn2 orange" type="submit">Записаться в список ожидания за 14 €</button>
           <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
         </form>
-        <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">Посмотреть образец отчёта</a> · Разово · картой через Stripe · возврат денег в течение 30 дней · <a href="/withdrawal.html" style="color:inherit">Право на отказ</a></p>
+        <div class="ml-pay" data-pay-copy><p class="ml-pay-top"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Безопасная оплата через Stripe</span><span class="ml-pms" aria-label="Способы оплаты: Visa, Mastercard, Apple Pay, Google Pay"><i>Visa</i><i>Mastercard</i><i>Apple Pay</i><i>Google Pay</i></span></p><p>НДС включён · счёт по e-mail · PDF сразу + по e-mail</p><p>Возврат денег в течение 30 дней · <a href="/terms-and-conditions.html#verdict-report">Условия</a> · <a href="/privacy-policy.html#verdict-cfo">Конфиденциальность</a> · <a href="/withdrawal.html">Право на отказ</a></p><p class="ml-pay-b2b">Компания с номером плательщика НДС в ЕС: обратное начисление НДС при оплате.</p></div>
+        <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">Посмотреть образец отчёта</a></p>
       </div>
     </div>
 
@@ -384,7 +398,7 @@
         </ul></div>
         <div><div class="ml-colh g">Уже надёжно</div><ul class="ml-pts">
           <li><i>1</i><div><b>Разумный размер</b><span>13% ваших сбережений. Падение будет болезненным, но не разрушит ваши планы.</span></div></li>
-          <li><i>2</i><div><b>Хранение выбрано</b><span>Вы знаете, что хотите собственные ключи, поэтому можете сравнивать подходящих партнёров.</span></div></li>
+          <li><i>2</i><div><b>Хранение выбрано</b><span>Вы знаете, что хотите собственные ключи, поэтому следующий шаг — проверенная резервная копия.</span></div></li>
           <li><i>3</i><div><b>Нет потребительских долгов</b><span>Ничто не заставит вас продавать при падении, и вы сказали, что подождёте.</span></div></li>
         </ul></div>
       </div>
@@ -405,7 +419,6 @@
       <h4>Инструменты, чтобы применить это на практике</h4>
       <div class="ml-next">
         <a href="/ru/tax-agent.html?country=sk"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg><b>Tax Agent</b><span>Словакия уже выбрана →</span><small>Бесплатно</small></a>
-        <a href="/ru/concierge.html?pf_goal=buy&amp;pf_country=sk&amp;pf_experience=new&amp;pf_custody=self&amp;pf_amount=l&amp;utm_source=verdict&amp;utm_medium=sample"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><b>Подбор партнёров</b><span>Подходящие партнёры →</span><small>Сравниваете и выбираете вы</small></a>
         <a href="/ru/retirement-calculator.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Пенсионный калькулятор</b><span>Ваши собственные предположения →</span><small>Бесплатно</small></a>
         <a href="/ru/asset-returns.html"><svg viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16l3-4 3 2 5-7"/></svg><b>Доходность активов</b><span>По годам с 2016 →</span><small>Бесплатно</small></a>
         <a href="/ru/ecosystem/videos/"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg><b>Видео о Биткоине</b><span>Каналы и выступления →</span><small>Бесплатно</small></a>
@@ -421,8 +434,6 @@
         <li>Прошлые падения Биткоина на 70% и больше для вашей суммы и сколько длился путь обратно</li>
         <li>Ваш резерв и пенсия в евро</li>
         <li>Налоговый пример шаг за шагом: продажа 5% вашего Биткоина в первый год пенсии, с датами для вашей страны</li>
-        <li>Опубликованные комиссии для ваших сумм</li>
-        <li>Партнёры для покупки, хранения и налогов по вашим критериям; сравниваете и выбираете вы</li>
         <li>Для заполнения: ваше правило на случай падения, чек-лист восстановления, запись о покупке, письмо наследникам</li>
       </ul>
     </div>
@@ -431,9 +442,10 @@
       <h4>Хотите такой отчёт для своего плана?</h4>
       <p>14 € разово, без подписки. Если вы ещё не отвечали, сначала пройдёте пять коротких шагов. Возврат денег в течение 30 дней.</p>
       <p class="ml-data">Ваши ответы покидают устройство, только если вы покупаете полный отчёт: мы храним их на сервере до 24 часов, чтобы его составить, а затем автоматически удаляем.</p>
-      <button class="ml-big orange" type="button" data-buy>Получить мой отчёт · 14 €</button>
+      <button class="ml-big orange" type="button" data-buy data-cta="sample">Получить мой полный отчёт · 14 €</button>
       <p class="ml-fine ml-data-s">Только теперь ваши ответы уходят на наш сервер: хранятся 24 часа, затем удаляются.</p>
       <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
+      <div class="ml-pay" data-pay-copy><p class="ml-pay-top"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Безопасная оплата через Stripe</span><span class="ml-pms" aria-label="Способы оплаты: Visa, Mastercard, Apple Pay, Google Pay"><i>Visa</i><i>Mastercard</i><i>Apple Pay</i><i>Google Pay</i></span></p><p>НДС включён · счёт по e-mail · PDF сразу + по e-mail</p><p>Возврат денег в течение 30 дней · <a href="/terms-and-conditions.html#verdict-report">Условия</a> · <a href="/privacy-policy.html#verdict-cfo">Конфиденциальность</a> · <a href="/withdrawal.html">Право на отказ</a></p><p class="ml-pay-b2b">Компания с номером плательщика НДС в ЕС: обратное начисление НДС при оплате.</p></div>
       <form class="ml-form" data-wl novalidate hidden style="max-width:420px;margin:0 auto">
         <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="E-mail" autocomplete="email">
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -445,7 +457,7 @@
       <div><h4>Хотите пройти его вместе с нами?</h4><p>Возьмите свой отчёт на бесплатный 15-минутный звонок. Мы ответим на вопросы, решаете вы.</p></div>
       <button class="ml-big" type="button" data-consultation-trigger data-consultation-lang="en">Записаться на бесплатный звонок на 15 минут</button>
     </div>
-    <p class="ml-legal">Образец отчёта для вымышленной клиентки. Числа иллюстративные. Verdict проверяет ваши ответы по фиксированным правилам и не является инвестиционной, налоговой или юридической консультацией. Партнёры перечислены потому, что соответствуют критериям, без рейтинга; Virtuse может получить реферальное вознаграждение. © 2018–2026 Virtuse Wealth Management, a.s.</p>
+    <p class="ml-legal">Образец отчёта для вымышленной клиентки. Цифры условные. Verdict проверяет ваши ответы по фиксированным правилам и не является инвестиционной, налоговой или юридической консультацией. © 2018–2026 Virtuse Wealth Management, a.s.</p>
   </section>
 
   <!-- 10 THE BOUGHT REPORT (filled by verdict-lite.js from POST /verdict/report) -->
@@ -514,7 +526,7 @@
 <script src="/vb-api.js?v=2" defer></script>
 <script src="/site-v2.js?v=16" defer></script>
 <script src="/consultation-lazy.js?v=5" defer></script>
-<script src="/verdict-lite.js?v=18" defer></script>
+<script src="/verdict-lite.js?v=20" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 // (Resend, KV, Claude) into the features, and declares the route order.
 // This is the only module that knows about every feature.
 
+import { handleResendWebhook } from './features/verdict-pay/alerts.js';
 import { SIGNUP_LIMIT, isAllowedOrigin } from './config.js';
 import { json, preflight } from './http/responses.js';
 import { ANY, on, pipeline, prefix } from './http/router.js';
@@ -68,6 +69,8 @@ const route = pipeline(
   on(ANY, prefix(WP_PREFIX + '/'), (c) => handleWpProxy(c.request, c.url, c.fetch)),
   // Stripe calls it (no Origin); the signature is the proof.
   on(ANY, '/verdict/stripe-webhook', handleStripeWebhook),
+  // Resend calls it (no Origin); the Svix signature is the proof.
+  on(ANY, '/resend/webhook', handleResendWebhook),
   on(['OPTIONS'], ANY, (c) => preflight(c.origin)),
   // Clicked from an email client: no Origin; the HMAC token is the proof.
   on(['GET'], '/unsubscribe', handleUnsubscribe),

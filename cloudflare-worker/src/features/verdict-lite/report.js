@@ -77,7 +77,7 @@ const COPY = {
       mortgage: () => 'More than 80% of your home value is still owed, so the payments should not depend on the Bitcoin price.',
       fall: () => 'You said you would sell in a fall; decide now, in one line, what you will do at −70%.',
       keys: () => 'With own keys, the backup is the part that most often goes wrong.',
-      custody: () => 'You have not decided who holds the keys, so you cannot compare the partners that fit yet.',
+      custody: () => 'You have not decided who holds the keys yet.',
       recovery: () => 'Agree what happens if a key is lost before larger amounts go in.',
       retire: (y) => `You plan to retire in ${y} years; money you need soon should not depend on the Bitcoin price.`,
       heirs: () => 'Without instructions, heirs often never find Bitcoin.',
@@ -123,7 +123,7 @@ const COPY = {
     },
     solid: {
       size: (p) => ['A sensible size', `${p} of your savings. A fall would hurt, not break your plans.`],
-      custody: { self: ['Custody decided', 'You know you want your own keys, so you can compare the right partners.'], assisted: ['Custody decided', 'You want help with keys and recovery, so you can compare the right partners.'] },
+      custody: { self: ['Custody decided', 'You know you want your own keys, so the next step is a tested backup.'], assisted: ['Custody decided', 'You want help with keys and recovery, so the next step is to agree how recovery and heirs work.'] },
       debt: { none: ['No consumer debt', 'Nothing forces you to sell in a fall.'], lt10: ['Small debts', 'Under €10,000 besides any mortgage.'] },
       reserve: ['A cash reserve', 'You could live from cash for months without touching Bitcoin.'],
       fall: ['Calm in a fall', 'You said you would not sell in a fall.'],
@@ -138,7 +138,7 @@ const COPY = {
       mortgage: () => ['Keep the mortgage safe in a fall', 'Work out how many months of payments you hold in cash. They should never depend on the Bitcoin price.'],
       fall: () => ['Write one rule for a fall', 'You said you would sell. Decide now, in one line, what you will do at −70%. The form is under Documents.'],
       keys: () => ['Practise a recovery with €20', 'Set up the hardware wallet, send a small amount, wipe it and restore it from the backup, before larger amounts go in. The checklist is under Documents.'],
-      custody: () => ['Decide who holds the keys', 'Use the table above. Once you decide, Partner Finder can show the partners that match.'],
+      custody: () => ['Decide who holds the keys', 'Use the table above and the custody guide.'],
       recovery: () => ['Agree the recovery steps with your provider', 'Ask what happens if you lose a key and how long recovery takes, before larger amounts go in.'],
       retire: (y) => ['Keep retirement money out of Bitcoin’s swings', `You plan to retire in ${y} years. Mark what you will need in the next years and keep it outside Bitcoin.`],
       heirs: () => ['Tell one person how to find your Bitcoin', 'Write down where the instructions are, never the recovery phrase itself, and tell one person you trust. The letter is under Documents.'],
@@ -152,7 +152,9 @@ const COPY = {
     sent: 'A PDF copy is on its way to the email you paid with. This page stays open for 30 minutes.',
     download: 'Download PDF',
     withdraw: { text: 'Your 14-day right of withdrawal applies even after you have opened this report.', label: 'Withdraw from the contract here' },
-    legal: 'Verdict checks your answers by fixed rules and is not investment, tax or legal advice. Partners are listed because they match the criteria, not ranked; Virtuse may receive a referral fee.',
+    legal: 'Verdict checks your answers by fixed rules and is not investment, tax or legal advice.',
+    // Only with VERDICT_REPORT_PARTNERS=1 (needs a legal opinion that covers partners and fees).
+    legalPartners: 'Partners are listed because they match the criteria, not ranked; Virtuse may receive a referral fee.',
   },
   sk: {
     title: (n) => (n ? `Plán Bitcoinu: ${n}` : 'Váš plán Bitcoinu'),
@@ -213,7 +215,7 @@ const COPY = {
       mortgage: () => 'Dlhujete viac ako 80 % hodnoty bývania, preto splátky nesmú závisieť od ceny Bitcoinu.',
       fall: () => 'Uviedli ste, že pri poklese by ste predali; rozhodnite sa teraz, jednou vetou, čo urobíte pri −70 %.',
       keys: () => 'Pri vlastných kľúčoch sa najčastejšie pokazí záloha.',
-      custody: () => 'Ešte ste sa nerozhodli, kto bude držať kľúče, takže zatiaľ nemôžete porovnať partnerov, ktorí vám vyhovujú.',
+      custody: () => 'Ešte ste sa nerozhodli, kto bude držať kľúče.',
       recovery: () => 'Dohodnite si, čo sa stane pri strate kľúča, skôr než pôjdu do hry väčšie sumy.',
       retire: (y) => `Do dôchodku plánujete ísť o ${y} ${y === 1 ? 'rok' : y > 1 && y < 5 ? 'roky' : 'rokov'}; peniaze, ktoré budete čoskoro potrebovať, nesmú závisieť od ceny Bitcoinu.`,
       heirs: () => 'Bez pokynov dedičia Bitcoin často nikdy nenájdu.',
@@ -259,7 +261,7 @@ const COPY = {
     },
     solid: {
       size: (p) => ['Rozumnú veľkosť', `${p} vašich úspor. Pokles by bolel, ale plány by nezničil.`],
-      custody: { self: ['Rozhodnutú úschovu', 'Viete, že chcete vlastné kľúče, takže porovnáte správnych partnerov.'], assisted: ['Rozhodnutú úschovu', 'Chcete pomoc s kľúčmi a obnovou, takže porovnáte správnych partnerov.'] },
+      custody: { self: ['Rozhodnutú úschovu', 'Viete, že chcete vlastné kľúče, ďalším krokom je vyskúšaná záloha.'], assisted: ['Rozhodnutú úschovu', 'Chcete pomoc s kľúčmi a obnovou, ďalším krokom je dohodnúť, ako funguje obnova a dedenie.'] },
       debt: { none: ['Žiadne spotrebné dlhy', 'Nič vás pri poklese nenúti predávať.'], lt10: ['Malé dlhy', 'Do 10 000 € okrem prípadnej hypotéky.'] },
       reserve: ['Rezervu v hotovosti', 'Mesiace by ste vyžili z hotovosti bez toho, aby ste siahli na Bitcoin.'],
       fall: ['Pokoj pri poklese', 'Uviedli ste, že by ste pri poklese nepredávali.'],
@@ -274,7 +276,7 @@ const COPY = {
       mortgage: () => ['Chráňte hypotéku pred poklesom', 'Spočítajte si, na koľko mesiacov splátok máte hotovosť. Nesmú závisieť od ceny Bitcoinu.'],
       fall: () => ['Napíšte si jedno pravidlo pre pokles', 'Uviedli ste, že by ste predali. Rozhodnite sa teraz, jednou vetou, čo urobíte pri −70 %. Formulár nájdete v časti Dokumenty.'],
       keys: () => ['Vyskúšajte si obnovu s 20 €', 'Nastavte hardvérovú peňaženku, pošlite malú sumu, peňaženku vymažte a obnovte zo zálohy, skôr než pôjdu do hry väčšie sumy. Postup nájdete v časti Dokumenty.'],
-      custody: () => ['Rozhodnite, kto bude držať kľúče', 'Pomôže vám tabuľka vyššie. Keď sa rozhodnete, Partner Finder ukáže partnerov, ktorí spĺňajú kritériá.'],
+      custody: () => ['Rozhodnite, kto bude držať kľúče', 'Pomôže tabuľka vyššie a sprievodca úschovou.'],
       recovery: () => ['Dohodnite si s poskytovateľom postup obnovy', 'Opýtajte sa, čo sa stane pri strate kľúča a ako dlho obnova trvá, skôr než pôjdu do hry väčšie sumy.'],
       retire: (y) => ['Peniaze na dôchodok nenechajte na výkyvoch Bitcoinu', `Do dôchodku plánujete ísť o ${y} ${y === 1 ? 'rok' : y > 1 && y < 5 ? 'roky' : 'rokov'}. Označte si, čo budete v najbližších rokoch potrebovať, a držte to mimo Bitcoinu.`],
       heirs: () => ['Povedzte jednému človeku, ako váš Bitcoin nájsť', 'Zapíšte si, kde sú pokyny, nikdy nie samotnú frázu na obnovu, a povedzte to jednému človeku, ktorému dôverujete. List nájdete v časti Dokumenty.'],
@@ -288,7 +290,8 @@ const COPY = {
     sent: 'Kópia v PDF je na ceste na e-mail, ktorým ste platili. Táto stránka zostane otvorená 30 minút.',
     download: 'Stiahnuť PDF',
     withdraw: { text: 'Vaše 14-dňové právo odstúpiť od zmluvy platí aj po otvorení tohto reportu.', label: 'Odstúpiť od zmluvy tu' },
-    legal: 'Verdict kontroluje vaše odpovede pevnými pravidlami a nie je to investičné, daňové ani právne poradenstvo. Partnerov uvádzame preto, že spĺňajú kritériá, nie podľa poradia; Virtuse môže od partnera dostať províziu.',
+    legal: 'Verdict kontroluje vaše odpovede pevnými pravidlami a nie je to investičné, daňové ani právne poradenstvo.',
+    legalPartners: 'Partnerov uvádzame preto, že spĺňajú kritériá, nie podľa poradia; Virtuse môže od partnera dostať províziu.',
   },
 };
 
@@ -310,7 +313,11 @@ const tool = (name, lang, file, query) => ({ name, href: page(lang, file, query)
 const inEn = (id, name) => (id === 'nl' ? 'the Netherlands' : name);
 
 // date: the day the report is about (the payment), for dates in the tax block.
-export function liteReportView(answers, rawLang = 'en', date = new Date()) {
+// opts.partners: the Fees and Partners blocks, the Partner Finder tile and the
+// referral sentence. Off unless VERDICT_REPORT_PARTNERS=1: the signed opinions for
+// the paid report (4. and 5. 11. 2026) do not cover partners or fees.
+export function liteReportView(answers, rawLang = 'en', date = new Date(), opts = {}) {
+  const withPartners = opts.partners === true;
   const lang = rawLang === 'sk' ? 'sk' : 'en';
   const T = COPY[lang];
   const { eur, pct } = FMT[lang];
@@ -443,12 +450,12 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
   };
   const next = [
     { id: 'tax', name: T.tool.tax, sub: T.next.tax(fact?.name || ''), small: T.next.free, href: page(lang, 'tax-agent.html', taxQuery) },
-    { id: 'finder', name: T.tool.finder, sub: T.next.finder, small: T.next.compare, href: page(lang, 'concierge.html', { ...finder, utm_source: 'verdict', utm_medium: 'report' }), print: page(lang, 'concierge.html', finder) },
+    withPartners && { id: 'finder', name: T.tool.finder, sub: T.next.finder, small: T.next.compare, href: page(lang, 'concierge.html', { ...finder, utm_source: 'verdict', utm_medium: 'report' }), print: page(lang, 'concierge.html', finder) },
     { id: 'retire', name: T.tool.retire, sub: T.next.retire, small: T.next.free, href: page(lang, 'retirement-calculator.html') },
     { id: 'returns', name: T.tool.returns, sub: T.next.returns, small: T.next.free, href: page(lang, 'asset-returns.html') },
     { id: 'videos', name: T.tool.videos, sub: T.next.videos, small: T.next.free, href: page(lang, 'ecosystem/videos/') },
     { id: 'books', name: T.tool.books, sub: T.next.books, small: T.next.free, href: page(lang, 'ecosystem/books/') },
-  ];
+  ].filter(Boolean);
 
   return {
     lite: true,
@@ -485,7 +492,7 @@ export function liteReportView(answers, rawLang = 'en', date = new Date()) {
     sent: T.sent,
     download: T.download,
     withdraw: { ...T.withdraw, href: page(lang, 'withdrawal.html') },
-    ...reportBlocks(A, c, lang, FMT[lang], date, fact?.name || ''),
-    legal: T.legal,
+    ...reportBlocks(A, c, lang, FMT[lang], date, fact?.name || '', withPartners),
+    legal: withPartners ? `${T.legal} ${T.legalPartners}` : T.legal,
   };
 }

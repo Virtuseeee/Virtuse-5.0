@@ -17,20 +17,23 @@ function failure(label, status, text) {
 
 // fetchImpl defaults to the global fetch, looked up at call time.
 export function createResendClient(apiKey, fetchImpl = (...args) => globalThis.fetch(...args)) {
-  function call(method, path, body) {
+  function call(method, path, body, extraHeaders = {}) {
     return fetchImpl(API + path, {
       method,
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
+        ...extraHeaders,
       },
       body: JSON.stringify(body),
     });
   }
 
   return {
-    async sendEmail(message, label = 'Resend send failed') {
-      const res = await call('POST', '/emails', message);
+    // opts.idempotencyKey: Resend sends at most one email per key (24 h), so a
+    // retried or concurrent call cannot send the same message twice.
+    async sendEmail(message, label = 'Resend send failed', opts = {}) {
+      const res = await call('POST', '/emails', message, opts.idempotencyKey ? { 'Idempotency-Key': opts.idempotencyKey } : {});
       if (!res.ok) throw failure(label, res.status, await res.text());
     },
 
