@@ -126,7 +126,7 @@ export async function sendReceipt(ctx, session, rec, store) {
   const lang = receiptLang(session.metadata?.lang);
   try {
     const view = stored.lite
-      ? liteReportView(stored.answers, stored.lang, new Date(rec.paidAt || now))
+      ? liteReportView(stored.answers, stored.lang, new Date(rec.paidAt || now), { partners: env.VERDICT_REPORT_PARTNERS === '1' })
       : reportView(stored.result, stored.profile, verdictOpts(env, pageLang(stored.lang || lang)));
     const pdf = await reportPdf(view, lang, session.id, rec.paidAt || now);
     const invoiceUrl = await invoiceLink(ctx, session);
@@ -227,7 +227,7 @@ export async function handleReport(ctx) {
   if (out.error) return json(out.status, { error: (REPORT_ERRORS[out.error] || REPORT_ERRORS.unpaid)[lang] }, origin);
   if (out.stored.lite) {
     if (out.used) return json(200, { lite: true, reportUsed: true }, origin);
-    const view = liteReportView(out.stored.answers, out.stored.lang, new Date(out.paidAt));
+    const view = liteReportView(out.stored.answers, out.stored.lang, new Date(out.paidAt), { partners: env.VERDICT_REPORT_PARTNERS === '1' });
     if (body.format === 'pdf') {
       try {
         const pdf = await reportPdf(view, view.lang, sid, out.paidAt);
