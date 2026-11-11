@@ -294,6 +294,10 @@ test('paid report: no fees, partners, Partner Finder tile or referral sentence b
     const pdf = await renderReportPdf(r, { lang, fonts, date: new Date(0), order: 'ABC', operator: 'Operator line' });
     assert.ok(pdf.length > 1000);
   }
+  for (const [lang, href] of [['en', '/secure.html'], ['sk', '/sk/secure.html']]) {
+    const step = blocks({ custody: 'any' }, lang).steps.find((x) => x.id === 'custody');
+    assert.equal(step.tool.href, href, `${lang}: custody step links the custody guide`);
+  }
   const on = withPartners();
   assert.ok(on.fees && on.partners && on.next.some((n) => n.id === 'finder'));
   assert.match(on.legal, /referral fee/);
