@@ -1,0 +1,34 @@
+{
+  "_note": "Macro of the week (handover A2). Draft by the desk; shown on the page and in the Monday email only after Ras approves: set approved: true. A point without source_url is never shown. Preview drafts with news.html?preview=macro-week.",
+  "week": "2026-11-09",
+  "approved": false,
+  "items": [
+    {
+      "fact": "US CPI rose 0.4% in October (seasonally adjusted); core CPI rose 0.3%. BLS published no year-on-year figure for October.",
+      "fact_sk": "Inflácia v USA v októbri +0,4 % (sezónne očistené), jadrová +0,3 %. Medziročné číslo za október BLS nezverejnil.",
+      "btc": "Sticky prices plus a likely Fed hike in December are a short-term headwind for BTC.",
+      "btc_sk": "Lepkavé ceny a pravdepodobné zvýšenie sadzieb Fedu v decembri sú pre BTC krátkodobo protivietor.",
+      "source": "U.S. Bureau of Labor Statistics",
+      "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+      "date": "2026-11-10"
+    },
+    {
+      "fact": "The Bank of England raised Bank Rate by 25 bp to 4.00%.",
+      "fact_sk": "Bank of England zvýšila sadzbu o 25 bp na 4,00 %.",
+      "btc": "Another big central bank tightening: money gets dearer for risk assets, BTC included.",
+      "btc_sk": "Ďalšia veľká centrálna banka sprísňuje: peniaze pre rizikové aktíva vrátane BTC zdražujú.",
+      "source": "Bank of England",
+      "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
+      "date": "2026-11-05"
+    },
+    {
+      "fact": "The ECB plans a 12-month digital-euro pilot from the second half of 2027 with 36 payment providers.",
+      "fact_sk": "ECB plánuje 12-mesačný pilot digitálneho eura od 2. polroka 2027 s 36 poskytovateľmi platieb.",
+      "btc": "A new payment rail for the same euro: it changes how you pay, not who sets the money.",
+      "btc_sk": "Nová platobná koľaj pre to isté euro: mení spôsob platby, nie to, kto riadi peniaze.",
+      "source": "European Central Bank",
+      "source_url": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261105~6495a0df6f.en.html",
+      "date": "2026-11-05"
+    }
+  ]
+}

@@ -85,3 +85,16 @@ On desktop the right rail (`#issuesRail`) matches the Latest issues cards’ hei
 | `desk-updating.svg` | Empty / loading desk figure |
 | `og-card.png` / `og-card.svg` | Wordmark + mark on `--bg` |
 | `firefish-promo.png` | Official Firefish OG (“Never sell your Bitcoin. Borrow against it.”) |
+
+
+## Macro handover (2026-11-11, branch `feat/brief-macro-handover`)
+
+| File | What |
+|---|---|
+| `sk/news.html` | Slovak Brief, built from `news.html` by `i18n-tools/build_brief_sk.py` (every English string must map, or the build stops). `news.js` reads `<html lang>`: Slovak UI strings, `sk-SK` numbers and dates, Slovak stories (`/sk/stories/`), WordPress SK category 26. Rebuild after any change to `news.html`. hreflang en/sk/x-default both ways; EN/SK switch in the nav. |
+| `issues-sk.json` | Written by `seo-ops/news_sk_map.py` from the stories' hreflang: Slovak issues first, issues without a Slovak story in English marked "(EN)". The same script adds `alt_url` to `issues.json` ("Čítať po slovensky" / "Read in English" under the featured issue). |
+| `macro-copy.json` + `macro-rules.js` | One "what it means for BTC" line under each By the numbers tile and the US 10Y line (handover A1). First matching rule wins; tests: `node --test macro-build/macro-rules.test.mjs`. |
+| `macro-week.json` | Macro of the week (A2). Rendered only when `approved: true`; `?preview=macro-week` shows the draft. Email section: `python3 seo-ops/macro_week_email.py` → `email/brief-macro-week-{en,sk}.html`. |
+| Pulse | "Updated X h ago"; "Desk updating" after 8 h on weekdays 07-23; stories written "ahead of" a release that has happened drop to the bottom with "Before the release" (see `cloudflare-worker/PULSE.md`). |
+| Central banks | Rate, next decision, last move (effective date, from each bank's series) and market expectations (Kalshi, implied probability, with as-of date; marked when older than 3 days). |
+| Europe card | ECB rate, BTC in EUR, Slovak HICP (auto) + digital euro, MiCA, tax SK/CZ (`macro-build/europe.json`, manual, each with source and as-of). |
