@@ -21,6 +21,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="description" content="Weekly newsletter for Europe on Bitcoin and the macro that moves it: markets, rates, inflation, ETFs and policy. Every Monday. No tokens. No PR.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://virtuse.com/news.html">
+<link rel="alternate" hreflang="en" href="https://virtuse.com/news.html">
+<link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/news.html">
+<link rel="alternate" hreflang="x-default" href="https://virtuse.com/news.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -42,7 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="news/news.css?v=20261111">
+<link rel="stylesheet" href="/news/news.css?v=20261114">
 <style>
 /* One Brief theme: dark by default (same key and palette as blog + stories). */
 :root[data-theme-key="vb-theme-blog"][data-theme="dark"] {
@@ -530,6 +533,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a href="/bitcoin-data.html?utm_source=brief&amp;utm_medium=nav">Bitcoin Data</a>
       <a href="/">Hub</a>
       <a class="btn btn-accent-outline" href="#get-the-brief">Subscribe</a>
+      <span class="nav-lang" aria-label="Language"><a href="/news.html" hreflang="en" lang="en" aria-current="true">EN</a><a href="/sk/news.html" hreflang="sk" lang="sk">SK</a></span>
     </nav>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" title="Switch to light theme">
       <span class="theme-toggle-label" id="themeToggleLabel">Light</span>
@@ -553,8 +557,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <aside class="hero-col hero-pulse" id="pulse">
         <div class="desk-head">
           <h2>Pulse</h2>
-          <p id="pulseUpdated">Updated today · …</p>
+          <p id="pulseUpdated">…</p>
         </div>
+        <p class="pulse-stale" id="pulseStale" hidden></p>
         <div class="pulse-feed" id="pulseList"></div>
         <div class="pulse-archive" id="pulseArchive" hidden></div>
         <div class="desk-status" id="pulseEmpty">
@@ -606,7 +611,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="tile"><div class="tile-label">1 BTC in gold</div><div class="tile-value" id="tileGold">…</div><div class="tile-sub" id="tileGoldSub">…</div></div>
             <div class="tile tile-macro"><div class="tile-label">EUR/USD</div><div class="tile-value" id="tileEur">…</div><div class="tile-sub" id="tileEurChg">…</div></div>
             <div class="tile"><div class="tile-label">Fear &amp; Greed</div><div class="tile-value" id="tileFg">…</div><div class="tile-sub" id="tileFgLabel">…</div></div>
-            <div class="tile tile-macro"><div class="tile-label">Inflation US · EU</div><div class="tile-value" id="tileInfl">…</div><div class="tile-sub" id="tileInflSub">…</div></div>
+            <div class="tile tile-macro"><div class="tile-label">Inflation US · EU</div><div class="tile-value" id="tileInfl">…</div><div class="tile-sub" id="tileInflSub">…</div><div class="tile-note" id="tileInflNote" hidden></div></div>
           </div>
           <p class="numbers-fine" id="numbersFine">Bitcoin live; macro at the last daily close. Sources: Yahoo Finance, BLS, Eurostat, alternative.me. Not a recommendation.</p>
         </div>
@@ -815,7 +820,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="/preferred-source.js" defer></script>
-<script src="news/news.js?v=20261111" defer></script>
+<script src="/news/news.js?v=20261114" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
