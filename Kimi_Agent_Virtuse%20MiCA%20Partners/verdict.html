@@ -39,7 +39,7 @@
 <link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
 <link rel="stylesheet" href="/verdict-landing.css?v=20261104">
-<link rel="stylesheet" href="/verdict-lite.css?v=20">
+<link rel="stylesheet" href="/verdict-lite.css?v=21">
 <!-- VLH:END -->
 </head>
 <body class="page-verdict no-split">
@@ -126,8 +126,8 @@
         <h3>Lite score</h3>
         <div class="price">€0 <small>for your email</small></div>
         <p class="for">A quick read of how ready your plan is.</p>
-        <ul><li>Grade A to E and a score out of 100</li><li>A map of your six areas, with points</li><li>Your 3 areas to improve first</li><li>Your answers read back, area by area</li></ul>
-        <a class="btn btn-ghost" href="?s=1" data-go="1">Get your free Lite score</a>
+        <div class="plan-body"><ul><li>Grade A to E and a score out of 100</li><li>A map of your six areas, with points</li><li>Your 3 areas to improve first</li><li>Your answers read back, area by area</li></ul><p class="plan-up" data-pay-copy>Upgrade anytime for €14</p></div>
+        <div class="plan-cta"><a class="btn btn-ghost" href="?s=1" data-go="1">Get your free Lite score</a></div>
       </div>
       <div class="plan pro">
         <span class="founding">One-time · no subscription</span>
@@ -135,14 +135,26 @@
         <div class="price">€14 <small>once</small></div>
         <p class="for">Your gaps turned into a plan you keep.</p>
         <ul><li>The points and reasons for each of the 6 areas</li><li>What a 70% fall means in euros for your amount</li><li>Your country's sale rule in plain words</li><li>Custody options side by side</li><li>3 steps for this week</li><li>Your reserve and retirement in euros</li><li>Bitcoin's past falls of 70% or more on your amount, and a tax example for your country</li><li>Documents to fill in: purchase record, recovery checklist, letter for heirs</li><li>A PDF to keep</li></ul>
-        <a class="btn btn-primary" href="?s=9" data-go="9">See a sample report</a>
+        <div class="plan-cta" data-buybox>
+        <button class="btn btn-primary" type="button" data-buy data-cta="pricing">Get my full report · €14</button>
+        <p class="plan-pre" data-pay-copy>5 short steps first, then secure checkout.</p>
+        <a class="tlink plan-sample" href="?s=9" data-go="9">See a sample report →</a>
+        <p class="ml-fine ml-buy-msg" aria-live="polite"></p>
+        <form class="ml-form" data-wl novalidate hidden>
+          <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="Email" autocomplete="email">
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="ml-btn2 ghost" type="submit">Join the €14 waitlist</button>
+          <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
+        </form>
+        <div class="ml-pay" data-pay-copy><p class="ml-pay-top"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Secure payment by Stripe</span><span class="ml-pms" aria-label="Payment methods: Visa, Mastercard, Apple Pay, Google Pay"><i>Visa</i><i>Mastercard</i><i>Apple Pay</i><i>Google Pay</i></span></p><p>VAT included · invoice by email · PDF instantly + by email</p><p>30-day refund · <a href="/terms-and-conditions.html#verdict-report">Terms</a> · <a href="/privacy-policy.html#verdict-cfo">Privacy</a> · <a href="/withdrawal.html">Right of withdrawal</a></p><p class="ml-pay-b2b">Business with an EU VAT ID: reverse charge at checkout.</p></div>
+        </div>
       </div>
     </div>
     <div class="terms">
       <p class="terms-k">Terms</p>
       <div class="assure-row">
         <span class="ic ic-green"><b>30-day refund</b>No questions, no form.</span>
-        <span class="ic ic-orange"><b>Pay by card</b>One payment, no subscription.</span>
+        <span class="ic ic-orange" data-pay-copy><b>Card, Apple Pay or Google Pay</b>One payment, no subscription.</span>
         <span class="ic ic-blue"><b>14-day EU withdrawal</b>Your statutory right to withdraw applies on top.</span>
       </div>
       <p class="terms-fine">Prices include VAT where applicable.</p>
@@ -237,7 +249,7 @@
         </ul>
         <div class="ml-spacer"></div>
         <p class="ml-data">Your answers leave your device only if you buy the full report: we keep them on our server for up to 24 hours to build it, then delete them automatically.</p>
-        <button class="ml-btn2 orange" type="button" data-buy>Get the full report · €14</button>
+        <button class="ml-btn2 orange" type="button" data-buy data-cta="gate">Get my full report · €14</button>
         <p class="ml-fine ml-data-s">Only now do your answers go to our server: kept 24 h, then deleted.</p>
         <button class="ml-btn2 ghost" type="button" data-go="9">See a sample report first</button>
         <p class="ml-fine ml-buy-msg" aria-live="polite"></p>
@@ -247,7 +259,7 @@
           <button class="ml-btn2 ghost" type="submit">Join the €14 waitlist</button>
           <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
         </form>
-        <p class="ml-fine">Secure card payment through Stripe. The report opens right away and a PDF comes by email. 30-day refund. <a href="/withdrawal.html" style="color:inherit">Right of withdrawal</a>.</p>
+        <div class="ml-pay" data-pay-copy><p class="ml-pay-top"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Secure payment by Stripe</span><span class="ml-pms" aria-label="Payment methods: Visa, Mastercard, Apple Pay, Google Pay"><i>Visa</i><i>Mastercard</i><i>Apple Pay</i><i>Google Pay</i></span></p><p>VAT included · invoice by email · PDF instantly + by email</p><p>30-day refund · <a href="/terms-and-conditions.html#verdict-report">Terms</a> · <a href="/privacy-policy.html#verdict-cfo">Privacy</a> · <a href="/withdrawal.html">Right of withdrawal</a></p><p class="ml-pay-b2b">Business with an EU VAT ID: reverse charge at checkout.</p></div>
       </div>
     </div>
     <div class="ml-peek">
@@ -299,7 +311,7 @@
         <div class="ml-gap1" id="mlGap1" style="margin:0 0 8px"></div>
         <p class="ml-sub" style="margin:0 auto 20px;font-size:15px">The full report explains every point, puts your numbers in euros and turns the gaps into 3 steps and documents you keep as a PDF.</p>
         <p class="ml-data">Your answers leave your device only if you buy the full report: we keep them on our server for up to 24 hours to build it, then delete them automatically.</p>
-        <button class="ml-big orange" type="button" data-buy>Get the full report · €14 →</button>
+        <button class="ml-big orange" type="button" data-buy data-cta="result">Get my full report · €14 →</button>
         <p class="ml-fine ml-data-s">Only now do your answers go to our server: kept 24 h, then deleted.</p>
         <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
         <form class="ml-form" data-wl novalidate hidden>
@@ -308,7 +320,8 @@
           <button class="ml-btn2 orange" type="submit">Join the €14 waitlist</button>
           <p class="ml-fine ml-wl-msg" aria-live="polite"></p>
         </form>
-        <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">See a sample report</a> · One-time · card via Stripe · 30-day refund · <a href="/withdrawal.html" style="color:inherit">Right of withdrawal</a></p>
+        <div class="ml-pay" data-pay-copy><p class="ml-pay-top"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Secure payment by Stripe</span><span class="ml-pms" aria-label="Payment methods: Visa, Mastercard, Apple Pay, Google Pay"><i>Visa</i><i>Mastercard</i><i>Apple Pay</i><i>Google Pay</i></span></p><p>VAT included · invoice by email · PDF instantly + by email</p><p>30-day refund · <a href="/terms-and-conditions.html#verdict-report">Terms</a> · <a href="/privacy-policy.html#verdict-cfo">Privacy</a> · <a href="/withdrawal.html">Right of withdrawal</a></p><p class="ml-pay-b2b">Business with an EU VAT ID: reverse charge at checkout.</p></div>
+        <p class="ml-note"><a href="?s=9" data-go="9" style="color:inherit">See a sample report</a></p>
       </div>
     </div>
 
@@ -424,9 +437,10 @@
       <h4>Want this report for your own plan?</h4>
       <p>€14 once, no subscription. If you have not answered yet, you do the five short steps first. 30-day refund.</p>
       <p class="ml-data">Your answers leave your device only if you buy the full report: we keep them on our server for up to 24 hours to build it, then delete them automatically.</p>
-      <button class="ml-big orange" type="button" data-buy>Get my report · €14</button>
+      <button class="ml-big orange" type="button" data-buy data-cta="sample">Get my full report · €14</button>
       <p class="ml-fine ml-data-s">Only now do your answers go to our server: kept 24 h, then deleted.</p>
       <p class="ml-fine ml-buy-msg" aria-live="polite" style="margin-top:10px"></p>
+      <div class="ml-pay" data-pay-copy><p class="ml-pay-top"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Secure payment by Stripe</span><span class="ml-pms" aria-label="Payment methods: Visa, Mastercard, Apple Pay, Google Pay"><i>Visa</i><i>Mastercard</i><i>Apple Pay</i><i>Google Pay</i></span></p><p>VAT included · invoice by email · PDF instantly + by email</p><p>30-day refund · <a href="/terms-and-conditions.html#verdict-report">Terms</a> · <a href="/privacy-policy.html#verdict-cfo">Privacy</a> · <a href="/withdrawal.html">Right of withdrawal</a></p><p class="ml-pay-b2b">Business with an EU VAT ID: reverse charge at checkout.</p></div>
       <form class="ml-form" data-wl novalidate hidden style="max-width:420px;margin:0 auto">
         <input class="ml-input" type="email" name="email" placeholder="your@email.com" required aria-label="Email" autocomplete="email">
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">

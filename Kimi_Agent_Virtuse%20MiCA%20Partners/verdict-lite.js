@@ -386,6 +386,7 @@
     if (s === 0) demoLoop(); else clearTimeout(demoLoop.t);
     if (key === 'q') { cur = s - 1; renderQ(); dl({ event: 'verdict_step', verdict_step: s }); }
     if (s === 6) load();
+    if (s === 7) { var it = ''; try { it = sessionStorage.getItem(INTENT) || ''; } catch (e) {} scr.toggleAttribute('data-intent', !!it); }
     if (s === 8) result();
     window.scrollTo(0, 0);
   }
@@ -613,30 +614,34 @@
       .catch(function () { done8(S.notSent); });
   };
   // €14 full report: the answers go to the Worker only here, then on to Stripe.
+  // Payments closed (Worker 503, or RU/UK): every box at once shows the waitlist, and no
+  // sentence about card payment, Stripe or a buy button is left anywhere ([data-pay-copy]).
+  function payClosed() {
+    document.documentElement.setAttribute('data-pay', 'closed');
+    document.querySelectorAll('[data-buy]').forEach(function (b) { b.hidden = true; });
+    document.querySelectorAll('form[data-wl]').forEach(function (f) { f.hidden = false; });
+    document.querySelectorAll('[data-buybox] .ml-buy-msg').forEach(function (m) { m.textContent = S.buyClosed; });
+  }
+  var INTENT = 'vb-verdict-intent';
   function buy(btn) {
-    if (!done) { goStep(1); return; }     // the sample page, before the funnel
+    var cta = btn.getAttribute('data-cta') || '';
+    if (LANG === 'ru' || LANG === 'uk') {   // sold in EN and SK only (signed legal scope)
+      dl({ event: 'verdict_checkout_waitlist', verdict_lang: LANG, verdict_cta: cta }); payClosed(); return;
+    }
+    // Before the funnel (pricing card, sample): the checkout needs the answers. Remember the
+    // wish so step 7 leads with the purchase.
+    if (!done) { try { sessionStorage.setItem(INTENT, cta || 'buy'); } catch (e) {} dl({ event: 'verdict_buy_intent', verdict_cta: cta }); goStep(1); return; }
     var box = btn.closest('[data-buybox]'), msg = box && box.querySelector('.ml-buy-msg');
     var say = function (t) { if (msg) msg.textContent = t; };
     var answers = {}; Object.keys(A).forEach(function (k) { if (k !== 'email') answers[k] = A[k]; });
-    // RU/UK: the report is sold in EN and SK only (signed legal scope), so the waitlist instead of checkout
-    if (LANG === 'ru' || LANG === 'uk') {
-      say(S.buyClosed); dl({ event: 'verdict_checkout_waitlist', verdict_lang: LANG });
-      var wl0 = box && box.querySelector('form[data-wl]');
-      if (wl0) { wl0.hidden = false; btn.hidden = true; }
-      return;
-    }
+    var from = ''; try { from = sessionStorage.getItem(INTENT) || ''; } catch (e) {}
     btn.disabled = true; say(S.buyWait);
-    dl({ event: 'verdict_checkout_start' });
+    dl({ event: 'verdict_checkout_start', verdict_cta: cta, verdict_cta_first: from || cta });
     vbApi().then(function (api) { return api.postJson('/verdict/checkout', { answers: answers, lang: LANG, email: A.email || undefined }); })
       .then(function (r) {
-        if (r && r.ok && r.data && r.data.url) { location.href = r.data.url; return; }
+        if (r && r.ok && r.data && r.data.url) { try { sessionStorage.removeItem(INTENT); } catch (e) {} location.href = r.data.url; return; }
         btn.disabled = false;
-        if (r && r.status === 503) {          // payments closed on this Worker: the waitlist instead
-          say(S.buyClosed);
-          var wl = box && box.querySelector('form[data-wl]');
-          if (wl) { wl.hidden = false; btn.hidden = true; }
-          return;
-        }
+        if (r && r.status === 503) { payClosed(); return; }   // payments closed on this Worker
         say((r && r.data && r.data.error) || S.net);
       })
       .catch(function () { btn.disabled = false; say(S.net); });
