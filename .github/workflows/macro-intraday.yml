@@ -1,0 +1,98 @@
+name: Macro intraday (US CPI and jobs days)
+
+# Brief handover F1.4 (2026-11-11): on US CPI and jobs-report days the macro
+# figures refresh at 15:15 Europe/Bratislava, 45 min after the 08:30 ET
+# release, instead of waiting for the evening Asset returns run. Only
+# macro-build runs; nothing else is rebuilt or deleted. Two UTC crons cover
+# summer (CEST, 13:15 UTC) and winter time (CET, 14:15 UTC);
+# macro-build/release-day.mjs lets exactly one of them through.
+
+on:
+  schedule:
+    - cron: '15 13 * * 1-5'
+    - cron: '15 14 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Run even if today is not a CPI/jobs day'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: asset-returns
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SITE: Kimi_Agent_Virtuse%20MiCA%20Partners
+      FILES: data/macro.json
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Is it a release day at 15:xx Bratislava?
+        id: gate
+        working-directory: main
+        env:
+          FORCE: ${{ inputs.force && '1' || '0' }}
+        run: |
+          set +e
+          node macro-build/release-day.mjs
+          code=$?
+          set -e
+          if [ "$code" = 0 ]; then echo "run=true" >> "$GITHUB_OUTPUT"; else echo "run=false" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Build macro data
+        if: steps.gate.outputs.run == 'true'
+        working-directory: main
+        continue-on-error: true
+        run: node macro-build/build.mjs
+
+      - name: Commit to main
+        id: commit
+        if: steps.gate.outputs.run == 'true'
+        working-directory: main
+        run: |
+          git add "$SITE/$FILES"
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          git config user.name "virtuse-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -m "Update macro data (release day) [skip ci]"
+          git pull --rebase origin main
+          git push origin main
+
+      - uses: actions/checkout@v4
+        if: steps.commit.outputs.changed == 'true'
+        with:
+          ref: gh-pages
+          path: pages
+
+      - name: Publish to staging (gh-pages)
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          mkdir -p pages/data
+          cp "main/$SITE/$FILES" "pages/$FILES"
+          cd pages
+          git config user.name "virtuse-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add $FILES
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Update macro data (release day)"
+          for i in 1 2 3; do
+            git pull --rebase origin gh-pages && git push origin gh-pages && break
+            git rebase --abort 2>/dev/null || true
+            [ "$i" = 3 ] && exit 1
+            sleep $((i * 10))
+          done

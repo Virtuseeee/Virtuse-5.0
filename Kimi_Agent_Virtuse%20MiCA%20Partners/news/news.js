@@ -2,8 +2,45 @@
 (function () {
   'use strict';
 
+  /* Language: news.html is English, sk/news.html Slovak (same script). */
+  var LANG = /^sk/i.test(document.documentElement.lang || '') ? 'sk' : 'en';
+  var LOC = LANG === 'sk' ? 'sk-SK' : 'en-US';
+  var I18N = {
+    en: {
+      pulseUnavailable: 'Pulse unavailable', updated: 'Updated', updatedNow: 'Updated just now', ago: 'ago', min: 'min', h: 'h',
+      deskUpdating: 'Desk updating. The next update is on its way.', today: 'Today', story: 'Story', yesterday: 'Yesterday', earlier: 'Earlier',
+      switchTo: 'Switch to ', themeWord: ' theme', light: 'light', dark: 'dark',
+      emailRequired: 'Email is required.', emailInvalid: 'Please enter a valid email address.', sending: 'Sending',
+      subOk: 'You are on the list. Check your inbox.', subFail: 'Could not join the list. Try again.', netErr: 'Network error. Try again.',
+      fullStory: 'Full story', readBrief: 'Read this Brief', readAt: 'Read at ', readEssay: 'Read essay',
+      beforeRelease: 'Before the release', liveFigures: 'Live figures', unavailable: 'unavailable', gold: 'Gold',
+      yoy: 'y/y', mom: 'm/m', flash: 'flash', yoyNotPub: 'y/y not published by BLS', d1: '1d',
+      last: 'Last', next: 'Next', expects: 'Market expects', asOf: 'as of', stale: 'older than 3 days',
+      kalshiNote: 'Market expects: Kalshi prediction markets, implied probability of the most likely outcome',
+      tagNames: { ETF: 'ETF', Macro: 'Macro', World: 'World', Policy: 'Policy', Mining: 'Mining', Security: 'Security' },
+      source: 'Source', ecbRate: 'ECB deposit rate', btcEur: 'BTC in EUR', skInfl: 'Inflation, Slovakia', nextDecision: 'next decision'
+    },
+    sk: {
+      pulseUnavailable: 'Pulse je nedostupný', updated: 'Aktualizované pred', updatedNow: 'Aktualizované práve teraz', ago: '', min: 'min', h: 'h',
+      deskUpdating: 'Redakcia aktualizuje. Ďalšia aktualizácia je na ceste.', today: 'Dnes', story: 'Článok', yesterday: 'Včera', earlier: 'Skôr',
+      switchTo: 'Prepnúť na ', themeWord: ' režim', light: 'svetlý', dark: 'tmavý',
+      emailRequired: 'Zadaj e-mail.', emailInvalid: 'Zadaj platnú e-mailovú adresu.', sending: 'Odosiela sa',
+      subOk: 'Si na zozname. Skontroluj si schránku.', subFail: 'Prihlásenie sa nepodarilo. Skús to znova.', netErr: 'Chyba siete. Skús to znova.',
+      fullStory: 'Celý článok', readBrief: 'Čítať Brief', readAt: 'Čítať na ', readEssay: 'Čítať esej',
+      beforeRelease: 'Pred zverejnením', liveFigures: 'Živé údaje', unavailable: 'nedostupné', gold: 'Zlato',
+      yoy: 'r/r', mom: 'm/m', flash: 'predbežne', yoyNotPub: 'r/r BLS nezverejnil', d1: '1 d',
+      last: 'Naposledy', next: 'Ďalej', expects: 'Trh čaká', asOf: 'k', stale: 'staršie ako 3 dni',
+      kalshiNote: 'Trh čaká: trhy predikcií Kalshi, implikovaná pravdepodobnosť najčastejšieho scenára',
+      tagNames: { ETF: 'ETF', Macro: 'Makro', World: 'Svet', Policy: 'Regulácia', Mining: 'Ťažba', Security: 'Bezpečnosť' },
+      source: 'Zdroj', ecbRate: 'Sadzba ECB (depozitná)', btcEur: 'BTC v EUR', skInfl: 'Inflácia na Slovensku', nextDecision: 'ďalšie rozhodnutie'
+    }
+  };
+  function tr(k) { var v = I18N[LANG][k]; return v == null ? I18N.en[k] : v; }
+  function tagLabel(t) { return (tr('tagNames') || {})[t] || t; }
+
   var MP = 'https://mempool.space/api';
-  var WP = 'https://blog.virtuse.com/wp-json/wp/v2/posts';
+  var WP = LANG === 'sk' ? 'https://blog.virtuse.com/sk/wp-json/wp/v2/posts' : 'https://blog.virtuse.com/wp-json/wp/v2/posts';
+  var STORY_BASE = LANG === 'sk' ? '/sk/stories/' : '/stories/';
 
   // Newsletter Worker client (vb-api.js), loaded on first use. The same loader
   // sits in every shared script that posts to the Worker; see vb-api.js.
@@ -29,7 +66,7 @@
   var PULSE_TAGS = ['ETF', 'Macro', 'World', 'Policy', 'Mining', 'Security'];
   /* Tags that may run without Bitcoin in the text (world and macro news). */
   var PULSE_OPEN_TAGS = ['Macro', 'World'];
-  var BLOG_CATS = '13,15';
+  var BLOG_CATS = LANG === 'sk' ? '26' : '13,15';
   var BLOG_MAX = 3;
   var ISSUES_MAX = 4;
   /* Placeholder for a missing figure (no em/en dashes in page text). */
@@ -60,10 +97,11 @@
   }
   function num(n, d) {
     if (n == null || isNaN(n)) return NA;
-    return n.toLocaleString('en-US', { maximumFractionDigits: d == null ? 0 : d });
+    return n.toLocaleString(LOC, { maximumFractionDigits: d == null ? 0 : d });
   }
   function usd(n) {
     if (n == null || isNaN(n)) return NA;
+    if (LANG === 'sk') return Math.round(n).toLocaleString('sk-SK') + '\u00a0$';
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
   }
   function compact(n) {
@@ -80,13 +118,13 @@
   function fmtDate(iso) {
     var d = new Date(iso);
     if (isNaN(d.getTime())) return '';
-    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    return d.toLocaleDateString(LANG === 'sk' ? 'sk-SK' : 'en-GB', { day: 'numeric', month: LANG === 'sk' ? 'long' : 'short', year: 'numeric' });
   }
   /* Edition links go straight to /stories/<slug>/. A missing story page falls back to the
      stories hub (the server 301s article.html?slug= there too). data-issue-slug marks them. */
   var STORY = {};
   function storyPath(slug) {
-    return '/stories/' + encodeURIComponent(slug) + '/';
+    return STORY_BASE + encodeURIComponent(slug) + '/';
   }
   function issueLink(slug) {
     return storyPath(slug);
@@ -108,8 +146,8 @@
       STORY[slug] = 'pending';
       fetch(storyPath(slug), { method: 'HEAD' }).then(function (r) {
         STORY[slug] = !!(r.ok && !r.redirected);
-        if (!STORY[slug]) apply('/stories/');
-      }).catch(function () { STORY[slug] = false; apply('/stories/'); });
+        if (!STORY[slug]) apply(STORY_BASE);
+      }).catch(function () { STORY[slug] = false; apply(STORY_BASE); });
     });
   }
   function setText(id, v) {
@@ -120,9 +158,10 @@
     if (n == null || isNaN(n) || n === 0) return '';
     return n > 0 ? 'up' : 'down';
   }
-  function signedPct(n) {
+  function signedPct(n, d) {
     if (n == null || isNaN(n)) return NA;
-    return (n > 0 ? '+' : '') + n.toFixed(2) + '%';
+    var v = Number(n).toLocaleString(LOC, { minimumFractionDigits: d == null ? 2 : d, maximumFractionDigits: d == null ? 2 : d });
+    return (n > 0 ? '+' : '') + v + (LANG === 'sk' ? '\u00a0%' : '%');
   }
   function compactBtcK(n) {
     if (n == null || isNaN(n)) return NA;
@@ -144,12 +183,37 @@
   /* Pulse header while the desk has items: always "Updated today · HH:MM" (Ras, 2026-11-06).
      HH:MM is the feed's own stamp when that stamp is today, otherwise the time the page opened.
      No items at all stays "Pulse unavailable" (renderPulse). */
-  var PULSE_UNAVAILABLE = 'Pulse unavailable';
-  function formatPulseUpdated(iso) {
-    var now = new Date();
+  var PULSE_UNAVAILABLE = tr('pulseUnavailable');
+  /* "Updated X h ago" from the feed's own stamp (handover F1, 2026-11-11: the old
+     "Updated today · HH:MM" hid a stale desk). Over 8 h on a weekday 07-23 h
+     Bratislava time shows a quiet "Desk updating" line under the header. */
+  var STALE_H = 8;
+  function pulseAgeH(iso) {
     var d = new Date(iso);
-    var fresh = iso && !isNaN(d.getTime()) && deskYmd(d) === deskYmd(now);
-    return 'Updated today · ' + deskHhmm(fresh ? d : now);
+    if (!iso || isNaN(d.getTime())) return null;
+    return (Date.now() - d.getTime()) / 36e5;
+  }
+  function formatPulseUpdated(iso) {
+    var hrs = pulseAgeH(iso);
+    if (hrs == null) return tr('pulseUnavailable');
+    var mins = Math.max(0, Math.round(hrs * 60));
+    if (mins < 2) return tr('updatedNow');
+    var span = mins < 60 ? mins + '\u00a0' + tr('min') : Math.floor(hrs) + '\u00a0' + tr('h');
+    return LANG === 'sk' ? tr('updated') + ' ' + span : tr('updated') + ' ' + span + ' ' + tr('ago');
+  }
+  function deskHoursNow() {
+    var parts = new Intl.DateTimeFormat('en-GB', { timeZone: DESK_TZ, weekday: 'short', hour: '2-digit', hour12: false }).formatToParts(new Date());
+    var wd = '', hr = 0;
+    parts.forEach(function (x) { if (x.type === 'weekday') wd = x.value; if (x.type === 'hour') hr = parseInt(x.value, 10); });
+    return !/Sat|Sun/.test(wd) && hr >= 7 && hr < 23;
+  }
+  function applyPulseStale(iso) {
+    var el = $('pulseStale');
+    if (!el) return;
+    var hrs = pulseAgeH(iso);
+    var stale = hrs != null && hrs > STALE_H && deskHoursNow();
+    el.textContent = stale ? tr('deskUpdating') : '';
+    el.hidden = !stale;
   }
   /* The strip under the logo is today's date, on every load, whatever issues.json holds.
      The latest issue's own date lives only on the featured eyebrow (paintFeatured). */
@@ -159,30 +223,35 @@
     var now = new Date();
     var t = document.createElement('time');
     t.setAttribute('datetime', deskYmd(now));
-    t.textContent = now.toLocaleDateString('en-US', { timeZone: DESK_TZ, weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
-    p.textContent = 'Today · ';
+    t.textContent = LANG === 'sk'
+      ? now.toLocaleDateString('sk-SK', { timeZone: DESK_TZ, weekday: 'short', day: 'numeric', month: 'numeric', year: 'numeric' })
+      : now.toLocaleDateString('en-US', { timeZone: DESK_TZ, weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    p.textContent = tr('today') + ' · ';
     p.appendChild(t);
   }
   applyTodayStrip();
   function applyFearGreed(fg) {
     if (!fg || fg.value == null || fg.value === '') return;
     setText('tileFg', String(fg.value) + ' / 100');
-    setText('tileFgLabel', fg.label ? String(fg.label) : 'alternative.me');
+    var FG_SK = { 'extreme fear': 'Extrémny strach', 'fear': 'Strach', 'neutral': 'Neutrálne', 'greed': 'Chamtivosť', 'extreme greed': 'Extrémna chamtivosť' };
+    var fgLabel = fg.label ? String(fg.label) : 'alternative.me';
+    if (LANG === 'sk' && FG_SK[fgLabel.toLowerCase()]) fgLabel = FG_SK[fgLabel.toLowerCase()];
+    setText('tileFgLabel', fgLabel);
   }
   function compactArchiveTitle(it) {
     var title = ((it && it.title) || '').replace(/\s+/g, ' ').trim();
     if (title.length > 72) title = title.slice(0, 69).replace(/\s+\S*$/, '') + '…';
-    return undash(title) || 'Story';
+    return undash(title) || tr('story');
   }
   function renderArchive(archive) {
     var host = $('pulseArchive');
     if (!host) return;
     host.textContent = '';
     var items = [];
-    var labelText = 'Yesterday';
+    var labelText = tr('yesterday');
     if (archive && Array.isArray(archive.items)) {
       items = archive.items;
-      if (archive.label) labelText = archive.label;
+      if (archive.label && LANG === 'en') labelText = archive.label;
     } else if (Array.isArray(archive)) {
       items = archive;
     }
@@ -202,7 +271,7 @@
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
       }
-      a.textContent = inferTag(it) + ' · ' + compactArchiveTitle(it);
+      a.textContent = tagLabel(inferTag(it)) + ' · ' + compactArchiveTitle(it);
       host.appendChild(a);
     });
     host.hidden = false;
@@ -210,6 +279,7 @@
   var pulseStamp;
   function applyPulseMeta(data) {
     pulseStamp = data && data.updated;
+    applyPulseStale(pulseStamp);
     renderArchive(data && data.archive);
     applyFearGreed(data && data.fear_greed);
   }
@@ -249,9 +319,9 @@
       if (!btn) return;
       var next = theme === 'dark' ? 'light' : 'dark';
       var cap = next.charAt(0).toUpperCase() + next.slice(1);
-      btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
-      btn.setAttribute('title', cap + ' theme');
-      if (label) label.textContent = cap;
+      btn.setAttribute('aria-label', tr('switchTo') + tr(next) + tr('themeWord'));
+      btn.setAttribute('title', tr(next) + tr('themeWord'));
+      if (label) label.textContent = LANG === 'sk' ? tr(next).charAt(0).toUpperCase() + tr(next).slice(1) : cap;
     }
     if (btn) {
       btn.addEventListener('click', function () {
@@ -280,37 +350,37 @@
       }
       if (!email) {
         if (msg) {
-          msg.textContent = 'Email is required.';
+          msg.textContent = tr('emailRequired');
           msg.classList.add('err');
         }
         return;
       }
       if (!EMAIL_RE.test(email)) {
         if (msg) {
-          msg.textContent = 'Please enter a valid email address.';
+          msg.textContent = tr('emailInvalid');
           msg.classList.add('err');
         }
         return;
       }
       busy = true;
       btn.disabled = true;
-      btn.textContent = 'Sending';
+      btn.textContent = tr('sending');
       vbApi().then(function (api) {
-        return api.subscribe({ email: email, hp: hp, lang: 'en' });
+        return api.subscribe({ email: email, hp: hp, lang: LANG });
       }).then(function (result) {
         if (result.ok) {
           form.reset();
           if (msg) {
-            msg.textContent = 'You are on the list. Check your inbox.';
+            msg.textContent = tr('subOk');
             msg.classList.add('ok');
           }
         } else if (msg) {
-          msg.textContent = (result.data && result.data.error) || 'Could not join the list. Try again.';
+          msg.textContent = (result.data && result.data.error) || tr('subFail');
           msg.classList.add('err');
         }
       }).catch(function () {
         if (msg) {
-          msg.textContent = 'Network error. Try again.';
+          msg.textContent = tr('netErr');
           msg.classList.add('err');
         }
       }).then(function () {
@@ -329,28 +399,41 @@
   var MACRO_RAW = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/macro.json';
   var macro = null;
   var btcUsd = null;
-  function fmtNum(n, d) { return n == null || isNaN(n) ? NA : Number(n).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function fmtNum(n, d) { return n == null || isNaN(n) ? NA : Number(n).toLocaleString(LOC, { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function pctStr(n, d) { return fmtNum(n, d) + (LANG === 'sk' ? ' %' : '%'); }
   function monthShort(ym) {
     if (!ym) return '';
     var d = new Date(ym.length === 7 ? ym + '-01T12:00:00Z' : ym + 'T12:00:00Z');
-    return isNaN(d.getTime()) ? ym : d.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+    return isNaN(d.getTime()) ? ym : d.toLocaleDateString(LANG === 'sk' ? 'sk-SK' : 'en-US', { month: 'short', timeZone: 'UTC' }).replace(/\.$/, '');
   }
   function dayShort(ymd) {
-    var d = new Date(ymd + 'T12:00:00Z');
-    return isNaN(d.getTime()) ? ymd : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+    var d = new Date(String(ymd).slice(0, 10) + 'T12:00:00Z');
+    if (isNaN(d.getTime())) return ymd;
+    return LANG === 'sk'
+      ? d.getUTCDate() + '. ' + (d.getUTCMonth() + 1) + '.'
+      : d.getUTCDate() + ' ' + 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ')[d.getUTCMonth()];
+  }
+  function link(href, text, cls) {
+    var a = document.createElement('a');
+    a.href = href;
+    if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+    a.textContent = text;
+    if (cls) a.className = cls;
+    return a;
   }
   function setChg(id, pct) {
     var el = $(id);
     if (!el) return;
     if (pct == null || isNaN(pct)) { el.textContent = NA; return; }
-    el.textContent = signedPct(pct) + ' · 1d';
+    el.textContent = signedPct(pct) + ' · ' + tr('d1');
     el.className = 'tile-sub ' + pctClass(pct);
   }
+
   function paintGold() {
     var g = macro && macro.quotes && macro.quotes.gold;
     if (!g || !btcUsd) return;
     setText('tileGold', fmtNum(btcUsd / g.value, 1) + ' oz');
-    setText('tileGoldSub', 'Gold $' + fmtNum(g.value, 0) + '/oz');
+    setText('tileGoldSub', tr('gold') + ' ' + (LANG === 'sk' ? fmtNum(g.value, 0) + '\u00a0$/oz' : '$' + fmtNum(g.value, 0) + '/oz'));
   }
   function macroTicker() {
     var q = macro && macro.quotes;
@@ -358,65 +441,90 @@
     var out = [];
     function add(label, x, d, prefix, suffix) {
       if (!x) return;
-      var v = (prefix || '') + fmtNum(x.value, d) + (suffix || '');
+      var v = prefix === '$' && LANG === 'sk' ? fmtNum(x.value, d) + '\u00a0$' : (prefix || '') + fmtNum(x.value, d) + (suffix || '');
       out.push([label, x.change_pct == null ? v : v + ' ' + signedPct(x.change_pct), pctClass(x.change_pct)]);
     }
     add('S&P 500', q.spx, 0);
-    add('Gold', q.gold, 0, '$');
+    add(tr('gold'), q.gold, 0, '$');
     add('Brent', q.brent, 2, '$');
     add('EUR/USD', q.eurusd, 4);
     if (q.us10y) {
       var bp = q.us10y.prev != null ? Math.round((q.us10y.value - q.us10y.prev) * 100) : null;
-      out.push(['US 10Y', fmtNum(q.us10y.value, 2) + '%' + (bp == null ? '' : ' ' + (bp > 0 ? '+' : '') + bp + ' bp'), bp == null ? '' : pctClass(bp)]);
+      out.push(['US 10Y', pctStr(q.us10y.value, 2) + (bp == null ? '' : ' ' + (bp > 0 ? '+' : '') + bp + ' bp'), bp == null ? '' : pctClass(bp)]);
     }
     return out;
   }
+  /* F2: US CPI shows the last y/y BLS published + the latest m/m; euro area
+     carries "flash" while Eurostat marks the figure as estimated. */
+  function paintInflation(inf) {
+    var us = inf.us, ea = inf.ea;
+    if (!us && !ea) return;
+    setText('tileInfl', (us ? fmtNum(us.value, 1) : NA) + ' / ' + (ea ? fmtNum(ea.value, 1) : NA) + (LANG === 'sk' ? ' %' : '%'));
+    setText('tileInflSub', tr('yoy') + ' · US ' + (us ? monthShort(us.month) : NA) + ' · ' + (LANG === 'sk' ? 'EÚ ' : 'EU ') +
+      (ea ? monthShort(ea.month) + (ea.flash ? ' ' + tr('flash') : '') : NA));
+    var note = $('tileInflNote');
+    if (note && us && us.mom != null) {
+      note.textContent = 'US ' + monthShort(us.mom_month) + ' ' + signedPct(us.mom, 1) + ' ' + tr('mom');
+      if (us.yoy_published === false) {
+        note.appendChild(document.createTextNode(' · '));
+        note.appendChild(link(us.note_url || us.source_url, tr('yoyNotPub')));
+      }
+      note.hidden = false;
+    }
+  }
+  /* Central banks: rate + next decision (table in the Newsletter rail). */
+  function paintBanks(cb) {
+    Array.prototype.forEach.call(document.querySelectorAll('#cbRows tr[data-cb]'), function (row) {
+      var b = cb[row.getAttribute('data-cb')];
+      var tds = row.querySelectorAll('td');
+      if (!b || tds.length < 2) return;
+      tds[0].textContent = LANG === 'sk' ? String(b.rate).replace(/\./g, ',').replace('%', '\u00a0%') : b.rate;
+      tds[0].title = b.label + ' · ' + b.source;
+      tds[1].textContent = b.next_meeting ? dayShort(b.next_meeting) : NA;
+    });
+  }
+  /* F1: events that already happened, used to demote "ahead of CPI" stories. */
+  function recentEvents() { return (macro && macro.recent_events) || []; }
+  function paintCalendar(m) {
+    var cal = (m.calendar || []).filter(function (e) { return e.date >= deskYmd(new Date()); }).slice(0, 4);
+    var list = $('calList');
+    var box = $('pulseCalendar');
+    if (!list || !box || !cal.length) return;
+    list.textContent = '';
+    cal.forEach(function (e) {
+      var li = document.createElement('li');
+      var t = document.createElement('time');
+      t.setAttribute('datetime', e.time || e.date);
+      t.textContent = dayShort(e.date);
+      li.appendChild(t);
+      li.appendChild(e.url ? link(e.url, LANG === 'sk' && e.title_sk ? e.title_sk : e.title) : document.createTextNode(e.title));
+      list.appendChild(li);
+    });
+    box.hidden = false;
+  }
+
   function paintMacro(m) {
     macro = m;
     var q = m.quotes || {};
     if (q.spx) { setText('tileSpx', fmtNum(q.spx.value, 0)); setChg('tileSpxChg', q.spx.change_pct); }
     if (q.eurusd) { setText('tileEur', fmtNum(q.eurusd.value, 4)); setChg('tileEurChg', q.eurusd.change_pct); }
-    var inf = m.inflation || {};
-    if (inf.us || inf.ea) {
-      setText('tileInfl', (inf.us ? fmtNum(inf.us.value, 1) : NA) + ' / ' + (inf.ea ? fmtNum(inf.ea.value, 1) : NA) + '%');
-      setText('tileInflSub', 'y/y · US ' + (inf.us ? monthShort(inf.us.month) : '') + ' · EU ' + (inf.ea ? monthShort(inf.ea.month) : ''));
-    }
+    paintInflation(m.inflation || {});
     paintGold();
-    var rows = document.querySelectorAll('#cbRows tr[data-cb]');
-    var cb = m.central_banks || {};
-    Array.prototype.forEach.call(rows, function (tr) {
-      var b = cb[tr.getAttribute('data-cb')];
-      var tds = tr.querySelectorAll('td');
-      if (!b || tds.length < 2) return;
-      tds[0].textContent = b.rate;
-      tds[0].title = b.label + ' · ' + b.source;
-      tds[1].textContent = b.next_meeting ? dayShort(b.next_meeting) : NA;
-    });
-    var cal = (m.calendar || []).filter(function (e) { return e.date >= deskYmd(new Date()); }).slice(0, 4);
-    var list = $('calList');
-    var box = $('pulseCalendar');
-    if (list && box && cal.length) {
-      list.textContent = '';
-      cal.forEach(function (e) {
-        var li = document.createElement('li');
-        var t = document.createElement('time');
-        t.setAttribute('datetime', e.date);
-        t.textContent = dayShort(e.date);
-        var a = document.createElement(e.url ? 'a' : 'span');
-        if (e.url) { a.href = e.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; }
-        a.textContent = e.title;
-        li.appendChild(t);
-        li.appendChild(a);
-        list.appendChild(li);
-      });
-      box.hidden = false;
-    }
+    paintBanks(m.central_banks || {});
+    paintCalendar(m);
     if (lastTickerStats) renderTicker(lastTickerStats);
+    if (lastPulseItems) renderPulse(lastPulseItems);
   }
+  /* GitHub copy and the site's own copy: whichever was generated later wins
+     (staging and a fresh deploy can be ahead of main; a failed fetch is skipped). */
   function loadMacro() {
-    j(MACRO_RAW, 6000).catch(function () { return j('data/macro.json?v=' + Date.now().toString().slice(0, 6)); })
-      .then(function (m) { if (m && m.quotes) paintMacro(m); })
-      .catch(function () { /* tiles keep their placeholders */ });
+    var tries = [j(MACRO_RAW, 6000), j('/data/macro.json?v=' + Date.now().toString().slice(0, 6), 6000)].map(function (p) {
+      return p.then(function (m) { return m && m.quotes ? m : null; }, function () { return null; });
+    });
+    Promise.all(tries).then(function (res) {
+      var best = res.filter(Boolean).sort(function (a, b) { return String(b.generated || '').localeCompare(String(a.generated || '')); })[0];
+      if (best) paintMacro(best);
+    });
   }
   loadMacro();
 
@@ -472,7 +580,7 @@
     }
     var allMissing = parts.every(function (p) { return p[1] === NA; });
     if (allMissing && stats.settled) {
-      parts = [['Live figures', 'unavailable', '']];
+      parts = [[tr('liveFigures'), tr('unavailable'), '']];
     }
     host.textContent = '';
     var probe = makeGroup(1);
@@ -557,7 +665,7 @@
         }
         if (n == null || isNaN(n)) throw new Error('no change');
         stats.chgRaw = n;
-        liveOk(stats, 'chg', 'tileChg', signedPct(n));
+          liveOk(stats, 'chg', 'tileChg', signedPct(n));
         stats.chgClass = pctClass(n);
         var el = $('tileChg');
         if (el) el.className = 'tile-sub ' + stats.chgClass;
@@ -602,12 +710,12 @@
     return true;
   }
   function outletCta(item) {
-    if (!item) return 'Full story';
-    if (isDeskStory(item)) return 'Read this Brief';
+    if (!item) return tr('fullStory');
+    if (isDeskStory(item)) return tr('readBrief');
     var src = (item.source || '').replace(/\s+/g, ' ').trim();
-    if (!src) return 'Full story';
-    if (/crypto\s*slate/i.test(src)) return 'Read at CryptoSlate';
-    return 'Read at ' + src;
+    if (!src) return tr('fullStory');
+    if (/crypto\s*slate/i.test(src)) return tr('readAt') + 'CryptoSlate';
+    return tr('readAt') + src;
   }
   function firstSentence(text) {
     var m = (text || '').match(/.*?[.!?](?=\s|$)/);
@@ -647,15 +755,44 @@
     svg.appendChild(use);
     return svg;
   }
+  /* F1: a story written "ahead of" a release (CPI, jobs report, a rate
+     decision) that has since happened drops below the others and is labelled
+     "Before the release", so it never leads the Pulse after the numbers are out. */
+  var BEFORE_RE = /\b(ahead of|before|awaits?|braces? for|on the eve of|faces?\b[^.]{0,40}\btest)\b/i;
+  var EVENT_RE = {
+    cpi: /\b(cpi|inflation (data|report|print|figures?))\b/i,
+    nfp: /\b(nfp|jobs report|payrolls|non-?farm)\b/i,
+    fed: /\b(fomc|fed (decision|meeting)|powell)\b/i,
+    ecb: /\becb\b/i,
+    boe: /\b(boe|bank of england)\b/i,
+    boj: /\b(boj|bank of japan)\b/i
+  };
+  function beforeRelease(it) {
+    var blob = ((it && it.title) || '') + ' ' + ((it && it.excerpt) || '');
+    if (!BEFORE_RE.test(blob)) return null;
+    var pub = Date.parse(it.published || '') || 0;
+    var now = Date.now();
+    var hit = null;
+    recentEvents().forEach(function (e) {
+      var t = Date.parse(e.time || e.date);
+      if (!hit && EVENT_RE[e.kind] && EVENT_RE[e.kind].test(blob) && t <= now && pub < t) hit = e;
+    });
+    return hit;
+  }
+  var lastPulseItems = null;
   function renderPulse(items) {
     var list = $('pulseList');
     var empty = $('pulseEmpty');
     if (!list || !empty) return;
+    lastPulseItems = items;
     list.textContent = '';
     var shorts = (items || []).filter(function (it) {
       if (!it || isDeskStory(it)) return false;
       return PULSE_OPEN_TAGS.indexOf(inferTag(it)) !== -1 || isBitcoinOnly(it);
-    }).slice(0, PULSE_MAX);
+    }).slice(0, PULSE_MAX).map(function (it) {
+      return { it: it, before: beforeRelease(it) };
+    });
+    shorts = shorts.filter(function (x) { return !x.before; }).concat(shorts.filter(function (x) { return x.before; }));
     if (!shorts.length) {
       setText('pulseUpdated', PULSE_UNAVAILABLE);
       empty.hidden = false;
@@ -663,14 +800,21 @@
     }
     setText('pulseUpdated', formatPulseUpdated(pulseStamp));
     empty.hidden = true;
-    shorts.forEach(function (it) {
+    shorts.forEach(function (x) {
+      var it = x.it;
       var article = document.createElement('article');
-      article.className = 'pulse-item';
+      article.className = 'pulse-item' + (x.before ? ' is-before' : '');
       var tagName = inferTag(it);
       var tag = document.createElement('span');
       tag.className = 'pulse-tag';
       tag.appendChild(pulseIcon(tagName));
-      tag.appendChild(document.createTextNode(tagName));
+      tag.appendChild(document.createTextNode(tagLabel(tagName)));
+      if (x.before) {
+        var bf = document.createElement('span');
+        bf.className = 'pulse-before';
+        bf.textContent = tr('beforeRelease') + ' · ' + (LANG === 'sk' && x.before.title_sk ? x.before.title_sk : x.before.title);
+        tag.appendChild(bf);
+      }
       var copy = document.createElement('p');
       copy.className = 'pulse-copy';
       copy.textContent = undash(twoSentences(it));
@@ -688,7 +832,7 @@
       list.appendChild(article);
     });
   }
-  var PULSE_LOCAL = 'news/news-pulse.json?v=20261110';
+  var PULSE_LOCAL = '/news/news-pulse.json?v=20261110';
   /* Worker GET /pulse.json, 3 s limit (the local copy is the fallback). */
   function fetchPulseRemote() {
     return vbApi().then(function (api) {
@@ -726,7 +870,8 @@
 
   /* Newsletter issues with cover images. */
   function issueHref(issue) {
-    return issue.slug ? issueLink(issue.slug) : (issue.url || '#');
+    if (issue.url) return issue.url;
+    return issue.slug ? issueLink(issue.slug) : '#';
   }
   function markIssue(a, slug) {
     if (slug) a.setAttribute('data-issue-slug', slug);
@@ -735,7 +880,8 @@
     var a = document.createElement('a');
     a.className = 'archive-card';
     a.href = issueHref(issue);
-    markIssue(a, issue.slug);
+    if (!issue.url) markIssue(a, issue.slug);
+    if (issue.lang) a.setAttribute('hreflang', issue.lang);
     if (issue.image) {
       var img = document.createElement('img');
       img.loading = 'lazy';
@@ -891,7 +1037,7 @@
     h.textContent = undash(issue.title);
     var read = document.createElement('span');
     read.className = 'read';
-    read.textContent = 'Read essay';
+    read.textContent = tr('readEssay');
     body.appendChild(meta);
     body.appendChild(h);
     body.appendChild(read);
@@ -920,7 +1066,7 @@
     h.textContent = strip(post.title && post.title.rendered);
     var read = document.createElement('span');
     read.className = 'read';
-    read.textContent = 'Read essay';
+    read.textContent = tr('readEssay');
     body.appendChild(meta);
     body.appendChild(h);
     body.appendChild(read);
@@ -935,7 +1081,7 @@
   function latestIssue(issues) {
     var best = null;
     (issues || []).forEach(function (issue) {
-      if (!issue || !issue.slug || issue.essay || !issue.title) return;
+      if (!issue || !issue.slug || issue.essay || !issue.title || issue.lang) return;
       if (!best || String(issue.date || '') > String(best.date || '')) best = issue;
     });
     return best;
@@ -943,7 +1089,9 @@
   function fmtEditionDate(ymd) {
     var d = new Date(String(ymd || '') + 'T12:00:00Z');
     if (isNaN(d.getTime())) return '';
-    return d.toLocaleDateString('en-US', { timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    return LANG === 'sk'
+      ? d.toLocaleDateString('sk-SK', { timeZone: 'UTC', weekday: 'short', day: 'numeric', month: 'numeric', year: 'numeric' })
+      : d.toLocaleDateString('en-US', { timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
   }
   function issueFacts(issue) {
     if (issue.facts && issue.facts.length) return issue.facts.slice(0, 3).map(undash);
@@ -1003,7 +1151,16 @@
       read.setAttribute('href', href);
       markIssue(read, issue.slug);
     }
+    paintAltLang(issue);
     linkStories();
+  }
+  /* "Čítať po slovensky" / "Read in English": the translation from the stories' hreflang
+     (seo-ops/news_sk_map.py writes alt_url into issues.json and issues-sk.json). No translation, no link. */
+  function paintAltLang(issue) {
+    var a = $('featuredAltLang');
+    if (!a) return;
+    if (issue && issue.alt_url) { a.href = issue.alt_url; a.hidden = false; }
+    else a.hidden = true;
   }
   function ownCover(issue) {
     return !!(issue && issue.image && !/^https?:\/\/blog\.virtuse\.com\//.test(issue.image));
@@ -1053,13 +1210,14 @@
     linkStories();
   }
 
-  j('news/issues.json?v=20261110').then(function (data) {
+  j(LANG === 'sk' ? '/news/issues-sk.json?v=20261112' : '/news/issues.json?v=20261112').then(function (data) {
     var list = (data && data.issues) || [];
     var latest = latestIssue(list);
     if (latest) {
       FEATURED_SLUG = latest.slug;
       LATEST_ISSUE = latest;
       paintFeatured(latest);
+      paintAltLang(latest);
     }
     paintArchive(list);
     paintBlog(list, []);

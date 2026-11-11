@@ -12,13 +12,16 @@ Exactly 4 items, categories Macro, World, Markets, Regulation in that order: cat
 import html, json, pathlib, re, sys
 
 SITE = pathlib.Path(__file__).resolve().parent.parent / "Kimi_Agent_Virtuse%20MiCA%20Partners"
-SRC, PAGE = SITE / "news/news-markets.json", SITE / "news.html"
+SRC = SITE / "news/news-markets.json"
+PAGES = {"en": SITE / "news.html", "sk": SITE / "sk/news.html"}
+CAT_SK = {"Macro": "Makro", "World": "Svet", "Markets": "Trhy", "Regulation": "Regulácia"}
+MONTHS_SK = "januára februára marca apríla mája júna júla augusta septembra októbra novembra decembra".split()
 START, END = "<!-- news-markets:start -->", "<!-- news-markets:end -->"
 
 CATEGORIES = ["Macro", "World", "Markets", "Regulation"]
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 
-def render(d):
+def render(d, lang="en"):
     e = html.escape
     items = d["items"]
     assert len(items) == 4, "News & Markets shows exactly 4 cards"
@@ -30,12 +33,16 @@ def render(d):
             assert it.get(k), f"item missing {k}: {it}"
         assert it["url"].startswith("https://"), it["url"]
         y, m, dd = it["date"].split("-")
-        human = f"{int(dd)} {MONTHS[int(m) - 1]} {y}"
+        human = f"{int(dd)}. {MONTHS_SK[int(m) - 1]} {y}" if lang == "sk" else f"{int(dd)} {MONTHS[int(m) - 1]} {y}"
+        cat = CAT_SK[it["category"]] if lang == "sk" else it["category"]
+        title = it.get("title_sk") if lang == "sk" else it["title"]
+        excerpt = it.get("excerpt_sk") if lang == "sk" else it["excerpt"]
+        assert title and excerpt, f"missing {lang} text: {it['title']}"
         out += [
             '        <article class="markets-card">',
-            f'          <p class="markets-kicker">{e(it["category"])}</p>',
-            f'          <h3 class="markets-title"><a href="{e(it["url"])}" target="_blank" rel="noopener noreferrer">{e(it["title"])}</a></h3>',
-            f'          <p class="markets-deck">{e(it["excerpt"])}</p>',
+            f'          <p class="markets-kicker">{e(cat)}</p>',
+            f'          <h3 class="markets-title"><a href="{e(it["url"])}" target="_blank" rel="noopener noreferrer">{e(title)}</a></h3>',
+            f'          <p class="markets-deck">{e(excerpt)}</p>',
             f'          <p class="markets-filing"><time datetime="{e(it["date"])}">{human}</time><span>{e(it["source"])}</span></p>',
             '        </article>']
     out += ["      </div>", "      " + END]
@@ -43,14 +50,21 @@ def render(d):
 
 def main():
     d = json.loads(SRC.read_text())
-    page = PAGE.read_text()
-    m = re.search(re.escape(START) + r".*?" + re.escape(END), page, re.S)
-    assert m, "markers not found in news.html"
-    new = page[:m.start()] + render(d) + page[m.end():]
+    stale = False
+    for lang, page_p in PAGES.items():
+        if not page_p.exists():
+            continue
+        page = page_p.read_text()
+        m = re.search(re.escape(START) + r".*?" + re.escape(END), page, re.S)
+        assert m, f"markers not found in {page_p.name}"
+        new = page[:m.start()] + render(d, lang) + page[m.end():]
+        if new != page:
+            stale = True
+            if "--check" not in sys.argv:
+                page_p.write_text(new)
     if "--check" in sys.argv:
-        sys.exit(0 if new == page else 1)
-    if new != page:
-        PAGE.write_text(new)
+        sys.exit(1 if stale else 0)
     print(f"news-markets: {len(d['items'])} items, issue {d['issue_date']}")
 
-main()
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,37 @@
+{
+  "_note": "Manual rows of the Brief's Europe card. Every row needs as_of + source_url. Automatic rows (ECB rate, Slovak HICP, BTC in EUR) come from macro.json and the live price.",
+  "rows": [
+    {
+      "key": "digital_euro",
+      "label": "Digital euro",
+      "label_sk": "Digitálne euro",
+      "text": "ECB pilot from H2 2027: 12 months, 36 payment service providers.",
+      "text_sk": "Pilot ECB od 2. polroka 2027: 12 mesiacov, 36 poskytovateľov platieb.",
+      "as_of": "2026-11-05",
+      "source": "ECB, speech by Piero Cipollone",
+      "source_url": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261105~6495a0df6f.en.html"
+    },
+    {
+      "key": "mica",
+      "label": "MiCA",
+      "label_sk": "MiCA",
+      "text": "Fully applicable since 30 Dec 2024. The transition for crypto service providers ended on 1 Jul 2026: providers serving the EU need a MiCA licence.",
+      "text_sk": "Platí v plnom rozsahu od 30. 12. 2024. Prechodné obdobie pre poskytovateľov kryptoslužieb skončilo 1. 7. 2026: kto slúži klientom v EÚ, potrebuje licenciu MiCA.",
+      "as_of": "2026-11-11",
+      "source": "EUR-Lex, Regulation (EU) 2023/1114, Art. 143",
+      "source_url": "https://eur-lex.europa.eu/eli/reg/2023/1114/oj"
+    },
+    {
+      "key": "tax",
+      "label": "Tax SK · CZ",
+      "label_sk": "Dane SK · CZ",
+      "text": "SK: 19–35% income tax + 16% health contributions, no holding exemption. CZ: tax-free after 3 years of holding.",
+      "text_sk": "SK: 19–35 % daň z príjmu + 16 % zdravotné odvody, bez oslobodenia po držbe. CZ: po 3 rokoch držby bez dane.",
+      "as_of": "2026-09-30",
+      "source": "Virtuse Tax Agent (Q3 2026). Not tax advice.",
+      "source_sk": "Virtuse Tax Agent (Q3 2026). Nie je to daňové poradenstvo.",
+      "source_url": "/tax-agent.html?utm_source=brief&utm_medium=europe",
+      "source_url_sk": "/sk/tax-agent.html?utm_source=brief&utm_medium=europe"
+    }
+  ]
+}

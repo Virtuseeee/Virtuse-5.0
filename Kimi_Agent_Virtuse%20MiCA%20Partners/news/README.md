@@ -85,3 +85,13 @@ On desktop the right rail (`#issuesRail`) matches the Latest issues cards’ hei
 | `desk-updating.svg` | Empty / loading desk figure |
 | `og-card.png` / `og-card.svg` | Wordmark + mark on `--bg` |
 | `firefish-promo.png` | Official Firefish OG (“Never sell your Bitcoin. Borrow against it.”) |
+
+
+## Slovak Brief (2026-11-11, branch `feat/brief-sk`)
+
+`sk/news.html` is built from the live `news.html` by `i18n-tools/build_brief_sk.py`: same layout, Slovak text (every English string must map, or the build stops), Slovak featured issue from `news/issues-sk.json`, Slovak pages linked where they exist. `news.js` reads `<html lang>` (Slovak UI strings, `sk-SK` numbers/dates, `/sk/stories/`, WordPress SK category 26). Rebuild after any change to `news.html`:
+
+    python3 seo-ops/news_sk_map.py                    # issues-sk.json from the stories' hreflang
+    python3 Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/build_brief_sk.py
+
+News & Markets has `title_sk` / `excerpt_sk` in `news-markets.json` (`seo-ops/news_markets.py` writes both pages). Also on this branch: Pulse "Updated X h ago" + "Desk updating" after 8 h + "Before the release" demotion (see `cloudflare-worker/PULSE.md`), CPI/NFP in Coming up, the macro-intraday workflow, and the inflation tile's m/m note and flash label. Issues without a Slovak story appear in the Slovak list in English, marked (EN).

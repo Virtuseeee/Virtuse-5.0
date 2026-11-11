@@ -154,3 +154,34 @@ curl -sS -D - -o /dev/null -X OPTIONS "$BASE/subscribe" \
 
 Local check (no Cloudflare credentials): `npm test` in this directory.
 It uses Node's built-in test runner.
+
+## Publishing schedule and freshness (Brief handover F1, 2026-11-11)
+
+The Worker only stores what the desk publishes; the publisher (the Brief desk
+agent) runs outside this repo. Its schedule, in Europe/Bratislava time:
+
+- Every day: the morning run, plus **16:00** and **22:00**. Publish only after the
+  draft passes validation; a rejected `PUT` (400) leaves the last valid Pulse in
+  place, and the page falls back to `news/news-pulse.json` when the Worker is down.
+- On high-impact release days (`macro-build/meetings.json`: `impact: "high"`,
+  i.e. US CPI, US jobs report, FOMC, ECB, BoE, BoJ; Eurostat flash HICP when
+  added): one extra run about **45 minutes after the release time** (`time`,
+  in UTC). A CPI at 08:30 ET means 15:15 Bratislava.
+- After a release, do not lead with a story written "ahead of" or "before" it.
+
+What the page does on its own (`news/news.js`):
+
+- The header reads "Updated X h ago" from `updated` (no more "Updated today").
+- Over 8 hours old on a weekday between 07:00 and 23:00 Bratislava time, a quiet
+  "Desk updating" line shows under the header.
+- A story whose title or excerpt says "ahead of / before / awaits / faces … test"
+  and names an event (CPI, jobs report/payrolls, FOMC/Fed decision, ECB, BoE,
+  BoJ) that has since happened (`macro.json` → `recent_events`) and was
+  published before it, drops below the other stories and is labelled
+  "Before the release · <event>".
+- Macro figures refresh at 15:15 Bratislava on CPI and jobs-report days
+  (`.github/workflows/macro-intraday.yml`), besides the evening run.
+
+Suggested addition to the desk prompt:
+
+> Publish the Pulse at 07:00, 16:00 and 22:00 Europe/Bratislava, and about 45 minutes after every high-impact release in macro-build/meetings.json. After a release, replace any "ahead of <event>" item with the outcome and the market reaction, citing the official source (BLS, Fed, ECB, BoE, BoJ, Eurostat).
