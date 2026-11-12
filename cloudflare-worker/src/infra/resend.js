@@ -25,7 +25,7 @@ export function createResendClient(apiKey, fetchImpl = (...args) => globalThis.f
         'Content-Type': 'application/json',
         ...extraHeaders,
       },
-      body: JSON.stringify(body),
+      ...(body === undefined ? {} : { body: JSON.stringify(body) }),
     });
   }
 
@@ -55,6 +55,31 @@ export function createResendClient(apiKey, fetchImpl = (...args) => globalThis.f
       if (res.ok) return { created: true };
       const text = await res.text();
       if (DUPLICATE_RE.test(text)) return { created: false };
+      throw failure(label, res.status, text);
+    },
+
+    // The global contact for an address ({ unsubscribed, ... }), or null when
+    // there is none. GET /contacts/{email}.
+    async getContact(email, label = 'Resend get contact failed') {
+      const res = await call('GET', `/contacts/${encodeURIComponent(email)}`);
+      if (res.status === 404) return null;
+      if (!res.ok) throw failure(label, res.status, await res.text());
+      return res.json();
+    },
+
+    // PATCH /contacts/{email}, e.g. { unsubscribed: false }.
+    async updateContact(email, fields, label = 'Resend update contact failed') {
+      const res = await call('PATCH', `/contacts/${encodeURIComponent(email)}`, fields);
+      if (!res.ok) throw failure(label, res.status, await res.text());
+    },
+
+    // POST /contacts/{email}/segments/{segmentId}: an existing contact joins a
+    // segment. "Already there" in any wording is fine.
+    async addContactToSegment(email, segmentId, label = 'Resend add to segment failed') {
+      const res = await call('POST', `/contacts/${encodeURIComponent(email)}/segments/${segmentId}`);
+      if (res.ok) return;
+      const text = await res.text();
+      if (DUPLICATE_RE.test(text)) return;
       throw failure(label, res.status, text);
     },
 

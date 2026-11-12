@@ -9,6 +9,7 @@ import { ANY, on, pipeline, prefix } from './http/router.js';
 import { createResendClient } from './infra/resend.js';
 import { createKvLimiter } from './shared/rate-limiter.js';
 
+import { runBriefHealth } from './features/brief-health/handler.js';
 import { handleEcosystemApply } from './features/ecosystem/handler.js';
 import { createBriefList } from './features/newsletter/brief-list.js';
 import { handleSubscribe } from './features/newsletter/subscribe-handler.js';
@@ -50,8 +51,10 @@ export function scopedKv(kv, prefix) {
   };
 }
 
+const scopedEnv = (rawEnv) => (rawEnv.KV_PREFIX ? { ...rawEnv, RATE_LIMIT_KV: scopedKv(rawEnv.RATE_LIMIT_KV, rawEnv.KV_PREFIX) } : rawEnv);
+
 function createContext(request, rawEnv, { fetchImpl, clock }) {
-  const env = rawEnv.KV_PREFIX ? { ...rawEnv, RATE_LIMIT_KV: scopedKv(rawEnv.RATE_LIMIT_KV, rawEnv.KV_PREFIX) } : rawEnv;
+  const env = scopedEnv(rawEnv);
   const url = new URL(request.url);
   let services;
   return {
@@ -109,6 +112,13 @@ export function createWorker({ fetchImpl = (...args) => globalThis.fetch(...args
   return {
     async fetch(request, env) {
       return route(createContext(request, env, { fetchImpl, clock }));
+    },
+    // Cron trigger (wrangler.toml [triggers], production only): the daily Brief check.
+    async scheduled(event, rawEnv, execCtx) {
+      const env = scopedEnv(rawEnv);
+      const run = runBriefHealth({ env, now: clock(), fetch: fetchImpl, services: createServices(env, fetchImpl) });
+      if (execCtx?.waitUntil) execCtx.waitUntil(run);
+      return run;
     },
   };
 }
