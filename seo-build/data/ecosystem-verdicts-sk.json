@@ -1,5 +1,5 @@
 {
-  "_note": "Slovak card texts for the Bitcoin Ecosystem directory (key = page slug + '|' + entry name, value replaces the English 'verdict' on sk pages). Missing keys fall back to English with lang=\"en\". Drafted 2026-11-12, waiting for Ras's approval.",
+  "_note": "Slovak card texts for the Bitcoin Ecosystem directory (key = page slug + '|' + entry name, value replaces the English 'verdict' on sk pages). Missing keys fall back to English with lang=\"en\". Drafted and approved by Ras 2026-11-12.",
   "what-is-bitcoin|The Bitcoin whitepaper": "Deväťstranový originál Satoshiho Nakamota z roku 2008. Krátky, čitateľný a stále najlepší primárny zdroj.",
   "what-is-bitcoin|Bitcoin for Everybody (Saylor Academy)": "Bezplatný kurz pre začiatočníkov vlastným tempom, s čítaním a záverečným testom. Dobrý, ak máte radi štruktúru.",
   "what-is-bitcoin|Plan ₿ Network": "Bezplatné štruktúrované kurzy od prvých krokov po pokročilé témy, v mnohých európskych jazykoch.",
