@@ -500,3 +500,9 @@ the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret
 - Report: a retirement worry adds the retirement gap only when it applies; the Czech and German tax examples say that they leave the rule's annual limits out; large sums never print in exponent notation.
 - Alerts: `VERDICT_ALERT_WEBHOOK` (optional secret, a Slack-style incoming webhook) is a second channel next to the email alert. An alert that could not be sent is tried again on the next failure. A Stripe refusal to open Checkout sends `checkout_failed` (once per hour, again at the 5th failure).
 - Limits: counters are fixed windows (`"<count>:<window end>"`); `/send` allows 20 per IP per hour by default (3 per address stays).
+
+## Brief audit fixes of 12 Nov 2026 (audits/brief-audit-2026-11-12.md, top 5)
+
+- **Sign-up after an unsubscribe** (`features/newsletter/brief-list.js`): when Resend answers "already exists", the Worker reads the contact (`GET /contacts/{email}`). If it is unsubscribed, it clears the flag (`PATCH /contacts/{email}`), adds the contact to the language's segment (`POST /contacts/{email}/segments/{id}`) and sends the welcome email. A current subscriber still gets nothing a second time. Paths are from Resend's API reference (read 2026-11-12); **not yet tried against the live Resend account**: test with one address before relying on it.
+- **Daily Brief check** (`features/brief-health/`, cron `40 6 * * *` UTC in `wrangler.toml`, production only): Pulse published in the last 4 h with Slovak copy on every item, `asset-returns.json` and `macro.json` on GitHub not older than 4 days, the newest EN and SK blog posts (8 h to 14 days old) have a story page on virtuse.com. Problems go in one email to `BRIEF_ALERT_TO` (optional var or secret), else `VERDICT_ALERT_TO`, else info@virtuse.com. A healthy day sends nothing. Local run against the live site: see the test `test/brief-health.test.mjs` and `checks.js` (`briefHealthProblems`).
+

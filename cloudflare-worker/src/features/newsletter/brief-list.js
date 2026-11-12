@@ -25,12 +25,30 @@ export function createBriefList({ env, resend }) {
   }
 
   return {
-    // The welcome email goes only to genuinely new contacts, never again to
-    // someone already on the list.
+    // The welcome email goes to genuinely new contacts and to someone who had
+    // unsubscribed and signs up again, never to someone already on the list.
     async join(email, lang) {
       const result = await addContact(email, lang);
-      if (result.created) await sendWelcome(email, lang);
-      return result;
+      if (result.created) {
+        await sendWelcome(email, lang);
+        return result;
+      }
+      // Already a contact. If they had unsubscribed, the form is their consent
+      // to come back: clear the flag, put them in the segment, welcome them.
+      // (Before 2026-11-12 the form answered "you are on the list" and changed nothing.)
+      let existing = null;
+      try {
+        existing = await resend.getContact(email);
+      } catch (e) {
+        // Could not tell: keep the old behaviour (success, nothing sent).
+        console.error(e);
+        return result;
+      }
+      if (!existing || existing.unsubscribed !== true) return result;
+      await resend.updateContact(email, { unsubscribed: false });
+      await resend.addContactToSegment(email, segmentFor(env, lang));
+      await sendWelcome(email, lang);
+      return { created: false, duplicate: true, resubscribed: true };
     },
 
     async leave(email) {
