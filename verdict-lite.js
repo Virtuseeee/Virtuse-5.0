@@ -61,6 +61,7 @@
       grp: ['About you', 'Your plan'], chips: ['Start', 'About you', 'Your plan', 'Verdict'],
       step: 'Step {0} of {1}', opt: 'optional', select: 'Select…', cont: 'Continue →', last: 'See my Verdict →',
       retireErr: 'Your retirement age is lower than your age.',
+      rangeErr: 'Please check the marked field: age in whole years from 18 to 120, amounts from 0 up.',
       steps: [
         ["Let's start with the basics.", 'Your name only appears in your own report.', { name: ['First name', 'e.g. Anna'], age: ['Your age', 'e.g. 41'], country: ['Where do you pay tax?', 'Tax rules and the partners you can use depend on it.'] }],
         ['Tell us about your savings and retirement.', 'Be as honest as you can. Round numbers are fine. Your numbers stay in your browser; only your score and area points go to our server for the Lite email, and your answers only if you buy the full report.', { savings: ['Savings and investments (€), without your home and pension', 'e.g. 150000'], pension: ['Retirement savings so far (€): pension pillars, private pension', 'e.g. 40000'], retire: ['At what age do you plan to retire?', 'e.g. 65'], retmonthly: ['How much do you put aside for retirement each month (€)?', 'e.g. 150'], expenses: ['What do you spend in a typical month (€)?', 'e.g. 2000'], reserve: ['How many months could you live from cash, without Bitcoin?'] }],
@@ -124,6 +125,7 @@
       grp: ['O vás', 'Váš plán'], chips: ['Štart', 'O vás', 'Váš plán', 'Verdict'],
       step: 'Krok {0} z {1}', opt: 'nepovinné', select: 'Vyberte…', cont: 'Pokračovať →', last: 'Zobraziť môj Verdict →',
       retireErr: 'Vek odchodu do dôchodku je nižší ako váš vek.',
+      rangeErr: 'Skontrolujte, prosím, označené pole: vek v celých rokoch od 18 do 120, sumy od 0 vyššie.',
       steps: [
         ['Začnime základmi.', 'Vaše meno sa zobrazí len vo vašom vlastnom reporte.', { name: ['Krstné meno', 'napr. Anna'], age: ['Váš vek', 'napr. 41'], country: ['V ktorej krajine platíte dane?', 'Od toho závisia daňové pravidlá aj partneri, ktorých môžete využiť.'] }],
         ['Povedzte nám o svojich úsporách a dôchodku.', 'Buďte čo najúprimnejší. Stačia zaokrúhlené čísla. Vaše čísla zostanú vo vašom prehliadači; na náš server ide len skóre a body za oblasti pre e-mail s Lite skóre a vaše odpovede len vtedy, ak si kúpite celý report.', { savings: ['Úspory a investície (€), bez bývania a dôchodku', 'napr. 150000'], pension: ['Doterajšie úspory na dôchodok (€): dôchodkové piliere, súkromné sporenie', 'napr. 40000'], retire: ['V akom veku plánujete ísť do dôchodku?', 'napr. 65'], retmonthly: ['Koľko si mesačne odkladáte na dôchodok (€)?', 'napr. 150'], expenses: ['Koľko minete za bežný mesiac (€)?', 'napr. 2000'], reserve: ['Koľko mesiacov by ste vyžili z hotovosti, bez Bitcoinu?'] }],
@@ -187,6 +189,7 @@
       grp: ['О вас', 'Ваш план'], chips: ['Старт', 'О вас', 'Ваш план', 'Вердикт'],
       step: 'Шаг {0} из {1}', opt: 'необязательно', select: 'Выберите…', cont: 'Продолжить →', last: 'Посмотреть мой Verdict →',
       retireErr: 'Ваш пенсионный возраст меньше вашего возраста.',
+      rangeErr: 'Проверьте, пожалуйста, отмеченное поле: возраст в полных годах от 18 до 120, суммы от 0.',
       steps: [
         ['Начнём с основного.', 'Ваше имя появится только в вашем собственном отчёте.', { name: ['Имя', 'например, Анна'], age: ['Ваш возраст', 'например, 41'], country: ['Где вы платите налоги?', 'От этого зависят налоговые правила и партнёры, которых вы можете использовать.'] }],
         ['Расскажите о сбережениях и пенсии.', 'Будьте как можно честнее. Достаточно округлённых чисел. Ваши числа остаются в браузере; на наш сервер для письма с Lite-оценкой уходят только оценка и баллы областей, а ваши ответы только если вы купите полный отчёт.', { savings: ['Сбережения и инвестиции (€), без жилья и пенсии', 'например, 150000'], pension: ['Пенсионные накопления на сегодня (€): пенсионные столпы, частная пенсия', 'например, 40000'], retire: ['В каком возрасте вы планируете выйти на пенсию?', 'например, 65'], retmonthly: ['Сколько вы откладываете на пенсию каждый месяц (€)?', 'например, 150'], expenses: ['Сколько вы тратите в обычный месяц (€)?', 'например, 2000'], reserve: ['Сколько месяцев вы могли бы жить на наличные, без Биткоина?'] }],
@@ -250,6 +253,7 @@
       grp: ['Про вас', 'Ваш план'], chips: ['Старт', 'Про вас', 'Ваш план', 'Вердикт'],
       step: 'Крок {0} із {1}', opt: 'необов’язково', select: 'Оберіть…', cont: 'Продовжити →', last: 'Подивитися мій Verdict →',
       retireErr: 'Ваш пенсійний вік менший за ваш вік.',
+      rangeErr: 'Перевірте, будь ласка, позначене поле: вік у повних роках від 18 до 120, суми від 0.',
       steps: [
         ['Почнімо з основного.', 'Ваше ім’я з’явиться лише у вашому власному звіті.', { name: ['Ім’я', 'наприклад, Анна'], age: ['Ваш вік', 'наприклад, 41'], country: ['Де ви сплачуєте податки?', 'Від цього залежать податкові правила й партнери, яких ви можете використовувати.'] }],
         ['Розкажіть про заощадження та пенсію.', 'Будьте якомога чеснішими. Достатньо округлених чисел. Ваші числа залишаються в браузері; на наш сервер для листа з Lite-оцінкою надходять лише оцінка й бали сфер, а ваші відповіді лише якщо ви купите повний звіт.', { savings: ['Заощадження та інвестиції (€), без житла й пенсії', 'наприклад, 150000'], pension: ['Пенсійні накопичення на сьогодні (€): пенсійні стовпи, приватна пенсія', 'наприклад, 40000'], retire: ['У якому віці ви плануєте вийти на пенсію?', 'наприклад, 65'], retmonthly: ['Скільки ви відкладаєте на пенсію щомісяця (€)?', 'наприклад, 150'], expenses: ['Скільки ви витрачаєте у звичайний місяць (€)?', 'наприклад, 2000'], reserve: ['Скільки місяців ви могли б жити на готівку, без Біткоїна?'] }],
@@ -419,11 +423,33 @@
     check();
   }
   function retireBad() { return A.retire != null && A.age != null && A.retire !== '' && A.age !== '' && +A.retire < +A.age; }
+  // The same limits as validateAnswers() in the Worker (verdict-lite/rules.js), so
+  // nothing the page accepts is refused later at the pay button.
+  var AGE_MIN = 18, AGE_MAX = 120, NUM_MAX = 1e10;
+  function rangeBad(f) {
+    var v = A[f.k];
+    if (v == null || v === '' || (f.type !== 'num' && f.type !== 'eur')) return false;
+    if (typeof v !== 'number' || !isFinite(v)) return true;
+    return f.type === 'num' ? (v % 1 !== 0 || v < AGE_MIN || v > AGE_MAX) : (v < 0 || v > NUM_MAX);
+  }
+  function stepOk(i) {
+    var fs = STEPS[i].f.filter(function (f) { return !f.when || f.when(); });
+    return fs.every(function (f) { return (f.opt || (A[f.k] != null && A[f.k] !== '')) && !rangeBad(f); }) && !(i === 1 && retireBad());
+  }
+  function firstOpenStep() { for (var i = 0; i < STEPS.length; i++) if (!stepOk(i)) return i; return -1; }
+  var NEED_TXT = null;
   function check() {
-    var ok = STEPS[cur].f.every(function (f) { return f.opt || (f.when && !f.when()) || (A[f.k] != null && A[f.k] !== ''); });
-    if (cur === 1) { var bad = retireBad(), e = $('mlRetErr'), ri = $('f_retire'); if (e) e.hidden = !bad; if (ri) ri.setAttribute('aria-invalid', String(bad)); if (bad) ok = false; }
+    var ok = stepOk(cur), ranged = false;
+    STEPS[cur].f.forEach(function (f) {
+      if (f.type !== 'num' && f.type !== 'eur') return;
+      var el = $('f_' + f.k), bad = rangeBad(f) || (f.k === 'retire' && retireBad());
+      if (el) el.setAttribute('aria-invalid', String(bad));
+      if (rangeBad(f)) ranged = true;
+    });
+    if (cur === 1) { var e = $('mlRetErr'); if (e) e.hidden = !retireBad(); }
     $('mlNext').disabled = !ok;
-    var need = $('mlNeed'); if (need) need.hidden = ok;
+    var need = $('mlNeed');
+    if (need) { if (NEED_TXT == null) NEED_TXT = need.textContent; need.textContent = ranged ? S.rangeErr : NEED_TXT; need.hidden = ok; }
   }
 
   function calc() {
@@ -461,7 +487,8 @@
     if (sc.fall < 10) put('fall', 10 - sc.fall);
     if (c.years != null && c.years < 10 && (c.share || 0) >= 20) put('retire', 5);
     var boost = { tax: 'tax', keys: A.custody === 'assisted' ? 'recovery' : A.custody === 'any' ? 'custody' : 'keys', crash: 'size', heirs: 'heirs', scams: A.custody === 'any' ? 'custody' : 'keys', retire: 'retire' };
-    w.forEach(function (k) { var id = boost[k]; if (id) pr[id] = (pr[id] || 0) + 3; });
+    // Same as gapIds() in the Worker: a retirement worry raises that gap only when the answers show it.
+    w.forEach(function (k) { var id = boost[k]; if (id && (id !== 'retire' || pr.retire)) pr[id] = (pr[id] || 0) + 3; });
     var ids = Object.keys(pr).sort(function (a, b) { return pr[b] - pr[a]; });
     ['heirs', 'records'].forEach(function (id) { if (ids.indexOf(id) < 0) ids.push(id); });
     return ids.slice(0, 3).map(function (id) { var g = S.G[id]; return [g[0], g[1](A, c), id]; });
@@ -590,7 +617,15 @@
     var v = e.target.value; A[k] = e.target.type === 'number' ? (v === '' ? null : +v) : v; save(); check();
   });
   document.addEventListener('change', function (e) { if (e.target.tagName === 'SELECT' && e.target.getAttribute('data-k')) { A[e.target.getAttribute('data-k')] = e.target.value; save(); check(); } });
-  $('mlNext').onclick = function () { if (cur < STEPS.length - 1) goStep(cur + 2); else { done = true; save(); goStep(6); } };
+  $('mlNext').onclick = function () {
+    check();
+    if ($('mlNext').disabled) return;
+    if (cur < STEPS.length - 1) { goStep(cur + 2); return; }
+    // The last step opened by its URL (?s=5): go back to the first step that is not filled in.
+    var open = firstOpenStep();
+    if (open > -1) { goStep(open + 1); return; }
+    done = true; save(); goStep(6);
+  };
   $('mlBack').onclick = function () { if (cur === 0) goLanding(); else goBackTo(cur); };
 
   // Gate: the email unlocks the Lite score; the Brief only when ticked.
@@ -648,7 +683,9 @@
     var say = function (t) { if (msg) msg.textContent = t; };
     var answers = {}; Object.keys(A).forEach(function (k) { if (k !== 'email') answers[k] = A[k]; });
     var from = ''; try { from = sessionStorage.getItem(INTENT) || ''; } catch (e) {}
-    btn.disabled = true; say(S.buyWait);
+    var all = function (off) { Array.prototype.forEach.call(document.querySelectorAll('[data-buy]'), function (b) { b.disabled = off; }); };
+    var failed = function (code) { all(false); dl({ event: 'verdict_checkout_failed', verdict_error: String(code || 'network') }); };
+    all(true); say(S.buyWait);
     dl({ event: 'verdict_checkout_start', verdict_cta: cta, verdict_cta_first: from || cta });
     // Prefill Checkout: the Lite email, else a valid address already typed on the gate (step 7)
     var gateEm = (($('mlGate') && $('mlGate').email && $('mlGate').email.value) || '').trim();
@@ -656,12 +693,18 @@
     vbApi().then(function (api) { return api.postJson('/verdict/checkout', { answers: answers, lang: LANG, email: payEm || undefined }); })
       .then(function (r) {
         if (r && r.ok && r.data && r.data.url) { try { sessionStorage.removeItem(INTENT); } catch (e) {} location.href = r.data.url; return; }
-        btn.disabled = false;
-        if (r && r.status === 503) { payClosed(); return; }   // payments closed on this Worker
+        if (r && r.status === 503) { all(false); payClosed(); return; }   // payments closed on this Worker
+        failed(r && r.status);
         say((r && r.data && r.data.error) || S.net);
       })
-      .catch(function () { btn.disabled = false; say(S.net); });
+      .catch(function () { failed('network'); say(S.net); });
   }
+  // Back from Stripe out of the browser's page cache: the buttons were left switched off.
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-buy]'), function (b) { b.disabled = false; });
+    Array.prototype.forEach.call(document.querySelectorAll('.ml-buy-msg'), function (m) { m.textContent = ''; });
+  });
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-buy]');
     if (b) { e.preventDefault(); buy(b); }
