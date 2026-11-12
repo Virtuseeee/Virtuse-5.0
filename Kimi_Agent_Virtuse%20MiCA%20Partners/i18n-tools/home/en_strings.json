@@ -1292,57 +1292,57 @@
  {
   "en": "Company",
   "kind": "text",
-  "context": "</a><a href=\"lending.html\">Loans</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"verdict.html\">Verdict <span class=\"soon cfo"
+  "context": "</a><a href=\"lending.html\">Loans</a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h3>Company</h3><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h3>Tools</h3><a href=\"verdict.html\">Verdict <span class=\"soon cfo"
  },
  {
   "en": "About Us",
   "kind": "text",
-  "context": "/a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h4>Company</h4><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h4>Tools</h4><a href=\"verdict.html\">Verdict <span class=\"soon cfo-foot-badge\">Free</span></a><a hre"
+  "context": "/a><a href=\"treasury.html\">Treasury</a><a href=\"tax.html\">Tax</a><a href=\"bots.html\">Bots</a></div><div class=\"footer-col\"><h3>Company</h3><a href=\"about.html\">About Us</a><a href=\"faq.html\">FAQ</a></div><div class=\"footer-col\"><h3>Tools</h3><a href=\"verdict.html\">Verdict <span class=\"soon cfo-foot-badge\">Free</span></a><a hre"
  },
  {
   "en": "Guides",
   "kind": "text",
-  "context": "ilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div><div class=\"footer-col\"><h4>Guides</h4><a href=\"news.html\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href"
+  "context": "ilot</a><a href=\"tax-agent.html\">Tax &amp; Inheritance Agent</a><a href=\"retirement-calculator.html\">Retirement Calculator</a></div><div class=\"footer-col\"><h3>Guides</h3><a href=\"news.html\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href"
  },
  {
   "en": "Bitcoin tax",
   "kind": "text",
-  "context": "footer-col\"><h4>Guides</h4><a href=\"news.html\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href"
+  "context": "footer-col\"><h3>Guides</h3><a href=\"news.html\">Virtuse Brief</a><a href=\"blog.html\">Blog</a><a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href"
  },
  {
   "en": "DCA calculator",
   "kind": "text",
-  "context": "a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href="
+  "context": "a href=\"bitcoin-data.html\">Bitcoin Data</a><a href=\"/bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h3>Ecosystem</h3><a href="
  },
  {
   "en": "Sell vs borrow",
   "kind": "text",
-  "context": "bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosyste"
+  "context": "bitcoin-tax/\">Bitcoin tax</a><a href=\"/bitcoin-fee-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h3>Ecosystem</h3><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosyste"
  },
  {
   "en": "Inheritance",
   "kind": "text",
-  "context": "-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosystem/what-is-bitcoin/\">What is Bitcoin?</a><a href"
+  "context": "-index/\">Fee Index</a><a href=\"/bitcoin-dca-calculator/\">DCA calculator</a><a href=\"/sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h3>Ecosystem</h3><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosystem/what-is-bitcoin/\">What is Bitcoin?</a><a href"
  },
  {
   "en": "Bitcoin Ecosystem",
   "kind": "text",
-  "context": "sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h4>Ecosystem</h4><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosystem/what-is-bitcoin/\">What is Bitcoin?</a><a href=\"/ecosystem/books/\">Books</a><a href=\"/ecosystem/podcasts/\">Podcasts</a><a href=\"/ecosyste"
+  "context": "sell-vs-borrow-bitcoin/\">Sell vs borrow</a><a href=\"/bitcoin-inheritance/\">Inheritance</a></div><div class=\"footer-col\"><h3>Ecosystem</h3><a href=\"/ecosystem/\">Bitcoin Ecosystem</a><a href=\"/ecosystem/what-is-bitcoin/\">What is Bitcoin?</a><a href=\"/ecosystem/books/\">Books</a><a href=\"/ecosystem/podcasts/\">Podcasts</a><a href=\"/ecosyste"
  },
  {
   "en": "Legal",
   "kind": "text",
-  "context": "href=\"/ecosystem/jobs/\">Bitcoin Jobs</a><a href=\"/ecosystem/peers/\">Bitcoin Peers</a><a href=\"/ecosystem/promote/\">Promote</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compl"
+  "context": "href=\"/ecosystem/jobs/\">Bitcoin Jobs</a><a href=\"/ecosystem/peers/\">Bitcoin Peers</a><a href=\"/ecosystem/promote/\">Promote</a></div><div class=\"footer-col\"><h3>Legal</h3><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compl"
  },
  {
   "en": "Terms &amp; Conditions",
   "kind": "text",
-  "context": "f=\"/ecosystem/peers/\">Bitcoin Peers</a><a href=\"/ecosystem/promote/\">Promote</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\""
+  "context": "f=\"/ecosystem/peers/\">Bitcoin Peers</a><a href=\"/ecosystem/promote/\">Promote</a></div><div class=\"footer-col\"><h3>Legal</h3><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\""
  },
  {
   "en": "Privacy Policy",
   "kind": "text",
-  "context": "em/promote/\">Promote</a></div><div class=\"footer-col\"><h4>Legal</h4><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Manag"
+  "context": "em/promote/\">Promote</a></div><div class=\"footer-col\"><h3>Legal</h3><a href=\"terms-and-conditions.html\">Terms &amp; Conditions</a><a href=\"privacy-policy.html\">Privacy Policy</a><a href=\"aml-compliance.html\">AML &amp; Compliance</a></div></div> </div> <div class=\"footer-bottom\"> <p>&copy; 2018–2026 Virtuse Wealth Manag"
  },
  {
   "en": "AML &amp; Compliance",

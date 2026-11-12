@@ -193,7 +193,7 @@
     '.vb-cc-sw input:checked+span{background:#f7931a}' +
     '.vb-cc-sw input:checked+span:after{transform:translateX(18px)}' +
     '.vb-cc-link{background:none;border:0;padding:0;margin:0 0 0 16px;font:inherit;font-size:inherit;color:inherit;' +
-    'opacity:.8;text-decoration:underline;text-underline-offset:2px;cursor:pointer;-webkit-appearance:none;appearance:none}' +
+    'text-decoration:underline;text-underline-offset:2px;cursor:pointer;-webkit-appearance:none;appearance:none}' +
     '.vb-cc-link:hover{opacity:1}' +
     '.cookie-settings-btn{font:inherit;font-weight:600;cursor:pointer;margin-top:12px;padding:9px 16px;border-radius:8px;' +
     'background:transparent;color:inherit;border:1px solid currentColor;-webkit-appearance:none;appearance:none}' +

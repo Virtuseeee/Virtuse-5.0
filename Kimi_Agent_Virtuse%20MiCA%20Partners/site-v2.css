@@ -618,7 +618,7 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
 .footer-logo { flex-shrink: 0; }
 .footer-columns { display: flex; gap: 64px; flex-wrap: wrap; }
-.footer-col h4 { font-size: 13px; font-weight: 600; margin: 0 0 18px; color: var(--text); }
+.footer-col h3, .footer-col h4 { font-size: 13px; font-weight: 600; margin: 0 0 18px; color: var(--text); }
 .footer-col a { display: block; color: var(--muted); font-size: 13px; text-decoration: none; margin-bottom: 12px; line-height: 1.4; transition: color .2s; }
 .footer-col a:hover { color: var(--text); }
 .footer-col .soon { font-size: 10px; font-weight: 600; color: var(--text); border: 1px solid var(--line-strong, rgba(255,255,255,.14)); border-radius: 999px; padding: 1px 6px; margin-left: 4px; vertical-align: 1px; }

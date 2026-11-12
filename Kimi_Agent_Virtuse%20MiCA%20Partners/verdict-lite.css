@@ -630,3 +630,5 @@
   .ml-score-row .ml-scale small { margin: 0; font-size: 12px; white-space: nowrap; }
   .dm-lbl { gap: 10px; white-space: normal; }
 }
+/* the question heading takes focus on each step (screen readers); no ring for that programmatic focus */
+.ml-card h2:focus:not(:focus-visible) { outline: none; }

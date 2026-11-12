@@ -732,7 +732,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
 .footer-logo { flex-shrink: 0; }
 
-.footer-col h4 {
+.footer-col h3, .footer-col h4 {
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 18px;

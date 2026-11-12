@@ -384,25 +384,27 @@
     $('ml').classList.toggle('wide', s === 0);
     $('ml').classList.toggle('ml-paid', s === 8 || s === 9 || s === 10);
     if (s === 0) demoLoop(); else clearTimeout(demoLoop.t);
-    if (key === 'q') { cur = s - 1; renderQ(); dl({ event: 'verdict_step', verdict_step: s }); }
+    if (key === 'q') { cur = s - 1; renderQ(); dl({ event: 'verdict_step', verdict_step: s }); var qh = $('mlQh'); if (qh) qh.focus({ preventScroll: true }); }
     if (s === 6) load();
     if (s === 7) { var it = ''; try { it = sessionStorage.getItem(INTENT) || ''; } catch (e) {} scr.toggleAttribute('data-intent', !!it); }
     if (s === 8) result();
     window.scrollTo(0, 0);
   }
-  function lab(f, l) { return l ? '<label class="ml-lab" for="f_' + f.k + '">' + l + (f.opt ? ' <em>' + S.opt + '</em>' : '') + '</label>' : ''; }
+  // Inputs/selects get <label for>; button groups (seg/tiles) are named by the label's id instead (WCAG 1.3.1, 4.1.2).
+  function lab(f, l, grp) { return l ? '<label class="ml-lab" id="l_' + f.k + '"' + (grp ? '' : ' for="f_' + f.k + '"') + '>' + l + (f.opt ? ' <em>' + S.opt + '</em>' : '') + '</label>' : ''; }
+  function gname(f, l) { return ' aria-labelledby="' + (l ? 'l_' + f.k : 'mlQh') + '"'; }
   function field(f, txt) {
     var v = A[f.k], L = txt[f.k] || [];
     if (f.type === 'text' || f.type === 'num' || f.type === 'eur')
-      return lab(f, L[0]) + '<div class="ml-inwrap' + (f.type === 'eur' ? ' eur' : '') + '"><input class="ml-input" id="f_' + f.k + '" data-k="' + f.k + '" ' + (f.type === 'text' ? 'type="text" autocomplete="given-name" maxlength="40"' : 'type="number" inputmode="numeric" min="0"') + ' placeholder="' + (L[1] || '') + '" value="' + (v == null ? '' : esc(v)) + '"></div>' + (f.k === 'retire' ? '<p class="ml-err" id="mlRetErr" hidden>' + S.retireErr + '</p>' : '');
+      return lab(f, L[0]) + '<div class="ml-inwrap' + (f.type === 'eur' ? ' eur' : '') + '"><input class="ml-input" id="f_' + f.k + '" data-k="' + f.k + '" ' + (f.type === 'text' ? 'type="text" autocomplete="given-name" maxlength="40"' : 'type="number" inputmode="numeric" min="0"') + (f.k === 'retire' ? ' aria-describedby="mlRetErr"' : '') + ' placeholder="' + (L[1] || '') + '" value="' + (v == null ? '' : esc(v)) + '"></div>' + (f.k === 'retire' ? '<p class="ml-err" id="mlRetErr" aria-live="polite" hidden>' + S.retireErr + '</p>' : '');
     if (f.type === 'select')
       return lab(f, L[0]) + '<select class="ml-input ml-select" id="f_' + f.k + '" data-k="' + f.k + '"><option value="">' + S.select + '</option>' + S.countries.map(function (o) { return '<option value="' + o[0] + '"' + (v === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>' + (L[1] ? '<div class="ml-why">' + L[1] + '</div>' : '');
     if (f.type === 'seg')
-      return lab(f, L[0]) + '<div class="ml-seg" role="radiogroup">' + S.o[f.k].map(function (o) { return '<button type="button" role="radio" aria-checked="' + (v === o[0]) + '" class="' + (v === o[0] ? 'sel' : '') + '" data-k="' + f.k + '" data-v="' + o[0] + '">' + o[1] + '</button>'; }).join('') + '</div>';
+      return lab(f, L[0], 1) + '<div class="ml-seg" role="radiogroup"' + gname(f, L[0]) + '>' + S.o[f.k].map(function (o) { return '<button type="button" role="radio" aria-checked="' + (v === o[0]) + '" class="' + (v === o[0] ? 'sel' : '') + '" data-k="' + f.k + '" data-v="' + o[0] + '">' + o[1] + '</button>'; }).join('') + '</div>';
     if (f.type === 'tiles')
-      return lab(f, L[0]) + '<div class="ml-tiles ' + (f.cols || '') + (f.sm ? ' sm' : '') + '" role="radiogroup">' + S.o[f.k].map(function (o, i) { return '<button type="button" role="radio" aria-checked="' + (v === o[0]) + '" class="ml-tile c-' + COL[f.k][i] + (v === o[0] ? ' sel' : '') + '" data-k="' + f.k + '" data-v="' + o[0] + '">' + svg(ICO[f.k][i]) + '<span><b>' + o[1] + '</b><small>' + o[2] + '</small></span></button>'; }).join('') + '</div>';
+      return lab(f, L[0], 1) + '<div class="ml-tiles ' + (f.cols || '') + (f.sm ? ' sm' : '') + '" role="radiogroup"' + gname(f, L[0]) + '>' + S.o[f.k].map(function (o, i) { return '<button type="button" role="radio" aria-checked="' + (v === o[0]) + '" class="ml-tile c-' + COL[f.k][i] + (v === o[0] ? ' sel' : '') + '" data-k="' + f.k + '" data-v="' + o[0] + '">' + svg(ICO[f.k][i]) + '<span><b>' + o[1] + '</b><small>' + o[2] + '</small></span></button>'; }).join('') + '</div>';
     if (f.type === 'multi')
-      return '<div class="ml-tiles c4 multi">' + S.o.worries.map(function (o, i) { var on = A.worries.indexOf(o[0]) > -1; return '<button type="button" aria-pressed="' + on + '" class="ml-tile c-' + COL.worries[i] + (on ? ' sel' : '') + '" data-m="' + o[0] + '">' + svg(ICO.worries[i]) + '<b>' + o[1] + '</b></button>'; }).join('') + '</div>';
+      return '<div class="ml-tiles c4 multi" role="group" aria-labelledby="mlQh">' + S.o.worries.map(function (o, i) { var on = A.worries.indexOf(o[0]) > -1; return '<button type="button" aria-pressed="' + on + '" class="ml-tile c-' + COL.worries[i] + (on ? ' sel' : '') + '" data-m="' + o[0] + '">' + svg(ICO.worries[i]) + '<b>' + o[1] + '</b></button>'; }).join('') + '</div>';
   }
   function renderQ() {
     var st = STEPS[cur], n = STEPS.length, txt = S.steps[cur], pct = Math.round((cur + 1) / n * 100);
@@ -411,7 +413,7 @@
     $('mlPct').textContent = pct + '%';
     $('mlBar').style.width = pct + '%';
     $('mlQ').className = 'ml-card k-' + KICK[cur];
-    $('mlQ').innerHTML = '<div class="ml-kick">' + fmt(S.step, cur + 1, n) + ' · ' + S.grp[cur < 3 ? 0 : 1] + '</div><h2>' + txt[0] + '</h2><p class="ml-hint">' + txt[1] + '</p><div class="ml-fields">' +
+    $('mlQ').innerHTML = '<div class="ml-kick">' + fmt(S.step, cur + 1, n) + ' · ' + S.grp[cur < 3 ? 0 : 1] + '</div><h2 id="mlQh" tabindex="-1">' + txt[0] + '</h2><p class="ml-hint">' + txt[1] + '</p><div class="ml-fields">' +
       st.f.filter(function (f) { return !f.when || f.when(); }).map(function (f) { return '<div class="ml-field">' + field(f, txt[2]) + '</div>'; }).join('') + '</div>';
     $('mlNext').textContent = cur === n - 1 ? S.last : S.cont;
     check();
@@ -419,7 +421,7 @@
   function retireBad() { return A.retire != null && A.age != null && A.retire !== '' && A.age !== '' && +A.retire < +A.age; }
   function check() {
     var ok = STEPS[cur].f.every(function (f) { return f.opt || (f.when && !f.when()) || (A[f.k] != null && A[f.k] !== ''); });
-    if (cur === 1) { var bad = retireBad(), e = $('mlRetErr'); if (e) e.hidden = !bad; if (bad) ok = false; }
+    if (cur === 1) { var bad = retireBad(), e = $('mlRetErr'), ri = $('f_retire'); if (e) e.hidden = !bad; if (ri) ri.setAttribute('aria-invalid', String(bad)); if (bad) ok = false; }
     $('mlNext').disabled = !ok;
     var need = $('mlNeed'); if (need) need.hidden = ok;
   }
@@ -573,7 +575,9 @@
     var b = e.target.closest('#mlQ [data-v]');
     if (b) {
       var bk = b.getAttribute('data-k'); A[bk] = b.getAttribute('data-v'); save();
-      if (bk === 'home') { renderQ(); return; }   // home value / mortgage fields depend on it
+      if (bk === 'home') {   // home value / mortgage fields depend on it; keep keyboard focus on the chosen option
+        var hv = A[bk]; renderQ(); var nb = document.querySelector('#mlQ [data-k="home"][data-v="' + hv + '"]'); if (nb) nb.focus(); return;
+      }
       b.parentNode.querySelectorAll('[data-v]').forEach(function (x) { var on = x === b; x.classList.toggle('sel', on); x.setAttribute('aria-checked', on); });
       check(); return;
     }
