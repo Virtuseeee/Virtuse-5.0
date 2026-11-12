@@ -52,7 +52,19 @@ function pulseItemErrors(it, i, prefix) {
   if (parsePulseIso(it.published) == null) {
     errors.push(`${label}.published must be an ISO-8601 UTC timestamp`);
   }
+  // Optional Slovak copy for /sk/news.html; absent or null = the page shows
+  // the English text with an "EN" mark.
+  errors.push(...optionalTextErrors(it.title_sk, `${label}.title_sk`, 120));
+  errors.push(...optionalTextErrors(it.excerpt_sk, `${label}.excerpt_sk`, 300));
   return errors;
+}
+
+function optionalTextErrors(value, label, max) {
+  if (value == null) return [];
+  if (typeof value !== 'string' || value.length > max) {
+    return [`${label} must be a string of at most ${max} characters`];
+  }
+  return [];
 }
 
 // Every rule the document breaks, as readable strings (empty = valid).
@@ -124,6 +136,7 @@ export function pulseErrors(data, now = Date.now()) {
       errors.push('what_moved must be a string of at most 300 characters');
     }
   }
+  errors.push(...optionalTextErrors(data.what_moved_sk, 'what_moved_sk', 300));
 
   if (data.fear_greed != null) {
     const fg = data.fear_greed;

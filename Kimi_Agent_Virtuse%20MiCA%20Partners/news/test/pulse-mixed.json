@@ -1,0 +1,78 @@
+{
+ "updated": "2026-11-12T05:25:00Z",
+ "feed": null,
+ "items": [
+  {
+   "title": "Hot US CPI (+0.4%) lifts odds of half-point Fed hike in December; Bitcoin falls",
+   "source": "Cointelegraph",
+   "tag": "Fed",
+   "url": "https://cointelegraph.com/news/hot-us-inflation-raises-rate-hike-crypto",
+   "published": "2026-11-10T17:31:09Z",
+   "excerpt": "Stronger-than-expected October inflation raises odds of a bigger December Fed hike, pressuring Bitcoin and BTC-linked risk assets.",
+   "title_sk": "Horúca inflácia v USA (+0,4 %) zvyšuje šancu na väčšie zvýšenie sadzieb Fedu v decembri; Bitcoin klesá",
+   "excerpt_sk": "Vyššia než očakávaná októbrová inflácia zvyšuje šancu na väčší krok Fedu v decembri a tlačí na Bitcoin aj aktíva naviazané na BTC."
+  },
+  {
+   "title": "Bitcoin breaks with stocks, declines as spot ETF outflows mount and MARA sells BTC",
+   "source": "CoinDesk",
+   "tag": "ETF",
+   "url": "https://www.coindesk.com/daybook-us/2026/11/10/bitcoin-breaks-with-stocks-declines-as-etf-outflows-mount-mara-sells-holdings",
+   "published": "2026-11-10T12:15:00Z",
+   "excerpt": "BTC diverged from a stock rebound as US spot Bitcoin ETF outflows continued and miner MARA reduced its holdings."
+  },
+  {
+   "title": "LNbits rushes emergency patch after reported Bitcoin wallet thefts",
+   "source": "Cointelegraph",
+   "tag": "Security",
+   "url": "https://cointelegraph.com/news/lnbits-rushes-emergency-patch-after-reported-bitcoin-wallet-thefts",
+   "published": "2026-11-11T01:16:58Z",
+   "excerpt": "LNbits shipped an emergency fix after reports of stolen Bitcoin from Lightning wallets; users should update.",
+   "title_sk": "LNbits vydal núdzovú opravu po hláseniach o krádežiach z bitcoinových peňaženiek",
+   "excerpt_sk": "LNbits vydal núdzovú opravu po hláseniach o ukradnutom Bitcoine z Lightning peňaženiek; používatelia by mali aktualizovať."
+  }
+ ],
+ "archive": {
+  "label": "Yesterday",
+  "from": "2026-11-10T05:32:50Z",
+  "items": [
+   {
+    "title": "Bitcoin faces US CPI test as analysts warn inflation relief may not be enough",
+    "source": "CoinDesk",
+    "tag": "Fed",
+    "url": "https://www.coindesk.com/markets/2026/11/10/bitcoin-faces-u-s-cpi-test-as-analysts-warn-inflation-relief-may-not-be-enough",
+    "published": "2026-11-10T03:22:26Z",
+    "title_sk": "Bitcoin čaká test inflácie v USA, analytici varujú, že úľava nemusí stačiť"
+   },
+   {
+    "title": "Bitcoin miner MARA sold 13,597 BTC for $1.1 billion in six weeks, plans to sell more",
+    "source": "CoinDesk",
+    "tag": "Mining",
+    "url": "https://www.coindesk.com/markets/2026/11/10/bitcoin-miner-mara-sold-13-597-btc-for-usd1-1-billion-in-six-weeks-plans-to-sell-more",
+    "published": "2026-11-10T05:18:31Z"
+   }
+  ]
+ },
+ "what_moved": "BTC ~$73.8K (-1.2% 24h on Bitstamp) after hot US CPI (+0.4%) raised odds of a bigger Fed hike; spot Bitcoin ETF outflows continue and LNbits patched wallet thefts. Fear & Greed Fear (29); fees ~1-2 sat/vB.",
+ "quick_media": {
+  "title": "Simply Bitcoin EP 1596 — Bitcoin EXPLODES Past $86,000",
+  "url": "https://www.youtube.com/watch?v=-PvlHscb9cg",
+  "note": "Keep — still this week's pick; below-hero slot."
+ },
+ "fear_greed": {
+  "value": 29,
+  "label": "Fear",
+  "source": "alternative.me"
+ },
+ "dominance": {
+  "btc_pct": 57.7,
+  "source": "Coinpaprika global"
+ },
+ "market": {
+  "btc_usd": 73762,
+  "change_24h_pct": -1.2,
+  "fees": "low",
+  "fee_sat_vb": 2,
+  "sources": "Bitstamp $73,762 (-1.23% 24h, high $74,904, low $72,677); mempool.space fastest 2 sat/vB = low; Coinpaprika dominance 57.7%."
+ },
+ "what_moved_sk": "BTC okolo 73,8 tis. $ (−1,2 % za 24 h) po horúcej inflácii v USA; odlevy z ETF pokračujú."
+}

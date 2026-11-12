@@ -97,6 +97,14 @@ Checked against `news/news-pulse.json` on `gh-pages` (snapshot in
   `fear_greed.value` is a number from 0 to 100; `dominance.btc_pct` is a
   finite number; `quick_media` has a `title` and an `https` `url`;
   `feed` is a string or `null`.
+- Slovak copy (optional, since 2026-11-12): every item in `items` and
+  `archive.items` may carry `title_sk` (string, at most 120 characters) and
+  `excerpt_sk` (string, at most 300); the document may carry
+  `what_moved_sk` (string, at most 300). Absent or `null` is fine. They are
+  stored as sent. `/sk/news.html` shows them in the Pulse and Yesterday;
+  an item without them is shown in English with a small "EN" mark.
+  `/news.html` ignores them. The Bitcoin check and the tag guess use the
+  English text only.
 
 A successful `PUT` returns `200`:
 
