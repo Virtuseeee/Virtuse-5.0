@@ -2,6 +2,30 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-11-12, third) — Brief audit (read-only) + top 5 fixes (PR #176, main `b9538ca5f`; **live on production**: Ras ran `deploy_worker.sh` (`/version` = `b9538ca5f`) and `deploy_site.sh 4c4c9b431 b9538ca5f`, 3 files md5-verified on virtuse.com and staging; then `deploy_site.sh 50a42d82e^ 50a42d82e`, 20 story files md5-verified, and the canonical map to the blog)
+
+- Report: `audits/brief-audit-2026-11-12.md` (Slovak): 6 high, 17 medium, 14 low findings, none critical; each with file:line, how to repeat, impact, proposed fix, and a list of what could not be checked.
+- **Fixed (top 5):**
+  - `news/news.js?v=20261112e` `firstSentence()`: a full stop no longer ends the sentence after a single letter ("U.S."), after an abbreviation in `ABBR` ("mld.", "Inc.", "cca.") or before a lower-case letter, digit or currency sign ("18. decembra"). The title is never cut. An unknown abbreviation before a capital letter still ends it.
+  - `linkStories()`: a blog card built from WordPress carries `data-fallback` (the post's blog.virtuse.com URL). When `/stories/<slug>/` is missing, the card opens that original, not the stories hub. `article.html?slug=` cannot be used: production 301s it to the hub for such a post.
+  - `STALE_H` 8 → 26: the Pulse is published once a day, so "Desk updating" was due every weekday from about 14:30.
+  - Worker `features/newsletter/brief-list.js`: a sign-up from an unsubscribed contact reads the contact (`GET /contacts/{email}`), clears the flag (`PATCH`), adds it to the segment (`POST /contacts/{email}/segments/{id}`) and sends the welcome email. Paths from Resend's API reference. **Not tried on the live Resend account**: test once with one address (sign up, unsubscribe, sign up again).
+  - Worker `features/brief-health/` + cron `40 6 * * *` UTC (`[triggers]` in `wrangler.toml`, production only; `[env.staging]` has `crons = []`): Pulse published in the last 4 h with Slovak copy on every item, `asset-returns.json` + `macro.json` on GitHub at most 4 days old, the newest EN + SK posts (8 h to 14 days old) have a story page on virtuse.com. Problems go in one email to `BRIEF_ALERT_TO`, else `VERDICT_ALERT_TO`, else info@virtuse.com; a healthy day sends nothing. Run by hand: `briefHealthProblems()` in `checks.js` with the live `pulse.json`. **Whether the cron registered was not checked** (Cloudflare dashboard → Worker → Triggers).
+- Worker tests 243/243. The Worker deploy also shipped the Verdict audit changes of `08d14421f` (production was at `2a0d7bbc`).
+- Story page `sk/stories/digitalne-euro-kto-bude-urcovat-pravidla-vasich-penazi/` (post 15396) was on main since `50a42d82e` (11 Nov) but 404 on production for two days: **story builds reach production only by a manual `deploy_site.sh`**, and the blog canonical map by `sftp ftp.virtuse.com < batch` (`put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json`). The daily check now reports such a gap.
+- **Open from the audit (not fixed):**
+  - V5: the privacy policy says the address is deleted after an unsubscribe; the Worker only sets `unsubscribed: true` (lawyer's decision).
+  - Newsletter: no double opt-in and no consent record; `/subscribe` has no Turnstile and no per-address limit; `GET /unsubscribe` acts at once (mail scanners can unsubscribe a reader); the welcome email has no `List-Unsubscribe` header; `/subscribe` stores the raw IP in the KV key (`ratelimit:<ip>`).
+  - Pages: the "Privacy" link under the forms goes to `privacy-policy.html#brief`, which is the sign-up card, not the text; `sk/news.html` has no JSON-LD; on the SK page the English essay card links `/sk/stories/<en slug>/` (`blogCardFromIssue` always calls `markIssue`); Worker error texts show in English on the SK page.
+  - Pulse schema: no length limit on `excerpt` and `source`, `updated` may be older than the stored document or 36 h ahead, `feed` is rendered unchecked.
+  - Speed: Lighthouse mobile 60 (EN) / 56 (SK), CLS 0; GTM is not deferred on the Brief, `brand/logo-loader.js` is synchronous, three Google font families block rendering.
+  - Measurement: no `capture_submit` from the Brief's own forms, no events for tool chips, UTM on internal links.
+  - `news/news-pulse.json` (fallback) is from 10 Nov and English only; nothing refreshes it.
+- Gotchas:
+  - `deploy_site.sh` printed "sftp upload stopped with an error" although all 20 files had landed (cause not seen); a second run ended `DEPLOY OK`. Check production md5 before assuming nothing was uploaded.
+  - The OneDrive checkout is 812 commits behind main, so `deploy_site.sh` stops there. A clean checkout for deploys is at `~/virtuse-deploy-main` (`git fetch && git checkout --detach origin/main` before each use). `deploy_worker.sh` can be run from anywhere by full path.
+  - `ccd_pr bind_pr` cannot bind a PR on this Mac (no `gh`); read CI once through the public API (`/commits/<sha>/check-runs`).
+
 ## Session status (2026-11-12) — Pulse in Slovak: optional `title_sk` / `excerpt_sk` / `what_moved_sk` (PR #166, main `b61e7087f`; **live on production** — user ran `deploy_worker.sh` (`/version` = b61e7087f) and `deploy_site.sh 1c11aaa37 b61e7087f`, 7 files md5-verified; the 6:25 routine's Pulse (05:32 UTC) renders fully Slovak on /sk/news.html, 0 EN marks)
 
 - The Pulse is published by Ras's own daily routine at 6:25 Europe/Bratislava (`PUT /pulse.json`), not by a desk agent. Since 2026-11-12 it sends `title_sk` and `excerpt_sk` on every item in `items` and `archive.items`, plus `what_moved_sk`.
