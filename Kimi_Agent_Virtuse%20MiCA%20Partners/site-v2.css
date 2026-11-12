@@ -1,5 +1,8 @@
 /* site-v2.css: shared design system (from the v2 homepage, 2026-10-09).
    Homepage-only rules are included as-is; page-specific additions live at the end. */
+/* Arial scaled to Inter's metrics: while Inter loads (display=swap) the text already takes Inter's space,
+   so the swap does not move the layout (Lighthouse CLS "Web font loaded" on secure/buy-bitcoin). */
+@font-face { font-family: "Inter Fallback"; src: local("Arial"), local("Helvetica"); size-adjust: 107.06%; ascent-override: 90.49%; descent-override: 22.56%; line-gap-override: 0%; }
 :root {
   color-scheme: dark;
   --dark: #08090a;
@@ -15,7 +18,7 @@
   --note: #5faede;
   --note-bg: rgba(95,174,222,0.07);
   --good: #3fb950;
-  --sans: Inter, -apple-system, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --sans: Inter, "Inter Fallback", -apple-system, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 * { box-sizing: border-box; }

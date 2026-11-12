@@ -92,7 +92,7 @@ CSS = '''<style>
 .bvg-method p{color:var(--muted);font-size:15px;line-height:1.65;max-width:860px;margin:0 0 12px}
 .bvg-method .bd-links{margin-top:6px}
 .pos{color:#b8f0c8}.neg{color:#ffc4c4}
-@media (max-width:900px){.bvg-two{grid-template-columns:1fr}.bvg-tiles{grid-template-columns:1fr 1fr}.bvg-chart{height:280px}}
+@media (max-width:900px){.bvg-two{grid-template-columns:minmax(0,1fr)}.bvg-two>*{min-width:0}.bvg-two .bvg-wrap{overflow-x:auto}.bvg-tiles{grid-template-columns:1fr 1fr}.bvg-chart{height:280px}}
 @media (max-width:600px){.bvg-table{font-size:13px}.bvg-table th,.bvg-table td{padding:8px 9px}.bvg-table th.bvg-a,.bvg-table td.bvg-a{min-width:120px}.bvg-table td.bvg-a span{display:none}.bvg-tiles .bd-v{font-size:22px}.bvg-chart{height:240px}}
 </style>
 '''
