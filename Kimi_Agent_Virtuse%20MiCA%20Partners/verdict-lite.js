@@ -626,6 +626,15 @@
     document.querySelectorAll('form[data-wl]').forEach(function (f) { f.hidden = false; });
     document.querySelectorAll('[data-buybox] .ml-buy-msg').forEach(function (m) { m.textContent = S.buyClosed; });
   }
+  // Variant B: show the closed state before any click. RU/UK are never sold; EN/SK ask the
+  // Worker (GET /verdict/status, same host as the checkout). Only an explicit
+  // { payments: false } closes; an error or an older Worker leaves Variant A (close on 503).
+  (function () {
+    if (LANG === 'ru' || LANG === 'uk') { payClosed(); return; }
+    vbApi().then(function (api) {
+      return api.fetchWithTimeout(api.url('/verdict/checkout').replace(/\/checkout$/, '/status'), {}, 6000, function (r) { return r.ok ? r.json() : null; });
+    }).then(function (d) { if (d && d.payments === false) payClosed(); }).catch(function () {});
+  })();
   var INTENT = 'vb-verdict-intent';
   function buy(btn) {
     var cta = btn.getAttribute('data-cta') || '';
