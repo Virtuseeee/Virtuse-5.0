@@ -20,6 +20,7 @@ import { handleWithdraw } from './features/verdict-pay/withdraw.js';
 import { handleVerdict } from './features/verdict/handler.js';
 import { askClaude } from './features/verdict/model.js';
 import { handleVersion } from './features/version/handler.js';
+import { handleVerdictStatus } from './features/verdict-pay/status.js';
 import { handleWaitlist } from './features/waitlist/handler.js';
 import { WP_PREFIX, handleWpProxy } from './features/wp-proxy/handler.js';
 
@@ -63,6 +64,8 @@ const notFound = (ctx) => json(404, { error: 'Not found' }, ctx.origin);
 const route = pipeline(
   // Public routes, before the gate.
   on(['GET', 'HEAD'], '/version', handleVersion),
+  // Verdict: are €14 payments open? (boolean only, same as the checkout's 503)
+  on(['GET', 'HEAD'], '/verdict/status', handleVerdictStatus),
   // Pulse: GET is public, the publisher is curl with a bearer token (no Origin).
   on(ANY, ['/pulse.json', '/pulse/rollback'], (c) => handlePulse(c.request, c.env, c.origin, c.path)),
   // Read-only WordPress proxy for the Stories build on GitHub runners (no Origin).
