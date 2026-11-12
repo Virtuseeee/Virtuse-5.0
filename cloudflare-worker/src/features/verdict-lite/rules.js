@@ -4,6 +4,8 @@
 // when they disagree, so the report never shows a different score than the page.
 
 const NUM_MAX = 1e10;
+export const AGE_MIN = 18;
+export const AGE_MAX = 120;
 const COUNTRIES = ['sk', 'cz', 'at', 'de', 'pl', 'hu', 'si', 'hr', 'ro', 'bg', 'nl', 'fr', 'es', 'other'];
 const ONE_OF = {
   country: COUNTRIES,
@@ -35,11 +37,14 @@ export function validateAnswers(raw) {
     if (!list.includes(raw[k])) return { ok: false, error: k };
     a[k] = raw[k];
   }
+  // Whole years, an adult, and a retirement age that is not in the past: the
+  // same limits as check() in verdict-lite.js.
   for (const k of AGES) {
-    const n = number(raw[k], 120);
-    if (n === undefined) return { ok: false, error: k };
+    const n = number(raw[k], AGE_MAX);
+    if (n === undefined || (n !== null && (!Number.isInteger(n) || n < AGE_MIN))) return { ok: false, error: k };
     a[k] = n;
   }
+  if (a.age !== null && a.retire !== null && a.retire < a.age) return { ok: false, error: 'retire' };
   for (const k of AMOUNTS) {
     const n = number(raw[k], NUM_MAX);
     if (n === undefined) return { ok: false, error: k };
@@ -93,7 +98,9 @@ export function gapIds(A, c) {
   if (sc.fall < 10) put('fall', 10 - sc.fall);
   if (c.years != null && c.years < 10 && (c.share || 0) >= 20) put('retire', 5);
   const boost = worryTargets(A);
-  w.forEach((k) => { const id = boost[k]; if (id) pr[id] = (pr[id] || 0) + 3; });
+  // A worry about retirement raises the retirement gap only when the answers show it
+  // (under 10 years away and a large share); the text says "under 10 years".
+  w.forEach((k) => { const id = boost[k]; if (id && (id !== 'retire' || pr.retire)) pr[id] = (pr[id] || 0) + 3; });
   const ids = Object.keys(pr).sort((x, y) => pr[y] - pr[x]);
   ['heirs', 'records'].forEach((id) => { if (!ids.includes(id)) ids.push(id); });
   return ids.slice(0, 3);

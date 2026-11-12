@@ -22,12 +22,30 @@ function memoryKv() {
 
 test('limiter counts up to max, then refuses without counting', async () => {
   const kv = memoryKv();
-  const limiter = createKvLimiter(kv);
+  let now = 1_000_000;
+  const limiter = createKvLimiter(kv, () => now);
   const results = [];
-  for (let i = 0; i < 4; i++) results.push(await limiter.exceeded('k', 3, 60));
+  for (let i = 0; i < 4; i++) results.push(await limiter.exceeded('k', 3, 600));
   assert.deepEqual(results, [false, false, false, true]);
-  assert.equal(kv.store.get('k'), '3');
-  assert.deepEqual(kv.puts.at(-1), ['k', '3', { expirationTtl: 60 }]);
+  assert.equal(kv.store.get('k'), `3:${1_000_000 + 600_000}`);
+  assert.deepEqual(kv.puts.at(-1), ['k', `3:${1_000_000 + 600_000}`, { expirationTtl: 600 }]);
+});
+
+test('limiter window is fixed: later attempts do not move its end', async () => {
+  const kv = memoryKv();
+  let now = 0;
+  const limiter = createKvLimiter(kv, () => now);
+  assert.equal(await limiter.exceeded('k', 2, 600), false);
+  now = 500_000;
+  assert.equal(await limiter.exceeded('k', 2, 600), false);
+  assert.deepEqual(kv.puts.at(-1), ['k', '2:600000', { expirationTtl: 100 }]);
+  assert.equal(await limiter.exceeded('k', 2, 600), true);
+  now = 600_001;   // the window that began at 0 is over, whatever KV still holds
+  assert.equal(await limiter.exceeded('k', 2, 600), false);
+  // a bare count written by the old limiter starts a new window with that count
+  kv.store.set('old', '1');
+  assert.equal(await limiter.exceeded('old', 2, 600), false);
+  assert.equal(await limiter.exceeded('old', 2, 600), true);
 });
 
 test('claimOnce succeeds once per window', async () => {

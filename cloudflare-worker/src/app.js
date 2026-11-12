@@ -38,7 +38,20 @@ function createServices(env, fetchImpl) {
   };
 }
 
-function createContext(request, env, { fetchImpl, clock }) {
+// Staging shares the RATE_LIMIT_KV namespace with production. KV_PREFIX (set only
+// in [env.staging]) puts every staging key under its own prefix, so a staging
+// test can never be read as a production order, result or rate-limit counter.
+export function scopedKv(kv, prefix) {
+  if (!kv || !prefix) return kv;
+  return {
+    get: (key, ...rest) => kv.get(prefix + key, ...rest),
+    put: (key, ...rest) => kv.put(prefix + key, ...rest),
+    delete: (key, ...rest) => kv.delete(prefix + key, ...rest),
+  };
+}
+
+function createContext(request, rawEnv, { fetchImpl, clock }) {
+  const env = rawEnv.KV_PREFIX ? { ...rawEnv, RATE_LIMIT_KV: scopedKv(rawEnv.RATE_LIMIT_KV, rawEnv.KV_PREFIX) } : rawEnv;
   const url = new URL(request.url);
   let services;
   return {

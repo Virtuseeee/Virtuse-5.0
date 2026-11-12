@@ -26,6 +26,12 @@ export function paymentsOn(env) {
   return true;
 }
 
+// A Checkout Session id belongs to this Worker only when its mode matches the
+// Stripe key: a test key opens cs_test_ sessions, a live key cs_live_ ones. A
+// session paid with a test card can therefore never open a report on production.
+export const testKey = (env) => /^(sk|rk)_test_/.test(env.STRIPE_SECRET_KEY || '');
+export const sessionMatchesKey = (env, sid) => String(sid).startsWith(testKey(env) ? 'cs_test_' : 'cs_live_');
+
 // Page languages; messages here exist in sk and en (ru reads the en ones).
 const PAGE_LANGS = ['sk', 'en', 'ru'];
 export const pageLang = (x) => (PAGE_LANGS.includes(x) ? x : 'en');

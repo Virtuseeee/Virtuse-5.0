@@ -5,7 +5,7 @@
 // per-IP counter is /send's own (not shared with /subscribe and /waitlist), and
 // an address Resend refuses (4xx) is answered with 400 invalid_recipient and
 // given back to both counters, so a typo does not lock the visitor out.
-// Limits per hour: SEND_IP_LIMIT_PER_HOUR (default 5) and
+// Limits per hour: SEND_IP_LIMIT_PER_HOUR (default 20: offices and mobile carriers share one IP) and
 // SEND_ADDRESS_LIMIT_PER_HOUR (default 3); staging sets higher values for QA.
 // With `brief: true` the address also joins the Brief exactly like POST /subscribe. What may be sent and what the
 // email says live in domain.js.
@@ -20,7 +20,7 @@ import { SEND_KINDS, SEND_SOURCES, SITE_LANGS, oneOf, renderSendEmail, validateP
 // The per-address key is a hash, so the KV namespace never holds plain
 // addresses.
 const WINDOW_SECONDS = 60 * 60;
-const DEFAULT_PER_IP = 5;
+const DEFAULT_PER_IP = 20;
 const DEFAULT_PER_ADDRESS = 3;
 
 function limitFrom(value, fallback) {

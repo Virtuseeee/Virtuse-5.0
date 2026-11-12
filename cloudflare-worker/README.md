@@ -492,3 +492,11 @@ the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret
 ## Verdict Lite report (paid, fixed rules)
 
 `POST /verdict/checkout { answers, lang, email }` is the Lite path of the Checkout route: answers validated by `features/verdict-lite/rules.js`, kept 24 h without the email, 20 attempts per IP per hour. The webhook and `POST /verdict/report` are shared with the older paid report; `stored.lite` picks `liteReportView()` (`features/verdict-lite/report.js`) instead of `reportView()`. The page and the PDF both print that one object. If you change `calc()` or `gaps()` in `verdict-lite.js`, change `rules.js` too: `test/verdict-lite.test.mjs` compares them.
+
+## Audit fixes of 12 Nov 2026 (audits/verdict-audit-2026-11-12.md, top 5)
+
+- `KV_PREFIX` (staging only, `"stg:"`): staging shares the `RATE_LIMIT_KV` namespace with production; with the prefix its orders, stored answers and rate-limit counters are separate keys. A `cs_test_` session is also refused on a live Stripe key (and the other way round), before any KV or Stripe lookup.
+- Answers: ages are whole years from 18 to 120 and the retirement age is not below the age, in the browser (`verdict-lite.js` `check()`) and in `validateAnswers()`.
+- Report: a retirement worry adds the retirement gap only when it applies; the Czech and German tax examples say that they leave the rule's annual limits out; large sums never print in exponent notation.
+- Alerts: `VERDICT_ALERT_WEBHOOK` (optional secret, a Slack-style incoming webhook) is a second channel next to the email alert. An alert that could not be sent is tried again on the next failure. A Stripe refusal to open Checkout sends `checkout_failed` (once per hour, again at the 5th failure).
+- Limits: counters are fixed windows (`"<count>:<window end>"`); `/send` allows 20 per IP per hour by default (3 per address stays).

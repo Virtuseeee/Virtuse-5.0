@@ -27,7 +27,7 @@ import { liteReportView } from '../verdict-lite/report.js';
 import { validateAnswers } from '../verdict-lite/rules.js';
 import {
   LITE_CHECKOUT_PER_HOUR, LITE_SESSION_S, LITE_TERMS, PAY_TEXT, REPORT_ERRORS, REPORT_WINDOW_MS, RID_RE, SESSION_RE, SIGNATURE_TOLERANCE_S, checkoutParams,
-  isVerdictSession, msgLang, pageLang, paymentsOn,
+  isVerdictSession, msgLang, pageLang, paymentsOn, sessionMatchesKey, testKey,
 } from './domain.js';
 import { renderReportPdf } from './pdf.js';
 import { operatorLine, orderNumber, receiptLang, renderReceipt, reportFilename } from './receipt.js';
@@ -83,6 +83,11 @@ export async function handleCheckout(ctx) {
   }
   if (!r.ok || !r.data.url) {
     console.error('verdict checkout: stripe', r.status, r.data?.error?.type, r.data?.error?.code, r.data?.error?.param);
+    // Nobody can pay while this fails: tell Virtuse, once per hour (and again at the 5th failure).
+    await deliveryAlert(ctx, {
+      key: `checkout:${new Date(ctx.now).toISOString().slice(0, 13)}`, kind: 'checkout_failed', lang,
+      detail: `Stripe status ${r.status}${r.data?.error ? ` · ${[r.data.error.type, r.data.error.code, r.data.error.param].filter(Boolean).join(' · ')}` : ''}`,
+    });
     return json(502, { error: PAY_TEXT.checkoutFail[lang] }, origin);
   }
   return json(200, { ok: true, url: r.data.url }, origin);
@@ -203,7 +208,7 @@ export async function handleStripeWebhook(ctx) {
   const obj = event?.data?.object;
   if (event.type === 'checkout.session.completed' || event.type === 'checkout.session.async_payment_succeeded') {
     // Other Virtuse payments on the same account have no Verdict metadata: ignored.
-    if (isVerdictSession(obj) && obj.payment_status === 'paid') {
+    if (isVerdictSession(obj) && obj.payment_status === 'paid' && sessionMatchesKey(env, obj.id)) {
       const rec = await store.markPaid(obj, now);
       if (rec.status === 'paid' && !(await sendReceipt(ctx, obj, rec, store))) return reply(500, { error: 'Receipt not sent' });
     }
@@ -224,7 +229,10 @@ export async function handleStripeWebhook(ctx) {
 export async function paidReport(ctx, sid) {
   const { env, now } = ctx;
   const store = createPayStore(env.RATE_LIMIT_KV);
+  if (!sessionMatchesKey(env, sid)) return { status: 402, error: 'unpaid' };
   let rec = await store.getPaid(sid);
+  // A record written by the other mode (shared KV before 2026-11-12) does not count.
+  if (rec && typeof rec.livemode === 'boolean' && rec.livemode === testKey(env)) return { status: 402, error: 'unpaid' };
   if (!rec) {
     const r = await stripeFor(ctx).request('GET', `/checkout/sessions/${encodeURIComponent(sid)}`);
     if (!r.ok || !isVerdictSession(r.data) || r.data.payment_status !== 'paid') return { status: 402, error: 'unpaid' };

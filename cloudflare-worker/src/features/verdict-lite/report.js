@@ -11,7 +11,8 @@ import { reportBlocks } from './blocks.js';
 import { bandIndex, calc, gapIds, grade, worryTargets } from './rules.js';
 
 const NBSP = ' ';
-const group = (n, sep) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+// BigInt: String() of a number from 1e21 up is exponent notation.
+const group = (n, sep) => (Number.isFinite(n) ? BigInt(Math.round(n)).toString() : '0').replace(/\B(?=(\d{3})+(?!\d))/g, sep);
 const FMT = {
   en: { eur: (n) => `€${group(n, ',')}`, pct: (n) => `${Math.round(n)}%` },
   sk: { eur: (n) => `${group(n, NBSP)}${NBSP}€`, pct: (n) => `${Math.round(n)}${NBSP}%` },
