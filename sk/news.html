@@ -46,7 +46,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/news/news.css?v=20261112b">
+<link rel="stylesheet" href="/news/news.css?v=20261112c">
 <style>
 /* One Brief theme: dark by default (same key and palette as blog + stories). */
 :root[data-theme-key="vb-theme-blog"][data-theme="dark"] {
@@ -312,54 +312,92 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2 id="tools-head">Nástroje</h2>
         <a class="head-link" href="/sk/bitcoin-data.html?utm_source=brief&amp;utm_medium=tools">Bitcoin dáta <span aria-hidden="true">→</span></a>
       </div>
-      <ul class="tools-grid">
+      <ul class="tools-grid" id="toolsGrid">
         <li>
-          <a class="tool-card" href="/sk/retirement-calculator.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-retirement">
+          <article class="tool-card is-orange">
+            <a class="tool-card-link" href="/sk/retirement-calculator.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-retirement"></a>
             <h3 class="tool-title" id="tool-retirement">Dôchodková kalkulačka</h3>
             <p class="tool-dek">Vystačí ti Bitcoin?</p>
-            <div class="tool-diagram" aria-hidden="true">
-              <div class="tool-flow"><span class="tool-cell">Zásoba<small>BTC</small></span><span>+</span><span class="tool-cell">Výdavky<small>€ / rok</small></span><span>=</span><span class="tool-cell is-result">Vystačí<small>rokov</small></span></div>
-              <p>Rok po roku, kým Bitcoin nedôjde, alebo vydrží na celý život</p>
+            <div class="tool-badges"><span class="tool-badge">Zadarmo</span><span class="tool-badge">Bez registrácie</span></div>
+            <div class="tool-preview">
+              <p class="tool-preview-label">Príklad</p>
+              <div class="tool-preview-main">
+                <div>
+                  <p class="rc-years" id="rcYears"></p>
+                  <p class="rc-sub" id="rcSub"></p>
+                </div>
+                <div class="rc-controls">
+                  <div class="rc-row"><span class="rc-row-label">Zásoba</span><div class="tool-chips" id="rcStackChips" role="group" aria-label="Zásoba"></div></div>
+                  <div class="rc-row"><span class="rc-row-label">Výdavky</span><div class="tool-chips" id="rcSpendChips" role="group" aria-label="Výdavky"></div></div>
+                </div>
+              </div>
+              <p class="tool-preview-foot" id="rcNote"></p>
             </div>
-            <p class="tool-desc">Zadaj zásobu BTC, úspory a výdavky v eurách. Zadarmo, bez registrácie.</p>
-            <span class="tool-action">Dôchodková kalkulačka <span aria-hidden="true">→</span></span>
-          </a>
+            <p class="tool-desc">Zadaj zásobu BTC, úspory a výdavky v eurách. Plná kalkulačka ráta rok po roku, s rastom aj infláciou.</p>
+            <a class="tool-cta" href="/sk/retirement-calculator.html?utm_source=brief&amp;utm_medium=tools">Otvoriť kalkulačku <span aria-hidden="true">→</span></a>
+          </article>
         </li>
         <li>
-          <a class="tool-card" href="/sk/verdict.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-verdict">
+          <article class="tool-card is-teal">
+            <a class="tool-card-link" href="/sk/verdict.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-verdict"></a>
             <h3 class="tool-title" id="tool-verdict">Verdict</h3>
             <p class="tool-dek">Ohodnoť svoj bitcoinový plán</p>
-            <div class="tool-diagram" aria-hidden="true">
-              <div class="tool-flow"><span class="tool-cell">Odpovede</span><span>→</span><span class="tool-cell">Medzery<small>top 3</small></span><span>→</span><span class="tool-cell is-result">Skóre<small>/ 100</small></span></div>
-              <p>Úspory, ciele a obavy, približne za 3 minúty</p>
+            <div class="tool-badges"><span class="tool-badge">Lite skóre zadarmo</span><span class="tool-badge">3 min</span></div>
+            <div class="tool-preview">
+              <p class="tool-preview-label">Príklad výsledku</p>
+              <div class="tool-preview-main">
+                <div class="vd-wrap">
+                  <div class="vd-gauge" aria-hidden="true">
+                    <svg viewBox="0 0 118 118"><circle cx="59" cy="59" r="50" fill="none" stroke="currentColor" stroke-width="8" opacity="0.18"></circle><circle cx="59" cy="59" r="50" fill="none" stroke="currentColor" stroke-width="8" transform="rotate(-90 59 59)" stroke-dasharray="314.16" stroke-dashoffset="78.54"></circle></svg>
+                    <div class="vd-gauge-num"><strong>75</strong><span>/ 100</span></div>
+                  </div>
+                  <div class="vd-copy">
+                    <p class="vd-grade">Známka B</p>
+                    <p class="vd-hook">Základy sú na mieste. Najslabšie oblasti: dane a úschova. Aké je tvoje skóre?</p>
+                  </div>
+                </div>
+              </div>
+              <p class="tool-preview-foot">Ukážkový report pre vymyslenú klientku. Známka B od 70.</p>
             </div>
             <p class="tool-desc">Okamžité skóre so známkou a tvoje 3 najväčšie medzery. Lite skóre zadarmo.</p>
-            <span class="tool-action">Verdict <span aria-hidden="true">→</span></span>
-          </a>
+            <a class="tool-cta" href="/sk/verdict.html?utm_source=brief&amp;utm_medium=tools">Zistiť svoje skóre <span aria-hidden="true">→</span></a>
+          </article>
         </li>
         <li>
-          <a class="tool-card" href="/sk/asset-returns.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-returns">
+          <article class="tool-card is-blue">
+            <a class="tool-card-link" href="/sk/asset-returns.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-returns"></a>
             <h3 class="tool-title" id="tool-returns">Výnosy tried aktív</h3>
             <p class="tool-dek">Bitcoin oproti všetkým triedam aktív</p>
-            <div class="tool-diagram" aria-hidden="true">
-              <div class="tool-flow"><span class="tool-cell">Bitcoin<small>BTC</small></span><span>vs</span><span class="tool-cell">Akcie · dlhopisy<small>zlato · hotovosť</small></span><span>=</span><span class="tool-cell is-result">Výnosy<small>za rok</small></span></div>
-              <p>Ročné výnosy v USD alebo EUR, aktualizované denne</p>
+            <div class="tool-badges"><span class="tool-badge">Zadarmo</span><span class="tool-badge">Denne</span></div>
+            <div class="tool-preview">
+              <p class="tool-preview-label">Ročné výnosy v USD, v %</p>
+              <div class="tool-preview-main">
+                <table class="ar-table" id="arTable"><colgroup><col class="ar-name-col"><col><col><col><col><col><col></colgroup><thead></thead><tbody></tbody></table>
+                <p class="ar-kicker" id="arKicker"></p>
+              </div>
+              <p class="tool-preview-foot" id="arNote">Yahoo Finance, total return v USD.</p>
             </div>
-            <p class="tool-desc">Desať rokov Bitcoinu, amerických a európskych akcií a dlhopisov, zlata, komodít a hotovosti. Najlepšie a najhoršie aktívum v každom roku.</p>
-            <span class="tool-action">Výnosy tried aktív <span aria-hidden="true">→</span></span>
-          </a>
+            <p class="tool-desc">Desať rokov Bitcoinu, akcií, dlhopisov, zlata, komodít a hotovosti. Najlepšie a najhoršie aktívum v každom roku.</p>
+            <a class="tool-cta" href="/sk/asset-returns.html?utm_source=brief&amp;utm_medium=tools">Porovnať výnosy <span aria-hidden="true">→</span></a>
+          </article>
         </li>
         <li>
-          <a class="tool-card" href="/sk/tax-agent.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-tax">
+          <article class="tool-card is-violet">
+            <a class="tool-card-link" href="/sk/tax-agent.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-tax"></a>
             <h3 class="tool-title" id="tool-tax">Tax &amp; Inheritance Agent</h3>
             <p class="tool-dek">Pozri pravidlá svojej krajiny</p>
-            <div class="tool-diagram" aria-hidden="true">
-              <div class="tool-flow"><span class="tool-cell">Krajina<small>13 EÚ</small></span><span>→</span><span class="tool-cell">Daňové pravidlá</span><span>→</span><span class="tool-cell is-result">Dedičia<small>pripravenosť</small></span></div>
-              <p>Oficiálne zdroje, stav k Q3 2026. Nie je to daňové poradenstvo.</p>
+            <div class="tool-badges"><span class="tool-badge">Zadarmo</span><span class="tool-badge">13 krajín EÚ</span></div>
+            <div class="tool-preview">
+              <p class="tool-preview-label">Vyber krajinu</p>
+              <div class="tool-preview-main">
+                <div class="tool-chips tax-chips" id="taxChips" role="group" aria-label="Krajina"></div>
+                <p class="tax-line" id="taxLine"></p>
+              </div>
+              <p class="tool-preview-foot">Stav k Q3 2026. Nie je to daňové poradenstvo.</p>
             </div>
             <p class="tool-desc">Daňové pravidlá pre Bitcoin v 13 krajinách EÚ a kontrola, či je tvoj Bitcoin pripravený pre dedičov.</p>
-            <span class="tool-action">Tax &amp; Inheritance Agent <span aria-hidden="true">→</span></span>
-          </a>
+            <a class="tool-cta" href="/sk/tax-agent.html?utm_source=brief&amp;utm_medium=tools">Pozrieť pravidlá <span aria-hidden="true">→</span></a>
+          </article>
         </li>
       </ul>
     </div>
@@ -397,7 +435,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="/preferred-source.js" defer></script>
-<script src="/news/news.js?v=20261112b" defer></script>
+<script src="/news/news.js?v=20261112c" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
