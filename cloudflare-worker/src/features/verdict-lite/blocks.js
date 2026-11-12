@@ -11,9 +11,10 @@ import { PARTNERS, PRICED, amountBucket, custodyPartners, matchingPartners, taxP
 // hold = years until a holding-period exemption applies.
 // brackets = [upper limit, rate]; Slovakia: Financial Administration, tax year 2026.
 const TAX_EXAMPLE = {
-  cz: { rates: [15, 23], hold: 3 },
+  // limits: the country rule has annual limits (a cap or a small-sales threshold) that the example does not apply.
+  cz: { rates: [15, 23], hold: 3, limits: true },
   sk: { brackets: [[43983.32, 19], [60349.21, 25], [75010.32, 30], [Infinity, 35]], levyOut: true },
-  pl: { rates: [19] }, at: { rates: [27.5] }, de: { rates: [45], upTo: true, hold: 1 },
+  pl: { rates: [19] }, at: { rates: [27.5] }, de: { rates: [45], upTo: true, hold: 1, limits: true },
   hu: { rates: [15] }, si: { zero: true }, hr: { rates: [12], hold: 2 }, ro: { rates: [16] }, bg: { rates: [10] }, nl: { box3: true }, fr: { rates: [31.4] },
   // Spain's bands were outside the signed tax review of 5 Nov 2026: no worked figures until they are checked.
   es: { noExample: true },
@@ -48,6 +49,7 @@ const COPY = {
       exempt: (n) => `After ${n} ${n === 1 ? 'year' : 'years'} of holding, a sale is exempt under the rule above, so the tax is ${'€'}0. This assumes you sell your oldest purchases first.`,
       noteSale: (y) => `At today's rates and bands, on this gain alone: no other income, allowances, costs or fees. The purchase cost is 5% of the amounts in this report; Bitcoin you already hold is not counted. Rates can differ in ${y} years, and the scenario is not a forecast. Check with a tax adviser before you file.`,
       levyNote: 'Health insurance contributions are not included: their rate and base depend on your situation, for example if you receive a pension.',
+      limits: 'This example does not apply the annual limits in the rule above; check whether they change your case.',
       noExample: "Spain taxes these gains on its savings scale, and the amount depends on the size of the gain. This report shows no worked figures for Spain: ask a tax adviser for the current bands.",
       note: 'For illustration only, at the rates above. Your actual rate depends on your other income and costs. This is not a forecast of any gain.',
       hold: (n, d) => `A purchase made today would reach the ${n}-year holding period on ${d}.`,
@@ -112,6 +114,7 @@ const COPY = {
       band: (r, b) => `Daň ${r} z ${b}`, taxTotal: 'Daň spolu', share: (p, g) => `To je ${p} zo zisku ${g}.`, leftSale: 'Z predaja vám zostane', leftGain: 'Zo zisku zostane',
       scale: (first, rest) => `${first} platí pre časť zisku nad ${rest}`, scaleAnd: 'a', bandHead: ['Časť zisku', 'Suma', 'Sadzba', 'Daň'], bandFrom: (x) => `do ${x}`, bandBetween: (a, b) => `${a} až ${b}`, bandOver: (x) => `nad ${x}`,
       exempt: (n) => `Po ${n} ${n === 1 ? 'roku' : 'rokoch'} držby je predaj podľa pravidla vyššie oslobodený, takže daň je 0 €. Počíta sa s tým, že predávate najstaršie nákupy.`,
+      limits: 'Tento príklad neuplatňuje ročné limity z pravidla vyššie; overte si, či menia váš prípad.',
       noteSale: (y) => `Pri dnešných sadzbách a pásmach, len z tohto zisku: bez iných príjmov, nezdaniteľnej časti, výdavkov a poplatkov. Nákupná cena je 5 % zo súm v tomto reporte; Bitcoin, ktorý už držíte, sa nepočíta. O ${y} ${y === 1 ? 'rok' : y < 5 ? 'roky' : 'rokov'} môžu byť sadzby iné a scenár nie je predpoveď. Pred podaním priznania sa poraďte s daňovým poradcom.`,
       levyNote: 'Zdravotné odvody nie sú započítané: ich sadzba a základ závisia od vašej situácie, napríklad ak poberáte dôchodok.',
       noExample: 'Španielsko zdaňuje tieto zisky podľa stupnice príjmov z úspor a suma závisí od výšky zisku. Tento report pre Španielsko neuvádza prepočet: aktuálne pásma si overte u daňového poradcu.',
@@ -263,10 +266,11 @@ function taxExample(A, T, date, lang, { eur, pct }, years, scen) {
   if (filing) dates.push(filing(saleYear));
   const out = { title: worked ? T.tax.sale(A.retire) : T.tax.gain(eur(g)), kv, after: [], bands: null, head: [], rows: [], dates, note: worked ? T.tax.noteSale(years) : T.tax.note };
   if (worked && ex.hold && years >= ex.hold) {
-    out.text = T.tax.exempt(ex.hold);
+    out.text = ex.limits ? `${T.tax.exempt(ex.hold)} ${T.tax.limits}` : T.tax.exempt(ex.hold);
     out.hero = { k: T.tax.heroK, vals: [[T.tax.taxTotal, eur(0)], [T.tax.leftSale, eur(sale)]] };
     return out;
   }
+  if (ex.limits) out.note = `${out.note} ${T.tax.limits}`;
   if (ex.brackets || (ex.rates.length === 1 && !ex.upTo)) {
     const list = ex.brackets || [[Infinity, ex.rates[0]]];
     const money = (x) => eur(Math.round(x));

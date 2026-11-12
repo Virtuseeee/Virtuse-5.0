@@ -282,7 +282,7 @@ test('POST /send: Resend 422 -> 400 invalid_recipient, attempt not counted', wit
     assert.equal((await res.json()).code, 'invalid_recipient');
   }
   // every counter was given back
-  assert.ok([...e.RATE_LIMIT_KV.store.values()].every((v) => v === '0'));
+  assert.ok([...e.RATE_LIMIT_KV.store.values()].every((v) => String(v).split(':')[0] === '0'));
 }));
 
 test('POST /send: Resend 5xx stays 502', withResendStatus(500, async () => {
@@ -309,11 +309,11 @@ test('POST /send: per-IP limit from SEND_IP_LIMIT_PER_HOUR, 429 carries rate_lim
   assert.deepEqual(statuses, [200, 200, 200, 200, 200, 200, 200, 429]);
   const last = await worker.fetch(req({ ...LITE_BODY, email: 'z@b.co' }), e);
   assert.equal((await last.json()).code, 'rate_limited');
-  // default without the env var is 5 per IP
+  // default without the env var is 20 per IP
   const d = env();
   const ds = [];
-  for (let i = 0; i < 6; i++) ds.push((await worker.fetch(req({ ...LITE_BODY, email: `v${i}@b.co` }), d)).status);
-  assert.deepEqual(ds, [200, 200, 200, 200, 200, 429]);
+  for (let i = 0; i < 21; i++) ds.push((await worker.fetch(req({ ...LITE_BODY, email: `v${i}@b.co` }), d)).status);
+  assert.deepEqual(ds, [...Array(20).fill(200), 429]);
 }));
 
 test('POST /send: a Resend 4xx about our setup (missing from) is 502, not invalid_recipient', withResendStatus(422, async () => {

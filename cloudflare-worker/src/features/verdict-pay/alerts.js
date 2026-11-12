@@ -8,6 +8,8 @@
 //  - POST /resend/webhook: Resend's email.bounced / email.complained for the
 //    confirmations (tag kind=verdict_receipt) -> the same alert, once per email_id.
 // Recipient: VERDICT_ALERT_TO, else VERDICT_RECEIPT_TO (staging), else info@virtuse.com.
+// Second channel, independent of Resend: VERDICT_ALERT_WEBHOOK (a Slack-style incoming
+// webhook, body { text }), so an alert still arrives when Resend itself is down.
 // The buyer's address never goes into a subject and is masked in the body.
 
 import { orderNumber } from './receipt.js';
@@ -32,6 +34,7 @@ const KIND_TEXT = {
   send_failed: 'The confirmation email with the PDF could not be sent (Resend error). Stripe retries the webhook.',
   result_expired: 'The answers had expired before the payment was confirmed, so no report can be built. The buyer got a short note; refund the payment in Stripe.',
   no_email: 'The Checkout Session has no email address, so no confirmation was sent.',
+  checkout_failed: 'Stripe refused to open a Checkout Session, so buyers cannot pay. Check the Stripe Dashboard (Tax, Price, key) and the Worker logs.',
   bounced: 'The confirmation email bounced.',
   complained: 'The buyer marked the confirmation email as spam.',
 };
@@ -77,20 +80,43 @@ export async function deliveryAlert(ctx, { key, kind, sid, rid, lang, email, det
   try {
     const prev = await kv.get(k);
     attempts = (prev ? (Number(JSON.parse(prev).attempts) || 0) : 0) + 1;
-    await kv.put(k, JSON.stringify({ attempts, kind, at: now }), { expirationTtl: ALERT_TTL });
   } catch (e) {
     console.error('verdict alert: KV', e);
   }
-  if (attempts !== 1 && attempts !== ALERT_REPEAT_AT) return attempts;
-  try {
+  const due = attempts === 1 || attempts === ALERT_REPEAT_AT;
+  let told = !due;
+  if (due) {
     const mail = renderAlert({ kind, sid, rid, lang, email, detail, attempts, now });
-    await ctx.services.resend.sendEmail(
-      { from: fromAddr(env), to: [alertTo(env)], subject: mail.subject, html: mail.html, tags: [{ name: 'kind', value: 'verdict_alert' }] },
-      'Resend verdict alert failed',
-      { idempotencyKey: `verdict-alert-${key || sid}-${attempts}` },
-    );
-  } catch (e) {
-    console.error(e);
+    try {
+      await ctx.services.resend.sendEmail(
+        { from: fromAddr(env), to: [alertTo(env)], subject: mail.subject, html: mail.html, tags: [{ name: 'kind', value: 'verdict_alert' }] },
+        'Resend verdict alert failed',
+        { idempotencyKey: `verdict-alert-${key || sid}-${attempts}` },
+      );
+      told = true;
+    } catch (e) {
+      console.error(e);
+    }
+    if (env.VERDICT_ALERT_WEBHOOK) {
+      try {
+        const res = await ctx.fetch(env.VERDICT_ALERT_WEBHOOK, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: `${mail.subject}\n${KIND_TEXT[kind] || kind}${detail ? `\n${String(detail).slice(0, 300)}` : ''}` }),
+        });
+        if (res.ok) told = true;
+      } catch (e) {
+        console.error('verdict alert: webhook', e?.message);
+      }
+    }
+  }
+  // An attempt is counted only once Virtuse was told (or no alert was due), so an
+  // alert that could not be sent is tried again on the next failure, not at the 5th.
+  if (told) {
+    try {
+      await kv.put(k, JSON.stringify({ attempts, kind, at: now }), { expirationTtl: ALERT_TTL });
+    } catch (e) {
+      console.error('verdict alert: KV', e);
+    }
   }
   return attempts;
 }
