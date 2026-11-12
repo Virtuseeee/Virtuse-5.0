@@ -45,7 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/news/news.css?v=20261112b">
+<link rel="stylesheet" href="/news/news.css?v=20261112d">
 <style>
 /* One Brief theme: dark by default (same key and palette as blog + stories). */
 :root[data-theme-key="vb-theme-blog"][data-theme="dark"] {
@@ -735,54 +735,88 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2 id="tools-head">Tools</h2>
         <a class="head-link" href="/bitcoin-data.html?utm_source=brief&amp;utm_medium=tools">Bitcoin Data <span aria-hidden="true">→</span></a>
       </div>
-      <ul class="tools-grid">
+      <ul class="tools-grid" id="toolsGrid">
         <li>
-          <a class="tool-card" href="/retirement-calculator.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-retirement">
+          <article class="tool-card is-orange">
+            <a class="tool-card-link" href="/retirement-calculator.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-retirement"><span class="sr-only">Retirement Calculator</span></a>
             <h3 class="tool-title" id="tool-retirement">Retirement Calculator</h3>
             <p class="tool-dek">Will your Bitcoin last?</p>
-            <div class="tool-diagram" aria-hidden="true">
-              <div class="tool-flow"><span class="tool-cell">Stack<small>BTC</small></span><span>+</span><span class="tool-cell">Spending<small>€ / year</small></span><span>=</span><span class="tool-cell is-result">Runway<small>years</small></span></div>
-              <p>Year by year, until your Bitcoin runs out or lasts for life</p>
+            <div class="tool-preview">
+              <p class="tool-preview-label">Example</p>
+              <div class="tool-preview-main">
+                <div>
+                  <p class="rc-years" id="rcYears"></p>
+                  <p class="rc-sub" id="rcSub"></p>
+                </div>
+                <div class="rc-controls">
+                  <div class="rc-row"><span class="rc-row-label">Stack</span><div class="tool-chips" id="rcStackChips" role="group" aria-label="Stack"></div></div>
+                  <div class="rc-row"><span class="rc-row-label">Spending</span><div class="tool-chips" id="rcSpendChips" role="group" aria-label="Spending"></div></div>
+                </div>
+              </div>
+              <p class="tool-preview-foot" id="rcNote"></p>
             </div>
-            <p class="tool-desc">Enter your BTC stack, savings and spending in euros. Free, no sign-up.</p>
-            <span class="tool-action">Retirement Calculator <span aria-hidden="true">→</span></span>
-          </a>
+            <p class="tool-desc">Enter your BTC stack, savings and spending in euros, year by year, with growth and inflation.</p>
+            <a class="tool-cta" href="/retirement-calculator.html?utm_source=brief&amp;utm_medium=tools">Open the calculator <span aria-hidden="true">→</span></a>
+          </article>
         </li>
         <li>
-          <a class="tool-card" href="/verdict.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-verdict">
+          <article class="tool-card is-teal">
+            <a class="tool-card-link" href="/verdict.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-verdict"><span class="sr-only">Verdict</span></a>
             <h3 class="tool-title" id="tool-verdict">Verdict</h3>
             <p class="tool-dek">Score your Bitcoin plan</p>
-            <div class="tool-diagram" aria-hidden="true">
-              <div class="tool-flow"><span class="tool-cell">Answers</span><span>→</span><span class="tool-cell">Gaps<small>top 3</small></span><span>→</span><span class="tool-cell is-result">Score<small>/ 100</small></span></div>
-              <p>Savings, goals and worries, in about 3 minutes</p>
+            <div class="tool-preview">
+              <p class="tool-preview-label">Sample result</p>
+              <div class="tool-preview-main">
+                <div class="vd-wrap">
+                  <div class="vd-gauge" aria-hidden="true">
+                    <svg viewBox="0 0 118 118"><circle cx="59" cy="59" r="50" fill="none" stroke="currentColor" stroke-width="8" opacity="0.18"></circle><circle cx="59" cy="59" r="50" fill="none" stroke="currentColor" stroke-width="8" transform="rotate(-90 59 59)" stroke-dasharray="314.16" stroke-dashoffset="87.96"></circle></svg>
+                    <div class="vd-gauge-num"><strong>72</strong><span>/ 100</span></div>
+                  </div>
+                  <div class="vd-copy">
+                    <p class="vd-grade">Grade B</p>
+                    <p class="vd-hook">The basics are in place, with gaps left. What is your score?</p>
+                  </div>
+                </div>
+              </div>
+              <p class="tool-preview-foot">72/100 is a sample. Grade B starts at 70.</p>
             </div>
-            <p class="tool-desc">An instant score with a letter grade and your 3 biggest gaps. Lite score free.</p>
-            <span class="tool-action">Verdict <span aria-hidden="true">→</span></span>
-          </a>
+            <p class="tool-desc">An instant score with a letter grade and your 3 biggest gaps. Lite is free.</p>
+            <a class="tool-cta" href="/verdict.html?utm_source=brief&amp;utm_medium=tools">Get your score <span aria-hidden="true">→</span></a>
+          </article>
         </li>
         <li>
-          <a class="tool-card" href="/asset-returns.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-returns">
+          <article class="tool-card is-blue">
+            <a class="tool-card-link" href="/asset-returns.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-returns"><span class="sr-only">Asset Class Returns</span></a>
             <h3 class="tool-title" id="tool-returns">Asset Class Returns</h3>
             <p class="tool-dek">Bitcoin against every asset class</p>
-            <div class="tool-diagram" aria-hidden="true">
-              <div class="tool-flow"><span class="tool-cell">Bitcoin<small>BTC</small></span><span>vs</span><span class="tool-cell">Stocks · bonds<small>gold · cash</small></span><span>=</span><span class="tool-cell is-result">Returns<small>per year</small></span></div>
-              <p>Calendar-year returns in USD or EUR, updated daily</p>
+            <div class="tool-preview">
+              <p class="tool-preview-label">Calendar-year returns in USD, %</p>
+              <div class="tool-preview-main">
+                <table class="ar-table" id="arTable"><colgroup><col class="ar-name-col"><col><col><col><col><col><col></colgroup><thead></thead><tbody></tbody></table>
+                <p class="ar-kicker" id="arKicker"></p>
+              </div>
+              <p class="tool-preview-foot" id="arNote">Yahoo Finance, USD total return.</p>
             </div>
-            <p class="tool-desc">Ten years of Bitcoin, US and European stocks and bonds, gold, commodities and cash. Best and worst asset each year.</p>
-            <span class="tool-action">Asset Class Returns <span aria-hidden="true">→</span></span>
-          </a>
+            <p class="tool-desc">Ten years of Bitcoin and the other asset classes. Best and worst each year.</p>
+            <a class="tool-cta" href="/asset-returns.html?utm_source=brief&amp;utm_medium=tools">Compare returns <span aria-hidden="true">→</span></a>
+          </article>
         </li>
         <li>
-          <a class="tool-card" href="/tax-agent.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-tax">
+          <article class="tool-card is-violet">
+            <a class="tool-card-link" href="/tax-agent.html?utm_source=brief&amp;utm_medium=tools" aria-labelledby="tool-tax"><span class="sr-only">Tax &amp; Inheritance Agent</span></a>
             <h3 class="tool-title" id="tool-tax">Tax &amp; Inheritance Agent</h3>
-            <p class="tool-dek">Check your country&#x27;s rules</p>
-            <div class="tool-diagram" aria-hidden="true">
-              <div class="tool-flow"><span class="tool-cell">Country<small>13 EU</small></span><span>→</span><span class="tool-cell">Tax rules</span><span>→</span><span class="tool-cell is-result">Heirs<small>readiness</small></span></div>
-              <p>Official sources, as of Q3 2026. Not tax advice.</p>
+            <p class="tool-dek">Check your country’s rules</p>
+            <div class="tool-preview">
+              <p class="tool-preview-label">Pick a country</p>
+              <div class="tool-preview-main">
+                <div class="tool-chips tax-chips" id="taxChips" role="group" aria-label="Country"></div>
+                <p class="tax-line" id="taxLine"></p>
+              </div>
+              <p class="tool-preview-foot">As of Q3 2026. Not tax advice.</p>
             </div>
-            <p class="tool-desc">Bitcoin tax rules for 13 EU countries and a check of how ready your Bitcoin is for your heirs.</p>
-            <span class="tool-action">Tax &amp; Inheritance Agent <span aria-hidden="true">→</span></span>
-          </a>
+            <p class="tool-desc">Bitcoin tax rules for 13 EU countries, and how ready it is for your heirs.</p>
+            <a class="tool-cta" href="/tax-agent.html?utm_source=brief&amp;utm_medium=tools">See the rules <span aria-hidden="true">→</span></a>
+          </article>
         </li>
       </ul>
     </div>
@@ -820,7 +854,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="/preferred-source.js" defer></script>
-<script src="/news/news.js?v=20261112b" defer></script>
+<script src="/news/news.js?v=20261112d" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

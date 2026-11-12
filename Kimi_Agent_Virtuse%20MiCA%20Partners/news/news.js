@@ -906,6 +906,168 @@
   }
   loadPulse();
 
+  /* Tools: a live example in each card.
+     Retirement: BTC × price ÷ (spending × 12), no growth or inflation (the full
+     calculator goes year by year). Price: CoinGecko BTC/EUR, else the
+     calculator's own default. Returns: data/asset-returns.json (same file as
+     the Asset Class Returns page). Tax: copied from seo-build/data
+     (seo-data.json + meta.json taxSk), as of Q3 2026; update with them. */
+  var TOOLS_T = {
+    en: {
+      years: function (y) { return y === 1 ? 'year' : 'years'; }, lessThanYear: 'Less than 1 year',
+      at: ' at ', perMonth: '/mo', priceNote: function (p, d) { return 'Example at ' + p + '/BTC (' + d + '), with no growth or inflation.'; },
+      stack: 'Stack', spending: 'Spending',
+      assets: { BTC: 'Bitcoin', DBC: 'Commodities', SPY: 'US stocks', GLD: 'Gold', VGK: 'EU stocks', BIL: 'Cash' },
+      kicker: function (y, r1, n, p1, r2, p2) { return y + ': <em>' + r1 + ' of ' + n + '</em> (' + p1 + '). 10 years: <em>' + r2 + ' of ' + n + '</em> (' + p2 + ' a year).'; },
+      noData: 'Live data unavailable. See the full table.',
+      arNote: function (d) { return 'Yahoo Finance, USD total return, as of ' + d + '.'; },
+      ord: function (n) { var s = ['th', 'st', 'nd', 'rd'], v = n % 100; return n + (s[(v - 20) % 10] || s[v] || s[0]); }
+    },
+    sk: {
+      years: function (y) { var n = Math.round(y); if (Math.abs(y - n) > 0.05) return 'roka'; return n === 1 ? 'rok' : (n >= 2 && n <= 4 ? 'roky' : 'rokov'); }, lessThanYear: 'Menej ako 1 rok',
+      at: ' pri ', perMonth: '/mes.', priceNote: function (p, d) { return 'Príklad pri ' + p + '/BTC (' + d + '), bez rastu a inflácie.'; },
+      stack: 'Zásoba', spending: 'Výdavky',
+      assets: { BTC: 'Bitcoin', DBC: 'Komodity', SPY: 'US akcie', GLD: 'Zlato', VGK: 'Eur. akcie', BIL: 'Hotovosť' },
+      kicker: function (y, r1, n, p1, r2, p2) { return y + ': <em>' + r1 + ' z ' + n + '</em> (' + p1 + '). 10 rokov: <em>' + r2 + ' z ' + n + '</em> (' + p2 + ' ročne).'; },
+      noData: 'Živé dáta nie sú dostupné. Pozri celú tabuľku.',
+      arNote: function (d) { return 'Yahoo Finance, total return v USD, k ' + d + '.'; },
+      ord: function (n) { return n + '.'; }
+    }
+  };
+  var TAX = [
+    { id: 'sk', code: 'SK', en: "Slovakia", sk: "Slovensko",
+        enLine: "19 to 35% income tax. No holding-period exemption.",
+        skLine: "19 až 35 % daň z príjmov. Bez oslobodenia podľa doby držby." },
+    { id: 'cz', code: 'CZ', en: "Czechia", sk: "Česko",
+        enLine: "15% income tax (23% above threshold). Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000.",
+        skLine: "15 % daň z príjmov (23 % nad stanovenou hranicou). Bez dane po 3 rokoch držby (do 40 miliónov Kč ročne) alebo ak úhrn príjmov z predaja kryptoaktív v roku nepresiahne 100 000 Kč." },
+    { id: 'pl', code: 'PL', en: "Poland", sk: "Poľsko",
+        enLine: "19% flat capital gains tax. No holding-period exemption.",
+        skLine: "19 % jednotná daň z kapitálových výnosov. Bez oslobodenia podľa doby držby." },
+    { id: 'at', code: 'AT', en: "Austria", sk: "Rakúsko",
+        enLine: "27.5% KESt (capital gains tax). Tax-free after 1 year only for crypto bought before March 2021.",
+        skLine: "27,5 % KESt (daň z kapitálových výnosov). Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021." },
+    { id: 'de', code: 'DE', en: "Germany", sk: "Nemecko",
+        enLine: "Up to 45% income tax (progressive). 0% after a 1-year holding period.",
+        skLine: "Až 45 % daň z príjmov (progresívna). 0 % po 1-ročnej dobe držby." },
+    { id: 'hu', code: 'HU', en: "Hungary", sk: "Maďarsko",
+        enLine: "15% personal income tax on crypto income. No holding-period exemption.",
+        skLine: "15 % daň z príjmov z kryptoaktív. Bez oslobodenia podľa doby držby." },
+    { id: 'si', code: 'SI', en: "Slovenia", sk: "Slovinsko",
+        enLine: "No tax on private disposal gains (business trading is taxed).",
+        skLine: "Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)." },
+    { id: 'hr', code: 'HR', en: "Croatia", sk: "Chorvátsko",
+        enLine: "12% on crypto gains (since 2024). Tax-free after a 2-year holding period.",
+        skLine: "12 % zo ziskov z kryptomien (od roku 2024). Bez dane po 2 rokoch držby." },
+    { id: 'ro', code: 'RO', en: "Romania", sk: "Rumunsko",
+        enLine: "16% income tax on crypto gains (10% until 2025). No holding-period exemption.",
+        skLine: "16 % daň z príjmov zo ziskov z kryptomien (do roku 2025: 10 %). Bez oslobodenia podľa doby držby." },
+    { id: 'bg', code: 'BG', en: "Bulgaria", sk: "Bulharsko",
+        enLine: "10% flat tax on gains. No holding-period exemption.",
+        skLine: "10 % jednotná daň zo ziskov. Bez oslobodenia podľa doby držby." },
+    { id: 'nl', code: 'NL', en: "Netherlands", sk: "Holandsko",
+        enLine: "Box 3 wealth tax on a deemed return (about 36% of the assumed yield). Tax-free allowance (€59,357 per person, 2026).",
+        skLine: "Majetková daň Box 3 (približne 36 % z predpokladaného výnosu). Nezdaniteľná časť (59 357 € na osobu, 2026)." },
+    { id: 'fr', code: 'FR', en: "France", sk: "Francúzsko",
+        enLine: "31.4% flat tax (PFU: 12.8% income tax + 18.6% social charges, 2026). No holding-period exemption.",
+        skLine: "31,4 % paušálna daň (PFU: 12,8 % daň z príjmov + 18,6 % sociálne odvody, 2026). Bez oslobodenia podľa doby držby." },
+    { id: 'es', code: 'ES', en: "Spain", sk: "Španielsko",
+        enLine: "19 to 30% progressive tax on savings income. No holding-period exemption.",
+        skLine: "19 až 30 % progresívna daň z kapitálových príjmov. Bez oslobodenia podľa doby držby." }
+  ];
+  function initTools() {
+    var T = TOOLS_T[LANG];
+    var grid = document.getElementById('toolsGrid');
+    if (!grid) return;
+    var price = 74649, priceDay = '2026-11-12', stackBtc = 1, spend = 2000, taxId = 'sk';
+    function n1(v, d) { return Number(v).toLocaleString(LOC, { minimumFractionDigits: d, maximumFractionDigits: d }); }
+    function eur(v) { return Number(Math.round(v)).toLocaleString(LOC, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }); }
+    function pct(v) { var x = v * 100, a = Math.abs(x); return (x >= 0 ? '+' : '−') + n1(a, a >= 10 ? 0 : 1); }
+    /* YYYY-MM-DD -> 12. 11. 2026 / 12 Nov 2026 */
+    function day(iso) { var p = String(iso).split('-'); return LANG === 'sk' ? (+p[2]) + '. ' + (+p[1]) + '. ' + p[0] : new Date(iso + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }); }
+    function pctFull(v) { var x = v * 100; return (x >= 0 ? '+' : '\u2212') + n1(Math.abs(x), 1) + (LANG === 'sk' ? '\u00a0%' : '%'); }
+    function chips(box, values, label, current, pick) {
+      box.innerHTML = '';
+      values.forEach(function (v) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'tool-chip';
+        b.textContent = label(v);
+        b.setAttribute('aria-pressed', v === current ? 'true' : 'false');
+        b.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); pick(v); });
+        box.appendChild(b);
+      });
+    }
+    function renderRc() {
+      var y = (stackBtc * price) / (spend * 12);
+      setText('rcYears', y < 1 ? T.lessThanYear : '≈ ' + n1(y, 1) + ' ' + T.years(y));
+      setText('rcSub', n1(stackBtc, stackBtc < 1 ? 1 : 0) + ' BTC' + T.at + eur(spend) + T.perMonth);
+      setText('rcNote', T.priceNote(eur(price), day(priceDay)));
+      chips(document.getElementById('rcStackChips'), [0.5, 1, 2], function (v) { return n1(v, v < 1 ? 1 : 0) + ' BTC'; }, stackBtc, function (v) { stackBtc = v; renderRc(); });
+      chips(document.getElementById('rcSpendChips'), [1000, 2000, 3000], eur, spend, function (v) { spend = v; renderRc(); });
+    }
+    function renderTax() {
+      chips(document.getElementById('taxChips'), TAX.map(function (c) { return c.id; }), function (id) {
+        return TAX.filter(function (c) { return c.id === id; })[0].code;
+      }, taxId, function (id) { taxId = id; renderTax(); });
+      var btns = document.querySelectorAll('#taxChips .tool-chip');
+      TAX.forEach(function (c, i) { if (btns[i]) btns[i].setAttribute('aria-label', c[LANG]); });
+      var c = TAX.filter(function (x) { return x.id === taxId; })[0];
+      var line = document.getElementById('taxLine');
+      line.innerHTML = '';
+      var strong = document.createElement('strong');
+      strong.textContent = c[LANG] + ': ';
+      line.appendChild(strong);
+      line.appendChild(document.createTextNode(LANG === 'sk' ? c.skLine : c.enLine));
+    }
+    function renderReturns(d) {
+      var keep = ['BTC', 'DBC', 'SPY', 'GLD', 'VGK', 'BIL'];
+      var years = d.years.slice(-6), off = d.years.length - 6;
+      var head = document.querySelector('#arTable thead'), body = document.querySelector('#arTable tbody');
+      head.innerHTML = '<tr><th class="ar-name"></th>' + years.map(function (y) { return '<th>’' + String(y).slice(2) + '</th>'; }).join('') + '</tr>';
+      body.innerHTML = '';
+      keep.forEach(function (t) {
+        var row = d.rows.filter(function (r) { return r.ticker === t; })[0];
+        if (!row) return;
+        var tr = document.createElement('tr');
+        var th = document.createElement('th');
+        th.className = 'ar-name'; th.scope = 'row'; th.textContent = T.assets[t];
+        tr.appendChild(th);
+        row.returns.slice(off).forEach(function (v) {
+          var td = document.createElement('td');
+          if (v == null) { td.textContent = NA; } else {
+            td.className = 'ar-cell ' + (v >= 0.5 ? 'is-pos-hi' : v >= 0.1 ? 'is-pos' : v >= 0 ? 'is-pos-lo' : v > -0.1 ? 'is-neg-lo' : v > -0.5 ? 'is-neg' : 'is-neg-hi');
+            td.textContent = pct(v);
+          }
+          tr.appendChild(td);
+        });
+        body.appendChild(tr);
+      });
+      var btc = d.rows.filter(function (r) { return r.ticker === 'BTC'; })[0];
+      var last = d.rows.filter(function (r) { return r.returns[r.returns.length - 1] != null; });
+      var ann = d.rows.filter(function (r) { return r.annualized != null; });
+      if (btc && last.length === ann.length) {
+        var ytd = btc.returns[btc.returns.length - 1];
+        var r1 = 1 + last.filter(function (r) { return r.returns[r.returns.length - 1] > ytd; }).length;
+        var r2 = 1 + ann.filter(function (r) { return r.annualized > btc.annualized; }).length;
+        document.getElementById('arKicker').innerHTML = T.kicker(d.ytdYear, T.ord(r1), last.length, pctFull(ytd), T.ord(r2), pctFull(btc.annualized));
+      }
+      setText('arNote', T.arNote(day(d.asOf)));
+    }
+    renderRc();
+    renderTax();
+    j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur&include_last_updated_at=true', LIVE_MS).then(function (g) {
+      var p = g && g.bitcoin && +g.bitcoin.eur, t = g && g.bitcoin && +g.bitcoin.last_updated_at;
+      if (p > 0 && t > 0) { price = p; priceDay = new Date(t * 1000).toLocaleDateString('sv-SE', { timeZone: 'Europe/Bratislava' }); renderRc(); }
+    }).catch(function () {});
+    j('https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json', LIVE_MS)
+      .catch(function () { return j('/data/asset-returns.json', LIVE_MS); })
+      .then(renderReturns)
+      .catch(function () { var t = document.getElementById('arTable'); if (t) t.hidden = true; setText('arKicker', T.noData); setText('arNote', 'Yahoo Finance'); });
+  }
+  initTools();
+
+
   /* Newsletter issues with cover images. */
   function issueHref(issue) {
     if (issue.url) return issue.url;
