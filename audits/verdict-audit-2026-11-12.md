@@ -262,3 +262,12 @@ Po vašom súhlase som poslal ten istý Lite e-mail dvakrát za sebou na vasilis
 - **Kartu „72/100 B“** v Brief Tools: v `news.html`, `sk/news.html` ani `news/news.js` na `main` som ju nenašiel. Skóre 72 pravidlá nevedia vyrobiť (kroky po 5).
 - **Limit CPU Workera** pri tvorbe PDF vo webhooku.
 - **RU a UK** verzie.
+
+---
+
+## Stav opráv (12. 11. 2026)
+
+- **Top 5 (nálezy 1–8):** opravené v PR #175, nasadené a overené na produkcii aj stagingu.
+- **Druhé kolo (nálezy 9–28):** vetva `fix/verdict-audit-rest`, nenasadené.
+  - Opravené: 9, 10, 11, 12, 13, 15, 16, 19, 20, 21, 23, 25, 26, 28; z nálezu 14 veta na stránke (EN, SK, RU, UK), päta Lite e-mailu a odpoveď pri chybe Briefu; z 22 uloženie odpovedí najviac 24 h a neuloženie odmietnutej adresy; z 24 malé písmeno, množné čísla, „body dole“, prekrytie „v poriadku“ a rizík, SK „Hypotetická daň“, SK „z 20 000 €“, ukážka „dobu držby“ pre všetky krajiny; z 27 adresa 127.0.0.1.
+  - Nezmenené, čaká na rozhodnutie: text ochrany údajov §9 (právnik), double opt-in pre Brief, strop scenára +20 %, úschova max 9 bodov (100/100 = 59 zo 60), suma do Bitcoinu vyššia ako úspory, prihlásenie na staging, `noindex`, chýbajúce znaky v PDF, záložná soľ `ipHash`, tlačidlo „skúsiť znova“ pri 429, `verdict-flow.js` (číta ho test uzavretej AI trasy).

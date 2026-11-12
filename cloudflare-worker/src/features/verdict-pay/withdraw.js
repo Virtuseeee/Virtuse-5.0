@@ -9,10 +9,12 @@
 import { EMAIL_RE } from '../../config.js';
 import { clientIp, readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
-import { ipHash } from '../../shared/crypto.js';
+import { ipHash, sha256Hex } from '../../shared/crypto.js';
+import { STAGING_ORIGIN } from '../../config.js';
 import { formatTimestamp } from './receipt.js';
 
 export const WITHDRAW_PER_HOUR = 10;
+export const WITHDRAW_PER_ADDRESS_HOUR = 3;
 const WINDOW_S = 60 * 60;
 const INBOX = 'info@virtuse.com';
 
@@ -29,6 +31,7 @@ const T = {
     bad: { name: 'Please enter your name.', email: 'Please enter a valid email address.' },
     limit: 'Too many attempts. Please write to info@virtuse.com; your withdrawal counts from the moment you send it.',
     fail: 'We could not send this. Please write to info@virtuse.com; your withdrawal counts from the moment you send it.',
+    staging: 'This is the test site: nothing was sent. The withdrawal form works on virtuse.com.',
   },
   sk: {
     subject: 'Prijali sme vaše odstúpenie od zmluvy',
@@ -42,6 +45,7 @@ const T = {
     bad: { name: 'Zadajte, prosím, svoje meno.', email: 'Zadajte, prosím, platnú e-mailovú adresu.' },
     limit: 'Príliš veľa pokusov. Napíšte, prosím, na info@virtuse.com; odstúpenie platí od chvíle, keď ho pošlete.',
     fail: 'Nepodarilo sa to odoslať. Napíšte, prosím, na info@virtuse.com; odstúpenie platí od chvíle, keď ho pošlete.',
+    staging: 'Toto je testovacia stránka: nič sa neodoslalo. Formulár na odstúpenie funguje na virtuse.com.',
   },
 };
 
@@ -75,6 +79,9 @@ export async function handleWithdraw(ctx) {
   const lang = body.lang === 'sk' ? 'sk' : 'en';
   const t = T[lang];
   if (body.hp) return json(200, { ok: true }, origin);
+  // A test on staging.virtuse.com that reached the production Worker (no VERDICT_RECEIPT_TO):
+  // never a real statement, so nothing is sent to Virtuse or to the typed address.
+  if (origin === STAGING_ORIGIN && !env.VERDICT_RECEIPT_TO) return json(409, { error: t.staging, code: 'staging' }, origin);
   const name = clean(body.name, 120);
   const email = typeof body.email === 'string' ? body.email.trim().slice(0, 254) : '';
   const order = clean(body.order, 60);
@@ -82,6 +89,10 @@ export async function handleWithdraw(ctx) {
   if (!EMAIL_RE.test(email)) return json(400, { error: t.bad.email, field: 'email' }, origin);
   const day = new Date(now).toISOString().slice(0, 10);
   if (await services.limiter.exceeded(`verdict:withdraw:${await ipHash(clientIp(request), day, env)}`, WITHDRAW_PER_HOUR, WINDOW_S)) {
+    return json(429, { error: t.limit, code: 'rate_limited' }, origin);
+  }
+  // Per address too, so the form cannot be used to flood one inbox with confirmations.
+  if (await services.limiter.exceeded(`verdict:withdraw:to:${await sha256Hex(email.toLowerCase())}`, WITHDRAW_PER_ADDRESS_HOUR, WINDOW_S)) {
     return json(429, { error: t.limit, code: 'rate_limited' }, origin);
   }
   const mail = renderWithdrawal({ lang, name, email, order, at: now });

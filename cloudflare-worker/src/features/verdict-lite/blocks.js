@@ -82,7 +82,7 @@ const COPY = {
       record: { title: 'Purchase record', text: 'One line per purchase, from the first one. Keep each confirmation from the partner too.', columns: ['Date', 'Euros paid', 'BTC received', 'Price', 'Fee', 'Partner', 'Where held'], csv: 'Download as CSV', file: 'virtuse-purchase-record.csv' },
       recovery: {
         titleSelf: 'Recovery test, own keys', titleAssisted: 'Recovery questions for your provider',
-        self: ['Write the recovery phrase on paper, in order. No photo, no cloud.', 'Send a small amount, for example €20, to the wallet.', 'Note the receiving address and the balance.', 'Wipe the device or reset it to factory settings.', 'Restore it using only the paper backup.', 'Check that the same address and balance appear.', 'Keep the backup in a second place, away from the device.', 'Repeat the test once a year.'],
+        self: ['Use a wallet that holds nothing else (a new or spare one). Never wipe a wallet that holds your savings.', 'Write the recovery phrase on paper, in order. No photo, no cloud.', 'Send a small amount, for example €20, to the wallet.', 'Note the receiving address and the balance.', 'Wipe the device or reset it to factory settings.', 'Restore it using only the paper backup.', 'Check that the same address and balance appear.', 'Keep the backup in a second place, away from the device.', 'Repeat the test once a year.'],
         assisted: ['What happens if I lose my key?', 'How long does recovery take, and what do you need from me?', 'What happens to my Bitcoin if you stop operating?', 'Who can act for my heirs, and with which documents?', 'Can I test a recovery with a small amount first?', 'Write down the answers and the date.'],
       },
       heirs: {
@@ -110,7 +110,7 @@ const COPY = {
     },
     tax: {
       gain: (g) => `Príklad: zisk ${g}`, rate: 'Sadzba', taxC: 'Daň', left: 'Zostane', upTo: (r) => `do ${r}`,
-      heroK: 'Hypotetická suma na zdanenie', sale: (a) => `Príklad: predaj 5 % Bitcoinu v prvom roku dôchodku, vo veku ${a} rokov`, value: 'Hodnota Bitcoinu v scenári +20 % ročne', sold: 'Predáte 5 %', cost: 'Nákupná cena tejto časti (5 % z vložených súm)', gainL: 'Zdaniteľný zisk',
+      heroK: 'Hypotetická daň z tohto predaja', sale: (a) => `Príklad: predaj 5 % Bitcoinu v prvom roku dôchodku, vo veku ${a} rokov`, value: 'Hodnota Bitcoinu v scenári +20 % ročne', sold: 'Predáte 5 %', cost: 'Nákupná cena tejto časti (5 % z vložených súm)', gainL: 'Zdaniteľný zisk',
       band: (r, b) => `Daň ${r} z ${b}`, taxTotal: 'Daň spolu', share: (p, g) => `To je ${p} zo zisku ${g}.`, leftSale: 'Z predaja vám zostane', leftGain: 'Zo zisku zostane',
       scale: (first, rest) => `${first} platí pre časť zisku nad ${rest}`, scaleAnd: 'a', bandHead: ['Časť zisku', 'Suma', 'Sadzba', 'Daň'], bandFrom: (x) => `do ${x}`, bandBetween: (a, b) => `${a} až ${b}`, bandOver: (x) => `nad ${x}`,
       exempt: (n) => `Po ${n} ${n === 1 ? 'roku' : 'rokoch'} držby je predaj podľa pravidla vyššie oslobodený, takže daň je 0 €. Počíta sa s tým, že predávate najstaršie nákupy.`,
@@ -149,7 +149,7 @@ const COPY = {
       record: { title: 'Záznam nákupov', text: 'Jeden riadok na každý nákup, od prvého. Odložte si aj každé potvrdenie od partnera.', columns: ['Dátum', 'Zaplatené eurá', 'Prijaté BTC', 'Cena', 'Poplatok', 'Partner', 'Kde je uložené'], csv: 'Stiahnuť ako CSV', file: 'virtuse-zaznam-nakupov.csv' },
       recovery: {
         titleSelf: 'Skúška obnovy, vlastné kľúče', titleAssisted: 'Otázky k obnove pre poskytovateľa',
-        self: ['Frázu na obnovu zapíšte na papier, v správnom poradí. Žiadna fotka, žiadny cloud.', 'Pošlite do peňaženky malú sumu, napríklad 20 €.', 'Zapíšte si prijímaciu adresu a zostatok.', 'Zariadenie vymažte alebo obnovte na výrobné nastavenia.', 'Obnovte ho len z papierovej zálohy.', 'Overte, že sa zobrazí rovnaká adresa aj zostatok.', 'Zálohu uložte na druhé miesto, mimo zariadenia.', 'Skúšku zopakujte raz ročne.'],
+        self: ['Použite peňaženku, na ktorej nič iné nie je (novú alebo náhradnú). Nikdy nemažte peňaženku, na ktorej sú vaše úspory.', 'Frázu na obnovu zapíšte na papier, v správnom poradí. Žiadna fotka, žiadny cloud.', 'Pošlite do peňaženky malú sumu, napríklad 20 €.', 'Zapíšte si prijímaciu adresu a zostatok.', 'Zariadenie vymažte alebo obnovte na výrobné nastavenia.', 'Obnovte ho len z papierovej zálohy.', 'Overte, že sa zobrazí rovnaká adresa aj zostatok.', 'Zálohu uložte na druhé miesto, mimo zariadenia.', 'Skúšku zopakujte raz ročne.'],
         assisted: ['Čo sa stane, ak stratím svoj kľúč?', 'Ako dlho trvá obnova a čo od mňa potrebujete?', 'Čo sa stane s mojím Bitcoinom, ak skončíte činnosť?', 'Kto môže konať za mojich dedičov a s akými dokumentmi?', 'Môžem si obnovu najprv vyskúšať s malou sumou?', 'Odpovede si zapíšte aj s dátumom.'],
       },
       heirs: {

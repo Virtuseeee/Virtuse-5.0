@@ -506,3 +506,12 @@ the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret
 - **Sign-up after an unsubscribe** (`features/newsletter/brief-list.js`): when Resend answers "already exists", the Worker reads the contact (`GET /contacts/{email}`). If it is unsubscribed, it clears the flag (`PATCH /contacts/{email}`), adds the contact to the language's segment (`POST /contacts/{email}/segments/{id}`) and sends the welcome email. A current subscriber still gets nothing a second time. Paths are from Resend's API reference (read 2026-11-12); **not yet tried against the live Resend account**: test with one address before relying on it.
 - **Daily Brief check** (`features/brief-health/`, cron `40 6 * * *` UTC in `wrangler.toml`, production only): Pulse published in the last 4 h with Slovak copy on every item, `asset-returns.json` and `macro.json` on GitHub not older than 4 days, the newest EN and SK blog posts (8 h to 14 days old) have a story page on virtuse.com. Problems go in one email to `BRIEF_ALERT_TO` (optional var or secret), else `VERDICT_ALERT_TO`, else info@virtuse.com. A healthy day sends nothing. Local run against the live site: see the test `test/brief-health.test.mjs` and `checks.js` (`briefHealthProblems`).
 
+
+## Audit fixes, second round (12 Nov 2026, findings 9 to 28)
+
+- Order record: the first opening, the receipt email and a refund are write-once markers (`verdict:used:`, `verdict:mail:` by session, `verdict:refund:` by payment), folded in by `getPaid()`, so parallel writes cannot drop them and a refund that arrives before `checkout.session.completed` still closes the report.
+- `POST /verdict/report`: unknown session ids are looked up at Stripe at most 30 times per IP per hour.
+- Checkout: `payment_method_types: ['card']` (Apple Pay and Google Pay pay by card; terms 5a say "by card").
+- Receipt email carries a Resend tag `order`; a bounce alert names the order.
+- `/send`: Resend Idempotency-Key per request and 10-minute slot; a failed Brief sign-up answers 200 `{ ok, brief: false }` (the score email is already sent); the Lite email no longer says "we did not add you to any list" when the Brief was ticked.
+- `/verdict/withdraw`: 3 per address per hour (hashed); a request from staging.virtuse.com that reaches the production Worker sends nothing (409).

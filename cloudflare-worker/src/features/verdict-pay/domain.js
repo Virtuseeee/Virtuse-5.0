@@ -88,6 +88,9 @@ export function checkoutParams(env, origin, rid, page, extra = {}, ipCountry = n
   const pageUrl = `${origin}${page === 'en' ? '' : '/' + page}/verdict.html`;
   return {
     mode: 'payment',
+    // Terms 5a say "by card"; methods confirmed days later (bank redirects) could land after
+    // the answers are deleted. 'card' keeps Apple Pay and Google Pay, which pay by card.
+    payment_method_types: ['card'],
     line_items: [{ price: priceFor(env, page), quantity: 1 }],
     success_url: `${pageUrl}?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${pageUrl}?canceled=1`,

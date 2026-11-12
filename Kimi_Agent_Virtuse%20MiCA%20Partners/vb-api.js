@@ -22,7 +22,7 @@
   var PROD = 'https://virtuse-newsletter.virtuse-ai.workers.dev';
   var STAGING = 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev';
   // staging.virtuse.com and local testing
-  var IS_STAGE = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost';
+  var IS_STAGE = location.hostname === 'staging.virtuse.com' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
   // Routes that staging and localhost send to the staging Worker: Verdict open,
   // its paid report (the result id lives in that Worker's store), and
   // WAITLIST_DRY_RUN / SUBSCRIBE_DRY_RUN, so test sign-ups are validated
@@ -30,7 +30,9 @@
   // Verdict Lite score email): the staging Worker sends it for real, so a
   // staging test reaches the inbox without the production Worker.
   // /pulse.json goes to the production Worker from every host.
-  var STAGE_ROUTES = { '/verdict': true, '/verdict/checkout': true, '/verdict/report': true, '/waitlist': true, '/subscribe': true, '/send': true };
+  // /verdict/withdraw and /verdict/status too (2026-11-12): a staging withdrawal test must never
+  // email Virtuse or the typed address from the production Worker.
+  var STAGE_ROUTES = { '/verdict': true, '/verdict/checkout': true, '/verdict/report': true, '/verdict/status': true, '/verdict/withdraw': true, '/waitlist': true, '/subscribe': true, '/send': true };
   // Requests give up after this long and reject like a network error. The
   // Worker answers /subscribe, /waitlist and /send within a few seconds;
   // /verdict waits for the model (60 s timeout, one retry on the Worker).

@@ -283,6 +283,7 @@ const LITE = {
     finderNote: 'You compare and choose. Virtuse may receive a referral fee.',
     disclaimer: 'Verdict checks your answers by fixed rules; no AI model reads them. It is not investment, tax or legal advice. Virtuse does not hold your funds or keys.',
     why: 'You get this one email because you asked for your Lite score on virtuse.com. We did not add you to any list.',
+    whyB: 'You get this email because you asked for your Lite score on virtuse.com.',
   },
   sk: {
     subject: 'Vaše Virtuse Verdict Lite skóre: {0} · {1}/100',
@@ -314,6 +315,7 @@ const LITE = {
     finderNote: 'Porovnáte a vyberiete si sami. Virtuse môže od partnera dostať províziu.',
     disclaimer: 'Verdict kontroluje vaše odpovede pevnými pravidlami; nečíta ich žiadny model AI. Nie je to investičné, daňové ani právne poradenstvo. Virtuse nedrží vaše prostriedky ani kľúče.',
     why: 'Tento jeden e-mail dostávate, lebo ste si na virtuse.com vypýtali Lite skóre. Nepridali sme vás do žiadneho zoznamu.',
+    whyB: 'Tento e-mail dostávate, lebo ste si na virtuse.com vypýtali Lite skóre.',
   },
 };
 
@@ -524,7 +526,8 @@ ${link(page('verdict.html', 's=9'), L.report)}
 ${link(page('concierge.html'), L.finder)}
 <p style="margin:-4px 0 14px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#7a7366;">${esc(L.finderNote)}</p>
 ${link(page('verdict.html'), L.open)}`;
-    const footer = [L.disclaimer, L.why, brief ? S.whyBrief : '', OPERATOR[lang === 'sk' ? 'sk' : 'en']]
+    // With the Brief ticked, "we did not add you to any list" would contradict the next line.
+    const footer = [L.disclaimer, brief ? L.whyB : L.why, brief ? S.whyBrief : '', OPERATOR[lang === 'sk' ? 'sk' : 'en']]
       .filter(Boolean).map((t) => `<p style="margin:0 0 8px 0;">${esc(t)}</p>`).join('');
     return {
       subject: L.subject.replace('{0}', payload.grade).replace('{1}', String(payload.score)),

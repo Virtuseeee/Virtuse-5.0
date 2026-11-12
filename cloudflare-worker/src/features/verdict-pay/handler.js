@@ -32,6 +32,9 @@ import {
 import { renderReportPdf } from './pdf.js';
 import { operatorLine, orderNumber, receiptLang, renderReceipt, reportFilename } from './receipt.js';
 import { createPayStore, newRid } from './store.js';
+import { createKvLimiter } from '../../shared/rate-limiter.js';
+
+export const REPORT_LOOKUPS_PER_HOUR = 30;
 import { deliveryAlert, renderFailedNotice } from './alerts.js';
 import { INTER_BOLD, INTER_REGULAR } from '../../generated/fonts.js';
 
@@ -174,7 +177,8 @@ export async function sendReceipt(ctx, session, rec, store) {
       subject: mail.subject,
       html: mail.html,
       attachments: [{ filename: mail.filename, content: toBase64(pdf) }],
-      tags: [{ name: 'kind', value: 'verdict_receipt' }],
+      // order: lets a bounce alert (POST /resend/webhook) name the order.
+      tags: [{ name: 'kind', value: 'verdict_receipt' }, { name: 'order', value: orderNumber(session.id) }],
     }, 'Resend verdict receipt failed', { idempotencyKey: `verdict-receipt-${session.id}` });
   } catch (e) {
     console.error(e);
@@ -185,6 +189,7 @@ export async function sendReceipt(ctx, session, rec, store) {
   }
   delete rec.sendingAt;
   rec.emailedAt = now;
+  await store.markEmailed(session.id, now);
   await store.putPaid(session.id, rec);
   return true;
 }
@@ -213,6 +218,8 @@ export async function handleStripeWebhook(ctx) {
       if (rec.status === 'paid' && !(await sendReceipt(ctx, obj, rec, store))) return reply(500, { error: 'Receipt not sent' });
     }
   } else if (event.type === 'charge.refunded' && obj?.payment_intent) {
+    // The marker is kept by payment even when the order is not recorded yet (events can arrive out of order).
+    await store.markRefunded(obj.payment_intent, obj.amount_refunded, !!obj.refunded);
     const sid = await store.sessionForPayment(obj.payment_intent);
     const rec = sid && (await store.getPaid(sid));
     if (rec) {
@@ -234,6 +241,13 @@ export async function paidReport(ctx, sid) {
   // A record written by the other mode (shared KV before 2026-11-12) does not count.
   if (rec && typeof rec.livemode === 'boolean' && rec.livemode === testKey(env)) return { status: 402, error: 'unpaid' };
   if (!rec) {
+    // Each unknown id costs a Stripe API call: limit them per IP, so nobody can use up the
+    // account's Stripe rate limit (which would stop Checkout for everyone).
+    if (ctx.request) {
+      const day = new Date(now).toISOString().slice(0, 10);
+      const key = `verdict:lookup:${await ipHash(clientIp(ctx.request), day, env)}`;
+      if (await createKvLimiter(env.RATE_LIMIT_KV).exceeded(key, REPORT_LOOKUPS_PER_HOUR, 60 * 60)) return { status: 429, error: 'tooMany' };
+    }
     const r = await stripeFor(ctx).request('GET', `/checkout/sessions/${encodeURIComponent(sid)}`);
     if (!r.ok || !isVerdictSession(r.data) || r.data.payment_status !== 'paid') return { status: 402, error: 'unpaid' };
     rec = await store.markPaid(r.data, now);
@@ -242,11 +256,12 @@ export async function paidReport(ctx, sid) {
   const stored = await store.getResult(rec.rid);
   if (!stored) return { status: 410, error: rec.emailedAt ? 'emailed' : 'expired' };
   if (!rec.usedAt) {
-    rec.usedAt = now;
+    await store.markUsed(sid, now);
+    rec = (await store.getPaid(sid)) || rec;
+    if (!rec.usedAt) rec.usedAt = now;
     await store.putPaid(sid, rec);
-  } else if (now - rec.usedAt > REPORT_WINDOW_MS) {
-    return { used: true, stored };
   }
+  if (now - rec.usedAt > REPORT_WINDOW_MS) return { used: true, stored };
   return { report: true, stored, until: rec.usedAt + REPORT_WINDOW_MS, paidAt: rec.paidAt };
 }
 
@@ -267,6 +282,7 @@ export async function handleReport(ctx) {
     console.error(e);
     return json(502, { error: PAY_TEXT.fail[lang] }, origin);
   }
+  if (out.error === 'tooMany') return json(429, { error: PAY_TEXT.tooMany[lang], code: 'rate_limited' }, origin);
   if (out.error) return json(out.status, { error: (REPORT_ERRORS[out.error] || REPORT_ERRORS.unpaid)[lang] }, origin);
   if (out.stored.lite) {
     if (out.used) return json(200, { lite: true, reportUsed: true }, origin);

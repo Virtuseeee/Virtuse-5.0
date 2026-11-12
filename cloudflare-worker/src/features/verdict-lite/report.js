@@ -18,6 +18,9 @@ const FMT = {
   sk: { eur: (n) => `${group(n, NBSP)}${NBSP}€`, pct: (n) => `${Math.round(n)}${NBSP}%` },
 };
 
+const inYears = (y) => (y === 0 ? 'this year' : `in ${y} ${y === 1 ? 'year' : 'years'}`);
+const oRokov = (y) => (y === 0 ? 'ešte tento rok' : `o ${y} ${y === 1 ? 'rok' : y < 5 ? 'roky' : 'rokov'}`);
+
 const COPY = {
   en: {
     title: (n) => (n ? `${n}'s Bitcoin plan check` : 'Your Bitcoin plan check'),
@@ -53,11 +56,11 @@ const COPY = {
     why: {
       sizeNa: 'You gave no savings, so the size could not be checked.',
       size: (p, r, b) => `${p} of savings. A 70% fall leaves ${r} of ${b}.`,
-      sizeNear: ' Retirement is under 10 years away, which takes 2 points off.',
+      sizeNear: (n) => (n ? ` Retirement is under 10 years away, which takes ${n} ${n === 1 ? 'point' : 'points'} off.` : ''),
       reserve: { '6p': '6 months or more of cash outside Bitcoin.', '3_6': '3 to 6 months of cash. The target is 6.', '1_3': '1 to 3 months of cash. A fall could force a sale.', lt1: 'Under 1 month of cash. A fall could force a sale.' },
       debt: { none: 'No consumer debt.', lt10: 'Under €10,000 of consumer debt.', gt10: 'Over €10,000 of consumer debt.' },
       mort: (p) => `Mortgage at ${p} of the home value.`,
-      mortHeavy: (p) => `Mortgage at ${p} of the home value, which takes 3 points off.`,
+      mortHeavy: (p, n) => (n ? `Mortgage at ${p} of the home value, which takes ${n} ${n === 1 ? 'point' : 'points'} off.` : `Mortgage at ${p} of the home value.`),
       tax: { yes: 'You know how a sale is taxed in your country.', roughly: 'You know the rule roughly. Still open: the rate on your gain, what counts as a sale and what goes into the tax return.', no: 'You do not know yet how a sale is taxed.' },
       custody: { selfNew: 'Own keys chosen. Recovery not practised yet.', self: 'Own keys, and you already hold Bitcoin. A tested backup is the last point.', assisted: 'Assisted custody: you get help with keys and recovery. What is left is checking how recovery works with your provider.', any: 'You have not decided who holds the keys.' },
       fall: { more: 'You would buy more at a lower price, not sell.', wait: 'You would wait, not sell.', sell: 'You would sell some or all to stop the loss.' },
@@ -80,7 +83,7 @@ const COPY = {
       keys: () => 'With own keys, the backup is the part that most often goes wrong.',
       custody: () => 'You have not decided who holds the keys yet.',
       recovery: () => 'Agree what happens if a key is lost before larger amounts go in.',
-      retire: (y) => `You plan to retire in ${y} years; money you need soon should not depend on the Bitcoin price.`,
+      retire: (y) => `You plan to retire ${inYears(y)}; money you need soon should not depend on the Bitcoin price.`,
       heirs: () => 'Without instructions, heirs often never find Bitcoin.',
       records: () => 'A simple record of every purchase makes every later tax return easy.',
     },
@@ -138,10 +141,10 @@ const COPY = {
       debt: () => ['List your debts and their interest', 'One line per loan, with its rate. Card and consumer-loan interest usually costs more than you can plan to earn.'],
       mortgage: () => ['Keep the mortgage safe in a fall', 'Work out how many months of payments you hold in cash. They should never depend on the Bitcoin price.'],
       fall: () => ['Write one rule for a fall', 'You said you would sell. Decide now, in one line, what you will do at −70%. The form is under Documents.'],
-      keys: () => ['Practise a recovery with €20', 'Set up the hardware wallet, send a small amount, wipe it and restore it from the backup, before larger amounts go in. The checklist is under Documents.'],
+      keys: () => ['Practise a recovery with €20', 'On a wallet that holds nothing else (a new or spare one), send a small amount, wipe it and restore it from the backup, before larger amounts go in. Never wipe a wallet that holds your savings. The checklist is under Documents.'],
       custody: () => ['Decide who holds the keys', 'Use the table above and the custody guide.'],
       recovery: () => ['Agree the recovery steps with your provider', 'Ask what happens if you lose a key and how long recovery takes, before larger amounts go in.'],
-      retire: (y) => ['Keep retirement money out of Bitcoin’s swings', `You plan to retire in ${y} years. Mark what you will need in the next years and keep it outside Bitcoin.`],
+      retire: (y) => ['Keep retirement money out of Bitcoin’s swings', `You plan to retire ${inYears(y)}. Mark what you will need in the next years and keep it outside Bitcoin.`],
       heirs: () => ['Tell one person how to find your Bitcoin', 'Write down where the instructions are, never the recovery phrase itself, and tell one person you trust. The letter is under Documents.'],
       records: () => ['Keep a record of every purchase', 'Date, amount and price in one simple table, under Documents. It makes every later tax return easy.'],
       review: () => ['Check the plan again in a year', 'Your answers leave no big gap today. Run Verdict again once a year, or when your savings change.'],
@@ -190,12 +193,12 @@ const COPY = {
     },
     why: {
       sizeNa: 'Neuviedli ste úspory, takže veľkosť sa nedala posúdiť.',
-      size: (p, r) => `${p} úspor. Po poklese o 70 % zostane ${r}.`,
-      sizeNear: ' Do dôchodku máte menej ako 10 rokov, preto sú 2 body dole.',
+      size: (p, r, b) => `${p} úspor. Po poklese o 70 % zostane ${r} z ${b}.`,
+      sizeNear: (n) => (n ? ` Do dôchodku máte menej ako 10 rokov, preto ${n === 1 ? 'je 1 bod' : `sú ${n} body`} dole.` : ''),
       reserve: { '6p': '6 mesiacov a viac v hotovosti mimo Bitcoinu.', '3_6': '3 až 6 mesiacov v hotovosti. Cieľ je 6.', '1_3': '1 až 3 mesiace v hotovosti. Pokles by vás mohol prinútiť predať.', lt1: 'Menej ako 1 mesiac v hotovosti. Pokles by vás mohol prinútiť predať.' },
       debt: { none: 'Žiadne spotrebné dlhy.', lt10: 'Spotrebné dlhy do 10 000 €.', gt10: 'Spotrebné dlhy nad 10 000 €.' },
       mort: (p) => `Hypotéka na ${p} hodnoty bývania.`,
-      mortHeavy: (p) => `Hypotéka na ${p} hodnoty bývania, preto sú 3 body dole.`,
+      mortHeavy: (p, n) => (n ? `Hypotéka na ${p} hodnoty bývania, preto ${n === 1 ? 'je 1 bod' : `sú ${n} body`} dole.` : `Hypotéka na ${p} hodnoty bývania.`),
       tax: { yes: 'Viete, ako sa vo vašej krajine zdaní predaj.', roughly: 'Pravidlo poznáte približne. Otvorené zostáva: sadzba pri vašom zisku, čo sa ráta ako predaj a čo patrí do priznania.', no: 'Zatiaľ neviete, ako sa zdaní predaj.' },
       custody: { selfNew: 'Zvolené vlastné kľúče. Obnova ešte nie je vyskúšaná.', self: 'Vlastné kľúče a Bitcoin už držíte. Posledný bod je vyskúšaná záloha.', assisted: 'Asistovaná úschova: s kľúčmi a obnovou vám pomáhajú. Zostáva overiť si u poskytovateľa, ako obnova funguje.', any: 'Ešte ste sa nerozhodli, kto bude držať kľúče.' },
       fall: { more: 'Prikúpili by ste za nižšiu cenu, nepredávali.', wait: 'Počkali by ste, nepredávali.', sell: 'Predali by ste časť alebo všetko, aby ste zastavili stratu.' },
@@ -218,7 +221,7 @@ const COPY = {
       keys: () => 'Pri vlastných kľúčoch sa najčastejšie pokazí záloha.',
       custody: () => 'Ešte ste sa nerozhodli, kto bude držať kľúče.',
       recovery: () => 'Dohodnite si, čo sa stane pri strate kľúča, skôr než pôjdu do hry väčšie sumy.',
-      retire: (y) => `Do dôchodku plánujete ísť o ${y} ${y === 1 ? 'rok' : y > 1 && y < 5 ? 'roky' : 'rokov'}; peniaze, ktoré budete čoskoro potrebovať, nesmú závisieť od ceny Bitcoinu.`,
+      retire: (y) => `Do dôchodku plánujete ísť ${oRokov(y)}; peniaze, ktoré budete čoskoro potrebovať, nesmú závisieť od ceny Bitcoinu.`,
       heirs: () => 'Bez pokynov dedičia Bitcoin často nikdy nenájdu.',
       records: () => 'Jednoduchý záznam každého nákupu uľahčí každé neskoršie daňové priznanie.',
     },
@@ -276,10 +279,10 @@ const COPY = {
       debt: () => ['Spíšte si dlhy a ich úroky', 'Jeden riadok na úver, so sadzbou. Úroky z kariet a spotrebných úverov zvyčajne stoja viac, než môžete rozumne plánovať zarobiť.'],
       mortgage: () => ['Chráňte hypotéku pred poklesom', 'Spočítajte si, na koľko mesiacov splátok máte hotovosť. Nesmú závisieť od ceny Bitcoinu.'],
       fall: () => ['Napíšte si jedno pravidlo pre pokles', 'Uviedli ste, že by ste predali. Rozhodnite sa teraz, jednou vetou, čo urobíte pri −70 %. Formulár nájdete v časti Dokumenty.'],
-      keys: () => ['Vyskúšajte si obnovu s 20 €', 'Nastavte hardvérovú peňaženku, pošlite malú sumu, peňaženku vymažte a obnovte zo zálohy, skôr než pôjdu do hry väčšie sumy. Postup nájdete v časti Dokumenty.'],
+      keys: () => ['Vyskúšajte si obnovu s 20 €', 'Na peňaženke, na ktorej nič iné nie je (novej alebo náhradnej), pošlite malú sumu, peňaženku vymažte a obnovte zo zálohy, skôr než pôjdu do hry väčšie sumy. Nikdy nemažte peňaženku, na ktorej sú vaše úspory. Postup nájdete v časti Dokumenty.'],
       custody: () => ['Rozhodnite, kto bude držať kľúče', 'Pomôže tabuľka vyššie a sprievodca úschovou.'],
       recovery: () => ['Dohodnite si s poskytovateľom postup obnovy', 'Opýtajte sa, čo sa stane pri strate kľúča a ako dlho obnova trvá, skôr než pôjdu do hry väčšie sumy.'],
-      retire: (y) => ['Peniaze na dôchodok nenechajte na výkyvoch Bitcoinu', `Do dôchodku plánujete ísť o ${y} ${y === 1 ? 'rok' : y > 1 && y < 5 ? 'roky' : 'rokov'}. Označte si, čo budete v najbližších rokoch potrebovať, a držte to mimo Bitcoinu.`],
+      retire: (y) => ['Peniaze na dôchodok nenechajte na výkyvoch Bitcoinu', `Do dôchodku plánujete ísť ${oRokov(y)}. Označte si, čo budete v najbližších rokoch potrebovať, a držte to mimo Bitcoinu.`],
       heirs: () => ['Povedzte jednému človeku, ako váš Bitcoin nájsť', 'Zapíšte si, kde sú pokyny, nikdy nie samotnú frázu na obnovu, a povedzte to jednému človeku, ktorému dôverujete. List nájdete v časti Dokumenty.'],
       records: () => ['Zapisujte si každý nákup', 'Dátum, suma a cena v jednej jednoduchej tabuľke, v časti Dokumenty. Každé neskoršie daňové priznanie bude jednoduché.'],
       review: () => ['Pozrite sa na plán znova o rok', 'Vaše odpovede dnes nenechávajú veľkú medzeru. Spustite Verdict raz ročne alebo keď sa zmenia vaše úspory.'],
@@ -357,12 +360,15 @@ export function liteReportView(answers, rawLang = 'en', date = new Date(), opts 
 
   // Area by area
   const sizeNear = years != null && years < 10 && share != null && share >= 20;
+  // Points really taken off (calc() never goes under 1), so the text matches the map.
+  const sizeBase = share == null ? 3 : share < 5 ? 10 : share < 20 ? 7 : share < 50 ? 4 : 1;
+  const debtBase = { none: 10, lt10: 7, gt10: 3 }[A.debt] || 5;
   const ltvP = ltv == null ? '' : pct(ltv * 100);
   const debtWhy = [T.why.debt[A.debt]];
-  if (ltv != null) debtWhy.unshift(ltv > 0.8 ? T.why.mortHeavy(ltvP) : T.why.mort(ltvP));
+  if (ltv != null) debtWhy.unshift(ltv > 0.8 ? T.why.mortHeavy(ltvP, debtBase - sc.debt) : T.why.mort(ltvP));
   const custodyWhy = A.custody === 'self' ? (A.experience !== 'hodler' ? T.why.custody.selfNew : T.why.custody.self) : T.why.custody[A.custody];
   const why = {
-    size: share == null ? T.why.sizeNa : T.why.size(p, A.btc > 0 ? r : eur(0), A.btc > 0 ? b : eur(0)) + (sizeNear ? T.why.sizeNear : ''),
+    size: share == null ? T.why.sizeNa : T.why.size(p, A.btc > 0 ? r : eur(0), A.btc > 0 ? b : eur(0)) + (sizeNear ? T.why.sizeNear(sizeBase - sc.size) : ''),
     reserve: T.why.reserve[A.reserve],
     debt: debtWhy.join(' '),
     tax: T.why.tax[A.tax_known],
@@ -379,7 +385,7 @@ export function liteReportView(answers, rawLang = 'en', date = new Date(), opts 
   const lead = T.sum.lead(name);
   const sizeLine = share == null ? T.sum.sizeNa : share < 20 ? T.sum.sizeOk : share < 50 ? T.sum.sizeBig : T.sum.sizeHuge;
   const debtKey = A.debt === 'none' ? (A.home === 'mortgage' ? 'noneMort' : 'none') : A.debt;
-  const p1 = [`${lead}${sizeLine}`];
+  const p1 = [lead ? `${lead}${sizeLine}` : sizeLine.charAt(0).toUpperCase() + sizeLine.slice(1)];
   if (share != null && A.btc > 0) p1.push(T.sum.math(b, p, r, share < 20));
   p1.push(`${T.sum.debt[debtKey]}${T.sum.fall[A.fall]}`);
   const targets = Object.entries(worryTargets(A)).filter(([w]) => A.worries.includes(w)).map(([, id]) => id);
@@ -412,11 +418,13 @@ export function liteReportView(answers, rawLang = 'en', date = new Date(), opts 
   // Both sides: the top gaps as risks, and the 70% fall always.
   const risks = gaps.filter((id) => id !== 'size').slice(0, 2).map((id) => T.risk[id]).filter(Boolean);
   risks.push(T.risk.fall70(b, r));
+  // An area that is also one of the gaps (or a heavy mortgage) is not called solid.
+  const gap = (...ids) => ids.some((id) => gaps.includes(id));
   const solid = [];
-  if (sc.size >= 7) solid.push(T.solid.size(p));
+  if (sc.size >= 7 && !gap('size', 'retire')) solid.push(T.solid.size(p));
   if (A.custody !== 'any') solid.push(T.solid.custody[A.custody]);
-  if (sc.debt >= 7) solid.push(T.solid.debt[A.debt]);
-  if (sc.reserve >= 7) solid.push(T.solid.reserve);
+  if (sc.debt >= 7 && !gap('debt', 'mortgage') && !(ltv != null && ltv > 0.8)) solid.push(T.solid.debt[A.debt]);
+  if (sc.reserve >= 7 && !gap('reserve')) solid.push(T.solid.reserve);
   if (sc.fall >= 10) solid.push(T.solid.fall);
   if (sc.tax >= 10) solid.push(T.solid.tax);
 

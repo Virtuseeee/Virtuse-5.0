@@ -39,8 +39,8 @@ const KIND_TEXT = {
   complained: 'The buyer marked the confirmation email as spam.',
 };
 
-export function renderAlert({ kind, sid = '', rid = '', lang = '', email = '', detail = '', attempts = 1, now }) {
-  const order = sid ? orderNumber(sid) : '';
+export function renderAlert({ kind, sid = '', rid = '', lang = '', email = '', detail = '', attempts = 1, now, order: orderIn = '' }) {
+  const order = orderIn || (sid ? orderNumber(sid) : '');
   const rows = [
     ['What happened', KIND_TEXT[kind] || kind], ['Order', order], ['Checkout Session', sid], ['Result id', rid], ['Language', lang],
     ['Buyer', maskEmail(email)], ['Attempts so far', attempts > 1 ? String(attempts) : ''], ['Detail', String(detail || '').slice(0, 300)],
@@ -72,7 +72,7 @@ export function renderFailedNotice(lang, sid) {
 
 // One internal alert per Session on the first failure, one more at ALERT_REPEAT_AT.
 // Returns the attempt count. Never throws: an alert must not change the webhook's answer.
-export async function deliveryAlert(ctx, { key, kind, sid, rid, lang, email, detail }) {
+export async function deliveryAlert(ctx, { key, kind, sid, rid, lang, email, detail, order }) {
   const { env, now } = ctx;
   const kv = env.RATE_LIMIT_KV;
   const k = `alert:${key || sid}`;
@@ -86,7 +86,7 @@ export async function deliveryAlert(ctx, { key, kind, sid, rid, lang, email, det
   const due = attempts === 1 || attempts === ALERT_REPEAT_AT;
   let told = !due;
   if (due) {
-    const mail = renderAlert({ kind, sid, rid, lang, email, detail, attempts, now });
+    const mail = renderAlert({ kind, sid, rid, lang, email, detail, attempts, now, order });
     try {
       await ctx.services.resend.sendEmail(
         { from: fromAddr(env), to: [alertTo(env)], subject: mail.subject, html: mail.html, tags: [{ name: 'kind', value: 'verdict_alert' }] },
@@ -147,7 +147,8 @@ export async function verifySvix(secret, headers, payload, nowMs, tolerance = SV
   });
 }
 
-const tagKind = (tags) => (Array.isArray(tags) ? tags.find((t) => t?.name === 'kind')?.value : tags?.kind);
+const tagValue = (tags, name) => (Array.isArray(tags) ? tags.find((t) => t?.name === name)?.value : tags?.[name]);
+const tagKind = (tags) => tagValue(tags, 'kind');
 
 // POST /resend/webhook (Resend calls it, no Origin; the Svix signature is the proof).
 export async function handleResendWebhook(ctx) {
@@ -166,7 +167,8 @@ export async function handleResendWebhook(ctx) {
   const kind = event?.type === 'email.bounced' ? 'bounced' : event?.type === 'email.complained' ? 'complained' : null;
   const d = event?.data || {};
   if (kind && tagKind(d.tags) === 'verdict_receipt' && d.email_id) {
-    await deliveryAlert(ctx, { key: `resend:${d.email_id}`, kind, email: Array.isArray(d.to) ? d.to[0] : d.to, detail: `Resend email ${d.email_id}${d.bounce?.message ? ` · ${d.bounce.message}` : ''}` });
+    const order = String(tagValue(d.tags, 'order') || '').replace(/[^A-Za-z0-9]/g, '').slice(0, 20);
+    await deliveryAlert(ctx, { key: `resend:${d.email_id}`, kind, order, email: Array.isArray(d.to) ? d.to[0] : d.to, detail: `Resend email ${d.email_id}${d.bounce?.message ? ` · ${d.bounce.message}` : ''}` });
   }
   return reply(200, { received: true });
 }

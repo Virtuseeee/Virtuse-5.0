@@ -82,6 +82,9 @@ export async function handleSend({ request, env, origin, services }) {
         { name: 'kind', value: kind },
         { name: 'source', value: source },
       ],
+    }, 'Resend send failed', {
+      // The same request again within 10 minutes (back to the form, submit again) sends nothing new.
+      idempotencyKey: `send-${await sha256Hex(JSON.stringify([email.trim().toLowerCase(), kind, source, lang, wantsBrief, checked.value]))}-${Math.floor(Date.now() / 600000)}`,
     });
   } catch (e) {
     console.error(e);
@@ -100,8 +103,10 @@ export async function handleSend({ request, env, origin, services }) {
     // The Brief welcome follows the page language when it has a template.
     if (wantsBrief) await services.brief.join(email, WELCOME_LANGS.includes(lang) ? lang : 'en');
   } catch (e) {
+    // The requested email is already sent: answer 200, so the visitor does not submit again
+    // and get it twice; brief: false tells the page the Brief sign-up did not go through.
     console.error(e);
-    return json(502, { error: 'Something went wrong. Please try again in a moment.' }, origin);
+    return json(200, { ok: true, brief: false }, origin);
   }
   return json(200, { ok: true }, origin);
 }

@@ -1,6 +1,7 @@
 /* Verdict (verdict.html, sk/verdict.html): five short steps, a free Lite score for an email,
    and the €14 full report, paid with Stripe Checkout. Replaced the old free-text
-   10-signal Verdict on 2026-11-03 (verdict-flow.js stays only for ru/verdict.html).
+   10-signal Verdict on 2026-11-03. verdict-flow.js (the old funnel) is loaded by no page;
+   it stays only because Worker tests of the closed AI route read it.
 
    Scoring: six areas, 0 to 10 each, 60 at most; the sum is converted to 100 and rounded
    to 5 (45 of 60 is 75). Fixed rules, no AI model. The score measures how
@@ -91,10 +92,10 @@
         debt: ['Pay down expensive debt first', function () { return 'Card and consumer-loan interest usually costs more than you can plan to earn.'; }],
         mortgage: ['Keep the mortgage safe in a fall', function () { return 'More than 80% of your home value is still owed. Cash for the payments should never depend on the Bitcoin price.'; }],
         fall: ['Write one rule for a fall', function () { return 'You said you would sell. Decide now, in one line, what you will do at −70%.'; }],
-        keys: ['Practise a wallet recovery with €20', function () { return 'Set up, wipe and restore the wallet before the full amount goes in.'; }],
+        keys: ['Practise a wallet recovery with €20', function () { return 'Set up, wipe and restore a wallet with a small amount, on a spare or empty device, before the full amount goes in.'; }],
         custody: ['Decide who holds the keys', function () { return 'Without a choice, you cannot compare the partners that fit you.'; }],
         recovery: ['Agree the recovery steps with your provider', function () { return 'Know exactly what happens if you lose a key, before larger amounts go in.'; }],
-        retire: ['Keep retirement money out of Bitcoin’s swings', function (a, c) { return c.years != null ? 'You plan to retire in ' + c.years + ' years. Money you need within the next years should not depend on the Bitcoin price.' : 'Money you need for retirement should not depend on the Bitcoin price.'; }],
+        retire: ['Keep retirement money out of Bitcoin’s swings', function (a, c) { return c.years != null ? 'You plan to retire in ' + c.years + (c.years === 1 ? ' year' : ' years') + '. Money you need within the next years should not depend on the Bitcoin price.' : 'Money you need for retirement should not depend on the Bitcoin price.'; }],
         heirs: ['Tell one person how to find your Bitcoin', function () { return 'Without instructions, heirs often never find it.'; }],
         records: ['Keep a record of every purchase', function () { return 'Date, amount and price. It makes every later tax return simple.'; }]
       },
@@ -103,13 +104,13 @@
         size: [function () { return '<b>Small position.</b> Under 5% of your savings; a fall would not change your plans.'; }, function (p) { return '<b>Sensible size.</b> ' + p + '% of your savings; a fall would hurt, not break your plans.'; }, function (p) { return '<b>Large position.</b> ' + p + '% of your savings; a fall would change your plans.'; }],
         reserve: ['<b>Reserve in place.</b> 6 months or more of cash outside Bitcoin.', '<b>Reserve almost there.</b> 3 to 6 months of cash; the target is 6.', '<b>Thin reserve.</b> Under 3 months of cash; a fall could force a sale.'],
         debt: ['<b>No consumer debt.</b> Nothing pushes you to sell at a bad moment.', '<b>Small debts.</b> Under €10,000 besides any mortgage.', '<b>Debts first.</b> Over €10,000 of consumer debt besides any mortgage.'],
-        retire: function (y, pen, mon) { return y == null ? '<b>Retirement.</b> You did not give your retirement age.' : '<b>' + (y === 0 ? 'Retirement this year.' : 'Retirement in ' + y + (y === 1 ? ' year.' : ' years.')) + '</b> ' + (pen ? 'You have pension savings put aside' : 'No pension savings given') + (mon ? ' and add to them every month.' : '.'); },
+        retire: function (y, pen, mon) { return y == null ? '<b>Retirement.</b> You did not give your retirement age.' : '<b>' + (y === 0 ? 'Retirement this year.' : 'Retirement in ' + y + (y === 1 ? ' year.' : ' years.')) + '</b> ' + (pen ? 'You have pension savings put aside' + (mon ? ' and add to them every month.' : '.') : 'No pension savings given' + (mon ? '; you plan to put money aside every month.' : '.')); },
         mort: ['<b>Mortgage under control.</b> Less than 80% of your home value is still owed.', '<b>Heavy mortgage.</b> More than 80% of your home value is still owed.'],
         tax: ['<b>Tax rule known.</b> You know how a sale is taxed in your country.', '<b>Tax rule roughly known.</b> The details are still open.', '<b>Tax rule unknown.</b> You do not know yet how a sale is taxed.'],
-        custody: { selfNew: '<b>Own keys, first time.</b> The backup is not tested yet.', self: '<b>Own keys.</b> You hold your Bitcoin yourself.', assisted: '<b>Assisted custody.</b> You get help with keys and recovery.', any: '<b>Custody open.</b> You have not decided who holds the keys.' },
+        custody: { selfNew: '<b>Own keys, first time.</b> The backup is not tested yet.', self: '<b>Own keys.</b> You plan to hold the keys yourself.', assisted: '<b>Assisted custody.</b> You get help with keys and recovery.', any: '<b>Custody open.</b> You have not decided who holds the keys.' },
         fall: { more: '<b>Calm in a fall.</b> You would buy more at a lower price.', wait: '<b>Calm in a fall.</b> You would wait, not sell.', sell: '<b>Risky in a fall.</b> You would sell some or all to stop the loss.' }
       },
-      blur: { retire: 'Retirement in plain numbers', retireTxt: function (s, p) { return s ? s + ' retirement savings' + (p ? ' · ' + p + ' put into your Bitcoin plan by then' : '') : 'No retirement savings entered' + (p ? ' · ' + p + ' paid into your Bitcoin plan by then' : ''); }, docs: 'Documents to fill in', docsTxt: 'Purchase record, recovery checklist, letter for heirs', pts: 'Where your points come from', fall: 'What a 70% fall means for you', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', against your reserve and debts' : 'Your amount in euros, against your reserve and debts'; }, rule: function (c) { return 'The sale rule in ' + c; }, ruleTxt: 'Holding period, exemption limit, what counts as a sale', steps: '3 steps for this week', yourCountry: 'your country' },
+      blur: { retire: 'Retirement in plain numbers', retireTxt: function (s, p) { return s ? s + ' retirement savings' + (p ? ' · ' + p + ' put into your Bitcoin plan by then' : '') : 'No retirement savings entered' + (p ? ' · ' + p + ' paid into your Bitcoin plan by then' : ''); }, docs: 'Documents to fill in', docsTxt: 'Purchase record, recovery checklist, letter for heirs', pts: 'Where your points come from', fall: 'What a 70% fall means for you', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', against your reserve and debts' : 'Your amount in euros, against your reserve and debts'; }, rule: function (c) { return 'The sale rule in ' + c; }, ruleTxt: 'How a sale and a swap are taxed, and any exemptions', steps: '3 steps for this week', yourCountry: 'your country' },
       gateErr: 'Enter a valid email.', net: 'Something went wrong. Please try again.',
       sent: 'Your Lite score is on its way to your inbox.', notSent: 'We could not send the email right now. Your score is below.',
       tooMany: 'Too many attempts. Please try again in an hour. Your score is below.',
@@ -155,10 +156,10 @@
         debt: ['Najprv splaťte drahé dlhy', function () { return 'Úroky z kariet a spotrebných úverov zvyčajne stoja viac, než môžete rozumne plánovať zarobiť.'; }],
         mortgage: ['Chráňte hypotéku pred poklesom', function () { return 'Dlhujete viac ako 80 % hodnoty bývania. Peniaze na splátky nesmú závisieť od ceny Bitcoinu.'; }],
         fall: ['Napíšte si jedno pravidlo pre pokles', function () { return 'Uviedli ste, že by ste predali. Rozhodnite sa teraz, jednou vetou, čo urobíte pri −70 %.'; }],
-        keys: ['Vyskúšajte si obnovu peňaženky s 20 €', function () { return 'Peňaženku nastavte, vymažte a obnovte skôr, než do nej pôjde celá suma.'; }],
+        keys: ['Vyskúšajte si obnovu peňaženky s 20 €', function () { return 'Peňaženku s malou sumou nastavte, vymažte a obnovte na náhradnom alebo prázdnom zariadení skôr, než do nej pôjde celá suma.'; }],
         custody: ['Rozhodnite, kto bude držať kľúče', function () { return 'Bez tohto rozhodnutia nemôžete porovnať partnerov, ktorí vám vyhovujú.'; }],
         recovery: ['Dohodnite si s poskytovateľom postup obnovy', function () { return 'Vedzte presne, čo sa stane pri strate kľúča, skôr než pôjdu do hry väčšie sumy.'; }],
-        retire: ['Peniaze na dôchodok nenechajte na výkyvoch Bitcoinu', function (a, c) { return c.years != null ? 'Do dôchodku plánujete ísť o ' + c.years + ' rokov. Peniaze, ktoré budete potrebovať v najbližších rokoch, nesmú závisieť od ceny Bitcoinu.' : 'Peniaze na dôchodok nesmú závisieť od ceny Bitcoinu.'; }],
+        retire: ['Peniaze na dôchodok nenechajte na výkyvoch Bitcoinu', function (a, c) { return c.years != null ? 'Do dôchodku plánujete ísť o ' + c.years + (c.years === 1 ? ' rok' : c.years > 1 && c.years < 5 ? ' roky' : ' rokov') + '. Peniaze, ktoré budete potrebovať v najbližších rokoch, nesmú závisieť od ceny Bitcoinu.' : 'Peniaze na dôchodok nesmú závisieť od ceny Bitcoinu.'; }],
         heirs: ['Povedzte jednému človeku, ako váš Bitcoin nájsť', function () { return 'Bez pokynov ho dedičia často nikdy nenájdu.'; }],
         records: ['Zapisujte si každý nákup', function () { return 'Dátum, suma a cena. Každé neskoršie daňové priznanie bude jednoduché.'; }]
       },
@@ -167,13 +168,13 @@
         size: [function () { return '<b>Malá pozícia.</b> Menej ako 5 % vašich úspor; pokles by vaše plány nezmenil.'; }, function (p) { return '<b>Rozumná veľkosť.</b> ' + p + ' % vašich úspor; pokles by bolel, ale plány by nezničil.'; }, function (p) { return '<b>Veľká pozícia.</b> ' + p + ' % vašich úspor; pokles by zmenil vaše plány.'; }],
         reserve: ['<b>Rezervu máte.</b> 6 mesiacov a viac v hotovosti mimo Bitcoinu.', '<b>Rezerva takmer stačí.</b> 3 až 6 mesiacov v hotovosti; cieľ je 6.', '<b>Tenká rezerva.</b> Menej ako 3 mesiace v hotovosti; pokles by vás mohol prinútiť predať.'],
         debt: ['<b>Žiadne spotrebné dlhy.</b> Nič vás netlačí predávať v zlej chvíli.', '<b>Malé dlhy.</b> Do 10 000 € okrem prípadnej hypotéky.', '<b>Najprv dlhy.</b> Viac ako 10 000 € spotrebných dlhov okrem prípadnej hypotéky.'],
-        retire: function (y, pen, mon) { return y == null ? '<b>Dôchodok.</b> Neuviedli ste vek odchodu do dôchodku.' : '<b>' + (y === 0 ? 'Dôchodok ešte tento rok.' : 'Dôchodok o ' + y + ' ' + (y === 1 ? 'rok.' : y < 5 ? 'roky.' : 'rokov.')) + '</b> ' + (pen ? 'Na dôchodok si už odkladáte' : 'Úspory na dôchodok ste neuviedli') + (mon ? ' a každý mesiac pridávate.' : '.'); },
+        retire: function (y, pen, mon) { return y == null ? '<b>Dôchodok.</b> Neuviedli ste vek odchodu do dôchodku.' : '<b>' + (y === 0 ? 'Dôchodok ešte tento rok.' : 'Dôchodok o ' + y + ' ' + (y === 1 ? 'rok.' : y < 5 ? 'roky.' : 'rokov.')) + '</b> ' + (pen ? 'Na dôchodok si už odkladáte' + (mon ? ' a každý mesiac pridávate.' : '.') : 'Úspory na dôchodok ste neuviedli' + (mon ? '; každý mesiac si plánujete odkladať.' : '.')); },
         mort: ['<b>Hypotéka pod kontrolou.</b> Dlhujete menej ako 80 % hodnoty bývania.', '<b>Vysoká hypotéka.</b> Dlhujete viac ako 80 % hodnoty bývania.'],
         tax: ['<b>Pravidlo poznáte.</b> Viete, ako sa vo vašej krajine zdaní predaj.', '<b>Pravidlo poznáte približne.</b> Podrobnosti sú ešte otvorené.', '<b>Pravidlo nepoznáte.</b> Zatiaľ neviete, ako sa zdaní predaj.'],
-        custody: { selfNew: '<b>Vlastné kľúče, prvýkrát.</b> Záloha ešte nie je vyskúšaná.', self: '<b>Vlastné kľúče.</b> Bitcoin držíte sami.', assisted: '<b>Asistovaná úschova.</b> S kľúčmi a obnovou vám pomáhajú.', any: '<b>Úschova otvorená.</b> Ešte ste sa nerozhodli, kto bude držať kľúče.' },
+        custody: { selfNew: '<b>Vlastné kľúče, prvýkrát.</b> Záloha ešte nie je vyskúšaná.', self: '<b>Vlastné kľúče.</b> Kľúče chcete držať sami.', assisted: '<b>Asistovaná úschova.</b> S kľúčmi a obnovou vám pomáhajú.', any: '<b>Úschova otvorená.</b> Ešte ste sa nerozhodli, kto bude držať kľúče.' },
         fall: { more: '<b>Pokojný pri poklese.</b> Prikúpili by ste za nižšiu cenu.', wait: '<b>Pokojný pri poklese.</b> Počkali by ste, nepredávali.', sell: '<b>Riziko pri poklese.</b> Predali by ste časť alebo všetko, aby ste zastavili stratu.' }
       },
-      blur: { retire: 'Dôchodok v číslach', retireTxt: function (s, p) { return s ? s + ' úspor na dôchodok' + (p ? ' · ' + p + ' vložených do plánu v Bitcoine' : '') : 'Úspory na dôchodok neuvedené' + (p ? ' · do plánu v Bitcoine vložíte ' + p : ''); }, docs: 'Dokumenty na vyplnenie', docsTxt: 'Záznam nákupov, skúška obnovy, list pre dedičov', pts: 'Odkiaľ sú vaše body', fall: 'Čo pre vás znamená pokles o 70 %', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', oproti vašej rezerve a dlhom' : 'Vaša suma v eurách, oproti rezerve a dlhom'; }, rule: function (c) { return 'Pravidlo predaja: ' + c; }, ruleTxt: 'Doba držby, oslobodenie, čo sa ráta ako predaj', steps: '3 kroky na tento týždeň', yourCountry: 'vaša krajina' },
+      blur: { retire: 'Dôchodok v číslach', retireTxt: function (s, p) { return s ? s + ' úspor na dôchodok' + (p ? ' · ' + p + ' vložených do plánu v Bitcoine' : '') : 'Úspory na dôchodok neuvedené' + (p ? ' · do plánu v Bitcoine vložíte ' + p : ''); }, docs: 'Dokumenty na vyplnenie', docsTxt: 'Záznam nákupov, skúška obnovy, list pre dedičov', pts: 'Odkiaľ sú vaše body', fall: 'Čo pre vás znamená pokles o 70 %', fallTxt: function (b, r) { return b ? b + ' → ' + r + ', oproti vašej rezerve a dlhom' : 'Vaša suma v eurách, oproti rezerve a dlhom'; }, rule: function (c) { return 'Pravidlo predaja: ' + c; }, ruleTxt: 'Ako sa zdaní predaj a výmena a či platia nejaké výnimky', steps: '3 kroky na tento týždeň', yourCountry: 'vaša krajina' },
       gateErr: 'Zadajte platný e-mail.', net: 'Niečo sa pokazilo. Skúste to znova.',
       sent: 'Lite skóre vám posielame e-mailom.', notSent: 'E-mail sa teraz nepodarilo odoslať. Vaše skóre nájdete nižšie.',
       tooMany: 'Príliš veľa pokusov. Skúste to znova o hodinu. Vaše skóre nájdete nižšie.',
@@ -326,8 +327,10 @@
   var KICK = ['blue', 'green', 'purple', 'orange', 'pink'];
   var KEY = 'vb-verdict-lite';
   var A = { worries: [] }, done = false, cur = 0;
-  try { var saved = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (saved && saved.A) { A = saved.A; A.worries = A.worries || []; done = !!saved.done; } } catch (e) {}
-  function save() { try { sessionStorage.setItem(KEY, JSON.stringify({ A: A, done: done })); } catch (e) {} }
+  // Answers kept in this tab only, for at most 24 hours (a shared computer keeps the tab open).
+  var KEEP_MS = 24 * 60 * 60 * 1000;
+  try { var saved = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (saved && saved.A && (!saved.t || Date.now() - saved.t < KEEP_MS)) { A = saved.A; A.worries = A.worries || []; done = !!saved.done; } else if (saved) sessionStorage.removeItem(KEY); } catch (e) {}
+  function save() { try { sessionStorage.setItem(KEY, JSON.stringify({ A: A, done: done, t: Date.now() })); } catch (e) {} }
   var svg = function (p) { return '<svg viewBox="0 0 24 24" aria-hidden="true">' + p + '</svg>'; };
   var fmt = function (s) { var a = arguments; return s.replace(/\{(\d)\}/g, function (m, i) { return a[+i + 1]; }); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -358,6 +361,13 @@
     return s;
   }
   function goStep(s) { var g = guard(s); show(g); nav(g, 'push'); }
+  // The language switch keeps the step (answers are shared by all language pages in this tab).
+  function langLinks(s) {
+    Array.prototype.forEach.call(document.querySelectorAll('a.lang-opt[href*="verdict.html"]'), function (a) {
+      var h = a.getAttribute('href').replace(/[?#].*$/, '');
+      a.setAttribute('href', s > 0 && s < 10 ? h + '?s=' + s : h);
+    });
+  }
   function goBackTo(s) {
     var now = st();
     if (now && now.i > 0 && now.p === s) { history.back(); return; }   // the previous entry is that step
@@ -381,6 +391,7 @@
   });
   function show(s) {
     s = +s || 0;
+    langLinks(s);
     document.querySelectorAll('.ml-screen').forEach(function (el) { el.classList.remove('on'); });
     var key = s >= 1 && s <= 5 ? 'q' : String(s);
     var scr = document.querySelector('.ml-screen[data-s="' + key + '"]'); if (!scr) return;
@@ -634,23 +645,25 @@
     var f = e.target, em = f.email.value.trim(), msg = $('mlGateMsg');
     if (f.website.value) return;
     if (!EMAIL.test(em)) { msg.textContent = S.gateErr; f.email.focus(); return; }
-    msg.textContent = ''; A.email = em; save();
+    msg.textContent = '';
     var c = calc(), btn = f.querySelector('button[type=submit]'), sent = $('mlSent');
     var payload = { score: c.total, grade: grade(c.total), band: c.total >= 70 ? 0 : c.total >= 55 ? 1 : 2, gaps: gaps(c).map(function (g) { return g[2]; }), areas: c.sc };
     dl({ event: 'verdict_lite_unlock', verdict_brief: f.brief.checked });
     btn.disabled = true;
     // text: null = sent; otherwise the warning shown above the score.
+    // The address is kept (for ?s=8 and the Checkout prefill) unless Resend refused it.
+    var keep = function () { A.email = em; save(); };
     var done8 = function (text) { btn.disabled = false; sent.textContent = text || S.sent; sent.className = 'ml-sent' + (text ? ' warn' : ''); goStep(8); };
     vbApi().then(function (api) { return api.postJson('/send', { email: em, hp: f.website.value, lang: LANG, kind: 'verdict_lite', source: 'verdict', brief: f.brief.checked, payload: payload }); })
       .then(function (r) {
-        if (r && r.ok) { dl({ event: 'verdict_lite_email_sent' }); return done8(null); }
+        if (r && r.ok) { keep(); dl({ event: 'verdict_lite_email_sent' }); return done8(null); }
         var code = r && r.data && r.data.code;
         dl({ event: 'verdict_lite_email_failed', verdict_error: code || (r ? 'http_' + r.status : 'network') });
         // Resend refused the address: stay on the gate so it can be corrected.
         if (code === 'invalid_recipient') { btn.disabled = false; msg.textContent = S.badAddr; f.email.focus(); return; }
-        done8(r && r.status === 429 ? S.tooMany : S.notSent);
+        keep(); done8(r && r.status === 429 ? S.tooMany : S.notSent);
       })
-      .catch(function () { done8(S.notSent); });
+      .catch(function () { keep(); done8(S.notSent); });
   };
   // €14 full report: the answers go to the Worker only here, then on to Stripe.
   // Payments closed (Worker 503, or RU/UK): every box at once shows the waitlist, and no
@@ -690,9 +703,12 @@
     // Prefill Checkout: the Lite email, else a valid address already typed on the gate (step 7)
     var gateEm = (($('mlGate') && $('mlGate').email && $('mlGate').email.value) || '').trim();
     var payEm = A.email || (EMAIL.test(gateEm) ? gateEm : '');
+    // The same answers within 90 minutes reopen the same Checkout (it is open for 2 hours) instead of a new one.
+    var sig = JSON.stringify([answers, LANG, payEm]), CO_KEY = 'vb-verdict-checkout';
+    try { var co = JSON.parse(sessionStorage.getItem(CO_KEY) || 'null'); if (co && co.sig === sig && Date.now() - co.t < 90 * 60 * 1000 && /^https:\/\/checkout\.stripe\.com\//.test(co.url)) { location.href = co.url; return; } } catch (e) {}
     vbApi().then(function (api) { return api.postJson('/verdict/checkout', { answers: answers, lang: LANG, email: payEm || undefined }); })
       .then(function (r) {
-        if (r && r.ok && r.data && r.data.url) { try { sessionStorage.removeItem(INTENT); } catch (e) {} location.href = r.data.url; return; }
+        if (r && r.ok && r.data && r.data.url) { try { sessionStorage.removeItem(INTENT); sessionStorage.setItem(CO_KEY, JSON.stringify({ sig: sig, url: r.data.url, t: Date.now() })); } catch (e) {} location.href = r.data.url; return; }
         if (r && r.status === 503) { all(false); payClosed(); return; }   // payments closed on this Worker
         failed(r && r.status);
         say((r && r.data && r.data.error) || S.net);
@@ -720,6 +736,7 @@
   };
   function renderReport(r) {
     var h = r.h, x = esc;
+    var link = function (u) { return /^(https:\/\/|\/)/.test(String(u)) ? x(u) : '#'; };
     var tbl = function (head, rows) {
       return '<table class="ml-table"><thead><tr>' + head.map(function (c) { return '<th>' + x(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
         rows.map(function (row) { return '<tr>' + row.map(function (c) { return '<td>' + x(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
@@ -740,10 +757,10 @@
       var M = r.areaMap, A = r.areas;
       var row = function (id) {
         var a = A.filter(function (z) { return z.id === id; })[0];
-        return '<li class="sig-row' + (a.weak ? ' weak' : '') + '"><div><b>' + x(a.title) + '</b><span>' + x(a.q) + '</span><span class="why">' + x(a.why) + '</span></div><div class="sig-val"><i><em style="width:' + a.points * 10 + '%"></em></i><b>' + a.points + '<small>/10</small></b></div></li>';
+        return '<li class="sig-row' + (a.weak ? ' weak' : '') + '"><div><b>' + x(a.title) + '</b><span>' + x(a.q) + '</span><span class="why">' + x(a.why) + '</span></div><div class="sig-val"><i><em style="width:' + Number(a.points) * 10 + '%"></em></i><b>' + Number(a.points) + '<small>/10</small></b></div></li>';
       };
       return '<div class="ml-box acc-blue ml-areas vl">' + areaTop(M, A) +
-        '<div class="sig-groups ml-g2">' + M.groups.map(function (g) { return '<div class="sig-group" style="--c: var(--' + g.color + ')"><div class="k">' + x(g.k) + '</div><h3>' + x(g.h) + '</h3><ul>' + g.ids.map(row).join('') + '</ul></div>'; }).join('') + '</div></div>';
+        '<div class="sig-groups ml-g2">' + M.groups.map(function (g) { return '<div class="sig-group" style="--c: var(--' + (/^[a-z-]+$/.test(g.color) ? g.color : 'text') + ')"><div class="k">' + x(g.k) + '</div><h3>' + x(g.h) + '</h3><ul>' + g.ids.map(row).join('') + '</ul></div>'; }).join('') + '</div></div>';
     };
     var partnerCard = function (p) {
       return '<div class="ml-partner"><div class="ml-partner-top"><b>' + x(p.name) + '</b><span>' + x(p.tagline) + '</span></div>' +
@@ -786,7 +803,7 @@
       '<h2 class="ml-rep-h">' + x(r.title) + '</h2>' +
       '<div class="ml-box ml-nums" style="margin-top:30px">' + r.nums.map(function (n) { return '<div><small>' + x(n[0]) + '</small><b>' + x(n[1]) + '</b></div>'; }).join('') + '</div>' +
       '<div class="ml-sent-wrap"><span class="ml-sent">' + x(r.sent) + '</span></div>' + dlBtn('ml-big orange') +
-      '<div class="ml-score-row"><div><div class="n">' + r.score + '<small>/100</small></div><div class="lbl">' + x(r.gradeLine) + '</div></div><div><div class="ml-scale">' + r.scale.map(function (t, i) { return '<span' + ((r.score >= 70 ? 2 : r.score >= 55 ? 1 : 0) === i ? ' class="on"' : '') + '>' + x(t) + '<small>' + x(r.scaleRange[i]) + '</small></span>'; }).join('') + '</div><div class="ml-track"><i style="width:' + r.score + '%"></i></div></div></div>' +
+      '<div class="ml-score-row"><div><div class="n">' + Number(r.score) + '<small>/100</small></div><div class="lbl">' + x(r.gradeLine) + '</div></div><div><div class="ml-scale">' + r.scale.map(function (t, i) { return '<span' + ((r.score >= 70 ? 2 : r.score >= 55 ? 1 : 0) === i ? ' class="on"' : '') + '>' + x(t) + '<small>' + x(r.scaleRange[i]) + '</small></span>'; }).join('') + '</div><div class="ml-track"><i style="width:' + r.score + '%"></i></div></div></div>' +
       '<div style="text-align:center"><span class="ml-pill">' + x(r.pill) + '</span></div>' +
       '<div class="ml-box acc-blue" style="margin-top:44px"><span class="ml-k2">' + x(h.summaryK) + '</span>' + paras(r.summary) + '</div>' +
       areaSection() +
@@ -798,11 +815,11 @@
       box(h.taxK, h.tax, (r.tax.text ? '<p>' + x(r.tax.text) + '</p>' : '') + (r.tax.rows.length ? '<table class="ml-table"><tbody>' + r.tax.rows.map(function (t) { return '<tr><td>' + x(t[0]) + '</td><td>' + x(t[1]) + '</td></tr>'; }).join('') + '</tbody></table>' : '') + (r.tax.note ? note(r.tax.note) : '') + taxEx(r.taxExample), 'yellow') +
       (r.fees ? box(r.fees.k, r.fees.h, '<div class="ml-table-scroll">' + tbl(r.fees.head, r.fees.rows) + '</div>' + note(r.fees.note), 'indigo') : '') +
       box(h.bothK, h.both, '<div class="ml-cols"><div><div class="ml-colh r">' + x(h.wrong) + '</div>' + pts(r.risks) + '</div><div><div class="ml-colh g">' + x(h.solid) + '</div>' + (r.solid.length ? pts(r.solid) : '<p>' + x(r.solidNone) + '</p>') + '</div></div>', 'pink') +
-      box(h.planK, h.plan, '<ul class="ml-steps">' + r.steps.map(function (s, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(s.title) + '</b><span>' + x(s.text) + '</span>' + (s.tool ? '<a class="ml-step-tool" href="' + x(s.tool.href) + '">' + x(s.tool.name) + ' →</a>' : '') + '</div></li>'; }).join('') + '</ul>', 'green') +
+      box(h.planK, h.plan, '<ul class="ml-steps">' + r.steps.map(function (s, i) { return '<li><i>' + (i + 1) + '</i><div><b>' + x(s.title) + '</b><span>' + x(s.text) + '</span>' + (s.tool ? '<a class="ml-step-tool" href="' + link(s.tool.href) + '">' + x(s.tool.name) + ' →</a>' : '') + '</div></li>'; }).join('') + '</ul>', 'green') +
       (r.partners ? box(r.partners.k, r.partners.h, '<p>' + x(r.partners.intro) + '</p>' + r.partners.groups.map(partnerGroup).join(''), 'blue') : '') +
       box(r.docs.k, r.docs.h, docsHtml(r.docs), 'purple') +
-      box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + x(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>', 'teal') +
-      dlBtn('ml-big orange wide') + (r.withdraw ? '<p class="ml-legal">' + x(r.withdraw.text) + ' <a href="' + x(r.withdraw.href) + '">' + x(r.withdraw.label) + ' →</a></p>' : '') + '<p class="ml-legal">' + x(r.legal) + '</p>';
+      box(h.nextK, h.next, '<div class="ml-next">' + r.next.map(function (n) { return '<a href="' + link(n.href) + '">' + svg(REP_ICO[n.id] || I.more) + '<b>' + x(n.name) + '</b><span>' + x(n.sub) + '</span><small>' + x(n.small) + '</small></a>'; }).join('') + '</div>', 'teal') +
+      dlBtn('ml-big orange wide') + (r.withdraw ? '<p class="ml-legal">' + x(r.withdraw.text) + ' <a href="' + link(r.withdraw.href) + '">' + x(r.withdraw.label) + ' →</a></p>' : '') + '<p class="ml-legal">' + x(r.legal) + '</p>';
   }
   // The same PDF as in the email, from the Worker, while the report is open.
   function downloadPdf(btn, sid) {
@@ -881,8 +898,13 @@
   demoInit();
   var rdr = document.querySelector('.vl .radar');
   if (rdr) { if ('IntersectionObserver' in window) { var ro = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { rdr.classList.add('in'); ro.disconnect(); } }, { threshold: 0.3 }); ro.observe(rdr); } else rdr.classList.add('in'); }
-  var sidM = /[?&]session_id=(cs_(?:test|live)_[A-Za-z0-9]+)/.exec(location.search);
-  if (sidM) { show(10); loadReport(sidM[1]); return; }
+  // Back from Stripe: the session id opens the report, so it leaves the address bar (history,
+  // analytics page URLs) at once and is kept in this tab only; ?paid=1 reads it back on refresh.
+  var SID_KEY = 'vb-verdict-sid';
+  var sidM = /[?&]session_id=(cs_(?:test|live)_[A-Za-z0-9]+)/.exec(location.search), sid = sidM && sidM[1];
+  if (sid) { try { sessionStorage.setItem(SID_KEY, sid); } catch (e) {} if (H) history.replaceState({ vl: 1, s: 10, i: 0, p: 0 }, '', location.pathname + '?paid=1'); }
+  else if (/[?&]paid=1\b/.test(location.search)) { try { sid = sessionStorage.getItem(SID_KEY); } catch (e) {} }
+  if (sid) { show(10); loadReport(sid); return; }
   var canceled = /[?&]canceled=1\b/.test(location.search);
   var mm = /[?&]s=(\d+)/.exec(location.search);
   // First render: the step in the URL (after the guards), without a new history entry

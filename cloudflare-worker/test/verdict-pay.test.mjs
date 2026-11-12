@@ -346,7 +346,9 @@ test('withdrawal: copy to Virtuse, confirmation with date and time, nothing stor
     const html = m.sent[1].html;
     for (const part of ['Odstupujem od zmluvy', 'Anna Nová', 'anna@example.com', 'ABC123', d.at]) assert.ok(html.includes(part), part);
     const keys = [...e.RATE_LIMIT_KV.store.keys()];
-    assert.equal(keys.length, 1);
+    // two rate-limit counters (per IP, per hashed address), neither holds the address
+    assert.equal(keys.length, 2);
+    assert.ok(!keys.some((k) => k.includes('anna')));
     assert.match(keys[0], /^verdict:withdraw:[a-f0-9]{64}$/);
     assert.ok(![...e.RATE_LIMIT_KV.store.values()].some((v) => String(v).includes('anna')));
   } finally { m.restore(); }
