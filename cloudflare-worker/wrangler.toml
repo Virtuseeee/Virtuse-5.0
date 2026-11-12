@@ -61,6 +61,8 @@ vars = { STRIPE_AUTOMATIC_TAX = "1", STRIPE_INVOICE = "1", VERDICT_ENABLED = "0"
 binding = "RATE_LIMIT_KV"
 id = "fc6483f6d6e14cccbf0a62468fc323eb"
 
+# Staging has its own Pulse store (PULSE_KV_STAGING), so a staging PUT can never
+# overwrite the live Pulse. Before 2026-11-12 it shared production's id.
 [[env.staging.kv_namespaces]]
 binding = "PULSE_KV"
-id = "7fbee7d7c384406a8270cd3bfae0e302"
+id = "e1121753fee44c72bd0b3edcc25f965c"
