@@ -642,13 +642,13 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
 .footer-logo { flex-shrink: 0; }
 .footer-columns { display: flex; gap: 64px; flex-wrap: wrap; }
-.footer-col h4 { font-size: 13px; font-weight: 600; margin: 0 0 18px; color: var(--text); }
+.footer-col h3, .footer-col h4 { font-size: 13px; font-weight: 600; margin: 0 0 18px; color: var(--text); }
 .footer-col a { display: block; color: var(--muted); font-size: 13px; text-decoration: none; margin-bottom: 12px; line-height: 1.4; transition: color .2s; }
 .footer-col a:hover { color: var(--text); }
 .footer-col .soon { font-size: 10px; font-weight: 600; color: var(--text); border: 1px solid var(--line-strong, rgba(255,255,255,.14)); border-radius: 999px; padding: 1px 6px; margin-left: 4px; vertical-align: 1px; }
 .footer-bottom { margin-top: 48px; }
 .footer-bottom p { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
-.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 .footer-bottom-brief a:hover { text-decoration: underline; }
 /* Language names (and "IČO") use the system font: drawing them in Inter made every
    English visit download Inter's latin-ext (134 KB) and Cyrillic (30 KB) files. */
@@ -1212,12 +1212,12 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
       </div>
     </div>
     <div class="brief">
-      <a class="issue" id="briefIssue" href="../news.html?utm_source=brief&amp;utm_medium=home&amp;utm_content=latest_issue">
-        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-en-2026-10-05-hero.jpg" alt="Titulný obrázok: Bitcoin Beat the War. November Still Gets a Vote." loading="lazy" onerror="this.remove()">
+      <a class="issue" id="briefIssue" href="/sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi/">
+        <img id="briefImg" src="https://blog.virtuse.com/wp-content/uploads/2026/11/who-controls-your-money-illustration.jpg" alt="Titulný obrázok: Kto má skutočnú kontrolu nad tvojimi peniazmi?" loading="lazy" onerror="this.remove()">
         <div class="issue-body">
-          <span class="k" id="briefMeta">Najnovší Brief · 5. okt. 2026 · 3 min</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (v angličtine)</h3>
-          <p id="briefExcerpt">Up 65% against gold since the February low and ahead of every major asset since the war began. October has the history to extend the lead. November has the history to take it back.</p>
+          <span class="k" id="briefMeta">Najnovší Brief · 9. 11. 2026 · 4 min</span>
+          <h3 id="briefTitle">Kto má skutočnú kontrolu nad tvojimi peniazmi?</h3>
+          <p id="briefExcerpt">Pád banky v Paraguaji, odlevy z bitcoinových ETF a digitálne euro otvárajú tú istú otázku: kto má nad tvojimi peniazmi skutočnú kontrolu?</p>
           <span class="more">Čítať vydanie →</span>
         </div>
       </a>
@@ -1307,7 +1307,7 @@ html.anim .footer-wordmark.in .wl, html.anim .footer-wordmark.in .footer-wordmar
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Služby</h4><a href="buy-bitcoin.html">Kúpiť Bitcoin</a><a href="secure.html">Úschova</a><a href="mining.html">Ťažba</a><a href="lending.html">Pôžičky</a><a href="treasury.html">Treasury</a><a href="tax.html">Dane</a><a href="bots.html">Boty</a></div><div class="footer-col"><h4>Spoločnosť</h4><a href="about.html">O nás</a><a href="faq.html">FAQ</a><a href="https://www.linkedin.com/company/virtuse-exchange/?utm_source=virtuse&amp;utm_medium=footer&amp;utm_campaign=linkedin_follow" rel="noopener noreferrer" target="_blank">Sledujte Virtuse</a></div><div class="footer-col"><h4>Nástroje</h4><a href="verdict.html">Verdict <span class="soon foot-badge">Zadarmo</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Dôchodková kalkulačka</a></div><div class="footer-col"><h4>Návody</h4><a href="../news.html">Virtuse Brief</a><a href="/sk/stories/">Blog</a><a href="bitcoin-data.html">Bitcoin dáta</a><a href="/sk/bitcoin-dane/">Dane z Bitcoinu</a><a href="/sk/bitcoin-index-poplatkov/">Index poplatkov</a><a href="/sk/bitcoin-dca-kalkulacka/">DCA kalkulačka</a><a href="/sk/bitcoin-predat-alebo-pozicat/">Predať, alebo si požičať</a><a href="/sk/bitcoin-dedicstvo/">Dedenie</a></div><div class="footer-col"><h4>Ekosystém</h4><a href="/sk/ecosystem/">Bitcoinový ekosystém</a><a href="/sk/ecosystem/what-is-bitcoin/">Čo je Bitcoin?</a><a href="/sk/ecosystem/books/">Knihy</a><a href="/sk/ecosystem/podcasts/">Podcasty</a><a href="/sk/ecosystem/videos/">Videá</a><a href="/sk/ecosystem/conferences/">Konferencie</a><a href="/sk/ecosystem/privacy/">Súkromie v Bitcoine</a><a href="/sk/ecosystem/spend-bitcoin/">Platiť bitcoinom</a><a href="/sk/ecosystem/store-tools/">Pre obchodníkov</a><a href="/sk/ecosystem/dev-tools/">Pre vývojárov</a><a href="/sk/ecosystem/jobs/">Práca</a><a href="/sk/ecosystem/peers/">Spriatelené projekty</a><a href="/sk/ecosystem/promote/">Zaradenie</a></div><div class="footer-col"><h4>Právne informácie</h4><a href="terms-and-conditions.html">Obchodné podmienky</a><a href="withdrawal.html">Odstúpenie od zmluvy</a><a href="privacy-policy.html">Ochrana osobných údajov</a><a href="aml-compliance.html">AML a compliance</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h3>Služby</h3><a href="buy-bitcoin.html">Kúpiť Bitcoin</a><a href="secure.html">Úschova</a><a href="mining.html">Ťažba</a><a href="lending.html">Pôžičky</a><a href="treasury.html">Treasury</a><a href="tax.html">Dane</a><a href="bots.html">Boty</a></div><div class="footer-col"><h3>Spoločnosť</h3><a href="about.html">O nás</a><a href="faq.html">FAQ</a><a href="https://www.linkedin.com/company/virtuse-exchange/?utm_source=virtuse&amp;utm_medium=footer&amp;utm_campaign=linkedin_follow" rel="noopener noreferrer" target="_blank">Sledujte Virtuse</a></div><div class="footer-col"><h3>Nástroje</h3><a href="verdict.html">Verdict <span class="soon foot-badge">Zadarmo</span></a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Dôchodková kalkulačka</a></div><div class="footer-col"><h3>Návody</h3><a href="../news.html">Virtuse Brief</a><a href="/sk/stories/">Blog</a><a href="bitcoin-data.html">Bitcoin dáta</a><a href="/sk/bitcoin-dane/">Dane z Bitcoinu</a><a href="/sk/bitcoin-index-poplatkov/">Index poplatkov</a><a href="/sk/bitcoin-dca-kalkulacka/">DCA kalkulačka</a><a href="/sk/bitcoin-predat-alebo-pozicat/">Predať, alebo si požičať</a><a href="/sk/bitcoin-dedicstvo/">Dedenie</a></div><div class="footer-col"><h3>Ekosystém</h3><a href="/sk/ecosystem/">Bitcoinový ekosystém</a><a href="/sk/ecosystem/what-is-bitcoin/">Čo je Bitcoin?</a><a href="/sk/ecosystem/books/">Knihy</a><a href="/sk/ecosystem/podcasts/">Podcasty</a><a href="/sk/ecosystem/videos/">Videá</a><a href="/sk/ecosystem/conferences/">Konferencie</a><a href="/sk/ecosystem/privacy/">Súkromie v Bitcoine</a><a href="/sk/ecosystem/spend-bitcoin/">Platiť bitcoinom</a><a href="/sk/ecosystem/store-tools/">Pre obchodníkov</a><a href="/sk/ecosystem/dev-tools/">Pre vývojárov</a><a href="/sk/ecosystem/jobs/">Práca</a><a href="/sk/ecosystem/peers/">Spriatelené projekty</a><a href="/sk/ecosystem/promote/">Zaradenie</a></div><div class="footer-col"><h3>Právne informácie</h3><a href="terms-and-conditions.html">Obchodné podmienky</a><a href="withdrawal.html">Odstúpenie od zmluvy</a><a href="privacy-policy.html">Ochrana osobných údajov</a><a href="aml-compliance.html">AML a compliance</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Všetky práva vyhradené.</p>
@@ -1775,25 +1775,29 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
 })();
 // Latest Brief: newest non-essay issue in news/issues.json (static card is the fallback)
 (function () {
-  fetch('../news/issues.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+  // Slovak list (seo-ops/news_sk_map.py): translated issues link to /sk/stories/, untranslated ones are marked lang "en".
+  fetch('../news/issues-sk.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
     var iss = (d.issues || []).filter(function (x) { return x && x.slug && x.title && !x.essay; })[0]; if (!iss) return;
     var dt = new Date(iss.date + 'T12:00:00Z');
     var when = dt.toLocaleDateString('sk-SK', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+    var sk = iss.lang !== 'en', title = iss.title.replace(/ \(EN\)$/, '');
+    document.getElementById('briefIssue').href = sk ? '/sk/stories/' + encodeURIComponent(iss.slug) + '/' : (iss.url || '/stories/' + encodeURIComponent(iss.slug) + '/');
     document.getElementById('briefMeta').textContent = 'Najnovší Brief · ' + when + ' · ' + (iss.read_min || 3) + ' min';
-    document.getElementById('briefTitle').textContent = iss.title + ' (v angličtine)';
+    document.getElementById('briefTitle').textContent = title + (sk ? '' : ' (v angličtine)');
     document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
-    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { var sm = src.replace(/(\/news\/og\/brief-\d{8})\.jpg$/, '$1-800.webp'); if (sm !== src) img.onerror = function () { img.onerror = function () { img.remove(); }; img.src = src; }; img.src = sm; img.alt = 'Titulný obrázok: ' + iss.title; }
+    var img = document.getElementById('briefImg'), src = iss.og_image || iss.image; if (img && src) { var sm = src.replace(/(\/news\/og\/brief-\d{8})\.jpg$/, '$1-800.webp'); if (sm !== src) img.onerror = function () { img.onerror = function () { img.remove(); }; img.src = src; }; img.src = sm; img.alt = 'Titulný obrázok: ' + title; }
   }).catch(function () {});
 })();
 // Brief signup -> the newsletter Worker (same endpoint as the live site)
 (function () {
   var form = document.getElementById('briefForm'), msg = document.getElementById('briefMsg'); if (!form) return;
-  var btn = form.querySelector('button[type="submit"]'), label = btn.textContent;
+  var btn = form.querySelector('button[type="submit"]'), label = btn.textContent, inp = form.elements['email'];
+  inp.setAttribute('aria-describedby', 'briefMsg');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Zadajte platnú e-mailovú adresu.'; return; }
-    msg.textContent = ''; btn.disabled = true; btn.textContent = 'Odosielam...';
+    var email = inp.value.trim(), hp = form.elements['website'].value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Zadajte platnú e-mailovú adresu.'; inp.setAttribute('aria-invalid', 'true'); inp.focus(); return; }
+    inp.removeAttribute('aria-invalid'); msg.textContent = ''; btn.disabled = true; btn.textContent = 'Odosielam...';
     Promise.resolve().then(function () { return window.VB_API.subscribe({ email: email, hp: hp, lang: 'sk' }); })
       .then(function (r) {
         if (r.ok) {

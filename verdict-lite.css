@@ -608,8 +608,17 @@
 .ml-pay a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .ml-pay-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 8px; color: var(--text); font-weight: 600; }
 .ml-pay-top > svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
-.ml-pms { display: inline-flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
-.ml-pms i { font-style: normal; font: 600 10.5px/20px var(--mono, ui-monospace, monospace); height: 20px; padding: 0 7px; border-radius: 5px; border: 1px solid var(--line-strong, rgba(255,255,255,.18)); color: var(--muted); letter-spacing: .02em; white-space: nowrap; }
+/* Payment marks: official SVGs, unchanged (img/pay/). Every mark is 24 px tall on screen.
+   Mastercard and Google Pay carry their clear space inside the viewBox (Mastercard 1/4 circle width,
+   Google Pay > 0.5x the G), so their images are taller than 24 px; Apple Pay is cropped tight and gets
+   its clear space (1/4 of its height = 6 px) as margin. No filter or opacity: brand colours as delivered.
+   Visa stays a text chip until the official Visa Brand Mark arrives. */
+.ml-pms { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0 4px; }
+.ml-pms img { display: block; flex: none; max-width: none; }
+.ml-pms .ml-pm-mc { width: 50.8px; height: 36px; }
+.ml-pms .ml-pm-ap { width: 37.49px; height: 24px; margin: 6px; }
+.ml-pms .ml-pm-gp { width: 65.64px; height: 44.52px; }
+.ml-pms i { font-style: normal; font: 600 10.5px/22px var(--mono, ui-monospace, monospace); height: 24px; box-sizing: border-box; padding: 0 7px; margin: 0 2px; border-radius: 5px; border: 1px solid var(--line-strong, rgba(255,255,255,.18)); color: var(--muted); letter-spacing: .02em; white-space: nowrap; }
 .ml-pay-b2b { font-size: 11.5px; color: var(--dim); }
 .ml-plan .ml-pay, .plan-cta .ml-pay { text-align: center; }
 
@@ -630,3 +639,5 @@
   .ml-score-row .ml-scale small { margin: 0; font-size: 12px; white-space: nowrap; }
   .dm-lbl { gap: 10px; white-space: normal; }
 }
+/* the question heading takes focus on each step (screen readers); no ring for that programmatic focus */
+.ml-card h2:focus:not(:focus-visible) { outline: none; }
