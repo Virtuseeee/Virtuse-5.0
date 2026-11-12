@@ -193,3 +193,13 @@ What the page does on its own (`news/news.js`):
 Suggested addition to the desk prompt:
 
 > Publish the Pulse at 07:00, 16:00 and 22:00 Europe/Bratislava, and about 45 minutes after every high-impact release in macro-build/meetings.json. After a release, replace any "ahead of <event>" item with the outcome and the market reaction, citing the official source (BLS, Fed, ECB, BoE, BoJ, Eurostat).
+
+## Staging has its own store
+
+Since 2026-11-12 the staging Worker (`--env staging`) binds `PULSE_KV` to its
+own namespace `PULSE_KV_STAGING` (`e1121753fee44c72bd0b3edcc25f965c`). Before
+that it used production's id, so a staging `PUT /pulse.json` overwrote the live
+Pulse. Staging has no `PULSE_PUBLISH_TOKEN`; to test a PUT there, set a
+staging-only token (`wrangler secret put PULSE_PUBLISH_TOKEN --env staging`) and
+delete it afterwards. The Brief pages always read the production Worker's
+`/pulse.json`, from every host, so staging pages still show the live Pulse.
