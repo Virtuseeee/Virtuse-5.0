@@ -158,13 +158,17 @@
           if (x.getAttribute('data-issue-slug') === slug) x.setAttribute('href', href);
         });
       };
-      apply(storyPath(slug));
+      /* A post whose story page is not on this site yet opens its WordPress
+         original (data-fallback, set on cards built from WordPress); without
+         one the link goes to the stories hub. */
+      var fallback = a.getAttribute('data-fallback') || STORY_BASE;
+      apply(STORY[slug] === false ? fallback : storyPath(slug));
       if (STORY[slug] === true || STORY[slug] === false || STORY[slug] === 'pending') return;
       STORY[slug] = 'pending';
       fetch(storyPath(slug), { method: 'HEAD' }).then(function (r) {
         STORY[slug] = !!(r.ok && !r.redirected);
-        if (!STORY[slug]) apply(STORY_BASE);
-      }).catch(function () { STORY[slug] = false; apply(STORY_BASE); });
+        if (!STORY[slug]) apply(fallback);
+      }).catch(function () { STORY[slug] = false; apply(fallback); });
     });
   }
   function setText(id, v) {
@@ -202,9 +206,11 @@
      No items at all stays "Pulse unavailable" (renderPulse). */
   var PULSE_UNAVAILABLE = tr('pulseUnavailable');
   /* "Updated X h ago" from the feed's own stamp (handover F1, 2026-11-11: the old
-     "Updated today · HH:MM" hid a stale desk). Over 8 h on a weekday 07-23 h
-     Bratislava time shows a quiet "Desk updating" line under the header. */
-  var STALE_H = 8;
+     "Updated today · HH:MM" hid a stale desk). The Pulse is published once a day
+     (06:25 Bratislava), so it is late only after more than a day: over 26 h on a
+     weekday 07-23 h Bratislava time shows a quiet "Desk updating" line under the
+     header. (8 h, the first value, showed the line every afternoon.) */
+  var STALE_H = 26;
   function pulseAgeH(iso) {
     var d = new Date(iso);
     if (!iso || isNaN(d.getTime())) return null;
@@ -743,16 +749,33 @@
     if (/crypto\s*slate/i.test(src)) return tr('readAt') + 'CryptoSlate';
     return tr('readAt') + src;
   }
+  /* The first sentence of an excerpt. A full stop does not end the sentence
+     after a single letter ("U.S."), after a known abbreviation ("mld.", "Inc.",
+     "vs.") or before a lower-case letter, a digit or a currency sign
+     ("18. decembra", "cca. 3 %", "mil. $"). */
+  var ABBR = /(?:^|[\s(„"'])(?:approx|vs|inc|ltd|corp|co|mr|mrs|ms|dr|prof|pres|sen|rep|gov|st|no|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec|est|etc|e\.g|i\.e|a\.m|p\.m|cca|napr|tzv|resp|atď|mld|mil|tis|čl|ods|písm|str|roč|min|max|ca|pozn|okt|máj|jún|júl)\.$/i;
   function firstSentence(text) {
-    var m = (text || '').match(/.*?[.!?](?=\s|$)/);
-    return m ? m[0].trim() : (text || '').trim();
+    text = (text || '').trim();
+    var re = /[.!?](?=\s|$)/g, m;
+    while ((m = re.exec(text))) {
+      var end = m.index + 1;
+      if (m[0] !== '.') return text.slice(0, end);
+      var head = text.slice(0, end), next = text.slice(end).replace(/^\s+/, '').charAt(0);
+      if (!next) return head;
+      if (/(?:^|[\s.(])[A-Za-zÀ-ž]\.$/.test(head)) continue;
+      if (ABBR.test(head)) continue;
+      if (/[0-9$€£%]/.test(next) || (next.toLowerCase() === next && next.toUpperCase() !== next)) continue;
+      return head;
+    }
+    return text;
   }
+  /* The title is never cut; only the excerpt is shortened to its first sentence. */
   function twoSentences(item) {
     var title = ((item && item.title) || '').replace(/\s+/g, ' ').trim();
     var excerpt = ((item && item.excerpt) || '').replace(/\s+/g, ' ').trim();
-    if (title && !/[.!?]$/.test(title)) title += '.';
+    if (title && !/[.!?…]["”“'’)]?$/.test(title)) title += '.';
     if (title && excerpt) return (title + ' ' + firstSentence(excerpt)).trim();
-    return firstSentence(title || excerpt);
+    return title || firstSentence(excerpt);
   }
   function inferTag(item) {
     var explicit = item && item.tag ? String(item.tag).trim() : '';
@@ -1249,6 +1272,7 @@
     a.className = 'blog-card';
     a.href = issueLink(post.slug);
     markIssue(a, post.slug);
+    if (/^https:\/\/blog\.virtuse\.com\//.test(post.link || '')) a.setAttribute('data-fallback', post.link);
     var imgUrl = imgOf(post);
     if (imgUrl) {
       var img = document.createElement('img');
