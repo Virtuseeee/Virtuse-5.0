@@ -213,6 +213,12 @@ def build(L):
         sys.exit('%s: briefTitle not found' % L)
     h = one(h, "document.getElementById('briefTitle').textContent = iss.title;",
             "document.getElementById('briefTitle').textContent = iss.title + ' (%s)';" % js_lit(BRIEF_EN[L], "'"))
+    if L == 'sk':  # N5: Slovak list (issues-sk.json); translated issues are not "(v angličtine)" and link to /sk/stories/
+        h = one(h, "fetch('../news/issues.json'", "fetch('../news/issues-sk.json'")
+        h = one(h, "document.getElementById('briefTitle').textContent = iss.title + ' (v angličtine)';",
+                "var sk = iss.lang !== 'en', title = iss.title.replace(/ \\(EN\\)$/, '');\n"
+                "    document.getElementById('briefIssue').href = sk ? '/sk/stories/' + encodeURIComponent(iss.slug) + '/' : (iss.url || '/stories/' + encodeURIComponent(iss.slug) + '/');\n"
+                "    document.getElementById('briefTitle').textContent = title + (sk ? '' : ' (v angličtine)');")
     h = h.replace('"description": "Non-custodial hub for Bitcoin-only services. Virtuse never holds your keys."',
                   '"description": ' + json.dumps(LD_DESC[L], ensure_ascii=False))
     for a, b2 in HEAD_FIX.get(L, []):

@@ -165,23 +165,27 @@
   (function () {
     var card = document.getElementById('briefIssue'); if (!card) return;
     var root = card.getAttribute('data-root') || '';
-    fetch(root + 'news/issues.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+    // Slovak pages read news/issues-sk.json (seo-ops/news_sk_map.py): translated issues carry the SK title,
+    // excerpt and slug; untranslated ones are marked lang "en" and link to the EN story.
+    var SKL = LANG === 'sk';
+    fetch(root + (SKL ? 'news/issues-sk.json' : 'news/issues.json'), { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
       var iss = (d.issues || []).filter(function (x) { return x && x.slug && x.title && !x.essay; })[0]; if (!iss) return;
       var when = new Date(iss.date + 'T12:00:00Z').toLocaleDateString(LOC, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-      // Canonical story URL (no article.html hop). Slovak issues use slug_sk; everyone else reads the EN story.
+      var skDone = SKL && iss.lang !== 'en';
       var hub = LANG === 'sk' ? '/sk/stories/' : (LANG === 'ru' ? '/ru/stories/' : '/stories/');
-      var sp = (LANG === 'sk' && iss.slug_sk) ? '/sk/stories/' + encodeURIComponent(iss.slug_sk) + '/' : '/stories/' + encodeURIComponent(iss.slug) + '/';
+      var sp = skDone ? '/sk/stories/' + encodeURIComponent(iss.slug) + '/' : (iss.url || '/stories/' + encodeURIComponent(iss.slug) + '/');
       card.href = sp;
       fetch(sp, { method: 'HEAD' }).then(function (r) { if (!r.ok) card.href = hub; }).catch(function () {});
       document.getElementById('briefMeta').textContent = t('latestBrief', 'Latest Brief · ') + when + ' · ' + (iss.read_min || 3) + t('min', ' min');
-      document.getElementById('briefTitle').textContent = iss.title + t('briefLangNote', '');
+      var title = SKL ? iss.title.replace(/ \(EN\)$/, '') : iss.title;
+      document.getElementById('briefTitle').textContent = title + (skDone ? '' : t('briefLangNote', ''));
       document.getElementById('briefExcerpt').textContent = iss.excerpt || '';
       var img = document.getElementById('briefImg'), src = iss.og_image || iss.image;
       if (img && src) {
         // 800 px WebP next to the edition's 1200 px OG JPG (set_news_og.py --image writes both); JPG if the WebP is missing
         var sm = src.replace(/(\/news\/og\/brief-\d{8})\.jpg$/, '$1-800.webp');
         if (sm !== src) img.onerror = function () { img.onerror = null; img.src = src; };
-        img.src = sm; img.alt = t('coverImage', 'Cover image: ') + iss.title;
+        img.src = sm; img.alt = t('coverImage', 'Cover image: ') + title;
       }
     }).catch(function () {});
   })();
