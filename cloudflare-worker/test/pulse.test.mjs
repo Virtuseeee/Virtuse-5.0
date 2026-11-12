@@ -336,3 +336,53 @@ test('newsletter routes are unchanged', async () => {
   );
   assert.equal(viaFetch.status, 404);
 });
+
+test('pulseErrors: Slovak fields are optional and stored as sent', async () => {
+  assert.deepEqual(pulseErrors(validPulse(), NOW), []);
+  const sk = validPulse({
+    what_moved_sk: 'Bitcoin klesol po inflácii v USA.',
+    archive: {
+      label: 'Yesterday',
+      items: [{
+        title: 'Bitcoin miner sells BTC', title_sk: 'Ťažiar Bitcoinu predáva BTC',
+        source: 'Example', tag: 'Mining', url: 'https://example.com/m',
+        published: '2026-09-27T11:00:00Z', excerpt_sk: 'Krátky perex.',
+      }],
+    },
+  });
+  sk.items[0].title_sk = 'Bitcoin sa drží nad 80 000 $';
+  sk.items[0].excerpt_sk = 'BTC sa počas dňa takmer nezmenil.';
+  assert.deepEqual(pulseErrors(sk, NOW), []);
+  const nul = validPulse({ what_moved_sk: null });
+  nul.items[0].title_sk = null;
+  nul.items[0].excerpt_sk = null;
+  assert.deepEqual(pulseErrors(nul, NOW), []);
+
+  const kv = mockKv();
+  const put = await handlePulse(
+    pulseRequest('PUT', '/pulse.json', { token: TOKEN, body: JSON.stringify(sk) }),
+    envFor(kv), '', '/pulse.json'
+  );
+  assert.equal(put.status, 200);
+  const stored = JSON.parse(await kv.get('current'));
+  assert.equal(stored.items[0].title_sk, 'Bitcoin sa drží nad 80 000 $');
+  assert.equal(stored.archive.items[0].excerpt_sk, 'Krátky perex.');
+  assert.equal(stored.what_moved_sk, 'Bitcoin klesol po inflácii v USA.');
+});
+
+test('pulseErrors: Slovak fields have limits and must be strings', () => {
+  const long = validPulse({ what_moved_sk: 'x'.repeat(301) });
+  long.items[0].title_sk = 'x'.repeat(121);
+  long.items[0].excerpt_sk = 'x'.repeat(301);
+  const errs = pulseErrors(long, NOW);
+  assert.ok(errs.includes('items[0].title_sk must be a string of at most 120 characters'));
+  assert.ok(errs.includes('items[0].excerpt_sk must be a string of at most 300 characters'));
+  assert.ok(errs.includes('what_moved_sk must be a string of at most 300 characters'));
+  const ok = validPulse({ what_moved_sk: 'x'.repeat(300) });
+  ok.items[0].title_sk = 'x'.repeat(120);
+  ok.items[0].excerpt_sk = 'x'.repeat(300);
+  assert.deepEqual(pulseErrors(ok, NOW), []);
+  const typ = validPulse({ archive: { label: 'Yesterday', items: [{
+    title: 'Bitcoin', title_sk: 5, source: 'E', tag: 'ETF', url: 'https://e.com', published: '2026-09-27T11:00:00Z' }] } });
+  assert.ok(pulseErrors(typ, NOW).includes('archive.items[0].title_sk must be a string of at most 120 characters'));
+});

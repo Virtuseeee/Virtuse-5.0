@@ -1376,3 +1376,18 @@ ul { list-style: none; }
 .nav-lang { display: inline-flex; gap: 2px; margin-left: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; }
 .nav-lang a { padding: 4px 6px; border: 1px solid transparent; color: var(--text-muted); }
 .nav-lang a[aria-current="true"] { border-color: var(--line-strong); color: var(--text); }
+
+/* "EN" mark on sk/news.html for a Pulse item that has no Slovak copy. */
+.lang-mark {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 4px;
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 15px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  vertical-align: 1px;
+  text-transform: none;
+}

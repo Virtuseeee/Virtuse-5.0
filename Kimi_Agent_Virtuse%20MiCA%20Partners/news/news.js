@@ -18,7 +18,7 @@
       last: 'Last', next: 'Next', expects: 'Market expects', asOf: 'as of', stale: 'older than 3 days',
       kalshiNote: 'Market expects: Kalshi prediction markets, implied probability of the most likely outcome',
       tagNames: { ETF: 'ETF', Macro: 'Macro', World: 'World', Policy: 'Policy', Mining: 'Mining', Security: 'Security' },
-      source: 'Source', ecbRate: 'ECB deposit rate', btcEur: 'BTC in EUR', skInfl: 'Inflation, Slovakia', nextDecision: 'next decision'
+      inEnglish: 'In English', source: 'Source', ecbRate: 'ECB deposit rate', btcEur: 'BTC in EUR', skInfl: 'Inflation, Slovakia', nextDecision: 'next decision'
     },
     sk: {
       pulseUnavailable: 'Pulse je nedostupný', updated: 'Aktualizované pred', updatedNow: 'Aktualizované práve teraz', ago: '', min: 'min', h: 'h',
@@ -32,11 +32,28 @@
       last: 'Naposledy', next: 'Ďalej', expects: 'Trh čaká', asOf: 'k', stale: 'staršie ako 3 dni',
       kalshiNote: 'Trh čaká: trhy predikcií Kalshi, implikovaná pravdepodobnosť najčastejšieho scenára',
       tagNames: { ETF: 'ETF', Macro: 'Makro', World: 'Svet', Policy: 'Regulácia', Mining: 'Ťažba', Security: 'Bezpečnosť' },
-      source: 'Zdroj', ecbRate: 'Sadzba ECB (depozitná)', btcEur: 'BTC v EUR', skInfl: 'Inflácia na Slovensku', nextDecision: 'ďalšie rozhodnutie'
+      inEnglish: 'Text v angličtine', source: 'Zdroj', ecbRate: 'Sadzba ECB (depozitná)', btcEur: 'BTC v EUR', skInfl: 'Inflácia na Slovensku', nextDecision: 'ďalšie rozhodnutie'
     }
   };
   function tr(k) { var v = I18N[LANG][k]; return v == null ? I18N.en[k] : v; }
   function tagLabel(t) { return (tr('tagNames') || {})[t] || t; }
+  /* Pulse copy in the page language. The desk sends title_sk / excerpt_sk;
+     on sk/news.html an item without them shows the English text (en: true),
+     marked with markEn(). Filters and tag guesses always read the English. */
+  function localCopy(it) {
+    var sk = LANG === 'sk' && it && typeof it.title_sk === 'string' && it.title_sk.trim();
+    if (sk) return { title: it.title_sk, excerpt: typeof it.excerpt_sk === 'string' ? it.excerpt_sk : '', en: false };
+    return { title: (it && it.title) || '', excerpt: (it && it.excerpt) || '', en: LANG === 'sk' };
+  }
+  function markEn(el) {
+    var m = document.createElement('span');
+    m.className = 'lang-mark';
+    m.lang = 'en';
+    m.title = tr('inEnglish');
+    m.setAttribute('aria-label', tr('inEnglish'));
+    m.textContent = 'EN';
+    el.appendChild(m);
+  }
 
   var MP = 'https://mempool.space/api';
   var WP = LANG === 'sk' ? 'https://blog.virtuse.com/sk/wp-json/wp/v2/posts' : 'https://blog.virtuse.com/wp-json/wp/v2/posts';
@@ -239,7 +256,7 @@
     setText('tileFgLabel', fgLabel);
   }
   function compactArchiveTitle(it) {
-    var title = ((it && it.title) || '').replace(/\s+/g, ' ').trim();
+    var title = (localCopy(it).title || '').replace(/\s+/g, ' ').trim();
     if (title.length > 72) title = title.slice(0, 69).replace(/\s+\S*$/, '') + '…';
     return undash(title) || tr('story');
   }
@@ -271,7 +288,16 @@
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
       }
-      a.textContent = tagLabel(inferTag(it)) + ' · ' + compactArchiveTitle(it);
+      if (localCopy(it).en) {
+        a.appendChild(document.createTextNode(tagLabel(inferTag(it)) + ' · '));
+        var en = document.createElement('span');
+        en.lang = 'en';
+        en.textContent = compactArchiveTitle(it);
+        a.appendChild(en);
+        markEn(a);
+      } else {
+        a.textContent = tagLabel(inferTag(it)) + ' · ' + compactArchiveTitle(it);
+      }
       host.appendChild(a);
     });
     host.hidden = false;
@@ -815,9 +841,12 @@
         bf.textContent = tr('beforeRelease') + ' · ' + (LANG === 'sk' && x.before.title_sk ? x.before.title_sk : x.before.title);
         tag.appendChild(bf);
       }
+      var text = localCopy(it);
+      if (text.en) markEn(tag);
       var copy = document.createElement('p');
       copy.className = 'pulse-copy';
-      copy.textContent = undash(twoSentences(it));
+      if (text.en) copy.lang = 'en';
+      copy.textContent = undash(twoSentences(text));
       var read = document.createElement('a');
       read.className = 'read';
       read.href = it.url || '#';
@@ -845,7 +874,16 @@
       return data;
     });
   }
+  /* Test hook, staging and localhost only: ?pulse_fixture=sk loads
+     /news/test/pulse-sk.json instead of the Worker. */
+  function pulseFixture() {
+    if (!/^(staging\.virtuse\.com|localhost|127\.0\.0\.1)$/.test(location.hostname)) return null;
+    var m = /[?&]pulse_fixture=([a-z0-9-]+)/.exec(location.search);
+    return m ? '/news/test/pulse-' + m[1] + '.json' : null;
+  }
   function loadPulseData() {
+    var fx = pulseFixture();
+    if (fx) return j(fx);
     return fetchPulseRemote().catch(function () {
       return j(PULSE_LOCAL);
     });
