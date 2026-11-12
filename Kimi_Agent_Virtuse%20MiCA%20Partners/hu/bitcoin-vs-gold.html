@@ -164,7 +164,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/site-v2.min.css?v=21">
+<link rel="stylesheet" href="/site-v2.min.css?v=22">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Menü megnyitása", "closeMenu": "Menü bezárása", "latestBrief": "Legújabb Brief · ", "min": " perc", "coverImage": "Borítókép: ", "badEmail": "Kérjük, adjon meg érvényes e-mail-címet.", "sending": "Küldés...", "subscribed": "Kész. A Brief hétfőn érkezik.", "error": "Hiba történt. Kérjük, próbálja újra.", "netError": "Hálózati hiba. Kérjük, próbálja újra.", "briefLangNote": " (angol nyelven)"};</script>
 <style>
@@ -221,7 +221,7 @@
 .bvg-method p{color:var(--muted);font-size:15px;line-height:1.65;max-width:860px;margin:0 0 12px}
 .bvg-method .bd-links{margin-top:6px}
 .pos{color:#b8f0c8}.neg{color:#ffc4c4}
-@media (max-width:900px){.bvg-two{grid-template-columns:1fr}.bvg-tiles{grid-template-columns:1fr 1fr}.bvg-chart{height:280px}}
+@media (max-width:900px){.bvg-two{grid-template-columns:minmax(0,1fr)}.bvg-two>*{min-width:0}.bvg-two .bvg-wrap{overflow-x:auto}.bvg-tiles{grid-template-columns:1fr 1fr}.bvg-chart{height:280px}}
 @media (max-width:600px){.bvg-table{font-size:13px}.bvg-table th,.bvg-table td{padding:8px 9px}.bvg-table th.bvg-a,.bvg-table td.bvg-a{min-width:120px}.bvg-table td.bvg-a span{display:none}.bvg-tiles .bd-v{font-size:22px}.bvg-chart{height:240px}}
 </style>
 </head>
