@@ -677,13 +677,13 @@ footer.footer-main { border-top: 1px solid var(--line); padding: 60px 0 30px; ma
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
 .footer-logo { flex-shrink: 0; }
 .footer-columns { display: flex; gap: 64px; flex-wrap: wrap; }
-.footer-col h4 { font-size: 13px; font-weight: 600; margin: 0 0 18px; color: var(--text); }
+.footer-col h3, .footer-col h4 { font-size: 13px; font-weight: 600; margin: 0 0 18px; color: var(--text); }
 .footer-col a { display: block; color: var(--muted); font-size: 13px; text-decoration: none; margin-bottom: 12px; line-height: 1.4; transition: color .2s; }
 .footer-col a:hover { color: var(--text); }
 .footer-col .soon { font-size: 10px; font-weight: 600; color: var(--text); border: 1px solid var(--line-strong, rgba(255,255,255,.14)); border-radius: 999px; padding: 1px 6px; margin-left: 4px; vertical-align: 1px; }
 .footer-bottom { margin-top: 48px; }
 .footer-bottom p { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
-.footer-bottom-brief a { color: var(--text); text-decoration: none; }
+.footer-bottom-brief a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
 .footer-bottom-brief a:hover { text-decoration: underline; }
 /* Language names (and "IČO") use the system font: drawing them in Inter made every
    English visit download Inter's latin-ext (134 KB) and Cyrillic (30 KB) files. */
@@ -1335,7 +1335,7 @@ body:not(.stage-wait) .nav-badge, body:not(.stage-wait) .cfo-foot-badge { color:
   <footer class="footer-main">
     <div class="footer-inner">
       <div class="footer-logo"><div style="display:flex;align-items:flex-end;gap:2px;"><svg viewBox="0 0 760 483" style="height:34px;width:auto;display:block;flex-shrink:0" aria-hidden="true"><defs><linearGradient id="vlgFA" x1="0" y1="0" x2="0.55" y2="1"><stop offset="0" stop-color="#A5E0FB"/><stop offset="1" stop-color="#5FAEDE"/></linearGradient><linearGradient id="vlgFB" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#4D94EC"/><stop offset="1" stop-color="#2B62C0"/></linearGradient></defs><path fill="url(#vlgFA)" d="M30 0h220l250 483H280Z"/><path fill="url(#vlgFB)" d="M510 0h245L645 205H400Z"/></svg><span style="font-weight:800;font-size:27px;letter-spacing:0.01em;color:var(--text);line-height:1;position:relative;top:4px;">Virtuse</span></div></div>
-      <div class="footer-columns"><div class="footer-col"><h4>Dienstleistungen</h4><a href="buy-bitcoin.html">Bitcoin kaufen</a><a href="secure.html">Verwahrung</a><a href="mining.html">Mining</a><a href="lending.html">Kredite</a><a href="treasury.html">Treasury</a><a href="tax.html">Steuern</a><a href="bots.html">Bots</a></div><div class="footer-col"><h4>Unternehmen</h4><a href="about.html">Über uns</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h4>Tools</h4><a href="/verdict.html">Verdict <span class="soon cfo-foot-badge">Kostenlos</span></a><a href="cfo.html">Virtuse CFO</a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Ruhestandsrechner</a></div><div class="footer-col"><h4>Ratgeber</h4><a href="../news.html">Virtuse Brief</a><a href="/stories/">Blog</a><a href="bitcoin-data.html">Bitcoin-Daten</a><a href="/de/bitcoin-steuern/">Bitcoin-Steuern</a><a href="/de/bitcoin-gebuehrenindex/">Gebührenindex</a><a href="/de/bitcoin-dca-rechner/">DCA-Rechner</a><a href="/de/bitcoin-verkaufen-oder-beleihen/">Verkaufen oder beleihen</a><a href="/de/bitcoin-erbrecht/">Erbschaft</a></div><div class="footer-col"><h4>Ökosystem</h4><a href="/de/ecosystem/">Bitcoin-Ökosystem</a><a href="/de/ecosystem/what-is-bitcoin/">Was ist Bitcoin?</a><a href="/de/ecosystem/books/">Bücher</a><a href="/de/ecosystem/podcasts/">Podcasts</a><a href="/de/ecosystem/videos/">Videos</a><a href="/de/ecosystem/conferences/">Konferenzen</a><a href="/de/ecosystem/privacy/">Privatsphäre bei Bitcoin</a><a href="/de/ecosystem/spend-bitcoin/">Mit Bitcoin bezahlen</a><a href="/de/ecosystem/store-tools/">Händler-Tools</a><a href="/de/ecosystem/dev-tools/">Entwicklertools</a><a href="/de/ecosystem/jobs/">Bitcoin-Jobs</a><a href="/de/ecosystem/peers/">Bitcoin-Projekte</a><a href="/de/ecosystem/promote/">Aufnahme</a></div><div class="footer-col"><h4>Rechtliches</h4><a href="terms-and-conditions.html">AGB</a><a href="privacy-policy.html">Datenschutzerklärung</a><a href="aml-compliance.html">AML und Compliance</a></div></div>
+      <div class="footer-columns"><div class="footer-col"><h3>Dienstleistungen</h3><a href="buy-bitcoin.html">Bitcoin kaufen</a><a href="secure.html">Verwahrung</a><a href="mining.html">Mining</a><a href="lending.html">Kredite</a><a href="treasury.html">Treasury</a><a href="tax.html">Steuern</a><a href="bots.html">Bots</a></div><div class="footer-col"><h3>Unternehmen</h3><a href="about.html">Über uns</a><a href="faq.html">FAQ</a></div><div class="footer-col"><h3>Tools</h3><a href="/verdict.html">Verdict <span class="soon cfo-foot-badge">Kostenlos</span></a><a href="cfo.html">Virtuse CFO</a><a href="concierge.html">Partner Finder</a><a href="stacking.html">Stacking Strategist</a><a href="loan.html">Loan &amp; Liquidity Copilot</a><a href="tax-agent.html">Tax &amp; Inheritance Agent</a><a href="retirement-calculator.html">Ruhestandsrechner</a></div><div class="footer-col"><h3>Ratgeber</h3><a href="../news.html">Virtuse Brief</a><a href="/stories/">Blog</a><a href="bitcoin-data.html">Bitcoin-Daten</a><a href="/de/bitcoin-steuern/">Bitcoin-Steuern</a><a href="/de/bitcoin-gebuehrenindex/">Gebührenindex</a><a href="/de/bitcoin-dca-rechner/">DCA-Rechner</a><a href="/de/bitcoin-verkaufen-oder-beleihen/">Verkaufen oder beleihen</a><a href="/de/bitcoin-erbrecht/">Erbschaft</a></div><div class="footer-col"><h3>Ökosystem</h3><a href="/de/ecosystem/">Bitcoin-Ökosystem</a><a href="/de/ecosystem/what-is-bitcoin/">Was ist Bitcoin?</a><a href="/de/ecosystem/books/">Bücher</a><a href="/de/ecosystem/podcasts/">Podcasts</a><a href="/de/ecosystem/videos/">Videos</a><a href="/de/ecosystem/conferences/">Konferenzen</a><a href="/de/ecosystem/privacy/">Privatsphäre bei Bitcoin</a><a href="/de/ecosystem/spend-bitcoin/">Mit Bitcoin bezahlen</a><a href="/de/ecosystem/store-tools/">Händler-Tools</a><a href="/de/ecosystem/dev-tools/">Entwicklertools</a><a href="/de/ecosystem/jobs/">Bitcoin-Jobs</a><a href="/de/ecosystem/peers/">Bitcoin-Projekte</a><a href="/de/ecosystem/promote/">Aufnahme</a></div><div class="footer-col"><h3>Rechtliches</h3><a href="terms-and-conditions.html">AGB</a><a href="privacy-policy.html">Datenschutzerklärung</a><a href="aml-compliance.html">AML und Compliance</a></div></div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2018–2026 Virtuse Wealth Management, a.s. Alle Rechte vorbehalten.</p>
@@ -1803,12 +1803,13 @@ function initCube(THREE, RoundedBoxGeometry, RoomEnvironment) {
 // Brief signup -> the newsletter Worker (same endpoint as the live site)
 (function () {
   var form = document.getElementById('briefForm'), msg = document.getElementById('briefMsg'); if (!form) return;
-  var btn = form.querySelector('button[type="submit"]'), label = btn.textContent;
+  var btn = form.querySelector('button[type="submit"]'), label = btn.textContent, inp = form.elements['email'];
+  inp.setAttribute('aria-describedby', 'briefMsg');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'; return; }
-    msg.textContent = ''; btn.disabled = true; btn.textContent = 'Wird gesendet...';
+    var email = inp.value.trim(), hp = form.elements['website'].value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'; inp.setAttribute('aria-invalid', 'true'); inp.focus(); return; }
+    inp.removeAttribute('aria-invalid'); msg.textContent = ''; btn.disabled = true; btn.textContent = 'Wird gesendet...';
     Promise.resolve().then(function () { return window.VB_API.subscribe({ email: email, hp: hp, lang: 'de' }); })
       .then(function (r) {
         if (r.ok) {

@@ -168,9 +168,9 @@ function chrome(current, l) {
     .replace(`<a href="${pathOf(current, l)}"><span class="nd-t">`, `<a href="${pathOf(current, l)}" aria-current="page"><span class="nd-t">`);
   let foot = v2.foot;
   if (!foot.includes(`href="${pathOf(INDEX, l)}"`)) {
-    const col = `<div class="footer-col" data-eco-col><h4>${esc(ui.navLabel)}</h4>${[INDEX, ...SUBPAGES].map((p) =>
+    const col = `<div class="footer-col" data-eco-col><h3>${esc(ui.navLabel)}</h3>${[INDEX, ...SUBPAGES].map((p) =>
       `<a href="${pathOf(p, l)}">${esc(p === INDEX ? txt(l, p).h1 : txt(l, p).nav)}</a>`).join('')}</div>`;
-    const i = foot.lastIndexOf('<div class="footer-col"><h4>');
+    const i = foot.lastIndexOf('<div class="footer-col"><h3>');
     if (i < 0) throw new Error(`${l}: footer anchor not found`);
     foot = foot.slice(0, i) + col + foot.slice(i);
   }

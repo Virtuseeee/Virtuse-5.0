@@ -193,12 +193,13 @@
   // Brief signup -> the newsletter Worker (through vb-api.js)
   (function () {
     var form = document.getElementById('briefForm'), msg = document.getElementById('briefMsg'); if (!form) return;
-    var btn = form.querySelector('button[type="submit"]'), label = btn.textContent;
+    var btn = form.querySelector('button[type="submit"]'), label = btn.textContent, inp = form.elements['email'];
+    inp.setAttribute('aria-describedby', 'briefMsg');   // the status/error line is read with the field (WCAG 3.3.1)
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var email = form.elements['email'].value.trim(), hp = form.elements['website'].value;
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = t('badEmail', 'Please enter a valid email address.'); return; }
-      msg.textContent = ''; btn.disabled = true; btn.textContent = t('sending', 'Sending...');
+      var email = inp.value.trim(), hp = form.elements['website'].value;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = t('badEmail', 'Please enter a valid email address.'); inp.setAttribute('aria-invalid', 'true'); inp.focus(); return; }
+      inp.removeAttribute('aria-invalid'); msg.textContent = ''; btn.disabled = true; btn.textContent = t('sending', 'Sending...');
       vbApi().then(function (api) { return api.subscribe({ email: email, hp: hp, lang: LANG }); })
         .then(function (r) {
           if (r.ok) {

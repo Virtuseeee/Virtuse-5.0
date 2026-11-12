@@ -59,7 +59,7 @@ def group(L):
 def column(L):
     ui = S[L]['ui']
     links = ''.join('<a href="%s">%s</a>' % (href(L, s), esc(page(L, s)['h1'] if not s else page(L, s)['nav'])) for s in SLUGS)
-    return '<div class="footer-col"><h4>%s</h4>%s</div>' % (esc(ui['navLabel']), links)
+    return '<div class="footer-col"><h3>%s</h3>%s</div>' % (esc(ui['navLabel']), links)
 
 
 def patch(html, L):
@@ -68,8 +68,8 @@ def patch(html, L):
         html, n = re.subn(r'(\n[ \t]*)(<a class="nav-top")', lambda m: m.group(1) + group(L) + m.group(1) + m.group(2), html, count=1)
         assert n == 1
     i = html.find('<div class="footer-columns">')
-    if i >= 0 and '<h4>%s</h4><a href="%s">' % (esc(S[L]['ui']['navLabel']), href(L, '')) not in html:
-        j = html.rfind('<div class="footer-col"><h4>', i, html.find('</footer>', i))
+    if i >= 0 and '<h3>%s</h3><a href="%s">' % (esc(S[L]['ui']['navLabel']), href(L, '')) not in html:
+        j = html.rfind('<div class="footer-col"><h3>', i, html.find('</footer>', i))
         if j < 0:
             raise SystemExit('footer anchor not found')
         html = html[:j] + column(L) + html[j:]
