@@ -20,6 +20,18 @@ import { SITE_V2, SITE_CSS_V, CF_SNIPPET, CRUMBS_LABEL } from './lib/html.mjs';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SITE = path.join(HERE, '..', SITE_DIR_NAME);
 const DATA = JSON.parse(fs.readFileSync(path.join(HERE, 'data/ecosystem.json'), 'utf8'));
+// Optional per-language card texts (data/ecosystem-verdicts-<lang>.json, key "<page slug>|<entry name>").
+// Without a translation the English verdict is shown and marked lang="en".
+const VERDICTS = {};
+const verdict = (e, p, l) => {
+  if (l === 'en') return { text: e.verdict, en: false };
+  if (!(l in VERDICTS)) {
+    const f = path.join(HERE, `data/ecosystem-verdicts-${l}.json`);
+    VERDICTS[l] = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {};
+  }
+  const t = VERDICTS[l][`${p.slug}|${e.name}`];
+  return t ? { text: t, en: false } : { text: e.verdict, en: true };
+};
 const CHROME = JSON.parse(fs.readFileSync(path.join(HERE, 'data/chrome-v2.json'), 'utf8'));
 const STR_DIR = path.join(HERE, 'data/ecosystem-strings');
 const ORIGIN = DEFAULT_ORIGIN;
@@ -77,7 +89,8 @@ const fmtDate = (iso, l) => new Date(iso + 'T12:00:00Z').toLocaleDateString(LOCA
 // ---------- localised internal links ----------
 // EN -> language links from the v2 chrome (same 51 links in the same order in every language).
 const LINKMAP = {};
-const chromeHrefs = (l) => (CHROME[l].nav + CHROME[l].foot).match(/href="([^"{]+)"/g).map((h) => h.slice(6, -1).replace(/&amp;/g, '&'));
+// Internal links only: external ones (e.g. the LinkedIn link in the EN/SK footer) are not localised.
+const chromeHrefs = (l) => (CHROME[l].nav + CHROME[l].foot).match(/href="(\/[^"{]*)"/g).map((h) => h.slice(6, -1).replace(/&amp;/g, '&'));
 for (const l of ALL_LANGS) {
   const en = chromeHrefs('en'), xx = chromeHrefs(l);
   if (en.length !== xx.length) throw new Error(`chrome link count differs for ${l}`);
@@ -178,12 +191,12 @@ const head2 = (white, grey, id) =>
 
 function entryCard(e, p, l) {
   const rel = e.sponsored ? 'sponsored noopener' : 'noopener';
-  const en = l === 'en' ? '' : ' lang="en"';
+  const v = verdict(e, p, l), en = v.en ? ' lang="en"' : '';
   const spons = e.sponsored ? `<span class="eco-spons">${esc(S[l].ui.sponsored)}</span>` : '';
   return `<article class="pcard2 ${p.accent} eco-card">
         <span class="eco-k">${esc((e.tags || []).map((x) => (S[l].tags && S[l].tags[x]) || x).join(' · '))}</span>${spons}
         <h3>${esc(e.name)}</h3>
-        <p${en}>${esc(e.verdict)}</p>
+        <p${en}>${esc(v.text)}</p>
         <div class="eco-foot"><span class="eco-host">${esc(host(e.url))}</span><a class="hp-get" href="${esc(e.url)}" target="_blank" rel="${rel}">${esc(S[l].ui.websiteButton)} ${ARROW}</a></div>
       </article>`;
 }
@@ -206,13 +219,12 @@ const city = (c, l) => S[l].ui.cities[c] || c;
 // Conferences: the Treasury comparison table (rounded panel, mono column headers, outlined buttons).
 function conferencePanel(entries, p, l) {
   const ui = S[l].ui;
-  const en = l === 'en' ? '' : ' lang="en"';
-  const rows = entries.map((e) => `<div class="eco-trow">
-        <span><b>${esc(e.name)}</b><small${en}>${esc(e.verdict)}</small></span>
+  const rows = entries.map((e) => { const v = verdict(e, p, l); return `<div class="eco-trow">
+        <span><b>${esc(e.name)}</b><small${v.en ? ' lang="en"' : ''}>${esc(v.text)}</small></span>
         <span class="eco-c">${esc(city(e.city, l))}, ${esc(countryName(e.country, l))}</span>
         <span class="eco-c">${e.start ? `<time datetime="${e.start}">${esc(confDates(e, l))}</time>` : esc(confDates(e, l))}</span>
         <a class="hp-get" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(ui.websiteButton)} ${ARROW}</a>
-      </div>`).join('\n      ');
+      </div>`; }).join('\n      ');
   return `<div class="hpanel ${p.accent} eco-panel">
       <div class="eco-trow head"><span>${esc(ui.tableEvent)}</span><span>${esc(ui.tableCity)}</span><span>${esc(ui.tableDates)}</span><span></span></div>
       ${rows}
@@ -522,7 +534,7 @@ function schemas(p, l) {
         location: { '@type': 'Place', name: e.venue || e.city, address: { '@type': 'PostalAddress', addressLocality: e.city, addressCountry: e.country } },
         organizer: { '@type': 'Organization', name: e.organizer || e.name, url: e.organizerUrl || e.url },
         offers: { '@type': 'Offer', url: e.tickets || e.url, availability: 'https://schema.org/InStock' },
-        description: e.verdict
+        description: verdict(e, p, l).text
       });
     }
   }
