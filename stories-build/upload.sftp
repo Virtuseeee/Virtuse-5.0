@@ -374,6 +374,7 @@
 -mkdir public_html/sk/stories/ruky-prec-od-dlhopisov
 -mkdir public_html/sk/stories/ruska-ekonomika-z-invazie-aj-profituje
 -mkdir public_html/sk/stories/rusko-vyuziva-krypto-na-obchadzanie-sankcii
+-mkdir public_html/sk/stories/russell-brand-trest-za-otvorene-usta
 -mkdir public_html/sk/stories/sankcie-proti-rusku-su-pre-bitcoin-najlepsou-marketingovou-kampanou
 -mkdir public_html/sk/stories/schopenhauerov-raj-blaznov-preco-si-hlupaci-myslia-ze-su-geniovia
 -mkdir public_html/sk/stories/schopenhauerov-recept-na-dusevne-zdravie-prestante-hadzat-perly-sviniam
@@ -601,6 +602,7 @@ put sk/stories/robert-kiyosaki-prisiel-s-novym-vyjadrenim/index.html public_html
 put sk/stories/ruky-prec-od-dlhopisov/index.html public_html/sk/stories/ruky-prec-od-dlhopisov/index.html
 put sk/stories/ruska-ekonomika-z-invazie-aj-profituje/index.html public_html/sk/stories/ruska-ekonomika-z-invazie-aj-profituje/index.html
 put sk/stories/rusko-vyuziva-krypto-na-obchadzanie-sankcii/index.html public_html/sk/stories/rusko-vyuziva-krypto-na-obchadzanie-sankcii/index.html
+put sk/stories/russell-brand-trest-za-otvorene-usta/index.html public_html/sk/stories/russell-brand-trest-za-otvorene-usta/index.html
 put sk/stories/sankcie-proti-rusku-su-pre-bitcoin-najlepsou-marketingovou-kampanou/index.html public_html/sk/stories/sankcie-proti-rusku-su-pre-bitcoin-najlepsou-marketingovou-kampanou/index.html
 put sk/stories/schopenhauerov-raj-blaznov-preco-si-hlupaci-myslia-ze-su-geniovia/index.html public_html/sk/stories/schopenhauerov-raj-blaznov-preco-si-hlupaci-myslia-ze-su-geniovia/index.html
 put sk/stories/schopenhauerov-recept-na-dusevne-zdravie-prestante-hadzat-perly-sviniam/index.html public_html/sk/stories/schopenhauerov-recept-na-dusevne-zdravie-prestante-hadzat-perly-sviniam/index.html
