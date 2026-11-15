@@ -75,6 +75,7 @@
 -mkdir public_html/stories/fear-is-real
 -mkdir public_html/stories/five-percent-yields-and-an-empty-bid-for-paper
 -mkdir public_html/stories/five-takeaways-from-ray-dalios-portfolio
+-mkdir public_html/stories/follow-the-money-binance-crash
 -mkdir public_html/stories/four-green-days-one-bad-night
 -mkdir public_html/stories/from-2014-up-until-now-the-evolution-of-crypto-exchanges
 -mkdir public_html/stories/gamestop-is-a-financial-protest-against-the-global-financial-system
@@ -318,6 +319,7 @@
 -mkdir public_html/sk/stories/kryptobanky-su-novodoby-fenomen-prinasaju-aj-riziko
 -mkdir public_html/sk/stories/kryptoburza-gemini-ma-problemy-caka-nas-dalsi-dominovy-efekt
 -mkdir public_html/sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi
+-mkdir public_html/sk/stories/kto-naozaj-zatriasol-trhom-nehladajte-fed-ale-binance
 -mkdir public_html/sk/stories/kto-vlastni-web3
 -mkdir public_html/sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu
 -mkdir public_html/sk/stories/last-chance-to-buy-tesla
@@ -546,6 +548,7 @@ put sk/stories/krypto-priemysel-stratil-svoje-tri-hlavne-banky-v-usa/index.html 
 put sk/stories/kryptobanky-su-novodoby-fenomen-prinasaju-aj-riziko/index.html public_html/sk/stories/kryptobanky-su-novodoby-fenomen-prinasaju-aj-riziko/index.html
 put sk/stories/kryptoburza-gemini-ma-problemy-caka-nas-dalsi-dominovy-efekt/index.html public_html/sk/stories/kryptoburza-gemini-ma-problemy-caka-nas-dalsi-dominovy-efekt/index.html
 put sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi/index.html public_html/sk/stories/kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi/index.html
+put sk/stories/kto-naozaj-zatriasol-trhom-nehladajte-fed-ale-binance/index.html public_html/sk/stories/kto-naozaj-zatriasol-trhom-nehladajte-fed-ale-binance/index.html
 put sk/stories/kto-vlastni-web3/index.html public_html/sk/stories/kto-vlastni-web3/index.html
 put sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu/index.html public_html/sk/stories/kym-sa-hadate-o-ficovi-a-simeckovi-vo-frankfurte-vam-potichu-zatvaraju-financnu-pascu/index.html
 put sk/stories/last-chance-to-buy-tesla/index.html public_html/sk/stories/last-chance-to-buy-tesla/index.html
@@ -724,6 +727,7 @@ put stories/everything-but-bitcoin/index.html public_html/stories/everything-but
 put stories/fear-is-real/index.html public_html/stories/fear-is-real/index.html
 put stories/five-percent-yields-and-an-empty-bid-for-paper/index.html public_html/stories/five-percent-yields-and-an-empty-bid-for-paper/index.html
 put stories/five-takeaways-from-ray-dalios-portfolio/index.html public_html/stories/five-takeaways-from-ray-dalios-portfolio/index.html
+put stories/follow-the-money-binance-crash/index.html public_html/stories/follow-the-money-binance-crash/index.html
 put stories/four-green-days-one-bad-night/index.html public_html/stories/four-green-days-one-bad-night/index.html
 put stories/from-2014-up-until-now-the-evolution-of-crypto-exchanges/index.html public_html/stories/from-2014-up-until-now-the-evolution-of-crypto-exchanges/index.html
 put stories/gamestop-is-a-financial-protest-against-the-global-financial-system/index.html public_html/stories/gamestop-is-a-financial-protest-against-the-global-financial-system/index.html
