@@ -41,12 +41,12 @@ jobs:
       PAGES: bitcoin-returns btc-monthly-returns.html sitemap.xml i18n-tools/legacy/src/en/btc-monthly-returns.html i18n-tools/btc-returns/state.json
       PUBLISH: bitcoin-returns btc-monthly-returns.html sitemap.xml
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           ref: main
           path: main
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
 
@@ -88,7 +88,7 @@ jobs:
           git pull --rebase origin main
           git push origin main
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         if: steps.commit.outputs.changed == 'true'
         with:
           ref: gh-pages

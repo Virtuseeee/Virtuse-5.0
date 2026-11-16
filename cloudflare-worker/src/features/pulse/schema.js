@@ -160,8 +160,8 @@ export function pulseErrors(data, now = Date.now()) {
     }
   }
 
-  if (data.feed != null && typeof data.feed !== 'string') {
-    errors.push('feed must be a string or null');
+  if (data.feed != null && data.feed !== '' && !isHttpsUrl(data.feed)) {
+    errors.push('feed must be an https URL or null');
   }
 
   return errors;

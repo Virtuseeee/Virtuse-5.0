@@ -69,6 +69,9 @@
     el.appendChild(m);
   }
 
+  /* Links that come from published data (Pulse items) are used only when they are https;
+     anything else, a javascript: address included, becomes '#'. */
+  function safeHref(u) { return typeof u === 'string' && /^https:\/\//i.test(u) ? u : '#'; }
   var MP = 'https://mempool.space/api';
   var WP = LANG === 'sk' ? 'https://blog.virtuse.com/sk/wp-json/wp/v2/posts' : 'https://blog.virtuse.com/wp-json/wp/v2/posts';
   var STORY_BASE = LANG === 'sk' ? '/sk/stories/' : '/stories/';
@@ -312,7 +315,7 @@
     host.appendChild(label);
     items.forEach(function (it) {
       var a = document.createElement('a');
-      a.href = it.url || '#';
+      a.href = safeHref(it.url);
       if (it.url && /^https?:/i.test(it.url)) {
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
@@ -930,7 +933,7 @@
       }
       var a = document.createElement('a');
       a.className = 'pt-news-title';
-      a.href = it.url || '#';
+      a.href = safeHref(it.url);
       if (it.url && /^https?:/i.test(it.url)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
       if (text.en) a.lang = 'en';
       a.textContent = undash(text.title || '');
@@ -984,7 +987,8 @@
     loadPulseData().then(function (data) {
       applyPulseMeta(data || {});
       var local = (data && data.items) || [];
-      if (data && data.feed) {
+      // Only an https feed is fetched (the Worker's schema says the same).
+      if (data && /^https:\/\//i.test(data.feed || '')) {
         return j(data.feed, 5000).then(function (remote) {
           var items = (remote && remote.items) || remote;
           renderPulse(Array.isArray(items) && items.length ? items : local);

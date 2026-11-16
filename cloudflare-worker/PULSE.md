@@ -96,7 +96,7 @@ Checked against `news/news-pulse.json` on `gh-pages` (snapshot in
 - When present: `what_moved` is a string of at most 300 characters;
   `fear_greed.value` is a number from 0 to 100; `dominance.btc_pct` is a
   finite number; `quick_media` has a `title` and an `https` `url`;
-  `feed` is a string or `null`.
+  `feed` is an https URL or `null` (an empty string counts as none).
 - Slovak copy (optional, since 2026-11-12): every item in `items` and
   `archive.items` may carry `title_sk` (string, at most 120 characters) and
   `excerpt_sk` (string, at most 300); the document may carry
