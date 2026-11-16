@@ -9,7 +9,6 @@ leaving English on the Slovak page.
 
   python3 i18n-tools/build_brief_sk.py          # write sk/news.html
   python3 i18n-tools/build_brief_sk.py --check  # exit 1 if sk/news.html is stale
-News & Markets is rendered in Slovak from news/news-markets.json by the same generator.
 """
 import html, json, pathlib, re, sys
 
@@ -35,8 +34,6 @@ TEXT = {
     "Email": "E-mail",
     "One email every Monday. Unsubscribe with one click in any issue.": "Jeden e-mail každý pondelok. Odhlásiš sa jedným klikom v každom vydaní.",
     "Privacy": "Súkromie",
-    "News &amp; Markets": "Správy a trhy",
-    "From the Brief": "Z Briefu",
     "All stories": "Všetky články",
     "Central banks": "Centrálne banky",
     "Partners": "Partneri",
@@ -135,7 +132,6 @@ ATTR = {
     "Email address": "E-mailová adresa",
     "Top stories": "Hlavné správy",
     "Filter": "Filtrovať",
-    "News & Markets": "Správy a trhy",
     "Partners (advertisement)": "Partneri (reklama)",
     "Firefish: Never sell your Bitcoin. Borrow against it.": "Firefish: Nepredávaj svoj Bitcoin. Požičaj si s ním ako so zábezpekou.",
     "Type your email…": "Napíš svoj e-mail…",
@@ -242,12 +238,6 @@ def main():
     s = re.sub(r'(href|src)="([^"]*)"', link_sub, s)
     s = s.replace('<link rel="alternate" hreflang="en" href="/news.html">', '<link rel="alternate" hreflang="en" href="https://virtuse.com/news.html">')
     s = s.replace("/sk/tax-agent.html?utm_source=brief&amp;utm_medium=europe", "/sk/tax-agent.html?utm_source=brief&amp;utm_medium=europe")
-    # News & Markets in Slovak (same generator as the English page).
-    import importlib.util
-    spec = importlib.util.spec_from_file_location("news_markets", SITE.parent / "seo-ops" / "news_markets.py")
-    nm = importlib.util.module_from_spec(spec); spec.loader.exec_module(nm)
-    m = re.search(re.escape(nm.START) + r".*?" + re.escape(nm.END), s, re.S)
-    s = s[:m.start()] + nm.render(json.loads(nm.SRC.read_text()), "sk") + s[m.end():]
     if "--check" in sys.argv:
         sys.exit(0 if OUT.exists() and OUT.read_text() == s else 1)
     OUT.write_text(s)

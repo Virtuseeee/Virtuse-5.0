@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - Magazine and Newsletter: 4 FT-style cards each, subscribe strip `#get-the-brief`.
   - By the numbers: Prices, Central banks (last move, next decision, Kalshi odds), Bitcoin and macro, Coming up.
   - Bitcoin data: 8 cards (30-day price, hashrate, Fear & Greed charts; dominance, difficulty, fee, halving, mined), loaded near the screen, filter buttons. CSP connect-src gained `api.alternative.me`.
-  - Tools below. **News & Markets is still in the HTML but `hidden`** so `seo-ops/news_markets.py` keeps working; placing or removing it is open.
+  - Tools below. News & Markets was removed the same day at Ras's request (`news_markets.py` retired, `news/news-markets.json` unused; `news.css?v=20261116b`).
 - **Magazine rule** (`magItems`): WordPress posts (EN cats 13/15, SK 26) minus newsletter issues, plus essays, newest first; the **newest issue leads the hero** (Grok's W47 handover, Ras approved; its WP twin is skipped). Last answer cached in `localStorage` `vb-mag-en`/`vb-mag-sk`; without WordPress the newest issues fill the hero. WP timeout 20 s.
 - **Static fallbacks** for no-JS and crawlers: hero lead and the first Newsletter card are written in `news.html` (newest issue); `build_brief_sk.py` fills both from the newest SK issue. **New issue = update both static blocks too** (same as the old featured card).
 - Dates: `fmtDate` prints a bare `YYYY-MM-DD` in UTC (it showed the day before west of UTC). SK basis points in words (`bpWord`), `dayShort` with NBSP. Cache-busters `news.css?v=20261116a`, `news.js?v=20261116c`, issues JSON `?v=20261116c`.
