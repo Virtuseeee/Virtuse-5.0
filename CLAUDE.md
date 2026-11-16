@@ -2,6 +2,23 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-11-16) — Brief as a portal + W47 + SK copy fixes (PR #177 + stacked #178, main `2ad02e99c`; **live on production**: Ras ran `deploy_site.sh 413199f57 2ad02e99c`, 23/23 files md5-verified on virtuse.com and staging)
+
+- **Layout** (`news.html`, `sk/news.html` via `build_brief_sk.py`, `news.js`/`news.css`, classes `pt-*`, approved mockup v3 `brief-portal-mockup-v3.html` in the project root):
+  - Dateline: today, `Desk updated HH:MM` (Pulse stamp, Bratislava), next calendar event.
+  - Hero: newest Magazine item | Pulse as "Latest news" | second Magazine item + Firefish ad.
+  - Magazine and Newsletter: 4 FT-style cards each, subscribe strip `#get-the-brief`.
+  - By the numbers: Prices, Central banks (last move, next decision, Kalshi odds), Bitcoin and macro, Coming up.
+  - Bitcoin data: 8 cards (30-day price, hashrate, Fear & Greed charts; dominance, difficulty, fee, halving, mined), loaded near the screen, filter buttons. CSP connect-src gained `api.alternative.me`.
+  - Tools below. **News & Markets is still in the HTML but `hidden`** so `seo-ops/news_markets.py` keeps working; placing or removing it is open.
+- **Magazine rule** (`magItems`): WordPress posts (EN cats 13/15, SK 26) minus newsletter issues, plus essays, newest first; the **newest issue leads the hero** (Grok's W47 handover, Ras approved; its WP twin is skipped). Last answer cached in `localStorage` `vb-mag-en`/`vb-mag-sk`; without WordPress the newest issues fill the hero. WP timeout 20 s.
+- **Static fallbacks** for no-JS and crawlers: hero lead and the first Newsletter card are written in `news.html` (newest issue); `build_brief_sk.py` fills both from the newest SK issue. **New issue = update both static blocks too** (same as the old featured card).
+- Dates: `fmtDate` prints a bare `YYYY-MM-DD` in UTC (it showed the day before west of UTC). SK basis points in words (`bpWord`), `dayShort` with NBSP. Cache-busters `news.css?v=20261116a`, `news.js?v=20261116c`, issues JSON `?v=20261116c`.
+- `news/issues.json`: 26 Oct issue was missing (added), W47 (16 Nov, `follow-the-money-binance-crash`, covers + OG `brief-20261116*`).
+- **WordPress edits (Ras's "áno")**: SK posts 15360, 15369, 15022, 15015, 13980, 10438, 9871 "odlev*" → "odliv*"; 15360 excerpt "odlivy"; 15410 excerpt "o 12,6 %"; 15314 title "Binance prišla o 6,3 miliardy, Bitcoin vydržal" (slug kept). No "odlev" left on the blog. Originals in WP revisions + Chrome `localStorage` `vb-wp-backup-20261116`. EN W47 excerpt still says "13%" (left on purpose).
+- Stories build run by hand (workflow_dispatch, run 43841375345) after the edits: 7 SK story pages rebuilt (`8ba15e3d9`), synced to gh-pages by the Action. Wait 5+ min after a WP edit before triggering (Worker WP proxy cache).
+- Gotchas: the Browser pane hidden = IntersectionObserver never fires (data cards stay "…"); test lazy sections with headless CDP that scrolls. zsh does not split `$LIST` in `for f in $LIST` (md5 loop reported 0/1): read the list from a file with `while read`. Headless timezone is not Bratislava: date-only strings must not go through local time.
+
 ## Session status (2026-11-12, third) — Brief audit (read-only) + top 5 fixes (PR #176, main `b9538ca5f`; **live on production**: Ras ran `deploy_worker.sh` (`/version` = `b9538ca5f`) and `deploy_site.sh 4c4c9b431 b9538ca5f`, 3 files md5-verified on virtuse.com and staging; then `deploy_site.sh 50a42d82e^ 50a42d82e`, 20 story files md5-verified, and the canonical map to the blog)
 
 - Report: `audits/brief-audit-2026-11-12.md` (Slovak): 6 high, 17 medium, 14 low findings, none critical; each with file:line, how to repeat, impact, proposed fix, and a list of what could not be checked.
