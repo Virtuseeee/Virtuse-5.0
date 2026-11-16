@@ -18,7 +18,14 @@
       last: 'Last', next: 'Next', expects: 'Market expects', asOf: 'as of', stale: 'older than 3 days',
       kalshiNote: 'Market expects: Kalshi prediction markets, implied probability of the most likely outcome',
       tagNames: { ETF: 'ETF', Macro: 'Macro', World: 'World', Policy: 'Policy', Mining: 'Mining', Security: 'Security' },
-      inEnglish: 'In English', source: 'Source', ecbRate: 'ECB deposit rate', btcEur: 'BTC in EUR', skInfl: 'Inflation, Slovakia', nextDecision: 'next decision'
+      inEnglish: 'In English', source: 'Source', ecbRate: 'ECB deposit rate', btcEur: 'BTC in EUR', skInfl: 'Inflation, Slovakia', nextDecision: 'next decision',
+      deskUpdated: 'Desk updated ', nextLabel: 'Next: ', latestIssue: 'Latest issue', perOz: 'per oz', perBarrel: 'per barrel', hikeOdds: 'hike odds', cutOdds: 'cut odds', holdOdds: 'hold odds',
+      bp: 'bp', nextShort: 'next', magazine: 'Magazine', minAgo: 'min ago', hAgo: 'h ago', dAgo: 'd ago', d30: '30d', estimate: 'estimate',
+      diffSub: function (p, b, h) { return p + ' of the period done. ' + b + ' blocks to go, about ' + h + '.'; },
+      feeSub: { low: 'Low. A typical payment costs a few cents.', normal: 'Normal. A typical payment costs well under a dollar.', high: 'High. Small payments can wait for a cheaper block.' },
+      halvSub: function (blk, when, r) { return 'Block ' + blk + ', around ' + when + '. Reward falls to ' + r + ' BTC.'; },
+      minedSub: function (p) { return p + ' of the 21 million that will ever exist.'; },
+      block: 'Block ', blocks: 'blocks', hours: 'hours', days: 'days', fgNames: {}
     },
     sk: {
       pulseUnavailable: 'Pulse je nedostupný', updated: 'Aktualizované pred', updatedNow: 'Aktualizované práve teraz', ago: '', min: 'min', h: 'h',
@@ -32,7 +39,14 @@
       last: 'Naposledy', next: 'Ďalej', expects: 'Trh čaká', asOf: 'k', stale: 'staršie ako 3 dni',
       kalshiNote: 'Trh čaká: trhy predikcií Kalshi, implikovaná pravdepodobnosť najčastejšieho scenára',
       tagNames: { ETF: 'ETF', Macro: 'Makro', World: 'Svet', Policy: 'Regulácia', Mining: 'Ťažba', Security: 'Bezpečnosť' },
-      inEnglish: 'Text v angličtine', source: 'Zdroj', ecbRate: 'Sadzba ECB (depozitná)', btcEur: 'BTC v EUR', skInfl: 'Inflácia na Slovensku', nextDecision: 'ďalšie rozhodnutie'
+      inEnglish: 'Text v angličtine', source: 'Zdroj', ecbRate: 'Sadzba ECB (depozitná)', btcEur: 'BTC v EUR', skInfl: 'Inflácia na Slovensku', nextDecision: 'ďalšie rozhodnutie',
+      deskUpdated: 'Aktualizované ', nextLabel: 'Najbližšie: ', latestIssue: 'Najnovšie vydanie', perOz: 'za uncu', perBarrel: 'za barel', hikeOdds: 'šanca na zvýšenie', cutOdds: 'šanca na zníženie', holdOdds: 'šanca na bez zmeny',
+      bp: 'b. b.', nextShort: 'ďalej', magazine: 'Magazín', minAgo: 'min', hAgo: 'h', dAgo: 'd', d30: '30 d', estimate: 'odhad',
+      diffSub: function (p, b, h) { return 'Hotových ' + p + ' obdobia. Ostáva ' + b + ' blokov, asi ' + h + '.'; },
+      feeSub: { low: 'Nízky. Bežná platba stojí pár centov.', normal: 'Bežný. Platba stojí výrazne menej ako dolár.', high: 'Vysoký. Malé platby môžu počkať na lacnejší blok.' },
+      halvSub: function (blk, when, r) { return 'Blok ' + blk + ', približne ' + when + '. Odmena klesne na ' + r + ' BTC.'; },
+      minedSub: function (p) { return p + ' z 21 miliónov, ktoré kedy budú existovať.'; },
+      block: 'Blok ', blocks: 'blokov', hours: 'hodín', days: 'dní', fgNames: {}
     }
   };
   function tr(k) { var v = I18N[LANG][k]; return v == null ? I18N.en[k] : v; }
@@ -71,11 +85,6 @@
       document.head.appendChild(s);
     }));
   }
-  /* Fallback only: the featured card follows the newest issue in news/issues.json. */
-  var FEATURED_SLUG = 'who-actually-controls-your-money';
-  /* The newest issue from issues.json; a cover hosted on this site (not blog.virtuse.com) is kept
-     as the featured cover, the WordPress featured image does not replace it. */
-  var LATEST_ISSUE = null;
   var THEME_KEY = 'vb-theme-blog';
   var THEME_DARK = '#08090a';
   var THEME_LIGHT = '#FBFBFA';
@@ -84,7 +93,7 @@
   /* Tags that may run without Bitcoin in the text (world and macro news). */
   var PULSE_OPEN_TAGS = ['Macro', 'World'];
   var BLOG_CATS = LANG === 'sk' ? '26' : '13,15';
-  var BLOG_MAX = 3;
+  var BLOG_MAX = 4;
   var ISSUES_MAX = 4;
   /* Placeholder for a missing figure (no em/en dashes in page text). */
   var NA = '\u2026';
@@ -238,19 +247,25 @@
     el.textContent = stale ? tr('deskUpdating') : '';
     el.hidden = !stale;
   }
-  /* The strip under the logo is today's date, on every load, whatever issues.json holds.
-     The latest issue's own date lives only on the featured eyebrow (paintFeatured). */
+  /* Dateline under the logo: today's date in the desk's zone, on every load. */
   function applyTodayStrip() {
-    var p = document.querySelector('.edition-strip .edition');
-    if (!p) return;
+    var t = $('todayDate');
+    if (!t) return;
     var now = new Date();
-    var t = document.createElement('time');
     t.setAttribute('datetime', deskYmd(now));
     t.textContent = LANG === 'sk'
-      ? now.toLocaleDateString('sk-SK', { timeZone: DESK_TZ, weekday: 'short', day: 'numeric', month: 'numeric', year: 'numeric' })
-      : now.toLocaleDateString('en-US', { timeZone: DESK_TZ, weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
-    p.textContent = tr('today') + ' · ';
-    p.appendChild(t);
+      ? now.toLocaleDateString('sk-SK', { timeZone: DESK_TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+      : now.toLocaleDateString('en-GB', { timeZone: DESK_TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).replace(/^(\w+) /, '$1, ');
+  }
+  /* "Desk updated 06:27" from the Pulse stamp (Bratislava time); the date is added when it is not today. */
+  function applyDeskLine(iso) {
+    var line = $('deskLine');
+    var d = new Date(iso || '');
+    if (!line || isNaN(d.getTime())) return;
+    var when = deskHhmm(d);
+    if (deskYmd(d) !== deskYmd(new Date())) when = dayShort(deskYmd(d)) + ', ' + when;
+    setText('deskUpdated', tr('deskUpdated') + when);
+    line.hidden = false;
   }
   applyTodayStrip();
   function applyFearGreed(fg) {
@@ -312,6 +327,7 @@
   function applyPulseMeta(data) {
     pulseStamp = data && data.updated;
     applyPulseStale(pulseStamp);
+    applyDeskLine(pulseStamp);
     renderArchive(data && data.archive);
     applyFearGreed(data && data.fear_greed);
   }
@@ -458,14 +474,14 @@
     if (!el) return;
     if (pct == null || isNaN(pct)) { el.textContent = NA; return; }
     el.textContent = signedPct(pct) + ' · ' + tr('d1');
-    el.className = 'tile-sub ' + pctClass(pct);
+    el.className = pctClass(pct);
   }
 
   function paintGold() {
     var g = macro && macro.quotes && macro.quotes.gold;
     if (!g || !btcUsd) return;
     setText('tileGold', fmtNum(btcUsd / g.value, 1) + ' oz');
-    setText('tileGoldSub', tr('gold') + ' ' + (LANG === 'sk' ? fmtNum(g.value, 0) + '\u00a0$/oz' : '$' + fmtNum(g.value, 0) + '/oz'));
+    setText('tileGoldSub', (LANG === 'sk' ? 'pri ' + fmtNum(g.value, 0) + '\u00a0$ za uncu' : 'at $' + fmtNum(g.value, 0) + ' per oz'));
   }
   function macroTicker() {
     var q = macro && macro.quotes;
@@ -487,59 +503,90 @@
     return out;
   }
   /* F2: US CPI shows the last y/y BLS published + the latest m/m; euro area
-     carries "flash" while Eurostat marks the figure as estimated. */
+     and Slovakia carry "flash" while Eurostat marks the figure as estimated. */
   function paintInflation(inf) {
-    var us = inf.us, ea = inf.ea;
-    if (!us && !ea) return;
-    setText('tileInfl', (us ? fmtNum(us.value, 1) : NA) + ' / ' + (ea ? fmtNum(ea.value, 1) : NA) + (LANG === 'sk' ? ' %' : '%'));
-    setText('tileInflSub', tr('yoy') + ' · US ' + (us ? monthShort(us.month) : NA) + ' · ' + (LANG === 'sk' ? 'EÚ ' : 'EU ') +
-      (ea ? monthShort(ea.month) + (ea.flash ? ' ' + tr('flash') : '') : NA));
-    var note = $('tileInflNote');
-    if (note && us && us.mom != null) {
-      note.textContent = 'US ' + monthShort(us.mom_month) + ' ' + signedPct(us.mom, 1) + ' ' + tr('mom');
-      if (us.yoy_published === false) {
-        note.appendChild(document.createTextNode(' · '));
-        note.appendChild(link(us.note_url || us.source_url, tr('yoyNotPub')));
+    var pc = LANG === 'sk' ? '\u00a0%' : '%';
+    var us = inf.us, ea = inf.ea, sk = inf.sk;
+    if (us) {
+      setText('rowUsInfl', fmtNum(us.value, 1) + pc);
+      var sub = $('rowUsInflSub');
+      if (sub) {
+        sub.textContent = monthShort(us.month) + ' ' + tr('yoy') + (us.mom != null ? ' · ' + monthShort(us.mom_month) + ' ' + tr('mom') + ' ' + signedPct(us.mom, 1) : '');
+        if (us.yoy_published === false) { sub.appendChild(document.createTextNode(' · ')); sub.appendChild(link(us.note_url || us.source_url, tr('yoyNotPub'))); }
       }
-      note.hidden = false;
+    }
+    [['rowEaInfl', ea], ['rowSkInfl', sk]].forEach(function (x) {
+      if (!x[1]) return;
+      setText(x[0], fmtNum(x[1].value, 1) + pc);
+      setText(x[0] + 'Sub', monthShort(x[1].month) + ' ' + tr('yoy') + (x[1].flash ? ' · ' + tr('flash') : ''));
+    });
+  }
+  function prices(q) {
+    var pc = LANG === 'sk' ? '\u00a0$' : '';
+    function money(v, d) { return LANG === 'sk' ? fmtNum(v, d) + pc : '$' + fmtNum(v, d); }
+    if (q.spx) { setText('tileSpx', fmtNum(q.spx.value, 0)); setChg('tileSpxChg', q.spx.change_pct); }
+    if (q.eurusd) { setText('tileEur', fmtNum(q.eurusd.value, 4)); setChg('tileEurChg', q.eurusd.change_pct); }
+    if (q.gold) { setText('rowGold', money(q.gold.value, 0)); setChg('rowGoldChg', q.gold.change_pct); }
+    if (q.brent) { setText('rowBrent', money(q.brent.value, 2)); setChg('rowBrentChg', q.brent.change_pct); }
+    if (q.us10y) {
+      setText('rowUs10', pctStr(q.us10y.value, 2));
+      var bp = q.us10y.prev != null ? Math.round((q.us10y.value - q.us10y.prev) * 100) : null;
+      var el = $('rowUs10Chg');
+      if (el && bp != null) { el.textContent = (bp > 0 ? '+' : '') + bp + ' ' + tr('bp') + ' · ' + tr('d1'); el.className = pctClass(bp); }
     }
   }
-  /* Central banks: rate + next decision (table in the Newsletter rail). */
+  /* Central banks: rate, last move, next decision, Kalshi odds where there are any. */
   function paintBanks(cb) {
-    Array.prototype.forEach.call(document.querySelectorAll('#cbRows tr[data-cb]'), function (row) {
+    var anyOdds = false;
+    Array.prototype.forEach.call(document.querySelectorAll('#cbRows li[data-cb]'), function (row) {
       var b = cb[row.getAttribute('data-cb')];
-      var tds = row.querySelectorAll('td');
-      if (!b || tds.length < 2) return;
-      tds[0].textContent = LANG === 'sk' ? String(b.rate).replace(/\./g, ',').replace('%', '\u00a0%') : b.rate;
-      tds[0].title = b.label + ' · ' + b.source;
-      tds[1].textContent = b.next_meeting ? dayShort(b.next_meeting) : NA;
+      var v = row.querySelector('b'), sm = row.querySelector('small');
+      if (!b || !v || !sm) return;
+      v.textContent = LANG === 'sk' ? String(b.rate).replace(/\./g, ',').replace('%', '\u00a0%') : b.rate;
+      v.title = b.label + ' · ' + b.source;
+      var bits = [];
+      var lm = b.last_move;
+      if (lm && lm.bp) bits.push((lm.dir === 'down' ? '\u25BC ' : '\u25B2 ') + lm.bp + ' ' + tr('bp') + ', ' + dayShort(lm.date));
+      if (b.next_meeting) bits.push(tr('nextShort') + ' ' + dayShort(b.next_meeting));
+      var e = b.expects;
+      if (e && e.prob != null && e.scenario && e.meeting === b.next_meeting) {
+        var kind = /hike/i.test(e.scenario) ? 'hikeOdds' : /cut/i.test(e.scenario) ? 'cutOdds' : 'holdOdds';
+        bits.push(tr(kind) + ' ' + e.prob + (LANG === 'sk' ? '\u00a0%' : '%'));
+        anyOdds = true;
+      }
+      sm.textContent = bits.join(' · ') || NA;
     });
+    if (anyOdds) setText('cbNote', (LANG === 'sk' ? 'Zdroje: Federal Reserve Bank of New York, ECB, Bank of England, Bank of Japan. Šance: trhy predikcií Kalshi.' : 'Sources: Federal Reserve Bank of New York, ECB, Bank of England, Bank of Japan. Odds: Kalshi prediction markets.'));
   }
   /* F1: events that already happened, used to demote "ahead of CPI" stories. */
   function recentEvents() { return (macro && macro.recent_events) || []; }
   function paintCalendar(m) {
     var cal = (m.calendar || []).filter(function (e) { return e.date >= deskYmd(new Date()); }).slice(0, 4);
     var list = $('calList');
-    var box = $('pulseCalendar');
-    if (!list || !box || !cal.length) return;
+    if (!list || !cal.length) return;
     list.textContent = '';
     cal.forEach(function (e) {
+      var title = LANG === 'sk' && e.title_sk ? e.title_sk : e.title;
       var li = document.createElement('li');
-      var t = document.createElement('time');
-      t.setAttribute('datetime', e.time || e.date);
-      t.textContent = dayShort(e.date);
+      li.appendChild(e.url ? link(e.url, title) : document.createTextNode(title));
+      var t = document.createElement('b');
+      var tm = document.createElement('time');
+      tm.setAttribute('datetime', e.time || e.date);
+      tm.textContent = dayShort(e.date);
+      t.appendChild(tm);
       li.appendChild(t);
-      li.appendChild(e.url ? link(e.url, LANG === 'sk' && e.title_sk ? e.title_sk : e.title) : document.createTextNode(e.title));
+      var sm = document.createElement('small');
+      if (e.time) sm.textContent = deskHhmm(new Date(e.time)) + (LANG === 'sk' ? ' (Bratislava)' : ' Bratislava');
+      li.appendChild(sm);
       list.appendChild(li);
     });
-    box.hidden = false;
+    var first = cal[0], nx = $('nextEvent');
+    if (nx) { nx.textContent = tr('nextLabel') + (LANG === 'sk' && first.title_sk ? first.title_sk : first.title) + ' · ' + dayShort(first.date); nx.hidden = false; }
   }
 
   function paintMacro(m) {
     macro = m;
-    var q = m.quotes || {};
-    if (q.spx) { setText('tileSpx', fmtNum(q.spx.value, 0)); setChg('tileSpxChg', q.spx.change_pct); }
-    if (q.eurusd) { setText('tileEur', fmtNum(q.eurusd.value, 4)); setChg('tileEurChg', q.eurusd.change_pct); }
+    prices(m.quotes || {});
     paintInflation(m.inflation || {});
     paintGold();
     paintBanks(m.central_banks || {});
@@ -681,9 +728,10 @@
       if (isNaN(n)) throw new Error('no change');
       stats.chgRaw = n;
       liveOk(stats, 'chg', 'tileChg', signedPct(n));
+      setText('tileChg', signedPct(n) + (LANG === 'sk' ? ' · 24 h' : ' · 24h'));
       stats.chgClass = pctClass(n);
       var el = $('tileChg');
-      if (el) el.className = 'tile-sub ' + stats.chgClass;
+      if (el) el.className = stats.chgClass;
       renderTicker(stats);
     }).catch(function () {
       return j('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true', LIVE_MS).then(function (g) {
@@ -697,10 +745,11 @@
         }
         if (n == null || isNaN(n)) throw new Error('no change');
         stats.chgRaw = n;
-          liveOk(stats, 'chg', 'tileChg', signedPct(n));
+        liveOk(stats, 'chg', 'tileChg', signedPct(n));
+        setText('tileChg', signedPct(n) + (LANG === 'sk' ? ' · 24 h' : ' · 24h'));
         stats.chgClass = pctClass(n);
         var el = $('tileChg');
-        if (el) el.className = 'tile-sub ' + stats.chgClass;
+        if (el) el.className = stats.chgClass;
         renderTicker(stats);
       });
     }).catch(function () {
@@ -709,6 +758,7 @@
 
     j(MP + '/blocks/tip/height', LIVE_MS).then(function (h) {
       liveOk(stats, 'height', 'tileHeight', num(h));
+      paintHeight(h);
       renderTicker(stats);
     }).catch(function () { liveFail(stats, 'height', 'tileHeight'); }).then(done);
 
@@ -716,6 +766,7 @@
       stats.feeRaw = f.fastestFee;
       if (f.fastestFee == null) throw new Error('no fee');
       liveOk(stats, 'fee', 'tileFee', f.fastestFee + ' sat/vB · ' + feeBand(f.fastestFee));
+      paintFee(f.fastestFee);
       renderTicker(stats);
     }).catch(function () { liveFail(stats, 'fee', 'tileFee'); }).then(done);
 
@@ -851,38 +902,48 @@
     empty.hidden = true;
     shorts.forEach(function (x) {
       var it = x.it;
-      var article = document.createElement('article');
-      article.className = 'pulse-item' + (x.before ? ' is-before' : '');
       var tagName = inferTag(it);
+      var text = localCopy(it);
+      var li = document.createElement('li');
+      li.className = 'pt-news-item' + (x.before ? ' is-before' : '');
+      var k = document.createElement('p');
+      k.className = 'pt-kicker';
       var tag = document.createElement('span');
-      tag.className = 'pulse-tag';
-      tag.appendChild(pulseIcon(tagName));
-      tag.appendChild(document.createTextNode(tagLabel(tagName)));
+      tag.className = 'pt-tag pt-tag-' + tagName.toLowerCase();
+      tag.textContent = tagLabel(tagName);
+      k.appendChild(tag);
+      var ago = timeAgo(it.published);
+      if (ago) { var t = document.createElement('time'); t.setAttribute('datetime', it.published); t.textContent = ago; k.appendChild(t); }
       if (x.before) {
         var bf = document.createElement('span');
         bf.className = 'pulse-before';
         bf.textContent = tr('beforeRelease') + ' · ' + (LANG === 'sk' && x.before.title_sk ? x.before.title_sk : x.before.title);
-        tag.appendChild(bf);
+        k.appendChild(bf);
       }
-      var text = localCopy(it);
-      if (text.en) markEn(tag);
-      var copy = document.createElement('p');
-      copy.className = 'pulse-copy';
-      if (text.en) copy.lang = 'en';
-      copy.textContent = undash(twoSentences(text));
-      var read = document.createElement('a');
-      read.className = 'read';
-      read.href = it.url || '#';
-      if (it.url && /^https?:/i.test(it.url)) {
-        read.target = '_blank';
-        read.rel = 'noopener noreferrer';
-      }
-      read.textContent = outletCta(it);
-      article.appendChild(tag);
-      article.appendChild(copy);
-      article.appendChild(read);
-      list.appendChild(article);
+      var a = document.createElement('a');
+      a.className = 'pt-news-title';
+      a.href = it.url || '#';
+      if (it.url && /^https?:/i.test(it.url)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      if (text.en) a.lang = 'en';
+      a.textContent = undash(text.title || '');
+      var src = document.createElement('small');
+      src.textContent = (it.source || '').replace(/\s+/g, ' ').trim();
+      if (text.en) markEn(src);
+      li.appendChild(k);
+      li.appendChild(a);
+      li.appendChild(src);
+      list.appendChild(li);
     });
+  }
+  /* "3 h ago" from an ISO stamp; nothing for a missing or future stamp. */
+  function timeAgo(iso) {
+    var t = Date.parse(iso || '');
+    if (isNaN(t)) return '';
+    var m = Math.round((Date.now() - t) / 60000);
+    if (m < 0) return '';
+    if (m < 60) return Math.max(1, m) + '\u00a0' + tr('minAgo');
+    if (m < 48 * 60) return Math.floor(m / 60) + '\u00a0' + tr('hAgo');
+    return Math.floor(m / 1440) + '\u00a0' + tr('dAgo');
   }
   var PULSE_LOCAL = '/news/news-pulse.json?v=20261110';
   /* Worker GET /pulse.json, 3 s limit (the local copy is the fallback). */
@@ -1091,7 +1152,7 @@
   initTools();
 
 
-  /* Newsletter issues with cover images. */
+  /* Newsletter issues and Magazine posts: one card shape for both. */
   function issueHref(issue) {
     if (issue.url) return issue.url;
     return issue.slug ? issueLink(issue.slug) : '#';
@@ -1099,111 +1160,15 @@
   function markIssue(a, slug) {
     if (slug) a.setAttribute('data-issue-slug', slug);
   }
-  function archiveCard(issue) {
-    var a = document.createElement('a');
-    a.className = 'archive-card';
-    a.href = issueHref(issue);
-    if (!issue.url) markIssue(a, issue.slug);
-    if (issue.lang) a.setAttribute('hreflang', issue.lang);
-    if (issue.image) {
-      var img = document.createElement('img');
-      img.loading = 'lazy';
-      sizedImg(img, issue.image, CARD_SIZES);
-      img.alt = undash(issue.title || '');
-      a.appendChild(img);
-    }
-    var t = document.createElement('time');
-    t.dateTime = issue.date;
-    t.textContent = fmtDate(issue.date);
-    var h = document.createElement('h3');
-    h.textContent = undash(issue.title);
-    var p = document.createElement('p');
-    p.textContent = undash(issue.excerpt || '');
-    a.appendChild(t);
-    a.appendChild(h);
-    a.appendChild(p);
-    return a;
-  }
-  function paintArchive(issues) {
-    var grid = $('archiveGrid');
-    if (!grid) return;
-    grid.textContent = '';
-    (issues || []).filter(function (issue) {
-      return issue && issue.slug !== FEATURED_SLUG && !issue.essay;
-    }).slice(0, ISSUES_MAX).forEach(function (issue) {
-      grid.appendChild(archiveCard(issue));
-    });
-    linkStories();
-    alignDataDesk();
-    [].forEach.call(grid.querySelectorAll('img'), function (img) {
-      if (!img.complete) img.addEventListener('load', alignDataDesk);
-    });
-  }
-
-  /* Right rail matches the Newsletter list height.
-     Data desk fills row 1; Partners top aligns with issues row 2. */
-  var deskAlignTimer = null;
-  function issuesRow2Top(cards) {
-    if (!cards.length) return null;
-    var firstBottom = cards[0].getBoundingClientRect().bottom;
-    var i;
-    for (i = 1; i < cards.length; i++) {
-      var top = cards[i].getBoundingClientRect().top;
-      if (top > firstBottom + 2) return top;
-    }
-    return null;
-  }
-  function alignDataDesk() {
-    var rail = $('issuesRail');
-    var desk = $('data-desk');
-    var cards = document.querySelectorAll('#archiveGrid .archive-card');
-    if (!rail) return;
-    if (!window.matchMedia('(min-width: 1021px)').matches || cards.length < 2) {
-      rail.style.minHeight = '';
-      if (desk) {
-        desk.style.height = '';
-        desk.style.maxHeight = '';
-        desk.style.flex = '';
-      }
-      return;
-    }
-    var band = rail.parentElement;
-    if (!band) return;
-    var last = cards[cards.length - 1];
-    var top = band.getBoundingClientRect().top;
-    var railTop = rail.getBoundingClientRect().top;
-    var bottom = last.getBoundingClientRect().bottom;
-    rail.style.minHeight = Math.max(0, Math.round(bottom - top)) + 'px';
-    var row2 = issuesRow2Top(cards);
-    if (desk && row2 != null) {
-      var gap = parseFloat(window.getComputedStyle(rail).rowGap) || 0;
-      var deskH = Math.max(0, Math.round(row2 - railTop - gap));
-      desk.style.flex = '0 0 auto';
-      desk.style.height = deskH + 'px';
-      desk.style.maxHeight = deskH + 'px';
-    }
-  }
-  window.addEventListener('resize', function () {
-    if (deskAlignTimer) clearTimeout(deskAlignTimer);
-    deskAlignTimer = setTimeout(alignDataDesk, 80);
-  });
-  if (typeof ResizeObserver === 'function') {
-    var archiveForAlign = $('archiveGrid');
-    if (archiveForAlign) {
-      new ResizeObserver(alignDataDesk).observe(archiveForAlign);
-    }
-  }
-
-  /* Magazine: essay + related WP posts, no empty placeholders. */
   function imgOf(post) {
     try { return post._embedded['wp:featuredmedia'][0].source_url || ''; } catch (e) { return ''; }
   }
   /* WordPress keeps smaller copies of every upload (300 / 768 / 1024 / 1536 px).
      SRCSET maps an original's URL to those copies (same shape only, no square crops),
-     filled from the WordPress answers, so phones take a 768 px copy instead of the
-     original (Lighthouse mobile: 2.3 MB of images, cover LCP 7.5 s). */
-  var FEATURED_SIZES = '(max-width: 800px) calc(100vw - 32px), 510px';
-  var CARD_SIZES = '(max-width: 480px) calc(100vw - 32px), 410px';
+     so phones take a 768 px copy instead of the original. */
+  var LEAD_SIZES = '(max-width: 900px) calc(100vw - 32px), 620px';
+  var SIDE_SIZES = '(max-width: 900px) calc(100vw - 32px), 300px';
+  var CARD_SIZES = '(max-width: 600px) calc(100vw - 32px), 300px';
   var SRCSET = {};
   function remember(posts) {
     (posts || []).forEach(function (p) {
@@ -1218,7 +1183,6 @@
         });
         if (out.length > 1) {
           SRCSET[m.source_url] = out.join(', ');
-          // issues.json sometimes names a smaller copy instead of the original
           all.forEach(function (x) { if (x && x.source_url && !SRCSET[x.source_url]) SRCSET[x.source_url] = SRCSET[m.source_url]; });
         }
       } catch (e) { /* no featured image */ }
@@ -1232,235 +1196,337 @@
   /* Images already on the page when an answer arrives; one that has already
      finished loading is left alone (no second download). */
   function upgradeImages() {
-    Array.prototype.forEach.call(document.querySelectorAll('img'), function (img) {
+    Array.prototype.forEach.call(document.querySelectorAll('main img'), function (img) {
       var ss = SRCSET[img.getAttribute('src')];
       if (!ss || img.hasAttribute('srcset') || (img.complete && img.naturalWidth)) return;
-      img.sizes = img.closest('.featured-cover') ? FEATURED_SIZES : CARD_SIZES;
+      img.sizes = img.closest('#heroLead') ? LEAD_SIZES : img.closest('#heroSecond') ? SIDE_SIZES : CARD_SIZES;
       img.srcset = ss;
     });
-  }
-  function blogCardFromIssue(issue) {
-    var a = document.createElement('a');
-    a.className = 'blog-card';
-    a.href = issueHref(issue);
-    markIssue(a, issue.slug);
-    if (issue.image) {
-      var img = document.createElement('img');
-      img.loading = 'lazy';
-      sizedImg(img, issue.image, CARD_SIZES);
-      img.alt = undash(issue.title || '');
-      a.appendChild(img);
-    }
-    var body = document.createElement('div');
-    body.className = 'blog-card-body';
-    var meta = document.createElement('div');
-    meta.className = 'blog-card-meta';
-    meta.textContent = [issue.author || 'Ras Vasilisin', fmtDate(issue.date)].filter(Boolean).join(' · ');
-    var h = document.createElement('h3');
-    h.textContent = undash(issue.title);
-    var read = document.createElement('span');
-    read.className = 'read';
-    read.textContent = tr('readEssay');
-    body.appendChild(meta);
-    body.appendChild(h);
-    body.appendChild(read);
-    a.appendChild(body);
-    return a;
-  }
-  function blogCardFromWp(post) {
-    var a = document.createElement('a');
-    a.className = 'blog-card';
-    a.href = issueLink(post.slug);
-    markIssue(a, post.slug);
-    if (/^https:\/\/blog\.virtuse\.com\//.test(post.link || '')) a.setAttribute('data-fallback', post.link);
-    var imgUrl = imgOf(post);
-    if (imgUrl) {
-      var img = document.createElement('img');
-      img.loading = 'lazy';
-      sizedImg(img, imgUrl, CARD_SIZES);
-      img.alt = strip(post.title && post.title.rendered);
-      a.appendChild(img);
-    }
-    var body = document.createElement('div');
-    body.className = 'blog-card-body';
-    var meta = document.createElement('div');
-    meta.className = 'blog-card-meta';
-    meta.textContent = fmtDate(post.date);
-    var h = document.createElement('h3');
-    h.textContent = strip(post.title && post.title.rendered);
-    var read = document.createElement('span');
-    read.className = 'read';
-    read.textContent = tr('readEssay');
-    body.appendChild(meta);
-    body.appendChild(h);
-    body.appendChild(read);
-    a.appendChild(body);
-    return a;
   }
   function dateMs(iso) {
     var t = Date.parse(iso || '');
     return isNaN(t) ? 0 : t;
   }
-  /* Newest non-essay issue from news/issues.json (dates are YYYY-MM-DD). */
-  function latestIssue(issues) {
-    var best = null;
-    (issues || []).forEach(function (issue) {
-      if (!issue || !issue.slug || issue.essay || !issue.title || issue.lang) return;
-      if (!best || String(issue.date || '') > String(best.date || '')) best = issue;
-    });
-    return best;
+  /* A deck of at most `max` characters: whole sentences when they fit, else words + "…". */
+  function shortDek(t, max) {
+    t = undash(String(t || '').replace(/\s+/g, ' ').replace(/\s*(\[…\]|\[\.\.\.\]|…)\s*$/, '').trim());
+    if (t.length <= max) return t;
+    var parts = t.match(/[^.!?]+[.!?]+(\s|$)/g) || [], out = '';
+    for (var i = 0; i < parts.length; i++) {
+      if ((out + parts[i]).trim().length > max) break;
+      out += parts[i];
+    }
+    out = out.trim();
+    if (out.length >= max * 0.45) return out;
+    return t.slice(0, max).replace(/\s+\S*$/, '').replace(/[,;:]$/, '') + '…';
   }
-  function fmtEditionDate(ymd) {
-    var d = new Date(String(ymd || '') + 'T12:00:00Z');
-    if (isNaN(d.getTime())) return '';
-    return LANG === 'sk'
-      ? d.toLocaleDateString('sk-SK', { timeZone: 'UTC', weekday: 'short', day: 'numeric', month: 'numeric', year: 'numeric' })
-      : d.toLocaleDateString('en-US', { timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+  function fromIssue(i) {
+    return { slug: i.slug, url: i.url || '', title: undash(i.title || ''), excerpt: shortDek(i.excerpt, 240), date: i.date, image: i.image || '', author: i.author || 'Ras Vasilisin', lang: i.lang || '' };
   }
-  function issueFacts(issue) {
-    if (issue.facts && issue.facts.length) return issue.facts.slice(0, 3).map(undash);
-    var parts = undash(issue.excerpt || '').match(/[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g) || [];
-    return parts.map(function (x) { return x.trim().replace(/[.]$/, ''); }).filter(Boolean).slice(0, 3);
+  function fromWp(p) {
+    return {
+      slug: p.slug, url: '', title: strip(p.title && p.title.rendered), excerpt: shortDek(strip(p.excerpt && p.excerpt.rendered), 240),
+      date: p.date, image: imgOf(p), author: 'Ras Vasilisin',
+      fallback: /^https:\/\/blog\.virtuse\.com\//.test(p.link || '') ? p.link : ''
+    };
   }
-  /* The static HTML card is a fallback. If issues.json has a newer issue, rewrite the card from it
-     (eyebrow date, cover, headline, facts, links), so a new issue needs only a JSON entry.
-     The headline stays the card's H2 (.featured-title); the page H1 is "Virtuse Brief". */
-  function setBriefShare(path) {
-    var a = document.getElementById('briefShareLinkedIn');
-    if (!a || !path) return;
-    if (path.charAt(0) !== '/') path = '/' + path;
-    var page = 'https://virtuse.com' + path;
-    page += (page.indexOf('?') === -1 ? '?' : '&') + 'utm_source=linkedin&utm_medium=social&utm_campaign=brief_share';
-    a.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(page);
+  function itemHref(it) { return it.url || (it.slug ? issueLink(it.slug) : STORY_BASE); }
+  function linkTo(a, it) {
+    a.href = itemHref(it);
+    if (!it.url) markIssue(a, it.slug);
+    if (it.fallback) a.setAttribute('data-fallback', it.fallback);
+    if (it.lang) a.setAttribute('hreflang', it.lang);
   }
-  function paintFeatured(issue) {
-    var card = $('featured');
-    if (!card || !issue) return;
-    var href = issueLink(issue.slug);
-    setBriefShare(href);
-    var head = card.querySelector('.featured-title a');
-    if (head && head.getAttribute('data-issue-slug') === issue.slug) return;
+  function card(it, note) {
+    var art = document.createElement('article');
+    art.className = 'pt-card';
+    if (it.image) {
+      var ia = document.createElement('a');
+      ia.className = 'pt-card-img';
+      ia.tabIndex = -1;
+      ia.setAttribute('aria-hidden', 'true');
+      linkTo(ia, it);
+      var img = document.createElement('img');
+      img.loading = 'lazy';
+      img.alt = '';
+      sizedImg(img, it.image, CARD_SIZES);
+      ia.appendChild(img);
+      art.appendChild(ia);
+    }
+    var h = document.createElement('h3');
+    h.className = 'pt-card-title';
+    var a = document.createElement('a');
+    linkTo(a, it);
+    a.textContent = it.title;
+    h.appendChild(a);
+    art.appendChild(h);
+    if (it.excerpt) {
+      var p = document.createElement('p');
+      p.className = 'pt-card-dek';
+      p.textContent = it.excerpt;
+      art.appendChild(p);
+    }
+    var d = document.createElement('p');
+    d.className = 'pt-card-date';
+    var t = document.createElement('time');
+    t.setAttribute('datetime', String(it.date || '').slice(0, 10));
+    t.textContent = fmtDate(it.date);
+    d.appendChild(t);
+    if (note) d.appendChild(document.createTextNode(' · ' + note));
+    art.appendChild(d);
+    return art;
+  }
+  /* Hero lead and the right column: a Magazine story each (image, kicker, title, deck). */
+  function fillStory(id, it, sizes, eager) {
+    var el = $(id);
+    if (!el) return;
+    if (!it) { el.hidden = true; return; }
+    el.hidden = false;
+    var ia = el.querySelector('.pt-lead-img, .pt-second-img');
+    if (ia) {
+      linkTo(ia, it);
+      var old = ia.querySelector('img');
+      if (!old || old.getAttribute('src') !== it.image) {
+        ia.textContent = '';
+        if (it.image) {
+          var img = document.createElement('img');
+          img.alt = '';
+          if (eager) img.setAttribute('fetchpriority', 'high'); else img.loading = 'lazy';
+          sizedImg(img, it.image, sizes);
+          ia.appendChild(img);
+        }
+      }
+    }
+    var t = el.querySelector('.pt-kicker time');
+    if (t) { t.setAttribute('datetime', String(it.date || '').slice(0, 10)); t.textContent = fmtDate(it.date); }
+    var by = el.querySelector('.pt-by');
+    if (by) by.textContent = it.author || '';
+    var h = el.querySelector('h2 a');
+    if (h) { linkTo(h, it); h.textContent = it.title; }
+    var dek = el.querySelector('.pt-dek');
+    if (dek) dek.textContent = it.excerpt || '';
+    var more = el.querySelector('.pt-more');
+    if (more) linkTo(more, it);
+    el.removeAttribute('aria-busy');
+  }
 
-    var t = card.querySelector('.featured-eyebrow time');
-    var label = fmtEditionDate(issue.date);
-    if (t && label) {
-      t.setAttribute('datetime', issue.date);
-      t.textContent = label;
-    }
-    var img = card.querySelector('.featured-cover img');
-    if (img && issue.image) {
-      img.removeAttribute('width');
-      img.removeAttribute('height');
-      sizedImg(img, issue.image, FEATURED_SIZES);
-      img.alt = undash(issue.title);
-    }
-    if (head) {
-      head.textContent = undash(issue.title);
-      head.setAttribute('href', href);
-      markIssue(head, issue.slug);
-    }
-    var list = card.querySelector('.featured-brief-facts');
-    if (list) {
-      var facts = issueFacts(issue);
-      list.textContent = '';
-      facts.forEach(function (f) {
-        var li = document.createElement('li');
-        li.textContent = f;
-        list.appendChild(li);
-      });
-      list.hidden = !facts.length;
-    }
-    var read = card.querySelector('.featured-brief-actions .btn-quiet');
-    if (read) {
-      read.setAttribute('href', href);
-      markIssue(read, issue.slug);
-    }
-    paintAltLang(issue);
-    linkStories();
-  }
-  /* "Čítať po slovensky" / "Read in English": the translation from the stories' hreflang
-     (seo-ops/news_sk_map.py writes alt_url into issues.json and issues-sk.json). No translation, no link. */
-  function paintAltLang(issue) {
-    var a = $('featuredAltLang');
-    if (!a) return;
-    if (issue && issue.alt_url) { a.href = issue.alt_url; a.hidden = false; }
-    else a.hidden = true;
-  }
-  function ownCover(issue) {
-    return !!(issue && issue.image && !/^https?:\/\/blog\.virtuse\.com\//.test(issue.image));
-  }
-  /* The server-rendered cover (/news/covers/, already painted, the LCP image) is never swapped for the WordPress copy. */
-  function ownCoverPainted(img) {
-    return /^\/news\/covers\//.test(img.getAttribute('src') || '');
-  }
-  function applyFeaturedCover(post) {
-    var img = document.querySelector('#featured .featured-cover img');
-    if (!img || !post || ownCover(LATEST_ISSUE) || ownCoverPainted(img)) return;
-    var url = imgOf(post);
-    if (!url || img.getAttribute('src') === url) return;
-    sizedImg(img, url, FEATURED_SIZES);
-  }
-  function paintBlog(issues, wpPosts) {
-    var section = $('blog');
-    var grid = $('blogGrid');
-    if (!section || !grid) return;
-    var skip = {};
-    skip[FEATURED_SLUG] = true;
-    (issues || []).forEach(function (issue) {
-      if (issue && issue.slug && !issue.essay) skip[issue.slug] = true;
-    });
-
-    var candidates = [];
-    (issues || []).forEach(function (issue) {
-      if (!issue || !issue.essay || !issue.slug || skip[issue.slug]) return;
-      skip[issue.slug] = true;
-      candidates.push({ date: dateMs(issue.date), node: blogCardFromIssue(issue) });
-    });
-    (wpPosts || []).forEach(function (post) {
-      if (!post || !post.slug || skip[post.slug]) return;
-      skip[post.slug] = true;
-      candidates.push({ date: dateMs(post.date), node: blogCardFromWp(post) });
-    });
-    candidates.sort(function (a, b) { return b.date - a.date; });
-    var cards = candidates.slice(0, BLOG_MAX).map(function (c) { return c.node; });
-
+  var ISSUES = [];
+  function isIssue(i) { return i && i.slug && !i.essay && i.title; }
+  /* Newsletter: the four newest issues, newest first; the static first card stays when it is still the newest. */
+  function paintIssues(list) {
+    var grid = $('archiveGrid');
+    if (!grid) return;
+    var top = list.filter(isIssue).slice(0, ISSUES_MAX);
+    if (!top.length) return;
+    var stat = $('featured');
+    var keep = stat && stat.querySelector('[data-issue-slug="' + top[0].slug + '"]') ? stat : null;
     grid.textContent = '';
-    if (!cards.length) {
-      section.hidden = true;
-      return;
-    }
-    cards.forEach(function (card) { grid.appendChild(card); });
-    section.hidden = false;
+    top.forEach(function (i, n) {
+      if (n === 0 && keep) { grid.appendChild(keep); return; }
+      grid.appendChild(card(fromIssue(i), n === 0 ? tr('latestIssue') : ''));
+    });
     linkStories();
   }
-
-  j(LANG === 'sk' ? '/news/issues-sk.json?v=20261112' : '/news/issues.json?v=20261112').then(function (data) {
-    var list = (data && data.issues) || [];
-    var latest = latestIssue(list);
-    if (latest) {
-      FEATURED_SLUG = latest.slug;
-      LATEST_ISSUE = latest;
-      paintFeatured(latest);
-      paintAltLang(latest);
+  /* Magazine: essays from issues.json + WordPress posts that are not newsletter issues, newest first.
+     [0] hero lead, [1] right column, [2..5] the Magazine row. Without any, the newest issues fill the hero. */
+  var MAG_KEY = 'vb-mag-' + LANG;
+  var magSig = '';
+  function magItems(posts) {
+    var skip = {}, out = [];
+    ISSUES.forEach(function (i) { if (isIssue(i)) skip[i.slug] = true; });
+    ISSUES.forEach(function (i) {
+      if (i && i.essay && i.slug && !skip[i.slug]) { skip[i.slug] = true; out.push(fromIssue(i)); }
+    });
+    (posts || []).forEach(function (p) {
+      if (!p || !p.slug || skip[p.slug]) return;
+      skip[p.slug] = true;
+      out.push(fromWp(p));
+    });
+    out.sort(function (a, b) { return dateMs(b.date) - dateMs(a.date); });
+    return out;
+  }
+  /* WordPress unreachable and nothing cached: essays and the newest issues, newest first. */
+  function fallbackItems() {
+    return magItems([]).concat(ISSUES.filter(isIssue).map(fromIssue)).sort(function (a, b) { return dateMs(b.date) - dateMs(a.date); });
+  }
+  function paintMagazine(items) {
+    if (items.length < 2) items = fallbackItems();
+    var sig = items.slice(0, 2 + BLOG_MAX).map(function (x) { return x.slug + '|' + x.image; }).join(',');
+    if (!items.length || sig === magSig) return;
+    magSig = sig;
+    fillStory('heroLead', items[0], LEAD_SIZES, true);
+    fillStory('heroSecond', items[1] && Object.assign({}, items[1], { excerpt: shortDek(items[1].excerpt, 150) }), SIDE_SIZES, false);
+    var section = $('blog'), grid = $('blogGrid');
+    var rest = items.slice(2, 2 + BLOG_MAX);
+    if (section && grid) {
+      grid.textContent = '';
+      rest.forEach(function (it) { grid.appendChild(card(it)); });
+      section.hidden = !rest.length;
     }
-    paintArchive(list);
-    paintBlog(list, []);
+    linkStories();
+  }
+  function cachedMag() {
+    try {
+      var c = JSON.parse(window.localStorage.getItem(MAG_KEY) || 'null');
+      if (c && c.items && c.items.length && Date.now() - c.t < 7 * 864e5) return c.items;
+    } catch (e) { /* storage blocked */ }
+    return null;
+  }
+  function saveMag(items) {
+    try { window.localStorage.setItem(MAG_KEY, JSON.stringify({ t: Date.now(), items: items.slice(0, 2 + BLOG_MAX) })); } catch (e) { /* storage blocked */ }
+  }
+  function loadMagazine() {
+    var cached = cachedMag();
+    if (cached) paintMagazine(cached);
     j(WP + '?categories=' + BLOG_CATS + '&per_page=12&orderby=date&order=desc&_embed=wp:featuredmedia', 8000).then(function (posts) {
       remember(posts);
-      paintBlog(list, posts || []);
+      var items = magItems(posts || []);
+      if (items.length) saveMag(items);
+      paintMagazine(items);
       upgradeImages();
-    }).catch(function () { /* keep the local essay if any */ });
-    // One request for every issue's post (featured cover + the smaller image copies).
-    var slugs = [FEATURED_SLUG];
-    list.forEach(function (i) { if (i.slug && slugs.indexOf(i.slug) < 0) slugs.push(i.slug); });
-    j(WP + '?slug=' + encodeURIComponent(slugs.slice(0, 50).join(',')) + '&per_page=50&_embed=wp:featuredmedia', 8000).then(function (posts) {
-      remember(posts);
-      applyFeaturedCover((posts || []).filter(function (p) { return p.slug === FEATURED_SLUG; })[0] || null);
-      upgradeImages();
-    }).catch(function () { /* keep the static HTML cover */ });
+    }).catch(function () {
+      if (!magSig) paintMagazine([]);
+    });
+  }
+
+  j(LANG === 'sk' ? '/news/issues-sk.json?v=20261116' : '/news/issues.json?v=20261116').then(function (data) {
+    ISSUES = ((data && data.issues) || []).filter(Boolean);
+    paintIssues(ISSUES);
+    loadMagazine();
+    // Smaller image copies for the Newsletter covers (one request for all issues).
+    var slugs = [];
+    ISSUES.filter(isIssue).slice(0, ISSUES_MAX).forEach(function (i) { if (slugs.indexOf(i.slug) < 0) slugs.push(i.slug); });
+    if (slugs.length) {
+      j(WP + '?slug=' + encodeURIComponent(slugs.join(',')) + '&per_page=20&_embed=wp:featuredmedia', 8000).then(function (posts) {
+        remember(posts);
+        upgradeImages();
+      }).catch(function () { /* keep full-size covers */ });
+    }
   }).catch(function () {
-    paintArchive([]);
-    paintBlog([], []);
+    loadMagazine();
   });
+
+  /* Bitcoin data: 30-day charts and network figures, loaded when the section comes near the screen. */
+  var dataTabs = document.querySelectorAll('.pt-tabs button[data-group]');
+  Array.prototype.forEach.call(dataTabs, function (btn) {
+    btn.addEventListener('click', function () {
+      var g = btn.getAttribute('data-group');
+      Array.prototype.forEach.call(dataTabs, function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('#dataGrid .pt-dc'), function (c) {
+        c.hidden = g !== 'all' && c.getAttribute('data-group') !== g;
+      });
+    });
+  });
+  function bar(id, frac) {
+    var el = $(id);
+    if (el) el.style.width = Math.max(0, Math.min(100, frac * 100)).toFixed(1) + '%';
+  }
+  function lineChart(id, vals) {
+    var svg = $(id);
+    vals = (vals || []).filter(function (v) { return v != null && !isNaN(v); });
+    if (!svg || vals.length < 2) return;
+    var mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals), span = mx - mn || 1;
+    var pts = vals.map(function (v, i) { return (i * 300 / (vals.length - 1)).toFixed(1) + ',' + (5 + (mx - v) / span * 68).toFixed(1); }).join(' ');
+    svg.innerHTML = '<polyline fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke" points="' + pts + '"/>';
+  }
+  function chg30(id, first, last) {
+    var el = $(id);
+    if (!el || !first) return;
+    var p = (last / first - 1) * 100;
+    el.textContent = signedPct(p, 1) + ' ' + tr('d30');
+    el.className = pctClass(p);
+    return p;
+  }
+  function pctPlain(n, d) { return fmtNum(n, d) + (LANG === 'sk' ? ' %' : '%'); }
+  function paintFee(fee) {
+    if (fee == null || isNaN(fee)) return;
+    setText('dFee', fee + ' sat/vB');
+    bar('dFeeBar', fee / 50);
+    setText('dFeeSub', tr('feeSub')[feeBand(fee)] || '');
+  }
+  function paintHeight(h) {
+    if (!h || isNaN(h)) return;
+    var era = Math.floor(h / 210000), next = (era + 1) * 210000, left = next - h;
+    var when = new Date(Date.now() + left * 600000).toLocaleDateString(LANG === 'sk' ? 'sk-SK' : 'en-GB', { month: 'long', year: 'numeric' });
+    setText('dHalv', num(left) + ' ' + tr('blocks'));
+    bar('dHalvBar', (h - era * 210000) / 210000);
+    setText('dHalvSub', tr('halvSub')(num(next), when, num(50 / Math.pow(2, era + 1), 8)));
+    setText('dHeight', tr('block') + num(h));
+    var mined = 0, r = 50, done = 0;
+    while (done + 210000 <= h) { mined += r * 210000; done += 210000; r /= 2; }
+    mined += (h - done + 1) * r;
+    setText('dMined', (LANG === 'sk' ? fmtNum(mined / 1e6, 2) + ' mil. BTC' : fmtNum(mined / 1e6, 2) + 'M BTC'));
+    bar('dMinedBar', mined / 21e6);
+    setText('dMinedSub', tr('minedSub')(pctPlain(mined / 21e6 * 100, 1)));
+  }
+  var dataLoaded = false;
+  function loadData() {
+    if (dataLoaded) return;
+    dataLoaded = true;
+    j('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily', LIVE_MS).then(function (d) {
+      var v = (d.prices || []).map(function (p) { return p[1]; });
+      if (btcUsd) v[v.length - 1] = btcUsd;
+      lineChart('dPriceChart', v);
+      setText('dPrice', usd(v[v.length - 1]));
+      var p = chg30('dPriceChg', v[0], v[v.length - 1]);
+      var svg = $('dPriceChart');
+      if (svg) svg.style.color = p < 0 ? 'var(--down)' : 'var(--up)';
+    }).catch(function () { setText('dPrice', UNAVAILABLE); });
+    j(MP + '/v1/mining/hashrate/1m', LIVE_MS).then(function (d) {
+      var v = (d.hashrates || []).map(function (x) { return x.avgHashrate; });
+      lineChart('dHashChart', v);
+      setText('dHash', hashrate(d.currentHashrate || v[v.length - 1]));
+      chg30('dHashChg', v[0], v[v.length - 1]);
+    }).catch(function () { setText('dHash', UNAVAILABLE); });
+    j('https://api.alternative.me/fng/?limit=30', LIVE_MS).then(function (d) {
+      var v = (d.data || []).map(function (x) { return +x.value; }).reverse();
+      var svg = $('dFgChart');
+      if (svg && v.length) {
+        var w = 300 / v.length;
+        svg.innerHTML = v.map(function (x, i) {
+          var h = x / 100 * 78, c = x < 25 ? 'var(--down)' : x < 45 ? '#d4a64a' : x < 56 ? 'var(--text-faint)' : 'var(--up)';
+          return '<rect x="' + (i * w + 1).toFixed(1) + '" y="' + (78 - h).toFixed(1) + '" width="' + Math.max(1, w - 2).toFixed(1) + '" height="' + h.toFixed(1) + '" fill="' + c + '"/>';
+        }).join('');
+      }
+      var last = d.data && d.data[0];
+      if (last) {
+        setText('dFg', last.value);
+        var lab = String(last.value_classification || '');
+        var FG_SK = { 'extreme fear': 'Extrémny strach', 'fear': 'Strach', 'neutral': 'Neutrálne', 'greed': 'Chamtivosť', 'extreme greed': 'Extrémna chamtivosť' };
+        if (LANG === 'sk' && FG_SK[lab.toLowerCase()]) lab = FG_SK[lab.toLowerCase()];
+        var el = $('dFgLabel');
+        if (el) { el.textContent = lab; el.className = +last.value < 45 ? 'down' : +last.value > 55 ? 'up' : ''; }
+        setText('tileFg', last.value + ' / 100');
+        setText('tileFgLabel', lab);
+      }
+    }).catch(function () { setText('dFg', UNAVAILABLE); });
+    j('https://api.coingecko.com/api/v3/global', LIVE_MS).then(function (d) {
+      var dom = d && d.data && d.data.market_cap_percentage && d.data.market_cap_percentage.btc;
+      if (dom == null) throw new Error('no dominance');
+      setText('dDom', pctPlain(dom, 1));
+      bar('dDomBar', dom / 100);
+    }).catch(function () { setText('dDom', UNAVAILABLE); });
+    j(MP + '/v1/difficulty-adjustment', LIVE_MS).then(function (d) {
+      setText('dDiff', signedPct(d.difficultyChange, 1));
+      bar('dDiffBar', d.progressPercent / 100);
+      var hrs = d.remainingTime / 36e5;
+      var span = hrs < 48 ? Math.round(hrs) + ' ' + tr('hours') : Math.round(hrs / 24) + ' ' + tr('days');
+      setText('dDiffSub', tr('diffSub')(pctPlain(d.progressPercent, 1), num(d.remainingBlocks), span));
+      setText('dDiffBlock', tr('block') + num(d.nextRetargetHeight));
+    }).catch(function () { setText('dDiff', UNAVAILABLE); });
+  }
+  var dataSection = $('data');
+  if (dataSection && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); loadData(); }
+    }, { rootMargin: '600px 0px' });
+    io.observe(dataSection);
+  } else {
+    loadData();
+  }
 
 })();
