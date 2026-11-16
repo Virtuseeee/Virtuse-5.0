@@ -138,14 +138,14 @@ ATTR = {
 }
 HEAD = [
     ('<html lang="en"', '<html lang="sk"'),
-    ("<title>Virtuse Brief: Bitcoin portal keeping thousands of busy people in the loop. For free.</title>", "<title>Virtuse Brief: bitcoinový portál, ktorý tisícky zaneprázdnených ľudí drží v obraze. Zadarmo.</title>"),
+    ("<title>Virtuse Brief: everything that moves Bitcoin, in one place. Free.</title>", "<title>Virtuse Brief: všetko, čo hýbe Bitcoinom, na jednom mieste. Zadarmo.</title>"),
     ('content="Bitcoin and the macro that moves it: daily news, the Brief newsletter, magazine, prices, central banks and live Bitcoin data. Free. No tokens. No PR."',
      'content="Bitcoin a makro, ktoré ním hýbe: denné správy, newsletter Brief, magazín, ceny, centrálne banky a živé dáta o Bitcoine. Zadarmo. Bez tokenov, bez PR."'),
     ('<link rel="canonical" href="https://virtuse.com/news.html">', '<link rel="canonical" href="https://virtuse.com/sk/news.html">'),
     ('<meta property="og:url" content="https://virtuse.com/news.html">', '<meta property="og:url" content="https://virtuse.com/sk/news.html">'),
     ('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="sk_SK">\n<meta property="og:locale:alternate" content="en_US">'),
-    ('<meta property="og:title" content="Virtuse Brief: Bitcoin portal keeping thousands of busy people in the loop. For free.">', '<meta property="og:title" content="Virtuse Brief: bitcoinový portál, ktorý tisícky zaneprázdnených ľudí drží v obraze. Zadarmo.">'),
-    ('<meta name="twitter:title" content="Virtuse Brief: Bitcoin portal keeping thousands of busy people in the loop. For free.">', '<meta name="twitter:title" content="Virtuse Brief: bitcoinový portál, ktorý tisícky zaneprázdnených ľudí drží v obraze. Zadarmo.">'),
+    ('<meta property="og:title" content="Virtuse Brief: everything that moves Bitcoin, in one place. Free.">', '<meta property="og:title" content="Virtuse Brief: všetko, čo hýbe Bitcoinom, na jednom mieste. Zadarmo.">'),
+    ('<meta name="twitter:title" content="Virtuse Brief: everything that moves Bitcoin, in one place. Free.">', '<meta name="twitter:title" content="Virtuse Brief: všetko, čo hýbe Bitcoinom, na jednom mieste. Zadarmo.">'),
 ]
 # Pages with a Slovak version: link those; everything else root-absolute.
 SK_PAGES = {"news.html", "cfo.html", "how-we-earn.html", "lending.html", "operator.html", "privacy-policy.html",
