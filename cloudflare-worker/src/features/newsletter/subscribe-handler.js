@@ -3,13 +3,14 @@
 // hp is the honeypot (must be empty). lang picks the welcome email and the
 // Resend segment (see welcome.js, segments.js); anything else becomes 'en'.
 
-import { EMAIL_RE } from '../../config.js';
+import { EMAIL_MAX_LENGTH, EMAIL_RE, SIGNUP_MAX_BYTES } from '../../config.js';
 import { clientIp, readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
 import { welcomeLang } from './welcome.js';
 
 export async function handleSubscribe({ request, env, origin, services }) {
-  const body = await readJson(request);
+  const body = await readJson(request, SIGNUP_MAX_BYTES);
+  if (body.tooLarge) return json(413, { error: 'Request too large.' }, origin);
   if (!body.ok) return json(400, { error: 'Invalid JSON body' }, origin);
 
   const { email, hp, lang: rawLang, turnstile } = body.value || {};
@@ -18,7 +19,7 @@ export async function handleSubscribe({ request, env, origin, services }) {
   // A bot filled the hidden field: pretend success, do nothing.
   if (hp) return json(200, { ok: true }, origin);
 
-  if (!email || typeof email !== 'string' || !EMAIL_RE.test(email)) {
+  if (!email || typeof email !== 'string' || email.length > EMAIL_MAX_LENGTH || !EMAIL_RE.test(email)) {
     return json(400, { error: 'Please enter a valid email address.' }, origin);
   }
 

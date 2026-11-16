@@ -9,6 +9,7 @@ import { json, preflight } from './http/responses.js';
 import { ANY, on, pipeline, prefix } from './http/router.js';
 import { createResendClient } from './infra/resend.js';
 import { verifyTurnstile } from './infra/turnstile.js';
+import { ipHash } from './shared/crypto.js';
 import { createEmailCap } from './shared/email-cap.js';
 import { createKvLimiter } from './shared/rate-limiter.js';
 
@@ -37,7 +38,9 @@ function createServices(env, fetchImpl) {
     resend,
     limiter,
     brief: createBriefList({ env, resend }),
-    signupLimited: (ip) => limiter.exceeded(`ratelimit:${ip}`, SIGNUP_LIMIT.max, SIGNUP_LIMIT.windowSeconds),
+    // Keyed by the day-salted hash of the IP (privacy policy), never the address itself.
+    signupLimited: async (ip, now = Date.now()) =>
+      limiter.exceeded(`ratelimit:${await ipHash(ip, new Date(now).toISOString().slice(0, 10), env)}`, SIGNUP_LIMIT.max, SIGNUP_LIMIT.windowSeconds),
     // Hourly ceiling for all visitors together: sign-up and result emails share one budget,
     // the withdrawal confirmation has its own (a flood of sign-ups must never use it up).
     emailCap: createEmailCap({ env, limiter, resend, buckets: EMAIL_CAPS }),

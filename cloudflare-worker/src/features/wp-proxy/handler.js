@@ -8,7 +8,8 @@
 //   GET https://<worker>/wp/wp-json/wp/v2/posts?...    -> blog.virtuse.com/wp-json/wp/v2/posts?...
 //   GET https://<worker>/wp/sk/wp-json/wp/v2/posts?... -> blog.virtuse.com/sk/wp-json/wp/v2/posts?...
 //
-// Only these public, read-only paths are forwarded (GET/HEAD), so the route
+// Only these public, read-only paths are forwarded (GET/HEAD), with only the
+// query parameters the build uses (ALLOWED_PARAMS), so the route
 // is not an open proxy and never reaches wp-admin, login or POST endpoints.
 // Responses are cached by Cloudflare for a few minutes; WordPress answers a
 // posts query in 8-18 s, so repeated build attempts mostly hit the cache.
@@ -20,7 +21,23 @@ const ALLOWED_PATHS = new Set([
   '/wp-json/wp/v2/posts',
   '/sk/wp-json/wp/v2/posts',
 ]);
+// The query parameters stories-build/build.mjs sends. Anything else is refused: a random
+// parameter would be a new cache key each time (WordPress answers in 8-18 s), and
+// rest_route would let the caller pick a different REST route than the path says.
+const ALLOWED_PARAMS = new Set(['categories', 'per_page', 'page', '_embed', '_fields', 'orderby', 'order', 'lang', 'slug']);
+const MAX_PARAM_LENGTH = 200;
 const CACHE_TTL = 300; // seconds
+
+// true when every parameter is on the list, appears once and is short.
+export function allowedQuery(searchParams) {
+  const seen = new Set();
+  for (const [k, v] of searchParams) {
+    if (!ALLOWED_PARAMS.has(k) || seen.has(k) || v.length > MAX_PARAM_LENGTH) return false;
+    seen.add(k);
+  }
+  const perPage = searchParams.get('per_page');
+  return perPage === null || (/^\d{1,3}$/.test(perPage) && +perPage >= 1 && +perPage <= 100);
+}
 // Headers worth passing back: the build reads X-WP-TotalPages for paging.
 const PASS_HEADERS = ['content-type', 'x-wp-total', 'x-wp-totalpages', 'last-modified', 'etag'];
 
@@ -31,6 +48,9 @@ export async function handleWpProxy(request, url, fetchImpl = fetch) {
   const path = url.pathname.slice(WP_PREFIX.length) || '/';
   if (!ALLOWED_PATHS.has(path)) {
     return new Response('Not found', { status: 404 });
+  }
+  if (!allowedQuery(url.searchParams)) {
+    return new Response('Bad request', { status: 400, headers: { 'Cache-Control': 'no-store' } });
   }
 
   const upstream = WP_ORIGIN + path + url.search;

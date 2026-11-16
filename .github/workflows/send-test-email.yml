@@ -46,17 +46,21 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+          # Inputs reach the shell as variables, never as text pasted into the script.
+          INPUT_TO: ${{ github.event.inputs.to }}
+          INPUT_TEMPLATE: ${{ github.event.inputs.template }}
+          INPUT_SUBJECT: ${{ github.event.inputs.subject }}
         run: |
-          if [ "${{ github.event.inputs.template }}" = "welcome-sk" ]; then
+          if [ "$INPUT_TEMPLATE" = "welcome-sk" ]; then
             TEMPLATE_PATH="email/welcome-template-sk.html"
             DEFAULT_SUBJECT="Vitajte vo Virtuse Brief (test)"
           else
             TEMPLATE_PATH="email/welcome-template.html"
             DEFAULT_SUBJECT="Welcome to Virtuse Brief (test)"
           fi
-          SUBJECT="${{ github.event.inputs.subject }}"
+          SUBJECT="$INPUT_SUBJECT"
           if [ -z "$SUBJECT" ]; then SUBJECT="$DEFAULT_SUBJECT"; fi
           node .github/scripts/send-test-email.mjs \
-            --to "${{ github.event.inputs.to }}" \
+            --to "$INPUT_TO" \
             --template "$TEMPLATE_PATH" \
             --subject "$SUBJECT"

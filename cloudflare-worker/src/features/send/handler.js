@@ -11,7 +11,7 @@
 // counts against /subscribe's per-IP sign-up limit. All form emails share one hourly ceiling (shared/email-cap.js). What may be sent and what the
 // email says live in domain.js.
 
-import { EMAIL_RE } from '../../config.js';
+import { EMAIL_MAX_LENGTH, EMAIL_RE } from '../../config.js';
 import { clientIp, readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
 import { ipHash, sha256Hex } from '../../shared/crypto.js';
@@ -35,12 +35,13 @@ async function addressKey(email) {
 
 export async function handleSend({ request, env, origin, services }) {
   const parsed = await readJson(request);
+  if (parsed.tooLarge) return json(413, { error: 'Request too large.' }, origin);
   if (!parsed.ok) return json(400, { error: 'Invalid JSON body' }, origin);
   const { email, hp, lang: rawLang, kind, source, payload, brief, turnstile } = parsed.value || {};
 
   if (hp) return json(200, { ok: true }, origin);
 
-  if (!email || typeof email !== 'string' || email.length > 254 || !EMAIL_RE.test(email)) {
+  if (!email || typeof email !== 'string' || email.length > EMAIL_MAX_LENGTH || !EMAIL_RE.test(email)) {
     return json(400, { error: 'Please enter a valid email address.' }, origin);
   }
   if (!oneOf(SEND_KINDS, kind) || !oneOf(SEND_SOURCES, source)) {
@@ -118,7 +119,8 @@ export async function handleSend({ request, env, origin, services }) {
 
   try {
     // The Brief welcome follows the page language when it has a template.
-    if (wantsBrief) await services.brief.join(email, WELCOME_LANGS.includes(lang) ? lang : 'en');
+    // Staging (SUBSCRIBE_DRY_RUN=1) sends the result email but, like /subscribe there, adds nobody to the Brief.
+    if (wantsBrief && env.SUBSCRIBE_DRY_RUN !== '1') await services.brief.join(email, WELCOME_LANGS.includes(lang) ? lang : 'en');
   } catch (e) {
     console.error(e);
     return json(502, { error: 'Something went wrong. Please try again in a moment.' }, origin);
