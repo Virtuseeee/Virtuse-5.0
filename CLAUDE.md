@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-11-16, third) — Staging link fixed in WordPress post 15402 (Ras's "áno"); CI "SEO build verify" clean again on main
+
+- SK post 15402 "Russell Brand: trest za otvorené ústa" linked twice to `https://staging.virtuse.com/stories/bitcoin-is-not-just-an-investment-its-an-escape-hatch-from-the-financial-gulag/`; `seo-build/generate.mjs` rewrites staging links, so every PR touching seo-build failed "SEO build verify" on that story page. Both links now `https://virtuse.com/...` (same path, still the EN story; an SK version exists at `sk/stories/bitcoin-nie-je-len-investicia-ale-aj-utek-z-financneho-gulagu/` if the link should go there). Saved via `/sk/wp-json/wp/v2/posts/15402` (category 26 and status kept); original content in Chrome `localStorage` `vb-wp-backup-20261116-15402`.
+- Stories build by hand (workflow_dispatch, run 43932370311, 5 min after the edit): bot commit `59f4227ef` changed only that story (link, dates) + its sitemap lastmod. `generate.mjs` + `verify.mjs` on that main: no diff, all checks pass.
+- **Not on production:** `sk/stories/russell-brand-trest-za-otvorene-usta/` was built 13 Nov (`2b6226ea5`) but never uploaded; production answers 404 while the production SK hub links to it. Fix = `deploy_site.sh 59f4227ef^ 59f4227ef` (story + sitemap), then put `stories/wp-canonical.json` to `/_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json` (the WordPress original still self-canonicalizes). Not run: needs Ras.
+
 ## Session status (2026-11-16, second) — Unslop design pass, high + medium findings (PR #182, main `89f4bcca8`; **live on production**: Ras ran `deploy_site.sh 7100111a8 89f4bcca8`, DEPLOY OK, 29/29 md5-verified on virtuse.com); retirement part PR #183 + PR #180 merged (main `4e01cd52d`) and **live on production** too: Ras ran `deploy_site.sh 577b617ef 4e01cd52d`, DEPLOY OK, 13/13 md5-verified on virtuse.com and staging. That deploy reset staging's `ma-200w.html` to main, dropping another session's staging-only `site-v2.js?v=19` + CSP edit there
 
 - Audit (Slovak): `audits/unslop-audit-2026-11-16.md` + crops in `audits/unslop-2026-11-16/`, rules from heydamir/unslop (CC BY 4.0) applied by hand (plugin not installed: no `claude` CLI on PATH). 32 findings: 1 high, 15 medium, 16 low; Ras approved high + medium.
