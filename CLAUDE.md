@@ -81,6 +81,7 @@ download the live file first, compare, then upload.
 | `Kimi_Agent_Virtuse%20MiCA%20Partners/` | the deployed site; `<lang>/` mirrors the root file names |
 | `…/verdict.html`, `verdict-lite.js`, `withdrawal.html` | Verdict funnel (EN, SK sell; RU, UK waitlist only) |
 | `…/news.html`, `news/` | Virtuse Brief (issues in `news/issues.json`, `issues-sk.json`) |
+| | Brief line "Everything that moves Bitcoin, in one place. Free." (title, cards): `news.html`, `i18n-tools/build_brief_sk.py`, `related_hubs.py`, `about/*.json`, `stories-build/hubs.mjs`; SK cards link `sk/news.html` |
 | `…/stories/`, `sk/stories/`, `ru/stories/` | story pages built from WordPress |
 | `…/site-v2.css`, `site-v2.js` | shared design; pages load them with `?v=` |
 | `…/i18n-tools/` | builders; `<page>/<lang>.json` hold the translations |
