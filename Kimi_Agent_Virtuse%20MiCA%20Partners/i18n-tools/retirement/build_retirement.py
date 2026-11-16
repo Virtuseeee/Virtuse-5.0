@@ -43,8 +43,8 @@ FIELDS = {
 }
 
 CSS = '''<style>
-/* Batch C (2026-11-05): the question in the headline gradient, inputs and the pressed scenario in the page accent (--c, teal) */
-.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;margin:12px auto 0;max-width:760px;width:fit-content;background:linear-gradient(90deg,#ffb347 0%,var(--orange) 40%,var(--blue) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Batch C (2026-11-05), unslop 2026-11-16: the question in muted text (no gradient), inputs and the pressed scenario in the page accent (--c, teal) */
+.pf-hero .rc-q{font-size:clamp(22px,3.2vw,34px);line-height:1.2;font-weight:600;letter-spacing:-.02em;margin:12px auto 0;max-width:760px;width:fit-content;color:var(--muted)}
 /* RETIREMENT CALCULATOR (static calculator, logic in /retirement-calc.js) */
 .rc [hidden] { display: none !important; }
 .rc { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
@@ -405,11 +405,7 @@ def calculator(L, t, links):
            chart=t['c_chart'], leg_acc=t['c_legend_acc'], leg_ret=t['c_legend_ret'], chart_aria=esc(t['c_chart_aria']),
            simp=t['c_simplify'], tax_href=links['tax'], tax_link=t['c_tax_link'],
            cta_text=t['c_cta_text'], pf_href=links['pf'], cta=t['c_cta'],
-           verdict_box=('''      <div class="rc-cta">
-        <p>%s</p>
-        <a class="rc-link" href="%s" data-cta="verdict">%s</a>
-      </div>
-''' % (t['rq_cta_text'], links['verdict'], t['rq_cta'])) if 'rq_cta' in t else '')
+           verdict_box='')  # unslop 2026-11-16 (R2): the Verdict row stays once, under the how-much table
 
 
 def build(L):
