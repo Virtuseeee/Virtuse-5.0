@@ -1631,3 +1631,8 @@ ul { list-style: none; }
 }
 
 /* Unslop pass 2026-11-16 (N2): no text below 11px on the Brief. */
+/* Unslop low pass 2026-11-16 (N3): every tool card in the Brief's one accent, examples on the neutral well */
+:root:not(#unslop) .tool-card.is-teal,
+:root:not(#unslop) .tool-card.is-blue,
+:root:not(#unslop) .tool-card.is-violet { --card-accent: var(--accent); --card-accent-text: var(--accent-text); --chip-on-fg: #0D0902; }
+:root:not(#unslop) .tool-card .tool-preview { background: var(--tool-well); }
