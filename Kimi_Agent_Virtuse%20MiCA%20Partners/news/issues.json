@@ -2,6 +2,22 @@
   "sponsor": null,
   "issues": [
     {
+      "date": "2026-11-16",
+      "title": "Follow the Money: Why I Think Binance Is Behind This Crash",
+      "excerpt": "Bitcoin fell 13% in a week and everyone blames the Fed. I follow the money from Binance's $6.3 billion hack and explain why I think it's behind the crash.",
+      "slug": "follow-the-money-binance-crash",
+      "image": "https://blog.virtuse.com/wp-content/uploads/2026/11/follow-the-money-binance-crash.jpg",
+      "read_min": 4,
+      "author": "Ras Vasilisin",
+      "facts": [
+        "Bitcoin fell 12.6% last week, from $74,743 to a $65,312 Sunday close (Bitstamp)",
+        "The Fear & Greed Index sat at 10, extreme fear",
+        "US spot Bitcoin ETFs lost $2.35 billion over two weeks"
+      ],
+      "og_image": "/news/og/brief-20261116.jpg",
+      "alt_url": "/sk/stories/kto-naozaj-zatriasol-trhom-nehladajte-fed-ale-binance/"
+    },
+    {
       "date": "2026-11-09",
       "title": "Who Actually Controls Your Money?",
       "excerpt": "A banking failure in Paraguay, Bitcoin ETF outflows and the digital euro bring the same question into focus: who gets the final say over your money?",
@@ -31,6 +47,14 @@
         "Bitcoin fell to about $76,000, then held; the network missed zero blocks",
         "US spot ETFs had four green days, then Friday's -$643M washout"
       ]
+    },
+    {
+      "date": "2026-10-26",
+      "title": "Banks fall to passwords. Bitcoin falls to people.",
+      "excerpt": "Bitcoin sits near $80,200, down about 2% on the week. The main story was not price: Korea is investigating an AI-assisted attack on seven financial firms.",
+      "slug": "banks-fall-to-passwords-bitcoin-falls-to-people",
+      "image": "https://blog.virtuse.com/wp-content/uploads/2026/10/virtuse-brief-2026-10-26-hero-scooter.jpg",
+      "author": "Ras Vasilisin"
     },
     {
       "date": "2026-10-19",

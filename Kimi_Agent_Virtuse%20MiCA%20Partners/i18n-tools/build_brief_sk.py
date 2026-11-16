@@ -23,20 +23,12 @@ TEXT = {
     "Bitcoin Data": "Bitcoin dáta",
     "Subscribe": "Odoberať",
     "Light": "Svetlý",
-    "Latest Brief ·": "Najnovší Brief ·",
     "Desk updating": "Redakcia aktualizuje",
     "Coming up": "Najbližšie",
     "Add Virtuse as a preferred source on Google": "Pridaj si Virtuse medzi preferované zdroje v Google",
-    "Read this Brief": "Čítať Brief",
-    "Share on LinkedIn": "Zdieľať na LinkedIn",
     "Follow Virtuse": "Sledovať Virtuse",
-    "Older issues": "Staršie vydania",
     "By the numbers": "V číslach",
     "1 BTC in gold": "1 BTC v zlate",
-    "Inflation US · EU": "Inflácia US · EÚ",
-    "Bitcoin live; macro at the last daily close. Sources: Yahoo Finance, BLS, Eurostat, alternative.me. Not a recommendation.":
-        "Bitcoin naživo, makro podľa posledného denného uzavretia. Zdroje: Yahoo Finance, BLS, Eurostat, alternative.me. Nie je to investičné odporúčanie.",
-    "Policy rate and the next rate decision.": "Sadzba a ďalšie rozhodnutie o sadzbách.",
     "Sources: Federal Reserve Bank of New York, ECB, Bank of England, Bank of Japan.": "Zdroje: Federal Reserve Bank of New York, ECB, Bank of England, Bank of Japan.",
     "Get the Brief": "Získaj Brief",
     "Monday. Bitcoin and the macro that moves it.": "Každý pondelok. Bitcoin a makro, ktoré ním hýbe.",
@@ -47,19 +39,51 @@ TEXT = {
     "From the Brief": "Z Briefu",
     "All stories": "Všetky články",
     "Central banks": "Centrálne banky",
-    "Bank": "Banka",
-    "Rate": "Sadzba",
-    "Next": "Ďalej",
-    "Bitcoin treasury companies": "Firmy s Bitcoinom v pokladnici",
     "Partners": "Partneri",
-    "Get 30% off your first loan fee with our link. Refer a friend later and earn 0.5% a year on their loans in year one.":
-        "S naším odkazom máš zľavu 30 % z poplatku za prvý úver. Keď neskôr odporučíš priateľa, získaš počas prvého roka 0,5 % ročne z jeho úverov.",
-    "Join Firefish": "Pridať sa k Firefish",
-    "On Virtuse": "Na Virtuse",
     "Advertisement, not editorial. Partner link: if you sign up, Virtuse may receive a commission. Your price does not change. Partner terms apply.":
         "Reklama, nie redakčný obsah. Partnerský odkaz: ak sa zaregistruješ, Virtuse môže získať províziu. Tvoja cena sa nemení. Platia podmienky partnera.",
     "How we earn": "Ako zarábame",
     "All issues": "Všetky vydania",
+    "Latest news": "Najnovšie správy",
+    "Read in the Magazine": "Čítať v Magazíne",
+    "Ad": "Reklama",
+    "· Latest issue": "· Najnovšie vydanie",
+    "Bitcoin live; macro at the last daily close. Not a recommendation.": "Bitcoin naživo, makro podľa posledného denného uzavretia. Nie je to investičné odporúčanie.",
+    "Prices": "Ceny",
+    "Last price and daily change": "Posledná cena a denná zmena",
+    "Gold": "Zlato",
+    "Brent oil": "Ropa Brent",
+    "US 10Y yield": "Výnos 10-ročných dlhopisov USA",
+    "Sources: mempool.space, Yahoo Finance.": "Zdroje: mempool.space, Yahoo Finance.",
+    "Policy rate, last move, next decision": "Sadzba, posledná zmena, ďalšie rozhodnutie",
+    "Bitcoin and macro": "Bitcoin a makro",
+    "The numbers we watch every week": "Čísla, ktoré sledujeme každý týždeň",
+    "US inflation": "Inflácia v USA",
+    "Euro area inflation": "Inflácia v eurozóne",
+    "Slovakia inflation": "Inflácia na Slovensku",
+    "Sources: BLS, Eurostat, alternative.me.": "Zdroje: BLS, Eurostat, alternative.me.",
+    "Releases and rate decisions": "Zverejnenia dát a rozhodnutia o sadzbách",
+    "Bitcoin data": "Bitcoin dáta",
+    "All": "Všetko",
+    "Market": "Trh",
+    "Network": "Sieť",
+    "Supply": "Ponuka",
+    "All data": "Všetky dáta",
+    "Bitcoin price": "Cena Bitcoinu",
+    "30 days, daily": "30 dní, denne",
+    "30 days, daily average": "30 dní, denný priemer",
+    "30 days": "30 dní",
+    "Bitcoin dominance": "Dominancia Bitcoinu",
+    "Bitcoin’s share of the whole crypto market value.": "Podiel Bitcoinu na hodnote celého kryptotrhu.",
+    "Today": "Dnes",
+    "Next difficulty adjustment": "Najbližšia úprava obtiažnosti",
+    "estimate": "odhad",
+    "Transaction fee": "Transakčný poplatok",
+    "Next block": "Najbližší blok",
+    "Next halving": "Najbližší halving",
+    "Bitcoin mined": "Vyťažené bitcoiny",
+    "From block height": "Podľa výšky bloku",
+    "Bitcoin protocol": "Protokol Bitcoinu",
     "Tools": "Nástroje",
     "Retirement Calculator": "Dôchodková kalkulačka",
     "Will your Bitcoin last?": "Vystačí ti Bitcoin?",
@@ -108,12 +132,10 @@ ATTR = {
     "Country": "Krajina",
     "Language": "Jazyk",
     "Switch to light theme": "Prepnúť na svetlý režim",
-    "This week": "Tento týždeň",
-    "By the numbers and subscribe": "V číslach a odber",
-    "Bitcoin and macro figures": "Bitcoin a makro v číslach",
     "Email address": "E-mailová adresa",
+    "Top stories": "Hlavné správy",
+    "Filter": "Filtrovať",
     "News & Markets": "Správy a trhy",
-    "Central bank policy rates": "Sadzby centrálnych bánk",
     "Partners (advertisement)": "Partneri (reklama)",
     "Firefish: Never sell your Bitcoin. Borrow against it.": "Firefish: Nepredávaj svoj Bitcoin. Požičaj si s ním ako so zábezpekou.",
     "Type your email…": "Napíš svoj e-mail…",
@@ -132,7 +154,7 @@ HEAD = [
 # Pages with a Slovak version: link those; everything else root-absolute.
 SK_PAGES = {"news.html", "cfo.html", "how-we-earn.html", "lending.html", "operator.html", "privacy-policy.html",
             "terms-and-conditions.html", "bitcoin-data.html", "retirement-calculator.html", "verdict.html",
-            "asset-returns.html", "tax-agent.html"}
+            "asset-returns.html", "tax-agent.html", "fear-greed.html", "btc-dominance.html"}
 
 def norm(t): return " ".join(t.split())
 
@@ -164,23 +186,36 @@ def main():
     assert not missing, f"not found in news.html (changed English?): {missing}"
     s = head + "<body" + body
 
-    # Featured issue: the newest Slovak issue.
+    # Newsletter: the static first card is the newest Slovak issue.
     sk = json.loads((SITE / "news/issues-sk.json").read_text())["issues"]
     feat = next(i for i in sk if not i.get("lang") and not i.get("essay"))
     en_slug = feat["en_slug"]
+    MONTHS = "januára februára marca apríla mája júna júla augusta septembra októbra novembra decembra".split()
+    DAYS = "pondelok utorok streda štvrtok piatok sobota nedeľa".split()
+    def sk_date(ymd, weekday=False):
+        import datetime
+        d = datetime.date.fromisoformat(ymd)
+        return (DAYS[d.weekday()] + " " if weekday else "") + f"{d.day}. {MONTHS[d.month - 1]} {d.year}"
     s = s.replace(f"/stories/{en_slug}/", f"/sk/stories/{feat['slug']}/")
     s = s.replace(f'data-issue-slug="{en_slug}"', f'data-issue-slug="{feat["slug"]}"')
-    s = re.sub(r'(<h2 class="featured-title">\s*<a [^>]*>)[^<]*(</a>)', lambda m: m.group(1) + html.escape(feat["title"]) + m.group(2), s)
-    facts = [x.strip() for x in re.findall(r"[^.!?]+[.!?]?", feat["excerpt"]) if x.strip()][:3]
-    s = re.sub(r'(<ul class="featured-brief-facts">).*?(</ul>)',
-               lambda m: m.group(1) + "".join(f"\n          <li>{html.escape(f.rstrip('.'))}</li>" for f in facts) + "\n        " + m.group(2), s, flags=re.S)
-    s = re.sub(r'(<img src="/news/covers/[^"]*"[^>]*alt=")[^"]*"', lambda m: m.group(1) + html.escape(feat["title"]) + '"', s)
-    s = re.sub(r'(<a class="text-link featured-alt-lang" id="featuredAltLang" href=")[^"]*(" hreflang=")sk(" lang=")sk(">)',
-               lambda m: m.group(1) + feat["alt_url"] + m.group(2) + "en" + m.group(3) + "en" + m.group(4), s)
-    s = re.sub(r'(<p class="featured-eyebrow">[^<]*<time datetime="(\d{4})-(\d\d)-(\d\d)">)[^<]*(</time>)',
-               lambda m: m.group(1) + f"{int(m.group(4))}. {int(m.group(3))}. {m.group(2)}" + m.group(5), s)
-    s = re.sub(r'(<p class="edition">[^<]*<time datetime="(\d{4})-(\d\d)-(\d\d)">)[^<]*(</time>)',
-               lambda m: m.group(1) + f"{int(m.group(4))}. {int(m.group(3))}. {m.group(2)}" + m.group(5), s)
+    s, n = re.subn(r'(<h3 class="pt-card-title"><a [^>]*>)[^<]*(</a>)', lambda m: m.group(1) + html.escape(feat["title"]) + m.group(2), s, count=1)
+    assert n == 1, "newsletter card title"
+    s, n = re.subn(r'(<p class="pt-card-dek">)[^<]*(</p>)', lambda m: m.group(1) + html.escape(feat["excerpt"]) + m.group(2), s, count=1)
+    assert n == 1, "newsletter card deck"
+    s, n = re.subn(r'(<p class="pt-card-date"><time datetime="(\d{4}-\d\d-\d\d)">)[^<]*(</time>)', lambda m: m.group(1) + sk_date(m.group(2)) + m.group(3), s, count=1)
+    assert n == 1, "newsletter card date"
+    s, n = re.subn(r'(<time id="todayDate" datetime="(\d{4}-\d\d-\d\d)">)[^<]*(</time>)', lambda m: m.group(1) + sk_date(m.group(2), True) + m.group(3), s)
+    assert n == 1, "dateline"
+    # Hero lead (static fallback before news.js paints it): the newest Slovak issue too.
+    m = re.search(r'<article class="pt-lead" id="heroLead">.*?</article>', s, re.S)
+    assert m, "hero lead"
+    lead = m.group(0)
+    lead, n = re.subn(r'(<h2 class="pt-lead-title"><a [^>]*>)[^<]*(</a>)', lambda x: x.group(1) + html.escape(feat["title"]) + x.group(2), lead)
+    if n:  # an empty hero (JS-only) is left alone
+        lead, k = re.subn(r'(<p class="pt-dek">)[^<]*(</p>)', lambda x: x.group(1) + html.escape(feat["excerpt"]) + x.group(2), lead)
+        assert k == 1, "hero lead deck"
+        lead = re.sub(r'(<time datetime="(\d{4}-\d\d-\d\d)">)[^<]*(</time>)', lambda x: x.group(1) + sk_date(x.group(2)) + x.group(3), lead)
+        s = s[:m.start()] + lead + s[m.end():]
     s = s.replace('<meta property="og:description" content="', '<meta property="og:description" content="' + html.escape(feat["excerpt"]) + '" data-en="', 1)
     s = re.sub(r' data-en="[^"]*"', "", s, count=1)
     s = re.sub(r'(<meta name="twitter:description" content=")[^"]*"', lambda m: m.group(1) + html.escape(feat["excerpt"]) + '"', s)
