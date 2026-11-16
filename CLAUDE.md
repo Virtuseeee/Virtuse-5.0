@@ -9,6 +9,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Not changed: `site-v2.css` (no 670-page cache bump), copy meaning, prices, legal text, tracking. R1 heading weight 560 is the shared `.buy-hero2` weight (sitewide decision, open). N1/R5 n/a cards = CoinGecko rate limiting from the capture runs, not a bug.
 - PR #183 (retirement: muted question, one Verdict row, "Partner Finder →" in 10 languages) waits for PR #180.
 - Gotchas: `home/build_lang.py` stops on 5 untranslated strings and `legacy/build_legacy.py` adds unrelated drift (Brief box, nav/footer) on main, so the 9 language homepages and the 10 built 200 WMA pages were patched directly. CI `verify` (seo-verify) fails on main-based PRs because `generate.mjs` rewrites `sk/stories/russell-brand-trest-za-otvorene-usta/` (pre-existing, also on #180). After the deploy, staging's `ma-200w.html` got #180's edit back (gh-pages `23a72b222`).
+## Session status (2026-11-16, second) — Retirement calculator answers "how much Bitcoin do I need to retire?" (PR #180, branch `seo/retirement-questions-2026-11-16` `42618f253`; **staging only**, gh-pages `d75e31096`, 13/13 md5; production untouched, waits for Ras's "áno")
+
+- Handover `PROMPT-claude-bitcoin-retirement-seo-2026-11-16.md` (iCloud HANDOVERS). Same URL, canonical and hreflang; no redirects.
+- **EN, SK, CS** (`build_retirement.py`, texts `rq_*`, `rs*`, `q_/a_<much|many|one|best|eu|bear>` in `<lang>.json`):
+  - The question is part of the H1.
+  - New `#how-much` section under the calculator: an answer, a static HTML/CSS chart "Bitcoin needed to retire" and a table of BTC needed for €20k/€30k/€50k/€80k a year × the calculator's 10/20/30% scenarios.
+  - "How to retire on Bitcoin": 5 steps.
+  - Verdict CTA after the results and after the section. CS links the EN Verdict and says so.
+  - Sections only render when `rq_h2_a` exists; their CSS ships only to those pages.
+- **All 10 languages**: new title and meta, 6 new FAQ (= FAQPage), `dateModified` 2026-11-16. UK was not in the handover list but shares the template (flagged in the PR).
+- **The table is computed, not typed**: `answer_numbers()` runs `btcNeededToday()` from `/retirement-calc.js` in Node.
+  - Inputs: `ANSWER` (€58,646 on 16 Nov 2026, retire today at 50, money lasts to 85, 2% inflation).
+  - **To refresh**: change price and date together, then rebuild every language.
+  - `big_falls()` counts 70%+ falls in `data/btc-monthly-returns.json` (USD month-end). The build stops if the count is no longer 4, because the texts say "four".
+  - Results: €30k a year needs 6.6 / 3.4 / 2.4 BTC (conservative / base / optimistic); 1 BTC covers €4,600 / €8,800 / €12,600 a year; €30k a year at 0% growth needs 26.6 BTC.
+- **Internal links**:
+  - EN DCA calculator body (`seo-build/generate.mjs`).
+  - `ma-200w.html` chart note: page and `legacy/src` edited with the same replacement. A full `build_legacy.py` rebuild pulls unrelated nav/CSS drift.
+  - `/compound-interest-calculator/` doesn't exist (301 to stacking.html).
+  - news.html already links the calculator in its Tools card (desk-owned, not touched).
+- **Checks**: Lighthouse mobile before 80/81 vs after 79/82, CLS ≤ 0.002, a11y and SEO 100; no overflow at 375/1440.
+- **Open: CI "SEO build verify" fails on any seo-build PR, pre-existing.**
+  - Cause: the SK story `russell-brand-trest-za-otvorene-usta` (Stories Action `2b6226ea5`) links staging.virtuse.com from WordPress, and seo-build rewrites that link.
+  - Fix: edit the link in the WP post (needs Ras's yes), not the built page.
+- **Open: MiCA question for Ras**: the static scenario table makes the +20/30% hypothetical scenarios more prominent.
+- **Gotchas**:
+  - Scratchpad worktrees and npm installs (`gh-3w`, `lh2`) lost files between turns. Re-add the gh-pages worktree and reinstall Lighthouse/puppeteer in a new folder (`lh3`).
+  - `build_legacy.py` takes `--lang=en`; `--lang en` crashes.
 
 ## Session status (2026-11-16) — Brief as a portal + W47 + SK copy fixes (PR #177 + stacked #178, main `2ad02e99c`; **live on production**: Ras ran `deploy_site.sh 413199f57 2ad02e99c`, 23/23 files md5-verified on virtuse.com and staging)
 
