@@ -19,6 +19,8 @@
   function money(n, c, d) { return new Intl.NumberFormat(LOC, { style: 'currency', currency: c, maximumFractionDigits: d || 0, minimumFractionDigits: d || 0, currencyDisplay: 'narrowSymbol' }).format(n); }
   function moneyBig(n, c) { return new Intl.NumberFormat(LOC, { style: 'currency', currency: c, notation: 'compact', maximumFractionDigits: 2, currencyDisplay: 'narrowSymbol' }).format(n); }
   function pct(n, d, sign) { return (sign && n > 0 ? '+' : '') + nf(n, d) + I.pct; }
+  // set() writes HTML, so text that comes from an outside API goes through esc() first.
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); }
   function set(key, html) { qa('[data-k="' + key + '"]').forEach(function (el) { var v = el.classList.contains('bd-m') ? q('.bd-v', el) : el; v.innerHTML = html; el.classList.remove('err'); }); }
   function j(u) { return fetch(u, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
   function ok(g) { groups[g].ok = Date.now(); groups[g].fail = false; paint(); }
@@ -120,7 +122,7 @@
         st.height = b.height;
         set('height', nf(b.height)); set('bheight', nf(b.height)); set('bago', ago(b.timestamp));
         set('btx', nf(b.tx_count)); set('bsize', nf(b.size / 1e6, 2) + ' MB');
-        set('bminer', (b.extras && b.extras.pool && b.extras.pool.name) || I.n_unknown);
+        set('bminer', esc((b.extras && b.extras.pool && b.extras.pool.name) || I.n_unknown));
         var sup = supplyAt(b.height);
         set('supply', nf(Math.floor(sup)) + ' BTC'); set('suppct', pct(sup / 21e6 * 100, 2));
         qa('[data-k="supbar"]').forEach(function (e) { e.style.width = (sup / 21e6 * 100).toFixed(2) + '%'; });
