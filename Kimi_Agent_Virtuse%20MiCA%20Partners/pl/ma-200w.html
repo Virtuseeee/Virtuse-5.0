@@ -764,6 +764,12 @@
 .legacy .nav .nav-links a:not(.lang-opt){padding: 7px 2px; font-size: 11px;}
 .legacy .nav-logo span{font-size: 18px !important;}}
 .legacy .sec-label{color:var(--text-muted);background:rgba(255,255,255,.05)}
+/* Unslop low pass 2026-11-16 (M2, M3): label like the rest of the site, legend as a plain row, no diamond, content on the 1200px grid */
+.legacy .sec-label{background:none;font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--text-muted)}
+.legacy .legend-item{background:none;border:0;border-radius:0;padding:4px 18px 4px 0;font-weight:500}
+.legacy .legend-swatch{width:8px;height:8px;border-radius:50%}
+.legacy .chart-panel h3 .ico{display:none}
+@media (min-width:1248px){.legacy .status-section,.legacy .chart-section,.legacy .legend-section,.legacy .subnav-wrap{padding-left:0;padding-right:0}}
 .legacy details[open]{border-color:rgba(255,255,255,.14)}
 .legacy summary:hover{color:var(--text)}
 .legacy summary::after{color:var(--text-muted)}

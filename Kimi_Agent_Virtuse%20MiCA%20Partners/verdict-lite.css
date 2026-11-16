@@ -652,3 +652,6 @@
 /* F3: one button radius (10px, as on the rest of the site), no glow under the big button */
 .ml-big, .ml-back { border-radius: 10px; }
 .ml-big { box-shadow: none; }
+/* Unslop low pass 2026-11-16 (V5): normal section spacing between the landing FAQ and the Brief block */
+.ml.wide { padding-bottom: 0; }
+.ml-screen.ml-land { padding-bottom: 0; }

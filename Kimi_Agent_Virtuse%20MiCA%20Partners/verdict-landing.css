@@ -716,3 +716,6 @@ html.anim .vl .radar.in .ar{transform:none;opacity:1}
 .vl .eyebrow i,.vl .eyebrow.blue i,.vl .eyebrow.teal i,.vl .eyebrow.purple i,.vl .eyebrow.orange i{background:var(--blue);box-shadow:none}
 .vl .c-hero .eyebrow::before{box-shadow:none}
 @media (min-width:1248px){.vl{padding-inline:0}}
+/* Unslop low pass 2026-11-16 (V6): one colour signal per card, the corner glow; no side stripe, no glow on the title square */
+.vl .tile[style*="--c"]::after{display:none}
+.vl .tile[style*="--c"] h3::before{box-shadow:none}
