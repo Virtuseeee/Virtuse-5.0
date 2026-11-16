@@ -29,6 +29,8 @@ export async function handleSubscribe({ request, env, origin, services }) {
     return json(429, { error: 'Too many attempts. Please try again later.' }, origin);
   }
 
+  if (await services.emailCap.exceeded('forms')) return json(429, { error: 'Too many requests right now. Please try again in an hour.', code: 'busy' }, origin);
+
   try {
     await services.brief.join(email, lang);
     return json(200, { ok: true }, origin);

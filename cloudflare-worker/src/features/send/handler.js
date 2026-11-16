@@ -7,7 +7,8 @@
 // given back to both counters, so a typo does not lock the visitor out.
 // Limits per hour: SEND_IP_LIMIT_PER_HOUR (default 20: offices and mobile carriers share one IP) and
 // SEND_ADDRESS_LIMIT_PER_HOUR (default 3); staging sets higher values for QA.
-// With `brief: true` the address also joins the Brief exactly like POST /subscribe. What may be sent and what the
+// With `brief: true` the address also joins the Brief exactly like POST /subscribe, and the request then also
+// counts against /subscribe's per-IP sign-up limit. All form emails share one hourly ceiling (shared/email-cap.js). What may be sent and what the
 // email says live in domain.js.
 
 import { EMAIL_RE } from '../../config.js';
@@ -61,6 +62,20 @@ export async function handleSend({ request, env, origin, services }) {
     return json(429, { error: 'Too many attempts. Please try again later.', code: 'rate_limited' }, origin);
   }
 
+  const giveBack = async () => {
+    await services.limiter.refund(ipKey, WINDOW_SECONDS);
+    await services.limiter.refund(addrKey, WINDOW_SECONDS);
+  };
+  // The Brief tick is a sign-up like POST /subscribe, so it counts against the same per-IP budget.
+  if (wantsBrief && (await services.signupLimited(clientIp(request)))) {
+    await giveBack();
+    return json(429, { error: 'Too many attempts. Please try again later.', code: 'rate_limited' }, origin);
+  }
+  if (await services.emailCap.exceeded('forms')) {
+    await giveBack();
+    return json(429, { error: 'Too many requests right now. Please try again in an hour.', code: 'busy' }, origin);
+  }
+
   const from = env.RESEND_SEND_FROM || env.RESEND_FROM_EMAIL;
   if (!from) {
     console.error('send: RESEND_SEND_FROM / RESEND_FROM_EMAIL not set');
@@ -89,8 +104,8 @@ export async function handleSend({ request, env, origin, services }) {
     // address it will not deliver to): the visitor's input, not an outage, so
     // not counted. Any other 4xx (missing sender, bad key) is our setup: 502.
     if (e && e.status >= 400 && e.status < 500 && e.status !== 429 && /`to`|\bto\b field|recipient/i.test(e.message || '')) {
-      await services.limiter.refund(ipKey, WINDOW_SECONDS);
-      await services.limiter.refund(addrKey, WINDOW_SECONDS);
+      await giveBack();
+      await services.emailCap.refund('forms');
       return json(400, { error: 'Please check the email address.', code: 'invalid_recipient' }, origin);
     }
     return json(502, { error: 'Something went wrong. Please try again in a moment.' }, origin);

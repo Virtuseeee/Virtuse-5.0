@@ -26,7 +26,7 @@ import { aiJson } from '../verdict/handler.js';
 import { liteReportView } from '../verdict-lite/report.js';
 import { validateAnswers } from '../verdict-lite/rules.js';
 import {
-  LITE_CHECKOUT_PER_HOUR, LITE_SESSION_S, LITE_TERMS, PAY_TEXT, REPORT_ERRORS, REPORT_WINDOW_MS, RID_RE, SESSION_RE, SIGNATURE_TOLERANCE_S, checkoutParams,
+  LITE_CHECKOUT_PER_HOUR, LITE_SESSION_S, REPORT_LOOKUPS_PER_HOUR, LITE_TERMS, PAY_TEXT, REPORT_ERRORS, REPORT_WINDOW_MS, RID_RE, SESSION_RE, SIGNATURE_TOLERANCE_S, checkoutParams,
   isVerdictSession, msgLang, pageLang, paymentsOn, sessionMatchesKey, testKey,
 } from './domain.js';
 import { renderReportPdf } from './pdf.js';
@@ -260,6 +260,11 @@ export async function handleReport(ctx) {
   if (!paymentsOn(env)) return json(503, { error: PAY_TEXT.closed[lang] }, origin);
   const sid = typeof body?.session_id === 'string' ? body.session_id : '';
   if (!SESSION_RE.test(sid)) return json(400, { error: REPORT_ERRORS.unpaid[lang] }, origin);
+  // An unknown id costs a call to Stripe with the secret key, so the route has its own per-IP limit.
+  const day = new Date(ctx.now ?? Date.now()).toISOString().slice(0, 10);
+  if (await ctx.services.limiter.exceeded(`verdict:report:${await ipHash(clientIp(request), day, env)}`, REPORT_LOOKUPS_PER_HOUR, 60 * 60)) {
+    return json(429, { error: PAY_TEXT.tooMany[lang], code: 'rate_limited' }, origin);
+  }
   let out;
   try {
     out = await paidReport(ctx, sid);
