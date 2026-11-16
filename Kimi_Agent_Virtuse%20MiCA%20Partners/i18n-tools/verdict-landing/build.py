@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import signals as SG
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.abspath(os.path.join(HERE, '..', '..'))
-V = '20261028a'
+V = '20261116'
 
 LANGS = {
   'en': {'page': 'verdict.html', 'cfo': 'cfo.html',

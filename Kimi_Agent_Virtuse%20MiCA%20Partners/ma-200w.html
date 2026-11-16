@@ -969,11 +969,11 @@
 
   function zoneFor(mult) {
     if (mult == null) return { label: '—', color: '#484f58' };
-    if (mult < 1.0) return { label: 'Below the Floor — Historically Rare', color: '#3fb950' };
-    if (mult < 1.6) return { label: 'Near the Floor — Deep Value Zone', color: '#63be7b' };
-    if (mult < 3.0) return { label: 'Mid-Cycle Territory', color: '#ffe600' };
-    if (mult < 5.0) return { label: 'Heated — Well Above the Floor', color: '#f6a55a' };
-    return { label: 'Euphoria — Stretched Far Above the Floor', color: '#c00000' };
+    if (mult < 1.0) return { label: 'Below the floor · historically rare', color: '#3fb950' };
+    if (mult < 1.6) return { label: 'Near the floor · deep value zone', color: '#63be7b' };
+    if (mult < 3.0) return { label: 'Mid-cycle territory', color: '#ffe600' };
+    if (mult < 5.0) return { label: 'Heated · well above the floor', color: '#f6a55a' };
+    return { label: 'Euphoria · stretched far above the floor', color: '#c00000' };
   }
 
   var view = null;
@@ -1116,8 +1116,14 @@
     document.getElementById('statusWma').textContent = fmtUsd(last.wma);
     var z = zoneFor(mult);
     var chip = document.getElementById('bandChip');
-    chip.textContent = mult.toFixed(2) + '× — ' + z.label;
-    chip.style.background = z.color;
+    chip.textContent = '';
+    var dot = document.createElement('i');
+    dot.style.cssText = 'display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:10px;vertical-align:1px;background:' + z.color;
+    chip.appendChild(dot);
+    chip.appendChild(document.createTextNode(mult.toFixed(2) + '× · ' + z.label));
+    chip.style.background = '#1c1c1c';
+    chip.style.color = '#e6edf3';
+    chip.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,0.14)';
   }
 
   // Live weekly series only: the 2011-2017 seed alone is never shown as "today" (audit 2026-10-15, P0-1).

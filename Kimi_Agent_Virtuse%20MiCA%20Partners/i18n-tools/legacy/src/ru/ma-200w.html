@@ -1424,8 +1424,14 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     document.getElementById('statusWma').textContent = fmtUsd(last.wma);
     var z = zoneFor(mult);
     var chip = document.getElementById('bandChip');
-    chip.textContent = mult.toFixed(2) + '× · ' + z.label;
-    chip.style.background = z.color;
+    chip.textContent = '';
+    var dot = document.createElement('i');
+    dot.style.cssText = 'display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:10px;vertical-align:1px;background:' + z.color;
+    chip.appendChild(dot);
+    chip.appendChild(document.createTextNode(mult.toFixed(2) + '× · ' + z.label));
+    chip.style.background = '#1c1c1c';
+    chip.style.color = '#e6edf3';
+    chip.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,0.14)';
   }
 
   // Live weekly series only: the 2011-2017 seed alone is never shown as "today" (audit 2026-10-15, P0-1).
