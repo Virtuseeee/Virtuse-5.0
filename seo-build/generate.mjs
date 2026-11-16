@@ -1227,6 +1227,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>First-year fees</th><th>Note</th></tr></thead>
 <tbody id="dca-body">${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
 <p class="muted">Same formula as the live Stacking Strategist: first-year fees = (monthly contribution × fee % + fixed fee + monthly subscription) × 12, plus the fee % on the initial lump sum. Bitcoin price returns are deliberately left out.</p>
+<p>Planning further ahead? The <a href="${toRoot(relFile, 'retirement-calculator.html')}">Bitcoin retirement calculator</a> shows year by year whether a stack and a monthly plan could cover your spending in retirement.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
   });
