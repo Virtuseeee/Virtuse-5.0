@@ -2,6 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session status (2026-11-16, second) — Unslop design pass, high + medium findings (PR #182, main `89f4bcca8`; **live on production**: Ras ran `deploy_site.sh 7100111a8 89f4bcca8`, DEPLOY OK, 29/29 md5-verified on virtuse.com); retirement part PR #183 stacked on #180, staging only
+
+- Audit (Slovak): `audits/unslop-audit-2026-11-16.md` + crops in `audits/unslop-2026-11-16/`, rules from heydamir/unslop (CC BY 4.0) applied by hand (plugin not installed: no `claude` CLI on PATH). 32 findings: 1 high, 15 medium, 16 low; Ras approved high + medium.
+- Shipped: homepage x10 (Buy panel neutral card + soft orange corner, no glow on €480, Verdict teaser button off-white, neutral demo shadow); Verdict landing `verdict-landing.css?v=20261116` (stats plain blue, no price glow, one label colour, content on the 1200 px grid; same block in `i18n-tools/verdict-landing/extra.css`, `build.py` V updated); funnel `verdict-lite.css?v=25` (gate free card keeps its own height, grade B orange, 10 px buttons); Brief `news.css?v=20261116c` (no text < 11 px); 200 WMA x10 (neutral badge with zone dot, EN labels sentence case; sources in `i18n-tools/legacy/src`).
+- Not changed: `site-v2.css` (no 670-page cache bump), copy meaning, prices, legal text, tracking. R1 heading weight 560 is the shared `.buy-hero2` weight (sitewide decision, open). N1/R5 n/a cards = CoinGecko rate limiting from the capture runs, not a bug.
+- PR #183 (retirement: muted question, one Verdict row, "Partner Finder →" in 10 languages) waits for PR #180.
+- Gotchas: `home/build_lang.py` stops on 5 untranslated strings and `legacy/build_legacy.py` adds unrelated drift (Brief box, nav/footer) on main, so the 9 language homepages and the 10 built 200 WMA pages were patched directly. CI `verify` (seo-verify) fails on main-based PRs because `generate.mjs` rewrites `sk/stories/russell-brand-trest-za-otvorene-usta/` (pre-existing, also on #180). After the deploy, staging's `ma-200w.html` got #180's edit back (gh-pages `23a72b222`).
 ## Session status (2026-11-16, second) — Retirement calculator answers "how much Bitcoin do I need to retire?" (PR #180, branch `seo/retirement-questions-2026-11-16` `42618f253`; **staging only**, gh-pages `d75e31096`, 13/13 md5; production untouched, waits for Ras's "áno")
 
 - Handover `PROMPT-claude-bitcoin-retirement-seo-2026-11-16.md` (iCloud HANDOVERS). Same URL, canonical and hreflang; no redirects.
