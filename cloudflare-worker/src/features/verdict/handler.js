@@ -17,7 +17,7 @@
 import { clientIp, readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
 import { sha256Hex } from '../../shared/crypto.js';
-import { createSpendLedger } from './budget.js';
+import { SPEND_RESERVE_EUR, createSpendLedger } from './budget.js';
 import {
   LANGS, MAX_CHARS, TEXT, cleanProfile, effectiveProfile, freeView, looksLikeAdvice, redact, reportPreviewAllowed,
   reportView, scoreVerdict, verdictOpts,
@@ -83,9 +83,12 @@ export async function handleVerdict({ request, env, origin, now, services }) {
   // The model gets only what the person answered; tools, steps and partners
   // also use the goal read from the text (effectiveProfile).
   const eff = effectiveProfile(profile, clean);
+  // Reserve first, settle in `finally`: the cost is written even when the model call throws.
+  await ledger.add(SPEND_RESERVE_EUR);
+  let cost = 0;
   try {
     // Advice-like wording (BANNED) is never shown; the model gets one more try.
-    let result, cost = 0;
+    let result;
     for (let attempt = 0; attempt < 2; attempt++) {
       const { out, usage, refused } = await services.verdictModel.ask(clean, lang, profile);
       cost += costOf(usage);
@@ -95,7 +98,6 @@ export async function handleVerdict({ request, env, origin, now, services }) {
       console.error('verdict: advice-like wording dropped, attempt ' + (attempt + 1));
       result = null;
     }
-    await ledger.record(spent + cost);
     if (!result) return json(502, { error: ERR.advice[lang] }, origin);
     if (result.declined) return aiJson(result, origin);
     const opts = verdictOpts(env, lang);
@@ -109,5 +111,7 @@ export async function handleVerdict({ request, env, origin, now, services }) {
   } catch (e) {
     console.error(e);
     return json(502, { error: ERR.fail[lang] }, origin);
+  } finally {
+    try { await ledger.add(cost - SPEND_RESERVE_EUR); } catch (e) { console.error(e); }
   }
 }

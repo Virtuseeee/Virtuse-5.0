@@ -128,3 +128,34 @@ test('B23: the delivery alert shows only the start of the Checkout Session id', 
   assert.ok(html.includes('cs_live_a1B2c3D4e5…'));
   assert.match(subject, /order A1B2C3D4E5/);
 });
+
+// ---- second round (B14, B17) ----
+import { SPEND_RESERVE_EUR } from '../src/features/verdict/budget.js';
+import { pulseErrors } from '../src/features/pulse/schema.js';
+
+test('B14: the AI Verdict books a share of the monthly budget before the model call and settles it afterwards', async () => {
+  const e = { RATE_LIMIT_KV: mockKv(), ANTHROPIC_API_KEY: 'sk-test', VERDICT_ENABLED: '1', VERDICT_MONTHLY_CAP_EUR: '0.05' };
+  const key = 'verdict:spend:' + new Date().toISOString().slice(0, 7);
+  const body = { text: 'I will buy €100 of BTC every month for 10 years.', lang: 'en' };
+  const seen = {};
+  const orig = globalThis.fetch;
+  globalThis.fetch = async () => {
+    seen.during = parseFloat(e.RATE_LIMIT_KV.store.get(key));
+    // A second visitor arrives while the first call is still running.
+    seen.second = (await worker.fetch(post('/verdict', body, '203.0.113.90'), e)).status;
+    throw new Error('model unreachable');
+  };
+  try {
+    const res = await worker.fetch(post('/verdict', body), e);
+    assert.equal(res.status, 502);
+  } finally { globalThis.fetch = orig; }
+  assert.equal(seen.during, SPEND_RESERVE_EUR, 'the reservation is visible while the call runs');
+  assert.equal(seen.second, 429, 'the concurrent request sees the budget as used');
+  assert.equal(parseFloat(e.RATE_LIMIT_KV.store.get(key)), 0, 'a failed call that cost nothing gives the reservation back');
+});
+
+test('B17: the Pulse feed must be an https URL (or none)', () => {
+  const feedErrors = (feed) => pulseErrors({ feed }).filter((m) => /feed/.test(m));
+  for (const ok of [null, undefined, '', 'https://example.org/pulse.json']) assert.deepEqual(feedErrors(ok), [], String(ok));
+  for (const bad of ['javascript:alert(1)', 'http://example.org/p.json', '//example.org/p.json', 'data:text/html,x', 5]) assert.equal(feedErrors(bad).length, 1, String(bad));
+});
