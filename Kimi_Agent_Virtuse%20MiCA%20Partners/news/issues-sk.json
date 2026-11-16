@@ -1,9 +1,20 @@
 {
   "issues": [
     {
+      "date": "2026-11-16",
+      "title": "Kto naozaj zatriasol trhom: Za pádom Bitcoinu nehľadajte Fed, ale Binance",
+      "excerpt": "Bitcoin za týždeň padol o 12,6 % a všetci ukazujú na Fed. Sledujem peniaze od hacku Binance za 6,3 miliardy a vysvetľujem, prečo si myslím, že stojí za prepadom.",
+      "slug": "kto-naozaj-zatriasol-trhom-nehladajte-fed-ale-binance",
+      "image": "https://blog.virtuse.com/wp-content/uploads/2026/11/follow-the-money-binance-crash.jpg",
+      "read_min": 4,
+      "author": "Ras Vasilisin",
+      "alt_url": "/stories/follow-the-money-binance-crash/",
+      "en_slug": "follow-the-money-binance-crash"
+    },
+    {
       "date": "2026-11-09",
       "title": "Kto má skutočnú kontrolu nad tvojimi peniazmi?",
-      "excerpt": "Pád banky v Paraguaji, odlevy z bitcoinových ETF a digitálne euro otvárajú tú istú otázku: kto má nad tvojimi peniazmi skutočnú kontrolu?",
+      "excerpt": "Pád banky v Paraguaji, odlivy z bitcoinových ETF a digitálne euro otvárajú tú istú otázku: kto má nad tvojimi peniazmi skutočnú kontrolu?",
       "slug": "kto-ma-skutocnu-kontrolu-nad-tvojimi-peniazmi",
       "image": "https://blog.virtuse.com/wp-content/uploads/2026/11/who-controls-your-money-illustration.jpg",
       "read_min": 4,

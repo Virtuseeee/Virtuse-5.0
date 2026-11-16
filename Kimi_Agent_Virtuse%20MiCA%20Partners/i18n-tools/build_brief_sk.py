@@ -206,6 +206,16 @@ def main():
     assert n == 1, "newsletter card date"
     s, n = re.subn(r'(<time id="todayDate" datetime="(\d{4}-\d\d-\d\d)">)[^<]*(</time>)', lambda m: m.group(1) + sk_date(m.group(2), True) + m.group(3), s)
     assert n == 1, "dateline"
+    # Hero lead (static fallback before news.js paints it): the newest Slovak issue too.
+    m = re.search(r'<article class="pt-lead" id="heroLead">.*?</article>', s, re.S)
+    assert m, "hero lead"
+    lead = m.group(0)
+    lead, n = re.subn(r'(<h2 class="pt-lead-title"><a [^>]*>)[^<]*(</a>)', lambda x: x.group(1) + html.escape(feat["title"]) + x.group(2), lead)
+    if n:  # an empty hero (JS-only) is left alone
+        lead, k = re.subn(r'(<p class="pt-dek">)[^<]*(</p>)', lambda x: x.group(1) + html.escape(feat["excerpt"]) + x.group(2), lead)
+        assert k == 1, "hero lead deck"
+        lead = re.sub(r'(<time datetime="(\d{4}-\d\d-\d\d)">)[^<]*(</time>)', lambda x: x.group(1) + sk_date(x.group(2)) + x.group(3), lead)
+        s = s[:m.start()] + lead + s[m.end():]
     s = s.replace('<meta property="og:description" content="', '<meta property="og:description" content="' + html.escape(feat["excerpt"]) + '" data-en="', 1)
     s = re.sub(r' data-en="[^"]*"', "", s, count=1)
     s = re.sub(r'(<meta name="twitter:description" content=")[^"]*"', lambda m: m.group(1) + html.escape(feat["excerpt"]) + '"', s)
