@@ -13,6 +13,8 @@ concierge-assets/ excluded):
   4. the vbApi() loader is the same text in every shared script that carries it;
   5. every page that can run vb-api.js allows both Workers in its CSP connect-src
      (production, and staging: staging.virtuse.com posts there, see vb-api.js).
+  6. and allows Cloudflare Turnstile in script-src and frame-src (vb-api.js loads it when the
+     Worker answers a form with code 'captcha').
 """
 import os, re, subprocess, sys
 
@@ -26,6 +28,7 @@ LOADER_RE = re.compile(r'^([ \t]*)function vbApi\(\) \{\n.*?^\1\}\n', re.S | re.
 SKIP = ('i18n-tools/', 'concierge-assets/')
 CSP_RE = re.compile(r'<meta http-equiv="Content-Security-Policy" content="[^"]*">')
 ENDPOINT_RE = re.compile(r'\bdata-endpoint="[^"]*"')
+TURNSTILE = 'https://challenges.cloudflare.com'
 WORKERS = ('https://virtuse-newsletter.virtuse-ai.workers.dev', 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev')
 
 
@@ -60,6 +63,11 @@ def main():
             for origin in WORKERS:
                 if origin not in conn:
                     bad.append('%s: runs vb-api.js but its CSP connect-src lacks %s' % (f, origin))
+            # 6. Turnstile, which vb-api.js loads when the Worker asks for a token (script + its iframe)
+            for name in ('script-src', 'frame-src'):
+                toks = next((d.split() for d in csp.group(0).split(';') if d.strip().startswith(name)), [])
+                if TURNSTILE not in toks:
+                    bad.append('%s: runs vb-api.js but its CSP %s lacks %s' % (f, name, TURNSTILE))
     builder = os.path.join(HERE, 'verdict-landing', 'build.py')
     for v in VER_RE.findall(open(builder, encoding='utf-8').read()):
         versions.setdefault(v, []).append('i18n-tools/verdict-landing/build.py')

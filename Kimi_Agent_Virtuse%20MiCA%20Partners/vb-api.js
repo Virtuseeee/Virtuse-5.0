@@ -4,7 +4,7 @@
    through window.VB_API.
 
    Loading: pages with inline form code (the 10 homepages, the 10 cfo.html,
-   verdict.html) load it with <script src="vb-api.js?v=2" defer>. The shared
+   verdict.html) load it with <script src="vb-api.js?v=3" defer>. The shared
    scripts (site-v2.js, brief-chrome.js, brief-popup.js, news/news.js,
    partner-capture.js, verdict-flow.js) load it on first use with the small
    vbApi() loader they each carry, so the ~1,100 pages that use them need no
@@ -60,12 +60,88 @@
   // JSON answer is read; rejects on a network error, a timeout or a body that
   // is not JSON (callers show their network-error text for all three, as
   // before). body: an object (serialised here) or an already-built string.
-  function postJson(route, body, ms) {
+  function send(route, body, ms) {
     return fetchWithTimeout(url(route), {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: typeof body === 'string' ? body : JSON.stringify(body)
     }, ms || LONG_TIMEOUT_MS[route] || TIMEOUT_MS, function (res) {
       return res.json().then(function (data) { return { ok: res.ok, status: res.status, data: data }; });
+    });
+  }
+
+  // Cloudflare Turnstile, only when the Worker asks for it. The form routes
+  // below answer 403 { code: 'captcha', sitekey } when the Worker has the check
+  // switched on (cloudflare-worker/src/config.js). Only then does this file load
+  // Turnstile from challenges.cloudflare.com, get a token and repeat the request
+  // once with it. While the Worker's switch is off, nothing from Turnstile is
+  // loaded. The widget shows only if Cloudflare wants the visitor to tick a box.
+  // Pages that can run this file allow challenges.cloudflare.com in their CSP
+  // script-src and frame-src (i18n-tools/csp_tight.py, stories-build/hubs.mjs).
+  var CAPTCHA_ROUTES = { '/subscribe': true, '/send': true, '/waitlist': true };
+  var TS_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  var TS_KEY = 'vb-ts', TS_WAIT_MS = 60000, tsLoading = null;
+
+  function knownSitekey() { try { return sessionStorage.getItem(TS_KEY) || ''; } catch (e) { return ''; } }
+  function loadTurnstile() {
+    if (w.turnstile) return Promise.resolve(w.turnstile);
+    return tsLoading || (tsLoading = new Promise(function (ok, no) {
+      var s = document.createElement('script');
+      s.src = TS_SRC; s.async = true;
+      s.onload = function () { if (w.turnstile) ok(w.turnstile); else { tsLoading = null; no(new Error('turnstile')); } };
+      s.onerror = function () { tsLoading = null; no(new Error('turnstile')); };
+      document.head.appendChild(s);
+    }));
+  }
+  // One token for one request. Rejects when Turnstile cannot load, fails or takes too long.
+  function captchaToken(sitekey) {
+    return loadTurnstile().then(function (ts) {
+      return new Promise(function (ok, no) {
+        var host = document.createElement('div'), id = null, timer, over = false;
+        host.style.cssText = 'position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:2147483000;max-width:calc(100vw - 24px)';
+        document.body.appendChild(host);
+        function end(fn, v) {
+          if (over) return; over = true; clearTimeout(timer);
+          try { if (id !== null) ts.remove(id); } catch (e) {}
+          if (host.parentNode) host.parentNode.removeChild(host);
+          fn(v);
+        }
+        timer = setTimeout(function () { end(no, new Error('turnstile timeout')); }, TS_WAIT_MS);
+        try {
+          id = ts.render(host, {
+            sitekey: sitekey, appearance: 'interaction-only', language: (document.documentElement.lang || 'auto').slice(0, 2),
+            callback: function (token) { end(ok, token); },
+            'error-callback': function () { end(no, new Error('turnstile error')); return true; }
+          });
+        } catch (e) { end(no, e); }
+      });
+    });
+  }
+  function withToken(route, body, ms, sitekey) {
+    return captchaToken(sitekey).then(function (token) {
+      var o;
+      try { o = typeof body === 'string' ? JSON.parse(body) : body; } catch (e) { o = null; }
+      if (!o || typeof o !== 'object') return send(route, body, ms);
+      var copy = {}, k;
+      for (k in o) copy[k] = o[k];
+      copy.turnstile = token;
+      return send(route, copy, ms);
+    }, function () { return send(route, body, ms); });   // no token: the Worker's answer says what is wrong
+  }
+  function captchaAsk(r) {
+    var key = r && r.status === 403 && r.data && r.data.code === 'captcha' && r.data.sitekey;
+    return typeof key === 'string' && /^[0-9A-Za-z_-]{10,64}$/.test(key) ? key : '';
+  }
+
+  function postJson(route, body, ms) {
+    if (!CAPTCHA_ROUTES[route]) return send(route, body, ms);
+    // Once the Worker has asked in this tab, later requests bring a token straight away.
+    var known = knownSitekey();
+    return (known ? withToken(route, body, ms, known) : send(route, body, ms)).then(function (r) {
+      var key = captchaAsk(r);
+      if (!key) return r;
+      try { sessionStorage.setItem(TS_KEY, key); } catch (e) {}
+      if (known) return r;                    // a token was sent and refused: show the Worker's answer
+      return withToken(route, body, ms, key);
     });
   }
 

@@ -25,11 +25,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)
 
 OPTIONAL = {
-    'script-src': ['https://cdn.jsdelivr.net'],
+    # challenges.cloudflare.com: Turnstile, loaded by vb-api.js only when the Worker asks for it (script + its iframe)
+    'script-src': ['https://cdn.jsdelivr.net', 'https://challenges.cloudflare.com'],
     'connect-src': ['https://blog.virtuse.com', 'https://api.coingecko.com', 'https://api.binance.com', 'https://mempool.space',
                     'https://virtuse-newsletter.virtuse-ai.workers.dev', 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev'],
     'frame-src': ['https://widget.firefish.io', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://open.spotify.com',
-                  'https://platform.twitter.com', 'https://twitter.com', 'https://x.com'],
+                  'https://platform.twitter.com', 'https://twitter.com', 'https://x.com', 'https://challenges.cloudflare.com'],
 }
 SKIP_SCRIPTS = ('article.js', 'news/news.js')   # render WordPress HTML (embeds) at runtime
 CSP_RE = re.compile(r'<meta http-equiv="Content-Security-Policy" content="([^"]*)">')

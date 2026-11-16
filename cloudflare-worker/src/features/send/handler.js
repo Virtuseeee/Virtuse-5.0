@@ -36,7 +36,7 @@ async function addressKey(email) {
 export async function handleSend({ request, env, origin, services }) {
   const parsed = await readJson(request);
   if (!parsed.ok) return json(400, { error: 'Invalid JSON body' }, origin);
-  const { email, hp, lang: rawLang, kind, source, payload, brief } = parsed.value || {};
+  const { email, hp, lang: rawLang, kind, source, payload, brief, turnstile } = parsed.value || {};
 
   if (hp) return json(200, { ok: true }, origin);
 
@@ -51,6 +51,10 @@ export async function handleSend({ request, env, origin, services }) {
 
   const lang = oneOf(SITE_LANGS, rawLang) ? rawLang : 'en';
   const wantsBrief = brief === true;
+
+  // Turnstile (when switched on) before the limits, so a failed check does not use up the visitor's quota.
+  const blocked = await services.captcha(request, turnstile, origin);
+  if (blocked) return blocked;
 
   const ipKey = `sendlimit:ip:${await ipHash(clientIp(request), new Date().toISOString().slice(0, 10), env)}`;
   const addrKey = await addressKey(email);

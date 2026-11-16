@@ -755,7 +755,7 @@
 (function () {
   var root = document.documentElement.getAttribute('data-root') || '';
   var s = document.createElement('script');
-  s.src = root + 'brief-popup.js?v=20261030';
+  s.src = root + 'brief-popup.js?v=20261116t';
   s.defer = true;
   document.body.appendChild(s);
 })();

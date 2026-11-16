@@ -14,7 +14,7 @@ import { WAITLIST_LANGS, WAITLIST_SOURCES, audienceFor, renderWaitlistEmail, wai
 export async function handleWaitlist({ request, env, origin, services }) {
   const parsed = await readJson(request);
   if (!parsed.ok) return json(400, { error: 'Invalid JSON body' }, origin);
-  const { email, hp, source, lang } = parsed.value || {};
+  const { email, hp, source, lang, turnstile } = parsed.value || {};
 
   if (hp) return json(200, { ok: true }, origin); // honeypot: pretend success, do nothing
   if (!email || typeof email !== 'string' || !EMAIL_RE.test(email)) {
@@ -23,6 +23,8 @@ export async function handleWaitlist({ request, env, origin, services }) {
   if (source !== undefined && !WAITLIST_SOURCES.includes(source)) {
     return json(400, { error: 'Unknown source.' }, origin);
   }
+  const blocked = await services.captcha(request, turnstile, origin);
+  if (blocked) return blocked;
   // Staging (WAITLIST_DRY_RUN=1): answer like a real sign-up, store and send nothing.
   if (env.WAITLIST_DRY_RUN === '1') return json(200, { ok: true, dryRun: true }, origin);
   if (!env.RESEND_CFO_AUDIENCE_ID) {
