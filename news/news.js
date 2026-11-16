@@ -147,10 +147,12 @@
     var a = Math.abs(n);
     return a === 1 ? 'bázický bod' : (a >= 2 && a <= 4) ? 'bázické body' : tr('bp');
   }
+  /* A bare YYYY-MM-DD is a calendar date (read in UTC so it never shifts a day); a full stamp is shown in the desk's zone. */
   function fmtDate(iso) {
-    var d = new Date(iso);
+    var bare = /^\d{4}-\d\d-\d\d$/.test(String(iso || ''));
+    var d = new Date(bare ? iso + 'T12:00:00Z' : iso);
     if (isNaN(d.getTime())) return '';
-    return d.toLocaleDateString(LANG === 'sk' ? 'sk-SK' : 'en-GB', { day: 'numeric', month: LANG === 'sk' ? 'long' : 'short', year: 'numeric' });
+    return d.toLocaleDateString(LANG === 'sk' ? 'sk-SK' : 'en-GB', { timeZone: bare ? 'UTC' : DESK_TZ, day: 'numeric', month: LANG === 'sk' ? 'long' : 'short', year: 'numeric' });
   }
   /* Edition links go straight to /stories/<slug>/. A missing story page falls back to the
      stories hub (the server 301s article.html?slug= there too). data-issue-slug marks them. */
@@ -1360,7 +1362,7 @@
   }
   function paintMagazine(items) {
     if (items.length < 2) items = fallbackItems();
-    var sig = items.slice(0, 2 + BLOG_MAX).map(function (x) { return x.slug + '|' + x.image; }).join(',');
+    var sig = items.slice(0, 2 + BLOG_MAX).map(function (x) { return [x.slug, x.image, x.date, x.title, x.excerpt].join('|'); }).join(',');
     if (!items.length || sig === magSig) return;
     magSig = sig;
     fillStory('heroLead', items[0], LEAD_SIZES, true);
@@ -1398,7 +1400,7 @@
     });
   }
 
-  j(LANG === 'sk' ? '/news/issues-sk.json?v=20261116b' : '/news/issues.json?v=20261116b').then(function (data) {
+  j(LANG === 'sk' ? '/news/issues-sk.json?v=20261116c' : '/news/issues.json?v=20261116c').then(function (data) {
     ISSUES = ((data && data.issues) || []).filter(Boolean);
     paintIssues(ISSUES);
     loadMagazine();
