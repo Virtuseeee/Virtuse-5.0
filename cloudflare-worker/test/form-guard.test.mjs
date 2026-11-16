@@ -188,3 +188,15 @@ test('Turnstile required: honeypot and bad address are answered as before, and t
   assert.equal((await worker.fetch(post('/subscribe', { email: 't@b.co' }), e)).status, 403);
   assert.deepEqual(await (await worker.fetch(post('/subscribe', { email: 't@b.co', turnstile: 'good-token' }), e)).json(), { ok: true, dryRun: true });
 }));
+
+test('Turnstile required: the Verdict forms never ask for a token (privacy section 9 does not name Turnstile)', () => withTurnstile(async (calls) => {
+  const e = env({ TURNSTILE_FORMS: 'require', TURNSTILE_SECRET_KEY: 'sec', RESEND_REPORT_AUDIENCE_ID: 'aud-r' });
+  const lite = { score: 75, grade: 'B', band: 0, gaps: ['tax', 'keys', 'heirs'], areas: { size: 7, reserve: 7, debt: 10, tax: 6, custody: 6, fall: 10 } };
+  const sent = await worker.fetch(post('/send', { email: 'v@b.co', kind: 'verdict_lite', source: 'verdict', payload: lite, lang: 'sk' }), e);
+  assert.equal(sent.status, 200);
+  assert.equal((await worker.fetch(post('/waitlist', { email: 'v@b.co', source: 'verdict_report' }), e)).status, 200);
+  assert.ok(!calls.some((c) => c.url.includes('challenges.cloudflare.com')));
+  // The same routes with another source still need it.
+  assert.equal((await worker.fetch(post('/waitlist', { email: 'v@b.co', source: 'cfo_page' }), e)).status, 403);
+  assert.equal((await worker.fetch(post('/send', { email: 'v@b.co', kind: 'result', source: 'stacking', payload: STACKING }), e)).status, 403);
+}));

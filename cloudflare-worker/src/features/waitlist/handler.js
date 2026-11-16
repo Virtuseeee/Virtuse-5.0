@@ -23,7 +23,8 @@ export async function handleWaitlist({ request, env, origin, services }) {
   if (source !== undefined && !WAITLIST_SOURCES.includes(source)) {
     return json(400, { error: 'Unknown source.' }, origin);
   }
-  const blocked = await services.captcha(request, turnstile, origin);
+  // Not for the Verdict report waitlist: privacy section 9 (Verdict) does not name Turnstile.
+  const blocked = source === 'verdict_report' ? null : await services.captcha(request, turnstile, origin);
   if (blocked) return blocked;
   // Staging (WAITLIST_DRY_RUN=1): answer like a real sign-up, store and send nothing.
   if (env.WAITLIST_DRY_RUN === '1') return json(200, { ok: true, dryRun: true }, origin);

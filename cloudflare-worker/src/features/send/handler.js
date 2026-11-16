@@ -53,7 +53,8 @@ export async function handleSend({ request, env, origin, services }) {
   const wantsBrief = brief === true;
 
   // Turnstile (when switched on) before the limits, so a failed check does not use up the visitor's quota.
-  const blocked = await services.captcha(request, turnstile, origin);
+  // Not for the Verdict Lite score email: privacy section 9 (Verdict) does not name Turnstile.
+  const blocked = source === 'verdict' ? null : await services.captcha(request, turnstile, origin);
   if (blocked) return blocked;
 
   const ipKey = `sendlimit:ip:${await ipHash(clientIp(request), new Date().toISOString().slice(0, 10), env)}`;
