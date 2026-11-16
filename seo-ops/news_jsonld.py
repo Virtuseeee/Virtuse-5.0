@@ -116,7 +116,7 @@ def build():
                 "@type": "CollectionPage",
                 "@id": BASE + "/news.html#page",
                 "url": BASE + "/news.html",
-                "name": "Virtuse Brief: weekly Bitcoin newsletter for Europe",
+                "name": "Virtuse Brief: everything that moves Bitcoin, in one place. Free.",
                 "inLanguage": "en",
                 "publisher": {"@id": ORG_ID},
                 "mainEntity": {"@id": BASE + "/news.html#editions"},
