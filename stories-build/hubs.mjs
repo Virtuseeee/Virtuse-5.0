@@ -90,7 +90,7 @@ function ruPlural(n) {
 
 // ---- related tools and guides ------------------------------------------------
 // Site-relative targets per language; every one exists in en/sk/ru (news.html
-// is English only, so sk/ru use it too).
+// is EN, sk/news.html SK; ru uses the English page).
 const LINKS = {
   en: {
     taxGuide: ['bitcoin-tax/', 'Bitcoin tax in 13 EU countries', 'Rates, holding periods and filing rules per country.'],
@@ -106,7 +106,7 @@ const LINKS = {
     treasury: ['treasury.html', 'Bitcoin treasury custody', 'Custody and execution partners for companies.'],
     cfo: ['verdict.html', 'Verdict', 'Check for free what you left out of your decision. The CFO then tracks fees and risks.'],
     concierge: ['concierge.html', 'Partner Finder', 'Partners that fit your criteria, in 60 seconds.'],
-    news: ['news.html', 'Virtuse Brief', 'The weekly Bitcoin newsletter for Europe.'],
+    news: ['news.html', 'Virtuse Brief', 'Everything that moves Bitcoin, in one place. Free.'],
     gold: ['bitcoin-vs-gold.html', 'Bitcoin vs gold, silver and commodities', 'Returns by year and the BTC/gold ratio, updated daily.'],
   },
   sk: {
@@ -123,7 +123,7 @@ const LINKS = {
     treasury: ['sk/treasury.html', 'Úschova Bitcoinu pre firmy', 'Partneri pre úschovu a obchodovanie pre firmy.'],
     cfo: ['sk/verdict.html', 'Verdict', 'Skontrolujte zadarmo, čo ste vo svojej úvahe vynechali. CFO potom sleduje poplatky a riziká.'],
     concierge: ['sk/concierge.html', 'Partner Finder', 'Partneri podľa vašich kritérií za 60 sekúnd.'],
-    news: ['news.html', 'Virtuse Brief', 'Týždenný newsletter o Bitcoine pre Európu (v angličtine).'],
+    news: ['sk/news.html', 'Virtuse Brief', 'Všetko, čo hýbe Bitcoinom, na jednom mieste. Zadarmo.'],
     gold: ['sk/bitcoin-vs-gold.html', 'Bitcoin vs. zlato, striebro a komodity', 'Výnosy po rokoch a pomer BTC/zlato, denne aktualizované.'],
   },
   ru: {
@@ -140,7 +140,7 @@ const LINKS = {
     treasury: ['ru/treasury.html', 'Хранение Биткоина для компаний', 'Партнёры по хранению и исполнению сделок для компаний.'],
     cfo: ['ru/verdict.html', 'Verdict', 'Проверьте бесплатно, что вы упустили в своём решении. Затем CFO следит за комиссиями и рисками.'],
     concierge: ['ru/concierge.html', 'Partner Finder', 'Партнёры по вашим критериям за 60 секунд.'],
-    news: ['news.html', 'Virtuse Brief', 'Еженедельная рассылка о Биткоине для Европы (на английском).'],
+    news: ['news.html', 'Virtuse Brief', 'Всё, что движет Биткоином, в одном месте. Бесплатно (на английском).'],
     gold: ['ru/bitcoin-vs-gold.html', 'Биткоин против золота, серебра и сырьевых товаров', 'Доходность по годам и соотношение BTC/золото, ежедневно.'],
   },
 };

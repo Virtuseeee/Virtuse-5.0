@@ -96,19 +96,19 @@ FROM_JSON = {
     'svb': ('loan', 'rel_svb'),
 }
 
-# New cards. news.html is English only; stories hubs exist for en/sk/ru.
+# New cards. The Brief exists in en and sk (sk/news.html); other languages use news.html. stories hubs exist for en/sk/ru.
 # Verdict has its own page in en/sk/ru/uk; other languages use /verdict.html.
 NEWS = {
-    'en': ('Virtuse Brief', 'The weekly Bitcoin newsletter for Europe.'),
-    'sk': ('Virtuse Brief', 'Týždenný newsletter o Bitcoine pre Európu (v angličtine).'),
-    'cs': ('Virtuse Brief', 'Týdenní newsletter o Bitcoinu pro Evropu (v angličtině).'),
-    'de': ('Virtuse Brief', 'Der wöchentliche Bitcoin-Newsletter für Europa (auf Englisch).'),
-    'fr': ('Virtuse Brief', "La lettre Bitcoin hebdomadaire pour l'Europe (en anglais)."),
-    'es': ('Virtuse Brief', 'El boletín semanal de Bitcoin para Europa (en inglés).'),
-    'pl': ('Virtuse Brief', 'Cotygodniowy newsletter o Bitcoinie dla Europy (po angielsku).'),
-    'hu': ('Virtuse Brief', 'A heti Bitcoin-hírlevél Európának (angol nyelven).'),
-    'uk': ('Virtuse Brief', 'Щотижнева розсилка про Біткоїн для Європи (англійською).'),
-    'ru': ('Virtuse Brief', 'Еженедельная рассылка о Биткоине для Европы (на английском).'),
+    'en': ('Virtuse Brief', 'Everything that moves Bitcoin, in one place. Free.'),
+    'sk': ('Virtuse Brief', 'Všetko, čo hýbe Bitcoinom, na jednom mieste. Zadarmo.'),
+    'cs': ('Virtuse Brief', 'Vše, co hýbe Bitcoinem, na jednom místě. Zdarma (v angličtině).'),
+    'de': ('Virtuse Brief', 'Alles, was Bitcoin bewegt, an einem Ort. Kostenlos (auf Englisch).'),
+    'fr': ('Virtuse Brief', 'Tout ce qui fait bouger le Bitcoin, au même endroit. Gratuit (en anglais).'),
+    'es': ('Virtuse Brief', 'Todo lo que mueve a Bitcoin, en un solo lugar. Gratis (en inglés).'),
+    'pl': ('Virtuse Brief', 'Wszystko, co porusza Bitcoinem, w jednym miejscu. Za darmo (po angielsku).'),
+    'hu': ('Virtuse Brief', 'Minden, ami a Bitcoint mozgatja, egy helyen. Ingyenes (angol nyelven).'),
+    'uk': ('Virtuse Brief', 'Усе, що рухає Біткоїном, в одному місці. Безкоштовно (англійською).'),
+    'ru': ('Virtuse Brief', 'Всё, что движет Биткоином, в одном месте. Бесплатно (на английском).'),
 }
 STORIES = {
     'en': ('Bitcoin stories', 'Long reads from the Virtuse Brief desk.'),
@@ -231,7 +231,7 @@ def _guide(L, i):
 
 def href_of(key, L):
     if key == 'news':
-        return '/news.html'
+        return '/sk/news.html' if L == 'sk' else '/news.html'
     if key == 'stories':
         if L in ('sk', 'ru'):
             return '/%s/stories/' % L
