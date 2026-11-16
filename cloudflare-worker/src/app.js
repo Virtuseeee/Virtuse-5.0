@@ -3,10 +3,11 @@
 // This is the only module that knows about every feature.
 
 import { handleResendWebhook } from './features/verdict-pay/alerts.js';
-import { SIGNUP_LIMIT, isAllowedOrigin } from './config.js';
+import { EMAIL_CAPS, SIGNUP_LIMIT, isAllowedOrigin } from './config.js';
 import { json, preflight } from './http/responses.js';
 import { ANY, on, pipeline, prefix } from './http/router.js';
 import { createResendClient } from './infra/resend.js';
+import { createEmailCap } from './shared/email-cap.js';
 import { createKvLimiter } from './shared/rate-limiter.js';
 
 import { runBriefHealth } from './features/brief-health/handler.js';
@@ -35,6 +36,9 @@ function createServices(env, fetchImpl) {
     limiter,
     brief: createBriefList({ env, resend }),
     signupLimited: (ip) => limiter.exceeded(`ratelimit:${ip}`, SIGNUP_LIMIT.max, SIGNUP_LIMIT.windowSeconds),
+    // Hourly ceiling for all visitors together: sign-up and result emails share one budget,
+    // the withdrawal confirmation has its own (a flood of sign-ups must never use it up).
+    emailCap: createEmailCap({ env, limiter, resend, buckets: EMAIL_CAPS }),
     verdictModel: { ask: (text, lang, profile) => askClaude(env, text, lang, profile) },
   };
 }

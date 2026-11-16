@@ -128,6 +128,8 @@ export const LITE_SESSION_S = 2 * 60 * 60;
 // STRIPE_PRICE_ID_VERDICT_SK. Not set: the EN Price, as before.
 export const priceFor = (env, page) => (page === 'sk' && env.STRIPE_PRICE_ID_VERDICT_SK) || env.STRIPE_PRICE_ID_VERDICT;
 export const LITE_CHECKOUT_PER_HOUR = 20;
+// POST /verdict/report per IP and hour: opening the report, reloads and PDF downloads of one buyer fit many times over.
+export const REPORT_LOOKUPS_PER_HOUR = 30;
 
 export const LITE_TERMS = {
   en: 'One payment, no subscription. Your report opens right after payment and a PDF comes by email. 30-day refund, no questions asked; your 14-day EU right of withdrawal applies on top, even after you open the report. Withdrawal: virtuse.com/withdrawal.html. Terms: virtuse.com/terms-and-conditions.html',
