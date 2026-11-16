@@ -39,10 +39,14 @@ const KIND_TEXT = {
   complained: 'The buyer marked the confirmation email as spam.',
 };
 
+// The full Session id opens the paid report for 30 minutes after its first opening, so an
+// internal email carries only its start: enough to recognise the Session in Stripe's list.
+export const shortSid = (sid) => (sid ? String(sid).slice(0, 18) + '…' : '');
+
 export function renderAlert({ kind, sid = '', rid = '', lang = '', email = '', detail = '', attempts = 1, now }) {
   const order = sid ? orderNumber(sid) : '';
   const rows = [
-    ['What happened', KIND_TEXT[kind] || kind], ['Order', order], ['Checkout Session', sid], ['Result id', rid], ['Language', lang],
+    ['What happened', KIND_TEXT[kind] || kind], ['Order', order], ['Checkout Session', shortSid(sid)], ['Result id', rid], ['Language', lang],
     ['Buyer', maskEmail(email)], ['Attempts so far', attempts > 1 ? String(attempts) : ''], ['Detail', String(detail || '').slice(0, 300)],
     ['Time (Bratislava)', bratislava(now)],
   ].filter(([, v]) => v);

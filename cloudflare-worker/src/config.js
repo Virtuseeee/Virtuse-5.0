@@ -14,6 +14,10 @@ export const STAGING_ORIGIN = 'https://staging.virtuse.com';
 export const WORKER_ORIGIN = 'https://virtuse-newsletter.virtuse-ai.workers.dev';
 
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// RFC 5321: an address is at most 254 characters.
+export const EMAIL_MAX_LENGTH = 254;
+// /subscribe and /waitlist carry an address and three short fields.
+export const SIGNUP_MAX_BYTES = 4 * 1024;
 
 // One per-IP budget shared by the site's sign-up forms
 // (POST /subscribe, /send, /waitlist).

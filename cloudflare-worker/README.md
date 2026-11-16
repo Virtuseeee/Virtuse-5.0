@@ -468,9 +468,9 @@ The form lives on `/ecosystem/promote/` and `/<lang>/ecosystem/promote/` (built 
 
 Checks, in order: allowed Origin, body ≤ 5 KB, honeypot (`company_url`), server-side validation (required fields,
 http(s) URLs, category from the 11 listing pages, countries = `["ALL"]` or EU/EEA/CH codes, bitcoin-only and consent
-must be `true`), 3 requests per IP per hour (KV `eco:ip:*`), Cloudflare Turnstile siteverify. Then two Resend emails:
+must be `true`), 3 requests per IP per hour (KV `eco:ip:<hash of the IP, salted per day>`), Cloudflare Turnstile siteverify. Then two Resend emails:
 the application to the team (Reply-To = applicant) and an auto-reply to the applicant in the page language
-(Reply-To = team), at most once per address per 24 h (KV `eco:reply:*`). Nothing is stored or published.
+(Reply-To = team), at most once per address per 24 h (KV `eco:reply:<SHA-256 of the address>`). Nothing is stored or published.
 
 Responses: 200 `{ok:true}`; 400 `invalid` (fields) or `captcha` (missing, malformed or failed Turnstile token); 413 `too_large`; 429 `rate_limited`; 502 `send_failed`;
 503 `closed` (no `TURNSTILE_SECRET_KEY` or `RESEND_API_KEY`).
@@ -527,3 +527,23 @@ the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret
 - Privacy policy: sections 2, 3 and 5 name Turnstile for the Brief and waitlist forms (9 languages, added with this change; wording to be confirmed by the lawyer). Section 9 (Verdict) is unchanged, which is why the Verdict forms are left out.
 - Not covered: the Layer 2 capture form (`layer2-src/src/components/CaptureForm.tsx`) posts to `/send` on its own and is switched off on the site; give it the same retry before it is switched on. The withdrawal form has no Turnstile.
 - Every page that can run `vb-api.js` allows `https://challenges.cloudflare.com` in CSP `script-src` and `frame-src` (`i18n-tools/csp_tight.py`, `stories-build/hubs.mjs`; `i18n-tools/check_vb_api.py` checks it).
+
+## Audit hardening, 2026-11-16 (B4, B8, B20, B21, B23)
+
+- **KV keys hold hashes, never an IP or an address.** The sign-up limit of `/subscribe`,
+  `/waitlist` and the Brief tick on `/send` is `ratelimit:<hash>`, the ecosystem form's are
+  `eco:ip:<hash>` and `eco:reply:<SHA-256 of the address>`. The IP hash is `ipHash()` in
+  `shared/crypto.js` (salted with the UTC day), as on `/send` and the Verdict routes. To free
+  a tester's counter, delete the keys with that prefix in the namespace; the key for one IP
+  can no longer be typed by hand.
+- **Size limits.** `readJson()` refuses a body over 16 kB (`MAX_JSON_BYTES`) on every JSON
+  route; `/subscribe` and `/waitlist` use 4 kB (`SIGNUP_MAX_BYTES`). Over the limit = 413.
+  An address over 254 characters is a 400 like any other invalid address.
+- **`/wp/*` query parameters.** Only `categories`, `per_page` (1 to 100), `page`, `_embed`,
+  `_fields`, `orderby`, `order`, `lang`, `slug`, each once and at most 200 characters; anything
+  else, `rest_route` included, is a 400 before WordPress is called. A new parameter in
+  `stories-build/build.mjs` must be added to `ALLOWED_PARAMS` in `features/wp-proxy/handler.js`.
+- **Staging `/send`.** With `SUBSCRIBE_DRY_RUN=1` the Brief tick adds nobody to the Brief; the
+  result email itself is still sent, so a staging test reaches the inbox.
+- **Delivery alert.** The internal "Verdict delivery problem" email shows the order number and
+  the first 18 characters of the Checkout Session id, not the whole id.

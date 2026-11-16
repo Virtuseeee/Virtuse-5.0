@@ -5,19 +5,20 @@
 // No RESEND_CFO_AUDIENCE_ID -> 503, so the route can be deployed before the
 // audience exists without silently dropping sign-ups.
 
-import { EMAIL_RE } from '../../config.js';
+import { EMAIL_MAX_LENGTH, EMAIL_RE, SIGNUP_MAX_BYTES } from '../../config.js';
 import { clientIp, readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
 import { unsubscribeUrl } from '../newsletter/unsubscribe-link.js';
 import { WAITLIST_LANGS, WAITLIST_SOURCES, audienceFor, renderWaitlistEmail, waitlistSubject } from './domain.js';
 
 export async function handleWaitlist({ request, env, origin, services }) {
-  const parsed = await readJson(request);
+  const parsed = await readJson(request, SIGNUP_MAX_BYTES);
+  if (parsed.tooLarge) return json(413, { error: 'Request too large.' }, origin);
   if (!parsed.ok) return json(400, { error: 'Invalid JSON body' }, origin);
   const { email, hp, source, lang, turnstile } = parsed.value || {};
 
   if (hp) return json(200, { ok: true }, origin); // honeypot: pretend success, do nothing
-  if (!email || typeof email !== 'string' || !EMAIL_RE.test(email)) {
+  if (!email || typeof email !== 'string' || email.length > EMAIL_MAX_LENGTH || !EMAIL_RE.test(email)) {
     return json(400, { error: 'Please enter a valid email address.' }, origin);
   }
   if (source !== undefined && !WAITLIST_SOURCES.includes(source)) {

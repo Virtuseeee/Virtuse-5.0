@@ -9,7 +9,7 @@
 import { EMAIL_RE, STAGING_ORIGIN } from '../../config.js';
 import { clientIp } from '../../http/request.js';
 import { json } from '../../http/responses.js';
-import { byteLength } from '../../shared/crypto.js';
+import { byteLength, ipHash, sha256Hex } from '../../shared/crypto.js';
 import { verifyTurnstile } from '../../infra/turnstile.js';
 import { TURNSTILE_HOSTS, renderAutoReply, renderTeamEmail, validateApplication } from './domain.js';
 
@@ -50,7 +50,9 @@ export async function handleEcosystemApply({ request, env, origin, services }) {
   if (!(await verifyTurnstile({ secret: env.TURNSTILE_SECRET_KEY, token, ip, allowedHosts: TURNSTILE_HOSTS }))) {
     return json(400, { error: 'captcha' }, origin);
   }
-  if (await services.limiter.exceeded(`eco:ip:${ip}`, PER_IP.max, PER_IP.windowSeconds)) {
+  // KV keys hold hashes only: the IP salted per day, the address as SHA-256.
+  const ipKey = `eco:ip:${await ipHash(ip, new Date().toISOString().slice(0, 10), env)}`;
+  if (await services.limiter.exceeded(ipKey, PER_IP.max, PER_IP.windowSeconds)) {
     return json(429, { error: 'rate_limited' }, origin);
   }
 
@@ -64,7 +66,7 @@ export async function handleEcosystemApply({ request, env, origin, services }) {
       { from, to: [test ? testTo : team], reply_to: app.contact_email, subject: t.subject, text: t.text, html: t.html },
       EMAIL_FAILED
     );
-    if (await services.limiter.claimOnce(`eco:reply:${app.contact_email.toLowerCase()}`, AUTO_REPLY_WINDOW_SECONDS)) {
+    if (await services.limiter.claimOnce(`eco:reply:${await sha256Hex(app.contact_email.trim().toLowerCase())}`, AUTO_REPLY_WINDOW_SECONDS)) {
       const r = renderAutoReply(app, { test });
       await services.resend.sendEmail(
         { from, to: [test ? testTo : app.contact_email], reply_to: team, subject: r.subject, text: r.text, html: r.html },
