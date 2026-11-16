@@ -25,6 +25,16 @@ export const SIGNUP_LIMIT = { max: 5, windowSeconds: 60 * 60 };
 // EMAIL_CAP_FORMS_PER_HOUR / EMAIL_CAP_WITHDRAW_PER_HOUR.
 export const EMAIL_CAPS = { forms: 120, withdraw: 30 };
 
+// Cloudflare Turnstile on the public forms (/subscribe, /send, /waitlist), security audit 2026-11-16.
+// The Verdict forms are left out (Ras, 2026-11-16): /send with source 'verdict' and /waitlist with source
+// 'verdict_report' never ask for a token, because privacy section 9 would have to name Turnstile first.
+// Off unless the Worker var TURNSTILE_FORMS is "require" and TURNSTILE_SECRET_KEY is set. Then a request
+// without a valid token gets 403 { code: 'captcha', sitekey }; vb-api.js on the site loads the widget
+// only at that moment, gets a token and repeats the request once. So nothing from Turnstile runs in
+// a visitor's browser while the switch is off. Same widget as the ecosystem form (public site key).
+export const TURNSTILE_SITEKEY = '0x4AAAAAAFheOLDBd1DyVOhF';
+export const TURNSTILE_FORM_HOSTS = ['virtuse.com', 'www.virtuse.com', 'staging.virtuse.com'];
+
 export function isAllowedOrigin(origin) {
   return ALLOWED_ORIGINS.includes(origin);
 }

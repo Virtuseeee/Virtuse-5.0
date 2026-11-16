@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://blog.virtuse.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://cloudflareinsights.com https://api.coingecko.com https://virtuse-newsletter.virtuse-ai.workers.dev https://virtuse-newsletter-staging.virtuse-ai.workers.dev; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://blog.virtuse.com; connect-src 'self' https://www.virtuse.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.g.doubleclick.net https://cloudflareinsights.com https://api.coingecko.com https://virtuse-newsletter.virtuse-ai.workers.dev https://virtuse-newsletter-staging.virtuse-ai.workers.dev; frame-src 'self' https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Dark-only, matching the homepage's own redesign. -->
 <meta name="color-scheme" content="dark">
@@ -870,7 +870,7 @@
 
   <details>
     <summary>Datos que usted nos facilita</summary>
-    <div class="faq-answer"><strong>Dirección de correo electrónico del boletín</strong>: si se suscribe al Virtuse Brief o se apunta a la lista de espera de Virtuse Verdict y Virtuse CFO, tratamos la dirección de correo electrónico que nos facilita, sobre la base de su consentimiento. Aparte de Virtuse Verdict y Virtuse CFO (sección 9) y del formulario de solicitud del Ecosistema Bitcoin (sección 10), ese es el único dato personal que este sitio web le solicita. Puede darse de baja en cualquier momento a través del enlace incluido en cada correo, y eliminaremos su dirección de la lista de distribución.</div>
+    <div class="faq-answer"><strong>Dirección de correo electrónico del boletín</strong>: si se suscribe al Virtuse Brief o se apunta a la lista de espera de Virtuse Verdict y Virtuse CFO, tratamos la dirección de correo electrónico que nos facilita, sobre la base de su consentimiento. Aparte de Virtuse Verdict y Virtuse CFO (sección 9) y del formulario de solicitud del Ecosistema Bitcoin (sección 10), ese es el único dato personal que este sitio web le solicita. Puede darse de baja en cualquier momento a través del enlace incluido en cada correo, y eliminaremos su dirección de la lista de distribución. Protegemos contra el spam los formularios de suscripción al Virtuse Brief y de la lista de espera de Virtuse CFO con Cloudflare Turnstile. Solo se ejecuta al enviar un formulario y comprueba datos técnicos de su navegador y su dirección IP (Cloudflare, encargado del tratamiento; transferencias según la sección 6). No lo utilizamos para publicidad ni para el seguimiento entre sitios.</div>
   </details>
 
   <details>
@@ -889,7 +889,7 @@
 
   <details>
     <summary>Finalidades y bases jurídicas (art. 6 RGPD)</summary>
-    <div class="faq-answer">Tratamos datos personales únicamente para: <strong>(a) enviarle el boletín</strong> que ha solicitado, base jurídica: consentimiento (art. 6.1.a), revocable en cualquier momento; <strong>(b) operar, proteger y depurar el sitio web</strong>, base jurídica: interés legítimo (art. 6.1.f) en mantener nuestro servicio disponible y seguro; y <strong>(c) cumplir obligaciones legales</strong> (art. 6.1.c) cuando así lo exija el derecho de la UE o de Eslovaquia. No vendemos datos personales ni los utilizamos para la toma de decisiones automatizada ni para elaborar perfiles en el sentido del art. 22 RGPD.</div>
+    <div class="faq-answer">Tratamos datos personales únicamente para: <strong>(a) enviarle el boletín</strong> que ha solicitado, base jurídica: consentimiento (art. 6.1.a), revocable en cualquier momento; <strong>(b) operar, proteger y depurar el sitio web</strong>, base jurídica: interés legítimo (art. 6.1.f) en mantener nuestro servicio disponible y seguro, incluida la protección de los formularios contra el spam mediante Cloudflare Turnstile; y <strong>(c) cumplir obligaciones legales</strong> (art. 6.1.c) cuando así lo exija el derecho de la UE o de Eslovaquia. No vendemos datos personales ni los utilizamos para la toma de decisiones automatizada ni para elaborar perfiles en el sentido del art. 22 RGPD.</div>
   </details>
 
   <details>
@@ -917,7 +917,7 @@
 
   <details>
     <summary>Servicios con los que se comunica su navegador en nuestras páginas</summary>
-    <div class="faq-answer">Algunas funciones cargan contenido o datos directamente desde terceros. Cuando esto ocurre, esos proveedores reciben técnicamente su dirección IP como parte de la solicitud, conforme a sus propias políticas de privacidad: <strong>Google Fonts</strong> (tipografías), <strong>jsDelivr</strong> (biblioteca de animación), <strong>WordPress/virtuse.com</strong> (artículos e imágenes del blog, nuestro propio servicio), <strong>mempool.space</strong>, <strong>CoinGecko</strong>, <strong>Binance</strong> y <strong>Alternative.me</strong> (datos de mercado y de red en directo, de solo lectura, para nuestras herramientas de datos de Bitcoin), además de <strong>bitcoinwave.net</strong> (el gráfico integrado de ciclos en escala raíz). Estas solicitudes no transmiten identificadores nuestros: ni inicio de sesión, ni cookies nuestras, nada más allá de lo que contiene cualquier solicitud de página web.</div>
+    <div class="faq-answer">Algunas funciones cargan contenido o datos directamente desde terceros. Cuando esto ocurre, esos proveedores reciben técnicamente su dirección IP como parte de la solicitud, conforme a sus propias políticas de privacidad: <strong>Google Fonts</strong> (tipografías), <strong>Cloudflare Turnstile</strong> (protección de formularios contra el spam, se carga solo al enviar un formulario), <strong>jsDelivr</strong> (biblioteca de animación), <strong>WordPress/virtuse.com</strong> (artículos e imágenes del blog, nuestro propio servicio), <strong>mempool.space</strong>, <strong>CoinGecko</strong>, <strong>Binance</strong> y <strong>Alternative.me</strong> (datos de mercado y de red en directo, de solo lectura, para nuestras herramientas de datos de Bitcoin), además de <strong>bitcoinwave.net</strong> (el gráfico integrado de ciclos en escala raíz). Estas solicitudes no transmiten identificadores nuestros: ni inicio de sesión, ni cookies nuestras, nada más allá de lo que contiene cualquier solicitud de página web. La excepción es Cloudflare Turnstile, que también evalúa características técnicas de su navegador para distinguir a una persona de un programa automático.</div>
   </details>
 
   <details>
@@ -1097,7 +1097,7 @@
     </div>
   </footer>
 
-<script src="../site-v2.js?v=18" defer></script>
+<script src="../site-v2.js?v=19" defer></script>
 <script src="../concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>

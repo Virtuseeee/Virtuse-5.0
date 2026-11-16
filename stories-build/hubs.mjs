@@ -686,11 +686,11 @@ ${pager.length ? `      <nav class="hub-pager" aria-label="${esc(S.pager)}">
 // WordPress HTML, so they are not skipped there): an optional third-party origin
 // stays only if a script the page runs mentions it. Keep OPTIONAL in step.
 const CSP_OPTIONAL = {
-  'script-src': ['https://cdn.jsdelivr.net'],
+  'script-src': ['https://cdn.jsdelivr.net', 'https://challenges.cloudflare.com'],
   'connect-src': ['https://blog.virtuse.com', 'https://api.coingecko.com', 'https://api.binance.com', 'https://mempool.space',
     'https://virtuse-newsletter.virtuse-ai.workers.dev', 'https://virtuse-newsletter-staging.virtuse-ai.workers.dev'],
   'frame-src': ['https://widget.firefish.io', 'https://www.youtube.com', 'https://www.youtube-nocookie.com', 'https://open.spotify.com',
-    'https://platform.twitter.com', 'https://twitter.com', 'https://x.com'],
+    'https://platform.twitter.com', 'https://twitter.com', 'https://x.com', 'https://challenges.cloudflare.com'],
 };
 function tightenCsp(h, pagePath) {
   const csp = /<meta http-equiv="Content-Security-Policy" content="([^"]*)">/;

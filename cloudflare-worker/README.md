@@ -516,3 +516,14 @@ the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret
 - Site: `verdict-lite.js?v=24` takes `session_id` out of the address after the return from Stripe (kept in `sessionStorage` `vb-verdict-sid` for the tab; the address becomes `?s=10`).
 - Not in this change: Turnstile. On the Brief forms it needs the widget and a CSP change on about 1,000 pages; on the withdrawal page it changes archived legal wording (`legal-archive/`) and the privacy text. Both wait for a decision. The KV counters are still not atomic (audit B2).
 - Tests: `test/form-guard.test.mjs`.
+
+## Turnstile on the public forms (16 Nov 2026, off on production)
+
+- Worker var `TURNSTILE_FORMS = "require"` plus the secret `TURNSTILE_SECRET_KEY` switch it on for `/subscribe`, `/send` and `/waitlist`. Without the var nothing changes; with the var but no secret the forms stay open and the Worker logs an error.
+- Switched on, a request without a valid token gets 403 `{ code: 'captcha', sitekey }`, before any limit is counted. `vb-api.js?v=3` on the site then loads Turnstile, gets a token and repeats the request once; later requests in the same tab bring a token straight away. While the switch is off the site loads nothing from Turnstile.
+- Same widget as the ecosystem form (site key in `src/config.js`, hostnames virtuse.com, www and staging).
+- **The Verdict forms are left out** (Ras, 2026-11-16): `/send` with source `verdict` (the Lite score email) and `/waitlist` with source `verdict_report` never ask for a token. They keep the per-IP limits and the hourly ceiling only.
+- Staging: the var is set in `[env.staging]`; the secret must be added once: `npx wrangler secret put TURNSTILE_SECRET_KEY --env staging`.
+- Privacy policy: sections 2, 3 and 5 name Turnstile for the Brief and waitlist forms (9 languages, added with this change; wording to be confirmed by the lawyer). Section 9 (Verdict) is unchanged, which is why the Verdict forms are left out.
+- Not covered: the Layer 2 capture form (`layer2-src/src/components/CaptureForm.tsx`) posts to `/send` on its own and is switched off on the site; give it the same retry before it is switched on. The withdrawal form has no Turnstile.
+- Every page that can run `vb-api.js` allows `https://challenges.cloudflare.com` in CSP `script-src` and `frame-src` (`i18n-tools/csp_tight.py`, `stories-build/hubs.mjs`; `i18n-tools/check_vb_api.py` checks it).

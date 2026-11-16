@@ -120,3 +120,83 @@ test('/verdict/report: a per-IP limit stops lookups before they reach Stripe', (
   assert.equal(e2.RATE_LIMIT_KV.store.size, 0);
   assert.ok(![...e.RATE_LIMIT_KV.store.keys()].some((k) => k.includes('1.2.3.4')), 'the IP is stored only as a hash');
 }));
+
+// Turnstile on the forms, behind the Worker var TURNSTILE_FORMS (off on production until switched on).
+async function withTurnstile(fn, { valid = 'good-token', hostname = 'virtuse.com' } = {}) {
+  const calls = [];
+  const orig = globalThis.fetch;
+  globalThis.fetch = async (url, init) => {
+    const u = String(url);
+    if (u.includes('challenges.cloudflare.com')) {
+      const token = init.body.get('response');
+      calls.push({ url: u, token });
+      return new Response(JSON.stringify({ success: token === valid, hostname, 'error-codes': token === valid ? [] : ['invalid-input-response'] }), { status: 200 });
+    }
+    calls.push({ url: u, body: typeof init?.body === 'string' ? JSON.parse(init.body) : null });
+    return new Response('{"id":"x"}', { status: 200 });
+  };
+  try { await fn(calls); } finally { globalThis.fetch = orig; }
+}
+const FORMS = [
+  ['/subscribe', { email: 't@b.co' }],
+  ['/waitlist', { email: 't@b.co', source: 'cfo_page' }],
+  ['/send', { email: 't@b.co', kind: 'result', source: 'stacking', payload: STACKING }],
+];
+
+test('Turnstile off (no TURNSTILE_FORMS): the forms work without a token and never call Turnstile', () => withTurnstile(async (calls) => {
+  const e = env({ TURNSTILE_SECRET_KEY: 'sec' });
+  for (const [path, body] of FORMS) assert.equal((await worker.fetch(post(path, body), e)).status, 200, path);
+  assert.ok(!calls.some((c) => c.url.includes('challenges.cloudflare.com')));
+}));
+
+test('Turnstile required: no token or a bad token -> 403 captcha with the site key, nothing sent or counted', () => withTurnstile(async (calls) => {
+  const e = env({ TURNSTILE_FORMS: 'require', TURNSTILE_SECRET_KEY: 'sec' });
+  for (const [path, body] of FORMS) {
+    for (const turnstile of [undefined, 'bad-token', 12345]) {
+      const res = await worker.fetch(post(path, { ...body, turnstile }), e);
+      assert.equal(res.status, 403, path);
+      const d = await res.json();
+      assert.equal(d.code, 'captcha');
+      assert.match(d.sitekey, /^0x4/);
+    }
+  }
+  assert.ok(!calls.some((c) => c.url.includes('api.resend.com')), 'no Resend call');
+  assert.equal(e.RATE_LIMIT_KV.store.size, 0, 'no limit counted');
+}));
+
+test('Turnstile required: a valid token lets each form through', () => withTurnstile(async (calls) => {
+  const e = env({ TURNSTILE_FORMS: 'require', TURNSTILE_SECRET_KEY: 'sec' });
+  for (const [path, body] of FORMS) assert.equal((await worker.fetch(post(path, { ...body, turnstile: 'good-token' }), e)).status, 200, path);
+  assert.equal(emails(calls).length, 3);
+}));
+
+test('Turnstile required: a token issued for another site is refused', () => withTurnstile(async () => {
+  const e = env({ TURNSTILE_FORMS: 'require', TURNSTILE_SECRET_KEY: 'sec' });
+  assert.equal((await worker.fetch(post('/subscribe', { email: 't@b.co', turnstile: 'good-token' }), e)).status, 403);
+}, { hostname: 'evil.example' }));
+
+test('Turnstile required but no secret on the Worker: the forms stay open', () => withTurnstile(async (calls) => {
+  const e = env({ TURNSTILE_FORMS: 'require' });
+  assert.equal((await worker.fetch(post('/subscribe', { email: 't@b.co' }), e)).status, 200);
+  assert.ok(!calls.some((c) => c.url.includes('challenges.cloudflare.com')));
+}));
+
+test('Turnstile required: honeypot and bad address are answered as before, and the staging dry run still needs the token', () => withTurnstile(async () => {
+  const e = env({ TURNSTILE_FORMS: 'require', TURNSTILE_SECRET_KEY: 'sec', SUBSCRIBE_DRY_RUN: '1' });
+  assert.equal((await worker.fetch(post('/subscribe', { email: 't@b.co', hp: 'x' }), e)).status, 200);
+  assert.equal((await worker.fetch(post('/subscribe', { email: 'nope' }), e)).status, 400);
+  assert.equal((await worker.fetch(post('/subscribe', { email: 't@b.co' }), e)).status, 403);
+  assert.deepEqual(await (await worker.fetch(post('/subscribe', { email: 't@b.co', turnstile: 'good-token' }), e)).json(), { ok: true, dryRun: true });
+}));
+
+test('Turnstile required: the Verdict forms never ask for a token (privacy section 9 does not name Turnstile)', () => withTurnstile(async (calls) => {
+  const e = env({ TURNSTILE_FORMS: 'require', TURNSTILE_SECRET_KEY: 'sec', RESEND_REPORT_AUDIENCE_ID: 'aud-r' });
+  const lite = { score: 75, grade: 'B', band: 0, gaps: ['tax', 'keys', 'heirs'], areas: { size: 7, reserve: 7, debt: 10, tax: 6, custody: 6, fall: 10 } };
+  const sent = await worker.fetch(post('/send', { email: 'v@b.co', kind: 'verdict_lite', source: 'verdict', payload: lite, lang: 'sk' }), e);
+  assert.equal(sent.status, 200);
+  assert.equal((await worker.fetch(post('/waitlist', { email: 'v@b.co', source: 'verdict_report' }), e)).status, 200);
+  assert.ok(!calls.some((c) => c.url.includes('challenges.cloudflare.com')));
+  // The same routes with another source still need it.
+  assert.equal((await worker.fetch(post('/waitlist', { email: 'v@b.co', source: 'cfo_page' }), e)).status, 403);
+  assert.equal((await worker.fetch(post('/send', { email: 'v@b.co', kind: 'result', source: 'stacking', payload: STACKING }), e)).status, 403);
+}));
