@@ -88,6 +88,8 @@ CSS = '''<style>
 .rc-link { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: 10px; padding: 10px 16px; font: 600 14px var(--sans); color: var(--text); text-decoration: none; white-space: nowrap; }
 .rc-link:hover { background: var(--card-hover); border-color: color-mix(in srgb, var(--c, var(--orange)) 50%, transparent); }
 .rc-chart canvas { display: block; width: 100%; height: 280px; }
+/* unslop 2026-11-16 (R3): the copy-link button is an outline button like the other .rc-link */
+.rc-share .rc-link { background: transparent; cursor: pointer; }
 .rc-share { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; margin-top: 12px; }
 .rc-share input { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; color: var(--text); font: 13px var(--sans); }
 .rc-legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin: -4px 0 10px; }
@@ -372,10 +374,10 @@ def calculator(L, t, links):
     <div class="rc-res">
       <div class="rc-verdict glow" id="rc-verdict" aria-live="polite"><i id="rc-icon" aria-hidden="true"></i><div><b id="rc-v-title">&hellip;</b><span id="rc-v-sub"></span></div></div>
       <div class="rc-grid" aria-live="polite">
-        <div class="rc-box acc-teal glow"><p>{r_btc}</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
-        <div class="rc-box acc-blue glow"><p>{r_val}</p><strong id="rc-r-val">&hellip;</strong><small>{r_val_s}</small></div>
-        <div class="rc-box acc-yellow glow"><p>{r_sp}</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
-        <div class="rc-box acc-purple glow"><p id="rc-r-need-l">{r_need}</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
+        <div class="rc-box glow"><p>{r_btc}</p><strong class="o" id="rc-r-btc">&hellip;</strong><small id="rc-r-btc-s"></small></div>
+        <div class="rc-box glow"><p>{r_val}</p><strong id="rc-r-val">&hellip;</strong><small>{r_val_s}</small></div>
+        <div class="rc-box glow"><p>{r_sp}</p><strong id="rc-r-sp">&hellip;</strong><small id="rc-r-sp-s"></small></div>
+        <div class="rc-box glow"><p id="rc-r-need-l">{r_need}</p><strong class="o" id="rc-r-need">&hellip;</strong><small id="rc-r-need-s"></small></div>
       </div>
       <div class="rc-cfo" id="rc-cfo" hidden>
         <p><b>{cfo_lbl}</b><br>{cfo_text}</p>
