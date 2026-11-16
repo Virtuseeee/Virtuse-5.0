@@ -506,3 +506,24 @@ the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret
 - **Sign-up after an unsubscribe** (`features/newsletter/brief-list.js`): when Resend answers "already exists", the Worker reads the contact (`GET /contacts/{email}`). If it is unsubscribed, it clears the flag (`PATCH /contacts/{email}`), adds the contact to the language's segment (`POST /contacts/{email}/segments/{id}`) and sends the welcome email. A current subscriber still gets nothing a second time. Paths are from Resend's API reference (read 2026-11-12); **not yet tried against the live Resend account**: test with one address before relying on it.
 - **Daily Brief check** (`features/brief-health/`, cron `40 6 * * *` UTC in `wrangler.toml`, production only): Pulse published in the last 4 h with Slovak copy on every item, `asset-returns.json` and `macro.json` on GitHub not older than 4 days, the newest EN and SK blog posts (8 h to 14 days old) have a story page on virtuse.com. Problems go in one email to `BRIEF_ALERT_TO` (optional var or secret), else `VERDICT_ALERT_TO`, else info@virtuse.com. A healthy day sends nothing. Local run against the live site: see the test `test/brief-health.test.mjs` and `checks.js` (`briefHealthProblems`).
 
+
+## Security audit fixes of 16 Nov 2026 (audits: B1, B3, B5, B6, B7)
+
+- **Hourly ceiling on form emails, for all visitors together** (`shared/email-cap.js`, `EMAIL_CAPS` in `config.js`): `/subscribe`, `/send` and `/waitlist` share 120 emails per clock hour; past that they answer 429 `{ code: 'busy' }` and send nothing. One internal note per hour goes to `FORM_ALERT_TO`, else `VERDICT_ALERT_TO`, else `VERDICT_RECEIPT_TO`, else info@virtuse.com. Override with the var `EMAIL_CAP_FORMS_PER_HOUR`. KV key `emailcap:<bucket>:<hour>`, a plain count.
+- **`/send` with `brief: true`** also counts against `/subscribe`'s sign-up limit (5 per IP and hour).
+- **`/verdict/withdraw`**: 3 statements per IP and hour (was 10). The statement always reaches Virtuse; the confirmation to the typed address has its own ceiling of 30 per hour for all visitors (`EMAIL_CAP_WITHDRAW_PER_HOUR`), past which the answer is `confirmed: false` and the page tells the consumer to keep it.
+- **`/verdict/report`**: 30 lookups per IP and hour (`REPORT_LOOKUPS_PER_HOUR`), counted before the call to Stripe.
+- Site: `verdict-lite.js?v=24` takes `session_id` out of the address after the return from Stripe (kept in `sessionStorage` `vb-verdict-sid` for the tab; the address becomes `?s=10`).
+- Not in this change: Turnstile. On the Brief forms it needs the widget and a CSP change on about 1,000 pages; on the withdrawal page it changes archived legal wording (`legal-archive/`) and the privacy text. Both wait for a decision. The KV counters are still not atomic (audit B2).
+- Tests: `test/form-guard.test.mjs`.
+
+## Turnstile on the public forms (16 Nov 2026, off on production)
+
+- Worker var `TURNSTILE_FORMS = "require"` plus the secret `TURNSTILE_SECRET_KEY` switch it on for `/subscribe`, `/send` and `/waitlist`. Without the var nothing changes; with the var but no secret the forms stay open and the Worker logs an error.
+- Switched on, a request without a valid token gets 403 `{ code: 'captcha', sitekey }`, before any limit is counted. `vb-api.js?v=3` on the site then loads Turnstile, gets a token and repeats the request once; later requests in the same tab bring a token straight away. While the switch is off the site loads nothing from Turnstile.
+- Same widget as the ecosystem form (site key in `src/config.js`, hostnames virtuse.com, www and staging).
+- **The Verdict forms are left out** (Ras, 2026-11-16): `/send` with source `verdict` (the Lite score email) and `/waitlist` with source `verdict_report` never ask for a token. They keep the per-IP limits and the hourly ceiling only.
+- Staging: the var is set in `[env.staging]`; the secret must be added once: `npx wrangler secret put TURNSTILE_SECRET_KEY --env staging`.
+- Privacy policy: sections 2, 3 and 5 name Turnstile for the Brief and waitlist forms (9 languages, added with this change; wording to be confirmed by the lawyer). Section 9 (Verdict) is unchanged, which is why the Verdict forms are left out.
+- Not covered: the Layer 2 capture form (`layer2-src/src/components/CaptureForm.tsx`) posts to `/send` on its own and is switched off on the site; give it the same retry before it is switched on. The withdrawal form has no Turnstile.
+- Every page that can run `vb-api.js` allows `https://challenges.cloudflare.com` in CSP `script-src` and `frame-src` (`i18n-tools/csp_tight.py`, `stories-build/hubs.mjs`; `i18n-tools/check_vb_api.py` checks it).

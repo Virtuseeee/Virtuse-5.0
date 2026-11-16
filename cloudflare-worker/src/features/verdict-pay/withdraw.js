@@ -2,7 +2,8 @@
 // § 20a; Directive (EU) 2023/2673). POST /verdict/withdraw { name, email, order, lang }.
 //
 // Open to anyone, with no account and no check against the order: a consumer must be
-// able to send the statement whatever we can look up. The Worker stores nothing. It
+// able to send the statement whatever we can look up. The Worker stores nothing about the person
+// (only the per-IP counter under a daily-salted hash and an hourly count of confirmations). It
 // emails the statement to Virtuse, which refunds through Stripe by hand within 14 days,
 // and sends the consumer the confirmation on a durable medium, with date and time.
 
@@ -12,7 +13,8 @@ import { json } from '../../http/responses.js';
 import { ipHash } from '../../shared/crypto.js';
 import { formatTimestamp } from './receipt.js';
 
-export const WITHDRAW_PER_HOUR = 10;
+// Per IP and hour. A consumer sends one statement; three leave room for a typo in the address.
+export const WITHDRAW_PER_HOUR = 3;
 const WINDOW_S = 60 * 60;
 const INBOX = 'info@virtuse.com';
 
@@ -97,6 +99,10 @@ export async function handleWithdraw(ctx) {
     console.error('verdict withdraw: inbox', e?.message);
     return json(502, { error: t.fail }, origin);
   }
+  // The statement above always reaches Virtuse. The confirmation goes to an address the sender
+  // typed, so it has an hourly ceiling for all visitors together: past it the page says the
+  // confirmation could not be sent (the withdrawal itself still counts and Virtuse has it).
+  if (await services.emailCap.exceeded('withdraw', now)) return json(200, { ok: true, at: mail.when, confirmed: false }, origin);
   let confirmed = true;
   try {
     await services.resend.sendEmail({

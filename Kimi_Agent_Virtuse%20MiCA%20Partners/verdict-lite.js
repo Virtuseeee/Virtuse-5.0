@@ -588,7 +588,7 @@
     if (window.VB_API) return Promise.resolve(window.VB_API);
     return window.VB_API_LOADING || (window.VB_API_LOADING = new Promise(function (ok, no) {
       var s = document.createElement('script');
-      s.src = '/vb-api.js?v=2';
+      s.src = '/vb-api.js?v=3';
       s.onload = function () { if (window.VB_API) ok(window.VB_API); else no(new Error('vb-api.js')); };
       s.onerror = function () { window.VB_API_LOADING = null; no(new Error('vb-api.js')); };
       document.head.appendChild(s);
@@ -881,13 +881,25 @@
   demoInit();
   var rdr = document.querySelector('.vl .radar');
   if (rdr) { if ('IntersectionObserver' in window) { var ro = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { rdr.classList.add('in'); ro.disconnect(); } }, { threshold: 0.3 }); ro.observe(rdr); } else rdr.classList.add('in'); }
+  // Back from Stripe with ?session_id=. The id opens the paid report, so it does not stay in the
+  // address (browser history, analytics page URL): it is kept for this tab only and the address
+  // becomes ?s=10, so a reload inside the 30 minutes still shows the report.
+  var SID = 'vb-verdict-sid';
   var sidM = /[?&]session_id=(cs_(?:test|live)_[A-Za-z0-9]+)/.exec(location.search);
-  if (sidM) { show(10); loadReport(sidM[1]); return; }
+  var sid = sidM ? sidM[1] : null;
+  if (sid) {
+    try { sessionStorage.setItem(SID, sid); } catch (e) {}
+    if (H) history.replaceState({ vl: 1, s: 10, i: 0, p: 0 }, '', url(10));
+  } else if (/[?&]s=10\b/.test(location.search)) {
+    try { sid = sessionStorage.getItem(SID); } catch (e) {}
+  }
+  if (sid) { show(10); loadReport(sid); return; }
   var canceled = /[?&]canceled=1\b/.test(location.search);
   var mm = /[?&]s=(\d+)/.exec(location.search);
   // First render: the step in the URL (after the guards), without a new history entry
   var first = guard(canceled ? (A.email ? 8 : 7) : mm ? mm[1] : 0);
   if (first === 6) first = done ? 7 : 1;
+  if (first === 10) first = 0;                  // the paid report needs its id (above)
   show(first);
   if (canceled) document.querySelectorAll('.ml-screen.on .ml-buy-msg').forEach(function (m) { m.textContent = S.buyCanceled; });
   if (H) { var hs = st(); history.replaceState({ vl: 1, s: first, i: hs ? hs.i : 0, p: hs ? hs.p : 0 }, '', url(first)); }

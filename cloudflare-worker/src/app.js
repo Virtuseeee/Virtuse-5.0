@@ -3,10 +3,13 @@
 // This is the only module that knows about every feature.
 
 import { handleResendWebhook } from './features/verdict-pay/alerts.js';
-import { SIGNUP_LIMIT, isAllowedOrigin } from './config.js';
+import { EMAIL_CAPS, SIGNUP_LIMIT, TURNSTILE_FORM_HOSTS, TURNSTILE_SITEKEY, isAllowedOrigin } from './config.js';
+import { clientIp } from './http/request.js';
 import { json, preflight } from './http/responses.js';
 import { ANY, on, pipeline, prefix } from './http/router.js';
 import { createResendClient } from './infra/resend.js';
+import { verifyTurnstile } from './infra/turnstile.js';
+import { createEmailCap } from './shared/email-cap.js';
 import { createKvLimiter } from './shared/rate-limiter.js';
 
 import { runBriefHealth } from './features/brief-health/handler.js';
@@ -35,6 +38,19 @@ function createServices(env, fetchImpl) {
     limiter,
     brief: createBriefList({ env, resend }),
     signupLimited: (ip) => limiter.exceeded(`ratelimit:${ip}`, SIGNUP_LIMIT.max, SIGNUP_LIMIT.windowSeconds),
+    // Hourly ceiling for all visitors together: sign-up and result emails share one budget,
+    // the withdrawal confirmation has its own (a flood of sign-ups must never use it up).
+    emailCap: createEmailCap({ env, limiter, resend, buckets: EMAIL_CAPS }),
+    // Turnstile on the public forms. Resolves null when the request may go on, else the 403
+    // the form's client (vb-api.js) answers by fetching a token and repeating the request.
+    // Off (null for everyone) unless TURNSTILE_FORMS=require; a missing secret also means off,
+    // loudly, so a setup slip never closes the forms.
+    async captcha(request, token, origin) {
+      if (env.TURNSTILE_FORMS !== 'require') return null;
+      if (!env.TURNSTILE_SECRET_KEY) { console.error('TURNSTILE_FORMS=require but TURNSTILE_SECRET_KEY is not set: forms stay open'); return null; }
+      const ok = await verifyTurnstile({ secret: env.TURNSTILE_SECRET_KEY, token, ip: clientIp(request), allowedHosts: TURNSTILE_FORM_HOSTS, fetchImpl });
+      return ok ? null : json(403, { error: 'Please confirm you are not a robot and try again.', code: 'captcha', sitekey: TURNSTILE_SITEKEY }, origin);
+    },
     verdictModel: { ask: (text, lang, profile) => askClaude(env, text, lang, profile) },
   };
 }

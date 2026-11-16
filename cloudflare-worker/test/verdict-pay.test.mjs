@@ -345,9 +345,11 @@ test('withdrawal: copy to Virtuse, confirmation with date and time, nothing stor
     assert.equal(m.sent[0].reply_to, 'anna@example.com');
     const html = m.sent[1].html;
     for (const part of ['Odstupujem od zmluvy', 'Anna Nová', 'anna@example.com', 'ABC123', d.at]) assert.ok(html.includes(part), part);
-    const keys = [...e.RATE_LIMIT_KV.store.keys()];
-    assert.equal(keys.length, 1);
-    assert.match(keys[0], /^verdict:withdraw:[a-f0-9]{64}$/);
+    // Two counters, neither about the person: the per-IP one (daily-salted hash) and the hourly count of confirmations.
+    const keys = [...e.RATE_LIMIT_KV.store.keys()].sort();
+    assert.equal(keys.length, 2);
+    assert.match(keys[0], /^emailcap:withdraw:\d{4}-\d\d-\d\dT\d\d$/);
+    assert.match(keys[1], /^verdict:withdraw:[a-f0-9]{64}$/);
     assert.ok(![...e.RATE_LIMIT_KV.store.values()].some((v) => String(v).includes('anna')));
   } finally { m.restore(); }
 });

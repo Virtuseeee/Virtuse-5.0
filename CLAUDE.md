@@ -6,8 +6,8 @@ Owner: Rastislav Vasilišin ("Ras"), Virtuse Wealth Management, a.s.
 Virtuse is a Bitcoin-only hub: it compares vetted partners and offers tools. It does not run
 an exchange and never holds client coins, keys or money.
 
-The session log that used to fill this file (8,788 lines, August to November 2026) is in git:
-`git show 7100111a8:CLAUDE.md`. Read the relevant entry there before touching an area you do
+The session log that used to fill this file (8,831 lines, August to 16 November 2026) is in git:
+`git show 8e0e397fb:CLAUDE.md`. Read the relevant entry there before touching an area you do
 not know; it records why things are the way they are. Do not paste session logs back here.
 
 ## Stack
@@ -25,6 +25,8 @@ not know; it records why things are the way they are. Do not paste session logs 
   withdraw, status), `/resend/webhook`, `/version`. Uses Resend (email), Stripe Checkout
   (the €14 Verdict report), KV (`RATE_LIMIT_KV`, `PULSE_KV`), Turnstile. Secrets live only in
   Wrangler (`wrangler secret put`), never in git, chat or files.
+  Forms (`/subscribe`, `/send`, `/waitlist`) share an hourly email cap; Turnstile on them is
+  required only where `TURNSTILE_FORMS=require` (staging; production waits for the lawyer).
 - **Tool modules**: `layer2-src/` (React + Vite) builds Partner Finder, Stacking, Loan and
   Tax Agent into `concierge-assets/` plus 40 page shells.
 - **Generators**: `seo-build/` (tax, fee index, DCA, DAC8, ecosystem pages), `stories-build/`

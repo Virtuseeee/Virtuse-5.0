@@ -891,7 +891,7 @@ function dac8Box(id, lang, relFile) {
   if (!d || !d.paths[lang] || !d.pages[lang]) return '';
   const pg = d.pages[lang];
   const target = d.paths[lang].replace(/index\.html$/, '');
-  return `<p class="dac8-note" style="border:1px solid var(--border-hover);border-radius:8px;padding:12px 14px;margin:16px 0"><strong>${esc(pg.boxText)}</strong> <a href="${esc(toRoot(relFile, target))}">${esc(pg.boxLink)} →</a></p>\n`;
+  return `<p class="dac8-note" style="border:1px solid var(--line-strong, rgba(255,255,255,.14));border-radius:12px;padding:12px 16px;margin:16px 0"><strong>${esc(pg.boxText)}</strong> <a href="${esc(toRoot(relFile, target))}">${esc(pg.boxLink)} →</a></p>\n`;
 }
 
 // --- EN tax hub ---
@@ -997,7 +997,7 @@ for (const c of COUNTRIES) {
   const faqs = taxFaqsEn(c);
   const answer = taxAnswerEn(c);
   const body = `
-<p>${esc(c.flag)} <strong>${esc(TheEn(c))}</strong> is one of the ${N} EU countries in this overview. ${esc(guideText('en', 'intro'))}</p>
+<p><strong>${esc(TheEn(c))}</strong> is one of the ${N} EU countries in this overview. ${esc(guideText('en', 'intro'))}</p>
 <h2>Rates and filing</h2>
 ${tableHtml(['Field', 'As of ' + asOfEn], [
   ['Tax on gains', esc(c.gainTax) + srcTag(c.id, 'gainTax', 'en')],
@@ -1063,7 +1063,7 @@ ${faqHtml(faqs, 'FAQ')}
     moduleCta: { href: toRoot(deRel, `de/${TAX_AGENT}?country=${c.id}`), label: `${nameDe(c.id)} im Tax Agent prüfen →` },
     schemas: [faqLd(faqsDe), sourcesLd(c.id, deRel, 'de')],
     bodyHtml: `
-<p>${esc(c.flag)} ${esc(guideText('de', 'intro'))}</p>
+<p>${esc(guideText('de', 'intro'))}</p>
 <h2>Sätze und Steuererklärung</h2>
 ${tableHtml(['Feld', 'Stand ' + asOfDe], [
   ['Gewinnsteuer', esc(d.gainTax) + srcTag(c.id, 'gainTax', 'de')],
@@ -1227,6 +1227,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>First-year fees</th><th>Note</th></tr></thead>
 <tbody id="dca-body">${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
 <p class="muted">Same formula as the live Stacking Strategist: first-year fees = (monthly contribution × fee % + fixed fee + monthly subscription) × 12, plus the fee % on the initial lump sum. Bitcoin price returns are deliberately left out.</p>
+<p>Planning further ahead? The <a href="${toRoot(relFile, 'retirement-calculator.html')}">Bitcoin retirement calculator</a> shows year by year whether a stack and a monthly plan could cover your spending in retirement.</p>
 ${faqHtml(faqs, 'FAQ')}
 `
   });
@@ -2140,7 +2141,7 @@ for (const c of COUNTRIES) {
     moduleCta: { href: toRoot(relFile, `sk/${TAX_AGENT}?country=${c.id}`), label: `Skontrolovať ${nameSk(c.id)} v Tax Agentovi →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'sk')],
     bodyHtml: `
-<p>${esc(c.flag)} ${esc(guideText('sk', 'intro'))}</p>
+<p>${esc(guideText('sk', 'intro'))}</p>
 <h2>Sadzby a daňové priznanie</h2>
 ${tableHtml(['Údaj', 'Stav ' + asOfSk], [
   ['Daň zo ziskov', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'sk')],
@@ -2569,7 +2570,7 @@ for (const c of COUNTRIES) {
     moduleCta: { href: toRoot(relFile, `cs/${TAX_AGENT}?country=${c.id}`), label: `Zkontrolovat ${accCs(c.id)} v Tax Agentovi →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'cs')],
     bodyHtml: `
-<p>${esc(c.flag)} ${esc(guideText('cs', 'intro'))}</p>
+<p>${esc(guideText('cs', 'intro'))}</p>
 <h2>Sazby a daňové přiznání</h2>
 ${tableHtml(['Údaj', 'Stav ' + asOfCs], [
   ['Daň ze zisků', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'cs')],
@@ -2898,7 +2899,7 @@ for (const c of COUNTRIES) {
     moduleCta: { href: toRoot(relFile, `pl/${TAX_AGENT}?country=${c.id}`), label: `Sprawdź ${accPl(c.id)} w Tax Agencie →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'pl')],
     bodyHtml: `
-<p>${esc(c.flag)} ${esc(guideText('pl', 'intro'))}</p>
+<p>${esc(guideText('pl', 'intro'))}</p>
 <h2>Stawki i zeznanie podatkowe</h2>
 ${tableHtml(['Pole', 'Stan na ' + asOfPl], [
   ['Podatek od zysków', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'pl')],
@@ -3225,7 +3226,7 @@ for (const c of COUNTRIES) {
     moduleCta: { href: toRoot(relFile, `hu/${TAX_AGENT}?country=${c.id}`), label: `${nameHu(c.id)} ellenőrzése a Tax Agentben →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'hu')],
     bodyHtml: `
-<p>${esc(c.flag)} ${esc(guideText('hu', 'intro'))}</p>
+<p>${esc(guideText('hu', 'intro'))}</p>
 <h2>Adókulcsok és bevallás</h2>
 ${tableHtml(['Adat', asOfHu + ' állapot'], [
   ['Nyereségadó', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'hu')],
@@ -3552,7 +3553,7 @@ for (const c of COUNTRIES) {
     moduleCta: { href: toRoot(relFile, `uk/${TAX_AGENT}?country=${c.id}`), label: `Перевірити ${accUk(c.id)} у Tax Agent →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'uk')],
     bodyHtml: `
-<p>${esc(c.flag)} ${esc(guideText('uk', 'intro'))}</p>
+<p>${esc(guideText('uk', 'intro'))}</p>
 <h2>Ставки й декларування</h2>
 ${tableHtml(['Поле', 'Станом на ' + asOfUk], [
   ['Податок на прибуток', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'uk')],
@@ -3881,7 +3882,7 @@ for (const c of COUNTRIES) {
     moduleCta: { href: toRoot(relFile, `ru/${TAX_AGENT}?country=${c.id}`), label: `Проверить ${accRu(c.id)} в Tax Agent →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'ru')],
     bodyHtml: `
-<p>${esc(c.flag)} ${esc(guideText('ru', 'intro'))}</p>
+<p>${esc(guideText('ru', 'intro'))}</p>
 <h2>Ставки и декларирование</h2>
 ${tableHtml(['Поле', 'По состоянию на ' + asOfRu], [
   ['Налог на прибыль', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'ru')],
@@ -4211,7 +4212,7 @@ for (const c of COUNTRIES) {
     moduleCta: { href: toRoot(relFile, `fr/${TAX_AGENT}?country=${c.id}`), label: `Vérifier ${defFr(c.id)} dans le Tax Agent →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'fr')],
     bodyHtml: `
-<p>${esc(c.flag)} ${esc(guideText('fr', 'intro'))}</p>
+<p>${esc(guideText('fr', 'intro'))}</p>
 <h2>Taux et déclaration</h2>
 ${tableHtml(['Champ', 'Au ' + asOfFr], [
   ['Impôt sur les plus-values', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'fr')],
@@ -4541,7 +4542,7 @@ for (const c of COUNTRIES) {
     moduleCta: { href: toRoot(relFile, `es/${TAX_AGENT}?country=${c.id}`), label: `Consultar ${defEs(c.id)} en el Tax Agent →` },
     schemas: [faqLd(faqs), sourcesLd(c.id, relFile, 'es')],
     bodyHtml: `
-<p>${esc(c.flag)} ${esc(guideText('es', 'intro'))}</p>
+<p>${esc(guideText('es', 'intro'))}</p>
 <h2>Tipos y declaración</h2>
 ${tableHtml(['Campo', 'Datos del ' + asOfEs], [
   ['Impuesto sobre las ganancias', esc(t.gainTax) + srcTag(c.id, 'gainTax', 'es')],

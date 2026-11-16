@@ -875,6 +875,12 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   .nav .nav-links a:not(.lang-opt) { padding: 7px 2px; font-size: 11px; }
   .nav-logo span { font-size: 18px !important; }
 }
+/* Unslop low pass 2026-11-16 (M2, M3) */
+.sec-label{background:none;font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--text-muted)}
+.legend-item{background:none;border:0;border-radius:0;padding:4px 18px 4px 0;font-weight:500}
+.legend-swatch{width:8px;height:8px;border-radius:50%}
+.chart-panel h3 .ico{display:none}
+@media (min-width:1248px){.status-section,.chart-section,.legend-section,.subnav-wrap{padding-left:0;padding-right:0}}
 </style>
 <script type="application/ld+json" id="virtuse-ld">
 {
@@ -1055,7 +1061,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
       <div class="tooltip" id="tooltip"></div>
     </div>
     <div class="chart-note">
-      Weekly closes from Binance (2017 onward) joined with interpolated monthly history (2011–2017); the moving average at each week uses the trailing 200 weeks. Touches of the 200 WMA marked the bear-market bottoms of 2015, 2018, and 2022. For the seasonal view, see <a href="btc-monthly-returns.html">Bitcoin monthly returns</a>. Not investment advice.
+      Weekly closes from Binance (2017 onward) joined with interpolated monthly history (2011–2017); the moving average at each week uses the trailing 200 weeks. Touches of the 200 WMA marked the bear-market bottoms of 2015, 2018, and 2022. For the seasonal view, see <a href="btc-monthly-returns.html">Bitcoin monthly returns</a>. To see how a stack lasts through retirement year by year, try the <a href="retirement-calculator.html">Bitcoin retirement calculator</a>. Not investment advice.
     </div>
   </div>
 </section>
@@ -1254,11 +1260,11 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
 
   function zoneFor(mult) {
     if (mult == null) return { label: '—', color: '#484f58' };
-    if (mult < 1.0) return { label: 'Below the Floor — Historically Rare', color: '#3fb950' };
-    if (mult < 1.6) return { label: 'Near the Floor — Deep Value Zone', color: '#63be7b' };
-    if (mult < 3.0) return { label: 'Mid-Cycle Territory', color: '#ffe600' };
-    if (mult < 5.0) return { label: 'Heated — Well Above the Floor', color: '#f6a55a' };
-    return { label: 'Euphoria — Stretched Far Above the Floor', color: '#c00000' };
+    if (mult < 1.0) return { label: 'Below the floor · historically rare', color: '#3fb950' };
+    if (mult < 1.6) return { label: 'Near the floor · deep value zone', color: '#63be7b' };
+    if (mult < 3.0) return { label: 'Mid-cycle territory', color: '#ffe600' };
+    if (mult < 5.0) return { label: 'Heated · well above the floor', color: '#f6a55a' };
+    return { label: 'Euphoria · stretched far above the floor', color: '#c00000' };
   }
 
   var view = null;
@@ -1401,8 +1407,14 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     document.getElementById('statusWma').textContent = fmtUsd(last.wma);
     var z = zoneFor(mult);
     var chip = document.getElementById('bandChip');
-    chip.textContent = mult.toFixed(2) + '× — ' + z.label;
-    chip.style.background = z.color;
+    chip.textContent = '';
+    var dot = document.createElement('i');
+    dot.style.cssText = 'display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:10px;vertical-align:1px;background:' + z.color;
+    chip.appendChild(dot);
+    chip.appendChild(document.createTextNode(mult.toFixed(2) + '× · ' + z.label));
+    chip.style.background = '#1c1c1c';
+    chip.style.color = '#e6edf3';
+    chip.style.boxShadow = 'inset 0 0 0 1px rgba(255,255,255,0.14)';
   }
 
   // Live weekly series only: the 2011-2017 seed alone is never shown as "today" (audit 2026-10-15, P0-1).

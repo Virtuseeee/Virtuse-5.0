@@ -1,4 +1,4 @@
-// POST /subscribe  { email, hp, lang }
+// POST /subscribe  { email, hp, lang, turnstile? }
 //
 // hp is the honeypot (must be empty). lang picks the welcome email and the
 // Resend segment (see welcome.js, segments.js); anything else becomes 'en'.
@@ -12,7 +12,7 @@ export async function handleSubscribe({ request, env, origin, services }) {
   const body = await readJson(request);
   if (!body.ok) return json(400, { error: 'Invalid JSON body' }, origin);
 
-  const { email, hp, lang: rawLang } = body.value || {};
+  const { email, hp, lang: rawLang, turnstile } = body.value || {};
   const lang = welcomeLang(rawLang);
 
   // A bot filled the hidden field: pretend success, do nothing.
@@ -22,12 +22,17 @@ export async function handleSubscribe({ request, env, origin, services }) {
     return json(400, { error: 'Please enter a valid email address.' }, origin);
   }
 
+  const blocked = await services.captcha(request, turnstile, origin);
+  if (blocked) return blocked;
+
   // Staging (SUBSCRIBE_DRY_RUN=1): answer like a real sign-up, store and send nothing.
   if (env.SUBSCRIBE_DRY_RUN === '1') return json(200, { ok: true, dryRun: true }, origin);
 
   if (await services.signupLimited(clientIp(request))) {
     return json(429, { error: 'Too many attempts. Please try again later.' }, origin);
   }
+
+  if (await services.emailCap.exceeded('forms')) return json(429, { error: 'Too many requests right now. Please try again in an hour.', code: 'busy' }, origin);
 
   try {
     await services.brief.join(email, lang);
