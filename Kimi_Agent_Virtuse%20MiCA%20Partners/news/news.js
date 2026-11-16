@@ -41,7 +41,7 @@
       tagNames: { ETF: 'ETF', Macro: 'Makro', World: 'Svet', Policy: 'Regulácia', Mining: 'Ťažba', Security: 'Bezpečnosť' },
       inEnglish: 'Text v angličtine', source: 'Zdroj', ecbRate: 'Sadzba ECB (depozitná)', btcEur: 'BTC v EUR', skInfl: 'Inflácia na Slovensku', nextDecision: 'ďalšie rozhodnutie',
       deskUpdated: 'Aktualizované ', nextLabel: 'Najbližšie: ', latestIssue: 'Najnovšie vydanie', perOz: 'za uncu', perBarrel: 'za barel', hikeOdds: 'šanca na zvýšenie', cutOdds: 'šanca na zníženie', holdOdds: 'šanca na bez zmeny',
-      bp: 'b. b.', nextShort: 'ďalej', magazine: 'Magazín', minAgo: 'min', hAgo: 'h', dAgo: 'd', d30: '30 d', estimate: 'odhad',
+      bp: 'bázických bodov', nextShort: 'ďalej', magazine: 'Magazín', minAgo: 'min', hAgo: 'h', dAgo: 'd', d30: '30 d', estimate: 'odhad',
       diffSub: function (p, b, h) { return 'Hotových ' + p + ' obdobia. Ostáva ' + b + ' blokov, asi ' + h + '.'; },
       feeSub: { low: 'Nízky. Bežná platba stojí pár centov.', normal: 'Bežný. Platba stojí výrazne menej ako dolár.', high: 'Vysoký. Malé platby môžu počkať na lacnejší blok.' },
       halvSub: function (blk, when, r) { return 'Blok ' + blk + ', približne ' + when + '. Odmena klesne na ' + r + ' BTC.'; },
@@ -141,10 +141,18 @@
     if (eh >= 1000) return (eh / 1000).toFixed(2) + ' ZH/s';
     return num(eh, eh >= 100 ? 0 : 1) + ' EH/s';
   }
+  /* Basis points in words: SK declines by number (1 bázický bod, 2-4 bázické body, else bázických bodov). */
+  function bpWord(n) {
+    if (LANG !== 'sk') return tr('bp');
+    var a = Math.abs(n);
+    return a === 1 ? 'bázický bod' : (a >= 2 && a <= 4) ? 'bázické body' : tr('bp');
+  }
+  /* A bare YYYY-MM-DD is a calendar date (read in UTC so it never shifts a day); a full stamp is shown in the desk's zone. */
   function fmtDate(iso) {
-    var d = new Date(iso);
+    var bare = /^\d{4}-\d\d-\d\d$/.test(String(iso || ''));
+    var d = new Date(bare ? iso + 'T12:00:00Z' : iso);
     if (isNaN(d.getTime())) return '';
-    return d.toLocaleDateString(LANG === 'sk' ? 'sk-SK' : 'en-GB', { day: 'numeric', month: LANG === 'sk' ? 'long' : 'short', year: 'numeric' });
+    return d.toLocaleDateString(LANG === 'sk' ? 'sk-SK' : 'en-GB', { timeZone: bare ? 'UTC' : DESK_TZ, day: 'numeric', month: LANG === 'sk' ? 'long' : 'short', year: 'numeric' });
   }
   /* Edition links go straight to /stories/<slug>/. A missing story page falls back to the
      stories hub (the server 301s article.html?slug= there too). data-issue-slug marks them. */
@@ -458,7 +466,7 @@
     var d = new Date(String(ymd).slice(0, 10) + 'T12:00:00Z');
     if (isNaN(d.getTime())) return ymd;
     return LANG === 'sk'
-      ? d.getUTCDate() + '. ' + (d.getUTCMonth() + 1) + '.'
+      ? d.getUTCDate() + '.\u00a0' + (d.getUTCMonth() + 1) + '.'
       : d.getUTCDate() + ' ' + 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ')[d.getUTCMonth()];
   }
   function link(href, text, cls) {
@@ -532,7 +540,7 @@
       setText('rowUs10', pctStr(q.us10y.value, 2));
       var bp = q.us10y.prev != null ? Math.round((q.us10y.value - q.us10y.prev) * 100) : null;
       var el = $('rowUs10Chg');
-      if (el && bp != null) { el.textContent = (bp > 0 ? '+' : '') + bp + ' ' + tr('bp') + ' · ' + tr('d1'); el.className = pctClass(bp); }
+      if (el && bp != null) { el.textContent = (bp > 0 ? '+' : '') + bp + '\u00a0' + bpWord(bp) + ' · ' + tr('d1'); el.className = pctClass(bp); }
     }
   }
   /* Central banks: rate, last move, next decision, Kalshi odds where there are any. */
@@ -546,8 +554,8 @@
       v.title = b.label + ' · ' + b.source;
       var bits = [];
       var lm = b.last_move;
-      if (lm && lm.bp) bits.push((lm.dir === 'down' ? '\u25BC ' : '\u25B2 ') + lm.bp + ' ' + tr('bp') + ', ' + dayShort(lm.date));
-      if (b.next_meeting) bits.push(tr('nextShort') + ' ' + dayShort(b.next_meeting));
+      if (lm && lm.bp) bits.push((lm.dir === 'down' ? '\u25BC ' : '\u25B2 ') + lm.bp + '\u00a0' + bpWord(lm.bp) + ', ' + dayShort(lm.date));
+      if (b.next_meeting) bits.push(tr('nextShort') + '\u00a0' + dayShort(b.next_meeting));
       var e = b.expects;
       if (e && e.prob != null && e.scenario && e.meeting === b.next_meeting) {
         var kind = /hike/i.test(e.scenario) ? 'hikeOdds' : /cut/i.test(e.scenario) ? 'cutOdds' : 'holdOdds';
@@ -1333,9 +1341,10 @@
   var magSig = '';
   function magItems(posts) {
     var skip = {}, out = [];
-    ISSUES.forEach(function (i) { if (isIssue(i)) skip[i.slug] = true; });
+    var lead = ISSUES.filter(isIssue)[0];
+    ISSUES.forEach(function (i) { if (isIssue(i) && i !== lead) skip[i.slug] = true; });
     ISSUES.forEach(function (i) {
-      if (i && i.essay && i.slug && !skip[i.slug]) { skip[i.slug] = true; out.push(fromIssue(i)); }
+      if (i && (i.essay || i === lead) && i.slug && !skip[i.slug]) { skip[i.slug] = true; out.push(fromIssue(i)); }
     });
     (posts || []).forEach(function (p) {
       if (!p || !p.slug || skip[p.slug]) return;
@@ -1347,11 +1356,13 @@
   }
   /* WordPress unreachable and nothing cached: essays and the newest issues, newest first. */
   function fallbackItems() {
-    return magItems([]).concat(ISSUES.filter(isIssue).map(fromIssue)).sort(function (a, b) { return dateMs(b.date) - dateMs(a.date); });
+    var items = magItems([]), seen = {};
+    items.forEach(function (x) { seen[x.slug] = true; });
+    return items.concat(ISSUES.filter(function (i) { return isIssue(i) && !seen[i.slug]; }).map(fromIssue)).sort(function (a, b) { return dateMs(b.date) - dateMs(a.date); });
   }
   function paintMagazine(items) {
     if (items.length < 2) items = fallbackItems();
-    var sig = items.slice(0, 2 + BLOG_MAX).map(function (x) { return x.slug + '|' + x.image; }).join(',');
+    var sig = items.slice(0, 2 + BLOG_MAX).map(function (x) { return [x.slug, x.image, x.date, x.title, x.excerpt].join('|'); }).join(',');
     if (!items.length || sig === magSig) return;
     magSig = sig;
     fillStory('heroLead', items[0], LEAD_SIZES, true);
@@ -1378,7 +1389,7 @@
   function loadMagazine() {
     var cached = cachedMag();
     if (cached) paintMagazine(cached);
-    j(WP + '?categories=' + BLOG_CATS + '&per_page=12&orderby=date&order=desc&_embed=wp:featuredmedia', 8000).then(function (posts) {
+    j(WP + '?categories=' + BLOG_CATS + '&per_page=12&orderby=date&order=desc&_embed=wp:featuredmedia', 20000).then(function (posts) {
       remember(posts);
       var items = magItems(posts || []);
       if (items.length) saveMag(items);
@@ -1389,7 +1400,7 @@
     });
   }
 
-  j(LANG === 'sk' ? '/news/issues-sk.json?v=20261116' : '/news/issues.json?v=20261116').then(function (data) {
+  j(LANG === 'sk' ? '/news/issues-sk.json?v=20261116c' : '/news/issues.json?v=20261116c').then(function (data) {
     ISSUES = ((data && data.issues) || []).filter(Boolean);
     paintIssues(ISSUES);
     loadMagazine();
@@ -1397,7 +1408,7 @@
     var slugs = [];
     ISSUES.filter(isIssue).slice(0, ISSUES_MAX).forEach(function (i) { if (slugs.indexOf(i.slug) < 0) slugs.push(i.slug); });
     if (slugs.length) {
-      j(WP + '?slug=' + encodeURIComponent(slugs.join(',')) + '&per_page=20&_embed=wp:featuredmedia', 8000).then(function (posts) {
+      j(WP + '?slug=' + encodeURIComponent(slugs.join(',')) + '&per_page=20&_embed=wp:featuredmedia', 20000).then(function (posts) {
         remember(posts);
         upgradeImages();
       }).catch(function () { /* keep full-size covers */ });
@@ -1459,7 +1470,7 @@
     var mined = 0, r = 50, done = 0;
     while (done + 210000 <= h) { mined += r * 210000; done += 210000; r /= 2; }
     mined += (h - done + 1) * r;
-    setText('dMined', (LANG === 'sk' ? fmtNum(mined / 1e6, 2) + ' mil. BTC' : fmtNum(mined / 1e6, 2) + 'M BTC'));
+    setText('dMined', (LANG === 'sk' ? fmtNum(mined / 1e6, 2) + '\u00a0milióna BTC' : fmtNum(mined / 1e6, 2) + 'M BTC'));
     bar('dMinedBar', mined / 21e6);
     setText('dMinedSub', tr('minedSub')(pctPlain(mined / 21e6 * 100, 1)));
   }
