@@ -198,8 +198,91 @@
     var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(renderChart, 150); });
   }
 
+  /* ---------------- phase 2: mutual funds and ETFs ---------------- */
+  var P = { type: 'all', mode: 'nominal', key: null, dir: 1 };
+  function dateStr(iso) {
+    var p = iso.split('-');
+    return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])).toLocaleDateString(CFG.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).replace(/\./g, '');
+  }
+  function cell2(o) { return '<td>' + (val(o) == null ? na(o) : nf(o.value * 100, 2) + (CFG.pctSpace ? ' %' : '%')) + '</td>'; }
+  function ret2(f, y) { return f[(P.mode === 'real' ? 'real' : 'return') + y + 'y']; }
+  function p2ref() {
+    var c = {}, best = null;
+    D.investmentFunds.funds.forEach(function (f) { c[f.asOf] = (c[f.asOf] || 0) + 1; });
+    Object.keys(c).forEach(function (d) { if (!best || c[d] > c[best] || (c[d] === c[best] && d > best)) best = d; });
+    return best;
+  }
+  function row2(f) {
+    if (!f) {
+      var d = p2ref(), b = D.investmentFunds.bitcoin[d], nb = '<td><abbr title="' + esc(T.p2_btc_cost) + '">' + T.c_na + '</abbr></td>';
+      var h = '<tr><td class="fvb-f"><b>Bitcoin</b><span>' + T.p2_btc_sub.replace('{d}', dateStr(d)) + '</span></td><td class="fvb-t">' + T.type_bitcoin + '</td>';
+      [1, 5, 10].forEach(function (y) { h += cell(ret2(b, y)); });
+      return h + nb + nb + nb + '<td class="fvb-d"><a href="https://docs.coinmetrics.io/asset-metrics/market/priceusd" target="_blank" rel="noopener">CoinMetrics</a></td></tr>';
+    }
+    var r = '<tr data-id="' + f.id + '" data-type="' + f.type + '"><td class="fvb-f"><b>' + esc(f.name) + '</b><span>' + esc(f.company) + ' · ' + f.isin +
+      '</span></td><td class="fvb-t">' + T['p2_type_' + f.type] + '</td>';
+    [1, 5, 10].forEach(function (y) { r += cell(ret2(f, y)); });
+    r += cell2(f.ongoingCosts) + cell2(f.entryCostMax) + cell2(f.exitCost);
+    return r + '<td class="fvb-d"><a href="' + esc(f.kidUrl) + '" target="_blank" rel="noopener">' + T.p2_kid + '</a> · <a href="' + esc(f.factsheetUrl) +
+      '" target="_blank" rel="noopener">' + T.p2_fs + '</a><span>' + T.p2_asof.replace('{d}', dateStr(f.asOf)) + '</span></td></tr>';
+  }
+  function sortVal2(f, k) {
+    switch (k) {
+      case 'name': return f.name.toLowerCase();
+      case 'type': return T['p2_type_' + f.type];
+      case 'r1': return val(ret2(f, 1));
+      case 'r5': return val(ret2(f, 5));
+      case 'r10': return val(ret2(f, 10));
+      case 'oc': return val(f.ongoingCosts);
+      case 'entry': return val(f.entryCostMax);
+      case 'exit': return val(f.exitCost);
+    }
+    return null;
+  }
+  function renderP2() {
+    var all = D.investmentFunds.funds, list = all.filter(function (f) { return P.type === 'all' || f.type === P.type; });
+    if (P.key) {
+      list.sort(function (a, b) {
+        var x = sortVal2(a, P.key), y = sortVal2(b, P.key);
+        if (x == null && y == null) return 0;
+        if (x == null) return 1;
+        if (y == null) return -1;
+        return (x < y ? -1 : x > y ? 1 : 0) * P.dir;
+      });
+    }
+    document.querySelector('#fvbP2Table tbody.fvb-ref').innerHTML = row2(null);
+    $('fvbP2Rows').innerHTML = list.map(row2).join('');
+    $('fvbP2Count').textContent = T.c_count.replace('{n}', list.length).replace('{t}', all.length);
+    document.querySelectorAll('#fvbP2Table thead th').forEach(function (th) {
+      if (th.dataset.k === P.key) th.setAttribute('aria-sort', P.dir > 0 ? 'ascending' : 'descending');
+      else th.removeAttribute('aria-sort');
+    });
+  }
+  function wireP2() {
+    if (!D.investmentFunds || !$('fvbP2Ctrl')) return;
+    $('fvbP2Ctrl').classList.remove('fvb-wait');
+    $('fvbP2Type').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      P.type = b.dataset.type; press($('fvbP2Type'), 'data-type', P.type); renderP2();
+    });
+    $('fvbP2Mode').addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      P.mode = b.dataset.mode; press($('fvbP2Mode'), 'data-mode', P.mode); renderP2();
+    });
+    $('fvbP2Reset').addEventListener('click', function () { P.key = null; P.dir = 1; renderP2(); });
+    document.querySelectorAll('#fvbP2Table thead th').forEach(function (th) {
+      var btn = th.querySelector('button'); if (!btn) return;
+      btn.addEventListener('click', function () {
+        var k = th.dataset.k;
+        if (P.key === k) P.dir = -P.dir; else { P.key = k; P.dir = (k === 'name' || k === 'type') ? 1 : -1; }
+        renderP2();
+      });
+    });
+    renderP2();
+  }
+
   fetch(CFG.data, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (d) { D = d; wire(); renderTable(); })
+    .then(function (d) { D = d; wire(); renderTable(); wireP2(); })
     .catch(function () {
       var n = document.querySelector('#chart .fvb-note'); if (n) n.textContent = T.c_err;
     });
