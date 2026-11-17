@@ -62,10 +62,13 @@ CLUSTER = {
     'wma': {'en': ('Bitcoin 200-week moving average', "Bitcoin's long-term average price, updated daily."),
             'sk': ('200-týždňový kĺzavý priemer Bitcoinu', 'Dlhodobá priemerná cena Bitcoinu, aktualizovaná každý deň.')},
     'y2025': {'en': ('Bitcoin returns 2025', 'Month by month, with the year’s high, low and drawdown.')},
+    # Funds vs Bitcoin (handover PROMPT-claude-fondy-vs-bitcoin-2026-11-17), en + sk only
+    'fvb': {'en': ('Funds vs Bitcoin', 'Slovak second-pillar pension funds next to Bitcoin, in euros.'),
+            'sk': ('Fondy druhého piliera vs Bitcoin', 'Všetky fondy druhého piliera vedľa Bitcoinu, v eurách.')},
 }
 HUB_KEYS_LANG = {
-    ('retirement', 'en'): ['mr', 'wma', 'y2025', 'stacking', 'data', 'concierge'],
-    ('retirement', 'sk'): ['mr', 'wma', 'stacking', 'data', 'news', 'concierge'],
+    ('retirement', 'en'): ['mr', 'wma', 'y2025', 'stacking', 'fvb', 'concierge'],
+    ('retirement', 'sk'): ['mr', 'wma', 'stacking', 'fvb', 'news', 'concierge'],
 }
 
 
@@ -276,6 +279,8 @@ def href_of(key, L):
         return _page(L, 'ma-200w.html')
     if key == 'y2025':
         return '/bitcoin-returns/2025/'
+    if key == 'fvb':
+        return '/sk/fondy-vs-bitcoin.html' if L == 'sk' else '/funds-vs-bitcoin.html'
     files = {
         'secure': 'secure.html', 'concierge': 'concierge.html', 'buy': 'buy-bitcoin.html',
         'stacking': 'stacking.html', 'retirement': 'retirement-calculator.html',

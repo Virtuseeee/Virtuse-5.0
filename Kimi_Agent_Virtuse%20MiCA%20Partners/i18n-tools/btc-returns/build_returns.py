@@ -112,7 +112,7 @@ HUB_RELATED = [
     ('/retirement-calculator.html', 'Bitcoin retirement calculator', 'How much Bitcoin a retirement plan might need.'),
     ('/asset-returns.html', 'Asset returns', 'Bitcoin against stocks, bonds and gold, year by year.'),
     ('/bitcoin-dca-calculator/', 'DCA calculator', 'What regular weekly or monthly buys would have returned.'),
-    ('/rainbow-chart.html', 'Rainbow chart', 'Price history on a log scale in nine colour bands.'),
+    ('/funds-vs-bitcoin.html', 'Funds vs Bitcoin', 'Slovak second-pillar pension funds next to Bitcoin, in euros.'),
     ('/bitcoin-vs-gold.html', 'Bitcoin vs gold', 'Returns against gold, silver and oil since 2016.'),
 ]
 HUB_SRC_SK = os.path.join(TOOLS, 'legacy', 'src', 'sk', HUB)
