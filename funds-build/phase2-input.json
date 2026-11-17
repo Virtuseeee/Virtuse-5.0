@@ -1,0 +1,1054 @@
+{
+ "scope": "Podielové fondy predávané bežným klientom na Slovensku a veľké svetové ETF, triedy podielov v eurách (ETF aj v dolároch, ak je to ich základná mena).",
+ "selection": "Oficiálne údaje o predanosti fondov na Slovensku sme nemali (štatistiky asociácie správcovských spoločností sa nám nepodarilo stiahnuť), preto priehľadný náhradný ukazovateľ: (1) slovenské fondy štyroch najväčších retailových správcov (Erste, Tatra, Eurizon, IAD), najväčšie podľa majetku fondu zo správ správcov; (2) zahraničné fondy veľkých správcov, ktorých trieda v eurách má kľúčový informačný dokument v slovenčine; (3) najväčšie široké ETF podľa majetku podľa emitenta. Hviezdičky, ratingy ani poradie EIC sme nepoužili.",
+ "eicNote": "Zoznam EIC Fund Ratings 2024 slúžil len ako zoznam názvov zahraničných fondov, ktoré sa v regióne predávajú. Žiadna hodnota z neho nie je v tomto súbore ani na stránke.",
+ "collected": "2026-11-17",
+ "funds": [
+  {
+   "id": "erste-fond-maximalizovanych-vynosov",
+   "name": "Fond maximalizovaných výnosov",
+   "isin": "SK3110000377",
+   "manager": "Erste Asset Management",
+   "domicile": "SK",
+   "type": "equity",
+   "inception": "2007-04-03",
+   "sri": 4,
+   "netAssets": {
+    "value": 1231040000,
+    "unit": "EUR",
+    "asOf": "2026-10-30",
+    "url": "https://data.erste-am.com/gem/erste-am/getDocumentContent/ed84dd0d-9af2-479d-8668-e28970d4c6c8"
+   },
+   "kid": {
+    "url": "https://data.erste-am.com/gem/erste-am/getDocumentContent/e74f26d1-ce2a-49ae-97e0-e97fbe557d7a",
+    "date": "2026-01-26",
+    "language": "sk",
+    "entryCostMax": 2.0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 1.85,
+    "transactionCosts": 0.09,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://data.erste-am.com/gem/erste-am/getDocumentContent/ed84dd0d-9af2-479d-8668-e28970d4c6c8",
+    "asOf": "2026-10-30",
+    "return1y": 7.6,
+    "return5yPa": 3.4,
+    "return10yPa": 9.3,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {},
+   "selectionNote": "Traja najväčší retailoví správcovia podľa majetku fondu zo správ správcu k 30 októbra 2026; tretí fond vybraný kvôli mixu typov (akciový, zmiešaný, dlhopisový). Vynechané: fondy peňažného trhu, špeciálne realitné fondy, privátne a uzavreté fondy."
+  },
+  {
+   "id": "erste-aktivne-portfolio",
+   "name": "Aktívne portfólio",
+   "isin": "SK3110000336",
+   "manager": "Erste Asset Management",
+   "domicile": "SK",
+   "type": "mixed",
+   "inception": "2002-09-02",
+   "sri": 2,
+   "netAssets": {
+    "value": 516980000,
+    "unit": "EUR",
+    "asOf": "2026-10-30",
+    "url": "https://data.erste-am.com/gem/erste-am/getDocumentContent/54f00965-d11d-407f-92b3-c92787f1a12b"
+   },
+   "kid": {
+    "url": "https://data.erste-am.com/gem/erste-am/getDocumentContent/0d0821fb-390c-412b-a559-229736c72c42",
+    "date": "2026-01-26",
+    "language": "sk",
+    "entryCostMax": 1.5,
+    "exitCost": 0,
+    "managementAndOtherCosts": 2.06,
+    "transactionCosts": 0.02,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://data.erste-am.com/gem/erste-am/getDocumentContent/54f00965-d11d-407f-92b3-c92787f1a12b",
+    "asOf": "2026-10-30",
+    "return1y": 6.5,
+    "return5yPa": 3.1,
+    "return10yPa": 2.8,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {},
+   "selectionNote": "Traja najväčší retailoví správcovia podľa majetku fondu zo správ správcu k 30 októbra 2026; tretí fond vybraný kvôli mixu typov (akciový, zmiešaný, dlhopisový). Vynechané: fondy peňažného trhu, špeciálne realitné fondy, privátne a uzavreté fondy."
+  },
+  {
+   "id": "erste-eurovy-dlhopisovy-fond",
+   "name": "Eurový dlhopisový fond",
+   "isin": "SK3110000328",
+   "manager": "Erste Asset Management",
+   "domicile": "SK",
+   "type": "bond",
+   "inception": "2001-10-24",
+   "sri": 2,
+   "netAssets": {
+    "value": 240220000,
+    "unit": "EUR",
+    "asOf": "2026-10-30",
+    "url": "https://data.erste-am.com/gem/erste-am/getDocumentContent/fc0933d1-6536-4a9c-bf3c-e500f3c61691"
+   },
+   "kid": {
+    "url": "https://data.erste-am.com/gem/erste-am/getDocumentContent/1883b7da-f017-41c1-98fb-be6f5257d9e1",
+    "date": "2026-01-26",
+    "language": "sk",
+    "entryCostMax": 1.0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 0.95,
+    "transactionCosts": 0.04,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://data.erste-am.com/gem/erste-am/getDocumentContent/fc0933d1-6536-4a9c-bf3c-e500f3c61691",
+    "asOf": "2026-10-30",
+    "return1y": -0.6,
+    "return5yPa": -0.2,
+    "return10yPa": -0.2,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {},
+   "selectionNote": "Traja najväčší retailoví správcovia podľa majetku fondu zo správ správcu k 30 októbra 2026; tretí fond vybraný kvôli mixu typov (akciový, zmiešaný, dlhopisový). Vynechané: fondy peňažného trhu, špeciálne realitné fondy, privátne a uzavreté fondy."
+  },
+  {
+   "id": "tam-dlhopisovy-fond",
+   "name": "Dlhopisový fond",
+   "isin": "SK3110000146",
+   "manager": "Tatra Asset Management",
+   "domicile": "SK",
+   "type": "bond",
+   "inception": "1998-05-04",
+   "sri": 2,
+   "netAssets": {
+    "value": 332104161,
+    "unit": "EUR",
+    "asOf": "2026-10-30",
+    "url": "https://www.tatrabanka.sk/files/archiv/tam/dokumenty/mesacne-reporty/tam-dpf_mr.pdf"
+   },
+   "kid": {
+    "url": "https://www.tatrabanka.sk/files/archiv/tam/dokumenty/klucove-informacie/dki_dpf.pdf",
+    "date": "2026-02-11",
+    "language": "sk",
+    "entryCostMax": 0,
+    "exitCost": 2.0,
+    "managementAndOtherCosts": 0.63,
+    "transactionCosts": 0.17,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://www.tatrabanka.sk/files/archiv/tam/dokumenty/mesacne-reporty/tam-dpf_mr.pdf",
+    "asOf": "2026-10-30",
+    "return1y": -0.5,
+    "return5yPa": 1.0,
+    "return10yPa": 0.2,
+    "return5yCum": 5.1,
+    "return10yCum": 1.9
+   },
+   "nulls": {},
+   "selectionNote": "Traja najväčší retailoví správcovia podľa majetku fondu zo správ správcu k 30 októbra 2026; tretí fond vybraný kvôli mixu typov (akciový, zmiešaný, dlhopisový). Vynechané: fondy peňažného trhu, špeciálne realitné fondy, privátne a uzavreté fondy."
+  },
+  {
+   "id": "tam-globalny-akciovy-fond",
+   "name": "Globálny akciový fond",
+   "isin": "SK3000001105",
+   "manager": "Tatra Asset Management",
+   "domicile": "SK",
+   "type": "equity",
+   "inception": "2020-02-03",
+   "sri": 4,
+   "netAssets": {
+    "value": 293744307,
+    "unit": "EUR",
+    "asOf": "2026-10-30",
+    "url": "https://www.tatrabanka.sk/files/archiv/tam/dokumenty/mesacne-reporty/tam-gaf_mr.pdf"
+   },
+   "kid": {
+    "url": "https://www.tatrabanka.sk/files/archiv/tam/dokumenty/klucove-informacie/dki_gaf.pdf",
+    "date": "2026-02-11",
+    "language": "sk",
+    "entryCostMax": 0,
+    "exitCost": 2.0,
+    "managementAndOtherCosts": 1.27,
+    "transactionCosts": 0.03,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://www.tatrabanka.sk/files/archiv/tam/dokumenty/mesacne-reporty/tam-gaf_mr.pdf",
+    "asOf": "2026-10-30",
+    "return1y": 15.0,
+    "return5yPa": 9.6,
+    "return10yPa": null,
+    "return5yCum": 57.9,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Fond (trieda podielov) vznikol 3 februára 2020, 10-ročný výnos správca neuvádza."
+   },
+   "selectionNote": "Traja najväčší retailoví správcovia podľa majetku fondu zo správ správcu k 30 októbra 2026; tretí fond vybraný kvôli mixu typov (akciový, zmiešaný, dlhopisový). Vynechané: fondy peňažného trhu, špeciálne realitné fondy, privátne a uzavreté fondy."
+  },
+  {
+   "id": "tam-investicna-strategia-harmoniq",
+   "name": "Investičná stratégia HarmoniQ",
+   "isin": "SK3110000096",
+   "manager": "Tatra Asset Management",
+   "domicile": "SK",
+   "type": "mixed",
+   "inception": "2005-09-02",
+   "sri": 2,
+   "netAssets": {
+    "value": 134181474,
+    "unit": "EUR",
+    "asOf": "2026-10-30",
+    "url": "https://www.tatrabanka.sk/files/archiv/tam/dokumenty/mesacne-reporty/tam-ish_mr.pdf"
+   },
+   "kid": {
+    "url": "https://www.tatrabanka.sk/files/archiv/tam/dokumenty/klucove-informacie/dki_ish.pdf",
+    "date": "2026-02-04",
+    "language": "sk",
+    "entryCostMax": 0,
+    "exitCost": 2.0,
+    "managementAndOtherCosts": 1.51,
+    "transactionCosts": 0.09,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://www.tatrabanka.sk/files/archiv/tam/dokumenty/mesacne-reporty/tam-ish_mr.pdf",
+    "asOf": "2026-10-30",
+    "return1y": 0.8,
+    "return5yPa": 1.9,
+    "return10yPa": 1.9,
+    "return5yCum": 9.9,
+    "return10yCum": 20.6
+   },
+   "nulls": {},
+   "selectionNote": "Traja najväčší retailoví správcovia podľa majetku fondu zo správ správcu k 30 októbra 2026; tretí fond vybraný kvôli mixu typov (akciový, zmiešaný, dlhopisový). Vynechané: fondy peňažného trhu, špeciálne realitné fondy, privátne a uzavreté fondy."
+  },
+  {
+   "id": "eurizon-akciove-portfolio",
+   "name": "Akciové portfólio",
+   "isin": "SK3000001311",
+   "manager": "Eurizon Asset Management Slovakia",
+   "domicile": "SK",
+   "type": "equity",
+   "inception": "2019-07-11",
+   "sri": 5,
+   "netAssets": {
+    "value": 1250451407,
+    "unit": "EUR",
+    "asOf": "2026-10-30",
+    "url": "https://www.eurizonslovakia.com/-/media/Project/Eurizon/EurizonPortals/Eurizon-Slovakia/Files/Products-Documents/SK3000001311/FP_APO.pdf"
+   },
+   "kid": {
+    "url": "https://www.eurizonslovakia.com/-/media/Project/Eurizon/EurizonPortals/Eurizon-Slovakia/Files/Products-Documents/SK3000001311/PRP_APO.pdf",
+    "date": "2026-04-30",
+    "language": "sk",
+    "entryCostMax": 2.5,
+    "exitCost": 0.0,
+    "managementAndOtherCosts": 1.5,
+    "transactionCosts": 0.06,
+    "performanceFee": null
+   },
+   "factsheet": {
+    "url": "https://www.eurizonslovakia.com/-/media/Project/Eurizon/EurizonPortals/Eurizon-Slovakia/Files/Products-Documents/SK3000001311/FP_APO.pdf",
+    "asOf": "2026-10-30",
+    "return1y": 12.91,
+    "return5yPa": 9.77,
+    "return10yPa": null,
+    "return5yCum": 59.49,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Fond (trieda podielov) vznikol 11 júla 2019, 10-ročný výnos správca neuvádza.",
+    "performanceFee": "Kľúčový informačný dokument pri poplatku za výkonnosť uvádza len sumu 0 € bez percenta, percento nedopĺňame."
+   },
+   "selectionNote": "Najväčšie retailové fondy správcu podľa majetku fondu zo správ správcu k 30 októbra 2026. Vynechané: fondy krátkodobých investícií, fondy pre kvalifikovaných investorov."
+  },
+  {
+   "id": "eurizon-dynamicke-portfolio",
+   "name": "Dynamické portfólio",
+   "isin": "SK3000001329",
+   "manager": "Eurizon Asset Management Slovakia",
+   "domicile": "SK",
+   "type": "mixed",
+   "inception": "2006-02-09",
+   "sri": 3,
+   "netAssets": {
+    "value": 709748204,
+    "unit": "EUR",
+    "asOf": "2026-10-30",
+    "url": "https://www.eurizonslovakia.com/-/media/Project/Eurizon/EurizonPortals/Eurizon-Slovakia/Files/Products-Documents/SK3000001329/FP_DOP.pdf"
+   },
+   "kid": {
+    "url": "https://www.eurizonslovakia.com/-/media/Project/Eurizon/EurizonPortals/Eurizon-Slovakia/Files/Products-Documents/SK3000001329/PRP_DOP.pdf",
+    "date": "2026-04-30",
+    "language": "sk",
+    "entryCostMax": 2.5,
+    "exitCost": 0.0,
+    "managementAndOtherCosts": 1.7,
+    "transactionCosts": 0.01,
+    "performanceFee": null
+   },
+   "factsheet": {
+    "url": "https://www.eurizonslovakia.com/-/media/Project/Eurizon/EurizonPortals/Eurizon-Slovakia/Files/Products-Documents/SK3000001329/FP_DOP.pdf",
+    "asOf": "2026-10-30",
+    "return1y": 3.38,
+    "return5yPa": 3.8,
+    "return10yPa": 4.5,
+    "return5yCum": 20.55,
+    "return10yCum": 55.29
+   },
+   "nulls": {
+    "performanceFee": "Kľúčový informačný dokument pri poplatku za výkonnosť uvádza len sumu 0 € bez percenta, percento nedopĺňame."
+   },
+   "selectionNote": "Najväčšie retailové fondy správcu podľa majetku fondu zo správ správcu k 30 októbra 2026. Vynechané: fondy krátkodobých investícií, fondy pre kvalifikovaných investorov."
+  },
+  {
+   "id": "eurizon-svetove-portfolio",
+   "name": "Svetové portfólio",
+   "isin": "SK3000001691",
+   "manager": "Eurizon Asset Management Slovakia",
+   "domicile": "SK",
+   "type": "equity",
+   "inception": "2023-10-12",
+   "sri": 4,
+   "netAssets": {
+    "value": 381285120,
+    "unit": "EUR",
+    "asOf": "2026-10-30",
+    "url": "https://www.eurizonslovakia.com/-/media/Project/Eurizon/EurizonPortals/Eurizon-Slovakia/Files/Products-Documents/SK3000001691/FP_STO.pdf"
+   },
+   "kid": {
+    "url": "https://www.eurizonslovakia.com/-/media/Project/Eurizon/EurizonPortals/Eurizon-Slovakia/Files/Products-Documents/SK3000001691/PRP_STO.pdf",
+    "date": "2026-04-30",
+    "language": "sk",
+    "entryCostMax": 2.5,
+    "exitCost": 0.0,
+    "managementAndOtherCosts": 1.2,
+    "transactionCosts": 0.05,
+    "performanceFee": null
+   },
+   "factsheet": {
+    "url": "https://www.eurizonslovakia.com/-/media/Project/Eurizon/EurizonPortals/Eurizon-Slovakia/Files/Products-Documents/SK3000001691/FP_STO.pdf",
+    "asOf": "2026-10-30",
+    "return1y": 13.58,
+    "return5yPa": null,
+    "return10yPa": null,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return5y": "Fond (trieda podielov) vznikol 12 októbra 2023, 5-ročný výnos správca neuvádza.",
+    "return10y": "Fond (trieda podielov) vznikol 12 októbra 2023, 10-ročný výnos správca neuvádza.",
+    "performanceFee": "Kľúčový informačný dokument pri poplatku za výkonnosť uvádza len sumu 0 € bez percenta, percento nedopĺňame."
+   },
+   "selectionNote": "Najväčšie retailové fondy správcu podľa majetku fondu zo správ správcu k 30 októbra 2026. Vynechané: fondy krátkodobých investícií, fondy pre kvalifikovaných investorov."
+  },
+  {
+   "id": "iad-prvy-realitny-fond",
+   "name": "Prvý realitný fond, trieda EUR",
+   "isin": "SK3110000682",
+   "manager": "IAD Investments",
+   "domicile": "SK",
+   "type": "real-estate",
+   "inception": "2006-11-20",
+   "sri": 2,
+   "netAssets": {
+    "value": 682703495.01,
+    "unit": "EUR",
+    "asOf": "2026-09-30",
+    "url": "https://iad.sk/wp-content/uploads/2026/10/PRF_3Q_2026.pdf"
+   },
+   "kid": {
+    "url": "https://iad.sk/wp-content/uploads/2026/03/KID_PRF_2026_03_03.pdf",
+    "date": "2026-03-03",
+    "language": "sk",
+    "entryCostMax": 3.0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 2.09,
+    "transactionCosts": 0.01,
+    "performanceFee": 0.5
+   },
+   "factsheet": {
+    "url": "https://iad.sk/wp-content/uploads/2026/10/PRF_3Q_2026.pdf",
+    "asOf": "2026-09-30",
+    "return1y": 4.09,
+    "return5yPa": 4.83,
+    "return10yPa": 4.14,
+    "return5yCum": 26.63,
+    "return10yCum": 50.04
+   },
+   "nulls": {},
+   "selectionNote": "Najväčšie retailové fondy správcu podľa majetku fondu zo správ správcu k 30 septembra 2026. Vynechané: fondy krátkodobých investícií, fondy pre kvalifikovaných investorov."
+  },
+  {
+   "id": "iad-global-index",
+   "name": "Global Index",
+   "isin": "SK3210000020",
+   "manager": "IAD Investments",
+   "domicile": "SK",
+   "type": "equity",
+   "inception": "2001-02-14",
+   "sri": 4,
+   "netAssets": {
+    "value": 177947314.65,
+    "unit": "EUR",
+    "asOf": "2026-09-30",
+    "url": "https://iad.sk/wp-content/uploads/2026/10/GI_09_2026.pdf"
+   },
+   "kid": {
+    "url": "https://iad.sk/wp-content/uploads/2026/03/KID_GI_2026_03_03.pdf",
+    "date": "2026-03-03",
+    "language": "sk",
+    "entryCostMax": 2.0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 3.63,
+    "transactionCosts": 0.0,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://iad.sk/wp-content/uploads/2026/10/GI_09_2026.pdf",
+    "asOf": "2026-09-30",
+    "return1y": 14.89,
+    "return5yPa": 8.42,
+    "return10yPa": 8.89,
+    "return5yCum": 49.82,
+    "return10yCum": 134.56
+   },
+   "nulls": {},
+   "selectionNote": "Najväčšie retailové fondy správcu podľa majetku fondu zo správ správcu k 30 septembra 2026. Vynechané: fondy krátkodobých investícií, fondy pre kvalifikovaných investorov."
+  },
+  {
+   "id": "iad-ce-bond",
+   "name": "CE Bond",
+   "isin": "SK3210000012",
+   "manager": "IAD Investments",
+   "domicile": "SK",
+   "type": "bond",
+   "inception": "2004-03-31",
+   "sri": 2,
+   "netAssets": {
+    "value": 33349406.84,
+    "unit": "EUR",
+    "asOf": "2026-09-30",
+    "url": "https://iad.sk/wp-content/uploads/2026/10/CB_09_2026.pdf"
+   },
+   "kid": {
+    "url": "https://iad.sk/wp-content/uploads/2026/03/KID_CB_2026_03_03.pdf",
+    "date": "2026-03-03",
+    "language": "sk",
+    "entryCostMax": 1.5,
+    "exitCost": 0,
+    "managementAndOtherCosts": 1.91,
+    "transactionCosts": 0.04,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://iad.sk/wp-content/uploads/2026/10/CB_09_2026.pdf",
+    "asOf": "2026-09-30",
+    "return1y": -0.13,
+    "return5yPa": 1.36,
+    "return10yPa": 0.79,
+    "return5yCum": 6.97,
+    "return10yCum": 8.16
+   },
+   "nulls": {},
+   "selectionNote": "Najväčšie retailové fondy správcu podľa majetku fondu zo správ správcu k 30 septembra 2026. Vynechané: fondy krátkodobých investícií, fondy pre kvalifikovaných investorov."
+  },
+  {
+   "id": "templeton-growth-euro-a-acc-eur",
+   "name": "Templeton Growth (Euro) Fund A (acc) EUR",
+   "isin": "LU0114760746",
+   "manager": "Franklin Templeton",
+   "domicile": "LU",
+   "type": "equity",
+   "inception": "2000-08-09",
+   "sri": 4,
+   "netAssets": {
+    "value": 8.05,
+    "unit": "EUR billion (fund-level portfolio size, not share class)",
+    "asOf": "2026-10-31",
+    "url": "https://api.fundinfo.com/document/2564bd50234827892357d64808e28beb_103650/MR_SK_sk_LU0114760746_YES_2026-10-31.pdf"
+   },
+   "kid": {
+    "url": "https://api.fundinfo.com/document/dfb8c07c7e6ea84367fc69a3ac409792_178897/PRP_SK_sk_LU0114760746_YES_2026-02-19.pdf",
+    "date": "2026-02-19",
+    "language": "sk",
+    "entryCostMax": 5.75,
+    "exitCost": 0,
+    "managementAndOtherCosts": 1.81,
+    "transactionCosts": 0.0,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://api.fundinfo.com/document/2564bd50234827892357d64808e28beb_103650/MR_SK_sk_LU0114760746_YES_2026-10-31.pdf",
+    "asOf": "2026-10-31",
+    "return1y": 4.51,
+    "return5yPa": 6.4,
+    "return10yPa": null,
+    "return5yCum": 36.36,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+   },
+   "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
+  },
+  {
+   "id": "fidelity-european-growth-a-acc-eur",
+   "name": "Fidelity European Growth Fund A-Acc-EUR",
+   "isin": "LU0296857971",
+   "manager": "Fidelity International",
+   "domicile": "LU",
+   "type": "equity",
+   "inception": "2007-05-02",
+   "sri": 4,
+   "netAssets": {
+    "value": 7573,
+    "unit": "EUR million (fund-level 'Veľkosť fondu', not share class)",
+    "asOf": "2026-10-31",
+    "url": "https://api.fundinfo.com/document/0d188c2d0b3e58a481c0f96bff9833b0_235081/MR_SK_sk_LU0296857971_YES_2026-10-31.pdf"
+   },
+   "kid": {
+    "url": "https://api.fundinfo.com/document/de89429f6367ab8040921bd73ff1bdf0_331816/PRP_SK_sk_LU0296857971_YES_2026-10-16.pdf",
+    "date": "2026-10-16",
+    "language": "sk",
+    "entryCostMax": 5.3,
+    "exitCost": 0,
+    "managementAndOtherCosts": 1.9,
+    "transactionCosts": 0.3,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://api.fundinfo.com/document/0d188c2d0b3e58a481c0f96bff9833b0_235081/MR_SK_sk_LU0296857971_YES_2026-10-31.pdf",
+    "asOf": "2026-10-31",
+    "return1y": 8.9,
+    "return5yPa": 6.4,
+    "return10yPa": null,
+    "return5yCum": 36.3,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+   },
+   "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
+  },
+  {
+   "id": "fidelity-global-technology-a-acc-eur-hedged",
+   "name": "Fidelity Global Technology Fund A-Acc-EUR (hedged)",
+   "isin": "LU1841614867",
+   "manager": "Fidelity International",
+   "domicile": "LU",
+   "type": "equity",
+   "inception": "2018-07-11",
+   "sri": 4,
+   "netAssets": {
+    "value": 33951,
+    "unit": "EUR million (fund-level 'Veľkosť fondu', not share class)",
+    "asOf": "2026-10-31",
+    "url": "https://api.fundinfo.com/document/c21276aca0dc37a6d57d8a65a4991bcf_228071/MR_SK_sk_LU1841614867_YES_2026-10-31.pdf"
+   },
+   "kid": {
+    "url": "https://api.fundinfo.com/document/dd7c304b830145604cc0ff7a37abf422_327445/PRP_SK_sk_LU1841614867_YES_2026-10-16.pdf",
+    "date": "2026-10-16",
+    "language": "sk",
+    "entryCostMax": 5.3,
+    "exitCost": 0,
+    "managementAndOtherCosts": 1.9,
+    "transactionCosts": 0.4,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://api.fundinfo.com/document/c21276aca0dc37a6d57d8a65a4991bcf_228071/MR_SK_sk_LU1841614867_YES_2026-10-31.pdf",
+    "asOf": "2026-10-31",
+    "return1y": 12.2,
+    "return5yPa": 12.1,
+    "return10yPa": null,
+    "return5yCum": 76.9,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Fond (trieda podielov) vznikol 11 júla 2018, 10-ročný výnos správca neuvádza."
+   },
+   "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
+  },
+  {
+   "id": "allianz-dmas-sri-50-at-eur",
+   "name": "Allianz Dynamic Multi Asset Strategy SRI 50 AT EUR",
+   "isin": "LU1093406186",
+   "manager": "Allianz Global Investors",
+   "domicile": "LU",
+   "type": "mixed",
+   "inception": "2014-09-03",
+   "sri": 3,
+   "netAssets": {
+    "value": 1061.79,
+    "unit": "EUR million (share class AT (EUR); fund total 4 504,65 M EUR)",
+    "asOf": "2026-10-31",
+    "url": "https://api.fundinfo.com/document/d3fad336446b02a21e30d60cd3b3c608_254320/MR_SK_sk_LU1093406186_YES_2026-10-31.pdf"
+   },
+   "kid": {
+    "url": "https://api.fundinfo.com/document/fc72f04335e6fe3526834d96341c64e3_264197/PRP_SK_sk_LU1093406186_YES_2026-04-16.pdf",
+    "date": "2026-04-16",
+    "language": "sk",
+    "entryCostMax": 4.0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 1.82,
+    "transactionCosts": 0.21,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://api.fundinfo.com/document/d3fad336446b02a21e30d60cd3b3c608_254320/MR_SK_sk_LU1093406186_YES_2026-10-31.pdf",
+    "asOf": "2026-10-31",
+    "return1y": 8.99,
+    "return5yPa": 4.64,
+    "return10yPa": 5.79,
+    "return5yCum": 25.45,
+    "return10yCum": 75.64
+   },
+   "nulls": {},
+   "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
+  },
+  {
+   "id": "fidelity-global-multi-asset-income-a-acc-eur",
+   "name": "Fidelity Global Multi Asset Income Fund A-Acc-EUR",
+   "isin": "LU1116430247",
+   "manager": "Fidelity International",
+   "domicile": "LU",
+   "type": "mixed",
+   "inception": "2014-10-08",
+   "sri": 3,
+   "netAssets": {
+    "value": 2992,
+    "unit": "EUR million (fund-level 'Veľkosť fondu', not share class)",
+    "asOf": "2026-09-30",
+    "url": "https://api.fundinfo.com/document/f2f83143655c9e6cec7726d249e9868f_182739/MR_SK_sk_LU1116430247_YES_2026-09-30.pdf"
+   },
+   "kid": {
+    "url": "https://api.fundinfo.com/document/d1a3edccbbb47e8c99fbec25287f6416_338407/PRP_SK_sk_LU1116430247_YES_2026-10-16.pdf",
+    "date": "2026-10-16",
+    "language": "sk",
+    "entryCostMax": 5.3,
+    "exitCost": 0,
+    "managementAndOtherCosts": 1.7,
+    "transactionCosts": 0.5,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://api.fundinfo.com/document/f2f83143655c9e6cec7726d249e9868f_182739/MR_SK_sk_LU1116430247_YES_2026-09-30.pdf",
+    "asOf": "2026-09-30",
+    "return1y": 10.0,
+    "return5yPa": 2.1,
+    "return10yPa": null,
+    "return5yCum": 10.9,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+   },
+   "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
+  },
+  {
+   "id": "amundi-fs-multi-asset-balanced-a-eur",
+   "name": "Amundi Fund Solutions Multi-Asset Balanced A EUR",
+   "isin": "LU1121646779",
+   "manager": "Amundi",
+   "domicile": "LU",
+   "type": "mixed",
+   "inception": "2015-02-13",
+   "sri": 3,
+   "netAssets": {
+    "value": 467.51,
+    "unit": "EUR million (AUM as printed; appears fund-level)",
+    "asOf": "2026-10-30",
+    "url": "https://api.fundinfo.com/document/f54ee6701efc3bb95ee697f70b8342f6_783036/MR_SK_sk_LU1121646779_YES_2026-10-31.pdf"
+   },
+   "kid": {
+    "url": "https://api.fundinfo.com/document/0b8237309111d69dbf4293097f445c50_215629/PRP_SK_sk_LU1121646779_YES_2026-03-10.pdf",
+    "date": "2026-03-10",
+    "language": "sk",
+    "entryCostMax": 5.0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 2.25,
+    "transactionCosts": 0.01,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://api.fundinfo.com/document/f54ee6701efc3bb95ee697f70b8342f6_783036/MR_SK_sk_LU1121646779_YES_2026-10-31.pdf",
+    "asOf": "2026-10-31",
+    "return1y": 6.45,
+    "return5yPa": 2.39,
+    "return10yPa": null,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+   },
+   "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
+  },
+  {
+   "id": "gs-patrimonial-balanced-europe-sust-p-cap-eur",
+   "name": "Goldman Sachs Patrimonial Balanced Europe Sustainable P Cap EUR (hedged)",
+   "isin": "LU0119197159",
+   "manager": "Goldman Sachs Asset Management",
+   "domicile": "LU",
+   "type": "mixed",
+   "inception": "1995-10-16",
+   "sri": 3,
+   "netAssets": {
+    "value": 369.16,
+    "unit": "EUR million (share-class net assets; fund total EUR 587.81 m)",
+    "asOf": "2026-09-30",
+    "url": "https://api.fundinfo.com/document/5026e877db31b21bf94783d066daa48e_234756/MR_SK_sk_LU0119197159_YES_2026-09-30.pdf"
+   },
+   "kid": {
+    "url": "https://api.fundinfo.com/document/4762eaf4ef2dc86e906cecf722df38b4_164087/PRP_SK_sk_LU0119197159_YES_2026-03-03.pdf",
+    "date": "2026-03-03",
+    "language": "sk",
+    "entryCostMax": 3.0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 1.47,
+    "transactionCosts": 0.11,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://api.fundinfo.com/document/5026e877db31b21bf94783d066daa48e_234756/MR_SK_sk_LU0119197159_YES_2026-09-30.pdf",
+    "asOf": "2026-09-30",
+    "return1y": 2.37,
+    "return5yPa": 1.14,
+    "return10yPa": 3.69,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {},
+   "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
+  },
+  {
+   "id": "bnpp-euro-corporate-bond-classic-cap",
+   "name": "BNP Paribas Euro Corporate Bond Classic Cap",
+   "isin": "LU0131210360",
+   "manager": "BNP Paribas Asset Management",
+   "domicile": "LU",
+   "type": "bond",
+   "inception": "2001-07-17",
+   "sri": 2,
+   "netAssets": {
+    "value": 2031.94,
+    "unit": "EUR million (fund-level 'Veľkosť Fondu')",
+    "asOf": "2026-10-30",
+    "url": "https://api.fundinfo.com/document/fcd236051f7cdb102571465c5983a25b_238409/MR_SK_sk_LU0131210360_YES_2026-10-30.pdf"
+   },
+   "kid": {
+    "url": "https://api.fundinfo.com/document/b27aa312c1f0da1aa4b1c26d17f54225_141278/PRP_SK_sk_LU0131210360_YES_2026-04-30.pdf",
+    "date": "2026-04-30",
+    "language": "sk",
+    "entryCostMax": 3.0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 1.12,
+    "transactionCosts": 0.21,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://api.fundinfo.com/document/fcd236051f7cdb102571465c5983a25b_238409/MR_SK_sk_LU0131210360_YES_2026-10-30.pdf",
+    "asOf": "2026-10-30",
+    "return1y": -2.21,
+    "return5yPa": null,
+    "return10yPa": null,
+    "return5yCum": -2.27,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+   },
+   "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
+  },
+  {
+   "id": "ishares-core-msci-world",
+   "name": "iShares Core MSCI World UCITS ETF (Acc)",
+   "isin": "IE00B4L5Y983",
+   "manager": "BlackRock (iShares)",
+   "domicile": "IE",
+   "type": "etf-equity",
+   "inception": "2009-09-25",
+   "sri": 4,
+   "netAssets": {
+    "value": 146648.56,
+    "unit": "USD million",
+    "asOf": "2026-10-31",
+    "url": "https://www.ishares.com/gls-download/literature/fact-sheet/swda-ishares-core-msci-world-ucits-etf-fund-fact-sheet-de-de.pdf"
+   },
+   "kid": {
+    "url": "https://www.ishares.com/gls-download/literature/kiid/eu-priips-ishares-core-msci-world-ucits-etf-ie00b4l5y983-sk.pdf",
+    "date": "2026-09-03",
+    "language": "sk",
+    "entryCostMax": 0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 0.2,
+    "transactionCosts": 0.0,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://www.ishares.com/gls-download/literature/fact-sheet/swda-ishares-core-msci-world-ucits-etf-fund-fact-sheet-de-de.pdf",
+    "asOf": "2026-10-31",
+    "return1y": null,
+    "return5yPa": null,
+    "return10yPa": null,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return1y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame.",
+    "return5y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame.",
+    "return10y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame."
+   },
+   "selectionNote": "Jeden z najväčších širokých ETF podľa majetku podľa faktsheetu emitenta, akumulačná trieda; kľúčový informačný dokument v slovenčine, ak ho emitent vydáva."
+  },
+  {
+   "id": "ishares-core-sp-500",
+   "name": "iShares Core S&P 500 UCITS ETF (Acc)",
+   "isin": "IE00B5BMR087",
+   "manager": "BlackRock (iShares)",
+   "domicile": "IE",
+   "type": "etf-equity",
+   "inception": "2010-05-19",
+   "sri": 4,
+   "netAssets": {
+    "value": 153792.74,
+    "unit": "USD million",
+    "asOf": "2026-10-31",
+    "url": "https://www.ishares.com/gls-download/literature/fact-sheet/cspx-ishares-core-s-p-500-ucits-etf-fund-fact-sheet-de-de.pdf"
+   },
+   "kid": {
+    "url": "https://www.ishares.com/gls-download/literature/kiid/eu-priips-ishares-core-sp-500-ucits-etf-usd-acc-ie00b5bmr087-sk.pdf",
+    "date": "2026-09-03",
+    "language": "sk",
+    "entryCostMax": 0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 0.07,
+    "transactionCosts": 0.0,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://www.ishares.com/gls-download/literature/fact-sheet/cspx-ishares-core-s-p-500-ucits-etf-fund-fact-sheet-de-de.pdf",
+    "asOf": "2026-10-31",
+    "return1y": null,
+    "return5yPa": null,
+    "return10yPa": null,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return1y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame.",
+    "return5y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame.",
+    "return10y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame."
+   },
+   "selectionNote": "Jeden z najväčších širokých ETF podľa majetku podľa faktsheetu emitenta, akumulačná trieda; kľúčový informačný dokument v slovenčine, ak ho emitent vydáva."
+  },
+  {
+   "id": "ishares-core-msci-em-imi",
+   "name": "iShares Core MSCI EM IMI UCITS ETF (Acc)",
+   "isin": "IE00BKM4GZ66",
+   "manager": "BlackRock (iShares)",
+   "domicile": "IE",
+   "type": "etf-equity",
+   "inception": "2014-05-30",
+   "sri": 4,
+   "netAssets": {
+    "value": 41768.87,
+    "unit": "USD million",
+    "asOf": "2026-10-31",
+    "url": "https://www.ishares.com/gls-download/literature/fact-sheet/eimi-ishares-core-msci-em-imi-ucits-etf-fund-fact-sheet-de-de.pdf"
+   },
+   "kid": {
+    "url": "https://www.ishares.com/gls-download/literature/kiid/eu-priips-ishares-core-msci-em-imi-ucits-etf-usd-acc-ie00bkm4gz66-sk.pdf",
+    "date": "2026-09-03",
+    "language": "sk",
+    "entryCostMax": 0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 0.18,
+    "transactionCosts": 0.04,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://www.ishares.com/gls-download/literature/fact-sheet/eimi-ishares-core-msci-em-imi-ucits-etf-fund-fact-sheet-de-de.pdf",
+    "asOf": "2026-10-31",
+    "return1y": null,
+    "return5yPa": null,
+    "return10yPa": null,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return1y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame.",
+    "return5y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame.",
+    "return10y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame."
+   },
+   "selectionNote": "Jeden z najväčších širokých ETF podľa majetku podľa faktsheetu emitenta, akumulačná trieda; kľúčový informačný dokument v slovenčine, ak ho emitent vydáva."
+  },
+  {
+   "id": "ishares-core-euro-stoxx-50",
+   "name": "iShares Core EURO STOXX 50 UCITS ETF (Acc)",
+   "isin": "IE00B53L3W79",
+   "manager": "BlackRock (iShares)",
+   "domicile": "IE",
+   "type": "etf-equity",
+   "inception": "2010-01-26",
+   "sri": 4,
+   "netAssets": {
+    "value": 7524.05,
+    "unit": "EUR million",
+    "asOf": "2026-10-31",
+    "url": "https://www.ishares.com/gls-download/literature/fact-sheet/cssx5e-ishares-core-euro-stoxx-50-ucits-etf-fund-fact-sheet-de-de.pdf"
+   },
+   "kid": {
+    "url": "https://www.ishares.com/gls-download/literature/kiid/eu-priips-ishares-core-euro-stoxx-50-ucits-etf-eur-acc-ie00b53l3w79-sk.pdf",
+    "date": "2026-09-03",
+    "language": "sk",
+    "entryCostMax": 0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 0.1,
+    "transactionCosts": 0.05,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://www.ishares.com/gls-download/literature/fact-sheet/cssx5e-ishares-core-euro-stoxx-50-ucits-etf-fund-fact-sheet-de-de.pdf",
+    "asOf": "2026-10-31",
+    "return1y": 11.18,
+    "return5yPa": 10.73,
+    "return10yPa": null,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+   },
+   "selectionNote": "Jeden z najväčších širokých ETF podľa majetku podľa faktsheetu emitenta, akumulačná trieda; kľúčový informačný dokument v slovenčine, ak ho emitent vydáva."
+  },
+  {
+   "id": "vanguard-ftse-all-world",
+   "name": "Vanguard FTSE All-World UCITS ETF (Acc)",
+   "isin": "IE00BK5BQT80",
+   "manager": "Vanguard",
+   "domicile": "IE",
+   "type": "etf-equity",
+   "inception": "2019-07-23",
+   "sri": 4,
+   "netAssets": {
+    "value": 62185,
+    "unit": "USD million",
+    "asOf": "2026-10-31",
+    "url": "https://fund-docs.vanguard.com/FTSE_All-World_UCITS_ETF_USD_Accumulating_9679_CH_RET_EN.pdf"
+   },
+   "kid": {
+    "url": "https://fund-docs.vanguard.com/ie00bk5bqt80_priipskid_sk.pdf",
+    "date": "2026-07-28",
+    "language": "sk",
+    "entryCostMax": 0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 0.14,
+    "transactionCosts": 0.03,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://fund-docs.vanguard.com/FTSE_All-World_UCITS_ETF_USD_Accumulating_9679_CH_RET_EN.pdf",
+    "asOf": "2026-10-31",
+    "return1y": null,
+    "return5yPa": null,
+    "return10yPa": null,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return1y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame.",
+    "return5y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame.",
+    "return10y": "Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame."
+   },
+   "selectionNote": "Jeden z najväčších širokých ETF podľa majetku podľa faktsheetu emitenta, akumulačná trieda; kľúčový informačný dokument v slovenčine, ak ho emitent vydáva."
+  },
+  {
+   "id": "xtrackers-msci-world",
+   "name": "Xtrackers MSCI World UCITS ETF 1C",
+   "isin": "IE00BJ0KDQ92",
+   "manager": "DWS (Xtrackers)",
+   "domicile": "IE",
+   "type": "etf-equity",
+   "inception": "2014-07-22",
+   "sri": 4,
+   "netAssets": {
+    "value": 30.97,
+    "unit": "USD billion",
+    "asOf": "2026-09-30",
+    "url": "https://etf.dws.com/Download/Factsheet/IE00BJ0KDQ92/DE/DE"
+   },
+   "kid": {
+    "url": "https://etf.dws.com/Download/KID/IE00BJ0KDQ92/SK/SK",
+    "date": "2026-03-06",
+    "language": "sk",
+    "entryCostMax": 0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 0.12,
+    "transactionCosts": 0.01,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://etf.dws.com/Download/Factsheet/IE00BJ0KDQ92/DE/DE",
+    "asOf": "2026-09-30",
+    "return1y": null,
+    "return5yPa": null,
+    "return10yPa": null,
+    "return5yCum": null,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return1y": "Faktsheet emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár.",
+    "return5y": "Faktsheet emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár.",
+    "return10y": "Faktsheet emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár."
+   },
+   "selectionNote": "Jeden z najväčších širokých ETF podľa majetku podľa faktsheetu emitenta, akumulačná trieda; kľúčový informačný dokument v slovenčine, ak ho emitent vydáva."
+  },
+  {
+   "id": "amundi-msci-world-swap-eur",
+   "name": "Amundi MSCI World Swap UCITS ETF EUR Acc",
+   "isin": "LU1681043599",
+   "manager": "Amundi",
+   "domicile": "LU",
+   "type": "etf-equity",
+   "inception": "2018-04-18",
+   "sri": 4,
+   "netAssets": {
+    "value": 7385.96,
+    "unit": "EUR million",
+    "asOf": "2026-10-30",
+    "url": "https://www.amundietf.de/pdfDocuments/monthly-factsheet/LU1681043599/DEU/DEU/RETAIL/ETF"
+   },
+   "kid": {
+    "url": "https://www.amundietf.de/pdfDocuments/kid-priips/LU1681043599/DEU/DEU",
+    "date": "2026-04-28",
+    "language": "de",
+    "entryCostMax": 0,
+    "exitCost": 0,
+    "managementAndOtherCosts": 0.38,
+    "transactionCosts": 0,
+    "performanceFee": 0
+   },
+   "factsheet": {
+    "url": "https://www.amundietf.de/pdfDocuments/monthly-factsheet/LU1681043599/DEU/DEU/RETAIL/ETF",
+    "asOf": "2026-10-31",
+    "return1y": 15.51,
+    "return5yPa": null,
+    "return10yPa": null,
+    "return5yCum": 68.89,
+    "return10yCum": null
+   },
+   "nulls": {
+    "return10y": "Fond (trieda podielov) vznikol 18 apríla 2018, 10-ročný výnos správca neuvádza."
+   },
+   "selectionNote": "Jeden z najväčších širokých ETF podľa majetku podľa faktsheetu emitenta, akumulačná trieda; kľúčový informačný dokument v slovenčine, ak ho emitent vydáva."
+  }
+ ]
+}

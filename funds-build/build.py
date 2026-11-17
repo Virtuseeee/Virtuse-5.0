@@ -210,6 +210,95 @@ def btc_eur(end):
     return eur
 
 
+PHASE2_IN = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'phase2-input.json')
+KID_FIELDS = ('entryCostMax', 'exitCost', 'managementAndOtherCosts', 'transactionCosts', 'performanceFee')
+
+
+def phase2(btc, infl, infl_pa_for, real_for):
+    """Mutual funds and ETFs. Input: funds-build/phase2-input.json, curated by hand from each fund's PRIIPs KID
+    and monthly factsheet (URLs and verbatim quotes kept there; every value was re-checked against the PDF text).
+    Nothing is estimated: a value missing in the official document stays n/a."""
+    if not os.path.exists(PHASE2_IN):
+        return None
+    src = json.load(open(PHASE2_IN, encoding='utf-8'))
+    bk = sorted(btc)
+    out, dates = [], set()
+    for s in src['funds']:
+        fs, kid = s['factsheet'], s['kid']
+        a = fs['asOf']; dates.add(a)
+        fl = 'Faktsheet správcu k %s' % skd(a)
+        kl = 'Kľúčový informačný dokument (PRIIPs KID), %s' % skd(kid['date'])
+        f = {'id': s['id'], 'name': s['name'], 'isin': s['isin'], 'company': s['manager'], 'type': s['type'],
+             'domicile': s['domicile'], 'currency': 'EUR', 'asOf': a,
+             'kidUrl': kid['url'], 'kidDate': kid['date'], 'kidLanguage': kid['language'],
+             'factsheetUrl': fs['url'], 'selection': s['selectionNote']}
+        if s.get('inception'):
+            f['inception'] = s['inception']
+        if s.get('sri'):
+            f['sri'] = obj(s['sri'], 'scale 1-7', kid['url'], kl, kid['date'])
+        if s.get('netAssets'):
+            n = s['netAssets']
+            f['netAssets'] = obj(n['value'], n['unit'], n['url'], 'Majetok fondu podľa správcu', n['asOf'])
+        for k in KID_FIELDS:
+            v = kid.get(k)
+            f[k] = (obj(round(v / 100, 8), 'fraction' if k in ('entryCostMax', 'exitCost', 'performanceFee') else 'fraction p.a.', kid['url'], kl, kid['date'])
+                    if v is not None else na(s.get('nulls', {}).get(k, 'Kľúčový informačný dokument túto hodnotu neuvádza.'), kid['url'], kid['date']))
+        m, t = kid.get('managementAndOtherCosts'), kid.get('transactionCosts')
+        if m is not None and t is not None:
+            f['ongoingCosts'] = obj(round((m + t) / 100, 8), 'fraction p.a.', kid['url'],
+                                    kl + ': správa a iné administratívne alebo prevádzkové náklady + transakčné náklady', kid['date'])
+        else:
+            f['ongoingCosts'] = na('Chýba jedna zo zložiek nákladov v kľúčovom informačnom dokumente.', kid['url'], kid['date'])
+        for y, pa, cum in ((1, 'return1y', None), (5, 'return5yPa', 'return5yCum'), (10, 'return10yPa', 'return10yCum')):
+            key = 'return%dy' % y
+            v = fs.get(pa)
+            lab = fl
+            if v is None and cum and fs.get(cum) is not None:
+                v = ((1 + fs[cum] / 100) ** (1 / y) - 1) * 100
+                lab = fl + '; prepočet z kumulatívneho výnosu %s %% na priemer za rok' % str(fs[cum]).replace('.', ',')
+            if v is None:
+                f[key] = na(s.get('nulls', {}).get(key) or s.get('nulls', {}).get(pa) or 'Správca %d-ročný výnos v eurách neuverejňuje.' % y, fs['url'], a)
+                f['real%dy' % y] = na('Chýba nominálny výnos za toto obdobie.', HICP_PAGE, a)
+            else:
+                v = v / 100
+                f[key] = obj(round(v, 8), 'fraction p.a.' if y > 1 else 'fraction', fs['url'], lab, a)
+                r, im = real_for(v, y, a)
+                f['real%dy' % y] = obj(round(r, 6), 'fraction p.a.' if y > 1 else 'fraction', HICP_PAGE,
+                                       '(1 + výnos) / (1 + inflácia) - 1; inflácia HICP SK, okno končí %s' % im, a)
+        reason = 'Denný rad hodnoty podielu od správcu v strojovo čitateľnej podobe sme nemali, z niekoľkých bodov výnosu prepad nepočítame.'
+        f['maxDrawdown10y'] = na(reason, fs['url'], a)
+        f['volatility10y'] = na(reason, fs['url'], a)
+        out.append(f)
+    # Bitcoin at each factsheet date (same days, same formula as phase 1)
+    bl = 'CoinMetrics PriceUSD / ECB EUR-USD (Frankfurter), denné ceny'
+    B = {}
+    for a in sorted(dates):
+        e = D.date.fromisoformat(a)
+        p_end = last_on_or_before(btc, bk, a)[1]
+        b = {'price': obj(round(p_end, 2), 'EUR', CM_PAGE, bl, a)}
+        for y in (1, 5, 10):
+            d0 = e.replace(year=e.year - y).isoformat()
+            v = (p_end / last_on_or_before(btc, bk, d0)[1]) ** (1 / y) - 1
+            b['return%dy' % y] = obj(round(v, 6), 'fraction p.a.' if y > 1 else 'fraction', CM_PAGE, '%s, %s až %s' % (bl, d0, a), a)
+            r, im = real_for(v, y, a)
+            b['real%dy' % y] = obj(round(r, 6), 'fraction p.a.' if y > 1 else 'fraction', HICP_PAGE,
+                                   '(1 + výnos) / (1 + inflácia) - 1; inflácia HICP SK, okno končí %s' % im, a)
+        B[a] = b
+    return {
+        'scope': src['scope'],
+        'selection': src['selection'],
+        'eicNote': src['eicNote'],
+        'methodology': {
+            'returns': 'Výnosy z mesačného faktsheetu správcu pre danú triedu podielov v eurách (1 rok, 5 a 10 rokov p.a.), po priebežných nákladoch fondu, bez vstupného a výstupného poplatku. Ak správca uvádza len kumulatívny výnos, prepočítame ho na priemer za rok: (1 + kumulatívny)^(1/roky) - 1.',
+            'costs': 'Náklady výhradne z kľúčového informačného dokumentu (PRIIPs KID) danej triedy podielov, tabuľka Zloženie nákladov. Bežné ročné náklady = správa a iné administratívne alebo prevádzkové náklady + transakčné náklady. Vstupný poplatok je maximum; distribútor môže účtovať menej.',
+            'bitcoin': 'Bitcoin k rovnakému dňu ako faktsheet fondu, rovnaký vzorec a zdroj ako vo fáze 1.',
+            'real': 'Inflácia HICP Slovensko, okno končí v mesiaci dátumu faktsheetu.',
+            'risk': 'Prepad a volatilitu pri podielových fondoch a ETF neuvádzame: nemáme oficiálny denný rad hodnoty podielu v strojovo čitateľnej podobe.'},
+        'bitcoin': B,
+        'funds': sorted(out, key=lambda f: (f['type'], f['company'], f['name'])),
+    }
+
+
 def main():
     report = DEFAULT_REPORT
     if '--adss' in sys.argv:
@@ -235,6 +324,13 @@ def main():
 
     def real(nom, y):
         return None if nom is None else (1 + nom) / (1 + infl_pa[y]) - 1
+
+    def real_for(nom, y, as_of_date):
+        """inflation window ending in the month of as_of_date (phase 2 factsheets are month-end)"""
+        im = min(as_of_date[:7], i_end)
+        st = '%d-%s' % (int(im[:4]) - y, im[5:])
+        ip = (infl[im] / infl[st]) ** (1 / y) - 1
+        return (1 + nom) / (1 + ip) - 1, im
 
     weeks = fridays(as_of, WEEKS_10Y)
     funds = []
@@ -341,6 +437,12 @@ def main():
         'bitcoin': B,
         'funds': sorted(funds, key=lambda f: (f['company'], not f['guaranteed'], f['name'])),
     }
+    p2 = phase2(btc, infl, None, real_for)
+    if p2:
+        data['phase'] = 2
+        data['investmentFunds'] = p2
+        data['sources'].append({'label': 'Kľúčové informačné dokumenty (PRIIPs KID) a mesačné faktsheety správcov, odkaz pri každom fonde',
+                                'url': '#funds', 'asOf': max(p2['bitcoin'])})
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, 'w', encoding='utf-8') as fh:
         json.dump(data, fh, ensure_ascii=False, separators=(',', ':'))

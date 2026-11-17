@@ -21,7 +21,7 @@ C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk']
 PAGES = {'en': '/funds-vs-bitcoin.html', 'sk': '/sk/fondy-vs-bitcoin.html'}
 FILES = {'en': 'funds-vs-bitcoin.html', 'sk': os.path.join('sk', 'fondy-vs-bitcoin.html')}
-JS_V = '2'
+JS_V = '3'
 DATA_URL = '/data/funds-vs-bitcoin.json'
 DATA = json.load(open(os.path.join(SITE, 'data', 'funds-vs-bitcoin.json')))
 TYPES = ['bond_guaranteed', 'equity', 'index', 'mixed', 'innovative']
@@ -80,6 +80,9 @@ CSS = '''<style>
 .fvb-text li a{color:var(--muted)}
 .fvb-legal{max-width:860px;border-left:3px solid var(--line-strong);margin:8px 0 6px;padding:4px 0 4px 16px;color:var(--text);font-size:14px;line-height:1.6}
 .fvb-legal-src{font-size:12px;color:var(--muted);margin:0 0 12px}
+.fvb-table td.fvb-d,.fvb-table th.fvb-d{text-align:left;font-size:13px;white-space:nowrap}
+.fvb-table td.fvb-d a{color:var(--text)}
+.fvb-table td.fvb-d span{display:block;font-size:11px;color:var(--muted)}
 @media (max-width:900px){.fvb-chart{height:300px}}
 @media (max-width:600px){.fvb-table{font-size:13px}.fvb-table th,.fvb-table td{padding:8px 9px}.fvb-table th.fvb-f,.fvb-table td.fvb-f{min-width:150px}.fvb-table td.fvb-f span{font-size:11px}.fvb-table td.fvb-t,.fvb-table th.fvb-t{display:none}.fvb-chart{height:240px}.fvb-notice{margin:18px 0 0}}
 </style>
@@ -124,12 +127,15 @@ def month_str(ym, L):
     return '%s %s' % ((EN_M if L == 'en' else SK_NOM)[int(m) - 1], y)
 
 
-def cell(o, L, t, kind='pct'):
+CM_URL = 'https://docs.coinmetrics.io/asset-metrics/market/priceusd'
+
+
+def cell(o, L, t, kind='pct', d=1):
     if o is None or o.get('value') is None:
         reason = (o or {}).get('reason', '')
         return '<td><abbr title="%s">%s</abbr></td>' % (esc(reason), t['na'])
     v = o['value']
-    return '<td>%s</td>' % pct(v, L)
+    return '<td>%s</td>' % pct(v, L, d)
 
 
 def fee_cell(f, L, t):
@@ -157,6 +163,81 @@ def table(L, t):
     h += '<tbody class="fvb-ref">%s</tbody>' % row(DATA['bitcoin'], L, t, True)
     h += '<tbody id="fvbRows">' + ''.join(row(f, L, t) for f in DATA['funds']) + '</tbody>'
     return h
+
+
+P2 = DATA.get('investmentFunds')
+P2_TYPE_ORDER = ['equity', 'mixed', 'bond', 'real-estate', 'etf-equity', 'etf-bond', 'other']
+
+
+def p2_types():
+    have = {f['type'] for f in P2['funds']}
+    return [k for k in P2_TYPE_ORDER if k in have]
+
+
+def p2_ref():
+    """the factsheet date most funds share; Bitcoin's reference row uses it"""
+    ds = [f['asOf'] for f in P2['funds']]
+    return max(set(ds), key=lambda d: (ds.count(d), d))
+
+
+def p2_btc_reason(L, t):
+    return t['p2_btc_cost']
+
+
+def p2_row(f, L, t, btc=False):
+    if btc:
+        d = p2_ref(); b = P2['bitcoin'][d]
+        h = '<tr><td class="fvb-f"><b>Bitcoin</b><span>%s</span></td><td class="fvb-t">%s</td>' % (
+            t['p2_btc_sub'].replace('{d}', date_str(d, L)), t['type_bitcoin'])
+        for y in (1, 5, 10):
+            h += cell(b['return%dy' % y], L, t)
+        nb = '<td><abbr title="%s">%s</abbr></td>' % (esc(t['p2_btc_cost']), t['na'])
+        return h + nb * 3 + '<td class="fvb-d"><a href="%s" target="_blank" rel="noopener">CoinMetrics</a></td></tr>' % CM_URL
+    attrs = ' data-id="%s" data-type="%s"' % (f['id'], f['type'])
+    h = '<tr%s><td class="fvb-f"><b>%s</b><span>%s · %s</span></td><td class="fvb-t">%s</td>' % (
+        attrs, esc(f['name']), esc(f['company']), f['isin'], t['p2_type_' + f['type']])
+    for y in (1, 5, 10):
+        h += cell(f['return%dy' % y], L, t)
+    h += cell(f['ongoingCosts'], L, t, d=2) + cell(f['entryCostMax'], L, t, d=2) + cell(f['exitCost'], L, t, d=2)
+    h += '<td class="fvb-d"><a href="%s" target="_blank" rel="noopener">%s</a> · <a href="%s" target="_blank" rel="noopener">%s</a><span>%s</span></td>' % (
+        esc(f['kidUrl']), t['p2_kid'], esc(f['factsheetUrl']), t['p2_fs'], t['p2_asof'].replace('{d}', date_str(f['asOf'], L)))
+    return h + '</tr>'
+
+
+P2_COLS = [('name', 'col_fund', 'fvb-f'), ('type', 'col_type', 'fvb-t'), ('r1', 'col_1y', ''), ('r5', 'col_5y', ''), ('r10', 'col_10y', ''),
+           ('oc', 'p2_col_oc', ''), ('entry', 'p2_col_entry', ''), ('exit', 'p2_col_exit', ''), ('docs', 'p2_col_docs', 'fvb-d')]
+
+
+def p2_table(L, t):
+    h = '<thead><tr>' + ''.join(
+        ('<th scope="col" class="%s" data-k="%s"><button type="button">%s</button></th>' if k != 'docs' else '<th scope="col" class="%s" data-k="%s">%s</th>') % (c, k, t[lab])
+        for k, lab, c in P2_COLS) + '</tr></thead>'
+    h += '<tbody class="fvb-ref">%s</tbody>' % p2_row(None, L, t, True)
+    h += '<tbody id="fvbP2Rows">' + ''.join(p2_row(f, L, t) for f in P2['funds']) + '</tbody>'
+    return h
+
+
+def p2_section(L, t):
+    if not P2:
+        return ''
+    types = ''.join('<button type="button" class="seg-btn%s" data-type="%s" aria-pressed="%s">%s</button>' % (
+        ' on' if k == 'all' else '', k, 'true' if k == 'all' else 'false', t['type_all'] if k == 'all' else t['p2_type_' + k])
+        for k in ['all'] + p2_types())
+    return '''
+  <section id="funds">
+    <div class="sec-head one"><div class="sec-copy"><h2>{h2a} <span>{h2b}</span></h2></div></div>
+    <p class="sp-lead" style="margin:-20px 0 22px">{lead}</p>
+    <div class="fvb-ctrl fvb-wait" id="fvbP2Ctrl">
+      <span class="seg" role="group" aria-label="{f_type}" id="fvbP2Type">{types}</span>
+      <span class="seg" role="group" aria-label="{f_mode}" id="fvbP2Mode"><button type="button" class="seg-btn on" data-mode="nominal" aria-pressed="true">{mn}</button><button type="button" class="seg-btn" data-mode="real" aria-pressed="false">{mr}</button></span>
+      <button type="button" class="fvb-reset" id="fvbP2Reset">{reset}</button>
+      <span class="fvb-count" id="fvbP2Count" aria-live="polite"></span>
+    </div>
+    <div class="fvb-wrap"><table class="fvb-table fvb-p2" id="fvbP2Table">{table}</table></div>
+    <p class="fvb-note">{note}</p>
+  </section>
+'''.format(h2a=t['p2_h2a'], h2b=t['p2_h2b'], lead=t['p2_lead'], f_type=t['f_type'], types=types, f_mode=t['f_mode'],
+           mn=t['mode_nominal'], mr=t['mode_real'], reset=t['sort_reset'], table=p2_table(L, t), note=esc(t['p2_note']).replace('&#x27;', "'"))
 
 
 def na_list(L, t):
@@ -190,12 +271,64 @@ def na_list(L, t):
         reason = DATA['funds'][0]['managementFee']['reason'] if L == 'sk' else EN['managementFee']
         lead = 'Všetkých %d fondov' % len(fee_funds) if L == 'sk' else 'All %d funds' % len(fee_funds)
         items.append('<li><b>%s</b>, %s: %s</li>' % (lead, LAB[L]['managementFee'], esc(reason.rstrip('.'))))
+    if P2:
+        items += p2_na_items(L, t)
     return '<ul>%s</ul>' % ''.join(items)
 
 
+def p2_en_reason(r):
+    """English line for each Slovak phase 2 n/a reason template (the data file keeps the Slovak text)"""
+    m = re.match(r'Fond \(trieda podielov\) vznikol (\d+) (\S+) (\d{4}), (\d+)-ročný', r)
+    if m:
+        return 'the fund (share class) started on %s %s %s, the manager publishes no %s-year return' % (
+            m.group(1), EN_M[SK_GEN.index(m.group(2))], m.group(3), m.group(4))
+    m = re.match(r'Faktsheet správcu (\d+)-ročný', r)
+    if m:
+        return "the manager's factsheet does not print a %s-year return; we don't build one from calendar years" % m.group(1)
+    if r.startswith('Emitent zverejňuje výnos tohto ETF len v amerických dolároch'):
+        return 'the issuer publishes this ETF\'s return only in US dollars; we don\'t convert it ourselves'
+    if r.startswith('Faktsheet emitenta tabuľku výkonnosti neobsahuje'):
+        return "the issuer's factsheet has no performance table; it links to an online page behind an entry form"
+    if r.startswith('Kľúčový informačný dokument pri poplatku za výkonnosť'):
+        return 'the key information document shows only €0 for the performance fee, with no percentage; we don\'t fill one in'
+    raise SystemExit('no EN text for phase 2 reason: ' + r)
+
+
+def p2_na_items(L, t):
+    groups = {}
+    for f in P2['funds']:
+        for k, lab in (('return1y', t['p2_na_r']['1']), ('return5y', t['p2_na_r']['5']), ('return10y', t['p2_na_r']['10']), ('performanceFee', t['p2_na_pf'])):
+            o = f[k]
+            if o.get('status') == 'n/a':
+                r = o['reason'] if L == 'sk' else p2_en_reason(o['reason'])
+                if 'vznikol' in r:
+                    r = 'fond vznikol neskôr, než začína obdobie; správca výnos za toto obdobie neuvádza'
+                if 'started on' in r:
+                    r = 'the fund started after the period begins; the manager publishes no return for it'
+                groups.setdefault((r, lab), []).append(f)
+    out = []
+    # funds that miss several periods for one reason (e.g. USD-only ETFs) collapse into one line
+    merged = {}
+    for (r, lab), fs in groups.items():
+        key = (r, tuple(f['id'] for f in fs))
+        merged.setdefault(key, []).append(lab)
+    for (r, ids), labs in merged.items():
+        fs = [f for f in P2['funds'] if f['id'] in ids]
+        names = ', '.join(esc(f['name']) for f in fs)
+        if L == 'sk' and 'vznikol neskôr' in r:
+            r = 'fond vznikol neskôr, než začína obdobie; správca výnos za toto obdobie neuvádza'
+        if L == 'en' and 'started on' in r:
+            r = 'the fund started after the period begins; the manager publishes no return for it'
+        out.append('<li><b>%s</b>, %s: %s</li>' % (names, ', '.join(labs), esc(r.rstrip('.'))))
+    risk = P2['funds'][0]['maxDrawdown10y']['reason'] if L == 'sk' else "we have no official daily series of the unit price in machine-readable form, and we don't compute drawdown from a few return points"
+    out.append('<li><b>%s</b>, %s: %s</li>' % (t['p2_na_risk'].replace('{n}', str(len(P2['funds']))), t['p2_na_dd'], esc(risk.rstrip('.'))))
+    return out
+
+
 def sources(L, t):
-    return '<ul>%s</ul>' % ''.join('<li><a href="%s" target="_blank" rel="noopener">%s</a>, %s</li>' % (
-        esc(s['url']), esc(s['label']), t['src_asof'].replace('{d}', date_str(s['asOf'], L) if len(s['asOf']) == 10 else month_str(s['asOf'], L)))
+    return '<ul>%s</ul>' % ''.join('<li><a href="%s"%s>%s</a>, %s</li>' % (
+        esc(s['url']), '' if s['url'].startswith('#') else ' target="_blank" rel="noopener"',
+        esc(t['p2_src']) if s['url'] == '#funds' else esc(s['label']), t['src_asof'].replace('{d}', date_str(s['asOf'], L) if len(s['asOf']) == 10 else month_str(s['asOf'], L)))
         for s in DATA['sources'])
 
 
@@ -214,7 +347,8 @@ def build(L):
         {'@type': 'Dataset', 'name': t['ds_name'], 'description': t['ds_desc'], 'url': ORIGIN + page,
          'dateModified': DATA['asOf'], 'temporalCoverage': '%s/%s' % (DATA['weeks'][0], DATA['asOf']),
          'variableMeasured': ['Return 1 year', 'Return 5 years per year', 'Return 10 years per year', 'Return after inflation',
-                              'Largest drawdown 10 years', 'Volatility 10 years', 'Management fee cap'],
+                              'Largest drawdown 10 years', 'Volatility 10 years', 'Management fee cap',
+                              'Ongoing costs per year (KID)', 'Entry charge maximum (KID)', 'Exit charge (KID)'],
          'creator': {'@id': ORIGIN + '/#org'}, 'isAccessibleForFree': True, 'inLanguage': L,
          'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': ORIGIN + DATA_URL}]},
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
@@ -236,7 +370,8 @@ def build(L):
         '<option>%s</option>' % esc(c) for c in sorted({f['company'] for f in DATA['funds']}))
     asof = t['asof'].replace('{d}', date_str(DATA['asOf'], L)).replace('{p}', eur(DATA['bitcoin']['price']['value'], L)).replace(
         '{m}', month_str(DATA['inflation']['lastMonth'], L))
-    strings = {k: v for k, v in t.items() if k.startswith('c_') or k.startswith('type_') or k in ('na', 'ch_log', 'ch_lin', 'ch_btc')}
+    strings = {k: v for k, v in t.items() if k.startswith('c_') or k.startswith('type_') or k.startswith('p2_type_')
+               or k in ('na', 'ch_log', 'ch_lin', 'ch_btc', 'p2_kid', 'p2_fs', 'p2_asof', 'p2_btc_sub', 'p2_btc_cost')}
     cfg = {'data': DATA_URL, 'lang': L, 'locale': 'en-GB' if L == 'en' else 'sk-SK', 'pctSpace': L in C.PCT_SPACE, 'amount': 10000}
     legal = esc(DATA['legalNotice']['text'])
 
@@ -276,6 +411,7 @@ def build(L):
     <div class="fvb-chartbox"><svg class="fvb-chart" id="fvbChart" role="img" aria-label="{caria}"></svg><div class="fvb-tip" id="fvbTip"></div></div>
     <p class="fvb-note">{cnote}</p>
   </section>
+{p2}
 
   <section id="context" class="fvb-text">
     <div class="sec-head one"><div class="sec-copy"><h2>{xh2a} <span>{xh2b}</span></h2></div></div>
@@ -293,6 +429,8 @@ def build(L):
     <p>{m4}</p>
     <p>{m5}</p>
     <p>{m6}</p>
+    <p>{m7}</p>
+    <p>{m8}</p>
     <h3 id="na">{nah2a} {nah2b}</h3>
     <p>{nalead}</p>
     {nalist}
@@ -333,12 +471,13 @@ def build(L):
            ch2a=t['ch_h2a'], ch2b=t['ch_h2b'], clead=t['ch_lead'], r1=t['r1'], r5=t['r5'], r10=t['r10'], ch_btc=t['ch_btc'], ch_funds=t['ch_funds'],
            ch_log=t['ch_log'], caria=esc(t['ch_aria']), cnote=t['ch_note'],
            xh2a=t['ctx_h2a'], xh2b=t['ctx_h2b'], x1=t['ctx_p1'], x2=t['ctx_p2'], x3=t['ctx_p3'], x4=t['ctx_p4'],
-           mh2a=t['m_h2a'], mh2b=t['m_h2b'], m1=t['m1'], m2=t['m2'], m3=t['m3'], m4=t['m4'], m5=t['m5'], m6=t['m6'],
+           mh2a=t['m_h2a'], mh2b=t['m_h2b'], m1=t['m1'], m2=t['m2'], m3=t['m3'], m4=t['m4'], m5=t['m5'], m6=t['m6'], m7=t['m7'], m8=t['m8'],
            nah2a=t['na_h2a'], nah2b=t['na_h2b'], nalead=t['na_lead'], nalist=na_list(L, t), src_h=t['src_h'], sources=sources(L, t),
            data_url=DATA_URL, data_link=t['data_link'], qh2a=t['faq_h2a'], qh2b=t['faq_h2b'], faq=faq_html,
            dh2a=t['disc_h2a'], d1=t['disc_p1'], d2=t['disc_p2'], legal=legal, legal_url=esc(DATA['legalNotice']['source']), legal_src=t['legal_src'],
            brief=F.brief_card(L, t, 'fvb_brief'), relh2a=t['rel_h2a'], relh2b=t['rel_h2b'], rcards=rcards, foot=foot,
-           i18n=json.dumps(strings, ensure_ascii=False).replace('</', '<\\/'), cfg=json.dumps(cfg).replace('</', '<\\/'))
+           i18n=json.dumps(strings, ensure_ascii=False).replace('</', '<\\/'), cfg=json.dumps(cfg).replace('</', '<\\/'),
+           p2=p2_section(L, t))
     sc = C.scripts('/')
     out += sc.replace('<script src="/site-v2.js', '<script src="/funds-vs-bitcoin.js?v=%s" defer></script>\n<script src="/site-v2.js' % JS_V, 1)
     F.check_text(out, L)
