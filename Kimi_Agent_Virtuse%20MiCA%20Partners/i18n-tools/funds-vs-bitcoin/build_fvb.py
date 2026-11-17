@@ -21,7 +21,7 @@ C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk']
 PAGES = {'en': '/funds-vs-bitcoin.html', 'sk': '/sk/fondy-vs-bitcoin.html'}
 FILES = {'en': 'funds-vs-bitcoin.html', 'sk': os.path.join('sk', 'fondy-vs-bitcoin.html')}
-JS_V = '1'
+JS_V = '2'
 DATA_URL = '/data/funds-vs-bitcoin.json'
 DATA = json.load(open(os.path.join(SITE, 'data', 'funds-vs-bitcoin.json')))
 TYPES = ['bond_guaranteed', 'equity', 'index', 'mixed', 'innovative']
@@ -33,6 +33,7 @@ CSS = '''<style>
 .fvb-notice b{color:var(--text);font-weight:600}
 .fvb-notice a{color:var(--text)}
 .fvb-asof{font-size:13px;color:var(--muted);margin-top:16px;text-align:center}
+.fvb-wait{visibility:hidden}
 .fvb-ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:0 0 14px}
 .fvb-ctrl .seg{margin:0;flex-wrap:wrap}
 .fvb-ctrl label{font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
@@ -256,7 +257,7 @@ def build(L):
   <section id="table">
     <div class="sec-head one"><div class="sec-copy"><h2>{th2a} <span>{th2b}</span></h2></div></div>
     <p class="sp-lead" style="margin:-20px 0 22px">{tlead}</p>
-    <div class="fvb-ctrl" id="fvbCtrl" hidden>
+    <div class="fvb-ctrl fvb-wait" id="fvbCtrl">
       <span class="seg" role="group" aria-label="{f_type}" id="fvbType">{types}</span>
       <label>{f_company} <select id="fvbCompany">{companies}</select></label>
       <span class="seg" role="group" aria-label="{f_mode}" id="fvbMode"><button type="button" class="seg-btn on" data-mode="nominal" aria-pressed="true">{mode_nominal}</button><button type="button" class="seg-btn" data-mode="real" aria-pressed="false">{mode_real}</button></span>

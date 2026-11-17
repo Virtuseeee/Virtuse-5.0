@@ -173,7 +173,7 @@
     });
   }
   function wire() {
-    $('fvbCtrl').hidden = false;
+    $('fvbCtrl').classList.remove('fvb-wait');   // space is reserved in the HTML (no layout shift)
     $('fvbType').addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
       S.type = b.dataset.type; press($('fvbType'), 'data-type', S.type); renderTable();

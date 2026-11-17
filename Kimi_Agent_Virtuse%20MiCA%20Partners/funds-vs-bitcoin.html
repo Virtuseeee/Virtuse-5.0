@@ -162,6 +162,7 @@
 .fvb-notice b{color:var(--text);font-weight:600}
 .fvb-notice a{color:var(--text)}
 .fvb-asof{font-size:13px;color:var(--muted);margin-top:16px;text-align:center}
+.fvb-wait{visibility:hidden}
 .fvb-ctrl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:0 0 14px}
 .fvb-ctrl .seg{margin:0;flex-wrap:wrap}
 .fvb-ctrl label{font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
@@ -261,7 +262,7 @@
   <section id="table">
     <div class="sec-head one"><div class="sec-copy"><h2>Every fund <span>and Bitcoin in one table</span></h2></div></div>
     <p class="sp-lead" style="margin:-20px 0 22px">Funds are listed by pension company, then by fund type and name. This is not a ranking. You can sort any column yourself by clicking its header.</p>
-    <div class="fvb-ctrl" id="fvbCtrl" hidden>
+    <div class="fvb-ctrl fvb-wait" id="fvbCtrl">
       <span class="seg" role="group" aria-label="Type" id="fvbType"><button type="button" class="seg-btn on" data-type="all" aria-pressed="true">All</button><button type="button" class="seg-btn" data-type="bond_guaranteed" aria-pressed="false">Guaranteed bond</button><button type="button" class="seg-btn" data-type="equity" aria-pressed="false">Equity</button><button type="button" class="seg-btn" data-type="index" aria-pressed="false">Index</button><button type="button" class="seg-btn" data-type="mixed" aria-pressed="false">Mixed</button><button type="button" class="seg-btn" data-type="innovative" aria-pressed="false">Innovative</button></span>
       <label>Company <select id="fvbCompany"><option value="">All companies</option><option>Allianz - Slovenská d.s.s., a.s.</option><option>KOOPERATIVA, d.s.s., a.s.</option><option>NN d.s.s., a.s.</option><option>UNIQA d.s.s., a.s.</option><option>VÚB Generali d.s.s., a.s.</option></select></label>
       <span class="seg" role="group" aria-label="Return" id="fvbMode"><button type="button" class="seg-btn on" data-mode="nominal" aria-pressed="true">Nominal</button><button type="button" class="seg-btn" data-mode="real" aria-pressed="false">After inflation</button></span>
@@ -385,7 +386,7 @@
 
 <script type="application/json" id="fvb-i18n">{"type_all": "All", "type_bond_guaranteed": "Guaranteed bond", "type_equity": "Equity", "type_index": "Index", "type_mixed": "Mixed", "type_innovative": "Innovative", "type_bitcoin": "Bitcoin", "na": "n/a", "ch_log": "Log scale: the same percentage move has the same height.", "ch_lin": "Linear scale.", "ch_btc": "Bitcoin", "c_na": "n/a", "c_btc_sub": "Not a fund", "c_fee_cap": "up to {v}", "c_count": "{n} of {t} funds", "c_tip_start": "Deposit", "c_no_funds": "No fund in the filter has a full history for this period.", "c_err": "Could not load the data. Showing the figures stored in the page."}</script>
 <script type="application/json" id="fvb-cfg">{"data": "/data/funds-vs-bitcoin.json", "lang": "en", "locale": "en-GB", "pctSpace": false, "amount": 10000}</script>
-<script src="/funds-vs-bitcoin.js?v=1" defer></script>
+<script src="/funds-vs-bitcoin.js?v=2" defer></script>
 <script src="/site-v2.js?v=19" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
