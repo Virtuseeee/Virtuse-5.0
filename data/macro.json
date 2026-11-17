@@ -1,30 +1,6 @@
 {
- "generated": "2026-11-16T21:45:48.901Z",
+ "generated": "2026-11-17T04:43:30.677Z",
  "quotes": {
-  "gold": {
-   "value": 3858.7,
-   "prev": 3886.3,
-   "change_pct": -0.71,
-   "date": "2026-11-16",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
-  },
-  "brent": {
-   "value": 91.99,
-   "prev": 95.84,
-   "change_pct": -4.02,
-   "date": "2026-11-16",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
-  },
-  "eurusd": {
-   "value": 1.1001,
-   "prev": 1.105,
-   "change_pct": -0.44,
-   "date": "2026-11-16",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
-  },
   "us10y": {
    "value": 5.121,
    "prev": 5.154,
@@ -33,6 +9,14 @@
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5ETNX"
   },
+  "brent": {
+   "value": 91.71,
+   "prev": 92.44,
+   "change_pct": -0.79,
+   "date": "2026-11-17",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
+  },
   "spx": {
    "value": 7416.59,
    "prev": 7561.67,
@@ -40,6 +24,22 @@
    "date": "2026-11-16",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
+  },
+  "gold": {
+   "value": 3868.8,
+   "prev": 3853,
+   "change_pct": 0.41,
+   "date": "2026-11-17",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
+  },
+  "eurusd": {
+   "value": 1.1008,
+   "prev": 1.1025,
+   "change_pct": -0.15,
+   "date": "2026-11-17",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
   }
  },
  "inflation": {
@@ -94,9 +94,9 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 90,
+    "prob": 91,
     "meeting": "2026-12-09",
-    "as_of": "2026-11-16",
+    "as_of": "2026-11-17",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxfeddecision"
    }
@@ -121,9 +121,9 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 73,
+    "prob": 71,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-16",
+    "as_of": "2026-11-17",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
    }
@@ -132,7 +132,7 @@
    "rate": "1.25%",
    "low": 1.25,
    "high": 1.25,
-   "date": "2026-11-12",
+   "date": "2026-11-15",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -150,7 +150,7 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 90,
     "meeting": "2026-12-18",
-    "as_of": "2026-11-16",
+    "as_of": "2026-11-17",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
    }
@@ -159,7 +159,7 @@
    "rate": "2.50%",
    "low": 2.5,
    "high": 2.5,
-   "date": "2026-11-16",
+   "date": "2026-11-17",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -177,7 +177,7 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 95,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-16",
+    "as_of": "2026-11-17",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
    }
