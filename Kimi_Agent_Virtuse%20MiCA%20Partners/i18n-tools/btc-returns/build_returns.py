@@ -95,23 +95,31 @@ CSS = '''<style>
 </style>
 '''
 
+# Month and year pages. The first three are the data cluster (handover PROMPT-claude-seo-traffic-fixes-2026-11-17):
+# monthly returns, 200-week moving average, retirement calculator, with the anchors people search for.
 RELATED = [
-    ('/btc-monthly-returns.html', 'Monthly returns heatmap', 'Every month since 2010 in one table, in USD or EUR.'),
+    ('/btc-monthly-returns.html', 'Bitcoin monthly returns', 'Every month since 2010 in one table, in USD or EUR.'),
+    ('/ma-200w.html', 'Bitcoin 200-week moving average', "Bitcoin's long-term average price, updated daily."),
+    ('/retirement-calculator.html', 'Bitcoin retirement calculator', 'How much Bitcoin a retirement plan might need.'),
     ('/bitcoin-dca-calculator/', 'DCA calculator', 'What regular weekly or monthly buys would have returned.'),
-    ('/retirement-calculator.html', 'Retirement calculator', 'How much Bitcoin a retirement plan might need.'),
-    ('/ma-200w.html', '200-week moving average', "Bitcoin's long-term average price, updated daily."),
     ('/asset-returns.html', 'Asset returns', 'Bitcoin against stocks, bonds and gold, year by year.'),
     ('/bitcoin-vs-gold.html', 'Bitcoin vs gold', 'Returns against gold, silver and oil since 2016.'),
 ]
-# related block on the heatmap page (handover HANDOVER-seo-quickwins-2026-10-26.md)
+# related block on the heatmap page (handover HANDOVER-seo-quickwins-2026-10-26.md; 2026-11-17: the retirement
+# calculator replaces Stacking Strategist so the cluster links both ways; the year pages are in the grid above)
 HUB_RELATED = [
+    ('/ma-200w.html', 'Bitcoin 200-week moving average', "Bitcoin's long-term average price, updated daily."),
+    ('/retirement-calculator.html', 'Bitcoin retirement calculator', 'How much Bitcoin a retirement plan might need.'),
     ('/asset-returns.html', 'Asset returns', 'Bitcoin against stocks, bonds and gold, year by year.'),
-    ('/ma-200w.html', '200-week moving average', "Bitcoin's long-term average price, updated daily."),
-    ('/rainbow-chart.html', 'Rainbow chart', 'Price history on a log scale in nine colour bands.'),
-    ('/stacking.html', 'Stacking Strategist', 'Plan a regular buy (DCA) and compare fees.'),
     ('/bitcoin-dca-calculator/', 'DCA calculator', 'What regular weekly or monthly buys would have returned.'),
+    ('/rainbow-chart.html', 'Rainbow chart', 'Price history on a log scale in nine colour bands.'),
     ('/bitcoin-vs-gold.html', 'Bitcoin vs gold', 'Returns against gold, silver and oil since 2016.'),
 ]
+HUB_SRC_SK = os.path.join(TOOLS, 'legacy', 'src', 'sk', HUB)
+MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+MONTHS_SK = ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december']
+MONTHS_SK_GEN = ['januára', 'februára', 'marca', 'apríla', 'mája', 'júna', 'júla', 'augusta', 'septembra', 'októbra', 'novembra', 'decembra']
+
 DISCLAIMER = ('Prices: CoinMetrics daily Bitcoin reference rate in US dollars. Past performance does not guarantee future results. '
               'Not investment advice. Virtuse never holds your keys or funds.')
 
@@ -263,17 +271,38 @@ def build_hub(R):
     for prop in ('og:title', 'twitter:title'):
         attr = 'property' if prop.startswith('og') else 'name'
         s = re.sub(r'(<meta %s="%s" content=")[^"]*' % (attr, prop), lambda m: m.group(1) + esc(title), s, count=1)
-    # meta description with the month facts people search for; same numbers as the tiles and FAQ
+    # meta description with the month facts people search for; same numbers as the tiles and FAQ.
+    # The heatmap shows the running month at the latest price, so the data runs through it (cy, cm).
     Mt = H['meta']
-    desc = ('Bitcoin monthly returns since %s in one heatmap, in USD or EUR. %s is the strongest month by median (%s), '
-            'up in %d of %d years. Updated daily.' % (R['firstMonth'][:4], Mt['name'], Mt['med'], Mt['pos'], Mt['n']))
+    bw = best_worst(H)
+    thru = '%s %d' % (MONTHS_EN[R['cm'] - 1], R['cy'])
+    desc = ('Bitcoin monthly returns since %s in one heatmap, in USD or EUR, with data through %s. %s leads by median (%s). '
+            'Updated daily.' % (R['firstMonth'][:4], thru, Mt['name'], Mt['med']))
     if not 140 <= len(desc) <= 160:
-        desc = 'Bitcoin monthly returns for every month since %s as a heatmap, in USD or EUR. Average and median return per month and quarter, updated daily.' % R['firstMonth'][:4]
+        desc = 'Bitcoin monthly returns for every month since %s as a heatmap, in USD or EUR, with data through %s. Updated daily.' % (R['firstMonth'][:4], thru)
+    assert 120 <= len(desc) <= 160, desc
+    # the lead under the H1 answers the query directly: what, since when, which currency, best and worst month
+    lead = ("Bitcoin's monthly returns since August 2010 in one heatmap: each month's return from the last close of the month "
+            "before, in US dollars or euros, with the average and median for every month. By median, "
+            '<a href="%s">%s</a> has been the strongest month (%s) and <a href="%s">%s</a> the weakest (%s). '
+            'The data runs through %s and updates every day.' % (bw['best'][0], bw['best'][1], bw['best'][2],
+                                                                    bw['worst'][0], bw['worst'][1], bw['worst'][2], thru))
+    s, n = re.subn(r'<p class="hero-desc">.*?</p>', lambda m: '<p class="hero-desc">%s</p>' % lead, s, count=1, flags=re.S)
+    assert n == 1, 'hero-desc'
     for name, attr in (('description', 'name'), ('og:description', 'property'), ('twitter:description', 'name')):
         s = re.sub(r'(<meta %s="%s" content=")[^"]*' % (attr, name), lambda m: m.group(1) + esc(desc), s, count=1)
 
     url = '/' + HUB
-    faq = H['faq']
+    faq = [
+        ('What are Bitcoin monthly returns?',
+         "A Bitcoin monthly return is how much the price changed over one calendar month, from the last daily close of the "
+         "month before to the last daily close of the month. This page shows that return for every month since August 2010 in "
+         "one heatmap, in US dollars or euros, with the average, the median and how often each month closed higher."),
+        ('Where can I see BTC monthly returns by month?',
+         'In the heatmap at the top of this page: one row per year since 2010 and one column per month, in USD or EUR, with a '
+         "quarterly view as well. Each calendar month also has its own page with every year's return, and each year has a "
+         'page with its twelve months. The data runs through %s and updates every day.' % thru),
+    ] + H['faq']
     ld = {'@context': 'https://schema.org', '@graph': F.org_ld() + [
         F.crumbs_ld([('Home', '/'), ('Bitcoin Data', '/bitcoin-data.html'), ('Monthly Returns', url)]),
         {'@type': 'Dataset', 'name': 'Bitcoin monthly returns since 2010',
@@ -319,6 +348,51 @@ def build_hub(R):
     if '—' in vis or '{' in vis:
         sys.exit('%s: em dash or unfilled placeholder in the returns block' % HUB)
     print('%-48s %6d bytes' % (HUB, len(out)))
+    build_hub_sk(R, bw)
+
+
+def best_worst(H):
+    """(url, month name, median) of the strongest and weakest month, read from the hub's own tiles."""
+    out = {}
+    for key, label in (('best', 'Strongest'), ('worst', 'Weakest')):
+        m = re.search(label + r' month \(median\)</span><b class="bd-v"><a href="([^"]+)">([^<]+)</a></b><span class="vbr-sub">([^ ]+) ', H['html'])
+        assert m, 'tile ' + label
+        out[key] = m.groups()
+    return out
+
+
+def sk_pct(v):
+    """'+11.7%' -> '+11,7 %' (decimal comma, no-break space before %)."""
+    return v.replace('.', ',').replace('%', '\u00a0%')
+
+
+def build_hub_sk(R, bw):
+    """The Slovak heatmap page: title, meta and the lead from the same tiles (2026-11-17). The SK page has no FAQ yet."""
+    s = open(HUB_SRC_SK, encoding='utf-8').read()
+    title = 'Mesačné výnosy Bitcoinu od roku %s | Virtuse' % R['firstMonth'][:4]
+    nb = lambda m: MONTHS_SK[MONTHS_EN.index(m)]
+    thru = '%s %d' % (MONTHS_SK[R['cm'] - 1], R['cy'])
+    thru_gen = '%s %d' % (MONTHS_SK_GEN[R['cm'] - 1], R['cy'])
+    desc = ('Mesačné výnosy Bitcoinu od roku %s v tepelnej mape, v dolároch aj eurách, vrátane %s. '
+            'Podľa mediánu vedie %s (%s). Aktualizované denne.' % (R['firstMonth'][:4], thru_gen, nb(bw['best'][1]), sk_pct(bw['best'][2])))
+    assert 120 <= len(desc) <= 160, (len(desc), desc)
+    lead = ('Mesačné výnosy Bitcoinu od augusta 2010 v jednej tepelnej mape: výnos každého mesiaca od posledného uzavretia '
+            'predchádzajúceho mesiaca, v dolároch alebo eurách, s priemerom a mediánom pre každý mesiac. Podľa mediánu bol '
+            'najsilnejší %s (%s) a najslabší %s (%s). Dáta zahŕňajú aj %s a aktualizujú sa každý deň.' % (
+                nb(bw['best'][1]), sk_pct(bw['best'][2]), nb(bw['worst'][1]), sk_pct(bw['worst'][2]), thru))
+    s, n = re.subn(r'<title>[^<]*</title>', '<title>%s</title>' % esc(title, False), s, count=1)
+    assert n == 1
+    for attr, prop in (('property', 'og:title'), ('name', 'twitter:title')):
+        s, n = re.subn(r'(<meta %s="%s" content=")[^"]*' % (attr, prop), lambda m: m.group(1) + esc(title), s, count=1)
+        assert n == 1, prop
+    for attr, name in (('name', 'description'), ('property', 'og:description'), ('name', 'twitter:description')):
+        s, n = re.subn(r'(<meta %s="%s" content=")[^"]*' % (attr, name), lambda m: m.group(1) + esc(desc), s, count=1)
+        assert n == 1, name
+    s, n = re.subn(r'<p class="hero-desc">.*?</p>', lambda m: '<p class="hero-desc">%s</p>' % esc(lead, False), s, count=1, flags=re.S)
+    assert n == 1, 'sk hero-desc'
+    open(HUB_SRC_SK, 'w', encoding='utf-8').write(s)
+    build_legacy.build('sk', HUB)
+    print('%-48s (sk) title, meta and lead' % ('sk/' + HUB))
 
 
 # ---------------------------------------------------------------- sitemap

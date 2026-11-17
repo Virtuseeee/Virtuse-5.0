@@ -53,6 +53,26 @@ HUB_KEYS = {
     'retirement': ['stacking', 'data', 'news', 'concierge'],
     'bitcoin-data': ['monthly', 'news', 'stories', 'retirement'],
 }
+# Data cluster (handover PROMPT-claude-seo-traffic-fixes-2026-11-17): monthly returns, 200-week moving
+# average, the year pages and the retirement calculator link each other. Only en and sk get it on the
+# retirement page; the other languages keep HUB_KEYS. Up to 6 cards = two full rows of the 3-column grid.
+CLUSTER = {
+    'mr': {'en': ('Bitcoin monthly returns', 'Every month since 2010 in one table, in USD or EUR.'),
+           'sk': ('Mesačné výnosy Bitcoinu', 'Každý mesiac od roku 2010 v jednej tabuľke, v dolároch aj eurách.')},
+    'wma': {'en': ('Bitcoin 200-week moving average', "Bitcoin's long-term average price, updated daily."),
+            'sk': ('200-týždňový kĺzavý priemer Bitcoinu', 'Dlhodobá priemerná cena Bitcoinu, aktualizovaná každý deň.')},
+    'y2025': {'en': ('Bitcoin returns 2025', 'Month by month, with the year’s high, low and drawdown.')},
+}
+HUB_KEYS_LANG = {
+    ('retirement', 'en'): ['mr', 'wma', 'y2025', 'stacking', 'data', 'concierge'],
+    ('retirement', 'sk'): ['mr', 'wma', 'stacking', 'data', 'news', 'concierge'],
+}
+
+
+def keys_for(hub, L):
+    return HUB_KEYS_LANG.get((hub, L), HUB_KEYS[hub])
+
+
 # Path under the language folder (en: site-relative) -> hub id.
 PAGE_HUBS = {
     'treasury.html': 'treasury',
@@ -209,6 +229,8 @@ def _json(tool, L):
 
 
 def text_of(key, L):
+    if key in CLUSTER:
+        return CLUSTER[key][L]
     if key in FROM_JSON:
         tool, prefix = FROM_JSON[key]
         j = _json(tool, L)
@@ -248,8 +270,12 @@ def href_of(key, L):
         return _guide(L, 3)
     if key == 'inheritance':
         return _guide(L, 4)
-    if key == 'monthly':
+    if key in ('monthly', 'mr'):
         return _page(L, 'btc-monthly-returns.html')
+    if key == 'wma':
+        return _page(L, 'ma-200w.html')
+    if key == 'y2025':
+        return '/bitcoin-returns/2025/'
     files = {
         'secure': 'secure.html', 'concierge': 'concierge.html', 'buy': 'buy-bitcoin.html',
         'stacking': 'stacking.html', 'retirement': 'retirement-calculator.html',
@@ -265,7 +291,7 @@ def esc(s):
 
 def cards_html(L, hub):
     parts = []
-    for key in HUB_KEYS[hub]:
+    for key in keys_for(hub, L):
         title, dek = text_of(key, L)
         href = href_of(key, L)
         parts.append('<a class="gcard" href="%s"><b>%s</b><span>%s</span></a>' % (
@@ -370,8 +396,9 @@ def check():
     for L in LANGS:
         if L not in HEAD or len(heading(L)) != 2:
             errs.append('heading missing for ' + L)
-        for hub, keys in HUB_KEYS.items():
-            if not (3 <= len(keys) <= 4):
+        for hub in HUB_KEYS:
+            keys = keys_for(hub, L)
+            if not (3 <= len(keys) <= (6 if (hub, L) in HUB_KEYS_LANG else 4)):
                 errs.append('%s has %d cards' % (hub, len(keys)))
             for key in keys:
                 try:
@@ -403,7 +430,7 @@ def check():
         page = '/' + rel if rel.endswith('.html') else '/' + rel[:rel.rfind('/')] + '/'
         if rel.endswith('/index.html'):
             page = '/' + rel[:rel.rfind('/index.html')] + '/'
-        for key in HUB_KEYS[hub]:
+        for key in keys_for(hub, L):
             if href_of(key, L).split('?')[0] == page:
                 errs.append('%s card %s links to itself' % (rel, key))
     return errs

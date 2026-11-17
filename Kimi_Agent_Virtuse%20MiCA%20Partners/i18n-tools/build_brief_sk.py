@@ -54,6 +54,11 @@ TEXT = {
     "Sources: mempool.space, Yahoo Finance.": "Zdroje: mempool.space, Yahoo Finance.",
     "Policy rate, last move, next decision": "Sadzba, posledná zmena, ďalšie rozhodnutie",
     "Bitcoin and macro": "Bitcoin a makro",
+    "More charts:": "Ďalšie grafy:",
+    "Bitcoin monthly returns": "Mesačné výnosy Bitcoinu",
+    "Bitcoin 200-week moving average": "200-týždňový kĺzavý priemer Bitcoinu",
+    "Bitcoin returns 2026 so far": "Výnosy Bitcoinu v roku 2026 (v angličtine)",
+    "Bitcoin returns 2025": "Výnosy Bitcoinu v roku 2025 (v angličtine)",
     "The numbers we watch every week": "Čísla, ktoré sledujeme každý týždeň",
     "US inflation": "Inflácia v USA",
     "Euro area inflation": "Inflácia v eurozóne",
@@ -150,7 +155,8 @@ HEAD = [
 # Pages with a Slovak version: link those; everything else root-absolute.
 SK_PAGES = {"news.html", "cfo.html", "how-we-earn.html", "lending.html", "operator.html", "privacy-policy.html",
             "terms-and-conditions.html", "bitcoin-data.html", "retirement-calculator.html", "verdict.html",
-            "asset-returns.html", "tax-agent.html", "fear-greed.html", "btc-dominance.html"}
+            "asset-returns.html", "tax-agent.html", "fear-greed.html", "btc-dominance.html",
+            "btc-monthly-returns.html", "ma-200w.html"}
 
 def norm(t): return " ".join(t.split())
 
