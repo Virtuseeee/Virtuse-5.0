@@ -45,7 +45,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/news/news.css?v=20261116d">
+<link rel="stylesheet" href="/news/news.css?v=20261118d">
 <style>
 /* One Brief theme: dark by default (same key and palette as blog + stories). */
 :root[data-theme-key="vb-theme-blog"][data-theme="dark"] {
@@ -614,6 +614,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2 class="pt-lead-title"><a href="/stories/follow-the-money-binance-crash/" data-issue-slug="follow-the-money-binance-crash">Follow the Money: Why I Think Binance Is Behind This Crash</a></h2>
         <p class="pt-dek">Bitcoin fell 13% in a week and everyone blames the Fed. I follow the money from Binance's $6.3 billion hack and explain why I think it's behind the crash.</p>
         <a class="pt-more" href="/stories/follow-the-money-binance-crash/" data-issue-slug="follow-the-money-binance-crash">Read in the Magazine <span aria-hidden="true">→</span></a>
+        <p class="pt-prev" id="todayPrev" hidden><a href="stories/"></a></p>
       </article>
 
       <aside class="pt-news" id="pulse" aria-labelledby="pulse-head">
@@ -646,13 +647,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h2 class="pt-second-title"><a href="stories/"></a></h2>
           <p class="pt-dek"></p>
         </article>
-        <aside class="pt-ad" aria-label="Partners (advertisement)">
-          <p class="pt-ad-label"><span>Partners</span><span>Ad</span></p>
-          <a class="pt-ad-art" href="https://app.firefish.io/auth/sign-up?ref=virtuseloan" target="_blank" rel="noopener noreferrer sponsored">
-            <img src="news/firefish-promo.png" alt="Firefish: Never sell your Bitcoin. Borrow against it." width="1200" height="630" loading="lazy">
-          </a>
-          <p class="pt-ad-note">Advertisement, not editorial. Partner link: if you sign up, Virtuse may receive a commission. Your price does not change. Partner terms apply. <a href="how-we-earn.html">How we earn</a></p>
-        </aside>
+        <article class="pt-second pt-third" id="heroThird">
+          <a class="pt-second-img" href="stories/" tabindex="-1" aria-hidden="true"></a>
+          <p class="pt-kicker"><span class="pt-tag pt-tag-mag">Magazine</span><time></time></p>
+          <h2 class="pt-second-title"><a href="stories/"></a></h2>
+        </article>
       </div>
     </div>
   </section>
@@ -666,6 +665,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="pt-four" id="blogGrid"></div>
     </div>
   </section>
+
+  <aside class="section pt-section pt-adrow" aria-label="Partners (advertisement)">
+    <div class="page-inner">
+      <div class="pt-ad">
+        <a class="pt-ad-art" href="https://bitgo.com" target="_blank" rel="sponsored noopener">
+          <img src="news/bitgo-promo.jpg" alt="BitGo and Virtuse: Bitcoin custody partner" width="1200" height="677" loading="lazy">
+        </a>
+        <div class="pt-ad-copy">
+          <p class="pt-ad-label"><span>Partners</span><span>Ad</span></p>
+          <p class="pt-ad-title">Bitcoin on the company balance sheet? Start with a free consultation.</p>
+          <p class="pt-ad-dek">We walk you through custody, accounting and risk. Custody with BitGo, an institutional custodian licensed under MiCA via Germany's BaFin.</p>
+          <button type="button" class="pt-ad-cta" data-consultation-trigger data-consultation-lang="en">Book a free consultation</button>
+          <p class="pt-ad-note">Advertisement, not editorial. Partner link: if you sign up, Virtuse may receive a commission. Your price does not change. Partner terms apply. <a href="how-we-earn.html">How we earn</a></p>
+        </div>
+      </div>
+    </div>
+  </aside>
 
   <section class="section pt-section" id="issues" aria-labelledby="issues-head">
     <div class="page-inner">
@@ -937,7 +953,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </footer>
 
 <script src="/preferred-source.js" defer></script>
-<script src="/news/news.js?v=20261116u" defer></script>
+<script src="consultation-lazy.js?v=5" defer></script>
+<script src="/news/news.js?v=20261118d" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>

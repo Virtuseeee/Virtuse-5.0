@@ -19,7 +19,8 @@
       kalshiNote: 'Market expects: Kalshi prediction markets, implied probability of the most likely outcome',
       tagNames: { ETF: 'ETF', Macro: 'Macro', World: 'World', Policy: 'Policy', Mining: 'Mining', Security: 'Security' },
       inEnglish: 'In English', source: 'Source', ecbRate: 'ECB deposit rate', btcEur: 'BTC in EUR', skInfl: 'Inflation, Slovakia', nextDecision: 'next decision',
-      deskUpdated: 'Desk updated ', nextLabel: 'Next: ', latestIssue: 'Latest issue', perOz: 'per oz', perBarrel: 'per barrel', hikeOdds: 'hike odds', cutOdds: 'cut odds', holdOdds: 'hold odds',
+      deskUpdated: 'Desk updated ', nextLabel: 'Next: ', latestIssue: 'Latest issue',
+      topicTag: 'Topic of the day', todayAt: 'Today · ', topicLate: 'Today\'s topic is on its way.', prevTopic: 'Previous topic', readTopic: 'Read the topic', perOz: 'per oz', perBarrel: 'per barrel', hikeOdds: 'hike odds', cutOdds: 'cut odds', holdOdds: 'hold odds',
       bp: 'bp', nextShort: 'next', magazine: 'Magazine', minAgo: 'min ago', hAgo: 'h ago', dAgo: 'd ago', d30: '30d', estimate: 'estimate',
       diffSub: function (p, b, h) { return p + ' of the period done. ' + b + ' blocks to go, about ' + h + '.'; },
       feeSub: { low: 'Low. A typical payment costs a few cents.', normal: 'Normal. A typical payment costs well under a dollar.', high: 'High. Small payments can wait for a cheaper block.' },
@@ -40,7 +41,8 @@
       kalshiNote: 'Trh čaká: trhy predikcií Kalshi, implikovaná pravdepodobnosť najčastejšieho scenára',
       tagNames: { ETF: 'ETF', Macro: 'Makro', World: 'Svet', Policy: 'Regulácia', Mining: 'Ťažba', Security: 'Bezpečnosť' },
       inEnglish: 'Text v angličtine', source: 'Zdroj', ecbRate: 'Sadzba ECB (depozitná)', btcEur: 'BTC v EUR', skInfl: 'Inflácia na Slovensku', nextDecision: 'ďalšie rozhodnutie',
-      deskUpdated: 'Aktualizované ', nextLabel: 'Najbližšie: ', latestIssue: 'Najnovšie vydanie', perOz: 'za uncu', perBarrel: 'za barel', hikeOdds: 'šanca na zvýšenie', cutOdds: 'šanca na zníženie', holdOdds: 'šanca na bez zmeny',
+      deskUpdated: 'Aktualizované ', nextLabel: 'Najbližšie: ', latestIssue: 'Najnovšie vydanie',
+      topicTag: 'Téma dňa', todayAt: 'Dnes · ', topicLate: 'Dnešná téma sa pripravuje.', prevTopic: 'Predchádzajúca téma', readTopic: 'Čítať tému dňa', perOz: 'za uncu', perBarrel: 'za barel', hikeOdds: 'šanca na zvýšenie', cutOdds: 'šanca na zníženie', holdOdds: 'šanca na bez zmeny',
       bp: 'bázických bodov', nextShort: 'ďalej', magazine: 'Magazín', minAgo: 'min', hAgo: 'h', dAgo: 'd', d30: '30 d', estimate: 'odhad',
       diffSub: function (p, b, h) { return 'Hotových ' + p + ' obdobia. Ostáva ' + b + ' blokov, asi ' + h + '.'; },
       feeSub: { low: 'Nízky. Bežná platba stojí pár centov.', normal: 'Bežný. Platba stojí výrazne menej ako dolár.', high: 'Vysoký. Malé platby môžu počkať na lacnejší blok.' },
@@ -1211,7 +1213,7 @@
     Array.prototype.forEach.call(document.querySelectorAll('main img'), function (img) {
       var ss = SRCSET[img.getAttribute('src')];
       if (!ss || img.hasAttribute('srcset') || (img.complete && img.naturalWidth)) return;
-      img.sizes = img.closest('#heroLead') ? LEAD_SIZES : img.closest('#heroSecond') ? SIDE_SIZES : CARD_SIZES;
+      img.sizes = img.closest('#heroLead') ? LEAD_SIZES : img.closest('#heroSecond, #heroThird') ? SIDE_SIZES : CARD_SIZES;
       img.srcset = ss;
     });
   }
@@ -1366,13 +1368,18 @@
   }
   function paintMagazine(items) {
     if (items.length < 2) items = fallbackItems();
-    var sig = items.slice(0, 2 + BLOG_MAX).map(function (x) { return [x.slug, x.image, x.date, x.title, x.excerpt].join('|'); }).join(',');
+    var sig = (TOPIC ? TOPIC.slug + ';' : '') + items.slice(0, 3 + BLOG_MAX).map(function (x) { return [x.slug, x.image, x.date, x.title, x.excerpt].join('|'); }).join(',');
     if (!items.length || sig === magSig) return;
     magSig = sig;
-    fillStory('heroLead', items[0], LEAD_SIZES, true);
-    fillStory('heroSecond', items[1] && Object.assign({}, items[1], { excerpt: shortDek(items[1].excerpt, 150) }), SIDE_SIZES, false);
+    lastMag = items;
+    // With a Topic of the day it holds the lead and the right column starts at the newest story.
+    var k = TOPIC ? 0 : 1;
+    if (!TOPIC) fillStory('heroLead', items[0], LEAD_SIZES, true);
+    fillStory('heroSecond', items[k] && Object.assign({}, items[k], { excerpt: shortDek(items[k].excerpt, 150) }), SIDE_SIZES, false);
+    fillStory('heroThird', items[k + 1], SIDE_SIZES, false);
     var section = $('blog'), grid = $('blogGrid');
-    var rest = items.slice(2, 2 + BLOG_MAX);
+    var from = k + 2;
+    var rest = items.slice(from, from + BLOG_MAX);
     if (section && grid) {
       grid.textContent = '';
       rest.forEach(function (it) { grid.appendChild(card(it)); });
@@ -1380,6 +1387,82 @@
     }
     linkStories();
   }
+  /* Topic of the day: the newest post in the WordPress category topic-of-the-day (SK tema-dna)
+     fills the hero lead; the right column then shows the two newest Magazine stories. Today's post says "Today · 06:25"; one from the day before
+     stays, labelled with its date and a note that today's topic is on its way. Nothing newer
+     than 48 h: the newest Magazine story keeps the lead. The post before it is linked underneath. */
+  var TOPIC = null, lastMag = null;
+  var TOPIC_SLUG = LANG === 'sk' ? 'tema-dna' : 'topic-of-the-day';
+  function dayKey(ms) { return new Date(ms).toLocaleDateString('en-CA', { timeZone: DESK_TZ }); }
+  function gmtMs(p) { return Date.parse(String((p && (p.date_gmt || p.date)) || '') + (p && p.date_gmt && !/Z$/.test(p.date_gmt) ? 'Z' : '')); }
+  function topicFixture() {
+    if (!/^(staging\.virtuse\.com|localhost|127\.0\.0\.1)$/.test(location.hostname)) return null;
+    var m = /[?&]today_fixture=([a-z0-9-]+)/.exec(location.search);
+    return m ? '/news/test/today-' + m[1] + '.json' : null;
+  }
+  function loadTopicPosts() {
+    var fx = topicFixture();
+    if (fx) return j(fx).then(function (d) {
+      // @0 / @-1 in a fixture date = today / yesterday in the desk's zone.
+      return ((d && d[LANG]) || []).map(function (p) {
+        ['date', 'date_gmt'].forEach(function (k) {
+          p[k] = String(p[k] || '').replace(/^@(-?\d+)/, function (m, n) { return dayKey(Date.now() + Number(n) * 864e5); }).replace(' ', 'T');
+        });
+        return p;
+      });
+    });
+    var base = WP.replace(/\/posts$/, '');
+    return j(base + '/categories?slug=' + TOPIC_SLUG + '&_fields=id', 15000).then(function (cats) {
+      if (!cats || !cats[0] || !cats[0].id) return [];
+      return j(WP + '?categories=' + cats[0].id + '&per_page=2&orderby=date&order=desc&_embed=wp:featuredmedia', 20000);
+    });
+  }
+  function paintTopic(posts) {
+    var el = $('heroLead');
+    var p = (posts || [])[0];
+    var ms = gmtMs(p);
+    if (!el || !p || !isFinite(ms) || Date.now() - ms > 48 * 3600e3) return;
+    TOPIC = Object.assign(fromWp(p), { excerpt: shortDek(strip(p.excerpt && p.excerpt.rendered), 280) });
+    fillStory('heroLead', TOPIC, LEAD_SIZES, true);
+    var fresh = dayKey(ms) === dayKey(Date.now());
+    el.classList.add('is-topic');
+    el.classList.toggle('is-late', !fresh);
+    var tag = el.querySelector('.pt-kicker .pt-tag');
+    if (tag) { tag.className = 'pt-tag pt-tag-today'; tag.textContent = tr('topicTag'); }
+    var t = el.querySelector('.pt-kicker time');
+    if (t) {
+      t.setAttribute('datetime', new Date(ms).toISOString());
+      t.textContent = fresh ? tr('todayAt') + new Date(ms).toLocaleTimeString(LANG === 'sk' ? 'sk-SK' : 'en-GB', { timeZone: DESK_TZ, hour: '2-digit', minute: '2-digit' }) : fmtDate(p.date_gmt ? new Date(ms).toISOString() : p.date);
+    }
+    var note = el.querySelector('.pt-today-note');
+    if (!fresh && !note) {
+      note = document.createElement('p');
+      note.className = 'pt-today-note';
+      note.textContent = tr('topicLate');
+      el.querySelector('.pt-dek').insertAdjacentElement('afterend', note);
+    }
+    if (fresh && note) note.remove();
+    var more = el.querySelector('.pt-more');
+    if (more) { more.textContent = tr('readTopic') + ' '; var ar = document.createElement('span'); ar.setAttribute('aria-hidden', 'true'); ar.textContent = '\u2192'; more.appendChild(ar); }
+    var prev = $('todayPrev'), q = (posts || [])[1];
+    if (prev && q) {
+      var it = fromWp(q), a = prev.querySelector('a');
+      a.textContent = '';
+      var b = document.createElement('b');
+      b.textContent = dayKey(gmtMs(q)) === dayKey(ms - 864e5) ? tr('yesterday') : tr('prevTopic');
+      a.appendChild(b);
+      a.appendChild(document.createTextNode(it.title));
+      linkTo(a, it);
+      prev.hidden = false;
+    }
+    if (lastMag) { magSig = ''; paintMagazine(lastMag); }
+    linkStories();
+    upgradeImages();
+  }
+  function loadTopic() {
+    loadTopicPosts().then(function (posts) { remember(posts); paintTopic(posts); }).catch(function () { /* Magazine keeps the column */ });
+  }
+
   function cachedMag() {
     try {
       var c = JSON.parse(window.localStorage.getItem(MAG_KEY) || 'null');
@@ -1388,7 +1471,7 @@
     return null;
   }
   function saveMag(items) {
-    try { window.localStorage.setItem(MAG_KEY, JSON.stringify({ t: Date.now(), items: items.slice(0, 2 + BLOG_MAX) })); } catch (e) { /* storage blocked */ }
+    try { window.localStorage.setItem(MAG_KEY, JSON.stringify({ t: Date.now(), items: items.slice(0, 3 + BLOG_MAX) })); } catch (e) { /* storage blocked */ }
   }
   function loadMagazine() {
     var cached = cachedMag();
@@ -1408,6 +1491,7 @@
     ISSUES = ((data && data.issues) || []).filter(Boolean);
     paintIssues(ISSUES);
     loadMagazine();
+    loadTopic();
     // Smaller image copies for the Newsletter covers (one request for all issues).
     var slugs = [];
     ISSUES.filter(isIssue).slice(0, ISSUES_MAX).forEach(function (i) { if (slugs.indexOf(i.slug) < 0) slugs.push(i.slug); });
@@ -1419,6 +1503,7 @@
     }
   }).catch(function () {
     loadMagazine();
+    loadTopic();
   });
 
   /* Bitcoin data: 30-day charts and network figures, loaded when the section comes near the screen. */
