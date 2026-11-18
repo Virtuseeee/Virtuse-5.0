@@ -155,7 +155,7 @@
   "fees_lead": "Každá skupina má iný druh nákladov a iný zdroj. Preto ich ukazujeme zvlášť, nie v jednom stĺpci.",
   "fee_pillar_k": "Druhý pilier",
   "fee_pillar_v": "najviac {v} ročne",
-  "fee_pillar_p": "Poplatok za správu podľa štatútov fondov, overené pri {n} z {t} fondov 18 novembra 2026. Všetky majú presne zákonný strop podľa <a href=\"{law}\" target=\"_blank\" rel=\"noopener\">zákona č. 43/2004 Z. z.</a>; poplatok za zhodnotenie zákon ani štatúty nepoznajú. Výnosy fondov sú už po tomto poplatku.",
+  "fee_pillar_p": "Poplatok za správu podľa štatútov fondov, overené pri {n} {z} {t} fondov 18 novembra 2026. Všetky majú presne zákonný strop podľa <a href=\"{law}\" target=\"_blank\" rel=\"noopener\">zákona č. 43/2004 Z. z.</a>; poplatok za zhodnotenie zákon ani štatúty nepoznajú. Výnosy fondov sú už po tomto poplatku.",
   "fee_fund_k": "Podielové fondy",
   "fee_fund_p": "Bežné náklady ročne podľa kľúčových informačných dokumentov. K tomu vstupný poplatok {e}, distribútor môže účtovať menej.",
   "fee_etf_k": "ETF",
