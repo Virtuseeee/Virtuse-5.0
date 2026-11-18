@@ -116,5 +116,7 @@
  "g_note": "Celkový výnos v USD (zlato cez ETF GLD); pomer používa cenu zlata na futures. Aktualizované denne.",
  "g_cta": "Bitcoin vs. zlato, striebro a komodity",
  "c_gold": "Bitcoin vs. zlato",
- "c_gold_p": "Zlato, striebro, ropa a meď rok po roku, plus pomer BTC/zlato."
+ "c_gold_p": "Zlato, striebro, ropa a meď rok po roku, plus pomer BTC/zlato.",
+ "c_fvb": "Fondy vs Bitcoin",
+ "c_fvb_p": "Druhý pilier, podielové fondy a ETF vedľa Bitcoinu v eurách."
 }

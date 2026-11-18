@@ -17,7 +17,8 @@ CSS_VERSION, JS_VERSION = C.csp_tight.speed.SITE_CSS_V, C.csp_tight.speed.SITE_J
 # accent per chart/tool page (Services colours); each sub-page carries the same accent (legacy/build_legacy.py PAGE_ACC)
 CHART_ACC = {'btc-monthly-returns.html': 'teal', 'asset-returns.html': 'purple', 'bitcoin-vs-gold.html': 'yellow', 'trading-volume.html': 'blue',
              'fear-greed.html': 'pink', 'rainbow-chart.html': 'indigo', 'ma-200w.html': 'green', 'root-cycles.html': 'orange',
-             'btc-dominance.html': 'blue', 'retirement-calculator.html': 'teal'}
+             'btc-dominance.html': 'blue', 'retirement-calculator.html': 'teal',
+             'funds-vs-bitcoin.html': 'orange', 'fondy-vs-bitcoin.html': 'orange'}
 
 
 def build(L):
@@ -126,6 +127,10 @@ def build(L):
 
     charts = [('btc-monthly-returns.html', 'c_monthly'), ('asset-returns.html', 'c_assets'), ('bitcoin-vs-gold.html', 'c_gold'), ('trading-volume.html', 'c_volume'), ('fear-greed.html', 'c_fear'),
               ('rainbow-chart.html', 'c_rainbow'), ('ma-200w.html', 'c_wma'), ('root-cycles.html', 'c_root'), ('btc-dominance.html', 'c_dom')]
+    # Funds vs Bitcoin exists only in EN and SK (i18n-tools/funds-vs-bitcoin), so the card is added only there, after Bitcoin vs gold
+    FVB = {'en': 'funds-vs-bitcoin.html', 'sk': 'fondy-vs-bitcoin.html'}
+    if L in FVB:
+        charts.insert(3, (FVB[L], 'c_fvb'))
     grid = ''.join('<a class="bd-chart bd-acc-%s" href="%s"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
         CHART_ACC[h], h, t('c_data'), t(k), t(k + '_p'), C.ARROW) for h, k in charts)
     grid += '<a class="bd-chart bd-tool bd-acc-%s" href="retirement-calculator.html"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
