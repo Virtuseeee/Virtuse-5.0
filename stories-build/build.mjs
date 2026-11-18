@@ -5,8 +5,8 @@
  * description, image, dates.
  *
  * Output (inside the site folder, same clean-URL style as seo-build):
- *   stories/<slug>/index.html        English feed (WP category 13)
- *   sk/stories/<slug>/index.html     Slovak feed (category 26)
+ *   stories/<slug>/index.html        English feed (WP categories 13 Blog, 137 Topic of the day)
+ *   sk/stories/<slug>/index.html     Slovak feed (categories 26 Blog, 138 Téma dňa)
  *   ru/stories/<post-id>/index.html  Russian feed (category 57; slugs are
  *                                    Cyrillic, so the post id is used)
  *
@@ -60,10 +60,11 @@ const FALLBACK_IMAGE = { url: ORIGIN + '/news/og-card.png?v=20260921', width: 12
 // WP_BASE to the Cloudflare Worker proxy (cloudflare-worker/src/features/wp-proxy/handler.js)
 // because Webglobe drops connections from part of GitHub's runner IPs.
 const WP_BASE = (process.env.WP_BASE || 'https://blog.virtuse.com').replace(/\/+$/, '');
+// Blog categories plus Topic of the day (EN 137, SK 138; the Brief hero lead since 2026-11-18).
 const FEEDS = [
-  { lang: 'en', api: WP_BASE + '/wp-json/wp/v2/posts', category: 13, wpLang: 'en', dir: '', locale: 'en_US' },
-  { lang: 'sk', api: WP_BASE + '/sk/wp-json/wp/v2/posts', category: 26, wpLang: null, dir: 'sk/', locale: 'sk_SK' },
-  { lang: 'ru', api: WP_BASE + '/wp-json/wp/v2/posts', category: 57, wpLang: 'ru', dir: 'ru/', locale: 'ru_RU' },
+  { lang: 'en', api: WP_BASE + '/wp-json/wp/v2/posts', category: [13, 137], wpLang: 'en', dir: '', locale: 'en_US' },
+  { lang: 'sk', api: WP_BASE + '/sk/wp-json/wp/v2/posts', category: [26, 138], wpLang: null, dir: 'sk/', locale: 'sk_SK' },
+  { lang: 'ru', api: WP_BASE + '/wp-json/wp/v2/posts', category: [57], wpLang: 'ru', dir: 'ru/', locale: 'ru_RU' },
 ];
 // Byline strings and date locale, from article.js's LANGS (article.js
 // re-renders the byline on load, with the reader's own time zone).
@@ -115,7 +116,7 @@ async function getJSON(url) {
 async function fetchFeed(feed) {
   const posts = [];
   for (let page = 1, total = 1; page <= total; page++) {
-    const url = `${feed.api}?categories=${feed.category}&per_page=100&page=${page}&_embed=wp:featuredmedia` +
+    const url = `${feed.api}?categories=${feed.category.join(',')}&per_page=100&page=${page}&_embed=wp:featuredmedia` +
       `&orderby=date&order=desc${feed.wpLang ? '&lang=' + feed.wpLang : ''}`;
     const { data, totalPages } = await getJSON(url);
     total = totalPages;
@@ -155,7 +156,7 @@ async function stillPublished(storyPath) {
       if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + url);
       const data = await r.json();
       const posts = Array.isArray(data) ? data : [data];
-      return posts.some((p) => p.status === 'publish' && (p.categories || []).includes(feed.category));
+      return posts.some((p) => p.status === 'publish' && (p.categories || []).some((c) => feed.category.includes(c)));
     } catch (e) {
       if (attempt >= 3) throw new Error(`cannot check whether ${storyPath} is still published (${e.message}); nothing removed`);
       await new Promise((ok) => setTimeout(ok, 10000 * attempt));
