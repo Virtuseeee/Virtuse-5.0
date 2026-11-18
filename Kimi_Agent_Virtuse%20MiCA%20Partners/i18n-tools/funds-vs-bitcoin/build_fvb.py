@@ -24,7 +24,7 @@ LANGS = ['en', 'sk']
 PAGES = {'en': '/funds-vs-bitcoin.html', 'sk': '/sk/fondy-vs-bitcoin.html'}
 FILES = {'en': 'funds-vs-bitcoin.html', 'sk': os.path.join('sk', 'fondy-vs-bitcoin.html')}
 FEE_INDEX = {'en': '/bitcoin-fee-index/', 'sk': '/sk/bitcoin-index-poplatkov/'}
-JS_V = '7'
+JS_V = '8'
 DATA_URL = '/data/funds-vs-bitcoin.json'
 DATA = json.load(open(os.path.join(SITE, 'data', 'funds-vs-bitcoin.json')))
 P2 = DATA['investmentFunds']
@@ -263,6 +263,9 @@ def type_label(f, t):
 
 def fee_line(f, g, L, t):
     if g == 'pillar':
+        mf = f['managementFee']
+        if mf.get('value') is not None:
+            return t['fee_statute_line'].replace('{v}', '<a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(mf['source']), pct(mf['value'], L)))
         return t['fee_cap_line'].replace('{v}', pct(f['managementFeeCap']['value'], L))
     oc, en = f['ongoingCosts'], f['entryCostMax']
     s = t['fee_oc_line'].replace('{v}', pct(oc['value'], L, 2)) if oc.get('value') is not None else t['miss']
@@ -334,12 +337,18 @@ def t1_row(f, L, t, btc=False):
     for y in (1, 5, 10):
         h += cell(f['return%dy' % y], L, t)
     h += cell(f['maxDrawdown10y'], L, t) + cell(f['volatility10y'], L, t)
-    h += '<td>%s</td>' % (t['btc_fee_short'] if btc else pct(f['managementFeeCap']['value'], L))
+    if btc:
+        h += '<td>%s</td>' % t['btc_fee_short']
+    elif f['managementFee'].get('value') is not None:
+        h += '<td><a href="%s" target="_blank" rel="noopener" title="%s">%s</a></td>' % (
+            esc(f['managementFee']['source']), esc(f['managementFee']['sourceLabelEn' if L == 'en' else 'sourceLabel']), pct(f['managementFee']['value'], L))
+    else:
+        h += cell(f['managementFee'], L, t)
     return h + '</tr>'
 
 
 T1_COLS = [('name', 'col_fund', 'fvb-f'), ('type', 'col_type', 'fvb-t'), ('r1', 'col_1y', ''), ('r5', 'col_5y', ''), ('r10', 'col_10y', ''),
-           ('dd', 'col_dd', ''), ('vol', 'col_vol', ''), ('fee', 'col_cap', '')]
+           ('dd', 'col_dd', ''), ('vol', 'col_vol', ''), ('fee', 'col_fee', '')]
 T2_COLS = [('name', 'col_fund', 'fvb-f'), ('type', 'col_type', 'fvb-t'), ('r1', 'col_1y', ''), ('r5', 'col_5y', ''), ('r10', 'col_10y', ''),
            ('oc', 'col_oc', ''), ('entry', 'col_entry', ''), ('exit', 'col_exit', ''), ('docs', 'col_docs', 'fvb-d')]
 
@@ -400,13 +409,21 @@ def props(L, t):
     return ''.join(rows)
 
 
+def fee_pillar_v(L, t):
+    v = sorted({f['managementFee']['value'] for f in DATA['funds'] if f['managementFee'].get('value') is not None})
+    if not v:
+        return t['fee_pillar_v'].replace('{v}', pct(0.004, L))
+    s = pct(v[0], L) if len(v) == 1 else t['range'].replace('{a}', pct(v[0], L)).replace('{b}', pct(v[-1], L))
+    return t['fee_pillar_v2'].replace('{v}', s)
+
+
 def fees(L, t):
     def rng(fs, k, d=2):
         v = [f[k]['value'] for f in fs if f[k].get('value') is not None]
         return t['range'].replace('{a}', pct(min(v), L, d)).replace('{b}', pct(max(v), L, d))
     law = [s for s in DATA['sources'] if s.get('id') == 'law'][0]['url']
     cards = [
-        (t['fee_pillar_k'], t['fee_pillar_v'].replace('{v}', pct(0.004, L)), t['fee_pillar_p'].replace('{law}', esc(law))),
+        (t['fee_pillar_k'], fee_pillar_v(L, t), t['fee_pillar_p'].replace('{law}', esc(law)).replace('{n}', str(sum(1 for f in DATA['funds'] if f['managementFee'].get('value') is not None))).replace('{t}', str(len(DATA['funds'])))),
         (t['fee_fund_k'], rng(GROUPS['fund'], 'ongoingCosts'), t['fee_fund_p'].replace('{e}', rng(GROUPS['fund'], 'entryCostMax'))),
         (t['fee_etf_k'], rng(GROUPS['etf'], 'ongoingCosts'), t['fee_etf_p']),
         (t['fee_btc_k'], t['btc_fee'], t['fee_btc_p'].replace('{href}', FEE_INDEX[L])),
@@ -421,10 +438,11 @@ def na_list(L, t):
     for f in [DATA['bitcoin']] + DATA['funds']:
         btc = f['id'] == 'btc'
         for k, v in f.items():
-            if isinstance(v, dict) and v.get('status') == 'n/a' and not (k == 'managementFee' and not btc):
+            if isinstance(v, dict) and v.get('status') == 'n/a' and k != 'managementFee' or (btc and k == 'managementFee'):
                 items.append('<li><b>%s</b>, %s: %s</li>' % ('Bitcoin' if btc else esc(f['name']), LAB[k], esc(reason(v, L).rstrip('.'))))
-    items.append('<li><b>%s</b>, %s: %s</li>' % (t['na_all17'].replace('{n}', str(len(DATA['funds']))), LAB['managementFee'],
-                                                 esc(reason(DATA['funds'][0]['managementFee'], L).rstrip('.'))))
+    nf = [f for f in DATA['funds'] if f['managementFee'].get('value') is None]
+    for f in nf:
+        items.append('<li><b>%s</b>, %s: %s</li>' % (esc(f['name']), LAB['managementFee'], esc(reason(f['managementFee'], L).rstrip('.'))))
     groups = {}
     for f in P2['funds']:
         for k in ('return1y', 'return5y', 'return10y', 'performanceFee'):

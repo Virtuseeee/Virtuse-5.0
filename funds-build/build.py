@@ -242,6 +242,9 @@ def EN_REASON(r):
     raise SystemExit('no English text for reason: ' + r)
 
 
+STATUTE_IN = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'statute-fees.json')
+# management fee rates from each second-pillar fund's statute, keyed by the ADSS fund name (curated, each quote re-checked against the PDF)
+STATUTE = {x['fund']: x for x in json.load(open(STATUTE_IN, encoding='utf-8'))['funds']} if os.path.exists(STATUTE_IN) else {}
 PHASE2_IN = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'phase2-input.json')
 KID_FIELDS = ('entryCostMax', 'exitCost', 'managementAndOtherCosts', 'transactionCosts', 'performanceFee')
 
@@ -379,8 +382,18 @@ def main():
              'nav': obj(r['nav'], 'EUR', adss_url, 'Asociácia dôchodkových správcovských spoločností, Údaje o dôchodkových fondoch k %s' % skd(as_of), as_of)}
         if code in PRED:
             f['history'] = 'Do 31 októbra 2019 hodnoty fondu %s (AEGON INDEX), zlúčeného do tohto fondu podľa Národnej banky Slovenska (dsw_subject_union.csv).' % PRED[code]
-        f['managementFee'] = na('Skutočnú sadzbu zo štatútu fondu sme v tomto kole neoverili. Na stránke je zákonný strop 0,4 % ročne, nie poplatok fondu.',
-                                adss_url, as_of, reasonEn="We have not checked the actual rate in the fund's statute in this round. The page shows the legal cap of 0.4% a year, not the fund's own fee.")
+        st = STATUTE.get(r['name'])
+        if st and st.get('managementFeePa') is not None:
+            eff = st.get('docEffective')
+            lab = '%s, účinný od %s' % (st['docTitle'], skd(eff)) if eff else '%s, aktuálne znenie na webe správcu k %s' % (st['docTitle'], skd(st['checked']))
+            lab_en = ('%s, in force from %s' % (st['docTitleEn'], end(eff)) if eff else
+                      "%s, current version on the manager's website as of %s" % (st['docTitleEn'], end(st['checked'])))
+            f['managementFee'] = obj(round(st['managementFeePa'] / 100, 8), 'fraction p.a.', st['docUrl'], lab, eff or st['checked'],
+                                     sourceLabelEn=lab_en, quote=st['quote']['text'], quotePage=st['quote']['page'], checked=st['checked'])
+        else:
+            r_sk = (st or {}).get('nullReason') or 'Skutočnú sadzbu zo štatútu fondu sme v tomto kole neoverili. Na stránke je zákonný strop 0,4 % ročne, nie poplatok fondu.'
+            r_en = (st or {}).get('nullReasonEn') or "We have not checked the actual rate in the fund's statute in this round. The page shows the legal cap of 0.4% a year, not the fund's own fee."
+            f['managementFee'] = na(r_sk, (st or {}).get('docUrl') or adss_url, as_of, reasonEn=r_en)
         f['managementFeeCap'] = obj(0.004, 'fraction p.a.', LAW,
                                     'zákon č. 43/2004 Z. z., § 63a ods. 3, znenie účinné od 1 augusta 2026; asociácia: najviac 0,4 % v roku 2026', '2026-08-01')
         f['performanceFee'] = obj(0.0, 'fraction', LAW,
@@ -470,6 +483,8 @@ def main():
              'labelEn': 'Act No. 43/2004 Coll., version in force from 1 August 2026 (Slov-Lex)', 'url': LAW, 'asOf': '2026-08-01'},
             {'id': 'hicp', 'label': 'Eurostat, harmonizovaný index spotrebiteľských cien, Slovensko (prc_hicp_minr)',
              'labelEn': 'Eurostat, harmonised index of consumer prices, Slovakia (prc_hicp_minr)', 'url': HICP_PAGE, 'asOf': i_end},
+            {'id': 'statutes', 'label': 'Štatúty dôchodkových fondov (odplata za správu), odkaz je pri každom fonde',
+             'labelEn': 'Pension fund statutes (management fee), linked next to each fund', 'url': '#all', 'asOf': '2026-11-18'},
             {'id': 'cm', 'label': 'CoinMetrics, PriceUSD', 'labelEn': 'CoinMetrics, PriceUSD', 'url': CM_PAGE, 'asOf': as_of},
             {'id': 'ecb', 'label': 'Európska centrálna banka, referenčný kurz EUR/USD',
              'labelEn': 'European Central Bank, EUR/USD reference rate', 'url': FX_PAGE, 'asOf': as_of},

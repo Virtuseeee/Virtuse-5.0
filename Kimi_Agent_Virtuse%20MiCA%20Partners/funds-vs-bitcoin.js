@@ -110,7 +110,11 @@
 
   /* ---------- cards ---------- */
   function feeLine(f) {
-    if (S.g === 'pillar') return T.fee_cap_line.replace('{v}', pct(f.managementFeeCap.value));
+    if (S.g === 'pillar') {
+      var mf = f.managementFee;
+      if (val(mf) != null) return T.fee_statute_line.replace('{v}', '<a href="' + esc(mf.source) + '" target="_blank" rel="noopener">' + pct(mf.value) + '</a>');
+      return T.fee_cap_line.replace('{v}', pct(f.managementFeeCap.value));
+    }
     var s = val(f.ongoingCosts) != null ? T.fee_oc_line.replace('{v}', pct(f.ongoingCosts.value, 2)) : T.miss;
     if (val(f.entryCostMax) != null) s += ', ' + T.fee_entry_line.replace('{v}', pct(f.entryCostMax.value, 2));
     return s;
@@ -325,7 +329,10 @@
       (btc ? T.btc_ref : esc(f.company)) + '</span></td><td class="fvb-t">' + (btc ? T.type_bitcoin : T[tkey(f.type)]) + '</td>';
     [1, 5, 10].forEach(function (y) { h += cell(ret(f, y)); });
     h += cell(f.maxDrawdown10y) + cell(f.volatility10y);
-    return h + '<td>' + (btc ? T.btc_fee_short : pct(f.managementFeeCap.value)) + '</td></tr>';
+    if (btc) return h + '<td>' + T.btc_fee_short + '</td></tr>';
+    var mf = f.managementFee;
+    if (val(mf) == null) return h + cell(mf) + '</tr>';
+    return h + '<td><a href="' + esc(mf.source) + '" target="_blank" rel="noopener" title="' + esc(EN ? mf.sourceLabelEn : mf.sourceLabel) + '">' + pct(mf.value) + '</a></td></tr>';
   }
   function t2Row(f) {
     if (!f) {
@@ -350,7 +357,7 @@
       case 'r10': return val(ret(f, 10));
       case 'dd': return val(f.maxDrawdown10y);
       case 'vol': return val(f.volatility10y);
-      case 'fee': return val(f.managementFeeCap);
+      case 'fee': return val(f.managementFee);
       case 'oc': return val(f.ongoingCosts);
       case 'entry': return val(f.entryCostMax);
       case 'exit': return val(f.exitCost);

@@ -1,0 +1,260 @@
+{
+ "note": "Odplata za správu podľa aktuálneho štatútu každého fondu druhého piliera, overené 18 novembra 2026. Citácia a strana sú z PDF štatútu. Pri VÚB Generali štatút dátum účinnosti neuvádza, preto docEffective je null.",
+ "funds": [
+  {
+   "fund": "GARANT dlhopisový garantovaný d.f.",
+   "company": "Allianz - Slovenská d.s.s., a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.asdss.sk/wp-content/uploads/2025/11/Statut_GARANT_25_11_18112025.pdf",
+   "docTitle": "Štatút fondu GARANT dlhopisový garantovaný d.f.",
+   "docTitleEn": "Statute of GARANT dlhopisový garantovaný d.f.",
+   "docEffective": "2026-01-01",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata spoločnosti za správu dôchodkového fondu je stanovená vo výške 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde za jeden kalendárny rok správy dôchodkového fondu.",
+    "page": 8
+   },
+   "listingUrl": "https://www.asdss.sk/fondy/fond-garant/"
+  },
+  {
+   "fund": "PROGRES indexový negarantovaný d.f.",
+   "company": "Allianz - Slovenská d.s.s., a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.asdss.sk/wp-content/uploads/2025/11/Statut_PROGRES_25_11_19112025.pdf",
+   "docTitle": "Štatút fondu PROGRES indexový negarantovaný d.f.",
+   "docTitleEn": "Statute of PROGRES indexový negarantovaný d.f.",
+   "docEffective": "2026-01-01",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata spoločnosti za správu dôchodkového fondu je stanovená vo výške 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde za jeden kalendárny rok správy dôchodkového fondu.",
+    "page": 6
+   },
+   "listingUrl": "https://www.asdss.sk/fondy/fond-progres/"
+  },
+  {
+   "fund": "KOOPERATIVA dlhopisový garantovaný, d.f.",
+   "company": "KOOPERATIVA, d.s.s., a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://s3.koop.vshosting.cz/prod-kooperativa-dss-media-documents/dochodkove-fondy/statut-fondu-16102026-20261117100432.pdf?v=1792069424",
+   "docTitle": "Štatút fondu KOOPERATIVA dlhopisový garantovaný, d.f.",
+   "docTitleEn": "Statute of KOOPERATIVA dlhopisový garantovaný, d.f.",
+   "docEffective": "2026-10-16",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata DSS za jeden kalendárny rok správy fondu je 0,400 % z priemernej ročnej predbežnej čistej hodnoty majetku vo fonde.",
+    "page": 7
+   },
+   "listingUrl": "https://kooperativadss.sk/dokumenty?td=dochodkove-fondy"
+  },
+  {
+   "fund": "KOOPERATIVA ESG indexový negarantovaný d.f.",
+   "company": "KOOPERATIVA, d.s.s., a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://s3.koop.vshosting.cz/prod-kooperativa-dss-media-documents/dochodkove-fondy/statut-fondu-16102026-20261117100128.pdf?v=1792069127",
+   "docTitle": "Štatút fondu KOOPERATIVA ESG indexový negarantovaný d.f.",
+   "docTitleEn": "Statute of KOOPERATIVA ESG indexový negarantovaný d.f.",
+   "docEffective": "2026-10-16",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata DSS za jeden kalendárny rok správy fondu je 0,400 % z priemernej ročnej predbežnej čistej hodnoty majetku vo fonde.",
+    "page": 7
+   },
+   "listingUrl": "https://kooperativadss.sk/dokumenty?td=dochodkove-fondy"
+  },
+  {
+   "fund": "KOOPERATIVA Svetový indexový negarantovaný d.f.",
+   "company": "KOOPERATIVA, d.s.s., a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://s3.koop.vshosting.cz/prod-kooperativa-dss-media-documents/dochodkove-fondy/statut-fondu-16102026-20261117100255.pdf?v=1792069276",
+   "docTitle": "Štatút fondu KOOPERATIVA Svetový indexový negarantovaný d.f.",
+   "docTitleEn": "Statute of KOOPERATIVA Svetový indexový negarantovaný d.f.",
+   "docEffective": "2026-10-16",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata DSS za jeden kalendárny rok správy fondu je 0,400 % z priemernej ročnej predbežnej čistej hodnoty majetku vo fonde.",
+    "page": 5
+   },
+   "listingUrl": "https://kooperativadss.sk/dokumenty?td=dochodkove-fondy"
+  },
+  {
+   "fund": "Dlhopisový garantovaný d.d.f.",
+   "company": "UNIQA d.s.s., a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.uniqa.sk/documents/uniqa_dokumenty/produkty/dochodky/starobne-dochodkove-sporenie/fondy/dlhopisovy-garantovany-d.d.f.-uniqa-d.s.s.--a.s/statut-dlhopisoveho-garantovaneho-d.d.f.-uniqa-d.s.s.--a.s.--zverejneny-05.02.2026-ucinny-od-20.02.2026.pdf",
+   "docTitle": "Štatút fondu Dlhopisový garantovaný d.d.f.",
+   "docTitleEn": "Statute of Dlhopisový garantovaný d.d.f.",
+   "docEffective": "2026-02-20",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata UNIQA DSS za správu dôchodkového fondu za jeden kalendárny rok správy dôchodkového fondu je 0,4 %. Odplata za správu dôchodkového fondu sa počíta z priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde.",
+    "page": 7
+   },
+   "listingUrl": "https://www.uniqa.sk/dokumenty-k-stiahnutiu/?filter=d%C3%B4chodky~Starobn%C3%A9+d%C3%B4chodkov%C3%A9+sporenie~Fondy"
+  },
+  {
+   "fund": "Akciový negarantovaný d.f.",
+   "company": "UNIQA d.s.s., a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.uniqa.sk/documents/uniqa_dokumenty/produkty/dochodky/starobne-dochodkove-sporenie/fondy/akciovy-negarantovany-a.d.f.-uniqa-d.s.s.--a.s/statut-akcioveho-negarantovaneho-d.f.-uniqa-d.s.s.-a.s.-zverejneny-05.02.2026-ucinny-od-20.02.2026.pdf",
+   "docTitle": "Štatút fondu Akciový negarantovaný d.f.",
+   "docTitleEn": "Statute of Akciový negarantovaný d.f.",
+   "docEffective": "2026-02-20",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata UNIQA DSS za správu dôchodkového fondu za jeden kalendárny rok správy dôchodkového fondu je 0,4 %. Odplata za správu dôchodkového fondu sa počíta z priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde.",
+    "page": 7
+   },
+   "listingUrl": "https://www.uniqa.sk/dokumenty-k-stiahnutiu/?filter=d%C3%B4chodky~Starobn%C3%A9+d%C3%B4chodkov%C3%A9+sporenie~Fondy"
+  },
+  {
+   "fund": "Indexový negarantovaný i.d.f.",
+   "company": "UNIQA d.s.s., a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.uniqa.sk/documents/uniqa_dokumenty/produkty/dochodky/starobne-dochodkove-sporenie/fondy/indexovy-negarantovany-a.d.f.-uniqa-d.s.s.--a.s/statut-indexoveho-negarantovaneho-i.d.f.-uniqa-d.s.s.-a.s.-zverejneny-05.02.2026-ucinny-od-20.02.2026.pdf",
+   "docTitle": "Štatút fondu Indexový negarantovaný i.d.f.",
+   "docTitleEn": "Statute of Indexový negarantovaný i.d.f.",
+   "docEffective": "2026-02-20",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata UNIQA DSS za správu dôchodkového fondu za jeden kalendárny rok správy dôchodkového fondu je 0,4 %. Odplata za správu dôchodkového fondu sa počíta z priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde.",
+    "page": 7
+   },
+   "listingUrl": "https://www.uniqa.sk/dokumenty-k-stiahnutiu/?filter=d%C3%B4chodky~Starobn%C3%A9+d%C3%B4chodkov%C3%A9+sporenie~Fondy"
+  },
+  {
+   "fund": "Solid – Dlhopisový garantovaný d.f.",
+   "company": "NN dôchodková správcovská spoločnosť, a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.nn.sk/files/archiv/sk-dss/fondy/statut/solid/Statut-Solid.pdf",
+   "docTitle": "Štatút fondu Solid – Dlhopisový garantovaný d.f.",
+   "docTitleEn": "Statute of Solid – Dlhopisový garantovaný d.f.",
+   "docEffective": "2025-04-01",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata NN DSS za správu dôchodkového fondu za jeden kalendárny rok správy dôchodkového fondu je 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde.",
+    "page": 4
+   },
+   "listingUrl": "https://www.nn.sk/druhy-pilier/pre-klientov/dokumenty-stiahnutie/dokumenty-k-dochodkovym-fondom/solid/statut/"
+  },
+  {
+   "fund": "Dynamika – Akciový negarantovaný d.f.",
+   "company": "NN dôchodková správcovská spoločnosť, a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.nn.sk/files/archiv/sk-dss/fondy/statut/dynamika/654549.pdf",
+   "docTitle": "Štatút fondu Dynamika – Akciový negarantovaný d.f.",
+   "docTitleEn": "Statute of Dynamika – Akciový negarantovaný d.f.",
+   "docEffective": "2026-01-01",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata NN DSS za správu dôchodkového fondu za jeden kalendárny rok správy dôchodkového fondu je 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde.",
+    "page": 4
+   },
+   "listingUrl": "https://www.nn.sk/druhy-pilier/pre-klientov/dokumenty-stiahnutie/dokumenty-k-dochodkovym-fondom/dynamika/statut/"
+  },
+  {
+   "fund": "Harmónia – Zmiešaný negarantovaný d.f.",
+   "company": "NN dôchodková správcovská spoločnosť, a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.nn.sk/files/archiv/sk-dss/fondy/statut/harmonia/654548.pdf",
+   "docTitle": "Štatút fondu Harmónia – Zmiešaný negarantovaný d.f.",
+   "docTitleEn": "Statute of Harmónia – Zmiešaný negarantovaný d.f.",
+   "docEffective": "2026-01-01",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata NN DSS za správu dôchodkového fondu za jeden kalendárny rok správy dôchodkového fondu je 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde.",
+    "page": 4
+   },
+   "listingUrl": "https://www.nn.sk/druhy-pilier/pre-klientov/dokumenty-stiahnutie/dokumenty-k-dochodkovym-fondom/harmonia/statut/"
+  },
+  {
+   "fund": "Index Global – Indexový negarantovaný d.f.",
+   "company": "NN dôchodková správcovská spoločnosť, a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.nn.sk/files/archiv/sk-dss/fondy/statut/index_global/Statut-Index-Global.pdf",
+   "docTitle": "Štatút fondu Index Global – Indexový negarantovaný d.f.",
+   "docTitleEn": "Statute of Index Global – Indexový negarantovaný d.f.",
+   "docEffective": "2026-01-01",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata NN DSS za správu dôchodkového fondu za jeden kalendárny rok správy dôchodkového fondu je 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde.",
+    "page": 4
+   },
+   "listingUrl": "https://www.nn.sk/druhy-pilier/pre-klientov/dokumenty-stiahnutie/dokumenty-k-dochodkovym-fondom/index-global/statut/"
+  },
+  {
+   "fund": "Rešpekt – Akciový negarantovaný d.f.",
+   "company": "NN dôchodková správcovská spoločnosť, a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.nn.sk/files/archiv/sk-dss/fondy/statut/index/654928.pdf",
+   "docTitle": "Štatút fondu Rešpekt – Akciový negarantovaný d.f.",
+   "docTitleEn": "Statute of Rešpekt – Akciový negarantovaný d.f.",
+   "docEffective": "2026-01-01",
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata NN DSS za správu dôchodkového fondu za jeden kalendárny rok správy dôchodkového fondu je 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku v dôchodkovom fonde.",
+    "page": 5
+   },
+   "listingUrl": "https://www.nn.sk/druhy-pilier/pre-klientov/dokumenty-stiahnutie/dokumenty-k-dochodkovym-fondom/respekt/statut/"
+  },
+  {
+   "fund": "KLASIK, dlhopisový garantovaný d.f.",
+   "company": "VÚB Generali dôchodková správcovská spoločnosť, a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.vubgenerali.sk/subory/?special=SDFKLASIK",
+   "docTitle": "Štatút fondu KLASIK, dlhopisový garantovaný d.f.",
+   "docTitleEn": "Statute of KLASIK, dlhopisový garantovaný d.f.",
+   "docEffective": null,
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata spoločnosti za správu fondu za jeden kalendárny rok správy fondu je 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku vo fonde.",
+    "page": 4
+   },
+   "listingUrl": "https://www.vubgenerali.sk/dokumenty/"
+  },
+  {
+   "fund": "INDEX, indexový negarantovaný d.f.",
+   "company": "VÚB Generali dôchodková správcovská spoločnosť, a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.vubgenerali.sk/subory/?special=SDFINDEX",
+   "docTitle": "Štatút fondu INDEX, indexový negarantovaný d.f.",
+   "docTitleEn": "Statute of INDEX, indexový negarantovaný d.f.",
+   "docEffective": null,
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata spoločnosti za správu fondu za jeden kalendárny rok správy fondu je 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku fondu.",
+    "page": 4
+   },
+   "listingUrl": "https://www.vubgenerali.sk/dokumenty/"
+  },
+  {
+   "fund": "PROFIT, akciový negarantovaný d.f.",
+   "company": "VÚB Generali dôchodková správcovská spoločnosť, a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.vubgenerali.sk/subory/?special=SDFPROFIT",
+   "docTitle": "Štatút fondu PROFIT, akciový negarantovaný d.f.",
+   "docTitleEn": "Statute of PROFIT, akciový negarantovaný d.f.",
+   "docEffective": null,
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata spoločnosti za správu fondu za jeden kalendárny rok správy fondu je 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku vo fonde.",
+    "page": 4
+   },
+   "listingUrl": "https://www.vubgenerali.sk/dokumenty/"
+  },
+  {
+   "fund": "SMART, inovatívny negarantovaný d.f.",
+   "company": "VÚB Generali dôchodková správcovská spoločnosť, a.s.",
+   "managementFeePa": 0.4,
+   "docUrl": "https://www.vubgenerali.sk/subory/?special=SDFSMART",
+   "docTitle": "Štatút fondu SMART, inovatívny negarantovaný d.f.",
+   "docTitleEn": "Statute of SMART, inovatívny negarantovaný d.f.",
+   "docEffective": null,
+   "checked": "2026-11-18",
+   "quote": {
+    "text": "Odplata spoločnosti za správu fondu za jeden kalendárny rok správy fondu je 0,4 % priemernej ročnej predbežnej čistej hodnoty majetku vo fonde.",
+    "page": 5
+   },
+   "listingUrl": "https://www.vubgenerali.sk/dokumenty/"
+  }
+ ]
+}
