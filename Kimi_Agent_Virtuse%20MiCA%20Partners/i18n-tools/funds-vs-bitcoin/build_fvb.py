@@ -24,7 +24,7 @@ LANGS = ['en', 'sk']
 PAGES = {'en': '/funds-vs-bitcoin.html', 'sk': '/sk/fondy-vs-bitcoin.html'}
 FILES = {'en': 'funds-vs-bitcoin.html', 'sk': os.path.join('sk', 'fondy-vs-bitcoin.html')}
 FEE_INDEX = {'en': '/bitcoin-fee-index/', 'sk': '/sk/bitcoin-index-poplatkov/'}
-JS_V = '9'
+JS_V = '10'
 DATA_URL = '/data/funds-vs-bitcoin.json'
 DATA = json.load(open(os.path.join(SITE, 'data', 'funds-vs-bitcoin.json')))
 P2 = DATA['investmentFunds']
@@ -170,11 +170,20 @@ CSS = '''<style>
 .page-fvb .vb-cc.fvb-cc-flow{position:relative;left:auto;right:auto;bottom:auto;top:auto;width:auto;max-width:760px;max-height:none;margin:12px auto 18px;z-index:5;box-shadow:none}
 .fvb-endnote{grid-column:1/-1;font-size:12px;line-height:1.55;color:var(--muted);margin:10px 0 0;max-width:860px}
 @media (max-width:900px){.fvb-steps{grid-template-columns:1fr}.fvb-chart{height:320px}}
-@media (max-width:640px){.page-fvb .vb-cc.fvb-cc-flow{padding:10px 12px;margin:6px 0 4px;border-radius:12px;font-size:12px;line-height:1.4}
-.page-fvb .vb-cc.fvb-cc-flow h2{font-size:13px;margin:0 0 3px}.page-fvb .vb-cc.fvb-cc-flow p{margin:0;font-size:12px;line-height:1.4}
-.page-fvb .vb-cc.fvb-cc-flow .vb-cc-row{margin-top:8px;gap:6px}.page-fvb .vb-cc.fvb-cc-flow .vb-cc-row button{padding:7px 4px;font-size:12px;min-height:34px}
-.page-fvb .vb-cc.fvb-cc-flow+*{margin-top:0}}
-@media (max-width:640px){.fvb-nums{grid-template-columns:1fr;gap:8px}.fvb-num{min-height:0;padding:14px}.fvb-ends{grid-template-columns:1fr}
+@media (max-width:640px){.page-fvb .vb-cc.fvb-cc-sheet{left:8px;right:8px;bottom:8px;padding:10px 12px;max-height:none;border-radius:14px}
+.page-fvb .vb-cc.fvb-cc-sheet h2,.page-fvb .vb-cc.fvb-cc-sheet>p:not(.fvb-cc-short),.page-fvb .vb-cc.fvb-cc-sheet [data-vb=settings]{display:none}
+.page-fvb .fvb-cc-short{margin:0;font-size:12.5px;line-height:1.4;color:#e6edf3}
+.page-fvb .fvb-cc-more{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+.page-fvb .vb-cc.fvb-cc-sheet .vb-cc-row{margin-top:8px;gap:8px;flex-wrap:nowrap}
+.page-fvb .vb-cc.fvb-cc-sheet .vb-cc-row button{flex:1 1 0;padding:9px 6px;font-size:13px;min-height:38px}
+.fvb-hero{padding-top:0}.fvb-hero .eyebrow{margin-bottom:0}
+.fvb-hero h1{font-size:clamp(30px,9.4vw,38px);margin:6px 0 8px}.fvb-hero h1 .h1-grey{font-size:16px;margin-top:6px}
+.fvb-hero .sp-lead{font-size:13.5px;line-height:1.5;margin-top:0}
+.fvb-nums{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:12px}
+.fvb-num{padding:9px 8px;border-radius:12px;min-height:0}.fvb-num .k{font-size:10.5px;line-height:1.3;display:block}
+.fvb-num .v{font-size:21px;margin:4px 0 3px}.fvb-num .v.rng{font-size:13.5px;margin-top:6px;line-height:1.25}
+.fvb-num .s{font-size:10px;line-height:1.35;display:block}}
+@media (max-width:640px){.fvb-ends{grid-template-columns:1fr}
 .fvb-table{font-size:13px}.fvb-table th,.fvb-table td{padding:8px 9px}.fvb-table th.fvb-f,.fvb-table td.fvb-f{min-width:150px}.fvb-table td.fvb-f span{font-size:11px}
 .fvb-table td.fvb-t,.fvb-table th.fvb-t{display:none}.fvb-chart{height:260px}.fvb-notice{margin:16px 0 0}.fvb-cards{grid-template-columns:1fr}}
 </style>
@@ -537,7 +546,7 @@ def build(L):
         '<option>%s</option>' % esc(c) for c in sorted({f['company'] for f in GROUPS['pillar']}))
     cards = btc_card('pillar', L, t) + ''.join(card(f, 'pillar', L, t) for f in GROUPS['pillar'])
     strings = {k: v for k, v in t.items() if k.startswith(('c_', 'type_', 'grp_', 'hz', 'pred_', 'ch_', 'ret_lab_', 'have_', 'num_', 'date_', 'fee_', 'card_', 'chart_', 'end_', 'lab_'))
-               or k in ('miss', 'usd_only', 'btc_fee', 'btc_fee_short', 'btc_ref', 'range', 'asof_short', 'src_adss', 'src_kid', 'src_report',
+               or k in ('cc_short', 'cc_more', 'miss', 'usd_only', 'btc_fee', 'btc_fee_short', 'btc_ref', 'range', 'asof_short', 'src_adss', 'src_kid', 'src_report',
                         'company_all', 'type_bitcoin', 'count')}
     cfg = {'data': DATA_URL, 'lang': L, 'locale': 'en-GB' if L == 'en' else 'sk-SK', 'pctSpace': L in C.PCT_SPACE,
            'amount': 10000, 'monthly': 100, 'types': TYPE_ORDER}

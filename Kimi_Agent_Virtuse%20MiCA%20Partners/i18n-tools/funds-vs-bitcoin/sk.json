@@ -220,5 +220,7 @@
   "have_1": "ročný výnos má {n} {z} {t} fondov",
   "have_5": "päťročný výnos má {n} {z} {t} fondov",
   "have_10": "desaťročný výnos má {n} {z} {t} fondov",
-  "end_note": "Sumy sú z týždenných hodnôt (piatky) od {s} do {e}. Preto sa líšia od toho, čo by vyšlo z oficiálneho ročného výnosu v tabuľke za presne {y}."
+  "end_note": "Sumy sú z týždenných hodnôt (piatky) od {s} do {e}. Preto sa líšia od toho, čo by vyšlo z oficiálneho ročného výnosu v tabuľke za presne {y}.",
+  "cc_short": "S vaším súhlasom používame cookies na meranie návštevnosti a reklamy.",
+  "cc_more": "Podrobnosti"
 }

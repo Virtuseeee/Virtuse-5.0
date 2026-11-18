@@ -220,5 +220,7 @@
   "have_1": "{n} of {t} funds {v} a 1-year return",
   "have_5": "{n} of {t} funds {v} a 5-year return",
   "have_10": "{n} of {t} funds {v} a 10-year return",
-  "end_note": "These amounts use weekly values (Fridays) from {s} to {e}, so they differ from what the official yearly return in the table would give over exactly {y}."
+  "end_note": "These amounts use weekly values (Fridays) from {s} to {e}, so they differ from what the official yearly return in the table would give over exactly {y}.",
+  "cc_short": "With your consent we use cookies to measure traffic and advertising.",
+  "cc_more": "Details"
 }
