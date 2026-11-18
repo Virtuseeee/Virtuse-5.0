@@ -1663,3 +1663,4 @@ ul { list-style: none; }
   .pt-side .pt-second > .pt-second-img { margin: 0 0 14px; }
   .pt-third { margin-top: 0; padding-top: 0; border-top: 0; }
 }
+.pt-adrow .pt-ad-art img { aspect-ratio: 1200 / 677; }

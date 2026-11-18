@@ -133,7 +133,7 @@ ATTR = {
     "Top stories": "Hlavné správy",
     "Filter": "Filtrovať",
     "Partners (advertisement)": "Partneri (reklama)",
-    "Firefish: Never sell your Bitcoin. Borrow against it.": "Firefish: Nepredávaj svoj Bitcoin. Požičaj si s ním ako so zábezpekou.",
+    "BitGo and Virtuse: Bitcoin custody partner": "BitGo a Virtuse: partner pre úschovu Bitcoinu",
     "Type your email…": "Napíš svoj e-mail…",
 }
 HEAD = [

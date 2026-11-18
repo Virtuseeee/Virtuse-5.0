@@ -15,7 +15,7 @@
    "_embedded": {
     "wp:featuredmedia": [
      {
-      "source_url": "/news/test/today-sample.png"
+      "source_url": "/news/test/today-sample-cover.jpg"
      }
     ]
    }
@@ -55,7 +55,7 @@
    "_embedded": {
     "wp:featuredmedia": [
      {
-      "source_url": "/news/test/today-sample.png"
+      "source_url": "/news/test/today-sample-cover.jpg"
      }
     ]
    }
