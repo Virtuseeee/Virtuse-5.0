@@ -11,24 +11,43 @@
   var EN = CFG.lang === 'en';
   var $ = function (id) { return document.getElementById(id); };
 
-  /* ---------- cookie banner: on the first visit move it into the page flow so it never covers the content ---------- */
+  /* ---------- cookie banner (page only; consent logic, defaults and GTM stay in cookie-consent.js) ----------
+     Desktop, first visit: moved into the page flow above the hero, so it covers nothing.
+     Phones (<=640 px): a compact bottom sheet (one short line, Reject / Accept, details behind a link that opens the
+     shared settings panel), and the page reserves bottom padding of the same height while any banner is open. */
   (function () {
+    var mobile = window.matchMedia('(max-width:640px)');
     var stored = null;
     try { stored = localStorage.getItem('vb-consent'); } catch (e) {}
-    if (stored) return;
-    var slot = $('fvbCcSlot'); if (!slot) return;
-    function place(el) { el.classList.add('fvb-cc-flow'); slot.appendChild(el); }
-    var first = document.querySelector('body > .vb-cc');
-    if (first) { place(first); return; }
-    var mo = new MutationObserver(function (ms) {
-      ms.forEach(function (m) {
-        m.addedNodes.forEach(function (n) {
-          if (n.nodeType === 1 && n.classList.contains('vb-cc') && n.parentNode === document.body) { place(n); mo.disconnect(); }
-        });
-      });
-    });
-    mo.observe(document.body, { childList: true });
-    setTimeout(function () { mo.disconnect(); }, 10000);
+    var moved = false;
+    function pad() {
+      var box = document.querySelector('body > .vb-cc');
+      document.body.style.paddingBottom = box && mobile.matches ? (box.offsetHeight + 16) + 'px' : '';
+    }
+    function handle(el) {
+      if (!el || el.nodeType !== 1 || !el.classList.contains('vb-cc')) return;
+      if (mobile.matches) {
+        if (!el.querySelector('.vb-cc-cats') && !el.querySelector('.fvb-cc-short')) {
+          el.classList.add('fvb-cc-sheet');
+          var p = document.createElement('p');
+          p.className = 'fvb-cc-short';
+          p.innerHTML = esc(T.cc_short) + ' <button type="button" class="fvb-cc-more">' + esc(T.cc_more) + '</button>';
+          el.insertBefore(p, el.firstChild);
+          p.querySelector('button').addEventListener('click', function () {
+            var s = el.querySelector('[data-vb="settings"]'); if (s) s.click();
+          });
+        }
+      } else if (!stored && !moved && $('fvbCcSlot')) {
+        moved = true; el.classList.add('fvb-cc-flow'); $('fvbCcSlot').appendChild(el);
+      }
+    }
+    handle(document.querySelector('body > .vb-cc'));
+    pad();
+    new MutationObserver(function (ms) {
+      ms.forEach(function (m) { m.addedNodes.forEach(function (n) { if (n.parentNode === document.body) handle(n); }); });
+      pad();
+    }).observe(document.body, { childList: true });
+    window.addEventListener('resize', pad);
   })();
 
   var D = null;
