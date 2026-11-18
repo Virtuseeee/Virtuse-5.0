@@ -20,7 +20,7 @@
       tagNames: { ETF: 'ETF', Macro: 'Macro', World: 'World', Policy: 'Policy', Mining: 'Mining', Security: 'Security' },
       inEnglish: 'In English', source: 'Source', ecbRate: 'ECB deposit rate', btcEur: 'BTC in EUR', skInfl: 'Inflation, Slovakia', nextDecision: 'next decision',
       deskUpdated: 'Desk updated ', nextLabel: 'Next: ', latestIssue: 'Latest issue',
-      topicTag: 'Topic of the day', todayAt: 'Today · ', topicLate: 'Today\'s topic is on its way.', prevTopic: 'Previous topic', perOz: 'per oz', perBarrel: 'per barrel', hikeOdds: 'hike odds', cutOdds: 'cut odds', holdOdds: 'hold odds',
+      topicTag: 'Topic of the day', todayAt: 'Today · ', topicLate: 'Today\'s topic is on its way.', prevTopic: 'Previous topic', readTopic: 'Read the topic', perOz: 'per oz', perBarrel: 'per barrel', hikeOdds: 'hike odds', cutOdds: 'cut odds', holdOdds: 'hold odds',
       bp: 'bp', nextShort: 'next', magazine: 'Magazine', minAgo: 'min ago', hAgo: 'h ago', dAgo: 'd ago', d30: '30d', estimate: 'estimate',
       diffSub: function (p, b, h) { return p + ' of the period done. ' + b + ' blocks to go, about ' + h + '.'; },
       feeSub: { low: 'Low. A typical payment costs a few cents.', normal: 'Normal. A typical payment costs well under a dollar.', high: 'High. Small payments can wait for a cheaper block.' },
@@ -42,7 +42,7 @@
       tagNames: { ETF: 'ETF', Macro: 'Makro', World: 'Svet', Policy: 'Regulácia', Mining: 'Ťažba', Security: 'Bezpečnosť' },
       inEnglish: 'Text v angličtine', source: 'Zdroj', ecbRate: 'Sadzba ECB (depozitná)', btcEur: 'BTC v EUR', skInfl: 'Inflácia na Slovensku', nextDecision: 'ďalšie rozhodnutie',
       deskUpdated: 'Aktualizované ', nextLabel: 'Najbližšie: ', latestIssue: 'Najnovšie vydanie',
-      topicTag: 'Téma dňa', todayAt: 'Dnes · ', topicLate: 'Dnešná téma sa pripravuje.', prevTopic: 'Predchádzajúca téma', perOz: 'za uncu', perBarrel: 'za barel', hikeOdds: 'šanca na zvýšenie', cutOdds: 'šanca na zníženie', holdOdds: 'šanca na bez zmeny',
+      topicTag: 'Téma dňa', todayAt: 'Dnes · ', topicLate: 'Dnešná téma sa pripravuje.', prevTopic: 'Predchádzajúca téma', readTopic: 'Čítať tému dňa', perOz: 'za uncu', perBarrel: 'za barel', hikeOdds: 'šanca na zvýšenie', cutOdds: 'šanca na zníženie', holdOdds: 'šanca na bez zmeny',
       bp: 'bázických bodov', nextShort: 'ďalej', magazine: 'Magazín', minAgo: 'min', hAgo: 'h', dAgo: 'd', d30: '30 d', estimate: 'odhad',
       diffSub: function (p, b, h) { return 'Hotových ' + p + ' obdobia. Ostáva ' + b + ' blokov, asi ' + h + '.'; },
       feeSub: { low: 'Nízky. Bežná platba stojí pár centov.', normal: 'Bežný. Platba stojí výrazne menej ako dolár.', high: 'Vysoký. Malé platby môžu počkať na lacnejší blok.' },
@@ -1213,7 +1213,7 @@
     Array.prototype.forEach.call(document.querySelectorAll('main img'), function (img) {
       var ss = SRCSET[img.getAttribute('src')];
       if (!ss || img.hasAttribute('srcset') || (img.complete && img.naturalWidth)) return;
-      img.sizes = img.closest('#heroLead') ? LEAD_SIZES : img.closest('#heroSecond') ? SIDE_SIZES : CARD_SIZES;
+      img.sizes = img.closest('#heroLead') ? LEAD_SIZES : img.closest('#heroSecond, #heroThird') ? SIDE_SIZES : CARD_SIZES;
       img.srcset = ss;
     });
   }
@@ -1368,14 +1368,17 @@
   }
   function paintMagazine(items) {
     if (items.length < 2) items = fallbackItems();
-    var sig = (TOPIC ? TOPIC.slug + ';' : '') + items.slice(0, 2 + BLOG_MAX).map(function (x) { return [x.slug, x.image, x.date, x.title, x.excerpt].join('|'); }).join(',');
+    var sig = (TOPIC ? TOPIC.slug + ';' : '') + items.slice(0, 3 + BLOG_MAX).map(function (x) { return [x.slug, x.image, x.date, x.title, x.excerpt].join('|'); }).join(',');
     if (!items.length || sig === magSig) return;
     magSig = sig;
     lastMag = items;
-    fillStory('heroLead', items[0], LEAD_SIZES, true);
-    if (!TOPIC) fillStory('heroSecond', items[1] && Object.assign({}, items[1], { excerpt: shortDek(items[1].excerpt, 150) }), SIDE_SIZES, false);
+    // With a Topic of the day it holds the lead and the right column starts at the newest story.
+    var k = TOPIC ? 0 : 1;
+    if (!TOPIC) fillStory('heroLead', items[0], LEAD_SIZES, true);
+    fillStory('heroSecond', items[k] && Object.assign({}, items[k], { excerpt: shortDek(items[k].excerpt, 150) }), SIDE_SIZES, false);
+    fillStory('heroThird', items[k + 1], SIDE_SIZES, false);
     var section = $('blog'), grid = $('blogGrid');
-    var from = TOPIC ? 1 : 2;
+    var from = k + 2;
     var rest = items.slice(from, from + BLOG_MAX);
     if (section && grid) {
       grid.textContent = '';
@@ -1385,9 +1388,9 @@
     linkStories();
   }
   /* Topic of the day: the newest post in the WordPress category topic-of-the-day (SK tema-dna)
-     fills the hero's right column. Today's post says "Today · 06:25"; one from the day before
+     fills the hero lead; the right column then shows the two newest Magazine stories. Today's post says "Today · 06:25"; one from the day before
      stays, labelled with its date and a note that today's topic is on its way. Nothing newer
-     than 48 h: the second Magazine story returns. The post before it is linked underneath. */
+     than 48 h: the newest Magazine story keeps the lead. The post before it is linked underneath. */
   var TOPIC = null, lastMag = null;
   var TOPIC_SLUG = LANG === 'sk' ? 'tema-dna' : 'topic-of-the-day';
   function dayKey(ms) { return new Date(ms).toLocaleDateString('en-CA', { timeZone: DESK_TZ }); }
@@ -1415,12 +1418,12 @@
     });
   }
   function paintTopic(posts) {
-    var el = $('heroSecond');
+    var el = $('heroLead');
     var p = (posts || [])[0];
     var ms = gmtMs(p);
     if (!el || !p || !isFinite(ms) || Date.now() - ms > 48 * 3600e3) return;
-    TOPIC = Object.assign(fromWp(p), { excerpt: shortDek(strip(p.excerpt && p.excerpt.rendered), 220) });
-    fillStory('heroSecond', TOPIC, SIDE_SIZES, false);
+    TOPIC = Object.assign(fromWp(p), { excerpt: shortDek(strip(p.excerpt && p.excerpt.rendered), 280) });
+    fillStory('heroLead', TOPIC, LEAD_SIZES, true);
     var fresh = dayKey(ms) === dayKey(Date.now());
     el.classList.add('is-topic');
     el.classList.toggle('is-late', !fresh);
@@ -1439,6 +1442,8 @@
       el.querySelector('.pt-dek').insertAdjacentElement('afterend', note);
     }
     if (fresh && note) note.remove();
+    var more = el.querySelector('.pt-more');
+    if (more) { more.textContent = tr('readTopic') + ' '; var ar = document.createElement('span'); ar.setAttribute('aria-hidden', 'true'); ar.textContent = '\u2192'; more.appendChild(ar); }
     var prev = $('todayPrev'), q = (posts || [])[1];
     if (prev && q) {
       var it = fromWp(q), a = prev.querySelector('a');
@@ -1466,7 +1471,7 @@
     return null;
   }
   function saveMag(items) {
-    try { window.localStorage.setItem(MAG_KEY, JSON.stringify({ t: Date.now(), items: items.slice(0, 2 + BLOG_MAX) })); } catch (e) { /* storage blocked */ }
+    try { window.localStorage.setItem(MAG_KEY, JSON.stringify({ t: Date.now(), items: items.slice(0, 3 + BLOG_MAX) })); } catch (e) { /* storage blocked */ }
   }
   function loadMagazine() {
     var cached = cachedMag();
