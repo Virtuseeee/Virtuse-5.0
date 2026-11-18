@@ -35,6 +35,7 @@
 -mkdir public_html/stories/binance-heist-who-pulled-it-off
 -mkdir public_html/stories/bitcoin-and-gold-are-outperforming
 -mkdir public_html/stories/bitcoin-beat-the-war-november-still-gets-a-vote
+-mkdir public_html/stories/bitcoin-best-month-down-16-percent
 -mkdir public_html/stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013
 -mkdir public_html/stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin
 -mkdir public_html/stories/bitcoin-fell-below-77000-etfs-sold-fed-looms
@@ -336,6 +337,7 @@
 -mkdir public_html/sk/stories/na-svete-je-uz-219-milionov-bitcoinerov
 -mkdir public_html/sk/stories/najdolezitejsia-lekcia-ktoru-som-sa-naucil-z-cinskeho-krypto-zakazu-ras-vasilisin
 -mkdir public_html/sk/stories/najdolezitejsia-lekcia-z-krachu-ftx-bitcoin-majte-v-hardverovej-penazenke
+-mkdir public_html/sk/stories/najlepsi-mesiac-bitcoinu-v-minuse-16-percent
 -mkdir public_html/sk/stories/najlepsi-sposob-ako-reagovat-pocas-volatilnych-trhov
 -mkdir public_html/sk/stories/najtemnejsie-byva-vzdy-pred-usvitom-alebo-5-dovodov-preco-investovat-do-komodit
 -mkdir public_html/sk/stories/neprestanu-tlacit-peniaze-preco-je-rast-bitcoinu-na-200-000-dolarov-nezastavitelny-bez-ohladu-na-to-co-tvrdia-hlasatelia-v-televizii
@@ -565,6 +567,7 @@ put sk/stories/na-konci-tlacenia-penazi-pridu-nepokoje-a-vytrznosti/index.html p
 put sk/stories/na-svete-je-uz-219-milionov-bitcoinerov/index.html public_html/sk/stories/na-svete-je-uz-219-milionov-bitcoinerov/index.html
 put sk/stories/najdolezitejsia-lekcia-ktoru-som-sa-naucil-z-cinskeho-krypto-zakazu-ras-vasilisin/index.html public_html/sk/stories/najdolezitejsia-lekcia-ktoru-som-sa-naucil-z-cinskeho-krypto-zakazu-ras-vasilisin/index.html
 put sk/stories/najdolezitejsia-lekcia-z-krachu-ftx-bitcoin-majte-v-hardverovej-penazenke/index.html public_html/sk/stories/najdolezitejsia-lekcia-z-krachu-ftx-bitcoin-majte-v-hardverovej-penazenke/index.html
+put sk/stories/najlepsi-mesiac-bitcoinu-v-minuse-16-percent/index.html public_html/sk/stories/najlepsi-mesiac-bitcoinu-v-minuse-16-percent/index.html
 put sk/stories/najlepsi-sposob-ako-reagovat-pocas-volatilnych-trhov/index.html public_html/sk/stories/najlepsi-sposob-ako-reagovat-pocas-volatilnych-trhov/index.html
 put sk/stories/najtemnejsie-byva-vzdy-pred-usvitom-alebo-5-dovodov-preco-investovat-do-komodit/index.html public_html/sk/stories/najtemnejsie-byva-vzdy-pred-usvitom-alebo-5-dovodov-preco-investovat-do-komodit/index.html
 put sk/stories/neprestanu-tlacit-peniaze-preco-je-rast-bitcoinu-na-200-000-dolarov-nezastavitelny-bez-ohladu-na-to-co-tvrdia-hlasatelia-v-televizii/index.html public_html/sk/stories/neprestanu-tlacit-peniaze-preco-je-rast-bitcoinu-na-200-000-dolarov-nezastavitelny-bez-ohladu-na-to-co-tvrdia-hlasatelia-v-televizii/index.html
@@ -687,6 +690,7 @@ put stories/best-10-bitcoin-trading-strategies-for-2023/index.html public_html/s
 put stories/binance-heist-who-pulled-it-off/index.html public_html/stories/binance-heist-who-pulled-it-off/index.html
 put stories/bitcoin-and-gold-are-outperforming/index.html public_html/stories/bitcoin-and-gold-are-outperforming/index.html
 put stories/bitcoin-beat-the-war-november-still-gets-a-vote/index.html public_html/stories/bitcoin-beat-the-war-november-still-gets-a-vote/index.html
+put stories/bitcoin-best-month-down-16-percent/index.html public_html/stories/bitcoin-best-month-down-16-percent/index.html
 put stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013/index.html public_html/stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013/index.html
 put stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin/index.html public_html/stories/bitcoin-etf-a-tail-wagging-the-dog-interview-with-the-founder-of-virtuse-exchange-ras-vasilisin/index.html
 put stories/bitcoin-fell-below-77000-etfs-sold-fed-looms/index.html public_html/stories/bitcoin-fell-below-77000-etfs-sold-fed-looms/index.html

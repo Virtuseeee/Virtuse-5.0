@@ -1,0 +1,83 @@
+{
+ "_note": "Sample for ?today_fixture=sample (staging/localhost). @0 = today, @-1 = yesterday (Bratislava). Figures: data/btc-monthly-returns.json, asOf 2026-11-17.",
+ "en": [
+  {
+   "slug": "bitcoin-november-2026",
+   "date_gmt": "@0 05:25:00",
+   "date": "@0 06:25:00",
+   "link": "https://blog.virtuse.com/bitcoin-november-2026/",
+   "title": {
+    "rendered": "Bitcoin's \"best month\" is down 16% this year"
+   },
+   "excerpt": {
+    "rendered": "<p>Bitcoin fell from $77,401 at the end of October to $64,908 on 17 November. November has the highest average return of any month, but six of the last 13 Novembers, this one so far included, ended lower.</p>"
+   },
+   "_embedded": {
+    "wp:featuredmedia": [
+     {
+      "source_url": "/news/test/today-sample-cover.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "sample-previous-topic",
+   "date_gmt": "@-1 05:25:00",
+   "date": "@-1 06:25:00",
+   "link": "https://blog.virtuse.com/sample-previous-topic/",
+   "title": {
+    "rendered": "Sample: yesterday's topic"
+   },
+   "excerpt": {
+    "rendered": "<p>Sample text.</p>"
+   },
+   "_embedded": {
+    "wp:featuredmedia": [
+     {
+      "source_url": "/news/test/today-sample.png"
+     }
+    ]
+   }
+  }
+ ],
+ "sk": [
+  {
+   "slug": "bitcoin-november-2026-sk",
+   "date_gmt": "@0 05:25:00",
+   "date": "@0 06:25:00",
+   "link": "https://blog.virtuse.com/sk/bitcoin-november-2026-sk/",
+   "title": {
+    "rendered": "„Najlepší mesiac“ Bitcoinu je tento rok v mínuse 16 %"
+   },
+   "excerpt": {
+    "rendered": "<p>Bitcoin klesol z 77 401 dolárov na konci októbra na 64 908 dolárov 17. novembra. November má v priemere najvyšší výnos zo všetkých mesiacov, no šesť z posledných 13 novembrov vrátane tohtoročného zatiaľ skončilo v mínuse.</p>"
+   },
+   "_embedded": {
+    "wp:featuredmedia": [
+     {
+      "source_url": "/news/test/today-sample-cover.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "ukazka-predchadzajuca-tema",
+   "date_gmt": "@-1 05:25:00",
+   "date": "@-1 06:25:00",
+   "link": "https://blog.virtuse.com/sk/ukazka-predchadzajuca-tema/",
+   "title": {
+    "rendered": "Ukážka: včerajšia téma"
+   },
+   "excerpt": {
+    "rendered": "<p>Ukážkový text.</p>"
+   },
+   "_embedded": {
+    "wp:featuredmedia": [
+     {
+      "source_url": "/news/test/today-sample.png"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -37,6 +37,10 @@ TEXT = {
     "All stories": "Všetky články",
     "Central banks": "Centrálne banky",
     "Partners": "Partneri",
+    "Bitcoin on the company balance sheet? Start with a free consultation.": "Bitcoin vo firemnej treasury? Začnite bezplatnou konzultáciou.",
+    "We walk you through custody, accounting and risk. Custody with BitGo, an institutional custodian licensed under MiCA via Germany's BaFin.":
+        "Prejdeme s vami úschovu, účtovníctvo aj riziká. Úschovu zabezpečuje BitGo, inštitucionálny správca s licenciou MiCA cez nemecký BaFin.",
+    "Book a free consultation": "Rezervovať bezplatnú konzultáciu",
     "Advertisement, not editorial. Partner link: if you sign up, Virtuse may receive a commission. Your price does not change. Partner terms apply.":
         "Reklama, nie redakčný obsah. Partnerský odkaz: ak sa zaregistruješ, Virtuse môže získať províziu. Tvoja cena sa nemení. Platia podmienky partnera.",
     "How we earn": "Ako zarábame",
@@ -138,11 +142,12 @@ ATTR = {
     "Top stories": "Hlavné správy",
     "Filter": "Filtrovať",
     "Partners (advertisement)": "Partneri (reklama)",
-    "Firefish: Never sell your Bitcoin. Borrow against it.": "Firefish: Nepredávaj svoj Bitcoin. Požičaj si s ním ako so zábezpekou.",
+    "BitGo and Virtuse: Bitcoin custody partner": "BitGo a Virtuse: partner pre úschovu Bitcoinu",
     "Type your email…": "Napíš svoj e-mail…",
 }
 HEAD = [
     ('<html lang="en"', '<html lang="sk"'),
+    ('data-consultation-lang="en"', 'data-consultation-lang="sk"'),
     ("<title>Virtuse Brief: everything that moves Bitcoin, in one place. Free.</title>", "<title>Virtuse Brief: všetko, čo hýbe Bitcoinom, na jednom mieste. Zadarmo.</title>"),
     ('content="Bitcoin and the macro that moves it: daily news, the Brief newsletter, magazine, prices, central banks and live Bitcoin data. Free. No tokens. No PR."',
      'content="Bitcoin a makro, ktoré ním hýbe: denné správy, newsletter Brief, magazín, ceny, centrálne banky a živé dáta o Bitcoine. Zadarmo. Bez tokenov, bez PR."'),
