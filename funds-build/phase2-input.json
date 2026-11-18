@@ -494,7 +494,7 @@
     "return10yCum": null
    },
    "nulls": {
-    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+    "return10y": "Mesačná správa správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
    },
    "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
   },
@@ -533,7 +533,7 @@
     "return10yCum": null
    },
    "nulls": {
-    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+    "return10y": "Mesačná správa správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
    },
    "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
   },
@@ -648,7 +648,7 @@
     "return10yCum": null
    },
    "nulls": {
-    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+    "return10y": "Mesačná správa správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
    },
    "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
   },
@@ -687,7 +687,7 @@
     "return10yCum": null
    },
    "nulls": {
-    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+    "return10y": "Mesačná správa správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
    },
    "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
   },
@@ -763,7 +763,7 @@
     "return10yCum": null
    },
    "nulls": {
-    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+    "return10y": "Mesačná správa správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
    },
    "selectionNote": "Trieda podielov v eurách s kľúčovým informačným dokumentom v slovenčine (dôkaz, že sa na Slovensku ponúka), široko distribuovaný fond veľkého správcu; zoznam fondov EIC použitý len ako zoznam názvov."
   },
@@ -925,7 +925,7 @@
     "return10yCum": null
    },
    "nulls": {
-    "return10y": "Faktsheet správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
+    "return10y": "Mesačná správa správcu 10-ročný výnos neuvádza, z kalendárnych rokov ho neskladáme."
    },
    "selectionNote": "Jeden z najväčších širokých ETF podľa majetku podľa faktsheetu emitenta, akumulačná trieda; kľúčový informačný dokument v slovenčine, ak ho emitent vydáva."
   },
@@ -1005,9 +1005,9 @@
     "return10yCum": null
    },
    "nulls": {
-    "return1y": "Faktsheet emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár.",
-    "return5y": "Faktsheet emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár.",
-    "return10y": "Faktsheet emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár."
+    "return1y": "Správa emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár.",
+    "return5y": "Správa emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár.",
+    "return10y": "Správa emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár."
    },
    "selectionNote": "Jeden z najväčších širokých ETF podľa majetku podľa faktsheetu emitenta, akumulačná trieda; kľúčový informačný dokument v slovenčine, ak ho emitent vydáva."
   },

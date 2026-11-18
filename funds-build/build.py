@@ -39,7 +39,7 @@ HICP = ('https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc
 HICP_PAGE = 'https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table'
 CM = ('https://community-api.coinmetrics.io/v4/timeseries/asset-metrics?assets=btc&metrics=PriceUSD'
       '&frequency=1d&start_time=2015-09-01&end_time={end}&page_size=10000')
-CM_PAGE = 'https://docs.coinmetrics.io/asset-metrics/market/priceusd'
+CM_PAGE = 'https://coverage.coinmetrics.io/asset-metrics/PriceUSD'   # docs.coinmetrics.io/.../priceusd returned 404 on 18 Nov 2026
 FX = 'https://api.frankfurter.app/2015-09-01..{end}?from=EUR&to=USD'
 FX_PAGE = 'https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html'
 
@@ -70,6 +70,14 @@ def na(reason, source, as_of, **kw):
 
 
 SK_GEN = ['januára', 'februára', 'marca', 'apríla', 'mája', 'júna', 'júla', 'augusta', 'septembra', 'októbra', 'novembra', 'decembra']
+
+
+EN_M = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+
+def end(iso):
+    y, m, d = (int(x) for x in iso.split('-'))
+    return '%d %s %d' % (d, EN_M[m - 1], y)
 
 
 def skd(iso):
@@ -210,6 +218,30 @@ def btc_eur(end):
     return eur
 
 
+def EN_REASON(r):
+    """English text for each Slovak phase 2 reason template (same wording as the page)"""
+    import re as _re
+    m = _re.match(r'Fond \(trieda podielov\) vznikol (\d+) (\S+) (\d{4}), (\d+)-ročný', r)
+    if m:
+        return 'The fund (share class) started on %s %s %s; the manager does not state a %s-year return.' % (
+            m.group(1), EN_M[SK_GEN.index(m.group(2))], m.group(3), m.group(4))
+    m = _re.match(r'Mesačná správa správcu (\d+)-ročný', r)
+    if m:
+        return "The manager's report does not state a %s-year return; we don't build one from calendar years." % m.group(1)
+    T = {
+        'Emitent zverejňuje výnos tohto ETF len v amerických dolároch. V eurách ho neuvádza a sami ho neprepočítavame.':
+            "The issuer publishes this ETF's return only in US dollars. It does not publish one in euros, and we don't convert it ourselves.",
+        'Správa emitenta tabuľku výkonnosti neobsahuje, odkazuje na online stránku, ktorá vyžaduje vstupný formulár.':
+            "The issuer's report has no performance table; it links to an online page behind an entry form.",
+        'Kľúčový informačný dokument pri poplatku za výkonnosť uvádza len sumu 0 € bez percenta, percento nedopĺňame.':
+            "The key information document shows only €0 for the performance fee, with no percentage; we don't fill one in.",
+        'Kľúčový informačný dokument túto hodnotu neuvádza.': 'The key information document does not state this value.',
+    }
+    if r in T:
+        return T[r]
+    raise SystemExit('no English text for reason: ' + r)
+
+
 PHASE2_IN = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'phase2-input.json')
 KID_FIELDS = ('entryCostMax', 'exitCost', 'managementAndOtherCosts', 'transactionCosts', 'performanceFee')
 
@@ -226,7 +258,7 @@ def phase2(btc, infl, infl_pa_for, real_for):
     for s in src['funds']:
         fs, kid = s['factsheet'], s['kid']
         a = fs['asOf']; dates.add(a)
-        fl = 'Faktsheet správcu k %s' % skd(a)
+        fl = 'Správa správcu k %s' % skd(a)
         kl = 'Kľúčový informačný dokument (PRIIPs KID), %s' % skd(kid['date'])
         f = {'id': s['id'], 'name': s['name'], 'isin': s['isin'], 'company': s['manager'], 'type': s['type'],
              'domicile': s['domicile'], 'currency': 'EUR', 'asOf': a,
@@ -242,13 +274,13 @@ def phase2(btc, infl, infl_pa_for, real_for):
         for k in KID_FIELDS:
             v = kid.get(k)
             f[k] = (obj(round(v / 100, 8), 'fraction' if k in ('entryCostMax', 'exitCost', 'performanceFee') else 'fraction p.a.', kid['url'], kl, kid['date'])
-                    if v is not None else na(s.get('nulls', {}).get(k, 'Kľúčový informačný dokument túto hodnotu neuvádza.'), kid['url'], kid['date']))
+                    if v is not None else na(s.get('nulls', {}).get(k, 'Kľúčový informačný dokument túto hodnotu neuvádza.'), kid['url'], kid['date'], reasonEn=EN_REASON(s.get('nulls', {}).get(k, 'Kľúčový informačný dokument túto hodnotu neuvádza.'))))
         m, t = kid.get('managementAndOtherCosts'), kid.get('transactionCosts')
         if m is not None and t is not None:
             f['ongoingCosts'] = obj(round((m + t) / 100, 8), 'fraction p.a.', kid['url'],
                                     kl + ': správa a iné administratívne alebo prevádzkové náklady + transakčné náklady', kid['date'])
         else:
-            f['ongoingCosts'] = na('Chýba jedna zo zložiek nákladov v kľúčovom informačnom dokumente.', kid['url'], kid['date'])
+            f['ongoingCosts'] = na('Chýba jedna zo zložiek nákladov v kľúčovom informačnom dokumente.', kid['url'], kid['date'], reasonEn='One of the cost components is missing in the key information document.')
         for y, pa, cum in ((1, 'return1y', None), (5, 'return5yPa', 'return5yCum'), (10, 'return10yPa', 'return10yCum')):
             key = 'return%dy' % y
             v = fs.get(pa)
@@ -257,8 +289,9 @@ def phase2(btc, infl, infl_pa_for, real_for):
                 v = ((1 + fs[cum] / 100) ** (1 / y) - 1) * 100
                 lab = fl + '; prepočet z kumulatívneho výnosu %s %% na priemer za rok' % str(fs[cum]).replace('.', ',')
             if v is None:
-                f[key] = na(s.get('nulls', {}).get(key) or s.get('nulls', {}).get(pa) or 'Správca %d-ročný výnos v eurách neuverejňuje.' % y, fs['url'], a)
-                f['real%dy' % y] = na('Chýba nominálny výnos za toto obdobie.', HICP_PAGE, a)
+                r_ = s.get('nulls', {}).get(key) or s.get('nulls', {}).get(pa) or 'Správca %d-ročný výnos v eurách neuverejňuje.' % y
+                f[key] = na(r_, fs['url'], a, reasonEn=EN_REASON(r_))
+                f['real%dy' % y] = na('Chýba nominálny výnos za toto obdobie.', HICP_PAGE, a, reasonEn='No nominal return for this period.')
             else:
                 v = v / 100
                 f[key] = obj(round(v, 8), 'fraction p.a.' if y > 1 else 'fraction', fs['url'], lab, a)
@@ -266,8 +299,9 @@ def phase2(btc, infl, infl_pa_for, real_for):
                 f['real%dy' % y] = obj(round(r, 6), 'fraction p.a.' if y > 1 else 'fraction', HICP_PAGE,
                                        '(1 + výnos) / (1 + inflácia) - 1; inflácia HICP SK, okno končí %s' % im, a)
         reason = 'Denný rad hodnoty podielu od správcu v strojovo čitateľnej podobe sme nemali, z niekoľkých bodov výnosu prepad nepočítame.'
-        f['maxDrawdown10y'] = na(reason, fs['url'], a)
-        f['volatility10y'] = na(reason, fs['url'], a)
+        reason_en = "We had no official daily series of the unit price in machine-readable form, and we don't compute drawdown from a few return points."
+        f['maxDrawdown10y'] = na(reason, fs['url'], a, reasonEn=reason_en)
+        f['volatility10y'] = na(reason, fs['url'], a, reasonEn=reason_en)
         out.append(f)
     # Bitcoin at each factsheet date (same days, same formula as phase 1)
     bl = 'CoinMetrics PriceUSD / ECB EUR-USD (Frankfurter), denné ceny'
@@ -341,24 +375,25 @@ def main():
         code = code[0]; s = ser[code]; keys = sorted(s)
         f = {'id': code, 'name': r['name'], 'company': r['company'], 'type': fund_type(r['name'], r['section']),
              'guaranteed': r['section'] == 'guaranteed', 'founded': r['born'],
-             'unitValue': obj(r['unit'], 'EUR', adss_url, 'ADSS, Údaje o dôchodkových fondoch k %s' % as_of, as_of),
-             'nav': obj(r['nav'], 'EUR', adss_url, 'ADSS, Údaje o dôchodkových fondoch k %s' % as_of, as_of)}
+             'unitValue': obj(r['unit'], 'EUR', adss_url, 'Asociácia dôchodkových správcovských spoločností, Údaje o dôchodkových fondoch k %s' % skd(as_of), as_of),
+             'nav': obj(r['nav'], 'EUR', adss_url, 'Asociácia dôchodkových správcovských spoločností, Údaje o dôchodkových fondoch k %s' % skd(as_of), as_of)}
         if code in PRED:
-            f['history'] = 'Do 31.10.2019 hodnoty fondu %s (AEGON INDEX), zlúčeného do tohto fondu podľa NBS (dsw_subject_union.csv).' % PRED[code]
-        f['managementFee'] = na('Skutočnú sadzbu zo štatútu fondu sme v tomto kole neoverili. V tabuľke je zákonný strop 0,4 % ročne.',
-                                adss_url, as_of)
+            f['history'] = 'Do 31 októbra 2019 hodnoty fondu %s (AEGON INDEX), zlúčeného do tohto fondu podľa Národnej banky Slovenska (dsw_subject_union.csv).' % PRED[code]
+        f['managementFee'] = na('Skutočnú sadzbu zo štatútu fondu sme v tomto kole neoverili. Na stránke je zákonný strop 0,4 % ročne, nie poplatok fondu.',
+                                adss_url, as_of, reasonEn="We have not checked the actual rate in the fund's statute in this round. The page shows the legal cap of 0.4% a year, not the fund's own fee.")
         f['managementFeeCap'] = obj(0.004, 'fraction p.a.', LAW,
-                                    'zákon č. 43/2004 Z. z., § 63a ods. 3, znenie účinné od 1.8.2026; ADSS: max. 0,4 % v roku 2026', '2026-08-01')
+                                    'zákon č. 43/2004 Z. z., § 63a ods. 3, znenie účinné od 1 augusta 2026; asociácia: najviac 0,4 % v roku 2026', '2026-08-01')
         f['performanceFee'] = obj(0.0, 'fraction', LAW,
-                                  'zákon č. 43/2004 Z. z., § 63 ods. 1, znenie účinné od 1.8.2026: správca má právo len na odplatu za správu; odplatu za zhodnotenie zákon neobsahuje', '2026-08-01',
+                                  'zákon č. 43/2004 Z. z., § 63 ods. 1, znenie účinné od 1 augusta 2026: správca má právo len na odplatu za správu; odplatu za zhodnotenie zákon neobsahuje', '2026-08-01',
                                   note='Nie je to odhad nuly: zákon odplatu za zhodnotenie vôbec nepozná.')
-        lab = 'ADSS, Údaje o dôchodkových fondoch k %s' % as_of
+        lab = 'Asociácia dôchodkových správcovských spoločností, Údaje o dôchodkových fondoch k %s' % skd(as_of)
         for y, k in ((1, 'y1'), (5, 'y5'), (10, 'y10')):
             v = r[k]
             key = 'return%dy' % y
             if v is None:
-                f[key] = na('Fond vznikol %s, %d-ročný výnos ADSS neuverejňuje.' % (skd(r['born']), y), adss_url, as_of)
-                f['real%dy' % y] = na('Chýba nominálny výnos za toto obdobie.', HICP_PAGE, as_of)
+                f[key] = na('Fond vznikol %s, %d-ročný výnos asociácia neuverejňuje.' % (skd(r['born']), y), adss_url, as_of,
+                            reasonEn='The fund started on %s; the association does not publish a %d-year return.' % (end(r['born']), y))
+                f['real%dy' % y] = na('Chýba nominálny výnos za toto obdobie.', HICP_PAGE, as_of, reasonEn='No nominal return for this period.')
             else:
                 f[key] = obj(v, 'fraction p.a.' if y > 1 else 'fraction', adss_url, lab, as_of)
                 f['real%dy' % y] = obj(round(real(v, y), 6), 'fraction p.a.' if y > 1 else 'fraction', HICP_PAGE,
@@ -366,13 +401,14 @@ def main():
         f['returnYtd'] = obj(r['ytd'], 'fraction', adss_url, lab, as_of)
         # risk: weekly (Fridays) over 10 years, only with a full official series
         if keys[0] > weeks[0]:
-            reason = 'Rad hodnoty dôchodkovej jednotky v NBS začína %s, na 10 rokov to nestačí. Nepočítame z kratšieho obdobia.' % skd(keys[0])
-            f['maxDrawdown10y'] = na(reason, NBS_PAGE, as_of)
-            f['volatility10y'] = na(reason, NBS_PAGE, as_of)
+            reason = 'Rad hodnoty dôchodkovej jednotky v Národnej banke Slovenska začína %s, na 10 rokov to nestačí. Nepočítame z kratšieho obdobia.' % skd(keys[0])
+            reason_en = "The National Bank of Slovakia's unit-value series starts on %s, too short for 10 years. We don't compute from a shorter period." % end(keys[0])
+            f['maxDrawdown10y'] = na(reason, NBS_PAGE, as_of, reasonEn=reason_en)
+            f['volatility10y'] = na(reason, NBS_PAGE, as_of, reasonEn=reason_en)
         else:
             pts = [last_on_or_before(s, keys, w)[1] for w in weeks]
             mdd, vol = risk(pts)
-            lab2 = 'NBS, aktuálna hodnota dôchodkovej jednotky, týždenne (piatky) %s až %s' % (weeks[0], weeks[-1])
+            lab2 = 'Národná banka Slovenska, aktuálna hodnota dôchodkovej jednotky, týždenne (piatky) %s až %s' % (weeks[0], weeks[-1])
             f['maxDrawdown10y'] = obj(round(mdd, 6), 'fraction', NBS_PAGE, lab2, as_of)
             f['volatility10y'] = obj(round(vol, 6), 'fraction p.a.', NBS_PAGE, lab2 + '; smerodajná odchýlka týždenných log výnosov x odmocnina z 52', as_of)
         f['weekly'] = [round(last_on_or_before(s, keys, w)[1], 6) if keys[0] <= w else None for w in weeks]
@@ -386,9 +422,10 @@ def main():
     bl = 'CoinMetrics PriceUSD / ECB EUR-USD (Frankfurter), denné ceny'
     B = {'id': 'btc', 'name': 'Bitcoin', 'type': 'bitcoin', 'guaranteed': False,
          'price': obj(round(b_end, 2), 'EUR', CM_PAGE, bl, as_of)}
-    B['managementFee'] = na('Bitcoin nie je fond a nemá poplatok za správu. Nákup, predaj a úschova môžu stáť niečo podľa poskytovateľa; typický náklad z jedného verejného zdroja nevieme overiť.', CM_PAGE, as_of)
-    B['managementFeeCap'] = na('Bitcoin nie je fond, zákonný strop neexistuje.', CM_PAGE, as_of)
-    B['performanceFee'] = na('Bitcoin nie je fond.', CM_PAGE, as_of)
+    B['managementFee'] = na('Bitcoin nie je fond a nemá poplatok za správu. Nákup, predaj a úschova môžu stáť niečo podľa poskytovateľa; typický náklad z jedného verejného zdroja nevieme overiť.', CM_PAGE, as_of,
+                            reasonEn='Bitcoin is not a fund and has no management fee. Buying, selling and storage can cost something depending on the provider; we cannot verify one typical cost from a public source.')
+    B['managementFeeCap'] = na('Bitcoin nie je fond, zákonný strop neexistuje.', CM_PAGE, as_of, reasonEn='Bitcoin is not a fund; there is no legal cap.')
+    B['performanceFee'] = na('Bitcoin nie je fond.', CM_PAGE, as_of, reasonEn='Bitcoin is not a fund.')
     for y in (1, 5, 10):
         d0 = end_dt.replace(year=end_dt.year - y).isoformat()
         v = (b_end / bp(d0)[1]) ** (1 / y) - 1
@@ -409,31 +446,37 @@ def main():
         'asOf': as_of,
         'currency': 'EUR',
         'phase': 1,
-        'scope': 'Všetky dôchodkové fondy druhého piliera (starobné dôchodkové sporenie) podľa ADSS k dátumu dát, a Bitcoin.',
+        'scope': 'Všetky dôchodkové fondy druhého piliera (starobné dôchodkové sporenie) podľa asociácie dôchodkových správcovských spoločností k dátumu dát, a Bitcoin.',
         'inflation': {'series': 'HICP Slovakia, all items, 2025=100', 'source': HICP_PAGE, 'api': HICP,
                       'lastMonth': i_end, 'updated': infl_upd,
                       'pa': {'1y': infl_obj(1), '5y': infl_obj(5), '10y': infl_obj(10)}},
         'methodology': {
-            'returns': 'Fondy: oficiálne výnosy z týždennej správy ADSS k dátumu dát (1 rok, 5 a 10 rokov p.a.). Bitcoin: cena v eurách v ten istý deň a v rovnaký deň pred 1, 5 a 10 rokmi, (koniec / začiatok)^(1/roky) - 1. Výnosy fondov sú po odplate za správu (hodnota dôchodkovej jednotky ju už zahŕňa).',
+            'returns': 'Fondy: oficiálne výnosy z týždennej správy asociácie dôchodkových správcovských spoločností k dátumu dát (1 rok, 5 a 10 rokov p.a.). Bitcoin: cena v eurách v ten istý deň a v rovnaký deň pred 1, 5 a 10 rokmi, (koniec / začiatok)^(1/roky) - 1. Výnosy fondov sú po odplate za správu (hodnota dôchodkovej jednotky ju už zahŕňa).',
             'real': '(1 + nominálny výnos p.a.) / (1 + inflácia p.a.) - 1. Inflácia: HICP Slovensko, posledný zverejnený mesiac a ten istý mesiac pred 1, 5 a 10 rokmi (okno inflácie končí %s, dáta fondov %s).' % (i_end, as_of),
-            'drawdown': 'Najväčší pokles od predchádzajúceho maxima na týždenných hodnotách (piatky) za posledných 10 rokov. Fondy: hodnota dôchodkovej jednotky NBS (posledná známa k piatku). Bitcoin: cena v eurách v ten istý piatok.',
+            'drawdown': 'Najväčší pokles od predchádzajúceho maxima na týždenných hodnotách (piatky) za posledných 10 rokov. Fondy: hodnota dôchodkovej jednotky z Národnej banky Slovenska (posledná známa k piatku). Bitcoin: cena v eurách v ten istý piatok.',
             'volatility': 'Smerodajná odchýlka týždenných logaritmických výnosov x odmocnina z 52, rovnaké piatky ako pri prepade.',
             'bitcoinPrice': 'CoinMetrics community API, PriceUSD (denná referenčná cena) prepočítaná kurzom ECB EUR/USD z toho istého dňa (Frankfurter), rovnaký zdroj ako data/btc-monthly-returns.json.',
             'periodEnd': as_of,
         },
         'weeks': weeks,
         'sources': [
-            {'label': 'ADSS, Zhodnotenie vo fondoch (zoznam fondov, výnosy)', 'url': ADSS_PAGE, 'asOf': as_of},
-            {'label': 'ADSS, Údaje o dôchodkových fondoch k %s (PDF)' % as_of, 'url': adss_url, 'asOf': as_of},
-            {'label': 'NBS, Vývoj aktuálnej hodnoty dôchodkovej jednotky (denné údaje, ZIP)', 'url': NBS_PAGE, 'asOf': as_of},
-            {'label': 'Zákon č. 43/2004 Z. z., znenie účinné od 1.8.2026 (slov-lex)', 'url': LAW, 'asOf': '2026-08-01'},
-            {'label': 'Eurostat, HICP Slovensko (prc_hicp_minr)', 'url': HICP_PAGE, 'asOf': i_end},
-            {'label': 'CoinMetrics, PriceUSD', 'url': CM_PAGE, 'asOf': as_of},
-            {'label': 'ECB, referenčný kurz EUR/USD', 'url': FX_PAGE, 'asOf': as_of},
+            {'id': 'adss_page', 'label': 'Asociácia dôchodkových správcovských spoločností, Zhodnotenie vo fondoch (zoznam fondov, výnosy)',
+             'labelEn': 'Slovak Association of Pension Fund Management Companies, fund returns page (list of funds, returns)', 'url': ADSS_PAGE, 'asOf': as_of},
+            {'id': 'adss_pdf', 'label': 'Asociácia dôchodkových správcovských spoločností, Údaje o dôchodkových fondoch k %s (PDF)' % skd(as_of),
+             'labelEn': 'Slovak Association of Pension Fund Management Companies, pension fund data as of %s (PDF)' % end(as_of), 'url': adss_url, 'asOf': as_of},
+            {'id': 'nbs', 'label': 'Národná banka Slovenska, vývoj aktuálnej hodnoty dôchodkovej jednotky (denné údaje, ZIP)',
+             'labelEn': 'National Bank of Slovakia, current pension unit value (daily data, ZIP)', 'url': NBS_PAGE, 'asOf': as_of},
+            {'id': 'law', 'label': 'Zákon č. 43/2004 Z. z., znenie účinné od 1 augusta 2026 (Slov-Lex)',
+             'labelEn': 'Act No. 43/2004 Coll., version in force from 1 August 2026 (Slov-Lex)', 'url': LAW, 'asOf': '2026-08-01'},
+            {'id': 'hicp', 'label': 'Eurostat, harmonizovaný index spotrebiteľských cien, Slovensko (prc_hicp_minr)',
+             'labelEn': 'Eurostat, harmonised index of consumer prices, Slovakia (prc_hicp_minr)', 'url': HICP_PAGE, 'asOf': i_end},
+            {'id': 'cm', 'label': 'CoinMetrics, PriceUSD', 'labelEn': 'CoinMetrics, PriceUSD', 'url': CM_PAGE, 'asOf': as_of},
+            {'id': 'ecb', 'label': 'Európska centrálna banka, referenčný kurz EUR/USD',
+             'labelEn': 'European Central Bank, EUR/USD reference rate', 'url': FX_PAGE, 'asOf': as_of},
         ],
         'legalNotice': {
             'text': 'S uzatvorením zmluvy s dôchodkovou správcovskou spoločnosťou je spojené aj riziko a doterajší alebo propagovaný výnos portfólia dôchodkového fondu v jej správe nie je zárukou budúceho výnosu portfólia dôchodkového fondu. Činnosť dôchodkovej správcovskej spoločnosti je pod dohľadom Národnej banky Slovenska.',
-            'source': ADSS_PAGE, 'sourceLabel': 'ADSS, upozornenie podľa zákona č. 43/2004 Z. z.'},
+            'source': ADSS_PAGE, 'sourceLabel': 'Asociácia dôchodkových správcovských spoločností, upozornenie podľa zákona č. 43/2004 Z. z.'},
         'bitcoin': B,
         'funds': sorted(funds, key=lambda f: (f['company'], not f['guaranteed'], f['name'])),
     }
@@ -441,7 +484,8 @@ def main():
     if p2:
         data['phase'] = 2
         data['investmentFunds'] = p2
-        data['sources'].append({'label': 'Kľúčové informačné dokumenty (PRIIPs KID) a mesačné faktsheety správcov, odkaz pri každom fonde',
+        data['sources'].append({'id': 'kid', 'label': 'Kľúčové informačné dokumenty a mesačné správy správcov, odkaz je pri každom fonde',
+                                'labelEn': 'Key information documents and manager reports, linked next to each fund',
                                 'url': '#funds', 'asOf': max(p2['bitcoin'])})
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, 'w', encoding='utf-8') as fh:
