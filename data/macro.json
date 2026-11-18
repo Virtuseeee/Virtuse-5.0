@@ -1,34 +1,26 @@
 {
- "generated": "2026-11-18T13:19:46.176Z",
+ "generated": "2026-11-18T13:21:01.878Z",
  "quotes": {
   "gold": {
-   "value": 3765.9,
+   "value": 3765.4,
    "prev": 3864.2,
-   "change_pct": -2.54,
+   "change_pct": -2.56,
    "date": "2026-11-18",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/GC%3DF"
   },
   "brent": {
-   "value": 90.39,
+   "value": 90.28,
    "prev": 93.14,
-   "change_pct": -2.95,
+   "change_pct": -3.07,
    "date": "2026-11-18",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
-  "spx": {
-   "value": 7340.53,
-   "prev": 7416.59,
-   "change_pct": -1.03,
-   "date": "2026-11-17",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
-  },
   "eurusd": {
-   "value": 1.0972,
+   "value": 1.0975,
    "prev": 1.0998,
-   "change_pct": -0.24,
+   "change_pct": -0.22,
    "date": "2026-11-18",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
@@ -40,6 +32,14 @@
    "date": "2026-11-17",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5ETNX"
+  },
+  "spx": {
+   "value": 7340.53,
+   "prev": 7416.59,
+   "change_pct": -1.03,
+   "date": "2026-11-17",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
   }
  },
  "inflation": {
@@ -56,14 +56,6 @@
    "source": "U.S. Bureau of Labor Statistics, CPI-U",
    "source_url": "https://www.bls.gov/cpi/"
   },
-  "ea": {
-   "value": 4,
-   "month": "2026-10",
-   "flash": false,
-   "status_flag": null,
-   "source": "Eurostat, HICP euro area",
-   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
-  },
   "sk": {
    "value": 2.9,
    "month": "2026-10",
@@ -71,36 +63,17 @@
    "status_flag": null,
    "source": "Eurostat, HICP SK",
    "source_url": "https://ec.europa.eu/eurostat/web/hicp"
+  },
+  "ea": {
+   "value": 4,
+   "month": "2026-10",
+   "flash": false,
+   "status_flag": null,
+   "source": "Eurostat, HICP euro area",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
   }
  },
  "central_banks": {
-  "fed": {
-   "rate": "3.75–4.00%",
-   "low": 3.75,
-   "high": 4,
-   "date": "2026-11-16",
-   "last_move": {
-    "dir": "up",
-    "bp": 25,
-    "date": "2026-09-17",
-    "effective": true,
-    "source_url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm"
-   },
-   "label": "Fed funds target",
-   "source": "Federal Reserve Bank of New York",
-   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
-   "next_meeting": "2026-12-09",
-   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-   "expects": {
-    "scenario": "Hike 25 bp",
-    "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 93,
-    "meeting": "2026-12-09",
-    "as_of": "2026-11-18",
-    "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxfeddecision"
-   }
-  },
   "boe": {
    "rate": "4.00%",
    "low": 4,
@@ -126,6 +99,33 @@
     "as_of": "2026-11-18",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
+   }
+  },
+  "fed": {
+   "rate": "3.75–4.00%",
+   "low": 3.75,
+   "high": 4,
+   "date": "2026-11-16",
+   "last_move": {
+    "dir": "up",
+    "bp": 25,
+    "date": "2026-09-17",
+    "effective": true,
+    "source_url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm"
+   },
+   "label": "Fed funds target",
+   "source": "Federal Reserve Bank of New York",
+   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
+   "next_meeting": "2026-12-09",
+   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+   "expects": {
+    "scenario": "Hike 25 bp",
+    "scenario_sk": "Zvýšenie o 25 bp",
+    "prob": 93,
+    "meeting": "2026-12-09",
+    "as_of": "2026-11-18",
+    "source": "Kalshi prediction market",
+    "source_url": "https://kalshi.com/markets/kxfeddecision"
    }
   },
   "boj": {
