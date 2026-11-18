@@ -10700,7 +10700,7 @@
 <!-- STORIES-HUBS:START -->
   <url>
     <loc>https://virtuse.com/stories/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -10712,15 +10712,15 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/3/</loc>
-    <lastmod>2022-10-07</lastmod>
+    <lastmod>2022-10-14</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/4/</loc>
-    <lastmod>2022-04-12</lastmod>
+    <lastmod>2022-04-13</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/5/</loc>
-    <lastmod>2021-11-04</lastmod>
+    <lastmod>2021-11-12</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/page/6/</loc>
@@ -10740,7 +10740,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/stories/"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/stories/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/stories/"/>
@@ -11320,6 +11320,10 @@
     <lastmod>2026-10-08</lastmod>
   </url>
   <url>
+    <loc>https://virtuse.com/sk/stories/najlepsi-mesiac-bitcoinu-v-minuse-16-percent/</loc>
+    <lastmod>2026-11-18</lastmod>
+  </url>
+  <url>
     <loc>https://virtuse.com/sk/stories/najlepsi-sposob-ako-reagovat-pocas-volatilnych-trhov/</loc>
     <lastmod>2022-04-12</lastmod>
   </url>
@@ -11792,6 +11796,10 @@
   <url>
     <loc>https://virtuse.com/stories/bitcoin-beat-the-war-november-still-gets-a-vote/</loc>
     <lastmod>2026-10-04</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/stories/bitcoin-best-month-down-16-percent/</loc>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/bitcoin-cheap-at-20k-as-btc-price-to-wallet-ratio-mimics-2013/</loc>
