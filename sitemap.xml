@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://virtuse.com/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/"/>
@@ -19,7 +19,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/"/>
@@ -1702,7 +1702,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ma-200w.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ma-200w.html"/>
@@ -1719,7 +1719,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/ma-200w.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ma-200w.html"/>
@@ -2042,7 +2042,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/retirement-calculator.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/retirement-calculator.html"/>
@@ -2059,7 +2059,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/retirement-calculator.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/retirement-calculator.html"/>
@@ -2127,7 +2127,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/retirement-calculator.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/retirement-calculator.html"/>
@@ -2212,7 +2212,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/news.html</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/news.html"/>
@@ -2221,7 +2221,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/news.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/news.html"/>
@@ -3440,7 +3440,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/btc-monthly-returns.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
@@ -3457,7 +3457,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/btc-monthly-returns.html</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/btc-monthly-returns.html"/>
@@ -4046,26 +4046,6 @@
     <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/how-we-earn.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/how-we-earn.html"/>
   </url>
-<!-- FVB:START -->
-  <url>
-    <loc>https://virtuse.com/funds-vs-bitcoin.html</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/funds-vs-bitcoin.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/fondy-vs-bitcoin.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/funds-vs-bitcoin.html"/>
-  </url>
-  <url>
-    <loc>https://virtuse.com/sk/fondy-vs-bitcoin.html</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/funds-vs-bitcoin.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/fondy-vs-bitcoin.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/funds-vs-bitcoin.html"/>
-  </url>
-<!-- FVB:END -->
 <!-- BVG:START -->
   <url>
     <loc>https://virtuse.com/bitcoin-vs-gold.html</loc>
@@ -4241,169 +4221,169 @@
 <!-- BTC-RETURNS:START -->
   <url>
     <loc>https://virtuse.com/bitcoin-returns/january/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/february/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/march/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/april/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/may/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/june/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/july/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/august/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/september/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/october/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/november/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/december/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2011/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2012/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2013/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2014/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2015/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2016/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2017/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2018/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2019/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2020/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2021/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2022/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2023/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2024/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2025/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://virtuse.com/bitcoin-returns/2026/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
