@@ -103,6 +103,12 @@ download the live file first, compare, then upload.
   This Mac has no `gh`; PRs are opened through the GitHub REST API with the keychain token.
 - The OneDrive checkout is hundreds of commits behind `main`. Work in a fresh worktree of
   `origin/main` (`git worktree add --detach <dir> origin/main`); never `git stash` there.
+- `i18n-tools/legacy/build_legacy.py` and `i18n-tools/btc-returns/build_returns.py` no longer
+  reproduce the committed pages (homepage chrome drift: a `brief-d-cta` aside, the nav badge
+  class, the Brief image). Copy only the regions you changed into the built page, or settle
+  the drift first. The data Action runs `build_returns.py --monthly` on the 1st of the month
+  and will bring that drift into the returns pages; `i18n-tools/home/build_lang.py` stops on
+  untranslated strings, so the 10 homepages are edited by hand.
 - Order when both change: Worker first, then site. When a `?v=` file changes, bump `v` on
   every page that loads it (those files are cached for a year).
 - After a deploy, compare md5 of the changed files on staging and production with the repo.

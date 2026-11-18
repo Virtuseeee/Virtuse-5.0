@@ -1040,7 +1040,7 @@ export const CHROME: Record<Lang, Chrome> = {
           },
           {
             "href": "retirement-calculator.html",
-            "label": "Ruhestandsrechner"
+            "label": "Rentenrechner"
           }
         ]
       },

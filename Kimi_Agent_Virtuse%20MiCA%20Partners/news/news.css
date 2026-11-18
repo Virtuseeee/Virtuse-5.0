@@ -1597,6 +1597,9 @@ ul { list-style: none; }
 .pt-dv + .pt-chart + .pt-df, .pt-ds + .pt-df { margin-top: 10px; }
 .pt-dc .pt-df { margin-top: auto; }
 .pt-section + .tools-section { border-top: 0; }
+.pt-data-links { margin: 18px 0 0; font-size: 14px; line-height: 1.6; color: var(--text-muted); }
+.pt-data-links a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.pt-data-links a:hover { color: var(--accent-text-hover); }
 
 @media (max-width: 1100px) {
   .pt-hero-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
