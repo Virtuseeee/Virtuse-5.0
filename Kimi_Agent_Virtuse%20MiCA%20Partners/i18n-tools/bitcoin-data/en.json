@@ -116,5 +116,7 @@
  "g_note": "Total return in USD (gold via the GLD ETF); the ratio uses the gold futures price. Updated daily.",
  "g_cta": "Bitcoin vs gold, silver and commodities",
  "c_gold": "Bitcoin vs gold",
- "c_gold_p": "Gold, silver, oil and copper year by year, plus the BTC/gold ratio."
+ "c_gold_p": "Gold, silver, oil and copper year by year, plus the BTC/gold ratio.",
+ "c_fvb": "Funds vs Bitcoin",
+ "c_fvb_p": "Pension funds, mutual funds and ETFs next to Bitcoin in euros."
 }
