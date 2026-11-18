@@ -443,7 +443,7 @@ def fees(L, t):
         return t['range'].replace('{a}', pct(min(v), L, d)).replace('{b}', pct(max(v), L, d))
     law = [s for s in DATA['sources'] if s.get('id') == 'law'][0]['url']
     cards = [
-        (t['fee_pillar_k'], fee_pillar_v(L, t), t['fee_pillar_p'].replace('{law}', esc(law)).replace('{n}', str(sum(1 for f in DATA['funds'] if f['managementFee'].get('value') is not None))).replace('{t}', str(len(DATA['funds'])))),
+        (t['fee_pillar_k'], fee_pillar_v(L, t), t['fee_pillar_p'].replace('{law}', esc(law)).replace('{n}', str(sum(1 for f in DATA['funds'] if f['managementFee'].get('value') is not None))).replace('{t}', str(len(DATA['funds']))).replace('{z}', 'zo' if str(len(DATA['funds']))[0] == '7' or len(DATA['funds']) == 17 else 'z')),
         (t['fee_fund_k'], rng(GROUPS['fund'], 'ongoingCosts'), t['fee_fund_p'].replace('{e}', rng(GROUPS['fund'], 'entryCostMax'))),
         (t['fee_etf_k'], rng(GROUPS['etf'], 'ongoingCosts'), t['fee_etf_p']),
         (t['fee_btc_k'], t['btc_fee'], t['fee_btc_p'].replace('{href}', FEE_INDEX[L])),
