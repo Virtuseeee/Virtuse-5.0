@@ -67,7 +67,6 @@
   "num_grp_pillar": "Fondy druhého piliera",
   "num_grp_fund": "Podielové fondy",
   "num_grp_etf": "ETF",
-  "num_grp_s": "{n} z {t} má údaj,",
   "num_infl": "Inflácia na Slovensku",
   "num_infl_s_1": "za 1 rok, harmonizovaný index spotrebiteľských cien",
   "num_infl_s_5": "ročne za 5 rokov, harmonizovaný index spotrebiteľských cien",
@@ -217,5 +216,9 @@
   "ch_log_bar": "Logaritmická mierka: rovnaký percentuálny rozdiel má rovnakú dĺžku.",
   "col_fee": "Poplatok za správu podľa štatútu",
   "fee_statute_line": "{v} ročne podľa štatútu",
-  "fee_pillar_v2": "{v} ročne"
+  "fee_pillar_v2": "{v} ročne",
+  "have_1": "ročný výnos má {n} {z} {t} fondov",
+  "have_5": "päťročný výnos má {n} {z} {t} fondov",
+  "have_10": "desaťročný výnos má {n} {z} {t} fondov",
+  "end_note": "Sumy sú z týždenných hodnôt (piatky) od {s} do {e}. Preto sa líšia od toho, čo by vyšlo z oficiálneho ročného výnosu v tabuľke za presne {y}."
 }

@@ -24,7 +24,7 @@ LANGS = ['en', 'sk']
 PAGES = {'en': '/funds-vs-bitcoin.html', 'sk': '/sk/fondy-vs-bitcoin.html'}
 FILES = {'en': 'funds-vs-bitcoin.html', 'sk': os.path.join('sk', 'fondy-vs-bitcoin.html')}
 FEE_INDEX = {'en': '/bitcoin-fee-index/', 'sk': '/sk/bitcoin-index-poplatkov/'}
-JS_V = '8'
+JS_V = '9'
 DATA_URL = '/data/funds-vs-bitcoin.json'
 DATA = json.load(open(os.path.join(SITE, 'data', 'funds-vs-bitcoin.json')))
 P2 = DATA['investmentFunds']
@@ -168,7 +168,12 @@ CSS = '''<style>
 .fvb-legal{max-width:860px;border-left:3px solid var(--line-strong);margin:8px 0 6px;padding:4px 0 4px 16px;color:var(--text);font-size:14px;line-height:1.6}
 .fvb-legal-src{font-size:12px;color:var(--muted);margin:0 0 12px}
 .page-fvb .vb-cc.fvb-cc-flow{position:relative;left:auto;right:auto;bottom:auto;top:auto;width:auto;max-width:760px;max-height:none;margin:12px auto 18px;z-index:5;box-shadow:none}
+.fvb-endnote{grid-column:1/-1;font-size:12px;line-height:1.55;color:var(--muted);margin:10px 0 0;max-width:860px}
 @media (max-width:900px){.fvb-steps{grid-template-columns:1fr}.fvb-chart{height:320px}}
+@media (max-width:640px){.page-fvb .vb-cc.fvb-cc-flow{padding:10px 12px;margin:6px 0 4px;border-radius:12px;font-size:12px;line-height:1.4}
+.page-fvb .vb-cc.fvb-cc-flow h2{font-size:13px;margin:0 0 3px}.page-fvb .vb-cc.fvb-cc-flow p{margin:0;font-size:12px;line-height:1.4}
+.page-fvb .vb-cc.fvb-cc-flow .vb-cc-row{margin-top:8px;gap:6px}.page-fvb .vb-cc.fvb-cc-flow .vb-cc-row button{padding:7px 4px;font-size:12px;min-height:34px}
+.page-fvb .vb-cc.fvb-cc-flow+*{margin-top:0}}
 @media (max-width:640px){.fvb-nums{grid-template-columns:1fr;gap:8px}.fvb-num{min-height:0;padding:14px}.fvb-ends{grid-template-columns:1fr}
 .fvb-table{font-size:13px}.fvb-table th,.fvb-table td{padding:8px 9px}.fvb-table th.fvb-f,.fvb-table td.fvb-f{min-width:150px}.fvb-table td.fvb-f span{font-size:11px}
 .fvb-table td.fvb-t,.fvb-table th.fvb-t{display:none}.fvb-chart{height:260px}.fvb-notice{margin:16px 0 0}.fvb-cards{grid-template-columns:1fr}}
@@ -308,6 +313,12 @@ def btc_card(g, L, t, y=10):
         t['btc_ref'], pct(o['value'], L), t['ret_lab_%d' % y], dl, esc(b['price']['source']), t['asof_short'].replace('{d}', date_str(d, L)))
 
 
+def have_line(n, tot, y, L, t):
+    """'desaťročný výnos má 16 zo 17 fondov' / '16 of 17 funds have a 10-year return' (zo before a number read with s/z)"""
+    s = t['have_%d' % y].replace('{n}', str(n)).replace('{t}', str(tot))
+    return s.replace('{z}', 'zo' if str(tot)[0] == '7' or tot == 17 else 'z').replace('{v}', 'has' if n == 1 else 'have')
+
+
 def nums(g, L, t, y=10):
     b, d = btc_for(g)
     vs = [f['return%dy' % y]['value'] for f in GROUPS[g] if f['return%dy' % y].get('value') is not None]
@@ -316,7 +327,7 @@ def nums(g, L, t, y=10):
             '<div class="fvb-num"><span class="k" id="fvbNumGk">%s</span><span class="v rng" id="fvbNumG">%s</span><span class="s" id="fvbNumGs">%s</span></div>'
             '<div class="fvb-num"><span class="k">%s</span><span class="v" id="fvbNumI">%s</span><span class="s" id="fvbNumIs">%s</span></div>') % (
         t['num_btc'], pct(b['return%dy' % y]['value'], L), t['ret_lab_%d' % y] + ', ' + t['asof_short'].replace('{d}', date_str(d, L)),
-        t['num_grp_pillar'], rng, t['num_grp_s'].replace('{n}', str(len(vs))).replace('{t}', str(len(GROUPS[g]))) + ' ' + t['ret_lab_%d' % y],
+        t['num_grp_pillar'], rng, t['ret_lab_%d' % y] + '; ' + have_line(len(vs), len(GROUPS[g]), y, L, t),
         t['num_infl'], pct(infl_for(g, y), L), t['num_infl_s_%d' % y])
 
 
@@ -525,7 +536,7 @@ def build(L):
     companies = '<option value="">%s</option>' % t['company_all'] + ''.join(
         '<option>%s</option>' % esc(c) for c in sorted({f['company'] for f in GROUPS['pillar']}))
     cards = btc_card('pillar', L, t) + ''.join(card(f, 'pillar', L, t) for f in GROUPS['pillar'])
-    strings = {k: v for k, v in t.items() if k.startswith(('c_', 'type_', 'grp_', 'hz', 'pred_', 'ch_', 'ret_lab_', 'num_', 'date_', 'fee_', 'card_', 'chart_', 'end_', 'lab_'))
+    strings = {k: v for k, v in t.items() if k.startswith(('c_', 'type_', 'grp_', 'hz', 'pred_', 'ch_', 'ret_lab_', 'have_', 'num_', 'date_', 'fee_', 'card_', 'chart_', 'end_', 'lab_'))
                or k in ('miss', 'usd_only', 'btc_fee', 'btc_fee_short', 'btc_ref', 'range', 'asof_short', 'src_adss', 'src_kid', 'src_report',
                         'company_all', 'type_bitcoin', 'count')}
     cfg = {'data': DATA_URL, 'lang': L, 'locale': 'en-GB' if L == 'en' else 'sk-SK', 'pctSpace': L in C.PCT_SPACE,

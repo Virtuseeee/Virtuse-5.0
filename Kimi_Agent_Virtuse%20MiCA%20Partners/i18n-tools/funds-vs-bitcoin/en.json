@@ -67,7 +67,6 @@
   "num_grp_pillar": "Second-pillar funds",
   "num_grp_fund": "Mutual funds",
   "num_grp_etf": "ETFs",
-  "num_grp_s": "{n} of {t} have a figure,",
   "num_infl": "Inflation in Slovakia",
   "num_infl_s_1": "over 1 year, harmonised index of consumer prices",
   "num_infl_s_5": "per year over 5 years, harmonised index of consumer prices",
@@ -217,5 +216,9 @@
   "ch_log_bar": "Log scale: the same percentage difference has the same length.",
   "col_fee": "Management fee per the statute",
   "fee_statute_line": "{v} a year per the statute",
-  "fee_pillar_v2": "{v} a year"
+  "fee_pillar_v2": "{v} a year",
+  "have_1": "{n} of {t} funds {v} a 1-year return",
+  "have_5": "{n} of {t} funds {v} a 5-year return",
+  "have_10": "{n} of {t} funds {v} a 10-year return",
+  "end_note": "These amounts use weekly values (Fridays) from {s} to {e}, so they differ from what the official yearly return in the table would give over exactly {y}."
 }

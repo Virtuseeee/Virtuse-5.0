@@ -91,6 +91,10 @@
       return true;
     });
   }
+  function haveLine(n, t, y) {
+    return T['have_' + y].replace('{n}', n).replace('{t}', t).replace('{z}', String(t).charAt(0) === '7' || t === 17 ? 'zo' : 'z')
+      .replace('{v}', n === 1 ? 'has' : 'have');
+  }
   function retLab(y) { return T['ret_lab_' + y] + (S.ret === 'real' ? ' ' + T.c_real : ''); }
 
   /* ---------- hero numbers and date line ---------- */
@@ -101,7 +105,7 @@
     var vs = list.map(function (f) { return val(ret(f, y)); }).filter(function (v) { return v != null; });
     $('fvbNumGk').textContent = T['num_grp_' + S.g];
     $('fvbNumG').textContent = vs.length ? T.range.replace('{a}', pct(Math.min.apply(null, vs))).replace('{b}', pct(Math.max.apply(null, vs))) : T.miss;
-    $('fvbNumGs').textContent = T.num_grp_s.replace('{n}', vs.length).replace('{t}', list.length) + ' ' + retLab(y);
+    $('fvbNumGs').textContent = retLab(y) + '; ' + haveLine(vs.length, list.length, y);
     $('fvbNumI').textContent = pct(inflFor(S.g, y));
     $('fvbNumIs').textContent = T['num_infl_s_' + y];
     var p = bd.b.price.value;
@@ -268,7 +272,8 @@
     svg.onmousemove = move; svg.ontouchstart = move; svg.ontouchmove = move;
     svg.onmouseleave = function () { tip.style.display = 'none'; paths.forEach(function (p) { p.classList.remove('hi'); }); xh.setAttribute('x1', -10); xh.setAttribute('x2', -10); };
     var ends = lines.filter(function (l) { return !l.btc; }).map(function (l) { return l.s[l.s.length - 1]; });
-    renderEnds(bs ? bs[bs.length - 1] : null, ends, D.asOf, monthly ? invested[invested.length - 1] : S.amt);
+    renderEnds(bs ? bs[bs.length - 1] : null, ends, D.asOf, monthly ? invested[invested.length - 1] : S.amt,
+      T.end_note.replace('{s}', dateStr(dates[0])).replace('{e}', dateStr(dates[dates.length - 1])).replace('{y}', T['hz' + S.y]));
   }
 
   function barChart(svg, list) {
@@ -315,12 +320,12 @@
     renderEnds(bv != null ? S.amt * Math.pow(1 + bv, y) : null, ends, bd.d, S.amt);
   }
 
-  function renderEnds(b, ends, d, paid) {
+  function renderEnds(b, ends, d, paid, note) {
     var s = T.end_s.replace('{d}', dateStr(d)).replace('{inv}', eur(paid));
     var g = ends.length ? T.range.replace('{a}', eur(Math.min.apply(null, ends))).replace('{b}', eur(Math.max.apply(null, ends))) : T.miss;
     $('fvbEnds').innerHTML = '<div class="fvb-end btc"><span class="k">' + T.end_btc + '</span><span class="v">' + (b == null ? T.miss : eur(b)) +
       '</span><p class="s">' + s + '</p></div><div class="fvb-end"><span class="k">' + T.end_grp + '</span><span class="v">' + g +
-      '</span><p class="s">' + (ends.length ? s : T.end_none) + '</p></div>';
+      '</span><p class="s">' + (ends.length ? s : T.end_none) + '</p></div>' + (note ? '<p class="fvb-endnote">' + esc(note) + '</p>' : '');
   }
 
   /* ---------- full tables ---------- */
