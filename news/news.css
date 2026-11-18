@@ -1644,8 +1644,7 @@ ul { list-style: none; }
 /* Topic of the day (2026-11-18): the hero's right column is the daily topic, the partner ad has its own strip. */
 .pt-tag-today { color: var(--accent-text); display: inline-flex; align-items: center; gap: 6px; }
 .pt-tag-today::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-.pt-second.is-late .pt-tag-today::before { background: var(--text-faint); }
-.pt-second.is-topic .pt-second-img { aspect-ratio: 16 / 9; }
+.pt-lead.is-late .pt-tag-today::before { background: var(--text-faint); }
 .pt-today-note { margin: 10px 0 0; font-size: 13px; color: var(--text-muted); }
 .pt-prev { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13.5px; line-height: 1.4; }
 .pt-prev a { color: var(--text-muted); }
@@ -1657,3 +1656,13 @@ ul { list-style: none; }
 .pt-adrow .pt-ad-label { justify-content: flex-start; gap: 14px; }
 .pt-adrow .pt-ad-note { max-width: 62ch; }
 @media (max-width: 760px) { .pt-adrow .pt-ad { grid-template-columns: 1fr; gap: 12px; } }
+.pt-third { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+.pt-third .pt-second-img { aspect-ratio: 16 / 9; }
+.pt-third .pt-second-title { font-size: 18px; }
+.pt-lead .pt-prev { margin-top: 18px; }
+@media (max-width: 1100px) and (min-width: 761px) {
+  .pt-side { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 26px; }
+  .pt-side .pt-second { display: block; }
+  .pt-side .pt-second > .pt-second-img { margin: 0 0 14px; }
+  .pt-third { margin-top: 0; padding-top: 0; border-top: 0; }
+}
