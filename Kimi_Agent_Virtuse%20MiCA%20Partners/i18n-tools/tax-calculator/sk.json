@@ -1,0 +1,146 @@
+{
+  "title": "Kalkulačka dane z Bitcoinu: 13 krajín EÚ 2026 | Virtuse",
+  "description": "Vypočítajte daň z predaja Bitcoinu v 13 krajinách EÚ: sadzby, pásma, oslobodenia a limity na rok 2026, s postupom výpočtu a oficiálnym zdrojom.",
+  "og_title": "Kalkulačka dane z Bitcoinu pre 13 krajín EÚ",
+  "crumb_home": "Domov",
+  "crumb_page": "Kalkulačka dane z Bitcoinu",
+  "eyebrow": "13 krajín EÚ · zdaňovacie obdobie 2026",
+  "h1": "Kalkulačka dane z Bitcoinu",
+  "lead": "Zadajte jeden predaj. Uvidíte daň, výpočet krok za krokom a oficiálny zdroj pravidla vašej krajiny.",
+  "noscript": "Kalkulačka potrebuje JavaScript. Tabuľka nižšie uvádza pravidlo každej krajiny aj so zdrojom.",
+  "form_h": "Váš predaj",
+  "c_country": "Krajina daňovej rezidencie",
+  "c_proceeds": "Suma predaja",
+  "c_proceeds_hint": "Koľko dostanete v eurách po poplatku burzy.",
+  "c_cost": "Nákupná cena",
+  "c_cost_hint": "Koľko ste zaplatili za predávaný Bitcoin vrátane poplatkov.",
+  "c_bought": "Kúpené dňa",
+  "c_bought_hint": "Pri viacerých nákupoch dátum prvého z predávaných (FIFO). Predaj je dnes.",
+  "res_gain": "Zisk",
+  "res_tax": "Daň a odvody",
+  "res_net": "Zostane vám",
+  "res_eff": "Efektívna sadzba",
+  "work_h": "Výpočet",
+  "notes_h": "Čo výpočet pre túto krajinu nezahŕňa",
+  "table_h_a": "Pravidlo",
+  "table_h_b": "v každej krajine",
+  "table_lead": "Kalkulačka počíta s týmito pravidlami. Každé pochádza od daňovej správy alebo zo zákona uvedeného v stĺpci zdroj, overené {checked}.",
+  "col_country": "Krajina",
+  "col_rate": "Daň zo zisku",
+  "col_exempt": "Oslobodenie",
+  "col_filing": "Ako to priznať",
+  "col_source": "Zdroj",
+  "col_review": "Kontrola daňovým poradcom",
+  "review_yes": "Skontrolované",
+  "review_no": "Zatiaľ nie",
+  "guide": "Návod",
+  "how_h2_a": "Ako kalkulačka",
+  "how_h2_b": "počíta",
+  "step": "Krok",
+  "s1_t": "Zisk",
+  "s1_p": "Suma predaja mínus nákupná cena. Zo straty sa daň neplatí.",
+  "s2_t": "Najprv oslobodenia",
+  "s2_p": "Doba držby (Česko 3 roky, Chorvátsko 2, Nemecko 1, Rakúsko pri nákupe pred marcom 2021) a limity malých predajov (Česko, Francúzsko, Nemecko) sa overia pred sadzbou.",
+  "s3_t": "Sadzba alebo pásma",
+  "s3_p": "Jedna sadzba, alebo progresívne pásma z celého základu dane (Slovensko, Česko, Nemecko, Španielsko): daň je to, o koľko zisk zvýši daň z vašich ostatných príjmov.",
+  "faq_h2_a": "Časté",
+  "faq_h2_b": "otázky",
+  "q1": "Ako sa počíta daň z predaja Bitcoinu?",
+  "a1": "Od sumy predaja odpočítate, koľko ste zaplatili (aj s poplatkami), a na zisk použijete sadzbu vašej krajiny. Niektoré krajiny zdaňujú zisk jednou sadzbou (Poľsko 19 %, Rakúsko 27,5 %, Francúzsko 31,4 %), iné ho pripočítajú k ostatným príjmom a zdania v pásmach (Slovensko, Česko, Nemecko, Španielsko).",
+  "q2": "V ktorých krajinách je predaj Bitcoinu bez dane?",
+  "a2": "Slovinsko súkromné zisky nezdaňuje. Česko oslobodzuje mince držané viac ako 3 roky, Chorvátsko viac ako 2, Nemecko viac ako 1. V Rakúsku sú bez dane mince kúpené pred marcom 2021 a držané dlhšie ako rok. Holandsko zdaňuje majetok k 1. januáru, nie predaj.",
+  "q3": "Zdaňuje sa výmena Bitcoinu za inú kryptomenu?",
+  "a3": "Závisí od krajiny. Nemecko, Česko a Španielsko zdaňujú výmenu ako predaj, Poľsko, Francúzsko, Rakúsko a Maďarsko nie. Kalkulačka počíta predaj za eurá.",
+  "q4": "Čo kalkulačka nezahŕňa?",
+  "a4": "Vaše ďalšie predaje v roku (ročné limity sa uplatnia len na tento predaj), straty z minulých rokov, cirkevnú daň a solidárny príplatok v Nemecku a podrobnosti každej krajiny uvedené pod výsledkom. Počíta jeden predaj fyzickej osoby za rok 2026.",
+  "q5": "Je to daňové poradenstvo?",
+  "a5": "Nie. Ukazuje výpočet podľa zverejneného pravidla a jeho zdroj. Pred podaním priznania si svoj prípad overte u daňového poradcu vo vašej krajine.",
+  "disclaimer": "Orientačný výpočet jedného predaja fyzickou osobou za rok 2026, podľa pravidiel k {checked}. Nie je to daňové poradenstvo. Pravidlá označené „zatiaľ nie“ daňový poradca neskontroloval.",
+  "c": {
+    "err": "Zadajte sumy v eurách a dátum nákupu v minulosti.",
+    "other_total": "Ostatné príjmy v roku 2026 (základ dane)",
+    "other_de": "Ostatný zdaniteľný príjem v roku 2026",
+    "other_savings": "Ostatné príjmy z úspor v roku 2026",
+    "other_hint": "Zisk sa pripočíta k nim: určujú, do ktorého pásma zisk padne.",
+    "h_taxed": "Daň {total}, efektívna sadzba {eff}",
+    "s_taxed": "Zo zisku {gain}, podľa pravidiel krajiny {country} na rok 2026.",
+    "h_loss": "Bez dane: predaj je stratový",
+    "s_loss": "Predaj pod nákupnou cenou nevytvára zdaniteľný zisk.",
+    "h_exempt_hold": "Bez dane: držané dosť dlho",
+    "s_exempt_hold": "{country} oslobodzuje mince držané dlhšie ako {years}.",
+    "h_exempt_old": "Bez dane podľa starých pravidiel",
+    "s_exempt_old": "Mince kúpené pred 1. marcom 2021 a držané dlhšie ako rok sa v Rakúsku nezdaňujú.",
+    "h_exempt_small": "Bez dane: pod ročným limitom",
+    "s_exempt_small": "Predaje do {limit} ročne sú v krajine {country} oslobodené, ak je to váš jediný predaj v tomto roku.",
+    "h_exempt_freigrenze": "Bez dane: zisk pod 1 000 €",
+    "s_exempt_freigrenze": "Nemecko zdaňuje súkromné predaje, až keď celkový zisk za rok dosiahne 1 000 € alebo viac.",
+    "h_over_holdCap": "Nad stropom oslobodenia",
+    "s_over_holdCap": "České oslobodenie po 3 rokoch platí pre predaje do 40 miliónov Kč ročne. Nad touto sumou sa obráťte na daňového poradcu.",
+    "h_none": "Súkromný predaj sa nezdaňuje",
+    "s_none": "Slovinsko súkromné zisky z kryptomien nezdaňuje. Zdaňuje sa obchodovanie ako podnikanie a ťažba.",
+    "h_box3": "Samotný predaj sa nezdaňuje",
+    "s_box3": "Holandsko zdaňuje váš majetok k 1. januáru v Boxe 3 (nad 59 357 € na osobu v roku 2026), bez ohľadu na predaj.",
+    "w_proceeds": "Suma predaja",
+    "w_cost": "Nákupná cena",
+    "w_gain": "Zisk",
+    "w_tax": "Daň {rate} z {base}",
+    "w_band": "Pásmo {rate} z {base}",
+    "w_income": "Daň z príjmov z {base} (priemerne {rate})",
+    "w_levy": "Zdravotné odvody {rate} z {base}",
+    "w_total": "Daň a odvody",
+    "w_net": "Zostane vám",
+    "src": "Zdroj: {link}",
+    "rev_yes": "Skontrolované daňovým poradcom",
+    "rev_no": "Daňový poradca zatiaľ neskontroloval",
+    "note_cz": [
+      "Ročné limity rátajú všetky vaše predaje kryptomien: limit 100 000 Kč pre malé predaje a strop 40 miliónov Kč pre oslobodenie po 3 rokoch. Tu sa ráta len tento predaj.",
+      "Limity v korunách prepočítané kurzom ECB z {fxdate}: 1 EUR = {fx} CZK. Pásmo 23 % začína pri základe dane 1 762 812 Kč."
+    ],
+    "note_sk": [
+      "16 % zdravotné odvody zo zisku vyúčtuje zdravotná poisťovňa po skončení roka (8 % so zdravotným postihnutím). Či sa vzťahujú aj na váš prípad, napríklad na dôchodcu, overte u daňového poradcu.",
+      "Stratu z kryptomien nemožno odpočítať od iných príjmov."
+    ],
+    "note_pl": [
+      "Výmena kryptomeny za kryptomenu sa nezdaňuje.",
+      "Solidárny odvod 4 % z príjmov nad 1 milión PLN sme neoverovali."
+    ],
+    "note_at": [
+      "Rakúski poskytovatelia daň zrážajú sami; predaje cez zahraničné burzy patria do priznania.",
+      "Staking a airdropy sa zdaňujú pri predaji s nulovou obstarávacou cenou."
+    ],
+    "note_de": [
+      "Sadzby podľa § 32a EStG na rok 2026, samostatné zdanenie. Solidárny príplatok a cirkevná daň nie sú zahrnuté.",
+      "Limit 1 000 € ráta všetky vaše súkromné predaje v roku. Pri 1 000 € a viac sa zdaní celý zisk."
+    ],
+    "note_hu": [
+      "Malé transakcie (každá do 10 % minimálnej mzdy, spolu najviac jedna minimálna mzda ročne) môžu byť bez dane; tu sa neuplatňujú.",
+      "Stratu uvedenú v priznaní možno započítať v ďalších rokoch."
+    ],
+    "note_si": [
+      "Daň 25 % z kryptomien navrhnutá v roku 2025 nebola prijatá (overené {checked})."
+    ],
+    "note_hr": [
+      "Aj predaj bez dane sa uvádza na formulári JOPPD do konca februára."
+    ],
+    "note_ro": [
+      "Zisky do 200 lei z jedného predaja (600 lei ročne) sú oslobodené a nad určitým príjmom môže platiť zdravotný odvod CASS. Ani jedno sa tu neuplatňuje."
+    ],
+    "note_bg": [
+      "Zníženie o 10 % paušálnych výdavkov môže znížiť efektívnu sadzbu asi na 9 %; tu sa neuplatňuje."
+    ],
+    "note_nl": [],
+    "note_fr": [
+      "Zisk je tu suma predaja mínus nákupná cena. Pri predaji časti kryptomien Francúzsko rozpočíta nákupnú cenu na celé portfólio (formulár 2086), takže skutočný zisk môže byť iný.",
+      "Limit 305 € ráta všetky predaje v roku. Výmena kryptomeny za kryptomenu je odložená."
+    ],
+    "note_es": [
+      "„Ostatné príjmy z úspor“ sú úroky, dividendy a iné zisky v roku 2026; mzda sa zdaňuje podľa inej stupnice.",
+      "Model 721, ak máte u zahraničných poskytovateľov kryptomeny za viac ako 50 000 €."
+    ],
+    "yrs": {
+      "1": "1 rok",
+      "2": "2 roky",
+      "3": "3 roky"
+    }
+  }
+}

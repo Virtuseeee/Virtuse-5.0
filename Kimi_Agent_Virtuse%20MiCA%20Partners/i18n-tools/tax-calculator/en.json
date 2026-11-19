@@ -1,0 +1,146 @@
+{
+  "title": "Bitcoin Tax Calculator: 13 EU Countries 2026 | Virtuse",
+  "description": "Work out the tax on a Bitcoin sale in 13 EU countries: 2026 rates, bands, holding-period exemptions and limits, with the working and the source.",
+  "og_title": "Bitcoin Tax Calculator for 13 EU countries",
+  "crumb_home": "Home",
+  "crumb_page": "Bitcoin tax calculator",
+  "eyebrow": "13 EU countries · tax year 2026",
+  "h1": "Bitcoin tax calculator",
+  "lead": "Enter one sale. See the tax, the working line by line and the official source for your country's rule.",
+  "noscript": "The calculator needs JavaScript. The country table below lists every rule with its source.",
+  "form_h": "Your sale",
+  "c_country": "Country of tax residence",
+  "c_proceeds": "Sale amount",
+  "c_proceeds_hint": "What you receive in euros, after the exchange's fee.",
+  "c_cost": "Purchase cost",
+  "c_cost_hint": "What you paid for the Bitcoin you sell, fees included.",
+  "c_bought": "Bought on",
+  "c_bought_hint": "For several purchases, the date of the first one you sell (FIFO). The sale is today.",
+  "res_gain": "Gain",
+  "res_tax": "Tax and levies",
+  "res_net": "You keep",
+  "res_eff": "Effective rate",
+  "work_h": "The working",
+  "notes_h": "Not included for this country",
+  "table_h_a": "The rule",
+  "table_h_b": "in each country",
+  "table_lead": "The calculator uses these rules. Each one comes from the tax authority or the law named in the source column, checked {checked}.",
+  "col_country": "Country",
+  "col_rate": "Tax on the gain",
+  "col_exempt": "Exemption",
+  "col_filing": "How you file",
+  "col_source": "Source",
+  "col_review": "Tax adviser review",
+  "review_yes": "Reviewed",
+  "review_no": "Not yet",
+  "guide": "Guide",
+  "how_h2_a": "How the calculator",
+  "how_h2_b": "works",
+  "step": "Step",
+  "s1_t": "The gain",
+  "s1_p": "Sale amount minus purchase cost. A loss pays no tax.",
+  "s2_t": "Exemptions first",
+  "s2_p": "Holding periods (Czechia 3 years, Croatia 2, Germany 1, Austria for coins bought before March 2021) and small-sale limits (Czechia, France, Germany) are checked before any rate.",
+  "s3_t": "Rate or bands",
+  "s3_p": "One rate, or progressive bands on your whole tax base (Slovakia, Czechia, Germany, Spain): the tax is what the gain adds to the tax on your other income.",
+  "faq_h2_a": "Common",
+  "faq_h2_b": "questions",
+  "q1": "How is tax on a Bitcoin sale calculated?",
+  "a1": "Take the sale amount, subtract what you paid (fees included), and apply your country's rate to the gain. Some countries tax the gain at one rate (Poland 19%, Austria 27.5%, France 31.4%), others add it to your other income and tax it in bands (Slovakia, Czechia, Germany, Spain).",
+  "q2": "In which countries is a Bitcoin sale tax-free?",
+  "a2": "Slovenia does not tax private gains. Czechia exempts coins held more than 3 years, Croatia more than 2, Germany more than 1. In Austria, coins bought before March 2021 and held over a year are tax-free. The Netherlands taxes your wealth on 1 January, not the sale.",
+  "q3": "Is swapping Bitcoin for another crypto taxed?",
+  "a3": "It depends on the country. Germany, Czechia and Spain tax a swap like a sale; Poland, France, Austria and Hungary do not. This calculator handles a sale for euros.",
+  "q4": "What does the calculator leave out?",
+  "a4": "Your other sales in the year (annual limits are applied to this sale alone), losses from earlier years, church tax and solidarity surcharge in Germany, and each country's own details listed under the result. It is one sale by a private person in tax year 2026.",
+  "q5": "Is this tax advice?",
+  "a5": "No. It shows the arithmetic of the published rule and its source. Before you file, check your case with a tax adviser in your country.",
+  "disclaimer": "Indicative calculation for one sale by a private person, tax year 2026, with the rules as of {checked}. Not tax advice. Rules marked “not yet” have not been reviewed by a tax adviser.",
+  "c": {
+    "err": "Enter amounts in euros and a purchase date in the past.",
+    "other_total": "Other income in 2026 (tax base)",
+    "other_de": "Other taxable income in 2026",
+    "other_savings": "Other savings income in 2026",
+    "other_hint": "The gain is added on top of it: it decides which band the gain falls into.",
+    "h_taxed": "Tax {total}, effective rate {eff}",
+    "s_taxed": "On a gain of {gain}, at {country}'s 2026 rules.",
+    "h_loss": "No tax: the sale is a loss",
+    "s_loss": "A sale below the purchase cost creates no taxable gain.",
+    "h_exempt_hold": "Tax-free: held long enough",
+    "s_exempt_hold": "{country} exempts coins held more than {years}.",
+    "h_exempt_old": "Tax-free under the old rules",
+    "s_exempt_old": "Coins bought before 1 March 2021 and held more than a year are not taxed in Austria.",
+    "h_exempt_small": "Tax-free: under the yearly limit",
+    "s_exempt_small": "Sales of up to {limit} a year are exempt in {country}, if this is your only sale this year.",
+    "h_exempt_freigrenze": "Tax-free: gain under €1,000",
+    "s_exempt_freigrenze": "Germany taxes private sales only when the year's total gain is €1,000 or more.",
+    "h_over_holdCap": "Above the exemption cap",
+    "s_over_holdCap": "Czechia's 3-year exemption covers up to CZK 40 million of sales a year. Above that, ask a tax adviser.",
+    "h_none": "No tax on a private sale",
+    "s_none": "Slovenia does not tax private gains on crypto. Trading as a business and mining are taxed.",
+    "h_box3": "The sale itself is not taxed",
+    "s_box3": "The Netherlands taxes your wealth on 1 January in Box 3 (above €59,357 per person in 2026), whether you sell or not.",
+    "w_proceeds": "Sale amount",
+    "w_cost": "Purchase cost",
+    "w_gain": "Gain",
+    "w_tax": "Tax {rate} on {base}",
+    "w_band": "Band {rate} on {base}",
+    "w_income": "Income tax on {base} (average {rate})",
+    "w_levy": "Health insurance {rate} on {base}",
+    "w_total": "Tax and levies",
+    "w_net": "You keep",
+    "src": "Source: {link}",
+    "rev_yes": "Reviewed by a tax adviser",
+    "rev_no": "Not yet reviewed by a tax adviser",
+    "note_cz": [
+      "Yearly limits count all your crypto sales: the CZK 100,000 small-sales limit and the CZK 40 million cap on the 3-year exemption. Here this sale is counted alone.",
+      "CZK limits converted at the ECB rate of {fxdate}: 1 EUR = {fx} CZK. The 23% band starts at a tax base of CZK 1,762,812."
+    ],
+    "note_sk": [
+      "The 16% health insurance on the gain is settled by your health insurer after the year (8% with a disability). Whether it applies in your case, for example as a pensioner, is a question for a tax adviser.",
+      "A crypto loss cannot be deducted from other income."
+    ],
+    "note_pl": [
+      "Crypto-to-crypto swaps are not taxed.",
+      "The 4% solidarity levy on income above PLN 1 million was not checked."
+    ],
+    "note_at": [
+      "Austrian providers withhold the tax; sales through foreign exchanges go on your return.",
+      "Staking and airdrops are taxed on sale at zero acquisition cost."
+    ],
+    "note_de": [
+      "Rates from § 32a EStG for 2026, single filer. Solidarity surcharge and church tax are not included.",
+      "The €1,000 limit counts all your private sales in the year. At €1,000 or more the whole gain is taxed."
+    ],
+    "note_hu": [
+      "Small transactions (each up to 10% of the minimum wage, one minimum wage a year in total) can be tax-free; not applied here.",
+      "A loss declared in a return can be offset against later years."
+    ],
+    "note_si": [
+      "The 25% crypto tax proposed in 2025 was not enacted (checked {checked})."
+    ],
+    "note_hr": [
+      "A tax-free sale still goes on the JOPPD form by the end of February."
+    ],
+    "note_ro": [
+      "Gains of up to 200 lei per sale (600 lei a year) are exempt, and the health contribution (CASS) may apply above income thresholds. Neither is applied here."
+    ],
+    "note_bg": [
+      "A 10% deemed-expense reduction may lower the effective rate to about 9%; not applied here."
+    ],
+    "note_nl": [],
+    "note_fr": [
+      "The gain here is sale minus cost. When you sell part of your crypto, France spreads the cost across your whole portfolio (form 2086), so the real gain can differ.",
+      "The €305 limit counts all disposals in the year. Crypto-to-crypto swaps are deferred."
+    ],
+    "note_es": [
+      "“Other savings income” means interest, dividends and other gains in 2026; your salary is taxed on a separate scale.",
+      "Model 721 if you hold more than €50,000 in crypto with providers abroad."
+    ],
+    "yrs": {
+      "1": "a year",
+      "2": "2 years",
+      "3": "3 years"
+    }
+  }
+}
