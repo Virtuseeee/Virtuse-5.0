@@ -1,43 +1,43 @@
 {
- "generated": "2026-11-18T13:21:01.878Z",
+ "generated": "2026-11-19T03:46:01.596Z",
  "quotes": {
   "gold": {
-   "value": 3765.4,
-   "prev": 3864.2,
-   "change_pct": -2.56,
-   "date": "2026-11-18",
+   "value": 3714.5,
+   "prev": 3741.9,
+   "change_pct": -0.73,
+   "date": "2026-11-19",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/GC%3DF"
   },
   "brent": {
-   "value": 90.28,
-   "prev": 93.14,
-   "change_pct": -3.07,
-   "date": "2026-11-18",
+   "value": 89,
+   "prev": 91.95,
+   "change_pct": -3.21,
+   "date": "2026-11-19",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
-  "eurusd": {
-   "value": 1.0975,
-   "prev": 1.0998,
-   "change_pct": -0.22,
-   "date": "2026-11-18",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
-  },
   "us10y": {
-   "value": 5.103,
-   "prev": 5.121,
-   "change_pct": -0.35,
-   "date": "2026-11-17",
+   "value": 5.066,
+   "prev": 5.103,
+   "change_pct": -0.73,
+   "date": "2026-11-18",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5ETNX"
   },
+  "eurusd": {
+   "value": 1.0959,
+   "prev": 1.0993,
+   "change_pct": -0.31,
+   "date": "2026-11-19",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+  },
   "spx": {
-   "value": 7340.53,
-   "prev": 7416.59,
-   "change_pct": -1.03,
-   "date": "2026-11-17",
+   "value": 7323.63,
+   "prev": 7340.53,
+   "change_pct": -0.23,
+   "date": "2026-11-18",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
   }
@@ -56,14 +56,6 @@
    "source": "U.S. Bureau of Labor Statistics, CPI-U",
    "source_url": "https://www.bls.gov/cpi/"
   },
-  "sk": {
-   "value": 2.9,
-   "month": "2026-10",
-   "flash": false,
-   "status_flag": null,
-   "source": "Eurostat, HICP SK",
-   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
-  },
   "ea": {
    "value": 4,
    "month": "2026-10",
@@ -71,9 +63,71 @@
    "status_flag": null,
    "source": "Eurostat, HICP euro area",
    "source_url": "https://ec.europa.eu/eurostat/web/hicp"
+  },
+  "sk": {
+   "value": 2.9,
+   "month": "2026-10",
+   "flash": false,
+   "status_flag": null,
+   "source": "Eurostat, HICP SK",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
   }
  },
  "central_banks": {
+  "fed": {
+   "rate": "3.75–4.00%",
+   "low": 3.75,
+   "high": 4,
+   "date": "2026-11-17",
+   "last_move": {
+    "dir": "up",
+    "bp": 25,
+    "date": "2026-09-17",
+    "effective": true,
+    "source_url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm"
+   },
+   "label": "Fed funds target",
+   "source": "Federal Reserve Bank of New York",
+   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
+   "next_meeting": "2026-12-09",
+   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+   "expects": {
+    "scenario": "Hike 25 bp",
+    "scenario_sk": "Zvýšenie o 25 bp",
+    "prob": 91,
+    "meeting": "2026-12-09",
+    "as_of": "2026-11-19",
+    "source": "Kalshi prediction market",
+    "source_url": "https://kalshi.com/markets/kxfeddecision"
+   }
+  },
+  "boj": {
+   "rate": "1.25%",
+   "low": 1.25,
+   "high": 1.25,
+   "date": "2026-11-17",
+   "last_move": {
+    "dir": "up",
+    "bp": 25,
+    "date": "2026-09-24",
+    "effective": true,
+    "source_url": "https://www.boj.or.jp/en/mopo/mpmdeci/index.htm"
+   },
+   "label": "Policy rate (overnight call rate target)",
+   "source": "Bank of Japan",
+   "source_url": "https://www.boj.or.jp/en/mopo/index.htm",
+   "next_meeting": "2026-12-18",
+   "calendar_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
+   "expects": {
+    "scenario": "Hike 25 bp",
+    "scenario_sk": "Zvýšenie o 25 bp",
+    "prob": 88,
+    "meeting": "2026-12-18",
+    "as_of": "2026-11-19",
+    "source": "Kalshi prediction market",
+    "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
+   }
+  },
   "boe": {
    "rate": "4.00%",
    "low": 4,
@@ -96,70 +150,16 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 69,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-18",
+    "as_of": "2026-11-19",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
-   }
-  },
-  "fed": {
-   "rate": "3.75–4.00%",
-   "low": 3.75,
-   "high": 4,
-   "date": "2026-11-16",
-   "last_move": {
-    "dir": "up",
-    "bp": 25,
-    "date": "2026-09-17",
-    "effective": true,
-    "source_url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm"
-   },
-   "label": "Fed funds target",
-   "source": "Federal Reserve Bank of New York",
-   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
-   "next_meeting": "2026-12-09",
-   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-   "expects": {
-    "scenario": "Hike 25 bp",
-    "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 93,
-    "meeting": "2026-12-09",
-    "as_of": "2026-11-18",
-    "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxfeddecision"
-   }
-  },
-  "boj": {
-   "rate": "1.25%",
-   "low": 1.25,
-   "high": 1.25,
-   "date": "2026-11-16",
-   "last_move": {
-    "dir": "up",
-    "bp": 25,
-    "date": "2026-09-24",
-    "effective": true,
-    "source_url": "https://www.boj.or.jp/en/mopo/mpmdeci/index.htm"
-   },
-   "label": "Policy rate (overnight call rate target)",
-   "source": "Bank of Japan",
-   "source_url": "https://www.boj.or.jp/en/mopo/index.htm",
-   "next_meeting": "2026-12-18",
-   "calendar_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
-   "expects": {
-    "scenario": "Hike 25 bp",
-    "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 90,
-    "meeting": "2026-12-18",
-    "as_of": "2026-11-18",
-    "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
    }
   },
   "ecb": {
    "rate": "2.50%",
    "low": 2.5,
    "high": 2.5,
-   "date": "2026-11-18",
+   "date": "2026-11-19",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -177,7 +177,7 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 95,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-18",
+    "as_of": "2026-11-19",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
    }
