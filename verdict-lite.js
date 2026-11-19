@@ -774,7 +774,7 @@
   function buy(btn) {
     var cta = btn.getAttribute('data-cta') || '';
     if (LANG === 'ru' || LANG === 'uk') {   // sold in EN and SK only (signed legal scope)
-      dl({ event: 'verdict_checkout_waitlist', verdict_lang: LANG, verdict_cta: cta }); payClosed(); return;
+      payClosed(); return;   // the buttons are already hidden on load; the waitlist form below reports the interest
     }
     // Before the funnel (pricing card, sample): the checkout needs the answers. Remember the
     // wish so step 7 leads with the purchase.
@@ -965,7 +965,10 @@
       if (!EMAIL.test(em)) { msg.textContent = S.gateErr; f.email.focus(); return; }
       var btn = f.querySelector('button'); btn.disabled = true; msg.textContent = '';
       vbApi().then(function (api) { return api.postJson('/waitlist', { email: em, hp: f.website.value, source: 'verdict_report', lang: LANG }); })
-        .then(function (r) { if (r && r.ok === false) throw 0; f.querySelectorAll('input,button').forEach(function (x) { x.hidden = true; }); msg.textContent = S.wlOk; dl({ event: 'waitlist_signup', waitlist_source: 'verdict_report' }); })
+        .then(function (r) { if (r && r.ok === false) throw 0; f.querySelectorAll('input,button').forEach(function (x) { x.hidden = true; }); msg.textContent = S.wlOk; dl({ event: 'waitlist_signup', waitlist_source: 'verdict_report' });
+          // The closed-payments twin of verdict_checkout_start: which box the visitor wanted to buy from. No email leaves in it.
+          var bx = f.closest('[data-buybox]'), bb = bx && bx.querySelector('[data-buy]');
+          dl({ event: 'verdict_checkout_waitlist', verdict_lang: LANG, verdict_cta: (bb && bb.getAttribute('data-cta')) || '' }); })
         .catch(function () { btn.disabled = false; msg.textContent = S.net; });
     };
   });
