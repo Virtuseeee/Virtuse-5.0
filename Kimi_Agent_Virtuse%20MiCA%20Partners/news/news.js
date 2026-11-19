@@ -1397,20 +1397,41 @@
     items.forEach(function (x) { seen[x.slug] = true; });
     return items.concat(ISSUES.filter(function (i) { return isIssue(i) && !seen[i.slug]; }).map(fromIssue)).sort(function (a, b) { return dateMs(b.date) - dateMs(a.date); });
   }
+  /* The hero: the newest item leads (Topic of the day or a Magazine story, by date), the next two
+     fill the right column. The Magazine row always shows the newest Magazine stories, also those
+     already in the hero, so a new story is always in the Magazine. */
+  function heroTag(id) {
+    var el = $(id), tag = el && el.querySelector('.pt-kicker .pt-tag');
+    return tag ? { el: tag, cls: tag.className, txt: tag.textContent } : null;
+  }
+  var LEAD_MORE = (function () { var m = $('heroLead') && $('heroLead').querySelector('.pt-more'); return m ? m.innerHTML : ''; })();
+  var TAGS = { heroLead: heroTag('heroLead'), heroSecond: heroTag('heroSecond'), heroThird: heroTag('heroThird') };
+  function setTag(id, topic) {
+    var t = TAGS[id];
+    if (!t) return;
+    t.el.className = topic ? 'pt-tag pt-tag-today' : t.cls;
+    t.el.textContent = topic ? tr('topicTag') : t.txt;
+  }
   function paintMagazine(items) {
     if (items.length < 2) items = fallbackItems();
     var sig = (TOPIC ? TOPIC.slug + ';' : '') + items.slice(0, 3 + BLOG_MAX).map(function (x) { return [x.slug, x.image, x.date, x.title, x.excerpt].join('|'); }).join(',');
     if (!items.length || sig === magSig) return;
     magSig = sig;
     lastMag = items;
-    // With a Topic of the day it holds the lead and the right column starts at the newest story.
-    var k = TOPIC ? 0 : 1;
-    if (!TOPIC) fillStory('heroLead', items[0], LEAD_SIZES, true);
-    fillStory('heroSecond', items[k] && Object.assign({}, items[k], { excerpt: shortDek(items[k].excerpt, 150) }), SIDE_SIZES, false);
-    fillStory('heroThird', items[k + 1], SIDE_SIZES, false);
+    var hero = items.slice();
+    if (TOPIC) {
+      hero = [TOPIC].concat(items.filter(function (x) { return x.slug !== TOPIC.slug; }));
+      hero.sort(function (a, b) { return dateMs(b.date) - dateMs(a.date); });
+    }
+    var topicLeads = !!TOPIC && hero[0] === TOPIC;
+    fillStory('heroLead', hero[0], LEAD_SIZES, true);
+    if (topicLeads) decorateTopic(); else undecorateTopic();
+    fillStory('heroSecond', hero[1] && Object.assign({}, hero[1], { excerpt: shortDek(hero[1].excerpt, 150) }), SIDE_SIZES, false);
+    fillStory('heroThird', hero[2], SIDE_SIZES, false);
+    setTag('heroSecond', !!TOPIC && hero[1] === TOPIC);
+    setTag('heroThird', !!TOPIC && hero[2] === TOPIC);
     var section = $('blog'), grid = $('blogGrid');
-    var from = k + 2;
-    var rest = items.slice(from, from + BLOG_MAX);
+    var rest = items.slice(0, BLOG_MAX);
     if (section && grid) {
       grid.textContent = '';
       rest.forEach(function (it) { grid.appendChild(card(it)); });
@@ -1418,11 +1439,12 @@
     }
     linkStories();
   }
-  /* Topic of the day: the newest post in the WordPress category topic-of-the-day (SK tema-dna)
-     fills the hero lead; the right column then shows the two newest Magazine stories. Today's post says "Today · 06:25"; one from the day before
-     stays, labelled with its date and a note that today's topic is on its way. Nothing newer
-     than 48 h: the newest Magazine story keeps the lead. The post before it is linked underneath. */
-  var TOPIC = null, lastMag = null;
+  /* Topic of the day: the newest post in the WordPress category topic-of-the-day (SK tema-dna),
+     at most 48 h old. It leads the hero only while it is the newest item; a newer Magazine story
+     takes the lead and the topic moves to the right column. Today's post says "Today · 06:25"; one
+     from the day before is labelled with its date and a note that today's topic is on its way. The
+     post before it is linked underneath. */
+  var TOPIC = null, TOPIC_POSTS = null, lastMag = null;
   var TOPIC_SLUG = LANG === 'sk' ? 'tema-dna' : 'topic-of-the-day';
   function dayKey(ms) { return new Date(ms).toLocaleDateString('en-CA', { timeZone: DESK_TZ }); }
   function gmtMs(p) { return Date.parse(String((p && (p.date_gmt || p.date)) || '') + (p && p.date_gmt && !/Z$/.test(p.date_gmt) ? 'Z' : '')); }
@@ -1448,18 +1470,15 @@
       return j(WP + '?categories=' + cats[0].id + '&per_page=2&orderby=date&order=desc&_embed=wp:featuredmedia', 20000);
     });
   }
-  function paintTopic(posts) {
-    var el = $('heroLead');
-    var p = (posts || [])[0];
+  /* Topic look on the hero lead (tag, today's time, late note, "Read the topic", previous topic). */
+  function decorateTopic() {
+    var el = $('heroLead'), p = TOPIC_POSTS && TOPIC_POSTS[0];
+    if (!el || !p) return;
     var ms = gmtMs(p);
-    if (!el || !p || !isFinite(ms) || Date.now() - ms > 48 * 3600e3) return;
-    TOPIC = Object.assign(fromWp(p), { excerpt: shortDek(strip(p.excerpt && p.excerpt.rendered), 280) });
-    fillStory('heroLead', TOPIC, LEAD_SIZES, true);
     var fresh = dayKey(ms) === dayKey(Date.now());
     el.classList.add('is-topic');
     el.classList.toggle('is-late', !fresh);
-    var tag = el.querySelector('.pt-kicker .pt-tag');
-    if (tag) { tag.className = 'pt-tag pt-tag-today'; tag.textContent = tr('topicTag'); }
+    setTag('heroLead', true);
     var t = el.querySelector('.pt-kicker time');
     if (t) {
       t.setAttribute('datetime', new Date(ms).toISOString());
@@ -1474,8 +1493,8 @@
     }
     if (fresh && note) note.remove();
     var more = el.querySelector('.pt-more');
-    if (more) { more.textContent = tr('readTopic') + ' '; var ar = document.createElement('span'); ar.setAttribute('aria-hidden', 'true'); ar.textContent = '\u2192'; more.appendChild(ar); }
-    var prev = $('todayPrev'), q = (posts || [])[1];
+    if (more) { more.textContent = tr('readTopic') + ' '; var ar = document.createElement('span'); ar.setAttribute('aria-hidden', 'true'); ar.textContent = '→'; more.appendChild(ar); }
+    var prev = $('todayPrev'), q = TOPIC_POSTS[1];
     if (prev && q) {
       var it = fromWp(q), a = prev.querySelector('a');
       a.textContent = '';
@@ -1486,7 +1505,28 @@
       linkTo(a, it);
       prev.hidden = false;
     }
+  }
+  /* Back to a plain Magazine lead. */
+  function undecorateTopic() {
+    var el = $('heroLead');
+    if (!el) return;
+    el.classList.remove('is-topic', 'is-late');
+    setTag('heroLead', false);
+    var note = el.querySelector('.pt-today-note');
+    if (note) note.remove();
+    var more = el.querySelector('.pt-more');
+    if (more && LEAD_MORE) more.innerHTML = LEAD_MORE;
+    var prev = $('todayPrev');
+    if (prev) prev.hidden = true;
+  }
+  function paintTopic(posts) {
+    var p = (posts || [])[0];
+    var ms = gmtMs(p);
+    if (!$('heroLead') || !p || !isFinite(ms) || Date.now() - ms > 48 * 3600e3) return;
+    TOPIC = Object.assign(fromWp(p), { excerpt: shortDek(strip(p.excerpt && p.excerpt.rendered), 280) });
+    TOPIC_POSTS = posts;
     if (lastMag) { magSig = ''; paintMagazine(lastMag); }
+    else { fillStory('heroLead', TOPIC, LEAD_SIZES, true); decorateTopic(); }
     linkStories();
     upgradeImages();
   }
