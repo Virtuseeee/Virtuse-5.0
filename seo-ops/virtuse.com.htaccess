@@ -12,7 +12,10 @@ RewriteEngine On
 # sees HTTPS=on OR the proxy sends X-Forwarded-Proto: https. If the proxy
 # does neither, https://virtuse.com/ would redirect to itself: check it right
 # after the upload and restore virtuse.com.htaccess.before if it loops.
-RewriteCond %{HTTP_HOST} ^www\. [NC]
+# DNS has a wildcard A record, so any name (fecebook.virtuse.com, ...) reaches this folder and
+# would be served as a copy of the site. Every host except virtuse.com itself goes to the
+# canonical host; blog.virtuse.com is left alone in case its folder inherits this file.
+RewriteCond %{HTTP_HOST} !^(blog\.)?virtuse\.com(:\d+)?$ [NC]
 RewriteRule ^(.*)$ https://virtuse.com/$1 [R=301,L]
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !=https
