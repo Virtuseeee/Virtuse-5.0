@@ -82,6 +82,7 @@ download the live file first, compare, then upload.
 | `…/verdict.html`, `verdict-lite.js`, `withdrawal.html` | Verdict funnel (EN, SK sell; RU, UK waitlist only) |
 | `…/news.html`, `news/` | Virtuse Brief (issues in `news/issues.json`, `issues-sk.json`) |
 | | Brief line "Everything that moves Bitcoin, in one place. Free." (title, cards): `news.html`, `i18n-tools/build_brief_sk.py`, `related_hubs.py`, `about/*.json`, `stories-build/hubs.mjs`; SK cards link `sk/news.html` |
+| | Logo animation (V-mark intro, `brand/virtuse-logo-loader-{dark,light}.{mp4,webm}`): plays once beside the Brief subscribe confirmation (`playMark` in `news/news.js`, PR #200), loaded only after a sign-up, skipped with reduced motion. The page-blocking loader `brand/logo-loader.js` was removed (PR #198) and is unused; do not put it back as a full-screen intro |
 | `…/stories/`, `sk/stories/`, `ru/stories/` | story pages built from WordPress |
 | `…/site-v2.css`, `site-v2.js` | shared design; pages load them with `?v=` |
 | `…/i18n-tools/` | builders; `<page>/<lang>.json` hold the translations |
