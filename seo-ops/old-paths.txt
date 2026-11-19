@@ -9,6 +9,8 @@
 /nasdaq-bitcoin-futures-dont-get-your-hopes-up-2/	301	/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/
 /stories/three-ways-how-media-downplays-inflation/	301	/stories/three-ways-how-media-downplays-inflation-ras-vasilisin/
 /three-ways-how-media-downplays-inflation/	301	/stories/three-ways-how-media-downplays-inflation-ras-vasilisin/
+/sk/stories/14013-2/	301	/sk/stories/4-dovody-preco-su-fiat-peniaze-v-stadiu-zaniku/
+/sk/14013-2/	301	/sk/stories/4-dovody-preco-su-fiat-peniaze-v-stadiu-zaniku/
 /gold/	301	/bitcoin-vs-gold.html
 /gold	301	/bitcoin-vs-gold.html
 /de/gold/	301	/de/bitcoin-vs-gold.html
@@ -718,7 +720,6 @@
 /sk/sedem-dovodov-preco-bankovnictvo-konci/	301	/sk/stories/sedem-dovodov-preco-bankovnictvo-konci/
 /sk/zosadenie-dolara-z-tronu-rezervnej-meny-sa-stava-skutocnostou/	301	/sk/stories/zosadenie-dolara-z-tronu-rezervnej-meny-sa-stava-skutocnostou/
 /sk/6-najvacsich-americkych-bank-nepreslo-zatazovymi-testami-hromadne-vybery-by-neprezili/	301	/sk/stories/6-najvacsich-americkych-bank-nepreslo-zatazovymi-testami-hromadne-vybery-by-neprezili/
-/sk/14013-2/	301	/sk/stories/14013-2/
 /sk/krypto-priemysel-stratil-svoje-tri-hlavne-banky-v-usa/	301	/sk/stories/krypto-priemysel-stratil-svoje-tri-hlavne-banky-v-usa/
 /sk/stablecoiny-su-trnom-v-oku-pre-americkych-regulatorov/	301	/sk/stories/stablecoiny-su-trnom-v-oku-pre-americkych-regulatorov/
 /sk/10-najlepsich-strategii-pre-obchodovanie-s-bitcoinom-2/	301	/sk/stories/10-najlepsich-strategii-pre-obchodovanie-s-bitcoinom-2/
@@ -870,47 +871,47 @@
 /5-ways-bitcoins-lightning-network-advanced-in-2021/	301	
 /bitcoin-supply-dynamics-are-looking-extremely-strong/	301	
 /mcdonalds-starts-to-accept-bitcoin-and-tether-in-swiss-town/	301	
-/sk/tri-dovody-preco-sa-nebat-dalsieho-padu-bitcoinu/	301	
+/sk/pripravi-bitcoin-zlato-o-slavu-v-boji-s-inflaciou/	301	
 /the-united-states-will-become-the-global-crypto-and-blockchain-leader/	301	
 /bitcoin-privacy-feud-erupts-after-edward-snowden-pans-long-awaited-taproot-upgrade/	301	
 /upcoming-week-can-ignite-a-new-bitcoin-rally-heres-what-you-should-know/	301	
-/sk/tesla-podla-novej-spravy-drzi-bitcoiny-v-hodnote-2-miliard-dolarov/	301	
+/sk/je-to-ako-internet-v-90-rokoch-americky-bankovy-gigant-wells-fargo-opisuje-kryptomeny/	301	
 /russia-is-considering-selling-its-oil-and-gas-for-bitcoin-as-sanctions-intensify-from-the-west/	301	
 /bitcoin-price-prediction-can-bitcoin-reach-1000000-by-2025/	301	
 /options-traders-aim-for-100k-bitcoin-by-the-end-of-2021-is-there-a-chance/	301	
 /bitcoin-declines-with-us-stocks-as-nuclear-threat-ripples-through-markets/	301	
 /michael-saylor-is-working-the-bitcoin-dream-job/	301	
 /90-of-what-fidelitys-biggest-clients-are-asking-about-is-bitcoin/	301	
-/sk/televizory-samsung-s-funkciou-nft-trading-spolocnost-ohlasila-premieru-tento-rok/	301	
-/sk/prezident-salvadoru-bukele-giganticky-rast-ceny-btc-je-len-otazkou-casu/	301	
+/sk/predajcovia-su-podla-tejto-metriky-vycerpani-zacne-bitcoin-znovu-rast/	301	
+/sk/nove-udaje-ukazuju-ze-prave-kratkodobi-investori-btc-pri-korekcii-predavali/	301	
 /as-gold-nears-record-bitcoin-doesnt-shine-so-brightly/	301	
 /what-is-a-bitcoin-etf/	301	
-/sk/co-je-fear-greed-index/	301	
+/sk/shinsei-bank-ponuka-klientom-odmeny-v-btc-a-xrp/	301	
 /first-etf-combining-bitcoin-and-ethereum-launches-in-canada/	301	
-/sk/bitcoin-je-preferovane-zabezpecenie-inflacie-pred-zlatom/	301	
+/sk/strateg-z-wall-street-predpoveda-ze-cena-btc-do-konca-roka-vzrastie-na-168-000-usd/	301	
+/sk/v-roku-2021-sa-pocet-fuzii-kryptomien-zvysil-o-takmer-5-000/	301	
+/sk/organizacia-spojenych-narodov-uvadza-ktore-krajiny-su-lidrami-pokial-ide-o-mieru-prijatia-kryptomien/	301	
 /sk/pocet-bitcoinov-na-burzach-klesol-na-najnizsiu-uroven-za-poslednych-6-mesiacov/	301	
-/sk/twitter-chce-zazalovat-elona-muska/	301	
-/sk/jednotna-svetova-digitalna-mena-roztahuje-svoje-kridla/	301	
 /how-to-deal-with-getting-stopped-out/	301	
 /panama-is-poised-to-approve-the-use-of-bitcoin-and-8-other-cryptos-without-limitation/	301	
-/sk/existuje-jeden-zaruceny-sposob-ako-sa-dostat-na-mizinu/	301	
+/sk/tri-najdolezitejsie-lekcie-z-krachu-kryptomeny-terra-luna-2/	301	
 /bitcoin-knocks-on-door-of-50000-after-rising-above-resistancer/	301	
-/sk/kriza-v-kazachstane-nemala-na-bitcoin-takmer-ziadny-vplyv-decentralizacia-taziarov-je-extremne-dolezita/	301	
+/sk/realitna-spolocnost-ktora-bude-akceptovat-kryptomeny/	301	
 /inheriting-bitcoin-is-harder-than-it-sounds/	301	
-/sk/ethereum-2-0-moze-sposobit-revoluciu-vdaka-tymto-3-klucovym-funkciam/	301	
-/sk/oplati-sa-teraz-nakupovat-kryptomeny-dlhodoby-pohlad-na-trh/	301	
-/sk/stane-sa-z-defi-bankovy-predator-ktory-ohrozi-tradicne-bankovnictvo-a-poistovnictvo/	301	
+/sk/gigant-intel-sa-zapaja-do-tazby-bitcoinu-taziarom-prinasa-novinku-ktora-toho-moze-vela-zmenit/	301	
+/sk/hranie-na-web-3-0-ake-moznozti-prinasa/	301	
+/sk/how-to-deal-with-getting-stopped-out/	301	
 /today-in-bitcoin-history-13-year-anniversary-of-transaction-between-satoshi-and-hal-finney/	301	
 /corona-bitcoin-gold-and-hyperinflation	301	/stories/corona-bitcoin-gold-and-hyperinflation/
 /dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities	301	/stories/dont-waste-your-time-investing-if-you-dont-have-these-5-essential-qualities/
 /western-union-suspends-transfers-to-afghanistan-cutting-off-support-for-suffering-population	301	/stories/western-union-suspends-transfers-to-afghanistan-cutting-off-support-for-suffering-population/
-/sk/ako-jednoducho-profitovat-z-globalnej-recesie	301	/sk/stories/ako-jednoducho-profitovat-z-globalnej-recesie/
+/sk/svetove-trhy-sa-prepadaju-okrem-bitcoinu	301	/sk/stories/svetove-trhy-sa-prepadaju-okrem-bitcoinu/
 /sk/bitcoin-vyhral-vojnu-november-este-len-rozhodne	301	/sk/stories/bitcoin-vyhral-vojnu-november-este-len-rozhodne/
 /still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it	301	/stories/still-dont-know-why-to-buy-bitcoin-here-are-23-reasons-to-own-it/
 /sk/preco-bitcoin-neudrzal-80000-a-co-piatok-naozaj-testuje	301	/sk/stories/preco-bitcoin-neudrzal-80000-a-co-piatok-naozaj-testuje/
 /sk/stav-krypto-trhov-za-prvy-polrok-2023	301	/sk/stories/stav-krypto-trhov-za-prvy-polrok-2023/
 /buffett-bought-gold-and-sold-banks-and-you-should-too	301	/stories/buffett-bought-gold-and-sold-banks-and-you-should-too/
-/sk/ovplyvnia-nedavne-udalosti-v-kazachstane-tazbu-bitcoinu	301	/sk/stories/ovplyvnia-nedavne-udalosti-v-kazachstane-tazbu-bitcoinu/
+/sk/ak-chcete-zbohatnut-prestante-sledovat-media	301	/sk/stories/ak-chcete-zbohatnut-prestante-sledovat-media/
 /sk/10732/	301	
 /sk/10099/	301	
 /sk/9280/	301	

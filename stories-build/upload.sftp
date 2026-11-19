@@ -212,13 +212,13 @@
 -mkdir public_html/sk/stories/10-presvedceni-bitcoinovych-maximalistov
 -mkdir public_html/sk/stories/10-prikazani-od-velikanov-ktore-zmenia-vas-pohlad-na-investovanie
 -mkdir public_html/sk/stories/10379
--mkdir public_html/sk/stories/14013-2
 -mkdir public_html/sk/stories/15-bycich-institucii-na-wall-street-ktore-kupuju-bitcoin
 -mkdir public_html/sk/stories/15-dovodov-preco-vlastnit-bitcoin-v-roku-2022-ras-vasilisin
 -mkdir public_html/sk/stories/18-krutych-pravd-o-korona-recesii-o-ktorych-by-ste-mali-vediet
 -mkdir public_html/sk/stories/23-dovodov-preco-kupovat-bitcoin
 -mkdir public_html/sk/stories/3-dovody-preco-sa-nebat-padu-bitcoinu
 -mkdir public_html/sk/stories/30-citatov-o-bitcoine-od-slavnych-ludi
+-mkdir public_html/sk/stories/4-dovody-preco-su-fiat-peniaze-v-stadiu-zaniku
 -mkdir public_html/sk/stories/4216
 -mkdir public_html/sk/stories/5-investicnych-lekcii-za-poslednych-11-rokov-ras-vasilisin
 -mkdir public_html/sk/stories/5-rad-od-zakladatela-najvacsieho-hedzoveho-fondu-na-svete
@@ -442,13 +442,13 @@ put sk/stories/10-odvaznych-predpovedi-na-rok-2022-pre-ochranu-vasho-majetku/ind
 put sk/stories/10-presvedceni-bitcoinovych-maximalistov/index.html public_html/sk/stories/10-presvedceni-bitcoinovych-maximalistov/index.html
 put sk/stories/10-prikazani-od-velikanov-ktore-zmenia-vas-pohlad-na-investovanie/index.html public_html/sk/stories/10-prikazani-od-velikanov-ktore-zmenia-vas-pohlad-na-investovanie/index.html
 put sk/stories/10379/index.html public_html/sk/stories/10379/index.html
-put sk/stories/14013-2/index.html public_html/sk/stories/14013-2/index.html
 put sk/stories/15-bycich-institucii-na-wall-street-ktore-kupuju-bitcoin/index.html public_html/sk/stories/15-bycich-institucii-na-wall-street-ktore-kupuju-bitcoin/index.html
 put sk/stories/15-dovodov-preco-vlastnit-bitcoin-v-roku-2022-ras-vasilisin/index.html public_html/sk/stories/15-dovodov-preco-vlastnit-bitcoin-v-roku-2022-ras-vasilisin/index.html
 put sk/stories/18-krutych-pravd-o-korona-recesii-o-ktorych-by-ste-mali-vediet/index.html public_html/sk/stories/18-krutych-pravd-o-korona-recesii-o-ktorych-by-ste-mali-vediet/index.html
 put sk/stories/23-dovodov-preco-kupovat-bitcoin/index.html public_html/sk/stories/23-dovodov-preco-kupovat-bitcoin/index.html
 put sk/stories/3-dovody-preco-sa-nebat-padu-bitcoinu/index.html public_html/sk/stories/3-dovody-preco-sa-nebat-padu-bitcoinu/index.html
 put sk/stories/30-citatov-o-bitcoine-od-slavnych-ludi/index.html public_html/sk/stories/30-citatov-o-bitcoine-od-slavnych-ludi/index.html
+put sk/stories/4-dovody-preco-su-fiat-peniaze-v-stadiu-zaniku/index.html public_html/sk/stories/4-dovody-preco-su-fiat-peniaze-v-stadiu-zaniku/index.html
 put sk/stories/4216/index.html public_html/sk/stories/4216/index.html
 put sk/stories/5-investicnych-lekcii-za-poslednych-11-rokov-ras-vasilisin/index.html public_html/sk/stories/5-investicnych-lekcii-za-poslednych-11-rokov-ras-vasilisin/index.html
 put sk/stories/5-rad-od-zakladatela-najvacsieho-hedzoveho-fondu-na-svete/index.html public_html/sk/stories/5-rad-od-zakladatela-najvacsieho-hedzoveho-fondu-na-svete/index.html
@@ -892,4 +892,5 @@ put ru/stories/index.html public_html/ru/stories/index.html
 # hubs:end
 put sitemap.xml public_html/sitemap.xml
 put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json
+# removed from WordPress, delete on the server: public_html/sk/stories/14013-2/
 bye
