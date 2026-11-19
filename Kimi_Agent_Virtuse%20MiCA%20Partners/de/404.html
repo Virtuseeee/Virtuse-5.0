@@ -251,6 +251,14 @@ body {
 @media (max-width: 700px) {
   h1, h2, h3 { -webkit-hyphens: auto; hyphens: auto; overflow-wrap: break-word; }
 }
+/* V-mark intro above the 404 (inline script below). Plays once and stops on the
+   full logo; never with reduced motion. Rendered on black and blended with
+   screen, edges faded by the wrapper's mask. */
+.err-mark { width: 140px; height: 140px; margin: 0 auto 4px; overflow: hidden; opacity: 0; transition: opacity .3s ease; mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); }
+.err-mark.on { opacity: 1; }
+.err-mark video { display: block; width: 100%; height: 100%; transform: scale(1.6); }
 </style>
 </head>
 <body>
@@ -278,5 +286,13 @@ body {
 </footer>
 
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
+<script>(function(){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;}catch(e){return;}
+var c=document.querySelector('.err-code');if(!c)return;var d=document,w=d.createElement('div');w.className='err-mark';w.setAttribute('aria-hidden','true');
+var v=d.createElement('video');v.muted=true;v.defaultMuted=true;v.playsInline=true;v.autoplay=true;v.preload='auto';
+v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('disablepictureinpicture','');var last=null;
+[['mp4','video/mp4'],['webm','video/webm']].forEach(function(s){var e=d.createElement('source');e.src='/brand/virtuse-logo-loader-dark.'+s[0];e.type=s[1];v.appendChild(e);last=e;});
+function drop(){if(w.parentNode)w.parentNode.removeChild(w);}last.addEventListener('error',drop);v.addEventListener('error',drop);
+v.addEventListener('playing',function(){w.classList.add('on');});w.appendChild(v);c.parentNode.insertBefore(w,c);
+var p=v.play&&v.play();if(p&&p.catch)p.catch(drop);})();</script>
 </body>
 </html>
