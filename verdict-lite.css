@@ -749,7 +749,9 @@
   .ml-land .hero { align-items: stretch; }
   .ml-land .hero > div:first-child { justify-content: flex-start; }
   .ml-land .hero > div:first-child > .eyebrow { align-self: flex-start; }
-  .ml-land .hero > div:first-child > .ml-hc { margin-top: auto; }
+  .ml-land .hero > div:first-child > .ml-hc { margin-top: auto; width: 100%; max-width: 500px; padding: 16px; }
+  .ml-land .hero > div:first-child > .px { max-width: 500px; }
+  .ml-hc .ml-input { font-size: 17px; padding-top: 13px; padding-bottom: 13px; }
   .ml-land .hero > div:first-child > .px { margin-bottom: 26px; }
   .ml-land .hero > div:last-child { justify-content: stretch; }
   .ml-land .hero > div:last-child > .ml-demo { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; padding: 22px 24px; }
