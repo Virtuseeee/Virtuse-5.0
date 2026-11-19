@@ -741,5 +741,25 @@
 .vl p.p-close a { color: var(--note); font-weight: 600; text-decoration: none; }
 .vl p.p-close a:hover { text-decoration: underline; }
 @media (max-width: 900px) { .vl .g4.g3p { grid-template-columns: minmax(0, 1fr); } }
-/* the left column is taller now: the card keeps its own height and sits centred */
-@media (min-width: 901px) { .ml-land .hero > div:last-child > .ml-demo { flex: 0 1 auto; } }
+/* Hero columns share one top and one bottom edge: the left column ends with the quick-check
+   box, the card fills the same height and spreads its blocks over it. */
+.ml-hc { max-width: none; }
+.vl .hero .ml-hc p.ml-land-note { margin: 14px 2px 0 !important; max-width: none; }
+@media (min-width: 901px) {
+  .ml-land .hero { align-items: stretch; }
+  .ml-land .hero > div:first-child { justify-content: flex-start; }
+  .ml-land .hero > div:first-child > .eyebrow { align-self: flex-start; }
+  .ml-land .hero > div:first-child > .ml-hc { margin-top: auto; }
+  .ml-land .hero > div:first-child > .px { margin-bottom: 26px; }
+  .ml-land .hero > div:last-child { justify-content: stretch; }
+  .ml-land .hero > div:last-child > .ml-demo { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; padding: 22px 24px; }
+  .vl .hero .ml-demo .dm-areas { grid-template-columns: minmax(0, 1fr); gap: 11px; }
+  .vl .hero .ml-demo .dm-areas div { grid-template-columns: 96px 1fr 18px; font-size: 13px; }
+  .vl .hero .ml-demo .dm-nums div { padding: 12px 14px; }
+  .ml-demo.live .dl-viz { grid-template-columns: 150px minmax(0, 1fr); gap: 22px; }
+  .ml-demo.live .dl-ring { width: 150px; height: 150px; }
+  .ml-demo.live .dl-rc b { font-size: 30px; }
+  .ml-demo.live .dl-chart { height: 132px; }
+  .ml-demo.live .dl-areas { grid-template-columns: minmax(0, 1fr); gap: 7px; }
+  .ml-demo.live .dl-areas div { padding: 10px 14px; font-size: 13px; }
+}
