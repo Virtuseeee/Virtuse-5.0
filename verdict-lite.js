@@ -560,8 +560,31 @@
       dl({ event: 'verdict_result', verdict_mode: 'lite', verdict_grade: gr, verdict_weakest: wk });
     }
   }
+  // V-mark logo intro (brand/virtuse-logo-loader-dark, 2 s) while Verdict waits:
+  // the checking screen plays it once, the report wait loops it. The spinner (or
+  // text) stays until the video really plays; never with reduced motion.
+  function vMark(host, loop, spin) {
+    try { if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; } catch (e) { return; }
+    var old = host.querySelector('.ml-mark'); if (old) old.parentNode.removeChild(old);
+    var w = document.createElement('div'); w.className = 'ml-mark'; w.setAttribute('aria-hidden', 'true');
+    var v = document.createElement('video');
+    v.muted = true; v.defaultMuted = true; v.playsInline = true; v.autoplay = true; v.loop = !!loop; v.preload = 'auto';
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('disablepictureinpicture', '');
+    var last = null;
+    [['mp4', 'video/mp4'], ['webm', 'video/webm']].forEach(function (s) {
+      var src = document.createElement('source'); src.src = '/brand/virtuse-logo-loader-dark.' + s[0]; src.type = s[1]; v.appendChild(src); last = src;
+    });
+    function drop() { if (w.parentNode) w.parentNode.removeChild(w); if (spin) spin.hidden = false; }
+    last.addEventListener('error', drop); v.addEventListener('error', drop);
+    v.addEventListener('playing', function () { w.classList.add('on'); if (spin) spin.hidden = true; });
+    w.appendChild(v);
+    host.insertBefore(w, spin || host.firstChild);
+    var pr = v.play && v.play(); if (pr && pr.catch) pr.catch(drop);
+  }
   function load() {
     stepper($('mlStepper2'), 3);
+    var lw = document.querySelector('.ml-screen[data-s="6"] .ml-load');
+    if (lw) vMark(lw, false, lw.querySelector('.ml-spin'));
     var li = document.querySelectorAll('#mlChecks li');
     li.forEach(function (l) { l.classList.remove('ok'); });
     li.forEach(function (l, i) { setTimeout(function () { l.classList.add('ok'); }, 420 * (i + 1)); });
@@ -917,7 +940,8 @@
       var b = c.getBoundingClientRect();
       c.style.setProperty('--mx', (e.clientX - b.left) + 'px'); c.style.setProperty('--my', (e.clientY - b.top) + 'px');
     });
-    el.innerHTML = '<p class="ml-sub" style="text-align:center">' + esc(S.repLoad) + '</p>';
+    el.innerHTML = '<div class="ml-rep-wait"><p class="ml-sub" style="text-align:center">' + esc(S.repLoad) + '</p></div>';
+    vMark(el.firstChild, true, null);
     var say = function (t) { el.innerHTML = '<div class="ml-box"><p>' + esc(t) + '</p></div>'; };
     vbApi().then(function (api) { return api.postJson('/verdict/report', { session_id: sid, lang: LANG }); })
       .then(function (r) {
