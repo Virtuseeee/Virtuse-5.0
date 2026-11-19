@@ -7302,50 +7302,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/promote/"/>
   </url>
 <!-- ECOSYSTEM:END -->
-  <url>
-    <loc>https://virtuse.com/verdict.html</loc>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
-  </url>
-  <url>
-    <loc>https://virtuse.com/sk/verdict.html</loc>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
-  </url>
-  <url>
-    <loc>https://virtuse.com/uk/verdict.html</loc>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
-  </url>
-  <url>
-    <loc>https://virtuse.com/ru/verdict.html</loc>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
-  </url>
 <!-- SEO-BUILD:START -->
   <url>
     <loc>https://virtuse.com/bitcoin-tax/</loc>
@@ -10760,6 +10716,52 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/austria/"/>
   </url>
 <!-- SEO-BUILD:END -->
+<!-- VERDICT:START -->
+  <url>
+    <loc>https://virtuse.com/verdict.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/verdict.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ru/verdict.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/uk/verdict.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
+  </url>
+<!-- VERDICT:END -->
 <!-- STORIES-BUILD:START -->
 <!-- STORIES-HUBS:START -->
   <url>
@@ -10820,7 +10822,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/page/4/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/page/5/</loc>
@@ -10905,7 +10907,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/10-presvedceni-bitcoinovych-maximalistov/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-03-10</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/10-prikazani-od-velikanov-ktore-zmenia-vas-pohlad-na-investovanie/</loc>
@@ -10914,6 +10916,10 @@
   <url>
     <loc>https://virtuse.com/sk/stories/10379/</loc>
     <lastmod>2022-03-09</lastmod>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/stories/14013-2/</loc>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/15-bycich-institucii-na-wall-street-ktore-kupuju-bitcoin/</loc>
@@ -10938,10 +10944,6 @@
   <url>
     <loc>https://virtuse.com/sk/stories/30-citatov-o-bitcoine-od-slavnych-ludi/</loc>
     <lastmod>2020-07-22</lastmod>
-  </url>
-  <url>
-    <loc>https://virtuse.com/sk/stories/4-dovody-preco-su-fiat-peniaze-v-stadiu-zaniku/</loc>
-    <lastmod>2026-11-19</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/5-investicnych-lekcii-za-poslednych-11-rokov-ras-vasilisin/</loc>
@@ -10993,7 +10995,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/ako-jednoducho-profitovat-z-globalnej-recesie/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2022-10-27</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/ako-menove-politiky-ovplyvnuju-nasu-buducnost-bohati-stale-bohatnu-2/</loc>
@@ -11001,11 +11003,11 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/ako-neprist-v-recesii-o-gate-alebo-7-poznatkov-z-podcastu-do-naha/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/ako-prijat-strach-v-investovani-2/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2020-05-22</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/ako-sa-pripravit-na-recesiu/</loc>
@@ -11033,11 +11035,11 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/biely-dom-zmenil-definiciu-recesie-a-posunul-gaslighting-na-novu-uroven/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/biely-dom-zmenil-definiciu-recesie-a-potom-vykazal-falosne-cisla-o-zamestnanosti/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2022-12-26</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/binance-prisla-o-63-mld-bitcoin-vydrzal/</loc>
@@ -11073,7 +11075,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/bitcoin-mal-najlepsi-januar-za-poslednych-10-rokov-2/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2023-02-14</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/bitcoin-nekotroluje-par-jednotlivcov-ako-media-tvrdia-ras-vasilisin/</loc>
@@ -11113,7 +11115,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/bitcoin-za-100-milionov-fidelity-to-vidi-realne/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2021-09-15</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/bitcoinovy-sok-v-blackrocku-bitcoin-je-zrazu-ich-hlavny-generator-prijmov/</loc>
@@ -11177,7 +11179,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/damoklov-mec-nad-financnymi-trhmi/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2020-06-15</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/desat-odvaznych-prognoz-na-rok-2021-pre-ochranu-vasho-majetku/</loc>
@@ -11185,7 +11187,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/desat-predpovedi-pre-pochmurny-rok-2023/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/digitalne-euro-kto-bude-urcovat-pravidla-vasich-penazi/</loc>
@@ -11228,7 +11230,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/fiat-je-mrtvy-zacal-sa-boj-o-buducnost-penazi/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-03-10</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/financna-gramotnost-a-bitcoin-su-klucom-k-ochrane-bohatstva/</loc>
@@ -11303,7 +11305,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/kolko-penazi-by-vam-dokazalo-zasadne-zmenit-zivot/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/korporatny-bitcoin-ako-jeden-ceo-spustil-revoluciu-v-ochrane-majetku-firiem/</loc>
@@ -11381,7 +11383,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/najdolezitejsia-lekcia-z-krachu-ftx-bitcoin-majte-v-hardverovej-penazenke/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/najlepsi-mesiac-bitcoinu-v-minuse-16-percent/</loc>
@@ -11516,7 +11518,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/prichadza-najvacsia-zmena-paradigmy-od-internetu/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-03-10</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/pripravi-bitcoin-zlato-o-slavu/</loc>
@@ -11595,7 +11597,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/svetove-trhy-sa-prepadaju-okrem-bitcoinu/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2022-10-20</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/technicka-analyza-btc-bitcoin-ma-nasmerovane-k-odrazu/</loc>
@@ -11615,7 +11617,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/tieto-3-aktiva-vas-ochrania-pred-inflaciou/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2020-08-27</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/top-8-powerful-lessons-lockdown-has-taught-me/</loc>
@@ -11631,11 +11633,11 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/tri-dovody-preco-elon-musk-kupil-twitter/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2022-11-04</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/tri-hlavne-prakticke-vyuzitia-bitcoinu-ktore-musite-poznat/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-03-10</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/tri-moznosti-ako-najlepsie-pouzit-bitcoin/</loc>
@@ -11707,7 +11709,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/zavedie-argentina-bitcoin-ako-legalnu-menu-2/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/sk/stories/zhodnotenie-bitcoinu-je-neodvratne-rovnako-ako-aj-potreba-prerodu-sucasneho-financneho-sveta/</loc>
@@ -11743,7 +11745,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/10-rules-of-investing-from-legends-that-will-change-your-perspective-on-investing/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2020-07-21</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/10-shared-beliefs-of-bitcoin-maximalist/</loc>
@@ -11914,7 +11916,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/bitcoin-patience-is-a-virtue/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2020-07-27</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/bitcoin-price-blasts-past-21k-as-3-day-short-liquidations-near-300m/</loc>
@@ -11938,7 +11940,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/buffett-bought-gold-and-sold-banks-and-you-should-too/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2020-08-27</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/buffett-is-hedging-against-endless-pandemic/</loc>
@@ -11962,7 +11964,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/crypto-commodities-what-are-they/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2019-11-11</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/crypto-funding-expoled-in-2021/</loc>
@@ -12104,7 +12106,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/how-does-russia-benefit-from-the-invasion/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2022-03-02</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/how-monetary-policies-affect-our-future/</loc>
@@ -12171,7 +12173,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/it-is-time-to-talk-about-the-next-stage-of-crypto-evolution/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2019-11-10</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/keep-your-assets-parked-with-stablecoins-ras-vasilisin/</loc>
@@ -12187,7 +12189,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/married-couple-accused-of-laundering-3-6-billion-in-bitcoin/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2022-02-21</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/metaverse-promises-a-boon-for-the-global-economy-ras-vasilisin/</loc>
@@ -12195,7 +12197,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/michael-burrys-is-predicting-epic-crash-should-you-sell/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2022-08-24</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/michael-saylors-legacy-the-bitcoin-corporate-revolution/</loc>
@@ -12207,7 +12209,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/most-comprehensive-guide-to-cryptocurrency-terms/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/nasdaq-bitcoin-futures-dont-get-your-hopes-up/</loc>
@@ -12278,7 +12280,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/take-back-control/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2020-07-27</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/tesla-is-not-green-enough-for-esg-sp-500/</loc>
@@ -12314,7 +12316,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/the-meaning-of-virtuse-to-our-company-people-and-investors/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2019-11-10</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/the-most-comprehensive-cold-wallet-guide/</loc>
@@ -12338,7 +12340,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/the-white-house-changes-the-definition-of-recession-taking-gaslighting-to-another-level/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2022-08-03</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/they-cannot-be-trusted/</loc>
@@ -12390,11 +12392,11 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/virtuse-news-april/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2020-05-04</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/virtuse-news-march/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2020-03-18</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/western-union-suspends-transfers-to-afghanistan-cutting-off-support-for-suffering-population/</loc>
@@ -12497,7 +12499,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/stories/will-the-recent-events-in-kazakhstan-impact-bitcoin-mining/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2022-02-23</lastmod>
   </url>
   <url>
     <loc>https://virtuse.com/stories/worried-about-bitcoin-price-let-data-lead-the-way/</loc>
