@@ -552,7 +552,13 @@
     set(5, S.blur.docs, S.blur.docsTxt);
     var amt = !A.btc ? '' : A.btc < 1000 ? 's' : A.btc < 10000 ? 'm' : A.btc < 100000 ? 'l' : 'xl';
     $('mlPf').href = P('concierge.html') + '?pf_goal=buy&pf_country=' + (A.country || '') + '&pf_experience=' + (A.experience === 'hodler' ? 'hodler' : 'new') + '&pf_custody=' + (A.custody || '') + '&pf_amount=' + amt + '&utm_source=verdict&utm_medium=lite';
-    dl({ event: 'verdict_result', verdict_mode: 'lite', verdict_grade: gr, verdict_weakest: weakAreas(sc) });
+    // Once per result in a tab: a reload or the return from a cancelled payment shows the same score again.
+    var wk = weakAreas(sc), sig = gr + '|' + wk, seen = '';
+    try { seen = sessionStorage.getItem('vb-verdict-result') || ''; } catch (e) {}
+    if (seen !== sig) {
+      try { sessionStorage.setItem('vb-verdict-result', sig); } catch (e) {}
+      dl({ event: 'verdict_result', verdict_mode: 'lite', verdict_grade: gr, verdict_weakest: wk });
+    }
   }
   // V-mark logo intro (brand/virtuse-logo-loader-dark, 2 s) while Verdict waits:
   // the checking screen plays it once, the report wait loops it. The spinner (or
@@ -662,8 +668,9 @@
     if (!heroOn) {
       heroOn = true; clearTimeout(demoLoop.t);
       d.classList.remove('all'); d.classList.add('live'); d.innerHTML = LIVE; heroShown = {};
-      if (!heroSent) { heroSent = true; dl({ event: 'verdict_hero_check' }); }   // no figures leave the browser
     }
+    // Only when the visitor types the figures; answers restored from storage do not count. No figures leave the browser.
+    if (!sync && !heroSent) { heroSent = true; dl({ event: 'verdict_hero_check' }); }
     var ring = d.querySelector('.dl-ring');
     ring.className = 'dl-ring' + (v.share >= 50 ? ' hi' : v.share >= 20 ? ' mid' : '');
     // next frame, so the ring sweeps from its previous length
