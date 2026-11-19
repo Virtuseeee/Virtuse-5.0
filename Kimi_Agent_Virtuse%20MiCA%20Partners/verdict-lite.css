@@ -68,6 +68,14 @@
 
 /* loading */
 .ml-load { text-align: center; padding: 60px 0; }
+/* V-mark intro while Verdict waits (vMark in verdict-lite.js). Rendered on black,
+   blended with screen so its background disappears into the dark page. */
+.ml-mark { width: 120px; height: 120px; margin: -20px auto 8px; overflow: hidden; opacity: 0; transition: opacity .25s ease;
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); }
+.ml-mark.on { opacity: 1; }
+.ml-mark video { display: block; width: 100%; height: 100%; transform: scale(1.6); mix-blend-mode: screen; }
+.ml-rep-wait { padding: 40px 0; }
 .ml-spin { width: 54px; height: 54px; border-radius: 50%; border: 3px solid var(--card-hover); border-top-color: var(--orange); margin: 0 auto 28px; animation: mlSpin .9s linear infinite; }
 @keyframes mlSpin { to { transform: rotate(360deg); } }
 .ml-load h2 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
