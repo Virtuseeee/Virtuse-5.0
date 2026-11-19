@@ -39,7 +39,7 @@
 <link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
 <link rel="stylesheet" href="/verdict-landing.css?v=20261116b">
-<link rel="stylesheet" href="/verdict-lite.css?v=26">
+<link rel="stylesheet" href="/verdict-lite.css?v=27">
 <!-- VLH:END -->
 </head>
 <body class="page-verdict no-split">
@@ -80,9 +80,15 @@
 <div class="vl">
 <div class="hero"><div>
 <span class="eyebrow blue"><i></i>Verdict</span>
-<h1>Spravte si audit svojho Bitcoin plánu <em>za 3 minúty.</em></h1>
-<p class="px">Zadajte svoje úspory, ciele a obavy. Získajte okamžité skóre zo 100, známku a 3 konkrétne medzery, ktoré musíte vyriešiť. Lite skóre zadarmo.</p>
-<div class="ctas"><button class="b bp" type="button" data-go="1">Získať Lite skóre zadarmo →</button></div>
+<h1>Prežil by váš plán Bitcoinu <em>pokles o 70 %?</em></h1>
+<p class="px">Zadajte dve čísla a uvidíte, čo by vám po poklese zostalo. Ďalších päť oblastí skontrolujete asi za 3 minúty. Lite skóre zadarmo.</p>
+<div class="ml-hc">
+<div class="ml-hc-f"><div><label class="ml-lab" for="h_btc">Koľko by ste dali do Bitcoinu (€)?</label><div class="ml-inwrap eur"><input class="ml-input" id="h_btc" data-k="btc" type="number" inputmode="numeric" min="0" placeholder="napríklad 20000" autocomplete="off"></div></div>
+<div><label class="ml-lab" for="h_savings">Úspory a investície (€), bez bývania a dôchodku</label><div class="ml-inwrap eur"><input class="ml-input" id="h_savings" data-k="savings" type="number" inputmode="numeric" min="0" placeholder="napríklad 150000" autocomplete="off"></div></div></div>
+<p class="ml-hc-hint">Stačia zaokrúhlené čísla. Zostávajú vo vašom prehliadači.</p>
+<p class="ml-hc-out" id="mlHo" aria-live="polite" hidden></p>
+<div class="ctas"><button class="b bp" type="button" data-go="1" id="mlHcta">Získať Lite skóre zadarmo →</button></div>
+</div>
 <p class="ml-land-note">Asi 3 minúty · bez registrácie · Lite skóre za váš e-mail · nie je to investičné poradenstvo</p>
 </div><div>
 <div class="demo ml-demo" id="mlDemo" aria-describedby="mlDemoAlt"></div>
@@ -98,9 +104,10 @@
 <p class="sub">Žiadny žargón, nič nemusíte písať vlastnými slovami. Stačia zaokrúhlené čísla.</p>
 <div class="g3"><div class="cd"><div class="n">5</div><p>Krátkych krokov</p></div><a class="cd" href="#signals"><div class="n">6</div><p>Hodnotených oblastí</p></a><div class="cd"><div class="n">13</div><p>Krajín EÚ s daňovými pravidlami</p></div></div></section>
 
-<section id="problem"><div class="sec-head"><div class="eyebrow orange"><i></i>Problém</div><h2>Kúpiť Bitcoin je ľahké. <span>Zvoliť si rozumný plán nie.</span></h2>
-<p class="sec-sub">Aplikácie vám uľahčia kliknúť na Kúpiť. Nepovedia vám však, či váš plán prežije pokles o 70 %, daňové pravidlá, stratenú zálohu alebo zlého partnera.</p></div>
-<div class="g4 g2"><div class="tile" style="--c: var(--orange)"><h3>Každý plán znie dobre</h3><p>Kým ho neotestuje pokles, daň alebo stratená záloha.</p></div><div class="tile" style="--c: var(--blue)"><h3>Náklady sa presunuli do výberu</h3><p>Keď je nákup na jedno ťuknutie, skutočná cena je zvoliť si zlé nastavenie.</p></div></div></section>
+<section id="problem"><div class="sec-head"><div class="eyebrow orange"><i></i>Problém</div><h2>Väčšina plánov Bitcoinu zlyhá <span>na tých istých troch miestach.</span></h2>
+<p class="sec-sub">Nie pri tlačidle Kúpiť. Až neskôr, keď plán preverí pokles, daň alebo stratená záloha.</p></div>
+<div class="g4 g3p"><div class="tile" style="--c: var(--orange)"><div class="k">01</div><h3>Dali ste priveľa</h3><p>Tretina úspor vyzerala na vrchole v poriadku. Po poklese o 70 % rozhoduje o tom, kedy pôjdete do dôchodku.</p><div class="pt">Verdict kontroluje: <b>Veľkosť</b></div></div><div class="tile" style="--c: var(--red)"><div class="k">02</div><h3>Predali ste na dne</h3><p>Cena klesla na polovicu, prišla splátka úveru a hotovostná rezerva chýbala. Predali ste vtedy, keď to bolelo najviac.</p><div class="pt">Verdict kontroluje: <b>Rezerva · Dlhy · Správanie</b></div></div><div class="tile" style="--c: var(--blue)"><div class="k">03</div><h3>Nevedeli ste to doložiť ani obnoviť</h3><p>Daňový úrad si vyžiadal záznam o nákupe. Alebo sa pokazil telefón a zálohu nikto nikdy neskúšal.</p><div class="pt">Verdict kontroluje: <b>Dane · Úschova</b></div></div></div>
+<p class="p-close">Verdict skontroluje všetky tri ešte pred nákupom. <a href="#signals">Pozrieť šesť oblastí →</a></p></section>
 
 <section id="signals"><div class="sig-top"><div class="sec-head"><div class="eyebrow blue"><i></i>Šesť oblastí</div><h2>Šesť oblastí. <span>Dve skupiny.</span></h2>
 <p class="sec-sub">Každý plán hodnotíme v tých istých šiestich oblastiach, v dvoch skupinách: môže vám pokles ublížiť a ste pripravení. Mapa oblastí ukáže celý tvar naraz.</p>
@@ -522,7 +529,7 @@
 <script src="/vb-api.js?v=3" defer></script>
 <script src="/site-v2.js?v=19" defer></script>
 <script src="/consultation-lazy.js?v=5" defer></script>
-<script src="/verdict-lite.js?v=25" defer></script>
+<script src="/verdict-lite.js?v=26" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
