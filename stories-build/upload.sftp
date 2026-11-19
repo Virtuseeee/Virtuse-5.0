@@ -143,6 +143,7 @@
 -mkdir public_html/stories/the-fifth-element-or-five-ways-to-understand-bitcoin
 -mkdir public_html/stories/the-good-bad-and-ugly-of-bitcoin-etf-ras-vasilisin
 -mkdir public_html/stories/the-good-bad-and-ugly-of-cbdc
+-mkdir public_html/stories/the-good-the-bad-and-the-ugly-of-central-bank-digital-currencies-or-cbdcs
 -mkdir public_html/stories/the-great-reset-and-what-it-means-for-you
 -mkdir public_html/stories/the-meaning-of-virtuse-to-our-company-people-and-investors
 -mkdir public_html/stories/the-most-comprehensive-cold-wallet-guide
@@ -212,13 +213,13 @@
 -mkdir public_html/sk/stories/10-presvedceni-bitcoinovych-maximalistov
 -mkdir public_html/sk/stories/10-prikazani-od-velikanov-ktore-zmenia-vas-pohlad-na-investovanie
 -mkdir public_html/sk/stories/10379
--mkdir public_html/sk/stories/14013-2
 -mkdir public_html/sk/stories/15-bycich-institucii-na-wall-street-ktore-kupuju-bitcoin
 -mkdir public_html/sk/stories/15-dovodov-preco-vlastnit-bitcoin-v-roku-2022-ras-vasilisin
 -mkdir public_html/sk/stories/18-krutych-pravd-o-korona-recesii-o-ktorych-by-ste-mali-vediet
 -mkdir public_html/sk/stories/23-dovodov-preco-kupovat-bitcoin
 -mkdir public_html/sk/stories/3-dovody-preco-sa-nebat-padu-bitcoinu
 -mkdir public_html/sk/stories/30-citatov-o-bitcoine-od-slavnych-ludi
+-mkdir public_html/sk/stories/4-dovody-preco-su-fiat-peniaze-v-stadiu-zaniku
 -mkdir public_html/sk/stories/4216
 -mkdir public_html/sk/stories/5-investicnych-lekcii-za-poslednych-11-rokov-ras-vasilisin
 -mkdir public_html/sk/stories/5-rad-od-zakladatela-najvacsieho-hedzoveho-fondu-na-svete
@@ -411,6 +412,7 @@
 -mkdir public_html/sk/stories/tu-je-dovod-preco-by-ste-mali-prehodnotit-investovanie-do-kryptomien
 -mkdir public_html/sk/stories/v-afganistane-konci-aj-western-union-pre-trpiace-obyvatelstvo-je-to-dalsi-uder-pod-pas
 -mkdir public_html/sk/stories/velka-noc-seizmicky-posun-ktory-nam-dal-hodnotu-cloveka
+-mkdir public_html/sk/stories/visa-a-mastercard-pozastavuju-sluzby-ruskym-bankam
 -mkdir public_html/sk/stories/vsetko-co-potrebujete-vediet-o-dni-bitcoinovej-pizze
 -mkdir public_html/sk/stories/vsetko-dobre-zle-a-skarede-o-bitcoinovom-etf-ras-vasilisin
 -mkdir public_html/sk/stories/vystrasil-vas-pad-bitcoinu-pozrime-sa-co-hovoria-cisla
@@ -442,13 +444,13 @@ put sk/stories/10-odvaznych-predpovedi-na-rok-2022-pre-ochranu-vasho-majetku/ind
 put sk/stories/10-presvedceni-bitcoinovych-maximalistov/index.html public_html/sk/stories/10-presvedceni-bitcoinovych-maximalistov/index.html
 put sk/stories/10-prikazani-od-velikanov-ktore-zmenia-vas-pohlad-na-investovanie/index.html public_html/sk/stories/10-prikazani-od-velikanov-ktore-zmenia-vas-pohlad-na-investovanie/index.html
 put sk/stories/10379/index.html public_html/sk/stories/10379/index.html
-put sk/stories/14013-2/index.html public_html/sk/stories/14013-2/index.html
 put sk/stories/15-bycich-institucii-na-wall-street-ktore-kupuju-bitcoin/index.html public_html/sk/stories/15-bycich-institucii-na-wall-street-ktore-kupuju-bitcoin/index.html
 put sk/stories/15-dovodov-preco-vlastnit-bitcoin-v-roku-2022-ras-vasilisin/index.html public_html/sk/stories/15-dovodov-preco-vlastnit-bitcoin-v-roku-2022-ras-vasilisin/index.html
 put sk/stories/18-krutych-pravd-o-korona-recesii-o-ktorych-by-ste-mali-vediet/index.html public_html/sk/stories/18-krutych-pravd-o-korona-recesii-o-ktorych-by-ste-mali-vediet/index.html
 put sk/stories/23-dovodov-preco-kupovat-bitcoin/index.html public_html/sk/stories/23-dovodov-preco-kupovat-bitcoin/index.html
 put sk/stories/3-dovody-preco-sa-nebat-padu-bitcoinu/index.html public_html/sk/stories/3-dovody-preco-sa-nebat-padu-bitcoinu/index.html
 put sk/stories/30-citatov-o-bitcoine-od-slavnych-ludi/index.html public_html/sk/stories/30-citatov-o-bitcoine-od-slavnych-ludi/index.html
+put sk/stories/4-dovody-preco-su-fiat-peniaze-v-stadiu-zaniku/index.html public_html/sk/stories/4-dovody-preco-su-fiat-peniaze-v-stadiu-zaniku/index.html
 put sk/stories/4216/index.html public_html/sk/stories/4216/index.html
 put sk/stories/5-investicnych-lekcii-za-poslednych-11-rokov-ras-vasilisin/index.html public_html/sk/stories/5-investicnych-lekcii-za-poslednych-11-rokov-ras-vasilisin/index.html
 put sk/stories/5-rad-od-zakladatela-najvacsieho-hedzoveho-fondu-na-svete/index.html public_html/sk/stories/5-rad-od-zakladatela-najvacsieho-hedzoveho-fondu-na-svete/index.html
@@ -641,6 +643,7 @@ put sk/stories/trumpov-hasic-v-mnichove-preco-si-marco-rubio-ziskal-europu-uprim
 put sk/stories/tu-je-dovod-preco-by-ste-mali-prehodnotit-investovanie-do-kryptomien/index.html public_html/sk/stories/tu-je-dovod-preco-by-ste-mali-prehodnotit-investovanie-do-kryptomien/index.html
 put sk/stories/v-afganistane-konci-aj-western-union-pre-trpiace-obyvatelstvo-je-to-dalsi-uder-pod-pas/index.html public_html/sk/stories/v-afganistane-konci-aj-western-union-pre-trpiace-obyvatelstvo-je-to-dalsi-uder-pod-pas/index.html
 put sk/stories/velka-noc-seizmicky-posun-ktory-nam-dal-hodnotu-cloveka/index.html public_html/sk/stories/velka-noc-seizmicky-posun-ktory-nam-dal-hodnotu-cloveka/index.html
+put sk/stories/visa-a-mastercard-pozastavuju-sluzby-ruskym-bankam/index.html public_html/sk/stories/visa-a-mastercard-pozastavuju-sluzby-ruskym-bankam/index.html
 put sk/stories/vsetko-co-potrebujete-vediet-o-dni-bitcoinovej-pizze/index.html public_html/sk/stories/vsetko-co-potrebujete-vediet-o-dni-bitcoinovej-pizze/index.html
 put sk/stories/vsetko-dobre-zle-a-skarede-o-bitcoinovom-etf-ras-vasilisin/index.html public_html/sk/stories/vsetko-dobre-zle-a-skarede-o-bitcoinovom-etf-ras-vasilisin/index.html
 put sk/stories/vystrasil-vas-pad-bitcoinu-pozrime-sa-co-hovoria-cisla/index.html public_html/sk/stories/vystrasil-vas-pad-bitcoinu-pozrime-sa-co-hovoria-cisla/index.html
@@ -798,6 +801,7 @@ put stories/the-elephant-chain-syndrome-in-cryptocurrencies-we-have-whales-and-n
 put stories/the-fifth-element-or-five-ways-to-understand-bitcoin/index.html public_html/stories/the-fifth-element-or-five-ways-to-understand-bitcoin/index.html
 put stories/the-good-bad-and-ugly-of-bitcoin-etf-ras-vasilisin/index.html public_html/stories/the-good-bad-and-ugly-of-bitcoin-etf-ras-vasilisin/index.html
 put stories/the-good-bad-and-ugly-of-cbdc/index.html public_html/stories/the-good-bad-and-ugly-of-cbdc/index.html
+put stories/the-good-the-bad-and-the-ugly-of-central-bank-digital-currencies-or-cbdcs/index.html public_html/stories/the-good-the-bad-and-the-ugly-of-central-bank-digital-currencies-or-cbdcs/index.html
 put stories/the-great-reset-and-what-it-means-for-you/index.html public_html/stories/the-great-reset-and-what-it-means-for-you/index.html
 put stories/the-meaning-of-virtuse-to-our-company-people-and-investors/index.html public_html/stories/the-meaning-of-virtuse-to-our-company-people-and-investors/index.html
 put stories/the-most-comprehensive-cold-wallet-guide/index.html public_html/stories/the-most-comprehensive-cold-wallet-guide/index.html
@@ -892,4 +896,5 @@ put ru/stories/index.html public_html/ru/stories/index.html
 # hubs:end
 put sitemap.xml public_html/sitemap.xml
 put stories/wp-canonical.json /_sub/blog/wp-content/mu-plugins/virtuse-story-canonical.json
+# removed from WordPress, delete on the server: public_html/sk/stories/14013-2/
 bye
