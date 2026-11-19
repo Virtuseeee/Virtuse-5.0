@@ -694,6 +694,16 @@ ul { list-style: none; }
 .subscribe-msg.ok { color: var(--up); }
 .subscribe-msg.err { color: var(--down); }
 .subscribe-msg:empty { display: none; }
+/* Logo intro beside the sign-up confirmation (news.js playMark). The video is
+   rendered on black (dark) / white (light) and blended so its background
+   disappears into the page. */
+.subscribe-msg.has-mark { display: flex; align-items: center; gap: 10px; }
+.pt-sub-form .subscribe-msg.has-mark { justify-content: flex-end; }
+.sub-mark { flex: 0 0 auto; display: inline-block; width: 48px; height: 48px; overflow: hidden; }
+.sub-mark video { display: block; width: 100%; height: 100%; transform: scale(1.9); mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(closest-side, #000 64%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 64%, transparent 100%); }
+.sub-mark.is-light video { mix-blend-mode: multiply; }
 .capture-fine {
   margin: 8px 0 0;
   font-family: var(--font-mono);
