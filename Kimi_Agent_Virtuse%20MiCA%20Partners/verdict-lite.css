@@ -68,9 +68,10 @@
 
 /* loading */
 .ml-load { text-align: center; padding: 60px 0; }
-/* V-mark intro while Verdict waits (vMark in verdict-lite.js). Rendered on black,
-   blended with screen so its background disappears into the dark page. */
-.ml-mark { width: 120px; height: 120px; margin: -20px auto 8px; overflow: hidden; opacity: 0; transition: opacity .25s ease;
+/* V-mark intro while Verdict waits (vMark in verdict-lite.js). Rendered on black and
+   blended (screen) with the wrapper's own page-colour background: the screens have a
+   transform, so a blend with the page itself would see a transparent backdrop. */
+.ml-mark { width: 120px; height: 120px; margin: -20px auto 8px; overflow: hidden; opacity: 0; transition: opacity .25s ease; background: #08090a;
   -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
   mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); }
 .ml-mark.on { opacity: 1; }
