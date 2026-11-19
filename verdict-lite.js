@@ -770,7 +770,7 @@
       return api.fetchWithTimeout(api.url('/verdict/checkout').replace(/\/checkout$/, '/status'), {}, 6000, function (r) { return r.ok ? r.json() : null; });
     }).then(function (d) { if (d && d.payments === false) payClosed(); }).catch(function () {});
   })();
-  var INTENT = 'vb-verdict-intent';
+  var INTENT = 'vb-verdict-intent', PAY = 'vb-verdict-pay';   // PAY: the button that opened Stripe Checkout
   function buy(btn) {
     var cta = btn.getAttribute('data-cta') || '';
     if (LANG === 'ru' || LANG === 'uk') {   // sold in EN and SK only (signed legal scope)
@@ -792,7 +792,7 @@
     var payEm = A.email || (EMAIL.test(gateEm) ? gateEm : '');
     vbApi().then(function (api) { return api.postJson('/verdict/checkout', { answers: answers, lang: LANG, email: payEm || undefined }); })
       .then(function (r) {
-        if (r && r.ok && r.data && r.data.url) { try { sessionStorage.removeItem(INTENT); } catch (e) {} location.href = r.data.url; return; }
+        if (r && r.ok && r.data && r.data.url) { try { sessionStorage.removeItem(INTENT); sessionStorage.setItem(PAY, cta || 'buy'); } catch (e) {} location.href = r.data.url; return; }
         if (r && r.status === 503) { all(false); payClosed(); return; }   // payments closed on this Worker
         failed(r && r.status);
         say((r && r.data && r.data.error) || S.net);
@@ -990,7 +990,7 @@
   var sidM = /[?&]session_id=(cs_(?:test|live)_[A-Za-z0-9]+)/.exec(location.search);
   var sid = sidM ? sidM[1] : null;
   if (sid) {
-    try { sessionStorage.setItem(SID, sid); } catch (e) {}
+    try { sessionStorage.setItem(SID, sid); sessionStorage.removeItem(PAY); } catch (e) {}
     if (H) history.replaceState({ vl: 1, s: 10, i: 0, p: 0 }, '', url(10));
   } else if (/[?&]s=10\b/.test(location.search)) {
     try { sid = sessionStorage.getItem(SID); } catch (e) {}
@@ -1004,5 +1004,10 @@
   if (first === 10) first = 0;                  // the paid report needs its id (above)
   show(first);
   if (canceled) document.querySelectorAll('.ml-screen.on .ml-buy-msg').forEach(function (m) { m.textContent = S.buyCanceled; });
+  // Once per opened Checkout: a reload of the ?canceled=1 address does not count again.
+  if (canceled) {
+    var paidFrom = ''; try { paidFrom = sessionStorage.getItem(PAY) || ''; sessionStorage.removeItem(PAY); } catch (e) {}
+    if (paidFrom) dl({ event: 'verdict_checkout_cancel', verdict_cta: paidFrom });
+  }
   if (H) { var hs = st(); history.replaceState({ vl: 1, s: first, i: hs ? hs.i : 0, p: hs ? hs.p : 0 }, '', url(first)); }
 })();
