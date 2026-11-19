@@ -143,6 +143,7 @@
 -mkdir public_html/stories/the-fifth-element-or-five-ways-to-understand-bitcoin
 -mkdir public_html/stories/the-good-bad-and-ugly-of-bitcoin-etf-ras-vasilisin
 -mkdir public_html/stories/the-good-bad-and-ugly-of-cbdc
+-mkdir public_html/stories/the-good-the-bad-and-the-ugly-of-central-bank-digital-currencies-or-cbdcs
 -mkdir public_html/stories/the-great-reset-and-what-it-means-for-you
 -mkdir public_html/stories/the-meaning-of-virtuse-to-our-company-people-and-investors
 -mkdir public_html/stories/the-most-comprehensive-cold-wallet-guide
@@ -411,6 +412,7 @@
 -mkdir public_html/sk/stories/tu-je-dovod-preco-by-ste-mali-prehodnotit-investovanie-do-kryptomien
 -mkdir public_html/sk/stories/v-afganistane-konci-aj-western-union-pre-trpiace-obyvatelstvo-je-to-dalsi-uder-pod-pas
 -mkdir public_html/sk/stories/velka-noc-seizmicky-posun-ktory-nam-dal-hodnotu-cloveka
+-mkdir public_html/sk/stories/visa-a-mastercard-pozastavuju-sluzby-ruskym-bankam
 -mkdir public_html/sk/stories/vsetko-co-potrebujete-vediet-o-dni-bitcoinovej-pizze
 -mkdir public_html/sk/stories/vsetko-dobre-zle-a-skarede-o-bitcoinovom-etf-ras-vasilisin
 -mkdir public_html/sk/stories/vystrasil-vas-pad-bitcoinu-pozrime-sa-co-hovoria-cisla
@@ -641,6 +643,7 @@ put sk/stories/trumpov-hasic-v-mnichove-preco-si-marco-rubio-ziskal-europu-uprim
 put sk/stories/tu-je-dovod-preco-by-ste-mali-prehodnotit-investovanie-do-kryptomien/index.html public_html/sk/stories/tu-je-dovod-preco-by-ste-mali-prehodnotit-investovanie-do-kryptomien/index.html
 put sk/stories/v-afganistane-konci-aj-western-union-pre-trpiace-obyvatelstvo-je-to-dalsi-uder-pod-pas/index.html public_html/sk/stories/v-afganistane-konci-aj-western-union-pre-trpiace-obyvatelstvo-je-to-dalsi-uder-pod-pas/index.html
 put sk/stories/velka-noc-seizmicky-posun-ktory-nam-dal-hodnotu-cloveka/index.html public_html/sk/stories/velka-noc-seizmicky-posun-ktory-nam-dal-hodnotu-cloveka/index.html
+put sk/stories/visa-a-mastercard-pozastavuju-sluzby-ruskym-bankam/index.html public_html/sk/stories/visa-a-mastercard-pozastavuju-sluzby-ruskym-bankam/index.html
 put sk/stories/vsetko-co-potrebujete-vediet-o-dni-bitcoinovej-pizze/index.html public_html/sk/stories/vsetko-co-potrebujete-vediet-o-dni-bitcoinovej-pizze/index.html
 put sk/stories/vsetko-dobre-zle-a-skarede-o-bitcoinovom-etf-ras-vasilisin/index.html public_html/sk/stories/vsetko-dobre-zle-a-skarede-o-bitcoinovom-etf-ras-vasilisin/index.html
 put sk/stories/vystrasil-vas-pad-bitcoinu-pozrime-sa-co-hovoria-cisla/index.html public_html/sk/stories/vystrasil-vas-pad-bitcoinu-pozrime-sa-co-hovoria-cisla/index.html
@@ -798,6 +801,7 @@ put stories/the-elephant-chain-syndrome-in-cryptocurrencies-we-have-whales-and-n
 put stories/the-fifth-element-or-five-ways-to-understand-bitcoin/index.html public_html/stories/the-fifth-element-or-five-ways-to-understand-bitcoin/index.html
 put stories/the-good-bad-and-ugly-of-bitcoin-etf-ras-vasilisin/index.html public_html/stories/the-good-bad-and-ugly-of-bitcoin-etf-ras-vasilisin/index.html
 put stories/the-good-bad-and-ugly-of-cbdc/index.html public_html/stories/the-good-bad-and-ugly-of-cbdc/index.html
+put stories/the-good-the-bad-and-the-ugly-of-central-bank-digital-currencies-or-cbdcs/index.html public_html/stories/the-good-the-bad-and-the-ugly-of-central-bank-digital-currencies-or-cbdcs/index.html
 put stories/the-great-reset-and-what-it-means-for-you/index.html public_html/stories/the-great-reset-and-what-it-means-for-you/index.html
 put stories/the-meaning-of-virtuse-to-our-company-people-and-investors/index.html public_html/stories/the-meaning-of-virtuse-to-our-company-people-and-investors/index.html
 put stories/the-most-comprehensive-cold-wallet-guide/index.html public_html/stories/the-most-comprehensive-cold-wallet-guide/index.html
