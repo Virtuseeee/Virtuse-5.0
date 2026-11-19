@@ -117,6 +117,7 @@
       wlOk: "You're on the list. We'll email you once, when the report opens.",
       buyWait: 'Opening secure payment…', buyClosed: 'Payment is not open right now. Leave your email and we will write to you once when it is. The 30-day refund and the right of withdrawal apply once you buy.', buyCanceled: 'Payment cancelled. Nothing was charged.', pdfWait: 'Preparing your PDF…', pdfErr: 'The PDF could not be downloaded. Please try again; your copy is also on its way by email.',
       repLoad: 'Preparing your report…', repUsed: 'This report was open for 30 minutes and has now closed. Your PDF copy is in the email you paid with. Cannot find it? Write to info@virtuse.com.', repNet: 'We could not load your report. Please reload this page. Your PDF copy is on its way by email; if it does not arrive, write to info@virtuse.com.',
+      hero: { out: '<b>{0}</b> is <b>{1}</b> of your savings. After a 70% fall, <b>{2}</b> of it would be left.', big: 'A large share of your savings is at stake. A 70% fall would change your plans.', small: 'Bitcoin has fallen 70% or more several times. This is one area of six.', over: 'That is more than the savings you entered. Check the two numbers.', cta: 'Check the other five areas →', top: 'YOUR PLAN · AREA 1 OF 6', title: 'Your Bitcoin plan check', meta: 'One area answered. Five to go.', share: 'of your savings', plan: 'Planned', after: 'After a 70% fall', done: 'answered', foot: 'The score out of 100 needs all six areas.' },
       demo: { top: 'VERDICT REPORT · SAMPLE', title: 'Anna’s Bitcoin plan check', meta: '41 · Slovakia · first purchase · own keys', scale: ['Basics missing', 'A few gaps', 'Basics in place'], pill: 'B · Basics in place', nums: [['Planned', '€20,000 · 13%'], ['After a 70% fall', '€6,000 left'], ['Monthly', '€200'], ['Cash reserve', '3 to 6 months']], areas: ['Size', 'Reserve', 'Debts', 'Tax', 'Custody', 'Behaviour'] },
       jump: ['Landing', '1 Basics', '2 Savings', '3 Home', '4 Bitcoin', '5 Worries', 'Loading', 'Gate', 'Lite score', 'Sample']
     },
@@ -181,7 +182,8 @@
       wlOk: 'Ste na zozname. Napíšeme vám raz, keď report spustíme.',
       buyWait: 'Otváram zabezpečenú platbu…', buyClosed: 'Platba teraz nie je otvorená. Nechajte nám e-mail a raz vám napíšeme, keď bude. Vrátenie peňazí do 30 dní a odstúpenie od zmluvy platia až po kúpe.', buyCanceled: 'Platba bola zrušená. Nič sa nestrhlo.', pdfWait: 'Pripravujem PDF…', pdfErr: 'PDF sa nepodarilo stiahnuť. Skúste to znova; kópia je na ceste aj e-mailom.',
       repLoad: 'Pripravujem váš report…', repUsed: 'Tento report bol otvorený 30 minút a teraz je zatvorený. Kópiu v PDF máte v e-maile, ktorým ste platili. Neviete ju nájsť? Napíšte na info@virtuse.com.', repNet: 'Report sa nepodarilo načítať. Znovu načítajte túto stránku. Kópia v PDF je na ceste e-mailom; ak nepríde, napíšte na info@virtuse.com.',
-      demo: { top: 'VERDICT REPORT · VZOR', title: 'Plán Bitcoinu: Anna', meta: '41 · Slovensko · prvý nákup · vlastné kľúče', scale: ['Chýbajú základy', 'Pár medzier', 'Základy máte'], pill: 'B · Základy máte', nums: [['Plánuje', '20 000 € · 13 %'], ['Po poklese o 70 %', 'zostane 6 000 €'], ['Mesačne', '200 €'], ['Rezerva', '3 až 6 mesiacov']], areas: ['Veľkosť', 'Rezerva', 'Dlhy', 'Dane', 'Úschova', 'Správanie'] },
+      hero: { out: '<b>{0}</b> je <b>{1}</b> vašich úspor. Po poklese o 70 % by z nich zostalo <b>{2}</b>.', big: 'V hre je veľká časť vašich úspor. Pokles o 70 % by zmenil vaše plány.', small: 'Bitcoin už viackrát klesol o 70 % a viac. Toto je jedna oblasť zo šiestich.', over: 'To je viac než úspory, ktoré ste zadali. Skontrolujte obe čísla.', cta: 'Skontrolovať ďalších päť oblastí →', top: 'VÁŠ PLÁN · OBLASŤ 1 ZO 6', title: 'Váš plán Bitcoinu', meta: 'Jedna oblasť zodpovedaná. Zostáva päť.', share: 'vašich úspor', plan: 'Plán', after: 'Po poklese o 70 %', done: 'zodpovedané', foot: 'Skóre zo 100 potrebuje všetkých šesť oblastí.' },
+      demo: { top: 'VERDICT REPORT · VZOR', title: 'Plán Bitcoinu: Anna', meta: '41 · Slovensko · prvý nákup · vlastné kľúče', scale: ['Chýbajú základy', 'Pár medzier', 'Základy máte'], pill: 'B · Základy máte', nums: [['Plánuje', '20 000 € · 13 %'], ['Po poklese o 70 %', 'zostane 6 000 €'], ['Mesačne', '200 €'], ['Rezerva', '3 až 6 mesiacov']], areas: ['Veľkosť', 'Rezerva', 'Dlhy', 'Dane', 'Úschova', 'Správanie'] },
       jump: ['Landing', '1 Základ', '2 Úspory', '3 Bývanie', '4 Bitcoin', '5 Obavy', 'Načítanie', 'Brána', 'Lite skóre', 'Vzor']
     },
     ru: {
@@ -387,7 +389,7 @@
     scr.classList.add('on');
     $('ml').classList.toggle('wide', s === 0);
     $('ml').classList.toggle('ml-paid', s === 8 || s === 9 || s === 10);
-    if (s === 0) demoLoop(); else clearTimeout(demoLoop.t);
+    if (s === 0) { demoLoop(); heroUpdate(true); } else clearTimeout(demoLoop.t);
     if (key === 'q') { cur = s - 1; renderQ(); dl({ event: 'verdict_step', verdict_step: s }); var qh = $('mlQh'); if (qh) qh.focus({ preventScroll: true }); }
     if (s === 6) load();
     if (s === 7) { var it = ''; try { it = sessionStorage.getItem(INTENT) || ''; } catch (e) {} scr.toggleAttribute('data-intent', !!it); }
@@ -572,7 +574,7 @@
     var d2 = $('mlDemo2'); if (d2) d2.classList.add('all');
   }
   function demoLoop() {
-    var d = $('mlDemo'); if (!d) return;
+    var d = $('mlDemo'); if (!d || heroOn) return;
     clearTimeout(demoLoop.t);
     var st = d.querySelectorAll('.dm-st'), dots = d.querySelectorAll('.dm-dots i'), n = d.querySelector('.dm-n b');
     d.classList.remove('all'); st.forEach(function (x) { x.classList.remove('on'); }); dots.forEach(function (x) { x.classList.remove('on'); });
@@ -582,6 +584,70 @@
       if (x.classList.contains('dm-score')) { var t0 = performance.now(); (function f(now) { var q = Math.min(1, (now - t0) / 1100); n.textContent = Math.round(75 * (1 - Math.pow(1 - q, 3))); if (q < 1) requestAnimationFrame(f); })(t0); }
     }, 250 + k * 750); });
     demoLoop.t = setTimeout(function () { if ($('ml').classList.contains('wide')) demoLoop(); }, 250 + st.length * 750 + 4500);
+  }
+
+  // Hero quick check (EN, SK): the two numbers of area 1 (size) typed on the landing.
+  // Arithmetic only: share of savings and what a 70% fall leaves. No points and no score
+  // here; those need all six areas. The fields write A.btc / A.savings through the shared
+  // input handler, so steps 2 and 4 of the funnel open prefilled.
+  var HR = S.hero, heroOn = false, heroShown = {}, heroSent = false;
+  var RM = function () { return matchMedia('(prefers-reduced-motion: reduce)').matches; };
+  var pctTxt = function (n) { var v = n > 100 ? '>100' : n < 1 ? '<1' : String(Math.round(n)); return LANG === 'en' ? v + '%' : v + ' %'; };
+  var LOCK = '<svg viewBox="0 0 24 24" aria-hidden="true">' + I.lock + '</svg>';
+  var LIVE = !HR ? '' : '<div class="dm-top"><span>' + HR.top + '</span><span class="dl-live"><i></i></span></div>' +
+    '<div class="dl-head dl-s"><b class="dm-t">' + HR.title + '</b><span class="dm-meta">' + HR.meta + '</span></div>' +
+    '<div class="dl-viz dl-s">' +
+      '<div class="dl-ring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="t" cx="60" cy="60" r="50"/><circle class="p" cx="60" cy="60" r="50" pathLength="100"/></svg><div class="dl-rc"><b data-h="share"></b><small>' + HR.share + '</small></div></div>' +
+      '<div class="dl-fall"><div class="dl-row"><span><small>' + HR.plan + '</small><b data-h="b"></b></span><em class="dl-tag">−70%</em></div>' +
+        '<div class="dl-chart"><svg viewBox="0 0 300 130" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dlG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a" stop-opacity=".32"/><stop offset="1" stop-color="#f7931a" stop-opacity="0"/></linearGradient><linearGradient id="dlL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5faede"/><stop offset=".45" stop-color="#f7931a"/><stop offset="1" stop-color="#f85149"/></linearGradient></defs>' +
+          '<path class="g" d="M0 122H300"/><path class="g" d="M0 16H300"/>' +
+          '<path class="a" d="M0 16L22 12L40 28L58 22L80 46L98 38L120 62L140 54L165 78L185 71L210 90L235 83L262 97L300 90V122H0Z"/>' +
+          '<path class="l" pathLength="100" d="M0 16L22 12L40 28L58 22L80 46L98 38L120 62L140 54L165 78L185 71L210 90L235 83L262 97L300 90"/></svg><i class="dl-d0"></i><i class="dl-d1"></i></div>' +
+        '<div class="dl-row dl-end"><span><small>' + HR.after + '</small><b data-h="left"></b></span></div></div>' +
+    '</div>' +
+    '<div class="dl-areas dl-s">' + D.areas.map(function (a, i) { return i === 0 ? '<div class="on"><span>' + a + '</span><i></i><b>' + HR.done + '</b></div>' : '<div style="--i:' + i + '"><span>' + a + '</span><i></i>' + LOCK + '</div>'; }).join('') + '</div>' +
+    '<p class="dl-foot dl-s">' + HR.foot + '</p>';
+  function heroVals() {
+    var b = +A.btc, s = +A.savings;
+    return b > 0 && s > 0 && b <= NUM_MAX && s <= NUM_MAX ? { b: b, share: b / s * 100, left: b * 0.3 } : null;
+  }
+  // Count a figure on the card from its last value to the new one
+  function heroTween(d, k, to, put) {
+    var el = d.querySelector('[data-h="' + k + '"]'); if (!el) return;
+    var from = heroShown[k] || 0, t0 = performance.now(), id = (heroTween.n[k] = (heroTween.n[k] || 0) + 1);
+    heroShown[k] = to;
+    if (RM()) { el.textContent = put(to); return; }
+    (function f(now) {
+      if (heroTween.n[k] !== id) return;
+      var q = Math.min(1, (now - t0) / 700);
+      el.textContent = put(from + (to - from) * (1 - Math.pow(1 - q, 3)));
+      if (q < 1) requestAnimationFrame(f);
+    })(t0);
+  }
+  heroTween.n = {};
+  function heroUpdate(sync) {
+    var out = $('mlHo'), d = $('mlDemo'); if (!out || !d || !HR) return;
+    if (sync) ['btc', 'savings'].forEach(function (k) { var el = $('h_' + k); if (el && document.activeElement !== el) el.value = A[k] == null ? '' : A[k]; });
+    var v = heroVals(), cta = $('mlHcta');
+    if (cta) { if (cta._t == null) cta._t = cta.textContent; cta.textContent = v ? HR.cta : cta._t; }
+    out.hidden = !v;
+    if (!v) {
+      if (heroOn) { heroOn = false; d.classList.remove('live'); d.innerHTML = DEMO; if ($('ml').classList.contains('wide')) demoLoop(); }
+      return;
+    }
+    out.innerHTML = v.share > 100 ? HR.over : fmt(HR.out, eur(v.b), pctTxt(v.share), eur(v.left)) + '<small>' + (v.share >= 20 ? HR.big : HR.small) + '</small>';
+    if (!heroOn) {
+      heroOn = true; clearTimeout(demoLoop.t);
+      d.classList.remove('all'); d.classList.add('live'); d.innerHTML = LIVE; heroShown = {};
+      if (!heroSent) { heroSent = true; dl({ event: 'verdict_hero_check' }); }   // no figures leave the browser
+    }
+    var ring = d.querySelector('.dl-ring');
+    ring.className = 'dl-ring' + (v.share >= 50 ? ' hi' : v.share >= 20 ? ' mid' : '');
+    // next frame, so the ring sweeps from its previous length
+    requestAnimationFrame(function () { var p = d.querySelector('.dl-ring .p'); if (p) p.style.strokeDasharray = Math.min(100, v.share) + ' 100'; });
+    heroTween(d, 'share', v.share, pctTxt);
+    heroTween(d, 'b', v.b, eur);
+    heroTween(d, 'left', v.left, eur);
   }
 
   function vbApi() {
@@ -615,6 +681,10 @@
     var k = e.target.getAttribute && e.target.getAttribute('data-k');
     if (!k || e.target.tagName === 'SELECT') return;
     var v = e.target.value; A[k] = e.target.type === 'number' ? (v === '' ? null : +v) : v; save(); check();
+    if (e.target.id === 'h_btc' || e.target.id === 'h_savings') heroUpdate();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && (e.target.id === 'h_btc' || e.target.id === 'h_savings')) { e.preventDefault(); goStep(1); }
   });
   document.addEventListener('change', function (e) { if (e.target.tagName === 'SELECT' && e.target.getAttribute('data-k')) { A[e.target.getAttribute('data-k')] = e.target.value; save(); check(); } });
   $('mlNext').onclick = function () {
@@ -879,6 +949,7 @@
     setTimeout(function () { tryOpen(20); }, 300);
   }
   demoInit();
+  heroUpdate(true);
   var rdr = document.querySelector('.vl .radar');
   if (rdr) { if ('IntersectionObserver' in window) { var ro = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { rdr.classList.add('in'); ro.disconnect(); } }, { threshold: 0.3 }); ro.observe(rdr); } else rdr.classList.add('in'); }
   // Back from Stripe with ?session_id=. The id opens the paid report, so it does not stay in the

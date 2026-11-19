@@ -7302,50 +7302,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/promote/"/>
   </url>
 <!-- ECOSYSTEM:END -->
-  <url>
-    <loc>https://virtuse.com/verdict.html</loc>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
-  </url>
-  <url>
-    <loc>https://virtuse.com/sk/verdict.html</loc>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
-  </url>
-  <url>
-    <loc>https://virtuse.com/uk/verdict.html</loc>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
-  </url>
-  <url>
-    <loc>https://virtuse.com/ru/verdict.html</loc>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
-  </url>
 <!-- SEO-BUILD:START -->
   <url>
     <loc>https://virtuse.com/bitcoin-tax/</loc>
@@ -10760,6 +10716,52 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/buy-bitcoin/austria/"/>
   </url>
 <!-- SEO-BUILD:END -->
+<!-- VERDICT:START -->
+  <url>
+    <loc>https://virtuse.com/verdict.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/verdict.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ru/verdict.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/uk/verdict.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html"/>
+  </url>
+<!-- VERDICT:END -->
 <!-- STORIES-BUILD:START -->
 <!-- STORIES-HUBS:START -->
   <url>

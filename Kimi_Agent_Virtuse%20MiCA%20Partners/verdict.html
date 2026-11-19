@@ -13,7 +13,6 @@
 <title>Verdict: audit your Bitcoin plan in 3 minutes | Virtuse</title>
 <meta name="description" content="Enter your savings, goals and worries. Get an instant score out of 100, a letter grade and your 3 biggest gaps. Lite score free. Not investment advice.">
 <meta name="robots" content="index, follow">
-<!-- TODO(launch): set vb-verdict to on, remove noindex, add to sitemap + hreflang -->
 <meta name="vb-verdict" content="on">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -39,7 +38,7 @@
 <link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/verdict.html">
 <link rel="alternate" hreflang="x-default" href="https://virtuse.com/verdict.html">
 <link rel="stylesheet" href="/verdict-landing.css?v=20261116b">
-<link rel="stylesheet" href="/verdict-lite.css?v=26">
+<link rel="stylesheet" href="/verdict-lite.css?v=29">
 <!-- VLH:END -->
 </head>
 <body class="page-verdict no-split">
@@ -80,10 +79,16 @@
 <div class="vl">
 <div class="hero"><div>
 <span class="eyebrow blue"><i></i>Verdict</span>
-<h1>Audit your Bitcoin plan <em>in 3 minutes.</em></h1>
-<p class="px">Enter your savings, goals, and worries. Get an instant score out of 100, a letter grade, and your 3 biggest gaps. Lite score free.</p>
-<div class="ctas"><button class="b bp" type="button" data-go="1">Get your free Lite score →</button></div>
+<h1>Would your Bitcoin plan survive <em>a 70% fall?</em></h1>
+<p class="px">Type two numbers and see what a fall would leave you. Then check the other five areas in about 3 minutes. Lite score free.</p>
+<div class="ml-hc">
+<div class="ml-hc-f"><div><label class="ml-lab" for="h_btc">How much would you put into Bitcoin (€)?</label><div class="ml-inwrap eur"><input class="ml-input" id="h_btc" data-k="btc" type="number" inputmode="numeric" min="0" placeholder="e.g. 20000" autocomplete="off"></div></div>
+<div><label class="ml-lab" for="h_savings">Savings and investments (€), without your home and pension</label><div class="ml-inwrap eur"><input class="ml-input" id="h_savings" data-k="savings" type="number" inputmode="numeric" min="0" placeholder="e.g. 150000" autocomplete="off"></div></div></div>
+<p class="ml-hc-hint">Round numbers are fine. They stay in your browser.</p>
+<p class="ml-hc-out" id="mlHo" aria-live="polite" hidden></p>
+<div class="ctas"><button class="b bp" type="button" data-go="1" id="mlHcta">Get your free Lite score →</button></div>
 <p class="ml-land-note">About 3 minutes · no account · Lite score for your email · not investment advice</p>
+</div>
 </div><div>
 <div class="demo ml-demo" id="mlDemo" aria-describedby="mlDemoAlt"></div>
 <p class="sr-only" id="mlDemoAlt">Sample report for a fictional client, Anna: 75 out of 100, grade B, Basics in place. €20,000 planned is 13% of her savings; after a 70% fall €6,000 would be left. Weakest areas: tax and custody.</p>
@@ -98,9 +103,10 @@
 <p class="sub">No jargon, nothing to write in your own words. Round numbers are enough.</p>
 <div class="g3"><div class="cd"><div class="n">5</div><p>Short steps</p></div><a class="cd" href="#signals"><div class="n">6</div><p>Areas scored</p></a><div class="cd"><div class="n">13</div><p>EU tax countries</p></div></div></section>
 
-<section id="problem"><div class="sec-head"><div class="eyebrow orange"><i></i>Problem</div><h2>Buying Bitcoin got easy. <span>Choosing a sound plan did not.</span></h2>
-<p class="sec-sub">Apps make it simple to click Buy. They do not tell you whether your plan survives a 70% fall, your tax rule, a lost backup or a wrong partner.</p></div>
-<div class="g4 g2"><div class="tile" style="--c: var(--orange)"><h3>Every plan sounds fine</h3><p>Until a fall, a tax bill or a lost backup tests it.</p></div><div class="tile" style="--c: var(--blue)"><h3>The cost moved to the choice</h3><p>When buying is one tap, the real cost is locking into the wrong setup.</p></div></div></section>
+<section id="problem"><div class="sec-head"><div class="eyebrow orange"><i></i>Problem</div><h2>Most Bitcoin plans fail <span>in the same three places.</span></h2>
+<p class="sec-sub">Not at the Buy button. Later, when a fall, a tax bill or a lost backup tests the plan.</p></div>
+<div class="g4 g3p"><div class="tile" style="--c: var(--orange)"><div class="k">01</div><h3>You put in too much</h3><p>A third of your savings felt fine at the top. After a 70% fall, it decides when you can retire.</p><div class="pt">Verdict checks: <b>Size</b></div></div><div class="tile" style="--c: var(--red)"><div class="k">02</div><h3>You sold at the bottom</h3><p>The price halved, a loan payment was due and there was no cash reserve. You sold when it hurt most.</p><div class="pt">Verdict checks: <b>Reserve · Debts · Behaviour</b></div></div><div class="tile" style="--c: var(--blue)"><div class="k">03</div><h3>You could not prove it or recover it</h3><p>The tax office asked for a purchase record. Or the phone died and the backup had never been tested.</p><div class="pt">Verdict checks: <b>Tax · Custody</b></div></div></div>
+<p class="p-close">Verdict checks all three before you buy. <a href="#signals">See the six areas →</a></p></section>
 
 <section id="signals"><div class="sig-top"><div class="sec-head"><div class="eyebrow blue"><i></i>Six areas</div><h2>Six areas. <span>Two groups.</span></h2>
 <p class="sec-sub">Every plan is scored on the same six areas, in two groups: can a fall hurt you, and are you set up. The area map shows the whole shape in one view.</p>
@@ -521,7 +527,7 @@
 <script src="/vb-api.js?v=3" defer></script>
 <script src="/site-v2.js?v=19" defer></script>
 <script src="/consultation-lazy.js?v=5" defer></script>
-<script src="/verdict-lite.js?v=25" defer></script>
+<script src="/verdict-lite.js?v=27" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
 </body>
 </html>
