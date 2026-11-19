@@ -392,6 +392,36 @@
     apply(current(), false);
   })();
 
+  /* Subscribe success: the V-mark intro (brand/virtuse-logo-loader-*) plays
+     once, small, next to the confirmation. Loaded only after a successful
+     sign-up, never with prefers-reduced-motion; if the video cannot play the
+     text stays on its own. */
+  function playMark(msg) {
+    try {
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    } catch (e) { return; }
+    var light = document.documentElement.getAttribute('data-theme') === 'light';
+    var name = '/brand/virtuse-logo-loader-' + (light ? 'light' : 'dark');
+    var wrap = document.createElement('span');
+    wrap.className = 'sub-mark' + (light ? ' is-light' : '');
+    wrap.setAttribute('aria-hidden', 'true');
+    var v = document.createElement('video');
+    v.muted = true; v.defaultMuted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto';
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('disablepictureinpicture', '');
+    var last = null;
+    [['mp4', 'video/mp4'], ['webm', 'video/webm']].forEach(function (s) {
+      var src = document.createElement('source'); src.src = name + '.' + s[0]; src.type = s[1]; v.appendChild(src); last = src;
+    });
+    function drop() { if (wrap.parentNode) wrap.parentNode.removeChild(wrap); msg.classList.remove('has-mark'); }
+    last.addEventListener('error', drop);
+    v.addEventListener('error', drop);
+    wrap.appendChild(v);
+    msg.insertBefore(wrap, msg.firstChild);
+    msg.classList.add('has-mark');
+    var p = v.play && v.play();
+    if (p && p.catch) p.catch(drop);
+  }
+
   /* Subscribe: existing Worker, ENG list. Same address check as the Worker (config.js EMAIL_RE). */
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   function bindSubscribe(form, msg) {
@@ -434,6 +464,7 @@
           if (msg) {
             msg.textContent = tr('subOk');
             msg.classList.add('ok');
+            playMark(msg);
           }
         } else if (msg) {
           msg.textContent = (result.data && result.data.error) || tr('subFail');
