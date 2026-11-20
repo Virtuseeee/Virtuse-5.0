@@ -33,7 +33,9 @@ EMBEDS = {
         'campaign': 'asset_returns',
         'title': 'Asset class returns',
         'og': '/og-cover.jpg',
-        'height': 900,
+        # Tallest content at 320/375/500/700 px is 951 px (+16 = 967); 975 also covers 288 px frames
+        # (970 px), e.g. the creators kit card on a 375 px phone. Re-measure after layout changes.
+        'height': 975,
     },
 }
 
@@ -56,7 +58,8 @@ def date_en(iso):
 
 
 def ar_rows(d):
-    rows = sorted(d['rows'], key=lambda r: -(r['returns'][-1] if r['returns'][-1] is not None else -9))
+    # Highest "per year since <first year>" first: Bitcoin leads and the order stays stable week to week.
+    rows = sorted(d['rows'], key=lambda r: -(r['annualized'] if r['annualized'] is not None else -9))
     return ''.join('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (
         esc(r['name']), esc(r['ticker']), pct(r['returns'][-1]), pct(r['annualized'])) for r in rows)
 
@@ -68,7 +71,7 @@ def ar_head(d):
 # Client-side refresh: the same rendering in JS (keep in step with the Python above).
 JS = {
     'ar': r"""function head(d){return '<tr><th>Asset</th><th>Ticker</th><th>YTD '+d.ytdYear+'</th><th>Per year since '+d.years[0]+'</th></tr>';}
-function rows(d){var r=d.rows.slice().sort(function(a,b){var x=a.returns[a.returns.length-1],y=b.returns[b.returns.length-1];return (y==null?-9:y)-(x==null?-9:x);});
+function rows(d){var r=d.rows.slice().sort(function(a,b){var x=a.annualized,y=b.annualized;return (y==null?-9:y)-(x==null?-9:x);});
 return r.map(function(x){return '<tr><td>'+e(x.name)+'</td><td>'+e(x.ticker)+'</td><td>'+pct(x.returns[x.returns.length-1])+'</td><td>'+pct(x.annualized)+'</td></tr>';}).join('');}
 function note(d){return '';}""",
 }
@@ -115,8 +118,11 @@ body {{ margin: 0; background: #08090a; color: #e6edf3; font: 14px/1.5 Inter, -a
 h1 {{ font-size: 16px; margin: 0 0 4px; }}
 p {{ margin: 0 0 10px; color: #8b949e; font-size: 12px; }}
 .tw {{ overflow-x: auto; }}
-table {{ width: 100%; border-collapse: collapse; }}
-th, td {{ text-align: left; padding: 7px 8px; border-bottom: 1px solid rgba(255,255,255,.08); white-space: nowrap; }}
+table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
+th, td {{ text-align: left; padding: 4px 7px; border-bottom: 1px solid rgba(255,255,255,.08); white-space: nowrap; }}
+td:first-child {{ white-space: normal; }}
+@media (max-width: 479px) {{ th:nth-child(2), td:nth-child(2) {{ display: none; }} th {{ white-space: normal; }} }}
+@media (max-width: 359px) {{ .w {{ padding: 12px 8px; }} th, td {{ padding: 4px 5px; }} }}
 th {{ color: #8b949e; font-weight: 600; font-size: 12px; }}
 td + td, th + th {{ text-align: right; font-variant-numeric: tabular-nums; }}
 a {{ color: #f7931a; }}

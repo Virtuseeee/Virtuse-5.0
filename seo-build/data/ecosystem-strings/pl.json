@@ -36,7 +36,8 @@
     },
     "indexRelated": [
       "Virtuse Brief: cotygodniowe wiadomości o Bitcoinie",
-      "Pierwsze kroki z Bitcoinem: od czego zacząć"
+      "Pierwsze kroki z Bitcoinem: od czego zacząć",
+      "Are you a creator? See how to work with us."
     ],
     "promoteCrumb": "Wyróżnienie",
     "eyebrowIndex": "Ekosystem Bitcoina",
@@ -63,7 +64,8 @@
     "listH": "Nasze polecane pozycje.",
     "listSub": "Każda z jednozdaniową oceną.",
     "faqSub": "Krótkie odpowiedzi.",
-    "onThisPage": "Na tej stronie"
+    "onThisPage": "Na tej stronie",
+    "_todo_indexRelated": "translate (last item)"
   },
   "promote": {
     "criteriaH": "Kryteria",
@@ -108,7 +110,9 @@
     "criteriaSub": "Co musi spełniać każda pozycja.",
     "applySub": "Sprawdzane osobiście, nigdy nie publikowane automatycznie.",
     "mCaptcha": "Prosimy dokończyć weryfikację bezpieczeństwa i wysłać formularz ponownie.",
-    "mRate": "Zbyt wiele prób z tego połączenia. Prosimy spróbować ponownie za godzinę."
+    "mRate": "Zbyt wiele prób z tego połączenia. Prosimy spróbować ponownie za godzinę.",
+    "creatorsLine": "Are you a creator? See how to work with us.",
+    "_todo_creatorsLine": "translate"
   },
   "pages": {
     "index": {
