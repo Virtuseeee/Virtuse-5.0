@@ -222,9 +222,11 @@ export function renderPage({
   const alt = {};
   for (const h of hreflang) if (h.lang !== 'x-default') alt[h.lang] = h.path ? '/' + h.path.replace(/^\/+/, '') : h.href.replace(origin, '');
   const fill = (frag) => frag.replace(/\{\{ALT:([a-z]{2})\}\}/g, (_, x) => alt[x] || (x === 'en' ? '/' : `/${x}/`));
-  const nav = fill(v2.nav);
-  const foot = fill(v2.foot);
-  const briefHtml = (noindex || noCapture) ? '' : v2.brief;
+  // Slovak tool pages (DCA calculator): Brief links go to the Slovak Brief, UTM kept
+  const skBrief = (frag) => (tool && lang === 'sk' ? frag.replace(/href="\/news\.html/g, 'href="/sk/news.html') : frag);
+  const nav = skBrief(fill(v2.nav));
+  const foot = skBrief(fill(v2.foot));
+  const briefHtml = (noindex || noCapture) ? '' : skBrief(v2.brief);
 
   const wc = wordCount(answerHtml.replace(/<[^>]+>/g, ' '));
   const og = ogImage || defaultOgImage(relFile, moduleCta, origin);

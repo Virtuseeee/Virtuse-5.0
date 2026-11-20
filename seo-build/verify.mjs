@@ -157,7 +157,9 @@ for (const rel of htmlFiles) {
   if (title.length < 12) fail(`${rel} title too short`);
 
   const desc = attr(html, /name="description" content="([^"]+)"/);
-  if (desc.length > 155) fail(`${rel} description ${desc.length} > 155`);
+  // DCA calculator: its description carries an approved longer wording (calculated before fees, partner fees listed apart)
+  const dcaPage = /(^|\/)bitcoin-(dca-calculator|dca-rechner|calculateur-dca|kalkulator-dca|dca-kalkulacka|kalkulyator-dca|kalkuliator-dca|calculadora-dca|dca-kalkulator)\/index\.html$/.test(rel);
+  if (desc.length > (dcaPage ? 230 : 155)) fail(`${rel} description ${desc.length} > ${dcaPage ? 230 : 155}`);
   if (desc.length < 50) fail(`${rel} description too short (${desc.length})`);
 
   const h1s = html.match(/<h1>[^<]+(?:<span class="h1-grey">[^<]+<\/span>)?<\/h1>/g) || [];
@@ -189,7 +191,9 @@ for (const rel of htmlFiles) {
   const noindex = robots.includes('noindex');
 
   const guidePage = GUIDE_RE.test(rel);
-  const dis = guidePage ? [NOT_ADVICE[lang], KEYS[lang], 'KYC', checkedLabel(lang)] : lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : lang === 'pl' ? DISCLAIMERS_PL : lang === 'hu' ? DISCLAIMERS_HU : lang === 'uk' ? DISCLAIMERS_UK : lang === 'ru' ? DISCLAIMERS_RU : lang === 'fr' ? DISCLAIMERS_FR : lang === 'es' ? DISCLAIMERS_ES : DISCLAIMERS_EN;
+  const dis = dcaPage && lang === 'en' ? ['Indicative overview, not investment advice', 'Virtuse never holds your keys', 'KYC']
+    : dcaPage && lang === 'sk' ? ['Orientačný prehľad, nie je to investičné poradenstvo', 'Virtuse nikdy nedrží vaše kľúče', 'Overenie totožnosti a registrácia']
+    : guidePage ? [NOT_ADVICE[lang], KEYS[lang], 'KYC', checkedLabel(lang)] : lang === 'de' ? DISCLAIMERS_DE : lang === 'sk' ? DISCLAIMERS_SK : lang === 'cs' ? DISCLAIMERS_CS : lang === 'pl' ? DISCLAIMERS_PL : lang === 'hu' ? DISCLAIMERS_HU : lang === 'uk' ? DISCLAIMERS_UK : lang === 'ru' ? DISCLAIMERS_RU : lang === 'fr' ? DISCLAIMERS_FR : lang === 'es' ? DISCLAIMERS_ES : DISCLAIMERS_EN;
   for (const d of dis) {
     if (!html.includes(d)) fail(`${rel} missing disclaimer snippet: ${d}`);
   }
