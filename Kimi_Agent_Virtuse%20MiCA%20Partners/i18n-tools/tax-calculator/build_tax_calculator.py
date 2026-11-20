@@ -20,7 +20,7 @@ import related_hubs
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 REPO = os.path.dirname(SITE)
 LANGS = ['en', 'sk']
-JS_V = '3'
+JS_V = '4'
 REVIEWED = False   # True once the tax adviser has signed off all 13 countries: index + sitemap
 DEFAULT = {'en': 'de', 'sk': 'sk'}
 ORDER = ['sk', 'cz', 'pl', 'hu', 'at', 'de', 'si', 'hr', 'ro', 'bg', 'nl', 'fr', 'es']
@@ -118,6 +118,8 @@ CSS = '''<style>
   .tc-rule dd { margin-bottom: 10px; }
   .tc-f .seg { height: auto; }
 }
+/* 641-760 px: the floating chat button shows (site-v2.css hides it at 640 px and below), so the + / − icons stay left of it */
+@media (min-width: 641px) and (max-width: 760px) { .tc-rule summary, #faq.qa summary { padding-right: 72px; } .tc-more summary { padding-right: 60px; } }
 @media (max-width: 560px) { .tc-stats { grid-template-columns: minmax(0, 1fr); } .tc-stats div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-left: 0; padding: 8px 0 0; border-top: 1px solid rgba(255,255,255,.06); } .tc-stats strong { margin: 0; } }
 </style>
 '''

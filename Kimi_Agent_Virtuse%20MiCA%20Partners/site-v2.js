@@ -170,7 +170,8 @@
     var SKL = LANG === 'sk';
     fetch(root + (SKL ? 'news/issues-sk.json' : 'news/issues.json'), { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
       var iss = (d.issues || []).filter(function (x) { return x && x.slug && x.title && !x.essay; })[0]; if (!iss) return;
-      var when = new Date(iss.date + 'T12:00:00Z').toLocaleDateString(LOC, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+      var when = new Date(iss.date + 'T12:00:00Z').toLocaleDateString(LOC, { day: 'numeric', month: SKL ? 'long' : 'short', year: 'numeric', timeZone: 'UTC' });
+      if (SKL) when = when.replace(/^(\d+)\.\s*/, '$1 ');   // Slovak: 16 novembra 2026, long month without the ordinal point
       var skDone = SKL && iss.lang !== 'en';
       var hub = LANG === 'sk' ? '/sk/stories/' : (LANG === 'ru' ? '/ru/stories/' : '/stories/');
       var sp = skDone ? '/sk/stories/' + encodeURIComponent(iss.slug) + '/' : (iss.url || '/stories/' + encodeURIComponent(iss.slug) + '/');
