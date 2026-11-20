@@ -10,8 +10,8 @@
 <script src="/partner-click.js" defer></script>
 <script src="/partner-capture.js" defer></script>
 <script>if(location.hostname!=='staging.virtuse.com'){(function(w,d,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=0;function load(){if(done)return;done=1;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j);}function idle(){(w.requestIdleCallback||function(f){setTimeout(f,200)})(load,{timeout:2000});}if(d.readyState==='complete')idle();else w.addEventListener('load',idle,{once:true});['pointerdown','keydown','scroll'].forEach(function(e){w.addEventListener(e,load,{once:true,passive:true});});})(window,document,'dataLayer','GTM-KXX4Q6WH');}</script>
-<title>Bitcoin DCA-kalkulátor (EU-díjak 2026)</title>
-<meta name="description" content="Csak a díjakkal számoló Bitcoin DCA-kalkulátor, Q4 2026 állapot szerint. Legalacsonyabb közzétett díj 500 € + havi 100 € esetén: 21bitcoin.">
+<title>Bitcoin DCA kalkulátor: havi vásárlás 2014 óta</title>
+<meta name="description" content="Mennyit érne ma a rendszeres havi Bitcoin-vásárlás bármely kezdő hónaptól 2014 óta, EUR-ban vagy USD-ben. A partnerek díjaival.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://virtuse.com/hu/bitcoin-dca-kalkulator/">
   <link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-dca-calculator/">
@@ -27,8 +27,8 @@
   <link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-dca-calculator/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virtuse">
-<meta property="og:title" content="Bitcoin DCA-kalkulátor (EU-díjak 2026)">
-<meta property="og:description" content="Csak a díjakkal számoló Bitcoin DCA-kalkulátor, Q4 2026 állapot szerint. Legalacsonyabb közzétett díj 500 € + havi 100 € esetén: 21bitcoin.">
+<meta property="og:title" content="Bitcoin DCA kalkulátor: havi vásárlás 2014 óta">
+<meta property="og:description" content="Mennyit érne ma a rendszeres havi Bitcoin-vásárlás bármely kezdő hónaptól 2014 óta, EUR-ban vagy USD-ben. A partnerek díjaival.">
 <meta property="og:url" content="https://virtuse.com/hu/bitcoin-dca-kalkulator/">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:image" content="https://virtuse.com/og/stacking.jpg">
@@ -104,6 +104,128 @@
   .seo .answer { background: #f4f4f4; border-color: #ccc; }
 }</style>
 
+<style>.dcap .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 13px; color: var(--muted); padding-top: 22px; }
+.dcap .crumbs a { color: var(--muted); text-decoration: none; display: inline-block; padding: 6px 0; }
+.dcap .crumbs a:hover { color: var(--text); }
+.dcap .buy-hero2 { padding-top: 40px; }
+.dcap .seo { max-width: none; margin: 0; padding: 0; }
+.dcap .disclaimers { margin: 0 0 48px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
+.dcap .disclaimers p { color: var(--muted); margin: 0 0 6px; }
+.dca-app { display: grid; gap: 24px; margin-top: 40px; }
+.dca-row2 { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 24px; }
+.dca-row2.dca-rev { grid-template-columns: minmax(0, 1fr) 340px; }
+.dca-panel, .dcap .answer { position: relative; min-width: 0; overflow: hidden; background-color: #141414; background-image: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--pc, #3fb950) 10%, transparent), transparent 62%); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; padding: 20px; }
+.dca-panel::before, .dcap .answer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.22) 50%, rgba(255,255,255,.04)); }
+.dca-res { --pc: #f7931a; display: flex; flex-direction: column; }
+.dca-low { background-color: rgba(63,185,80,.05); border-color: rgba(63,185,80,.3); display: flex; flex-direction: column; }
+.dcap .answer { --pc: #8b949e; }
+.dcap .answer p { margin: 0; color: var(--text); font-size: 15px; line-height: 1.6; max-width: 900px; }
+.dca-inp { display: flex; flex-direction: column; gap: 24px; }
+.dca-fld { border: 0; padding: 0; margin: 0; min-width: 0; }
+.dca-lr { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.dca-lab { font-size: 14px; font-weight: 500; line-height: 1.2; color: #8b949e; padding: 0; }
+.dca-box { display: inline-flex; align-items: center; gap: 4px; width: 128px; flex: none; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 4px 8px; color: #3fb950; font-size: 14px; font-weight: 600; }
+.dca-box:focus-within { border-color: rgba(63,185,80,.6); }
+.dca-box input { width: 100%; min-width: 0; background: none; border: 0; outline: 0; padding: 0; margin: 0; color: inherit; font: inherit; text-align: right; }
+.dca-val { font-size: 14px; font-weight: 600; color: #3fb950; text-align: right; }
+.dca-range { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 28px; margin: 6px 0 0; padding: 0; background: none; cursor: pointer; }
+.dca-range::-webkit-slider-runnable-track { height: 6px; border-radius: 999px; background: linear-gradient(90deg, #e6edf3 var(--p, 0%), #1c1c1c var(--p, 0%)); }
+.dca-range::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; margin-top: -5px; border-radius: 50%; background: #fff; border: 1px solid #e8edf3; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+.dca-range::-moz-range-track { height: 6px; border-radius: 999px; background: #1c1c1c; }
+.dca-range::-moz-range-progress { height: 6px; border-radius: 999px; background: #e6edf3; }
+.dca-range::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 1px solid #e8edf3; }
+.dca-range:focus-visible { outline: none; }
+.dca-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgba(255,255,255,.18); }
+.dca-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px rgba(255,255,255,.18); }
+.dca-sel { display: flex; gap: 8px; margin-top: 8px; }
+.dca-sel select, .dca-seg button { flex: 1; min-width: 0; min-height: 38px; background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; color: #8b949e; padding: 8px 12px; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; transition: border-color .15s, color .15s; }
+.dca-sel select { color: var(--text); background: #141414; }
+.dca-sel select:first-child { flex: 1.5; }
+.dca-seg { display: flex; gap: 8px; margin-top: 10px; }
+.dca-seg button:hover, .dca-sel select:hover { border-color: rgba(63,185,80,.5); color: var(--text); }
+.dca-seg button[aria-pressed="true"] { background: #3fb950; border-color: #3fb950; color: #000; }
+.dca-sel select:focus-visible, .dca-seg button:focus-visible, .dca-share:focus-visible, .dca-open:focus-visible { outline: 2px solid #3fb950; outline-offset: 2px; }
+.dca-fine { display: flex; gap: 8px; margin: 0; font-size: 12px; line-height: 1.5; color: #8b949e; }
+.dca-fine svg { flex: none; width: 14px; height: 14px; margin-top: 2px; color: #3fb950; }
+.dca-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.dca-stat span { display: block; font-size: 12px; letter-spacing: .3px; text-transform: uppercase; color: #8b949e; }
+.dca-stat b { display: block; margin-top: 4px; font-size: 20px; font-weight: 700; line-height: 1.4; overflow-wrap: anywhere; }
+.dca-stat small { display: block; font-size: 12px; color: #8b949e; }
+.dca-main b { color: #f7931a; }
+.dca-chart { margin: 20px 0 0; }
+.dca-plot { position: relative; height: 280px; }
+.dca-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.dca-grid { stroke: rgba(255,255,255,.06); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.dca-area { fill: #f7931a; opacity: .1; }
+.dca-line-val { fill: none; stroke: #f7931a; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.dca-line-inv { fill: none; stroke: #8b949e; stroke-width: 1.5; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+.dca-y { position: absolute; left: 0; transform: translateY(2px); font-size: 11px; color: #8b949e; }
+.dca-x { position: relative; height: 20px; margin-top: 6px; font-size: 11px; color: #8b949e; }
+.dca-x span { position: absolute; top: 0; transform: translateX(-50%); }
+.dca-x span.dca-x0 { transform: none; }
+.dca-chart figcaption { font-size: 12px; color: #8b949e; margin-top: 6px; text-align: right; }
+.dca-key { display: inline-block; width: 14px; height: 0; border-top: 2px solid #f7931a; vertical-align: middle; margin: 0 6px 0 0; }
+.dca-key-inv { border-top: 2px dashed #8b949e; margin-left: 14px; }
+.dca-lump { margin: 14px 0 0; font-size: 14px; color: #8b949e; }
+.dca-lump b { color: var(--text); font-weight: 600; }
+.dca-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 20px; margin-top: auto; padding-top: 16px; }
+.dca-foot p { flex: 1 1 320px; margin: 0; font-size: 12px; line-height: 1.5; color: #8b949e; }
+.dca-share { display: inline-flex; align-items: center; gap: 6px; min-height: 38px; background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 8px 14px; color: var(--text); font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+.dca-share:hover { border-color: rgba(255,255,255,.3); }
+.dca-share svg { width: 15px; height: 15px; }
+.dca-pt { margin: 0 0 4px; font-size: 18px; font-weight: 600; line-height: 1.3; }
+.dca-pt > span:not([data-dca-amt]) { color: #8b949e; font-weight: 400; }
+.dca-pi { margin: 0 0 8px; font-size: 13px; line-height: 1.5; color: #8b949e; max-width: 760px; }
+.dca-prow { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.06); }
+.dca-prow b { display: block; font-size: 15px; font-weight: 600; }
+.dca-prow small { display: block; margin-top: 3px; font-size: 12px; line-height: 1.5; color: #8b949e; }
+.dca-pf span { display: block; font-size: 11px; letter-spacing: .3px; text-transform: uppercase; color: #8b949e; }
+.dca-pf b { margin-top: 2px; }
+.dca-pf b.dca-na { font-weight: 500; color: #8b949e; font-size: 14px; }
+.dcap a.dca-open { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 40px; padding: 10px 16px; background: #e6edf3; border: 0; border-radius: 10px; color: #08090a; font-size: 13px; font-weight: 600; line-height: 1.2; text-decoration: none; box-shadow: none; transition: opacity .15s; }
+.dcap a.dca-open:hover { opacity: .85; }
+.dca-panel .aff-note, .dca-panel p.dca-bots { margin: 12px 0 0; font-size: 12px; line-height: 1.5; color: #8b949e; }
+.dca-panel .aff-note a, .dca-panel p.dca-bots a, .dca-foot a { color: #8b949e; text-underline-offset: 3px; }
+.dca-panel .aff-note a:hover, .dca-panel p.dca-bots a:hover { color: var(--text); }
+.dca-low .dca-k { font-size: 12px; letter-spacing: .3px; text-transform: uppercase; color: #3fb950; }
+.dca-low .dca-n { margin: 6px 0 0; font-size: 22px; font-weight: 700; }
+.dca-low ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.dca-low li { position: relative; padding-left: 14px; font-size: 13px; line-height: 1.5; color: #c9d1d9; }
+.dca-low li::before { content: ""; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; border-radius: 50%; background: #3fb950; }
+.dca-low .dca-sum { margin: 18px 0 0; padding: 12px 14px; background: rgba(0,0,0,.25); border-radius: 10px; font-size: 13px; color: #8b949e; }
+.dca-low .dca-sum b { color: #3fb950; }
+.dca-low .dca-open { width: 100%; margin-top: auto; }
+.dca-low .dca-gap { flex: 1; min-height: 18px; }
+.dcap #dcaTable .table-wrap { margin: 10px 0 0; }
+.dcap .dca-legacy { padding: 20px; }
+.page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
+.dcap .dca-legacy > p:first-child { margin-top: 0; }
+.dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
+.dcap .dca-legacy button { cursor: pointer; background: none; font: inherit; font-size: 14px; }
+.dcap section > .asof { margin: -24px 0 20px; font-size: 13px; color: var(--muted); }
+.dcap .qa summary h3 { font: inherit; margin: 0; }
+.dcap .qa details { max-width: none; }
+.dcap .related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 1000px) {
+  .dca-row2, .dca-row2.dca-rev { grid-template-columns: minmax(0, 1fr); }
+  .dcap .related { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .dca-app { gap: 16px; margin-top: 28px; }
+  .dca-row2 { gap: 16px; }
+  .dca-panel, .dcap .answer { padding: 16px; }
+  .dca-box input, .dca-sel select { font-size: 16px; }
+  .dca-stats { grid-template-columns: 1fr 1fr; }
+  .dca-plot { height: 210px; }
+  .dca-chart figcaption { text-align: left; }
+  .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dca-prow .dca-open { justify-self: start; }
+  .dcap .related { grid-template-columns: 1fr; }
+  .dcap .buy-hero2 { padding-top: 20px; }
+}</style>
+<script type="application/json" id="dcaI18n">{"lang":"hu","locale":"hu-HU","T":{"r_value":"Érték ma","r_change":"{p} a befizetett pénzhez képest","r_invested":"Összes befizetés","r_n":"{n} vásárlás, egyenként {a}","r_btc":"Megvett Bitcoin","r_avg":"Átlagár {p}","r_lump":"Helyette egyetlen vásárlás ({start})","leg_value":"A Bitcoin értéke","leg_inv":"Befizetve","chart_aria":"Vonaldiagram: a befizetett pénz és a megvett Bitcoin értéke hónapról hónapra","note":"Minden hónap végén egy vásárlás a havi záróáron (CoinMetrics referenciaárfolyam, EUR EKB-árfolyamon). A díjak és a spreadek nem szerepelnek benne. Értékelés a következő nap záróárán: {d}","share":"Az eredmény linkjének másolása","copied":"Link másolva","t_start":"Első vásárlás","t_value":"Érték ma","t_change":"Változás","ans":"Havi {a} Bitcoinba 2020 januárjától ({inv} befizetve) {d} napon {val} értékű volt, hó végi árakon és díjak nélkül. A múltbeli eredmények nem jelzik előre a jövőbelieket."},"ansRest":" Az automatikus vásárlást kínáló partnerek közül a legalacsonyabb közzétett díj: 21bitcoin.","snap":{"asOf":"2026-10-31","closes":{"2014-01":803.24,"2014-02":551.29,"2014-03":455.36,"2014-04":448.88,"2014-05":627.89,"2014-06":638.95,"2014-07":581.98,"2014-08":478.51,"2014-09":389.26,"2014-10":337.18,"2014-11":378.69,"2014-12":320.66,"2015-01":217.33,"2015-02":254.95,"2015-03":244.71,"2015-04":236.33,"2015-05":229.45,"2015-06":263.85,"2015-07":284.6,"2015-08":230.69,"2015-09":236.74,"2015-10":314.12,"2015-11":377.39,"2015-12":429.68,"2016-01":366.34,"2016-02":437.78,"2016-03":415.96,"2016-04":449.9,"2016-05":530.94,"2016-06":674.28,"2016-07":624.8,"2016-08":572.27,"2016-09":608.87,"2016-10":698.9,"2016-11":742.2,"2016-12":968.97,"2017-01":968.5,"2017-02":1188.4,"2017-03":1081.74,"2017-04":1381.96,"2017-05":2299.43,"2017-06":2452.71,"2017-07":2862.61,"2017-08":4740.36,"2017-09":4334.54,"2017-10":6428.51,"2017-11":9996.71,"2017-12":13921.48,"2018-01":10050.1,"2018-02":10307.02,"2018-03":6922.28,"2018-04":9228.73,"2018-05":7478.74,"2018-06":6375.54,"2018-07":7725.13,"2018-08":7025.14,"2018-09":6604.49,"2018-10":6306.32,"2018-11":3973.33,"2018-12":3687.2,"2019-01":3410.13,"2019-02":3792.95,"2019-03":4094.32,"2019-04":5266.62,"2019-05":8556.22,"2019-06":10842.62,"2019-07":10059,"2019-08":9605.02,"2019-09":8282.37,"2019-10":9155.28,"2019-11":7556.19,"2019-12":7167.4,"2020-01":9357.28,"2020-02":8582.09,"2020-03":6432.38,"2020-04":8652.41,"2020-05":9433.94,"2020-06":9143.97,"2020-07":11338.2,"2020-08":11678.35,"2020-09":10772.35,"2020-10":13807.23,"2020-11":19664.41,"2020-12":29022.67,"2021-01":33157.83,"2021-02":45359.46,"2021-03":58792.19,"2021-04":57741.44,"2021-05":37312.97,"2021-06":35065.47,"2021-07":41793.31,"2021-08":47219.24,"2021-09":43781.55,"2021-10":61432.97,"2021-11":57097.01,"2021-12":46355.12,"2022-01":38462.67,"2022-02":43179.25,"2022-03":45562.21,"2022-04":37714.09,"2022-05":31831.41,"2022-06":19332.91,"2022-07":23356.17,"2022-08":20024.67,"2022-09":19435.19,"2022-10":20490.86,"2022-11":17176.9,"2022-12":16524.22,"2023-01":23130.05,"2023-02":23145.95,"2023-03":28514.68,"2023-04":29362.09,"2023-05":27217.68,"2023-06":30484.5,"2023-07":29219.82,"2023-08":25954.87,"2023-09":26977.69,"2023-10":34636.43,"2023-11":37712.71,"2023-12":42217.16,"2024-01":42589.47,"2024-02":61394.78,"2024-03":71227.45,"2024-04":60636.33,"2024-05":67377.76,"2024-06":62763.28,"2024-07":64690.63,"2024-08":58959.93,"2024-09":63260.04,"2024-10":70367.08,"2024-11":96463.62,"2024-12":93389.73,"2025-01":102263.04,"2025-02":84243.78,"2025-03":82461.45,"2025-04":94236.73,"2025-05":104708.96,"2025-06":107153.1,"2025-07":115848.34,"2025-08":108316.45,"2025-09":113971.74,"2025-10":109554.24,"2025-11":90607.7,"2025-12":87516.98,"2026-01":78702.39,"2026-02":66965.64,"2026-03":68214.87,"2026-04":76299.62,"2026-05":73599.56,"2026-06":58525.08,"2026-07":62875.18,"2026-08":78533.89,"2026-09":83579.67,"2026-10":77401.02},"eurusd":{"2014-01":1.3516,"2014-02":1.3813,"2014-03":1.3788,"2014-04":1.385,"2014-05":1.3607,"2014-06":1.3658,"2014-07":1.3379,"2014-08":1.3188,"2014-09":1.2583,"2014-10":1.2524,"2014-11":1.2483,"2014-12":1.2141,"2015-01":1.1305,"2015-02":1.124,"2015-03":1.0759,"2015-04":1.1215,"2015-05":1.097,"2015-06":1.1189,"2015-07":1.0967,"2015-08":1.1215,"2015-09":1.1203,"2015-10":1.1017,"2015-11":1.0579,"2015-12":1.0887,"2016-01":1.092,"2016-02":1.0888,"2016-03":1.1385,"2016-04":1.1403,"2016-05":1.1154,"2016-06":1.1102,"2016-07":1.1113,"2016-08":1.1132,"2016-09":1.1161,"2016-10":1.0946,"2016-11":1.0635,"2016-12":1.0541,"2017-01":1.0755,"2017-02":1.0597,"2017-03":1.0691,"2017-04":1.093,"2017-05":1.1221,"2017-06":1.1412,"2017-07":1.1727,"2017-08":1.1825,"2017-09":1.1806,"2017-10":1.1638,"2017-11":1.1849,"2017-12":1.1993,"2018-01":1.2457,"2018-02":1.2214,"2018-03":1.2321,"2018-04":1.2079,"2018-05":1.1699,"2018-06":1.1658,"2018-07":1.1736,"2018-08":1.1651,"2018-09":1.1576,"2018-10":1.1318,"2018-11":1.1359,"2018-12":1.145,"2019-01":1.1488,"2019-02":1.1416,"2019-03":1.1235,"2019-04":1.1218,"2019-05":1.1151,"2019-06":1.138,"2019-07":1.1151,"2019-08":1.1036,"2019-09":1.0889,"2019-10":1.1154,"2019-11":1.0982,"2019-12":1.1234,"2020-01":1.1052,"2020-02":1.0977,"2020-03":1.0956,"2020-04":1.0876,"2020-05":1.1136,"2020-06":1.1198,"2020-07":1.1848,"2020-08":1.194,"2020-09":1.1708,"2020-10":1.1698,"2020-11":1.198,"2020-12":1.2271,"2021-01":1.2136,"2021-02":1.2121,"2021-03":1.1725,"2021-04":1.2082,"2021-05":1.2201,"2021-06":1.1884,"2021-07":1.1891,"2021-08":1.1834,"2021-09":1.1579,"2021-10":1.1645,"2021-11":1.1363,"2021-12":1.1326,"2022-01":1.1156,"2022-02":1.1199,"2022-03":1.1101,"2022-04":1.054,"2022-05":1.0713,"2022-06":1.0387,"2022-07":1.0198,"2022-08":1,"2022-09":0.9748,"2022-10":0.9914,"2022-11":1.0376,"2022-12":1.0666,"2023-01":1.0833,"2023-02":1.0619,"2023-03":1.0875,"2023-04":1.0981,"2023-05":1.0683,"2023-06":1.0866,"2023-07":1.1023,"2023-08":1.0868,"2023-09":1.0594,"2023-10":1.0619,"2023-11":1.0931,"2023-12":1.105,"2024-01":1.0837,"2024-02":1.0826,"2024-03":1.0811,"2024-04":1.0718,"2024-05":1.0852,"2024-06":1.0705,"2024-07":1.0828,"2024-08":1.1087,"2024-09":1.1196,"2024-10":1.0882,"2024-11":1.0562,"2024-12":1.0389,"2025-01":1.0393,"2025-02":1.0411,"2025-03":1.0815,"2025-04":1.1373,"2025-05":1.1339,"2025-06":1.172,"2025-07":1.1446,"2025-08":1.1658,"2025-09":1.1741,"2025-10":1.1554,"2025-11":1.1566,"2025-12":1.175,"2026-01":1.1919,"2026-02":1.1805,"2026-03":1.1498,"2026-04":1.1702,"2026-05":1.1644,"2026-06":1.1394,"2026-07":1.1485,"2026-08":1.1596,"2026-09":1.1355,"2026-10":1.1172}}}</script>
+<script src="/dca-calc.js?v=1" defer></script>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -160,7 +282,7 @@
           "name": "Előre jelzi a kalkulátor a Bitcoin árfolyamát?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nem. Csak a partnerek díjait hasonlítja össze a közzétett díjtáblázat alapján. A Bitcoin árfolyamából származó hozamot nem modellezi."
+            "text": "Nem. Azt mutatja meg, mit eredményezett volna a havi vásárlás a múltban hó végi árakon, és milyen díjakat számítanak fel a partnerek. A múltbeli eredmények nem jelzik előre a jövőbelieket."
           }
         },
         {
@@ -186,6 +308,14 @@
             "@type": "Answer",
             "text": "Nem. Kizárólag oktatási célt szolgál. A KYC a partnernél történik. A Virtuse soha nem kezeli az Ön kulcsait."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Hogyan számoljuk a múltbeli eredményt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Minden hónap végén egy azonos összegű vásárlás a havi záróáron (CoinMetrics referenciaárfolyam USD-ben, EKB-árfolyamon EUR-ra váltva), a választott hónaptól az utolsó teljes hónapig. A megvett Bitcoint a legutóbbi napi záróáron értékeljük. A díjak és a spreadek nem szerepelnek benne."
+          }
         }
       ]
     },
@@ -206,8 +336,8 @@
 }</script>
 <script>window.VB_I18N = {"openMenu": "Menü megnyitása", "closeMenu": "Menü bezárása", "latestBrief": "Legújabb Brief · ", "min": " perc", "coverImage": "Borítókép: ", "badEmail": "Kérjük, adjon meg érvényes e-mail-címet.", "sending": "Küldés...", "subscribed": "Kész. A Brief hétfőn érkezik.", "error": "Hiba történt. Kérjük, próbálja újra.", "netError": "Hálózati hiba. Kérjük, próbálja újra.", "briefLangNote": " (angol nyelven)"};</script>
 </head>
-<body class="page-seo no-split">
-<!-- generated by seo-build; do not edit by hand. answerWords=49 -->
+<body class="page-buy page-seo page-dca no-split">
+<!-- generated by seo-build; do not edit by hand. answerWords=43 -->
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="/hu/index.html" aria-label="Virtuse főoldal">
@@ -243,25 +373,150 @@
 </header>
 
 <main class="wrap acc acc-green" id="top">
-<article class="seo">
+<div class="dcap">
   <nav class="crumbs" aria-label="Morzsamenü"><a href="../../hu/index.html">Főoldal</a> <span aria-hidden="true">/</span> <span>DCA-kalkulátor</span></nav>
-  <p class="asof">Adatok állapota: Q4 2026</p>
-  <h1>Bitcoin DCA-kalkulátor</h1>
-  <div class="answer"><p>Q4 2026 állapot szerint a csak díjakkal számoló DCA-példában (500 €, majd havi 100 € 12 hónapon át) a közzétett díj alapján a 21bitcoin áll az első helyen. Változó díj: 0%. Ez nem árfolyam-előrejelzés. A díjak a Stacking Strategist modul díjtáblázatából származnak, ugyanazzal a képlettel számolva. Tájékoztató áttekintés 2026.</p></div>
   
+  <div class="buy-hero2 pf-hero">
+    <div class="eyebrow"><i></i>DCA-kalkulátor</div>
+    <h1>Bitcoin DCA-kalkulátor <span class="h1-grey">Mit eredményezett volna a havi Bitcoin-vásárlás</span></h1>
+    <p class="sp-lead">Válasszon összeget és első hónapot. Megmutatjuk, mennyit fizetett volna be, mennyit ér ma, és mit számítanak fel a partnerek az automatikus vásárlásért.</p>
+  </div>
+
+  <div class="dca-app" id="dcaApp">
+    <div class="dca-row2">
+      <div class="dca-panel dca-inp">
+        <div class="dca-fld">
+          <div class="dca-lr"><label class="dca-lab" for="dcaAmount">Havi összeg</label><span class="dca-box"><input id="dcaAmount" type="text" inputmode="numeric" autocomplete="off" value="100"><span data-dca-sym>€</span></span></div>
+          <input class="dca-range" id="dcaAmountR" type="range" min="0" max="43" step="1" value="9" style="--p:20.93%" aria-label="Havi összeg">
+        </div>
+        <fieldset class="dca-fld">
+          <div class="dca-lr"><legend class="dca-lab">Első vásárlás</legend><span class="dca-val" id="dcaStartV">2020. január</span></div>
+          <input class="dca-range" id="dcaStartR" type="range" min="0" max="153" step="1" value="72" style="--p:47.06%" aria-label="Első vásárlás">
+          <div class="dca-sel"><select id="dcaMonth" aria-label="Hónap"><option value="01" selected>január</option><option value="02">február</option><option value="03">március</option><option value="04">április</option><option value="05">május</option><option value="06">június</option><option value="07">július</option><option value="08">augusztus</option><option value="09">szeptember</option><option value="10">október</option><option value="11">november</option><option value="12">december</option></select><select id="dcaYear" aria-label="Év"><option>2014</option><option>2015</option><option>2016</option><option>2017</option><option>2018</option><option>2019</option><option selected>2020</option><option>2021</option><option>2022</option><option>2023</option><option>2024</option><option>2025</option><option>2026</option></select></div>
+        </fieldset>
+        <div class="dca-fld">
+          <span class="dca-lab" id="dcaCcyL">Pénznem</span>
+          <div class="dca-seg" role="group" aria-labelledby="dcaCcyL"><button type="button" data-ccy="EUR" aria-pressed="true">EUR</button><button type="button" data-ccy="USD" aria-pressed="false">USD</button></div>
+        </div>
+        <p class="dca-fine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span>A múltbeli eredmények nem jelzik előre a jövőbelieket. Ez múltbeli árakon végzett számítás, nem tanácsadás.</span></p>
+      </div>
+      <div class="dca-panel dca-res">
+        <div id="dcaOut" aria-live="polite"><div class="dca-stats"><div class="dca-stat"><span>Összes befizetés</span><b>8200 €</b><small>82 vásárlás, egyenként 100 €</small></div><div class="dca-stat dca-main"><span>Érték ma</span><b>21 185 €</b><small>+158% a befizetett pénzhez képest</small></div><div class="dca-stat"><span>Megvett Bitcoin</span><b>0,3058 BTC</b><small>Átlagár 26 816 €</small></div></div><figure class="dca-chart"><div class="dca-plot"><svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Vonaldiagram: a befizetett pénz és a megvett Bitcoin értéke hónapról hónapra"><line x1="0" x2="100" y1="66.67" y2="66.67" class="dca-grid"/><line x1="0" x2="100" y1="33.33" y2="33.33" class="dca-grid"/><line x1="0" x2="100" y1="0.00" y2="0.00" class="dca-grid"/><path d="M0.00 99.65L1.23 99.33L2.47 99.15L3.70 98.50L4.94 98.05L6.17 97.78L7.41 97.05L8.64 96.63L9.88 96.48L11.11 95.14L12.35 92.90L13.58 89.41L14.81 87.42L16.05 82.43L17.28 76.11L18.52 76.88L19.75 84.86L20.99 85.04L22.22 81.83L23.46 79.03L24.69 79.78L25.93 71.44L27.16 72.45L28.40 77.21L29.63 80.45L30.86 77.79L32.10 76.01L33.33 78.74L34.57 82.00L35.80 88.37L37.04 85.35L38.27 86.84L39.51 86.55L40.74 85.71L41.98 88.20L43.21 88.61L44.44 83.96L45.68 83.28L46.91 79.53L48.15 78.78L49.38 79.43L50.62 77.01L51.85 77.93L53.09 79.76L54.32 78.08L55.56 71.57L56.79 69.58L58.02 65.97L59.26 64.64L60.49 48.63L61.73 39.97L62.96 48.11L64.20 42.70L65.43 45.54L66.67 44.16L67.90 49.95L69.14 46.47L70.37 38.39L71.60 12.64L72.84 13.67L74.07 5.15L75.31 21.65L76.54 25.83L77.78 19.05L79.01 9.43L80.25 9.98L81.48 0.00L82.72 7.85L83.95 3.38L85.19 5.27L86.42 21.39L87.65 24.91L88.89 33.08L90.12 42.17L91.36 39.17L92.59 32.79L93.83 34.50L95.06 46.43L96.30 42.55L97.53 28.58L98.77 22.03L100.00 26.27L100 100L0 100Z" class="dca-area"/><path d="M0.00 99.65L1.23 99.30L2.47 98.96L3.70 98.61L4.94 98.26L6.17 97.91L7.41 97.56L8.64 97.22L9.88 96.87L11.11 96.52L12.35 96.17L13.58 95.82L14.81 95.48L16.05 95.13L17.28 94.78L18.52 94.43L19.75 94.08L20.99 93.74L22.22 93.39L23.46 93.04L24.69 92.69L25.93 92.34L27.16 91.99L28.40 91.65L29.63 91.30L30.86 90.95L32.10 90.60L33.33 90.25L34.57 89.91L35.80 89.56L37.04 89.21L38.27 88.86L39.51 88.51L40.74 88.17L41.98 87.82L43.21 87.47L44.44 87.12L45.68 86.77L46.91 86.43L48.15 86.08L49.38 85.73L50.62 85.38L51.85 85.03L53.09 84.69L54.32 84.34L55.56 83.99L56.79 83.64L58.02 83.29L59.26 82.95L60.49 82.60L61.73 82.25L62.96 81.90L64.20 81.55L65.43 81.21L66.67 80.86L67.90 80.51L69.14 80.16L70.37 79.81L71.60 79.47L72.84 79.12L74.07 78.77L75.31 78.42L76.54 78.07L77.78 77.72L79.01 77.38L80.25 77.03L81.48 76.68L82.72 76.33L83.95 75.98L85.19 75.64L86.42 75.29L87.65 74.94L88.89 74.59L90.12 74.24L91.36 73.90L92.59 73.55L93.83 73.20L95.06 72.85L96.30 72.50L97.53 72.16L98.77 71.81L100.00 71.46" class="dca-line-inv"/><path d="M0.00 99.65L1.23 99.33L2.47 99.15L3.70 98.50L4.94 98.05L6.17 97.78L7.41 97.05L8.64 96.63L9.88 96.48L11.11 95.14L12.35 92.90L13.58 89.41L14.81 87.42L16.05 82.43L17.28 76.11L18.52 76.88L19.75 84.86L20.99 85.04L22.22 81.83L23.46 79.03L24.69 79.78L25.93 71.44L27.16 72.45L28.40 77.21L29.63 80.45L30.86 77.79L32.10 76.01L33.33 78.74L34.57 82.00L35.80 88.37L37.04 85.35L38.27 86.84L39.51 86.55L40.74 85.71L41.98 88.20L43.21 88.61L44.44 83.96L45.68 83.28L46.91 79.53L48.15 78.78L49.38 79.43L50.62 77.01L51.85 77.93L53.09 79.76L54.32 78.08L55.56 71.57L56.79 69.58L58.02 65.97L59.26 64.64L60.49 48.63L61.73 39.97L62.96 48.11L64.20 42.70L65.43 45.54L66.67 44.16L67.90 49.95L69.14 46.47L70.37 38.39L71.60 12.64L72.84 13.67L74.07 5.15L75.31 21.65L76.54 25.83L77.78 19.05L79.01 9.43L80.25 9.98L81.48 0.00L82.72 7.85L83.95 3.38L85.19 5.27L86.42 21.39L87.65 24.91L88.89 33.08L90.12 42.17L91.36 39.17L92.59 32.79L93.83 34.50L95.06 46.43L96.30 42.55L97.53 28.58L98.77 22.03L100.00 26.27" class="dca-line-val"/></svg><span class="dca-y" style="top:66.67%">9,58 E €</span><span class="dca-y" style="top:33.33%">19,2 E €</span><span class="dca-y" style="top:0.00%">28,7 E €</span></div><div class="dca-x" aria-hidden="true"><span style="left:0.00%" class="dca-x0">2020</span><span style="left:29.63%">2022</span><span style="left:59.26%">2024</span><span style="left:88.89%">2026</span></div><figcaption><span class="dca-key dca-key-val"></span>A Bitcoin értéke <span class="dca-key dca-key-inv"></span>Befizetve</figcaption></figure><p class="dca-lump">Helyette egyetlen vásárlás (2020. január): <b>67 100 €</b> <span>+718%</span></p></div>
+        <div class="dca-foot">
+          <p id="dcaNote">Minden hónap végén egy vásárlás a havi záróáron (CoinMetrics referenciaárfolyam, EUR EKB-árfolyamon). A díjak és a spreadek nem szerepelnek benne. Értékelés a következő nap záróárán: 2026. október 31.</p>
+          <button type="button" class="dca-share" id="dcaShare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg><span>Az eredmény linkjének másolása</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dca-row2 dca-rev">
+      <div class="dca-panel">
+        <h3 class="dca-pt">Partnerek<span> automatikus vásárlással</span></h3>
+        <p class="dca-pi">Partnerek, amelyek saját oldalukon automatikus, rendszeres vásárlást írnak le (ellenőrizve: 2026. november 20.). Ahol a díj közzé van téve: éves díj = havi összeg × 12 × díj. A spreadek nem szerepelnek benne.</p>
+      <div class="dca-prow">
+        <div><b>21bitcoin</b><small>Auto-Invest savings plan · 0% a 8. naptól (0,99% az első 7 napban)</small></div>
+        <div class="dca-pf"><span>Éves díj az Ön tervénél</span><b data-dca-fee="0">0 €</b></div>
+        <a class="btn-primary dca-open" href="https://21bitcoin.app.link/invite/?code=VIRTUSE" rel="sponsored noopener" target="_blank">Tovább: 21bitcoin <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="dca-prow">
+        <div><b>Bybit EU</b><small>Recurring Buy · Kereskedési díj megbízásonként, a partner oldalán feltüntetve</small></div>
+        <div class="dca-pf"><span>Éves díj az Ön tervénél</span><b class="dca-na">Nincs közzétéve</b></div>
+        <a class="btn-primary dca-open" href="https://partner.bybit.eu/b/VIRTUSE" rel="sponsored noopener" target="_blank">Tovább: Bybit EU <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="dca-prow">
+        <div><b>Invity</b><small>Auto Buy · A megerősítés előtt látható</small></div>
+        <div class="dca-pf"><span>Éves díj az Ön tervénél</span><b class="dca-na">Nincs közzétéve</b></div>
+        <a class="btn-primary dca-open" href="https://invity.onelink.me/yIY4/j44d7awx" rel="sponsored noopener" target="_blank">Tovább: Invity <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="dca-prow">
+        <div><b>Kraken</b><small>Recurring orders (Kraken app) · A megerősítés előtt látható, a spreaddel együtt. Regionális korlátozások lehetnek.</small></div>
+        <div class="dca-pf"><span>Éves díj az Ön tervénél</span><b class="dca-na">Nincs közzétéve</b></div>
+        <a class="btn-primary dca-open" href="https://proinvite.kraken.com/9f1e/lj72d37e" rel="sponsored noopener" target="_blank">Tovább: Kraken <span aria-hidden="true">↗</span></a>
+      </div>
+        <p class="aff-note">Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik. <a href="../../hu/how-we-earn.html">Hogyan szerzünk bevételt</a></p>
+        <p class="dca-bots">Rendszeres vásárlást tőzsdén API-kulccsal kereskedőbotok is futtathatnak. <a href="../../hu/bots.html">Botok összehasonlítása →</a></p>
+      </div>
+      <div class="dca-panel dca-low">
+        <span class="dca-k">Legalacsonyabb közzétett díj</span>
+        <p class="dca-n">21bitcoin</p>
+        <ul><li>Auto-Invest savings plan</li><li>0% a 8. naptól (0,99% az első 7 napban)</li></ul>
+        <p class="dca-sum">Éves díj az Ön tervénél: <b data-dca-fee="0">0 €</b></p>
+        <div class="dca-gap"></div>
+        <a class="btn-primary dca-open" href="https://21bitcoin.app.link/invite/?code=VIRTUSE" rel="sponsored noopener" target="_blank">Tovább: 21bitcoin <span aria-hidden="true">↗</span></a>
+        <p class="aff-note">Partnerlink – ha regisztrál, a Virtuse jutalékot kaphat. Az Ön ára ettől nem változik. <a href="../../hu/how-we-earn.html">Hogyan szerzünk bevételt</a></p>
+      </div>
+    </div>
+
+    <div class="dca-panel">
+      <h3 class="dca-pt">Havi <span data-dca-amt>100 €</span><span> a kezdés éve szerint</span></h3>
+      <div id="dcaTable" class="seo"><div class="table-wrap"><table><thead><tr><th>Első vásárlás</th><th>Összes befizetés</th><th>Megvett Bitcoin</th><th>Érték ma</th><th>Változás</th></tr></thead><tbody><tr><td data-label="Első vásárlás">2014. január</td><td data-label="Összes befizetés">15 400 €</td><td data-label="Megvett Bitcoin">12,1298 BTC</td><td data-label="Érték ma">840 368 €</td><td data-label="Változás">+5357%</td></tr><tr><td data-label="Első vásárlás">2015. január</td><td data-label="Összes befizetés">14 200 €</td><td data-label="Megvett Bitcoin">8,7607 BTC</td><td data-label="Érték ma">606 954 €</td><td data-label="Változás">+4174%</td></tr><tr><td data-label="Első vásárlás">2016. január</td><td data-label="Összes befizetés">13 000 €</td><td data-label="Megvett Bitcoin">3,7542 BTC</td><td data-label="Érték ma">260 093 €</td><td data-label="Változás">+1901%</td></tr><tr><td data-label="Első vásárlás">2017. január</td><td data-label="Összes befizetés">11 800 €</td><td data-label="Megvett Bitcoin">1,3411 BTC</td><td data-label="Érték ma">92 912 €</td><td data-label="Változás">+687%</td></tr><tr><td data-label="Első vásárlás">2018. január</td><td data-label="Összes befizetés">10 600 €</td><td data-label="Megvett Bitcoin">0,7359 BTC</td><td data-label="Érték ma">50 984 €</td><td data-label="Változás">+381%</td></tr><tr><td data-label="Első vásárlás">2019. január</td><td data-label="Összes befizetés">9400 €</td><td data-label="Megvett Bitcoin">0,5199 BTC</td><td data-label="Érték ma">36 023 €</td><td data-label="Változás">+283%</td></tr><tr><td data-label="Első vásárlás">2020. január</td><td data-label="Összes befizetés">8200 €</td><td data-label="Megvett Bitcoin">0,3058 BTC</td><td data-label="Érték ma">21 185 €</td><td data-label="Változás">+158%</td></tr><tr><td data-label="Első vásárlás">2021. január</td><td data-label="Összes befizetés">7000 €</td><td data-label="Megvett Bitcoin">0,1772 BTC</td><td data-label="Érték ma">12 276 €</td><td data-label="Változás">+75,4%</td></tr><tr><td data-label="Első vásárlás">2022. január</td><td data-label="Összes befizetés">5800 €</td><td data-label="Megvett Bitcoin">0,1458 BTC</td><td data-label="Érték ma">10 100 €</td><td data-label="Változás">+74,1%</td></tr><tr><td data-label="Első vásárlás">2023. január</td><td data-label="Összes befizetés">4600 €</td><td data-label="Megvett Bitcoin">0,0946 BTC</td><td data-label="Érték ma">6555 €</td><td data-label="Változás">+42,5%</td></tr><tr><td data-label="Első vásárlás">2024. január</td><td data-label="Összes befizetés">3400 €</td><td data-label="Megvett Bitcoin">0,0498 BTC</td><td data-label="Érték ma">3453 €</td><td data-label="Változás">+1,5%</td></tr><tr><td data-label="Első vásárlás">2025. január</td><td data-label="Összes befizetés">2200 €</td><td data-label="Megvett Bitcoin">0,0298 BTC</td><td data-label="Érték ma">2068 €</td><td data-label="Változás">−6,0%</td></tr><tr><td data-label="Első vásárlás">2026. január</td><td data-label="Összes befizetés">1000 €</td><td data-label="Megvett Bitcoin">0,0161 BTC</td><td data-label="Érték ma">1118 €</td><td data-label="Változás">+11,8%</td></tr></tbody></table></div></div>
+    </div>
+
+    <div class="answer"><p>Havi 100 € Bitcoinba 2020 januárjától (8200 € befizetve) 2026. október 31. napon 21 185 € értékű volt, hó végi árakon és díjak nélkül. A múltbeli eredmények nem jelzik előre a jövőbelieket. Az automatikus vásárlást kínáló partnerek közül a legalacsonyabb közzétett díj: 21bitcoin.</p></div>
+  </div>
+
+  <section id="how">
+    <div class="sec-head one"><div class="sec-copy"><h2>Így <span>működik</span></h2></div></div>
+    <div class="how-log">
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Lépés 01</span>
+          <h3>Állítsa be a tervet</h3>
+          <p>Havi összeg, az első vásárlás hónapja és a pénznem.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Lépés 02</span>
+          <h3>Nézze meg az eredményt</h3>
+          <p>Befizetett pénz, megvett Bitcoin és mai értéke hó végi árakon. A múlt nem jelzi előre a jövőt.</p>
+        </div>
+      </div>
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">Lépés 03</span>
+          <h3>Hasonlítsa össze az automatikus terveket</h3>
+          <p>Partnerek, amelyek elvégzik a vásárlást Ön helyett, és a közzétett díj éves költsége.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fees">
+    <div class="sec-head one"><div class="sec-copy"><h2>Mennyibe kerül a terv<span> díjakban</span></h2></div></div>
+    <p class="asof">Adatok állapota: Q4 2026</p>
+    <div class="dca-panel seo dca-legacy">
 <p>Alappélda: 500 €, majd havi 100 € × 12. Ugyanaz a képlet, mint a Stacking Strategist modulban.</p>
 <h2>Sorrend havi 100 € esetén</h2>
 <div class="table-wrap"><table><thead><tr><th>Helyezés</th><th>Partner</th><th>Módszer</th><th>Változó díj</th><th>Éves díjak</th></tr></thead><tbody><tr><td data-label="Helyezés">1</td><td data-label="Partner">21bitcoin</td><td data-label="Módszer">Auto-Invest terv</td><td data-label="Változó díj">0%</td><td data-label="Éves díjak">0 €</td></tr><tr><td data-label="Helyezés">2</td><td data-label="Partner">Bybit EU</td><td data-label="Módszer">Spot kereskedés</td><td data-label="Változó díj">0,25%</td><td data-label="Éves díjak">3 €</td></tr><tr><td data-label="Helyezés">3</td><td data-label="Partner">Kraken</td><td data-label="Módszer">Pro kereskedés</td><td data-label="Változó díj">0,8%</td><td data-label="Éves díjak">10 €</td></tr></tbody></table></div>
-<h2>Gyakori kérdések</h2><h3>Előre jelzi a kalkulátor a Bitcoin árfolyamát?</h3><p>Nem. Csak a partnerek díjait hasonlítja össze a közzétett díjtáblázat alapján. A Bitcoin árfolyamából származó hozamot nem modellezi.</p><h3>Mi az alapterv, Q4 2026 állapot szerint?</h3><p>Egyszer 500 €, majd havi 100 € 12 hónapon át. A sorrend az első év díjain alapul.</p><h3>Melyik útnak a legalacsonyabb a közzétett díja ebben a tervben?</h3><p>21bitcoin (Auto-Invest terv), 0% változó díjjal a Stacking Strategist képlete szerint. A legalacsonyabb teljes költség spreaddel együtt a Bitcoin-díjindexben: Bybit EU (0,25%) havi 100 € esetén.</p><h3>Befektetési tanácsadásnak számít ez?</h3><p>Nem. Kizárólag oktatási célt szolgál. A KYC a partnernél történik. A Virtuse soha nem kezeli az Ön kulcsait.</p>
 
-  <p><a class="cta" href="../../hu/stacking.html">Stacking Strategist megnyitása →</a></p>
-  <h2>Kapcsolódó útmutatók</h2><div class="related"><a href="../../hu/bitcoin-dijindex/">Bitcoin-díjindex</a><a href="../../hu/bitcoin-eladas-vagy-hitel/" class="acc-purple">Bitcoin: eladás vagy hitel</a><a href="../../hu/bitcoin-adozas/magyarorszag/" class="acc-blue">Bitcoin-adózás Magyarországon</a></div>
+      <p><a class="cta" href="../../hu/stacking.html">Stacking Strategist megnyitása →</a></p>
+    </div>
+  </section>
+
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>Gyakori kérdések</h2></div></div>
+    <details open><summary><h3>Előre jelzi a kalkulátor a Bitcoin árfolyamát?</h3></summary><p>Nem. Azt mutatja meg, mit eredményezett volna a havi vásárlás a múltban hó végi árakon, és milyen díjakat számítanak fel a partnerek. A múltbeli eredmények nem jelzik előre a jövőbelieket.</p></details>
+    <details><summary><h3>Mi az alapterv, Q4 2026 állapot szerint?</h3></summary><p>Egyszer 500 €, majd havi 100 € 12 hónapon át. A sorrend az első év díjain alapul.</p></details>
+    <details><summary><h3>Melyik útnak a legalacsonyabb a közzétett díja ebben a tervben?</h3></summary><p>21bitcoin (Auto-Invest terv), 0% változó díjjal a Stacking Strategist képlete szerint. A legalacsonyabb teljes költség spreaddel együtt a Bitcoin-díjindexben: Bybit EU (0,25%) havi 100 € esetén.</p></details>
+    <details><summary><h3>Befektetési tanácsadásnak számít ez?</h3></summary><p>Nem. Kizárólag oktatási célt szolgál. A KYC a partnernél történik. A Virtuse soha nem kezeli az Ön kulcsait.</p></details>
+    <details><summary><h3>Hogyan számoljuk a múltbeli eredményt?</h3></summary><p>Minden hónap végén egy azonos összegű vásárlás a havi záróáron (CoinMetrics referenciaárfolyam USD-ben, EKB-árfolyamon EUR-ra váltva), a választott hónaptól az utolsó teljes hónapig. A megvett Bitcoint a legutóbbi napi záróáron értékeljük. A díjak és a spreadek nem szerepelnek benne.</p></details>
+  </section>
+
+  <section id="related" class="hub-related">
+    <div class="sec-head one"><div class="sec-copy"><h2>Kapcsolódó <span>eszközök</span></h2></div></div>
+    <div class="related"><a class="gcard spot" href="../../hu/stacking.html"><b>Stacking Strategist</b><span>Tervezze meg a Bitcoin-gyűjtését, és nézze meg, mennyibe kerül.</span></a><a class="gcard spot" href="../../hu/bitcoin-dijindex/"><b>Díjindex</b><span>A havi Bitcoin-vásárlás teljes költsége.</span></a><a class="gcard spot" href="../../hu/retirement-calculator.html"><b>Bitcoin-nyugdíjkalkulátor</b><span>Mikor fedezheti a Bitcoin-megtakarítás a nyugdíját?</span></a><a class="gcard spot" href="../../hu/buy-bitcoin.html"><b>Bitcoin-vásárlás</b><span>Vásárlási partnerek és díjaik egymás mellett.</span></a><a class="gcard spot" href="../../hu/bitcoin-data.html"><b>Bitcoin-adatok</b><span>Árfolyam, díjak és hálózati adatok, élőben.</span></a><a class="gcard spot" href="../../hu/concierge.html"><b>Partner Finder</b><span>Az Ön szempontjaihoz illő partnerek.</span></a></div>
+  </section>
+
   <aside class="disclaimers">
     <p>Tájékoztató áttekintés 2026 – nem adótanácsadás.</p>
     <p>A Virtuse soha nem kezeli az Ön kulcsait.</p>
     <p>A KYC és a regisztráció az adott partner szabályozott platformján történik. A Virtuse nem letétkezelő hub, és nem kezeli ezeknek a platformoknak az ügyfélpénzeit vagy ügyféladatait.</p>
   </aside>
-</article>
+</div>
 
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Csak Bitcoin, minden hétfőn.</span></h2></div></div>
