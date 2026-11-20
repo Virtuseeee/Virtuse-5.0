@@ -97,11 +97,19 @@
   }
 
   /* ---------- page ---------- */
+  // Approximate BTC/EUR price in a month: the mean of the month-end closes before and after it.
+  function monthPrice(data, m) {
+    var keys = Object.keys(data.closes).sort(), k = keys.indexOf(m);
+    if (k < 1 || !data.eurusd[m] || !data.eurusd[keys[k - 1]]) return 0;
+    return (data.closes[keys[k - 1]] / data.eurusd[keys[k - 1]] + data.closes[m] / data.eurusd[m]) / 2;
+  }
+
   function mount() {
     var form = document.getElementById('tc-form');
     if (!form) return;
     var R = JSON.parse(document.getElementById('tc-rules').textContent);
     var S = JSON.parse(document.getElementById('tc-i18n').textContent);
+    var ORDER = JSON.parse(form.getAttribute('data-order'));
     var lang = (document.documentElement.lang || 'en').slice(0, 2);
     var loc = lang === 'sk' ? 'sk-SK' : 'en-GB';
     var $ = function (id) { return document.getElementById(id); };
@@ -114,9 +122,6 @@
       var s = new Intl.NumberFormat(loc, { maximumFractionDigits: 2 }).format(n);
       return lang === 'sk' ? s + ' %' : s + '%';
     };
-    var date = function (d) {
-      return new Intl.DateTimeFormat(loc, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(d + 'T00:00:00Z'));
-    };
     var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
     var fill = function (s, v) { return s.replace(/\{(\w+)\}/g, function (_, k) { return v[k] != null ? v[k] : ''; }); };
     function num(el) {
@@ -127,56 +132,97 @@
       if (!m) return NaN;
       return +m[1] * (m[2] ? (m[2].toLowerCase() === 'k' ? 1e3 : 1e6) : 1);
     }
-    var cBtns = [].slice.call(document.querySelectorAll('#tc-country [data-c]'));
-    var country = form.getAttribute('data-default') || 'sk';
+    var sel = $('tc-country'), modeBtns = [].slice.call(document.querySelectorAll('#tc-mode [data-mode]'));
+    var mode = 'exact', prices = null, live = null, pricesFailed = false;
     var q = new URLSearchParams(location.search);
-    if (q.get('country') && R.countries[q.get('country')]) country = q.get('country');
-    ['proceeds', 'cost', 'other'].forEach(function (k) { if (q.get(k) && !isNaN(+q.get(k))) $('tc-' + k).value = q.get(k); });
+    if (q.get('country') && R.countries[q.get('country')]) sel.value = q.get('country');
+    if (q.get('mode') === 'est') mode = 'est';
+    ['proceeds', 'cost', 'other', 'invested'].forEach(function (k) { if (q.get(k) && !isNaN(+q.get(k))) $('tc-' + k).value = q.get(k); });
     if (/^\d{4}-\d{2}-\d{2}$/.test(q.get('bought') || '')) $('tc-bought').value = q.get('bought');
+    if (/^\d{4}-\d{2}$/.test(q.get('month') || '')) $('tc-month').value = q.get('month');
     $('tc-bought').max = today;
+    $('tc-month').max = today.slice(0, 7);
     if (!$('tc-bought').value) {   // default: bought six months ago
       var d6 = new Date(); d6.setUTCMonth(d6.getUTCMonth() - 6); $('tc-bought').value = d6.toISOString().slice(0, 10);
     }
 
+    function loadPrices() {
+      if (prices || pricesFailed === 'loading') return;
+      pricesFailed = 'loading';
+      fetch('/data/btc-monthly-returns.json').then(function (r) { return r.json(); }).then(function (d) {
+        prices = d; pricesFailed = false; run();
+      }).catch(function () { pricesFailed = true; run(); });
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur').then(function (r) { return r.json(); })
+        .then(function (d) { if (d && d.bitcoin && d.bitcoin.eur > 0) { live = d.bitcoin.eur; run(); } }).catch(function () {});
+    }
+
+    // The sale as the engine wants it, from either mode. Returns null (and shows why) when it cannot be worked out.
+    function sale() {
+      var o = num($('tc-other'));
+      if (isNaN(o)) return null;
+      if (mode === 'exact') {
+        var p = num($('tc-proceeds')), c = num($('tc-cost')), b = $('tc-bought').value;
+        if (isNaN(p) || isNaN(c) || !/^\d{4}-\d{2}-\d{2}$/.test(b) || b > today || p > 1e9 || c > 1e9) return null;
+        return { proceeds: p, cost: c, bought: b, today: today, other: o };
+      }
+      var inv = num($('tc-invested')), m = $('tc-month').value;
+      $('tc-est').textContent = '';
+      if (isNaN(inv) || inv <= 0 || inv > 1e9 || !/^\d{4}-\d{2}$/.test(m) || m > today.slice(0, 7)) return null;
+      if (!prices) { loadPrices(); $('tc-est').textContent = pricesFailed === true ? S.est_err : S.est_loading; return 'wait'; }
+      var p0 = monthPrice(prices, m);
+      if (!p0) { $('tc-est').textContent = S.est_err; return 'wait'; }
+      var keys = Object.keys(prices.closes).sort(), lastK = keys[keys.length - 1];
+      var p1 = live || prices.closes[lastK] / prices.eurusd[lastK];
+      var btc = inv / p0, end = new Date(Date.UTC(+m.slice(0, 4), +m.slice(5, 7), 0)).toISOString().slice(0, 10);
+      var mLabel = new Intl.DateTimeFormat(loc, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(m + '-15T00:00:00Z'));
+      $('tc-est').textContent = fill(S.est_line, { btc: new Intl.NumberFormat(loc, { maximumFractionDigits: 4 }).format(btc), p0: eur(p0), month: mLabel,
+        val: eur(btc * p1), p1: eur(p1), src: live ? S.est_live : fill(S.est_close, { date: prices.asOf }) });
+      return { proceeds: Math.round(btc * p1), cost: inv, bought: end > today ? today : end, today: today, other: o };
+    }
+
+    function why(x, r) {   // short reason for a row in the comparison
+      var yrs = (S.yrs || {})[r.holdYears || r.oldHoldYears] || '';
+      if (x.status === 'taxed') return fill(S.r_taxed, { eff: pct(x.eff) });
+      return fill(S['r_' + x.status + (x.reason ? '_' + x.reason : '')] || '', { years: yrs });
+    }
+
     function run() {
-      cBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-c') === country ? 'true' : 'false'); });
-      var r = R.countries[country];
-      var otherOn = r.kind === 'bands' || r.kind === 'de';
-      $('tc-other-f').hidden = !otherOn;
-      if (otherOn) $('tc-other-l').textContent = S['other_' + (r.base === 'savings' ? 'savings' : country === 'de' ? 'de' : 'total')];
-      var p = num($('tc-proceeds')), c = num($('tc-cost')), o = otherOn ? num($('tc-other')) : 0;
-      var bought = $('tc-bought').value;
-      var bad = isNaN(p) || isNaN(c) || (otherOn && isNaN(o)) || !/^\d{4}-\d{2}-\d{2}$/.test(bought) || bought > today || p > 1e9 || c > 1e9;
-      $('tc-err').hidden = !bad;
-      if (bad) { $('tc-err').textContent = S.err; return; }
-      var x = compute(R, country, { proceeds: p, cost: c, bought: bought, today: today, other: o });
-      var name = S['n_' + country];
-      var v = { country: name, gain: eur(x.gain), years: (S.yrs || {})[r.holdYears || r.oldHoldYears] || '', date: x.holdDate ? date(x.holdDate) : '',
-                limit: r.exemptProceedsMax ? (r.currency === 'CZK' ? new Intl.NumberFormat(loc).format(r.exemptProceedsMax) + ' CZK' : eur(r.exemptProceedsMax)) : '',
-                rate: r.rate != null ? pct(r.rate) : '' };
-      var head, sub = '';
-      if (x.status === 'taxed') { head = fill(S.h_taxed, { total: eur(x.total), eff: pct(x.eff) }); sub = fill(S.s_taxed, v); }
-      else { head = S['h_' + x.status + (x.reason ? '_' + x.reason : '')]; sub = fill(S['s_' + x.status + (x.reason ? '_' + x.reason : '')] || '', v); }
-      $('tc-v-title').textContent = head;
-      $('tc-v-sub').textContent = sub;
-      $('tc-verdict').className = 'tc-verdict glow' + (x.status === 'taxed' ? ' due' : '');
-      $('tc-r-gain').textContent = eur(x.gain);
+      modeBtns.forEach(function (b) {
+        var on = b.getAttribute('data-mode') === mode;
+        b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      $('tc-exact').hidden = mode !== 'exact';
+      $('tc-estf').hidden = mode !== 'est';
+      var country = sel.value, r = R.countries[country];
+      var inp = sale();
+      $('tc-err').hidden = inp !== null;
+      $('tc-out').classList.toggle('off', !inp || inp === 'wait');
+      if (!inp) { $('tc-err').textContent = S.err; return; }
+      if (inp === 'wait') return;
+      var calc = function (id) {   // Spain's bands run on savings income only: counted without other savings income
+        var rr = R.countries[id];
+        return compute(R, id, { proceeds: inp.proceeds, cost: inp.cost, bought: inp.bought, today: today, other: rr.base === 'savings' ? 0 : inp.other });
+      };
+      var x = calc(country), name = S['n_' + country];
+      var v = { country: name, gain: eur(x.gain), years: (S.yrs || {})[r.holdYears || r.oldHoldYears] || '',
+                limit: r.exemptProceedsMax ? (r.currency === 'CZK' ? new Intl.NumberFormat(loc).format(r.exemptProceedsMax) + ' CZK' : eur(r.exemptProceedsMax)) : '' };
+      var key = x.status + (x.reason ? '_' + x.reason : '');
+      $('tc-v-title').textContent = x.status === 'taxed' ? S.h_taxed : S['h_' + key];
+      $('tc-v-sub').textContent = fill(S['s_' + key] || '', v);
       $('tc-r-tax').textContent = eur(x.total);
+      $('tc-r-gain').textContent = eur(x.gain);
       $('tc-r-net').textContent = eur(x.net);
-      $('tc-r-eff').textContent = x.status === 'taxed' ? pct(x.eff) : pct(0);
+      $('tc-r-eff').textContent = pct(x.status === 'taxed' ? x.eff : 0);
       // the working, line by line
       var rows = '';
       if (x.status === 'taxed' || x.status === 'loss' || x.status === 'exempt') {
-        rows += '<tr><th>' + esc(S.w_proceeds) + '</th><td>' + eur(p, 2) + '</td></tr>';
-        rows += '<tr><th>' + esc(S.w_cost) + '</th><td>−' + eur(c, 2) + '</td></tr>';
+        rows += '<tr><th>' + esc(S.w_proceeds) + '</th><td>' + eur(inp.proceeds, 2) + '</td></tr>';
+        rows += '<tr><th>' + esc(S.w_cost) + '</th><td>−' + eur(inp.cost, 2) + '</td></tr>';
         rows += '<tr class="sum"><th>' + esc(S.w_gain) + '</th><td>' + eur(x.gain, 2) + '</td></tr>';
       }
       x.lines.forEach(function (l) {
-        var lab = l.key === 'band' ? fill(S.w_band, { rate: pct(l.rate), base: eur(l.base, 2) })
-          : l.key === 'levy' ? fill(S.w_levy, { rate: pct(l.rate), base: eur(l.base, 2) })
-          : l.key === 'income' ? fill(S.w_income, { rate: pct(l.rate), base: eur(l.base, 2) })
-          : fill(S.w_tax, { rate: pct(l.rate), base: eur(l.base, 2) });
-        rows += '<tr><th>' + esc(lab) + '</th><td>' + eur(l.amount, 2) + '</td></tr>';
+        var k = l.key === 'band' ? S.w_band : l.key === 'levy' ? S.w_levy : l.key === 'income' ? S.w_income : S.w_tax;
+        rows += '<tr><th>' + esc(fill(k, { rate: pct(l.rate), base: eur(l.base, 2) })) + '</th><td>' + eur(l.amount, 2) + '</td></tr>';
       });
       if (x.status === 'taxed') {
         rows += '<tr class="sum"><th>' + esc(S.w_total) + '</th><td>' + eur(x.total, 2) + '</td></tr>';
@@ -184,24 +230,47 @@
       }
       $('tc-work').innerHTML = rows;
       $('tc-work-w').hidden = !rows;
-      // what the rule leaves out (country notes), the source, review status
-      $('tc-notes').innerHTML = (S['note_' + country] || []).map(function (n) { return '<li>' + n + '</li>'; }).join('');
-      var src = document.querySelector('#tc-table tr[data-c="' + country + '"] a[target=_blank]');
+      var notes = S['note_' + country] || [];
+      $('tc-notes').innerHTML = notes.map(function (n) { return '<li>' + n + '</li>'; }).join('');
+      $('tc-notes-w').hidden = !notes.length;
+      var src = document.querySelector('#tc-table [data-c="' + country + '"] a[target=_blank]');
       $('tc-src').innerHTML = src ? fill(S.src, { link: '<a href="' + src.href + '" target="_blank" rel="noopener">' + esc(src.textContent) + '</a>' }) : '';
       $('tc-rev').textContent = x.reviewed ? S.rev_yes : S.rev_no;
       $('tc-rev').className = 'tc-rev ' + (x.reviewed ? 'y' : 'n');
-      var qs = new URLSearchParams({ country: country, proceeds: p, cost: c, bought: bought });
-      if (otherOn && o) qs.set('other', o);
+
+      // the same sale in all 13 countries, lowest tax first (the page order breaks ties)
+      var all = ORDER.map(function (id, i) { return { id: id, i: i, x: id === country ? x : calc(id) }; });
+      all.sort(function (a, b) { return a.x.total - b.x.total || a.i - b.i; });
+      var max = all[all.length - 1].x.total || 1, low = all[0].x.total;
+      $('tc-cmp').innerHTML = all.map(function (a) {
+        var home = a.id === country;
+        return '<div class="tc-cmp-row' + (home ? ' home' : '') + '"><span class="tc-cmp-n"><b>' + esc(S['n_' + a.id]) +
+          (home ? ' <span class="tc-you">' + esc(S.cmp_home) + '</span>' : '') + '</b><small>' + esc(why(a.x, R.countries[a.id])) + '</small></span>' +
+          '<span class="tc-cmp-bar" aria-hidden="true"><i style="width:' + (a.x.total / max * 100).toFixed(1) + '%"></i></span>' +
+          '<span class="tc-cmp-t">' + eur(a.x.total) + '</span><span class="tc-cmp-k">' + eur(a.x.net) + '</span></div>';
+      }).join('');
+      var best = all.filter(function (a) { return a.x.total === low; }).map(function (a) { return S['n_' + a.id]; });
+      $('tc-cmp-sum').innerHTML = x.total <= low
+        ? fill(S.cmp_best, { home: esc(name), a: '<b>' + eur(x.total) + '</b>' })
+        : fill(S.cmp_diff, { home: esc(name), a: '<b>' + eur(x.total) + '</b>', best: esc(best.slice(0, 3).join(', ')), b: '<b>' + eur(low) + '</b>',
+            d: '<b class="hp-480">' + eur(x.total - low) + '</b>' });
+
+      var qs = new URLSearchParams({ country: country });
+      if (mode === 'est') { qs.set('mode', 'est'); qs.set('invested', inp.cost); qs.set('month', $('tc-month').value); }
+      else { qs.set('proceeds', inp.proceeds); qs.set('cost', inp.cost); qs.set('bought', inp.bought); }
+      if (inp.other) qs.set('other', inp.other);
       history.replaceState(null, '', location.pathname + '?' + qs.toString() + location.hash);
-      window.dataLayer && window.dataLayer.push({ event: 'tax_calc', tax_country: country, tax_status: x.status });
     }
     var timer;
     function later() { clearTimeout(timer); timer = setTimeout(run, 250); }
-    cBtns.forEach(function (b) { b.addEventListener('click', function () { country = b.getAttribute('data-c'); run(); }); });
+    modeBtns.forEach(function (b) { b.addEventListener('click', function () { mode = b.getAttribute('data-mode'); run(); }); });
     form.addEventListener('input', later);
-    form.addEventListener('change', run);
+    form.addEventListener('change', function () {
+      run();
+      window.dataLayer && window.dataLayer.push({ event: 'tax_calc', tax_country: sel.value, tax_mode: mode });
+    });
     run();
   }
 
-  return { compute: compute, deTax: deTax, addYears: addYears, mount: mount };
+  return { compute: compute, deTax: deTax, addYears: addYears, monthPrice: monthPrice, mount: mount };
 });
