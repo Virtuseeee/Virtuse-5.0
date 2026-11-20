@@ -811,6 +811,7 @@ const DCA_CSS = `
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -832,6 +833,7 @@ const DCA_CSS = `
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }
@@ -872,7 +874,13 @@ function dcaTool(spec) {
 
   // old body = fee section followed by the FAQ (always last)
   const cut = spec.bodyHtml.lastIndexOf('<h2>');
-  const feeBody = spec.bodyHtml.slice(0, cut);
+  // the 21bitcoin row of the fee table carries the same day-8 note as the partner rows
+  const tnote = `<small class="dca-tnote">${esc(T.fee_21_note)}</small>`;
+  const feeBody = spec.bodyHtml.slice(0, cut).replace(/(<tr>(?:(?!<\/tr>)[\s\S])*?>21bitcoin<(?:(?!<\/tr>)[\s\S])*?)(<\/td><\/tr>)/, (_, row, end) => {
+    if (!/>0(?:[\s\u00a0\u202f]|&nbsp;)?%</.test(row)) throw new Error(`DCA ${relFile}: 21bitcoin fee row is not 0 %`);
+    return row + tnote + end;
+  });
+  if (!feeBody.includes('dca-tnote')) throw new Error(`DCA ${relFile}: 21bitcoin row not found in the fee table`);
   const faqPart = spec.bodyHtml.slice(cut);
   const faqH2 = faqPart.match(/^<h2>(.*?)<\/h2>/)[1];
   const qas = [...faqPart.matchAll(/<h3>(.*?)<\/h3><p>(.*?)<\/p>/g)];
@@ -1523,9 +1531,11 @@ document.addEventListener('DOMContentLoaded', function () {
       var year = per * 12 + initial * r.pct;
       return { partner: r.partner, method: r.method, pct: r.pct, year: year };
     }).sort(function (a, b) { return a.year - b.year; });
+    var note = ${JSON.stringify(DCA_H.en.fee_21_note)};
     tbody.innerHTML = rows.map(function (r, i) {
       return '<tr><td>' + (i+1) + '</td><td>' + r.partner + '</td><td>' + r.method + '</td><td>' +
-        (Math.round(r.pct * 10000) / 100) + '%</td><td>€' + Math.round(r.year) + '</td></tr>';
+        (Math.round(r.pct * 10000) / 100) + '%</td><td>€' + Math.round(r.year) + '</td><td>' +
+        (r.partner === '21bitcoin' && r.pct === 0 ? '<small class="dca-tnote">' + note + '</small>' : '') + '</td></tr>';
     }).join('');
   });
 });

@@ -205,6 +205,7 @@
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -226,6 +227,7 @@
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }</style>
@@ -319,7 +321,7 @@
           "name": "Jak liczony jest wynik historyczny?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Jeden zakup za tę samą kwotę po cenie zamknięcia na koniec każdego miesiąca (kurs referencyjny CoinMetrics w USD, przeliczony na EUR po kursie EBC), od wybranego miesiąca do ostatniego pełnego miesiąca. Kupiony Bitcoin jest wyceniany po ostatniej dziennej cenie zamknięcia. Opłaty i spready nie są uwzględnione."
+            "text": "Jeden zakup za tę samą kwotę po cenie zamknięcia na koniec każdego miesiąca (kurs referencyjny CoinMetrics w USD, przeliczony na EUR po kursie EBC), od wybranego miesiąca do ostatniego pełnego miesiąca. Kupiony Bitcoin jest wyceniany po cenie zamknięcia na koniec ostatniego pełnego miesiąca. Opłaty i spready nie są uwzględnione."
           }
         }
       ]
@@ -498,7 +500,7 @@
     <div class="dca-panel seo dca-legacy">
 <p>Przykład opłat za pierwszy rok: 100 € miesięcznie przez 12 miesięcy, łącznie 1200 €, w zaokrągleniu do pełnych euro. W przypadku Bybit EU i Kraken jest to opłata za zlecenie składane samodzielnie na giełdzie, a nie za automatyczny zakup. Wynik historyczny powyżej nie zawiera opłat.</p>
 <h2>Ranking przy 100 € miesięcznie</h2>
-<div class="table-wrap"><table><thead><tr><th>Miejsce</th><th>Partner</th><th>Metoda</th><th>Opłata zmienna</th><th>Roczne opłaty</th></tr></thead><tbody><tr><td data-label="Miejsce">1</td><td data-label="Partner">21bitcoin</td><td data-label="Metoda">Plan Auto-Invest</td><td data-label="Opłata zmienna">0%</td><td data-label="Roczne opłaty">0 €</td></tr><tr><td data-label="Miejsce">2</td><td data-label="Partner">Bybit EU</td><td data-label="Metoda">Handel spot</td><td data-label="Opłata zmienna">0,25%</td><td data-label="Roczne opłaty">3 €</td></tr><tr><td data-label="Miejsce">3</td><td data-label="Partner">Kraken</td><td data-label="Metoda">Handel Pro</td><td data-label="Opłata zmienna">0,8%</td><td data-label="Roczne opłaty">10 €</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Miejsce</th><th>Partner</th><th>Metoda</th><th>Opłata zmienna</th><th>Roczne opłaty</th></tr></thead><tbody><tr><td data-label="Miejsce">1</td><td data-label="Partner">21bitcoin</td><td data-label="Metoda">Plan Auto-Invest</td><td data-label="Opłata zmienna">0%</td><td data-label="Roczne opłaty">0 €<small class="dca-tnote">0 euro wynika ze stawki od ósmego dnia. Przez pierwsze 7 dni opłata wynosi 0,99%, tej opłaty w kwocie rocznej nie ma.</small></td></tr><tr><td data-label="Miejsce">2</td><td data-label="Partner">Bybit EU</td><td data-label="Metoda">Handel spot</td><td data-label="Opłata zmienna">0,25%</td><td data-label="Roczne opłaty">3 €</td></tr><tr><td data-label="Miejsce">3</td><td data-label="Partner">Kraken</td><td data-label="Metoda">Handel Pro</td><td data-label="Opłata zmienna">0,8%</td><td data-label="Roczne opłaty">10 €</td></tr></tbody></table></div>
 
       <p><a class="cta" href="../../pl/stacking.html">Otwórz Stacking Strategist →</a></p>
     </div>
@@ -510,7 +512,7 @@
     <details><summary><h3>Jaki jest plan standardowy, stan na Q4 2026?</h3></summary><p>100 € miesięcznie przez 12 miesięcy, łącznie 1200 €. Kolejność według opłat w pierwszym roku.</p></details>
     <details><summary><h3>Który sposób zakupu ma w tym planie najniższą opublikowaną opłatę?</h3></summary><p>21bitcoin (Plan Auto-Invest) z opłatą zmienną 0% według wzoru Stacking Strategist. Najniższy całkowity koszt ze spreadem w Indeksie opłat za Bitcoina: Bybit EU (0,25%) przy 100 € miesięcznie.</p></details>
     <details><summary><h3>Czy to porada inwestycyjna?</h3></summary><p>Nie. Służy wyłącznie celom edukacyjnym. KYC odbywa się u partnera. Virtuse nigdy nie przechowuje Państwa kluczy.</p></details>
-    <details><summary><h3>Jak liczony jest wynik historyczny?</h3></summary><p>Jeden zakup za tę samą kwotę po cenie zamknięcia na koniec każdego miesiąca (kurs referencyjny CoinMetrics w USD, przeliczony na EUR po kursie EBC), od wybranego miesiąca do ostatniego pełnego miesiąca. Kupiony Bitcoin jest wyceniany po ostatniej dziennej cenie zamknięcia. Opłaty i spready nie są uwzględnione.</p></details>
+    <details><summary><h3>Jak liczony jest wynik historyczny?</h3></summary><p>Jeden zakup za tę samą kwotę po cenie zamknięcia na koniec każdego miesiąca (kurs referencyjny CoinMetrics w USD, przeliczony na EUR po kursie EBC), od wybranego miesiąca do ostatniego pełnego miesiąca. Kupiony Bitcoin jest wyceniany po cenie zamknięcia na koniec ostatniego pełnego miesiąca. Opłaty i spready nie są uwzględnione.</p></details>
   </section>
 
   <section id="related" class="hub-related">
@@ -528,11 +530,11 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Tylko Bitcoin, w każdy poniedziałek.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Kurier Virtuse Brief na skuterze dostarcza wydanie z 5 października 2026" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/news.html">
+        <img id="briefImg" src="/news/og-card.png" alt="Okładka: Virtuse Brief" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Najnowszy Brief</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (po angielsku)</h3>
+          <h3 id="briefTitle">Virtuse Brief</h3>
           <p id="briefExcerpt"></p>
           <span class="more">Całe wydanie →</span>
         </div>

@@ -205,6 +205,7 @@
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -226,6 +227,7 @@
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }</style>
@@ -319,7 +321,7 @@
           "name": "Як рахується історичний результат?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Одна купівля на однакову суму за ціною закриття на кінець кожного місяця (референтний курс CoinMetrics у USD, перерахований у EUR за курсом ЄЦБ), від обраного місяця до останнього повного місяця. Куплений Біткоїн оцінюється за останньою денною ціною закриття. Комісії та спреди не враховано."
+            "text": "Одна купівля на однакову суму за ціною закриття на кінець кожного місяця (референтний курс CoinMetrics у USD, перерахований у EUR за курсом ЄЦБ), від обраного місяця до останнього повного місяця. Куплений Біткоїн оцінюється за ціною закриття на кінець останнього повного місяця. Комісії та спреди не враховано."
           }
         }
       ]
@@ -498,7 +500,7 @@
     <div class="dca-panel seo dca-legacy">
 <p>Приклад комісій за перший рік: 100 € щомісяця протягом 12 місяців, разом 1 200 €, з округленням до цілих євро. Для Bybit EU і Kraken це комісія за ордер, який ви виставляєте на біржі самостійно, а не за автоматичну купівлю. Історичний результат вище не містить комісій.</p>
 <h2>Рейтинг при 100 € на місяць</h2>
-<div class="table-wrap"><table><thead><tr><th>Місце</th><th>Партнер</th><th>Метод</th><th>Змінна комісія</th><th>Річні комісії</th></tr></thead><tbody><tr><td data-label="Місце">1</td><td data-label="Партнер">21bitcoin</td><td data-label="Метод">План Auto-Invest</td><td data-label="Змінна комісія">0%</td><td data-label="Річні комісії">0 €</td></tr><tr><td data-label="Місце">2</td><td data-label="Партнер">Bybit EU</td><td data-label="Метод">Спотова торгівля</td><td data-label="Змінна комісія">0,25%</td><td data-label="Річні комісії">3 €</td></tr><tr><td data-label="Місце">3</td><td data-label="Партнер">Kraken</td><td data-label="Метод">Pro-торгівля</td><td data-label="Змінна комісія">0,8%</td><td data-label="Річні комісії">10 €</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Місце</th><th>Партнер</th><th>Метод</th><th>Змінна комісія</th><th>Річні комісії</th></tr></thead><tbody><tr><td data-label="Місце">1</td><td data-label="Партнер">21bitcoin</td><td data-label="Метод">План Auto-Invest</td><td data-label="Змінна комісія">0%</td><td data-label="Річні комісії">0 €<small class="dca-tnote">0 євро розраховано за ставкою з восьмого дня. У перші 7 днів комісія становить 0,99%, у цій річній сумі її немає.</small></td></tr><tr><td data-label="Місце">2</td><td data-label="Партнер">Bybit EU</td><td data-label="Метод">Спотова торгівля</td><td data-label="Змінна комісія">0,25%</td><td data-label="Річні комісії">3 €</td></tr><tr><td data-label="Місце">3</td><td data-label="Партнер">Kraken</td><td data-label="Метод">Pro-торгівля</td><td data-label="Змінна комісія">0,8%</td><td data-label="Річні комісії">10 €</td></tr></tbody></table></div>
 
       <p><a class="cta" href="../../uk/stacking.html">Відкрити Stacking Strategist →</a></p>
     </div>
@@ -510,7 +512,7 @@
     <details><summary><h3>Який стандартний план станом на Q4 2026?</h3></summary><p>100 € щомісяця протягом 12 місяців, разом 1 200 €. Порядок за комісіями першого року.</p></details>
     <details><summary><h3>Який спосіб купівлі в цьому плані має найнижчу опубліковану комісію?</h3></summary><p>21bitcoin (план Auto-Invest) зі змінною комісією 0% за формулою Stacking Strategist. Найнижча повна вартість зі спредом в Індексі комісій Біткоїна: Bybit EU (0,25%) при 100 € на місяць.</p></details>
     <details><summary><h3>Це інвестиційна порада?</h3></summary><p>Ні. Лише для освітніх цілей. KYC відбувається в партнера. Virtuse ніколи не зберігає ваші ключі.</p></details>
-    <details><summary><h3>Як рахується історичний результат?</h3></summary><p>Одна купівля на однакову суму за ціною закриття на кінець кожного місяця (референтний курс CoinMetrics у USD, перерахований у EUR за курсом ЄЦБ), від обраного місяця до останнього повного місяця. Куплений Біткоїн оцінюється за останньою денною ціною закриття. Комісії та спреди не враховано.</p></details>
+    <details><summary><h3>Як рахується історичний результат?</h3></summary><p>Одна купівля на однакову суму за ціною закриття на кінець кожного місяця (референтний курс CoinMetrics у USD, перерахований у EUR за курсом ЄЦБ), від обраного місяця до останнього повного місяця. Куплений Біткоїн оцінюється за ціною закриття на кінець останнього повного місяця. Комісії та спреди не враховано.</p></details>
   </section>
 
   <section id="related" class="hub-related">
@@ -528,11 +530,11 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Лише Біткоїн, щопонеділка.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Кур'єр Virtuse Brief на скутері доставляє випуск від 5 жовтня 2026" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/news.html">
+        <img id="briefImg" src="/news/og-card.png" alt="Обкладинка: Virtuse Brief" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Останній Brief</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (англійською)</h3>
+          <h3 id="briefTitle">Virtuse Brief</h3>
           <p id="briefExcerpt"></p>
           <span class="more">Читати випуск →</span>
         </div>

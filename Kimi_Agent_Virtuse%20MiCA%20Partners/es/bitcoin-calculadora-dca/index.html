@@ -205,6 +205,7 @@
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -226,6 +227,7 @@
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }</style>
@@ -319,7 +321,7 @@
           "name": "¿Cómo se calcula el resultado histórico?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Una compra del mismo importe al precio de cierre de cada fin de mes (tipo de referencia de CoinMetrics en USD, convertido a EUR con los tipos del BCE), desde el mes elegido hasta el último mes completo. El Bitcoin comprado se valora al último cierre diario. No se incluyen comisiones ni diferenciales."
+            "text": "Una compra del mismo importe al precio de cierre de cada fin de mes (tipo de referencia de CoinMetrics en USD, convertido a EUR con los tipos del BCE), desde el mes elegido hasta el último mes completo. El Bitcoin comprado se valora al precio de cierre del final del último mes completo. No se incluyen comisiones ni diferenciales."
           }
         }
       ]
@@ -498,7 +500,7 @@
     <div class="dca-panel seo dca-legacy">
 <p>Ejemplo de comisiones del primer año: 100 € al mes durante 12 meses, 1200 € en total, redondeado a euros enteros. En Bybit EU y Kraken es la comisión de una orden que usted introduce en el exchange, no de una compra automática. El resultado histórico de arriba no incluye comisiones.</p>
 <h2>Clasificación con 100 € al mes</h2>
-<div class="table-wrap"><table><thead><tr><th>Puesto</th><th>Partner</th><th>Método</th><th>Comisión variable</th><th>Comisiones anuales</th></tr></thead><tbody><tr><td data-label="Puesto">1</td><td data-label="Partner">21bitcoin</td><td data-label="Método">Plan Auto-Invest</td><td data-label="Comisión variable">0 %</td><td data-label="Comisiones anuales">0 €</td></tr><tr><td data-label="Puesto">2</td><td data-label="Partner">Bybit EU</td><td data-label="Método">Trading al contado</td><td data-label="Comisión variable">0,25 %</td><td data-label="Comisiones anuales">3 €</td></tr><tr><td data-label="Puesto">3</td><td data-label="Partner">Kraken</td><td data-label="Método">Trading Pro</td><td data-label="Comisión variable">0,8 %</td><td data-label="Comisiones anuales">10 €</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Puesto</th><th>Partner</th><th>Método</th><th>Comisión variable</th><th>Comisiones anuales</th></tr></thead><tbody><tr><td data-label="Puesto">1</td><td data-label="Partner">21bitcoin</td><td data-label="Método">Plan Auto-Invest</td><td data-label="Comisión variable">0 %</td><td data-label="Comisiones anuales">0 €<small class="dca-tnote">Los 0 euros corresponden a la tarifa desde el día 8. Durante los primeros 7 días la comisión es del 0,99 % y no está incluida en esta cifra anual.</small></td></tr><tr><td data-label="Puesto">2</td><td data-label="Partner">Bybit EU</td><td data-label="Método">Trading al contado</td><td data-label="Comisión variable">0,25 %</td><td data-label="Comisiones anuales">3 €</td></tr><tr><td data-label="Puesto">3</td><td data-label="Partner">Kraken</td><td data-label="Método">Trading Pro</td><td data-label="Comisión variable">0,8 %</td><td data-label="Comisiones anuales">10 €</td></tr></tbody></table></div>
 
       <p><a class="cta" href="../../es/stacking.html">Abrir Stacking Strategist →</a></p>
     </div>
@@ -510,7 +512,7 @@
     <details><summary><h3>¿Qué plan tipo se usa?</h3></summary><p>100 € al mes durante 12 meses, 1200 € en total. La clasificación se basa en las comisiones del primer año.</p></details>
     <details><summary><h3>¿Qué vía tiene la comisión publicada más baja en este plan?</h3></summary><p>21bitcoin (Plan Auto-Invest), con una comisión variable del 0 % según la fórmula del Stacking Strategist. Coste total más bajo con spread incluido en el Índice de comisiones de Bitcoin: Bybit EU (0,25 %) con 100 € al mes.</p></details>
     <details><summary><h3>¿Es asesoramiento de inversión?</h3></summary><p>No. Solo con fines educativos. El KYC se realiza con el partner. Virtuse nunca guarda sus claves.</p></details>
-    <details><summary><h3>¿Cómo se calcula el resultado histórico?</h3></summary><p>Una compra del mismo importe al precio de cierre de cada fin de mes (tipo de referencia de CoinMetrics en USD, convertido a EUR con los tipos del BCE), desde el mes elegido hasta el último mes completo. El Bitcoin comprado se valora al último cierre diario. No se incluyen comisiones ni diferenciales.</p></details>
+    <details><summary><h3>¿Cómo se calcula el resultado histórico?</h3></summary><p>Una compra del mismo importe al precio de cierre de cada fin de mes (tipo de referencia de CoinMetrics en USD, convertido a EUR con los tipos del BCE), desde el mes elegido hasta el último mes completo. El Bitcoin comprado se valora al precio de cierre del final del último mes completo. No se incluyen comisiones ni diferenciales.</p></details>
   </section>
 
   <section id="related" class="hub-related">
@@ -528,11 +530,11 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Solo Bitcoin, cada lunes.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Repartidor del Virtuse Brief en scooter entregando la edición del 5 oct 2026" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/news.html">
+        <img id="briefImg" src="/news/og-card.png" alt="Imagen de portada: Virtuse Brief" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Último Brief</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (en inglés)</h3>
+          <h3 id="briefTitle">Virtuse Brief</h3>
           <p id="briefExcerpt"></p>
           <span class="more">Leer el número →</span>
         </div>

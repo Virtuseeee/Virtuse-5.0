@@ -205,6 +205,7 @@
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -226,6 +227,7 @@
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }</style>
@@ -319,7 +321,7 @@
           "name": "Jak se počítá historický výsledek?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Jeden nákup za stejnou částku při závěrečné ceně na konci každého měsíce (referenční kurz CoinMetrics v USD, přepočet na EUR kurzem ECB), od zvoleného měsíce po poslední ukončený měsíc. Nakoupený Bitcoin se oceňuje poslední denní závěrečnou cenou. Poplatky a spready nejsou zahrnuty."
+            "text": "Jeden nákup za stejnou částku při závěrečné ceně na konci každého měsíce (referenční kurz CoinMetrics v USD, přepočet na EUR kurzem ECB), od zvoleného měsíce po poslední ukončený měsíc. Nakoupený Bitcoin se oceňuje závěrečnou cenou na konci posledního ukončeného měsíce. Poplatky a spready nejsou zahrnuty."
           }
         }
       ]
@@ -498,7 +500,7 @@
     <div class="dca-panel seo dca-legacy">
 <p>Příklad poplatků za první rok: 100 € měsíčně po dobu 12 měsíců, celkem 1 200 €, zaokrouhleno na celá eura. U Bybit EU a Kraken jde o poplatek za pokyn, který na burze zadáte sami, ne za automatický nákup. Historický výsledek výše poplatky neobsahuje.</p>
 <h2>Pořadí při 100 € měsíčně</h2>
-<div class="table-wrap"><table><thead><tr><th>Pořadí</th><th>Partner</th><th>Metoda</th><th>Variabilní poplatek</th><th>Roční poplatky</th></tr></thead><tbody><tr><td data-label="Pořadí">1</td><td data-label="Partner">21bitcoin</td><td data-label="Metoda">Plán Auto-Invest</td><td data-label="Variabilní poplatek">0 %</td><td data-label="Roční poplatky">0 €</td></tr><tr><td data-label="Pořadí">2</td><td data-label="Partner">Bybit EU</td><td data-label="Metoda">Spotové obchodování</td><td data-label="Variabilní poplatek">0,25 %</td><td data-label="Roční poplatky">3 €</td></tr><tr><td data-label="Pořadí">3</td><td data-label="Partner">Kraken</td><td data-label="Metoda">Pro trading</td><td data-label="Variabilní poplatek">0,8 %</td><td data-label="Roční poplatky">10 €</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Pořadí</th><th>Partner</th><th>Metoda</th><th>Variabilní poplatek</th><th>Roční poplatky</th></tr></thead><tbody><tr><td data-label="Pořadí">1</td><td data-label="Partner">21bitcoin</td><td data-label="Metoda">Plán Auto-Invest</td><td data-label="Variabilní poplatek">0 %</td><td data-label="Roční poplatky">0 €<small class="dca-tnote">0 eur vychází ze sazby od osmého dne. Během prvních 7 dní je poplatek 0,99 %, ten v tomto ročním údaji není.</small></td></tr><tr><td data-label="Pořadí">2</td><td data-label="Partner">Bybit EU</td><td data-label="Metoda">Spotové obchodování</td><td data-label="Variabilní poplatek">0,25 %</td><td data-label="Roční poplatky">3 €</td></tr><tr><td data-label="Pořadí">3</td><td data-label="Partner">Kraken</td><td data-label="Metoda">Pro trading</td><td data-label="Variabilní poplatek">0,8 %</td><td data-label="Roční poplatky">10 €</td></tr></tbody></table></div>
 
       <p><a class="cta" href="../../cs/stacking.html">Otevřít Stacking Strategist →</a></p>
     </div>
@@ -510,7 +512,7 @@
     <details><summary><h3>Jaký je standardní plán, stav Q4 2026?</h3></summary><p>100 € měsíčně po dobu 12 měsíců, celkem 1 200 €. Pořadí je podle poplatků za první rok.</p></details>
     <details><summary><h3>Která cesta má v tomto plánu nejnižší zveřejněný poplatek?</h3></summary><p>21bitcoin (Plán Auto-Invest) s variabilním poplatkem 0 % podle vzorce Stacking Strategist. Nejnižší celkové náklady včetně spreadu má podle Indexu poplatků za Bitcoin Bybit EU (0,25 %) při 100 € měsíčně.</p></details>
     <details><summary><h3>Jde o investiční poradenství?</h3></summary><p>Ne. Slouží jen ke vzdělávacím účelům. KYC probíhá u partnera. Virtuse nikdy nedrží vaše klíče.</p></details>
-    <details><summary><h3>Jak se počítá historický výsledek?</h3></summary><p>Jeden nákup za stejnou částku při závěrečné ceně na konci každého měsíce (referenční kurz CoinMetrics v USD, přepočet na EUR kurzem ECB), od zvoleného měsíce po poslední ukončený měsíc. Nakoupený Bitcoin se oceňuje poslední denní závěrečnou cenou. Poplatky a spready nejsou zahrnuty.</p></details>
+    <details><summary><h3>Jak se počítá historický výsledek?</h3></summary><p>Jeden nákup za stejnou částku při závěrečné ceně na konci každého měsíce (referenční kurz CoinMetrics v USD, přepočet na EUR kurzem ECB), od zvoleného měsíce po poslední ukončený měsíc. Nakoupený Bitcoin se oceňuje závěrečnou cenou na konci posledního ukončeného měsíce. Poplatky a spready nejsou zahrnuty.</p></details>
   </section>
 
   <section id="related" class="hub-related">
@@ -528,11 +530,11 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Jen Bitcoin, každé pondělí.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Kurýr Virtuse Brief na skútru doručuje vydání z 5. 10. 2026" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/news.html">
+        <img id="briefImg" src="/news/og-card.png" alt="Titulní obrázek: Virtuse Brief" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Nejnovější Brief</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (v angličtině)</h3>
+          <h3 id="briefTitle">Virtuse Brief</h3>
           <p id="briefExcerpt"></p>
           <span class="more">Číst vydání →</span>
         </div>

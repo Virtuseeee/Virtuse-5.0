@@ -205,6 +205,7 @@
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -226,6 +227,7 @@
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }</style>
@@ -319,7 +321,7 @@
           "name": "Как считается исторический результат?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Одна покупка на одинаковую сумму по цене закрытия на конец каждого месяца (референсный курс CoinMetrics в USD, пересчитанный в EUR по курсу ЕЦБ), от выбранного месяца до последнего полного месяца. Купленный Биткоин оценивается по последней дневной цене закрытия. Комиссии и спреды не учтены."
+            "text": "Одна покупка на одинаковую сумму по цене закрытия на конец каждого месяца (референсный курс CoinMetrics в USD, пересчитанный в EUR по курсу ЕЦБ), от выбранного месяца до последнего полного месяца. Купленный Биткоин оценивается по цене закрытия на конец последнего полного месяца. Комиссии и спреды не учтены."
           }
         }
       ]
@@ -498,7 +500,7 @@
     <div class="dca-panel seo dca-legacy">
 <p>Пример комиссий за первый год: 100 € ежемесячно в течение 12 месяцев, всего 1 200 €, с округлением до целых евро. Для Bybit EU и Kraken это комиссия за ордер, который вы выставляете на бирже самостоятельно, а не за автоматическую покупку. Исторический результат выше не включает комиссии.</p>
 <h2>Рейтинг при 100 € в месяц</h2>
-<div class="table-wrap"><table><thead><tr><th>Место</th><th>Партнёр</th><th>Метод</th><th>Переменная комиссия</th><th>Годовые комиссии</th></tr></thead><tbody><tr><td data-label="Место">1</td><td data-label="Партнёр">21bitcoin</td><td data-label="Метод">План Auto-Invest</td><td data-label="Переменная комиссия">0%</td><td data-label="Годовые комиссии">0 €</td></tr><tr><td data-label="Место">2</td><td data-label="Партнёр">Bybit EU</td><td data-label="Метод">Спотовая торговля</td><td data-label="Переменная комиссия">0,25%</td><td data-label="Годовые комиссии">3 €</td></tr><tr><td data-label="Место">3</td><td data-label="Партнёр">Kraken</td><td data-label="Метод">Pro-торговля</td><td data-label="Переменная комиссия">0,8%</td><td data-label="Годовые комиссии">10 €</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Место</th><th>Партнёр</th><th>Метод</th><th>Переменная комиссия</th><th>Годовые комиссии</th></tr></thead><tbody><tr><td data-label="Место">1</td><td data-label="Партнёр">21bitcoin</td><td data-label="Метод">План Auto-Invest</td><td data-label="Переменная комиссия">0%</td><td data-label="Годовые комиссии">0 €<small class="dca-tnote">0 евро рассчитано по ставке с восьмого дня. В первые 7 дней комиссия составляет 0,99%, в этой годовой сумме её нет.</small></td></tr><tr><td data-label="Место">2</td><td data-label="Партнёр">Bybit EU</td><td data-label="Метод">Спотовая торговля</td><td data-label="Переменная комиссия">0,25%</td><td data-label="Годовые комиссии">3 €</td></tr><tr><td data-label="Место">3</td><td data-label="Партнёр">Kraken</td><td data-label="Метод">Pro-торговля</td><td data-label="Переменная комиссия">0,8%</td><td data-label="Годовые комиссии">10 €</td></tr></tbody></table></div>
 
       <p><a class="cta" href="../../ru/stacking.html">Открыть Stacking Strategist →</a></p>
     </div>
@@ -510,7 +512,7 @@
     <details><summary><h3>Какой типовой план используется?</h3></summary><p>100 € ежемесячно в течение 12 месяцев, всего 1 200 €. Рейтинг составлен по комиссиям первого года.</p></details>
     <details><summary><h3>У какого способа в этом плане самая низкая опубликованная комиссия?</h3></summary><p>21bitcoin (план Auto-Invest) с переменной комиссией 0% по формуле Stacking Strategist. Самая низкая полная стоимость со спредом в Индексе комиссий Биткоина: Bybit EU (0,25%) при 100 € в месяц.</p></details>
     <details><summary><h3>Это инвестиционная консультация?</h3></summary><p>Нет. Только для образовательных целей. KYC проходит у партнёра. Virtuse никогда не хранит ваши ключи.</p></details>
-    <details><summary><h3>Как считается исторический результат?</h3></summary><p>Одна покупка на одинаковую сумму по цене закрытия на конец каждого месяца (референсный курс CoinMetrics в USD, пересчитанный в EUR по курсу ЕЦБ), от выбранного месяца до последнего полного месяца. Купленный Биткоин оценивается по последней дневной цене закрытия. Комиссии и спреды не учтены.</p></details>
+    <details><summary><h3>Как считается исторический результат?</h3></summary><p>Одна покупка на одинаковую сумму по цене закрытия на конец каждого месяца (референсный курс CoinMetrics в USD, пересчитанный в EUR по курсу ЕЦБ), от выбранного месяца до последнего полного месяца. Купленный Биткоин оценивается по цене закрытия на конец последнего полного месяца. Комиссии и спреды не учтены.</p></details>
   </section>
 
   <section id="related" class="hub-related">
@@ -528,11 +530,11 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Только Биткоин, каждый понедельник.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Курьер Virtuse Brief на скутере доставляет выпуск от 5 октября 2026" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/news.html">
+        <img id="briefImg" src="/news/og-card.png" alt="Обложка: Virtuse Brief" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Последний Brief</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (на английском)</h3>
+          <h3 id="briefTitle">Virtuse Brief</h3>
           <p id="briefExcerpt"></p>
           <span class="more">Читать выпуск →</span>
         </div>
