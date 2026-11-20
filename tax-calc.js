@@ -157,11 +157,18 @@
     var q = new URLSearchParams(location.search);
     if (q.get('country') && R.countries[q.get('country')]) sel.value = q.get('country');
     if (q.get('mode') === 'est') mode = 'est';
-    ['proceeds', 'cost', 'other', 'invested'].forEach(function (k) { if (q.get(k) && !isNaN(+q.get(k))) $('tc-' + k).value = q.get(k); });
+    ['proceeds', 'cost', 'other', 'invested'].forEach(function (k) {
+      var v = q.get(k);   // "0" is a value too (other=0 must replace the default in the page)
+      if (v != null && v !== '' && !isNaN(+v)) $('tc-' + k).value = v;
+    });
     if (/^\d{4}-\d{2}-\d{2}$/.test(q.get('bought') || '')) $('tc-bought').value = q.get('bought');
-    if (/^\d{4}-\d{2}$/.test(q.get('month') || '')) $('tc-month').value = q.get('month');
+    // The estimate needs the close at the end of the purchase month, so the newest month it takes is the last finished one.
+    var lastMonth = new Date(Date.UTC(+today.slice(0, 4), +today.slice(5, 7) - 1, 0)).toISOString().slice(0, 7);
+    var monthSet = false;   // true once the visitor (or the link) has chosen the purchase month
+    if (/^\d{4}-\d{2}$/.test(q.get('month') || '')) { $('tc-month').value = q.get('month'); monthSet = true; }
     $('tc-bought').max = today;
-    $('tc-month').max = today.slice(0, 7);
+    $('tc-month').max = lastMonth;
+    $('tc-month').addEventListener('input', function () { monthSet = true; });
     if (!$('tc-bought').value) {   // default: bought six months ago
       var d6 = new Date(); d6.setUTCMonth(d6.getUTCMonth() - 6); $('tc-bought').value = d6.toISOString().slice(0, 10);
     }
@@ -188,7 +195,7 @@
       }
       var inv = num($('tc-invested')), m = $('tc-month').value;
       $('tc-est').textContent = '';
-      if (isNaN(inv) || inv <= 0 || inv > 1e9 || !/^\d{4}-\d{2}$/.test(m) || m > today.slice(0, 7)) return null;
+      if (isNaN(inv) || inv <= 0 || inv > 1e9 || !/^\d{4}-\d{2}$/.test(m) || m > lastMonth) return null;
       loadPrices();
       var p0 = monthPrice(prices, m);
       if (!p0) { $('tc-est').textContent = S.est_err; return 'wait'; }
@@ -289,7 +296,16 @@
     }
     var timer;
     function later() { clearTimeout(timer); timer = setTimeout(run, 250); }
-    modeBtns.forEach(function (b) { b.addEventListener('click', function () { mode = b.getAttribute('data-mode'); run(); }); });
+    modeBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var next = b.getAttribute('data-mode');
+        if (next === 'est' && mode === 'exact' && !monthSet) {   // carry the purchase month over from the exact date
+          var bm = ($('tc-bought').value || '').slice(0, 7);
+          if (/^\d{4}-\d{2}$/.test(bm)) $('tc-month').value = bm > lastMonth ? lastMonth : (bm < $('tc-month').min ? $('tc-month').min : bm);
+        }
+        mode = next; run();
+      });
+    });
     form.addEventListener('input', later);
     form.addEventListener('change', function () {
       run();
