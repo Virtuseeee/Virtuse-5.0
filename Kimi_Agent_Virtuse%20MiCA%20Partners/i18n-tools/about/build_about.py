@@ -171,6 +171,9 @@ def build(L):
                                                               ('bots.html', 'x_bots', 'pink')])
     cfo_href = page_url('cfo.html') + '?utm_source=about&utm_medium=cta&utm_campaign=cfo#waitForm'
     cfo = '<div class="ab-cfo acc-orange glow"><p><b>%s</b><br>%s</p><a href="%s" data-cta="cfo">%s</a></div>' % (t['cfo_label'], t['cfo_text'], cfo_href, t['cfo_link'])
+    # Creators page link (Virtuse Creators phase 1): EN and SK only, the pages that exist
+    if t.get('x_creators') and L in ('en', 'sk'):
+        cfo += '\n    <p class="ab-licence"><a href="%s">%s</a></p>' % (loc('creators.html'), t['x_creators'])
 
     out += '''<body class="page-buy page-fee page-pf page-about no-split">
 {nav}
