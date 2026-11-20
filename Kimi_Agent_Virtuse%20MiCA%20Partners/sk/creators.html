@@ -80,11 +80,16 @@
 .cr-code textarea { flex: 1; min-width: 0; height: 74px; resize: vertical; background: #141414; color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font: 12px/1.5 var(--mono); white-space: pre-wrap; word-break: break-all; }
 .cr-code button { flex: none; }
 .cr-note { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+.cr-shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.cr-shot { background: var(--card); border-radius: 16px; padding: 14px; min-width: 0; display: grid; gap: 8px; font-size: 14px; }
+.cr-shot img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.cr-shot span { color: var(--muted); }
+.cr-shot a { color: var(--text); }
 .cr-intro { font-size: 17px; color: var(--muted); max-width: 760px; margin: 0 0 24px; line-height: 1.6; }
 .cr-rules { margin: 0; padding: 0 0 0 20px; display: grid; gap: 10px; font-size: 17px; line-height: 1.6; max-width: 760px; }
 .cr-apply { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 16px; padding: 22px 24px; }
 .cr-apply p { margin: 0; color: var(--muted); font-size: 15px; min-width: 0; }
-@media (max-width: 900px) { .cr-cards { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 900px) { .cr-cards { grid-template-columns: minmax(0, 1fr); } .cr-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) {
   .cr-item { padding: 16px; }
   .cr-code { flex-direction: column; align-items: stretch; }
@@ -163,6 +168,13 @@
     </div>
     </div>
     <p class="cr-note">The tables are in English.</p>
+  </section>
+
+  <!-- 2b. SHARE KIT (images from render_kit.py) -->
+  <section id="share">
+    <div class="sec-head one"><div class="sec-copy"><h2>Share kit</h2></div></div>
+    <p class="cr-intro">Four images from our data, in two sizes. Post them with the source.</p>
+    <div class="cr-shots"><div class="cr-shot"><img src="/creators/kit/btc-vs-gold-sk-1080x1080.jpg" width="1080" height="1080" alt="Bitcoin data" loading="lazy"><b>Bitcoin data</b><span><a href="/creators/kit/btc-vs-gold-sk-1080x1080.jpg" download>Square, 1080 × 1080</a> · <a href="/creators/kit/btc-vs-gold-sk-1200x675.jpg" download>Wide, 1200 × 675</a></span></div><div class="cr-shot"><img src="/creators/kit/asset-returns-sk-1080x1080.jpg" width="1080" height="1080" alt="Asset class returns" loading="lazy"><b>Asset class returns</b><span><a href="/creators/kit/asset-returns-sk-1080x1080.jpg" download>Square, 1080 × 1080</a> · <a href="/creators/kit/asset-returns-sk-1200x675.jpg" download>Wide, 1200 × 675</a></span></div><div class="cr-shot"><img src="/creators/kit/fee-index-sk-1080x1080.jpg" width="1080" height="1080" alt="Bitcoin Fee Index" loading="lazy"><b>Bitcoin Fee Index</b><span><a href="/creators/kit/fee-index-sk-1080x1080.jpg" download>Square, 1080 × 1080</a> · <a href="/creators/kit/fee-index-sk-1200x675.jpg" download>Wide, 1200 × 675</a></span></div><div class="cr-shot"><img src="/creators/kit/monthly-returns-sk-1080x1080.jpg" width="1080" height="1080" alt="Monthly returns" loading="lazy"><b>Monthly returns</b><span><a href="/creators/kit/monthly-returns-sk-1080x1080.jpg" download>Square, 1080 × 1080</a> · <a href="/creators/kit/monthly-returns-sk-1200x675.jpg" download>Wide, 1200 × 675</a></span></div></div>
   </section>
 
   <!-- 3. WRITE, GET LISTED, EARN -->

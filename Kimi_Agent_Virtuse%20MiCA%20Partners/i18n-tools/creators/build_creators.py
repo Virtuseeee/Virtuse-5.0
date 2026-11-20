@@ -51,11 +51,16 @@ CSS = '''<style>
 .cr-code textarea { flex: 1; min-width: 0; height: 74px; resize: vertical; background: #141414; color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font: 12px/1.5 var(--mono); white-space: pre-wrap; word-break: break-all; }
 .cr-code button { flex: none; }
 .cr-note { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+.cr-shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.cr-shot { background: var(--card); border-radius: 16px; padding: 14px; min-width: 0; display: grid; gap: 8px; font-size: 14px; }
+.cr-shot img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.cr-shot span { color: var(--muted); }
+.cr-shot a { color: var(--text); }
 .cr-intro { font-size: 17px; color: var(--muted); max-width: 760px; margin: 0 0 24px; line-height: 1.6; }
 .cr-rules { margin: 0; padding: 0 0 0 20px; display: grid; gap: 10px; font-size: 17px; line-height: 1.6; max-width: 760px; }
 .cr-apply { display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line-strong); border-radius: 16px; padding: 22px 24px; }
 .cr-apply p { margin: 0; color: var(--muted); font-size: 15px; min-width: 0; }
-@media (max-width: 900px) { .cr-cards { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 900px) { .cr-cards { grid-template-columns: minmax(0, 1fr); } .cr-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) {
   .cr-item { padding: 16px; }
   .cr-code { flex-direction: column; align-items: stretch; }
@@ -120,6 +125,24 @@ def kit_html(t, ft):
     return '\n    '.join(items)
 
 
+KIT_IMAGES = [('btc-vs-gold', 'kit_gold_eye'), ('asset-returns', 'kit_ar_eye'), ('fee-index', 'kit_fee_eye'), ('monthly-returns', 'kit_mr_eye')]
+
+
+def share_kit(t, L):
+    """Download cards for the 16 images rendered by render_kit.py (the page's own language)."""
+    suf = '' if L == 'en' else '-' + L
+    cards = []
+    for name, key in KIT_IMAGES:
+        sq, wd = '/creators/kit/%s%s-1080x1080.jpg' % (name, suf), '/creators/kit/%s%s-1200x675.jpg' % (name, suf)
+        for f in (sq, wd):
+            if not os.path.exists(os.path.join(SITE, f.lstrip('/'))):
+                sys.exit('%s missing: run render_kit.py first' % f)
+        cards.append('<div class="cr-shot"><img src="{sq}" width="1080" height="1080" alt="{alt}" loading="lazy">'
+                     '<b>{alt}</b><span><a href="{sq}" download>{s}</a> · <a href="{wd}" download>{w}</a></span></div>'.format(
+                         sq=sq, wd=wd, alt=esc(t[key]), s=esc(t['kit_square']), w=esc(t['kit_wide'])))
+    return ''.join(cards)
+
+
 def check_own(out, t, where):
     """No en/em dash in our text, title or meta (shared nav/footer are the homepage's)."""
     own = re.sub(r'<header class="nav">.*?</header>|<footer\b.*?</footer>|<script\b.*?</script>|<style\b.*?</style>', '', out, flags=re.S)
@@ -173,6 +196,13 @@ def build(L):
     <p class="cr-note">{elang}</p>
   </section>
 
+  <!-- 2b. SHARE KIT (images from render_kit.py) -->
+  <section id="share">
+    <div class="sec-head one"><div class="sec-copy"><h2>{kh}</h2></div></div>
+    <p class="cr-intro">{kp}</p>
+    <div class="cr-shots">{shots}</div>
+  </section>
+
   <!-- 3. WRITE, GET LISTED, EARN -->
   <section id="work">
     <div class="cr-cards">{c2}{c3}{c4}</div>
@@ -196,7 +226,7 @@ def build(L):
 </main>
 
 '''.format(nav=nav, h1=t['h1'], lead=t['lead'], s1h=t['s1_h'], s1p=t['s1_p'], intro=ft['embed_intro'], kit=kit_html(t, ft),
-           elang=t['embeds_lang'], c2=card(2), c3=card(3), c4=card(4), rh=t['rules_h'], r1=t['rules_1'], r2=t['rules_2'],
+           elang=t['embeds_lang'], kh=t['kit_h'], kp=t['kit_p'], shots=share_kit(t, L), c2=card(2), c3=card(3), c4=card(4), rh=t['rules_h'], r1=t['rules_1'], r2=t['rules_2'],
            r3=t['rules_3'], note=t['cta_note'], mailto=mailto, cta=t['cta'], brief=F.brief_card(L, t, 'creators_brief'), foot=foot)
     out += JS + C.scripts('/')
     F.check_text(out, L)
