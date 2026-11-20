@@ -14,7 +14,7 @@ const CHROME_V2 = JSON.parse(fs.readFileSync(new URL('../data/chrome-v2.json', i
 // ONE cache-buster for the shared site-v2 files on every page; same numbers as SITE_CSS_V / SITE_JS_V in
 // Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/speed.py (design-align Batch A Part 1, 2026-10-26).
 export const SITE_CSS_V = '24';
-export const SITE_JS_V = '19';
+export const SITE_JS_V = '20';
 export const SITE_V2 = SITE_JS_V;
 // Cloudflare Web Analytics (cookieless, no consent, never on staging). Same string as
 // SNIPPET in Kimi_Agent_Virtuse%20MiCA%20Partners/i18n-tools/cf_analytics.py; its --check compares the pages.
@@ -222,9 +222,22 @@ export function renderPage({
   const alt = {};
   for (const h of hreflang) if (h.lang !== 'x-default') alt[h.lang] = h.path ? '/' + h.path.replace(/^\/+/, '') : h.href.replace(origin, '');
   const fill = (frag) => frag.replace(/\{\{ALT:([a-z]{2})\}\}/g, (_, x) => alt[x] || (x === 'en' ? '/' : `/${x}/`));
-  const nav = fill(v2.nav);
-  const foot = fill(v2.foot);
-  const briefHtml = (noindex || noCapture) ? '' : v2.brief;
+  // Slovak tool pages (DCA calculator): Brief links go to the Slovak Brief, UTM kept
+  const skBrief = (frag) => (tool && lang === 'sk' ? frag.replace(/href="\/news\.html/g, 'href="/sk/news.html') : frag);
+  const nav = skBrief(fill(v2.nav));
+  const foot = skBrief(fill(v2.foot));
+  // Tool pages: the static Brief card (shown before site-v2.js loads the newest issue) names no issue and no date,
+  // so it cannot go stale between issues. The card links the Brief page; the script swaps in the newest issue.
+  const neutralBrief = (frag) => {
+    if (!tool) return frag;
+    const cover = ((v2.i18n || '').match(/"coverImage"\s*:\s*"([^"]*)"/) || [, 'Cover image: '])[1];
+    return frag
+      .replace(/(<a class="issue" id="briefIssue"[^>]*?) href="[^"]*"/, `$1 href="${lang === 'sk' ? '/sk/news.html' : '/news.html'}"`)
+      .replace(/<img id="briefImg" src="[^"]*" alt="[^"]*"/, `<img id="briefImg" src="/news/og-card.png" alt="${esc(cover)}Virtuse Brief"`)
+      .replace(/<h3 id="briefTitle">[^<]*<\/h3>/, '<h3 id="briefTitle">Virtuse Brief</h3>')
+      .replace(/<p id="briefExcerpt">[^<]*<\/p>/, '<p id="briefExcerpt"></p>');
+  };
+  const briefHtml = (noindex || noCapture) ? '' : skBrief(neutralBrief(v2.brief));
 
   const wc = wordCount(answerHtml.replace(/<[^>]+>/g, ' '));
   const og = ogImage || defaultOgImage(relFile, moduleCta, origin);

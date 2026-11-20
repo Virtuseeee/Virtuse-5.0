@@ -695,13 +695,16 @@ const DCA_RE = /(^|\/)bitcoin-(dca-calculator|dca-rechner|calculateur-dca|kalkul
 const dcaFmt = (lang) => VBDca.fmt(lang, DCA_H.locales[lang], VBDca.DEFAULTS.ccy);
 const dcaDefault = () => VBDca.model(DCA_SNAP, VBDca.DEFAULTS.amount, VBDca.DEFAULTS.start, VBDca.DEFAULTS.ccy);
 function dcaAns(lang) {
-  const F = dcaFmt(lang), m = dcaDefault();
   const low = DCA_H.auto.rows.filter((r) => r.pct != null).sort((a, b) => a.pct - b.pct)[0];
   return [
-    VBDca.fill(DCA_H[lang].ans, { a: F.money(m.amount), inv: F.money(m.invested), val: F.money(m.value), d: F.day(m.asOf) }),
+    VBDca.summary(DCA_SNAP, DCA_H[lang], lang, DCA_H.locales[lang]),
     VBDca.fill(DCA_H[lang].ans2, { p: low.partner })
   ];
 }
+// The fee section and its FAQ describe one plan: the calculator's default amount, monthly, for 12 months.
+const dcaPlan = (lang) => ({ m: dcaFmt(lang).money(VBDca.DEFAULTS.amount), t: dcaFmt(lang).money(VBDca.DEFAULTS.amount * 12) });
+const dcaFeeIntro = (lang) => VBDca.fill(DCA_H[lang].fee_intro, dcaPlan(lang));
+const dcaFaq2 = (lang) => VBDca.fill(DCA_H[lang].faq2a, dcaPlan(lang));
 const DCA_STACK = Object.fromEntries(Object.keys(DCA_H.locales).map((l) =>
   [l, JSON.parse(fs.readFileSync(path.join(SITE, 'i18n-tools/stacking', `${l}.json`), 'utf8'))]));
 // Layout and controls follow Stacking Strategist (panels, sliders, stat row, white partner buttons);
@@ -720,7 +723,7 @@ const DCA_CSS = `
 .dca-panel, .dcap .answer { position: relative; min-width: 0; overflow: hidden; background-color: #141414; background-image: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--pc, #3fb950) 10%, transparent), transparent 62%); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; padding: 20px; }
 .dca-panel::before, .dcap .answer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.22) 50%, rgba(255,255,255,.04)); }
 .dca-res { --pc: #f7931a; display: flex; flex-direction: column; }
-.dca-low { background-color: rgba(63,185,80,.05); border-color: rgba(63,185,80,.3); display: flex; flex-direction: column; }
+.dca-low { background-color: rgba(63,185,80,.05); border-color: rgba(63,185,80,.3); align-self: start; }
 .dcap .answer { --pc: #8b949e; }
 .dcap .answer p { margin: 0; color: var(--text); font-size: 15px; line-height: 1.6; max-width: 900px; }
 .dca-inp { display: flex; flex-direction: column; gap: 24px; }
@@ -756,14 +759,14 @@ const DCA_CSS = `
 .dca-stat small { display: block; font-size: 12px; color: #8b949e; }
 .dca-main b { color: #f7931a; }
 .dca-chart { margin: 20px 0 0; }
-.dca-plot { position: relative; height: 280px; }
+.dca-plot { position: relative; height: 280px; margin-left: var(--g, 64px); }
 .dca-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .dca-grid { stroke: rgba(255,255,255,.06); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .dca-area { fill: #f7931a; opacity: .1; }
 .dca-line-val { fill: none; stroke: #f7931a; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
 .dca-line-inv { fill: none; stroke: #8b949e; stroke-width: 1.5; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
-.dca-y { position: absolute; left: 0; transform: translateY(2px); font-size: 11px; color: #8b949e; }
-.dca-x { position: relative; height: 20px; margin-top: 6px; font-size: 11px; color: #8b949e; }
+.dca-y { position: absolute; right: 100%; padding-right: 8px; transform: translateY(-50%); white-space: nowrap; font-size: 11px; line-height: 1; color: #8b949e; }
+.dca-x { position: relative; height: 20px; margin: 6px 0 0 var(--g, 64px); font-size: 11px; color: #8b949e; }
 .dca-x span { position: absolute; top: 0; transform: translateX(-50%); }
 .dca-x span.dca-x0 { transform: none; }
 .dca-chart figcaption { font-size: 12px; color: #8b949e; margin-top: 6px; text-align: right; }
@@ -779,7 +782,13 @@ const DCA_CSS = `
 .dca-pt { margin: 0 0 4px; font-size: 18px; font-weight: 600; line-height: 1.3; }
 .dca-pt > span:not([data-dca-amt]) { color: #8b949e; font-weight: 400; }
 .dca-pi { margin: 0 0 8px; font-size: 13px; line-height: 1.5; color: #8b949e; max-width: 760px; }
-.dca-prow { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.06); }
+.dca-prow { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 210px; gap: 6px 20px; align-items: start; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.06); }
+.dca-prow .dca-open { width: 100%; text-align: center; }
+.dca-prow b { line-height: 20px; }
+.dca-pf span { line-height: 20px; }
+.dca-pnote { grid-column: 1 / -1; margin: 0; font-size: 12px; line-height: 1.5; color: #8b949e; }
+.dca-msg { margin: 0; padding: 8px 10px; border: 1px solid rgba(247,147,26,.4); background: rgba(247,147,26,.08); border-radius: 8px; font-size: 13px; line-height: 1.4; color: var(--text); }
+.dca-msg[hidden] { display: none; }
 .dca-prow b { display: block; font-size: 15px; font-weight: 600; }
 .dca-prow small { display: block; margin-top: 3px; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dca-pf span { display: block; font-size: 11px; letter-spacing: .3px; text-transform: uppercase; color: #8b949e; }
@@ -797,11 +806,12 @@ const DCA_CSS = `
 .dca-low li::before { content: ""; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; border-radius: 50%; background: #3fb950; }
 .dca-low .dca-sum { margin: 18px 0 0; padding: 12px 14px; background: rgba(0,0,0,.25); border-radius: 10px; font-size: 13px; color: #8b949e; }
 .dca-low .dca-sum b { color: #3fb950; }
-.dca-low .dca-open { width: 100%; margin-top: auto; }
-.dca-low .dca-gap { flex: 1; min-height: 18px; }
+.dca-low .dca-open { width: 100%; margin-top: 16px; }
+.dca-low .dca-pnote { margin-top: 10px; }
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -823,7 +833,7 @@ const DCA_CSS = `
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
-  .dca-prow .dca-open { justify-self: start; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }
@@ -852,18 +862,25 @@ function dcaTool(spec) {
   const feeYear = (r) => r.pct == null
     ? `<b class="dca-na">${esc(T.na)}</b>`
     : `<b data-dca-fee="${r.pct}">${esc(F.money(m.amount * 12 * r.pct))}</b>`;
+  const feeNote = (r) => (r.pct === 0 && r.id === '21bitcoin' ? `<p class="dca-pnote">${esc(T.fee_21_note)}</p>` : '');
   const rows = DCA_H.auto.rows.map((r) => `
       <div class="dca-prow">
         <div><b>${esc(r.partner)}</b><small>${esc(r.feature)} · ${esc(T[r.fee])}</small></div>
         <div class="dca-pf"><span>${esc(T.th_year)}</span>${feeYear(r)}</div>
-        ${open(r)}
+        ${open(r)}${feeNote(r) ? '\n        ' + feeNote(r) : ''}
       </div>`).join('');
   const low = DCA_H.auto.rows.filter((r) => r.pct != null).sort((a, b) => a.pct - b.pct)[0];
   const bots = toRoot(relFile, lang === 'en' ? 'bots.html' : `${lang}/bots.html`);
 
   // old body = fee section followed by the FAQ (always last)
   const cut = spec.bodyHtml.lastIndexOf('<h2>');
-  const feeBody = spec.bodyHtml.slice(0, cut);
+  // the 21bitcoin row of the fee table carries the same day-8 note as the partner rows
+  const tnote = `<small class="dca-tnote">${esc(T.fee_21_note)}</small>`;
+  const feeBody = spec.bodyHtml.slice(0, cut).replace(/(<tr>(?:(?!<\/tr>)[\s\S])*?>21bitcoin<(?:(?!<\/tr>)[\s\S])*?)(<\/td><\/tr>)/, (_, row, end) => {
+    if (!/>0(?:[\s\u00a0\u202f]|&nbsp;)?%</.test(row)) throw new Error(`DCA ${relFile}: 21bitcoin fee row is not 0 %`);
+    return row + tnote + end;
+  });
+  if (!feeBody.includes('dca-tnote')) throw new Error(`DCA ${relFile}: 21bitcoin row not found in the fee table`);
   const faqPart = spec.bodyHtml.slice(cut);
   const faqH2 = faqPart.match(/^<h2>(.*?)<\/h2>/)[1];
   const qas = [...faqPart.matchAll(/<h3>(.*?)<\/h3><p>(.*?)<\/p>/g)];
@@ -873,9 +890,9 @@ function dcaTool(spec) {
   const pre = lang === 'en' ? '' : `${lang}/`;
   const feeIdx = spec.related.find((r) => /fee-index|gebuehrenindex|index-poplatk|indeks-oplat|dijindex|indeks-komis|indice-frais|indice-comisiones/.test(r.href));
   const cards = [
-    { href: spec.moduleCta.href, t: ST.eyebrow, p: `${ST.h1} ${ST.h1_or}` },
+    { href: spec.moduleCta.href, t: ST.eyebrow, p: T.rel_stack_p },
     feeIdx && { href: feeIdx.href, t: ST.rel_fee_t, p: ST.rel_fee_p },
-    { href: toRoot(relFile, `${pre}retirement-calculator.html`), t: ST.rel_ret_t, p: ST.rel_ret_p },
+    { href: toRoot(relFile, `${pre}retirement-calculator.html`), t: ST.rel_ret_t, p: T.rel_ret_p },
     { href: toRoot(relFile, `${pre}buy-bitcoin.html`), t: ST.rel_buy_t, p: ST.rel_buy_p },
     { href: toRoot(relFile, `${pre}bitcoin-data.html`), t: ST.rel_data_t, p: ST.rel_data_p },
     { href: toRoot(relFile, `${pre}concierge.html`), t: ST.rel_pf_t, p: ST.rel_pf_p }
@@ -914,6 +931,7 @@ function dcaTool(spec) {
           <span class="dca-lab" id="dcaCcyL">${esc(T.lbl_ccy)}</span>
           <div class="dca-seg" role="group" aria-labelledby="dcaCcyL"><button type="button" data-ccy="EUR" aria-pressed="true">EUR</button><button type="button" data-ccy="USD" aria-pressed="false">USD</button></div>
         </div>
+        <p class="dca-msg" id="dcaMsg" role="status" hidden></p>
         <p class="dca-fine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span>${esc(T.warn)}</span></p>
       </div>
       <div class="dca-panel dca-res">
@@ -937,7 +955,7 @@ function dcaTool(spec) {
         <p class="dca-n">${esc(low.partner)}</p>
         <ul><li>${esc(low.feature)}</li><li>${esc(T[low.fee])}</li></ul>
         <p class="dca-sum">${esc(T.th_year)}: <b data-dca-fee="${low.pct}">${esc(F.money(m.amount * 12 * low.pct))}</b></p>
-        <div class="dca-gap"></div>
+        ${feeNote(low)}
         ${open(low)}
         ${affNote(relFile, lang)}
       </div>
@@ -975,7 +993,7 @@ function dcaTool(spec) {
     <div class="related">${cards}</div>
   </section>
 `;
-  const keys = ['r_value', 'r_change', 'r_invested', 'r_n', 'r_btc', 'r_avg', 'r_lump', 'leg_value', 'leg_inv', 'chart_aria', 'note', 'share', 'copied', 't_start', 't_value', 't_change', 'ans'];
+  const keys = ['r_value', 'r_change', 'r_invested', 'r_n', 'r_btc', 'r_avg', 'r_lump', 'leg_value', 'leg_inv', 'chart_aria', 'note', 'share', 'copied', 't_start', 't_change', 'ans', 'msg_last', 'msg_min', 'msg_max'];
   // The summary's first sentence carries numbers: the browser rewrites it from live data and keeps the rest.
   const typo = lang === 'fr' ? nbspFr : lang === 'es' ? nbspEs : (x) => x;
   const ans0 = typo(esc(dcaAns(lang)[0].replace(/\s+/g, ' ').trim()));   // fitWords collapses no-break spaces the same way
@@ -984,8 +1002,10 @@ function dcaTool(spec) {
   const cfg = { lang, locale: DCA_H.locales[lang], T: Object.fromEntries(keys.map((k) => [k, T[k]])), ansRest, snap: { asOf: DCA_SNAP.asOf, closes: DCA_SNAP.closes, eurusd: DCA_SNAP.eurusd } };
   const head = `<style>${DCA_CSS}</style>
 <script type="application/json" id="dcaI18n">${JSON.stringify(cfg).replace(/</g, '\\u003c')}</script>
-<script src="/dca-calc.js?v=1" defer></script>`;
-  return { ...spec, tool: true, bodyHtml, extraHead: `${spec.extraHead || ''}\n${head}` };
+<script src="/dca-calc.js?v=2" defer></script>`;
+  if (spec.description.length < 50 || spec.description.length > 230) throw new Error(`DCA ${relFile}: description length ${spec.description.length}`);
+  const chrome = { ...(spec.chrome || {}), ...(T.disclaimer ? { disclaimerTax: T.disclaimer } : {}), ...(T.disclaimer_kyc ? { disclaimerKyc: T.disclaimer_kyc } : {}) };
+  return { ...spec, tool: true, chrome, ...(T.asof ? { asOfLabel: T.asof } : {}), bodyHtml, extraHead: `${spec.extraHead || ''}\n${head}` };
 }
 
 const FI_PENDING = FI_RANKED.filter((r) => r.total == null).map((r) => r.name);
@@ -1436,7 +1456,7 @@ ${faqHtml(faqs, 'FAQ')}
 {
   const relFile = 'bitcoin-dca-calculator/index.html';
   const deFile = 'de/bitcoin-dca-rechner/index.html';
-  const initial = 500;
+  const initial = 0;
   const monthly = 100;
   const months = 12;
   const invested = initial + monthly * months;
@@ -1448,7 +1468,7 @@ ${faqHtml(faqs, 'FAQ')}
   const win = ranked[0];
   const faqs = [
     { q: 'Does this calculator forecast Bitcoin’s price?', a: DCA_H.en.faq1a },
-    { q: `What default plan is shown as of ${feeAsOfEn}?`, a: `€${initial} upfront plus €${monthly}/month for 12 months (${formatEur(invested)} invested), ranked by first-year fees using the Stacking Strategist formula.` },
+    { q: `What default plan is shown as of ${feeAsOfEn}?`, a: dcaFaq2('en') },
     { q: 'Which route has the lowest published fee on that plan?', a: `${win.partner} (${win.method}) with a ${formatPct(win.pct)} variable fee: ${Math.round(win.yearOneFees) === 0 ? '' : 'about '}${formatEur(win.yearOneFees)} in first-year fees in this fee-only example. Lowest total cost incl. spread on the Bitcoin Fee Index: ${FI_TOP.name} (${formatPct(FI_TOP.pct)}) at €100/month.` },
     { q: 'Is this financial advice?', a: 'No. It is for educational purposes only. KYC happens on the partner’s platform. Virtuse never holds your keys.' },
     { q: DCA_H.en.faq5q, a: DCA_H.en.faq5a }
@@ -1467,9 +1487,9 @@ ${faqHtml(faqs, 'FAQ')}
   })));
   pushPage({
     relFile, lang: 'en',
-    chrome: { disclaimerTax: 'Indicative 2026 overview – not investment advice.' },
+    chrome: { disclaimerTax: DCA_H.en.disclaimer },
     title: assertTitle(DCA_H.en.title),
-    description: assertDescription(DCA_H.en.desc),
+    description: DCA_H.en.desc,
     h1: 'Bitcoin DCA calculator',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1511,15 +1531,17 @@ document.addEventListener('DOMContentLoaded', function () {
       var year = per * 12 + initial * r.pct;
       return { partner: r.partner, method: r.method, pct: r.pct, year: year };
     }).sort(function (a, b) { return a.year - b.year; });
+    var note = ${JSON.stringify(DCA_H.en.fee_21_note)};
     tbody.innerHTML = rows.map(function (r, i) {
       return '<tr><td>' + (i+1) + '</td><td>' + r.partner + '</td><td>' + r.method + '</td><td>' +
-        (Math.round(r.pct * 10000) / 100) + '%</td><td>€' + Math.round(r.year) + '</td></tr>';
+        (Math.round(r.pct * 10000) / 100) + '%</td><td>€' + Math.round(r.year) + '</td><td>' +
+        (r.partner === '21bitcoin' && r.pct === 0 ? '<small class="dca-tnote">' + note + '</small>' : '') + '</td></tr>';
     }).join('');
   });
 });
 </script>`,
     bodyHtml: `
-<p>Default example: <strong>€${initial} lump sum + €${monthly}/month × 12</strong>. Enter your own amounts to recalculate with the same fee schedule.</p>
+<p>${esc(dcaFeeIntro('en'))} Enter your own amounts to recalculate with the same fee schedule.</p>
 <form id="dca-form">
   <p><label>Initial amount (EUR) <input id="dca-initial" type="number" min="0" step="50" value="${initial}"></label>
   <label>Monthly amount (EUR) <input id="dca-monthly" type="number" min="0" step="25" value="${monthly}"></label>
@@ -1542,7 +1564,7 @@ ${faqHtml(faqs, 'FAQ')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Prognostiziert dieser Rechner den Bitcoin-Preis?', a: DCA_H.de.faq1a },
-    { q: `Was ist der Standardplan Stand ${feeAsOfDe}?`, a: '500 € Einmalbetrag plus 100 €/Monat über 12 Monate. Sortierung nach Gebührenlast im ersten Jahr.' },
+    { q: `Was ist der Standardplan Stand ${feeAsOfDe}?`, a: dcaFaq2('de') },
     { q: 'Welcher Kaufweg hat in diesem Plan die niedrigste veröffentlichte Gebühr?', a: `${win.partner} (${methodDe(win.method)}) mit ${formatPctDe(win.pct)} variabler Gebühr laut Stacking-Formel. Niedrigste Gesamtkosten inkl. Spread im Bitcoin-Gebührenindex: ${FI_TOP.name} (${formatPctDe(FI_TOP.pct)}) bei 100 €/Monat.` },
     { q: 'Ist das eine Anlageberatung?', a: 'Nein. Nur eine Orientierung zu Bildungszwecken. KYC erfolgt beim Partner. Virtuse verwahrt niemals Ihre Schlüssel.' },
     { q: DCA_H.de.faq5q, a: DCA_H.de.faq5a }
@@ -1552,7 +1574,7 @@ ${faqHtml(faqs, 'FAQ')}
   pushPage({
     relFile, lang: 'de',
     title: assertTitle(DCA_H.de.title),
-    description: assertDescription(DCA_H.de.desc),
+    description: DCA_H.de.desc,
     h1: 'Bitcoin-DCA-Rechner',
     answerHtml: esc(answer),
     breadcrumbs: [
@@ -1579,7 +1601,7 @@ ${faqHtml(faqs, 'FAQ')}
       }
     ],
     bodyHtml: `
-<p>Standardbeispiel: 500 € plus 100 €/Monat × 12. Formel wie im Stacking Strategist.</p>
+<p>${esc(dcaFeeIntro('de'))}</p>
 <h2>Rangfolge bei 100 €/Monat</h2>
 ${tableHtml(['Rang', 'Partner', 'Methode', 'Variable Gebühr', 'Jahreslast'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodDe(r.method)), esc(formatPctDe(r.pct)), esc(formatEurDe(r.annualDrag))
@@ -2567,9 +2589,9 @@ ${faqHtml(faqs, 'Časté otázky')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Predpovedá táto kalkulačka cenu Bitcoinu?', a: DCA_H.sk.faq1a },
-    { q: `Aký štandardný plán kalkulačka používa (stav ${feeAsOfSk})?`, a: 'Jednorazovo 500 € a potom 100 € mesačne počas 12 mesiacov. Poradie podľa poplatkov za prvý rok.' },
+    { q: DCA_H.sk.faq2q, a: dcaFaq2('sk') },
     { q: 'Ktorá cesta má v tomto pláne najnižší zverejnený poplatok?', a: `${win.partner} (${methodSk(win.method)}) s variabilným poplatkom ${formatPctSk(win.pct)} podľa vzorca Stacking Strategist. Najnižšie celkové náklady vrátane spreadu podľa Indexu poplatkov za Bitcoin: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) pri 100 € mesačne.` },
-    { q: 'Ide o investičné poradenstvo?', a: 'Nie. Slúži len na vzdelávacie účely. KYC prebieha u partnera. Virtuse nikdy nedrží vaše kľúče.' },
+    { q: 'Ide o investičné poradenstvo?', a: DCA_H.sk.faq4a },
     { q: DCA_H.sk.faq5q, a: DCA_H.sk.faq5a }
   ];
   const answer = finalizeAnswer(dcaAns('sk'), 'sk', 'fee');
@@ -2577,7 +2599,7 @@ ${faqHtml(faqs, 'Časté otázky')}
   pushPage({
     relFile, lang: 'sk',
     title: assertTitle(DCA_H.sk.title),
-    description: assertDescription(DCA_H.sk.desc),
+    description: DCA_H.sk.desc,
     h1: 'DCA kalkulačka pre Bitcoin',
     answerHtml: esc(answer),
     breadcrumbs: [skHome(relFile), { name: 'DCA kalkulačka', abs: abs(relFile) }],
@@ -2601,7 +2623,7 @@ ${faqHtml(faqs, 'Časté otázky')}
       }
     ],
     bodyHtml: `
-<p>Štandardný príklad: 500 € a potom 100 € mesačne × 12. Rovnaký vzorec ako v module Stacking Strategist.</p>
+<p>${esc(dcaFeeIntro('sk'))}</p>
 <h2>Poradie pri 100 € mesačne</h2>
 ${tableHtml(['Poradie', 'Partner', 'Metóda', 'Variabilný poplatok', 'Ročné poplatky'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodSk(r.method)), esc(formatPctSk(r.pct)), esc(formatEurSk(r.annualDrag))
@@ -2892,7 +2914,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Předpovídá tato kalkulačka cenu Bitcoinu?', a: DCA_H.cs.faq1a },
-    { q: `Jaký je standardní plán, stav ${feeAsOfCs}?`, a: 'Jednorázově 500 € a poté 100 € měsíčně po dobu 12 měsíců. Pořadí podle poplatků za první rok.' },
+    { q: `Jaký je standardní plán, stav ${feeAsOfCs}?`, a: dcaFaq2('cs') },
     { q: 'Která cesta má v tomto plánu nejnižší zveřejněný poplatek?', a: `${win.partner} (${methodCs(win.method)}) s variabilním poplatkem ${formatPctSk(win.pct)} podle vzorce Stacking Strategist. Nejnižší celkové náklady včetně spreadu má podle Indexu poplatků za Bitcoin ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) při 100 € měsíčně.` },
     { q: 'Jde o investiční poradenství?', a: 'Ne. Slouží jen ke vzdělávacím účelům. KYC probíhá u partnera. Virtuse nikdy nedrží vaše klíče.' },
     { q: DCA_H.cs.faq5q, a: DCA_H.cs.faq5a }
@@ -2902,7 +2924,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
   pushPage({
     relFile, lang: 'cs',
     title: assertTitle(DCA_H.cs.title),
-    description: assertDescription(DCA_H.cs.desc),
+    description: DCA_H.cs.desc,
     h1: 'Bitcoin DCA kalkulačka',
     answerHtml: esc(answer),
     breadcrumbs: [csHome(relFile), { name: 'DCA kalkulačka', abs: abs(relFile) }],
@@ -2926,7 +2948,7 @@ ${faqHtml(faqs, 'Časté dotazy')}
       }
     ],
     bodyHtml: `
-<p>Standardní příklad: 500 € a poté 100 € měsíčně × 12. Stejný vzorec jako v živém modulu Stacking Strategist.</p>
+<p>${esc(dcaFeeIntro('cs'))}</p>
 <h2>Pořadí při 100 € měsíčně</h2>
 ${tableHtml(['Pořadí', 'Partner', 'Metoda', 'Variabilní poplatek', 'Roční poplatky'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodCs(r.method)), esc(formatPctSk(r.pct)), esc(formatEurSk(r.annualDrag))
@@ -3218,7 +3240,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Czy ten kalkulator prognozuje cenę Bitcoina?', a: DCA_H.pl.faq1a },
-    { q: `Jaki jest plan standardowy, stan na ${feeAsOfPl}?`, a: 'Jednorazowo 500 €, a potem 100 € miesięcznie przez 12 miesięcy. Kolejność według opłat w pierwszym roku.' },
+    { q: `Jaki jest plan standardowy, stan na ${feeAsOfPl}?`, a: dcaFaq2('pl') },
     { q: 'Który sposób zakupu ma w tym planie najniższą opublikowaną opłatę?', a: `${win.partner} (${methodPl(win.method)}) z opłatą zmienną ${formatPctPl(win.pct)} według wzoru Stacking Strategist. Najniższy całkowity koszt ze spreadem w Indeksie opłat za Bitcoina: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) przy 100 € miesięcznie.` },
     { q: 'Czy to porada inwestycyjna?', a: 'Nie. Służy wyłącznie celom edukacyjnym. KYC odbywa się u partnera. Virtuse nigdy nie przechowuje Państwa kluczy.' },
     { q: DCA_H.pl.faq5q, a: DCA_H.pl.faq5a }
@@ -3228,7 +3250,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
   pushPage({
     relFile, lang: 'pl',
     title: assertTitle(DCA_H.pl.title),
-    description: assertDescription(DCA_H.pl.desc),
+    description: DCA_H.pl.desc,
     h1: 'Kalkulator DCA dla Bitcoina',
     answerHtml: esc(answer),
     breadcrumbs: [plHome(relFile), { name: 'Kalkulator DCA', abs: abs(relFile) }],
@@ -3252,7 +3274,7 @@ ${faqHtml(faqs, 'Najczęstsze pytania')}
       }
     ],
     bodyHtml: `
-<p>Przykład standardowy: 500 €, a potem 100 € miesięcznie × 12. Ten sam wzór co w module Stacking Strategist.</p>
+<p>${esc(dcaFeeIntro('pl'))}</p>
 <h2>Ranking przy 100 € miesięcznie</h2>
 ${tableHtml(['Miejsce', 'Partner', 'Metoda', 'Opłata zmienna', 'Roczne opłaty'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodPl(r.method)), esc(formatPctPl(r.pct)), esc(formatEurSk(r.annualDrag))
@@ -3542,7 +3564,7 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Előre jelzi a kalkulátor a Bitcoin árfolyamát?', a: DCA_H.hu.faq1a },
-    { q: `Mi az alapterv, ${feeAsOfHu} állapot szerint?`, a: 'Egyszer 500 €, majd havi 100 € 12 hónapon át. A sorrend az első év díjain alapul.' },
+    { q: `Mi az alapterv, ${feeAsOfHu} állapot szerint?`, a: dcaFaq2('hu') },
     { q: 'Melyik útnak a legalacsonyabb a közzétett díja ebben a tervben?', a: `${win.partner} (${methodHu(win.method)}), ${formatPctPl(win.pct)} változó díjjal a Stacking Strategist képlete szerint. A legalacsonyabb teljes költség spreaddel együtt a Bitcoin-díjindexben: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) havi 100 € esetén.` },
     { q: 'Befektetési tanácsadásnak számít ez?', a: 'Nem. Kizárólag oktatási célt szolgál. A KYC a partnernél történik. A Virtuse soha nem kezeli az Ön kulcsait.' },
     { q: DCA_H.hu.faq5q, a: DCA_H.hu.faq5a }
@@ -3552,7 +3574,7 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
   pushPage({
     relFile, lang: 'hu',
     title: assertTitle(DCA_H.hu.title),
-    description: assertDescription(DCA_H.hu.desc),
+    description: DCA_H.hu.desc,
     h1: 'Bitcoin DCA-kalkulátor',
     answerHtml: esc(answer),
     breadcrumbs: [huHome(relFile), { name: 'DCA-kalkulátor', abs: abs(relFile) }],
@@ -3576,7 +3598,7 @@ ${faqHtml(faqs, 'Gyakori kérdések')}
       }
     ],
     bodyHtml: `
-<p>Alappélda: 500 €, majd havi 100 € × 12. Ugyanaz a képlet, mint a Stacking Strategist modulban.</p>
+<p>${esc(dcaFeeIntro('hu'))}</p>
 <h2>Sorrend havi 100 € esetén</h2>
 ${tableHtml(['Helyezés', 'Partner', 'Módszer', 'Változó díj', 'Éves díjak'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodHu(r.method)), esc(formatPctPl(r.pct)), esc(formatEurSk(r.annualDrag))
@@ -3866,7 +3888,7 @@ ${faqHtml(faqs, 'Часті запитання')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Чи прогнозує цей калькулятор ціну Біткоїна?', a: DCA_H.uk.faq1a },
-    { q: `Який стандартний план станом на ${feeAsOfUk}?`, a: 'Одноразово 500 €, потім 100 € на місяць протягом 12 місяців. Порядок за комісіями першого року.' },
+    { q: `Який стандартний план станом на ${feeAsOfUk}?`, a: dcaFaq2('uk') },
     { q: 'Який спосіб купівлі в цьому плані має найнижчу опубліковану комісію?', a: `${win.partner} (${methodUk(win.method).replace(/^[А-ЯІЇЄҐ](?=[а-яіїєґ'’])/, (c) => c.toLowerCase())}) зі змінною комісією ${formatPctPl(win.pct)} за формулою Stacking Strategist. Найнижча повна вартість зі спредом в Індексі комісій Біткоїна: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) при 100 € на місяць.` },
     { q: 'Це інвестиційна порада?', a: 'Ні. Лише для освітніх цілей. KYC відбувається в партнера. Virtuse ніколи не зберігає ваші ключі.' },
     { q: DCA_H.uk.faq5q, a: DCA_H.uk.faq5a }
@@ -3876,7 +3898,7 @@ ${faqHtml(faqs, 'Часті запитання')}
   pushPage({
     relFile, lang: 'uk',
     title: assertTitle(DCA_H.uk.title),
-    description: assertDescription(DCA_H.uk.desc),
+    description: DCA_H.uk.desc,
     h1: 'DCA-калькулятор для Біткоїна',
     answerHtml: esc(answer),
     breadcrumbs: [ukHome(relFile), { name: 'DCA-калькулятор', abs: abs(relFile) }],
@@ -3900,7 +3922,7 @@ ${faqHtml(faqs, 'Часті запитання')}
       }
     ],
     bodyHtml: `
-<p>Стандартний приклад: 500 €, потім 100 € на місяць × 12. Та сама формула, що й у модулі Stacking Strategist.</p>
+<p>${esc(dcaFeeIntro('uk'))}</p>
 <h2>Рейтинг при 100 € на місяць</h2>
 ${tableHtml(['Місце', 'Партнер', 'Метод', 'Змінна комісія', 'Річні комісії'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodUk(r.method)), esc(formatPctPl(r.pct)), esc(formatEurSk(r.annualDrag))
@@ -4192,7 +4214,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Прогнозирует ли этот калькулятор цену Биткоина?', a: DCA_H.ru.faq1a },
-    { q: 'Какой типовой план используется?', a: `Единоразово 500 €, затем 100 € в месяц в течение 12 месяцев, по состоянию на ${feeAsOfRu}. Рейтинг составлен по комиссиям первого года.` },
+    { q: 'Какой типовой план используется?', a: dcaFaq2('ru') },
     { q: 'У какого способа в этом плане самая низкая опубликованная комиссия?', a: `${win.partner} (${lcRu(methodRu(win.method))}) с переменной комиссией ${formatPctPl(win.pct)} по формуле Stacking Strategist. Самая низкая полная стоимость со спредом в Индексе комиссий Биткоина: ${FI_TOP.name} (${formatPctPl(FI_TOP.pct)}) при 100 € в месяц.` },
     { q: 'Это инвестиционная консультация?', a: 'Нет. Только для образовательных целей. KYC проходит у партнёра. Virtuse никогда не хранит ваши ключи.' },
     { q: DCA_H.ru.faq5q, a: DCA_H.ru.faq5a }
@@ -4202,7 +4224,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
   pushPage({
     relFile, lang: 'ru',
     title: assertTitle(DCA_H.ru.title),
-    description: assertDescription(DCA_H.ru.desc),
+    description: DCA_H.ru.desc,
     h1: 'DCA-калькулятор для Биткоина',
     answerHtml: esc(answer),
     breadcrumbs: [ruHome(relFile), { name: 'DCA-калькулятор', abs: abs(relFile) }],
@@ -4226,7 +4248,7 @@ ${faqHtml(faqs, 'Частые вопросы')}
       }
     ],
     bodyHtml: `
-<p>Типовой пример: 500 €, затем 100 € в месяц × 12. Та же формула, что и в модуле Stacking Strategist.</p>
+<p>${esc(dcaFeeIntro('ru'))}</p>
 <h2>Рейтинг при 100 € в месяц</h2>
 ${tableHtml(['Место', 'Партнёр', 'Метод', 'Переменная комиссия', 'Годовые комиссии'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodRu(r.method)), esc(formatPctPl(r.pct)), esc(formatEurSk(r.annualDrag))
@@ -4519,7 +4541,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: 'Ce calculateur prévoit-il le cours du Bitcoin ?', a: DCA_H.fr.faq1a },
-    { q: 'Quel plan type est utilisé ?', a: `Un versement initial de 500 €, puis 100 € par mois pendant 12 mois, situation au ${feeAsOfFr}. Le classement repose sur les frais de la première année.` },
+    { q: 'Quel plan type est utilisé ?', a: dcaFaq2('fr') },
     { q: 'Quelle voie a les frais publiés les plus bas pour ce plan ?', a: `${win.partner} (${methodFr(win.method)}), avec des frais variables de ${formatPctSk(win.pct)} selon la formule du Stacking Strategist. Coût total le plus bas, spread compris, dans l'Indice des frais Bitcoin : ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) à 100 € par mois.` },
     { q: 'Est-ce un conseil en investissement ?', a: 'Non. À des fins éducatives uniquement. Le KYC se fait chez le partenaire. Virtuse ne détient jamais vos clés.' },
     { q: DCA_H.fr.faq5q, a: DCA_H.fr.faq5a }
@@ -4529,7 +4551,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
   pushPage({
     relFile, lang: 'fr',
     title: assertTitle(DCA_H.fr.title),
-    description: assertDescription(DCA_H.fr.desc),
+    description: DCA_H.fr.desc,
     h1: 'Calculateur DCA Bitcoin',
     answerHtml: esc(answer),
     breadcrumbs: [frHome(relFile), { name: 'Calculateur DCA', abs: abs(relFile) }],
@@ -4553,7 +4575,7 @@ ${faqHtml(faqs, 'Questions fréquentes')}
       }
     ],
     bodyHtml: `
-<p>Exemple type : 500 €, puis 100 € par mois × 12. Même formule que dans le module Stacking Strategist.</p>
+<p>${esc(dcaFeeIntro('fr'))}</p>
 <h2>Classement à 100 € par mois</h2>
 ${tableHtml(['Rang', 'Partenaire', 'Méthode', 'Frais variables', 'Frais annuels'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodFr(r.method)), esc(formatPctSk(r.pct)), esc(formatEurSk(r.annualDrag))
@@ -4846,7 +4868,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   const win = cheapest(FEE_ROWS, 100);
   const faqs = [
     { q: '¿Predice esta calculadora el precio de Bitcoin?', a: DCA_H.es.faq1a },
-    { q: '¿Qué plan tipo se usa?', a: `Una aportación inicial de 500 € y después 100 € al mes durante 12 meses, con datos del ${feeAsOfEs}. La clasificación se basa en las comisiones del primer año.` },
+    { q: '¿Qué plan tipo se usa?', a: dcaFaq2('es') },
     { q: '¿Qué vía tiene la comisión publicada más baja en este plan?', a: `${win.partner} (${methodEs(win.method)}), con una comisión variable del ${formatPctSk(win.pct)} según la fórmula del Stacking Strategist. Coste total más bajo con spread incluido en el Índice de comisiones de Bitcoin: ${FI_TOP.name} (${formatPctSk(FI_TOP.pct)}) con 100 € al mes.` },
     { q: '¿Es asesoramiento de inversión?', a: 'No. Solo con fines educativos. El KYC se realiza con el partner. Virtuse nunca guarda sus claves.' },
     { q: DCA_H.es.faq5q, a: DCA_H.es.faq5a }
@@ -4856,7 +4878,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
   pushPage({
     relFile, lang: 'es',
     title: assertTitle(DCA_H.es.title),
-    description: assertDescription(DCA_H.es.desc),
+    description: DCA_H.es.desc,
     h1: 'Calculadora DCA de Bitcoin',
     answerHtml: esc(answer),
     breadcrumbs: [esHome(relFile), { name: 'Calculadora DCA', abs: abs(relFile) }],
@@ -4880,7 +4902,7 @@ ${faqHtml(faqs, 'Preguntas frecuentes')}
       }
     ],
     bodyHtml: `
-<p>Ejemplo tipo: 500 € y después 100 € al mes × 12. La misma fórmula que en el módulo Stacking Strategist.</p>
+<p>${esc(dcaFeeIntro('es'))}</p>
 <h2>Clasificación con 100 € al mes</h2>
 ${tableHtml(['Puesto', 'Partner', 'Método', 'Comisión variable', 'Comisiones anuales'], ranked.map((r, i) => [
   esc(String(i + 1)), esc(r.partner), esc(methodEs(r.method)), esc(formatPctSk(r.pct)), esc(formatEurEs(r.annualDrag))

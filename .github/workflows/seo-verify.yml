@@ -40,6 +40,6 @@ jobs:
         with:
           node-version: 20
       - name: Generate and verify SEO HTML
-        run: node seo-build/generate.mjs && node seo-build/verify.mjs
+        run: node seo-build/generate.mjs && node seo-build/verify.mjs && node --test seo-build/dca-calc.test.mjs
       - name: Fail if generate created a dirty tree
         run: git diff --exit-code -- 'Kimi_Agent_Virtuse%20MiCA%20Partners' seo-build/manifest.json
