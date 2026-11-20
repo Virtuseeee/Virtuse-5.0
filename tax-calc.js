@@ -89,11 +89,34 @@
       res.lines.push({ key: 'income', base: gain, rate: cents(t / gain * 100), amount: t });
     }
     res.tax = cents(res.lines.reduce(function (s, l) { return s + l.amount; }, 0));
+    /* Slovakia, health insurance (levy): 16% of the full gain, and the income tax is also on the full gain.
+     * The law points to a different base: the premium payable from this income is an expense (§ 8 ods. 12 of Act 595/2003),
+     * and the assessment base for this income is the tax base (§ 13 ods. 7, § 10b ods. 1 písm. d) of Act 580/2004).
+     * The two depend on each other. No official worked example of how to resolve that was found (review of 20 Nov 2026),
+     * so the arithmetic is NOT changed and the page says so under the Slovak result (note_sk). Do not ship a closed form
+     * such as gain / 1.16 until it is verified. Sources: podpora.financnasprava.sk 081400 (rates 2026) and 293880 (crypto),
+     * static.slov-lex.sk ZZ_2003_595_20260101.pdf, vszp.sk zmeny-od-01-01.2026, Act 580/2004 § 13 and § 10b. */
     if (r.levy) { res.levy = cents(gain * r.levy / 100); res.lines.push({ key: 'levy', base: gain, rate: r.levy, amount: res.levy }); }
     res.total = cents(res.tax + res.levy);
     res.net = cents(proceeds - res.total);
     res.eff = cents(res.total / gain * 100);
     return res;
+  }
+
+  // "2000000", "2 000 000", "2.000.000", "2,000,000", "2.000,50", "2000,50", "250k", "2.5m" -> number (NaN if not one)
+  function parseNum(v) {
+    var s = String(v).replace(/[\s\u00a0\u202f€]/g, ''), mult = 1;
+    var suf = /[km]$/i.exec(s);
+    if (suf) { mult = suf[0].toLowerCase() === 'k' ? 1e3 : 1e6; s = s.slice(0, -1); }
+    var dot = s.lastIndexOf('.'), com = s.lastIndexOf(',');
+    if (dot > -1 && com > -1) {            // both: the later one is the decimal mark
+      s = dot > com ? s.replace(/,/g, '') : s.replace(/\./g, '').replace(',', '.');
+    } else if (com > -1) {                 // only commas: thousands groups, else a decimal comma
+      s = /^\d{1,3}(,\d{3})+$/.test(s) ? s.replace(/,/g, '') : s.replace(',', '.');
+    } else if (/^\d{1,3}(\.\d{3})+$/.test(s)) {
+      s = s.replace(/\./g, '');            // only dots in groups of three: thousands
+    }
+    return /^\d+(\.\d+)?$/.test(s) ? +s * mult : NaN;
   }
 
   /* ---------- page ---------- */
@@ -122,18 +145,15 @@
       var s = new Intl.NumberFormat(loc, { maximumFractionDigits: 2 }).format(n);
       return lang === 'sk' ? s + ' %' : s + '%';
     };
+    var longDate = function (iso) {   // 18 November 2026 / 18 novembra 2026 (Slovak without the ordinal point)
+      return new Intl.DateTimeFormat(loc, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(iso + 'T00:00:00Z')).replace(/^(\d+)\.\s/, '$1 ');
+    };
     var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
     var fill = function (s, v) { return s.replace(/\{(\w+)\}/g, function (_, k) { return v[k] != null ? v[k] : ''; }); };
-    function num(el) {
-      var s = String(el.value).replace(/[\s €]/g, '');
-      if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, '');   // 1.000.000
-      s = s.replace(/,(?=\d{3}(\D|$))/g, '').replace(',', '.');
-      var m = /^(\d+(?:\.\d+)?)([km])?$/i.exec(s);
-      if (!m) return NaN;
-      return +m[1] * (m[2] ? (m[2].toLowerCase() === 'k' ? 1e3 : 1e6) : 1);
-    }
+    function num(el) { return parseNum(el.value); }
     var sel = $('tc-country'), modeBtns = [].slice.call(document.querySelectorAll('#tc-mode [data-mode]'));
-    var mode = 'exact', prices = null, live = null, pricesFailed = false;
+    var mode = 'exact', live = null, fresh = false;
+    var prices = JSON.parse(document.getElementById('tc-prices').textContent);   // build-time copy of data/btc-monthly-returns.json
     var q = new URLSearchParams(location.search);
     if (q.get('country') && R.countries[q.get('country')]) sel.value = q.get('country');
     if (q.get('mode') === 'est') mode = 'est';
@@ -146,12 +166,13 @@
       var d6 = new Date(); d6.setUTCMonth(d6.getUTCMonth() - 6); $('tc-bought').value = d6.toISOString().slice(0, 10);
     }
 
+    // Newer month-end closes and today's price replace the build-time copy when they arrive; without them the copy is used.
     function loadPrices() {
-      if (prices || pricesFailed === 'loading') return;
-      pricesFailed = 'loading';
+      if (fresh) return;
+      fresh = true;
       fetch('/data/btc-monthly-returns.json').then(function (r) { return r.json(); }).then(function (d) {
-        prices = d; pricesFailed = false; run();
-      }).catch(function () { pricesFailed = true; run(); });
+        if (d && d.closes && d.eurusd && d.asOf >= prices.asOf) { prices = d; run(); }
+      }).catch(function () {});
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur').then(function (r) { return r.json(); })
         .then(function (d) { if (d && d.bitcoin && d.bitcoin.eur > 0) { live = d.bitcoin.eur; run(); } }).catch(function () {});
     }
@@ -168,7 +189,7 @@
       var inv = num($('tc-invested')), m = $('tc-month').value;
       $('tc-est').textContent = '';
       if (isNaN(inv) || inv <= 0 || inv > 1e9 || !/^\d{4}-\d{2}$/.test(m) || m > today.slice(0, 7)) return null;
-      if (!prices) { loadPrices(); $('tc-est').textContent = pricesFailed === true ? S.est_err : S.est_loading; return 'wait'; }
+      loadPrices();
       var p0 = monthPrice(prices, m);
       if (!p0) { $('tc-est').textContent = S.est_err; return 'wait'; }
       var keys = Object.keys(prices.closes).sort(), lastK = keys[keys.length - 1];
@@ -176,7 +197,7 @@
       var btc = inv / p0, end = new Date(Date.UTC(+m.slice(0, 4), +m.slice(5, 7), 0)).toISOString().slice(0, 10);
       var mLabel = new Intl.DateTimeFormat(loc, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(m + '-15T00:00:00Z'));
       $('tc-est').textContent = fill(S.est_line, { btc: new Intl.NumberFormat(loc, { maximumFractionDigits: 4 }).format(btc), p0: eur(p0), month: mLabel,
-        val: eur(btc * p1), p1: eur(p1), src: live ? S.est_live : fill(S.est_close, { date: prices.asOf }) });
+        val: eur(btc * p1), p1: eur(p1), src: live ? S.est_live : fill(S.est_close, { date: longDate(prices.asOf) }) });
       return { proceeds: Math.round(btc * p1), cost: inv, bought: end > today ? today : end, today: today, other: o };
     }
 
@@ -197,7 +218,7 @@
       var inp = sale();
       $('tc-err').hidden = inp !== null;
       $('tc-out').classList.toggle('off', !inp || inp === 'wait');
-      if (!inp) { $('tc-err').textContent = S.err; return; }
+      if (!inp) { $('tc-err').textContent = mode === 'est' ? S.err_est : S.err; return; }
       if (inp === 'wait') return;
       var calc = function (id) {   // Spain's bands run on savings income only: counted without other savings income
         var rr = R.countries[id];
@@ -233,8 +254,9 @@
       var notes = S['note_' + country] || [];
       $('tc-notes').innerHTML = notes.map(function (n) { return '<li>' + n + '</li>'; }).join('');
       $('tc-notes-w').hidden = !notes.length;
-      var src = document.querySelector('#tc-table [data-c="' + country + '"] a[target=_blank]');
-      $('tc-src').innerHTML = src ? fill(S.src, { link: '<a href="' + src.href + '" target="_blank" rel="noopener">' + esc(src.textContent) + '</a>' }) : '';
+      var srcs = [].slice.call(document.querySelectorAll('#tc-table [data-c="' + country + '"] a[target=_blank]'));
+      $('tc-src').innerHTML = srcs.length ? fill(S.src, { link: srcs.map(function (a) {
+        return '<a href="' + a.href + '" target="_blank" rel="noopener">' + esc(a.textContent) + '</a>'; }).join(', ') }) : '';
       $('tc-rev').textContent = x.reviewed ? S.rev_yes : S.rev_no;
       $('tc-rev').className = 'tc-rev ' + (x.reviewed ? 'y' : 'n');
 
@@ -258,8 +280,12 @@
       var qs = new URLSearchParams({ country: country });
       if (mode === 'est') { qs.set('mode', 'est'); qs.set('invested', inp.cost); qs.set('month', $('tc-month').value); }
       else { qs.set('proceeds', inp.proceeds); qs.set('cost', inp.cost); qs.set('bought', inp.bought); }
-      if (inp.other) qs.set('other', inp.other);
+      qs.set('other', inp.other);
       history.replaceState(null, '', location.pathname + '?' + qs.toString() + location.hash);
+      [].forEach.call(document.querySelectorAll('a[hreflang]'), function (a) {   // EN / SK switch keeps the inputs
+        var u = new URL(a.href, location.href);
+        if (/\/bitcoin-tax-calculator\.html$/.test(u.pathname)) a.href = u.pathname + '?' + qs.toString();
+      });
     }
     var timer;
     function later() { clearTimeout(timer); timer = setTimeout(run, 250); }
@@ -272,5 +298,5 @@
     run();
   }
 
-  return { compute: compute, deTax: deTax, addYears: addYears, monthPrice: monthPrice, mount: mount };
+  return { compute: compute, deTax: deTax, addYears: addYears, monthPrice: monthPrice, parseNum: parseNum, mount: mount };
 });
