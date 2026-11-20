@@ -1,0 +1,147 @@
+{
+  "about": "Rules for the Bitcoin tax calculator (/bitcoin-tax-calculator.html), one sale by a private person. Every number here comes from seo-build/data/tax-sources.json (official source + quote per country) or from the source named in the country's 'src' field; build_tax_calculator.py checks the rates against tax-sources.json and stops if they differ. Change a rule here and in tax-sources.json together, then rebuild. Kinds: flat = one rate on the gain; bands = progressive rates on the whole tax base (other income + gain, the tax is the difference the gain adds); de = German income tax formula (§ 32a EStG 2026); none = private gains not taxed; box3 = wealth tax, a sale is not taxed. holdYears = years after which a sale is tax-free. reviewed = the rule was in the signed tax review of 4/5 Nov 2026.",
+  "year": 2026,
+  "checked": "2026-11-19",
+  "fx": {
+    "date": "2026-11-19",
+    "source": "ECB reference rates via api.frankfurter.dev",
+    "CZK": 24.427
+  },
+  "countries": {
+    "cz": {
+      "kind": "bands",
+      "currency": "CZK",
+      "bands": [
+        [
+          1762812,
+          15
+        ],
+        [
+          null,
+          23
+        ]
+      ],
+      "base": "total",
+      "holdYears": 3,
+      "holdCap": 40000000,
+      "exemptProceedsMax": 100000,
+      "reviewed": false
+    },
+    "sk": {
+      "kind": "bands",
+      "currency": "EUR",
+      "bands": [
+        [
+          43983.32,
+          19
+        ],
+        [
+          60349.21,
+          25
+        ],
+        [
+          75010.32,
+          30
+        ],
+        [
+          null,
+          35
+        ]
+      ],
+      "base": "total",
+      "levy": 16,
+      "reviewed": true,
+      "src": "Bands: Financial Administration of the Slovak Republic, tax year 2026 (same as the Verdict report, cloudflare-worker blocks.js TAX_EXAMPLE)",
+      "moreSources": [
+        {
+          "url": "https://podpora.financnasprava.sk/293880-Pr%C3%ADjmy-z-predaja-kryproakt%C3%ADv--u-nepodnikate%C4%BEa-",
+          "en": "Financial Administration: income from the sale of crypto-assets (private person)",
+          "sk": "Finančná správa: príjmy z predaja kryptoaktív u nepodnikateľa"
+        }
+      ],
+      "levyNote": "16% of the full gain, tax also on the full gain. § 8 ods. 12 of Act 595/2003 and § 13 ods. 7 of Act 580/2004 imply the premium should reduce the tax base; the circular step is not verified on an official worked example (20 Nov 2026), so it is not applied. See the note in tax-calc.js compute()."
+    },
+    "pl": {
+      "kind": "flat",
+      "rate": 19,
+      "reviewed": false
+    },
+    "at": {
+      "kind": "flat",
+      "rate": 27.5,
+      "oldBefore": "2021-03-01",
+      "oldHoldYears": 1,
+      "reviewed": true
+    },
+    "de": {
+      "kind": "de",
+      "holdYears": 1,
+      "freigrenze": 1000,
+      "reviewed": false,
+      "src": "§ 32a EStG from tax year 2026 (gesetze-im-internet.de, read 2026-11-19); Freigrenze § 23(3) EStG"
+    },
+    "hu": {
+      "kind": "flat",
+      "rate": 15,
+      "reviewed": true
+    },
+    "si": {
+      "kind": "none",
+      "reviewed": true
+    },
+    "hr": {
+      "kind": "flat",
+      "rate": 12,
+      "holdYears": 2,
+      "reviewed": false
+    },
+    "ro": {
+      "kind": "flat",
+      "rate": 16,
+      "reviewed": false
+    },
+    "bg": {
+      "kind": "flat",
+      "rate": 10,
+      "reviewed": false
+    },
+    "nl": {
+      "kind": "box3",
+      "reviewed": false
+    },
+    "fr": {
+      "kind": "flat",
+      "rate": 31.4,
+      "exemptProceedsMax": 305,
+      "reviewed": false
+    },
+    "es": {
+      "kind": "bands",
+      "currency": "EUR",
+      "bands": [
+        [
+          6000,
+          19
+        ],
+        [
+          50000,
+          21
+        ],
+        [
+          200000,
+          23
+        ],
+        [
+          300000,
+          27
+        ],
+        [
+          null,
+          30
+        ]
+      ],
+      "base": "savings",
+      "reviewed": false
+    }
+  }
+}
