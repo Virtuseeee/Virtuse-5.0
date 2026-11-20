@@ -160,7 +160,7 @@ for (const rel of htmlFiles) {
   if (desc.length > 155) fail(`${rel} description ${desc.length} > 155`);
   if (desc.length < 50) fail(`${rel} description too short (${desc.length})`);
 
-  const h1s = html.match(/<h1>[^<]+<\/h1>/g) || [];
+  const h1s = html.match(/<h1>[^<]+(?:<span class="h1-grey">[^<]+<\/span>)?<\/h1>/g) || [];
   if (h1s.length !== 1) fail(`${rel} has ${h1s.length} H1s`);
 
   const answer = attr(html, /<div class="answer"><p>([\s\S]*?)<\/p><\/div>/);

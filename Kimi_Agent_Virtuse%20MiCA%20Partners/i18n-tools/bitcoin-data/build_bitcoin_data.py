@@ -133,6 +133,14 @@ def build(L):
         charts.insert(3, (FVB[L], 'c_fvb'))
     grid = ''.join('<a class="bd-chart bd-acc-%s" href="%s"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
         CHART_ACC[h], h, t('c_data'), t(k), t(k + '_p'), C.ARROW) for h, k in charts)
+    # historical DCA calculator (seo-build page, own folder per language)
+    DCA = {'en': '/bitcoin-dca-calculator/', 'de': '/de/bitcoin-dca-rechner/', 'sk': '/sk/bitcoin-dca-kalkulacka/', 'cs': '/cs/bitcoin-dca-kalkulacka/', 'pl': '/pl/bitcoin-kalkulator-dca/',
+           'hu': '/hu/bitcoin-dca-kalkulator/', 'uk': '/uk/bitcoin-kalkuliator-dca/', 'ru': '/ru/bitcoin-kalkulyator-dca/', 'fr': '/fr/bitcoin-calculateur-dca/', 'es': '/es/bitcoin-calculadora-dca/'}
+    grid += '<a class="bd-chart bd-tool bd-acc-green" href="%s"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
+        DCA[L], t('c_tool'), html.escape(t('c_dca'), quote=False), html.escape(t('c_dca_p'), quote=False), C.ARROW)
+    # Stacking Strategist: the forward-looking plan next to the historical DCA calculator
+    grid += '<a class="bd-chart bd-tool bd-acc-green" href="stacking.html"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
+        t('c_tool'), html.escape(t('c_stack'), quote=False), html.escape(t('c_stack_p'), quote=False), C.ARROW)
     grid += '<a class="bd-chart bd-tool bd-acc-%s" href="retirement-calculator.html"><em>%s</em><b>%s</b><span>%s</span><i aria-hidden="true">%s</i></a>' % (
         CHART_ACC['retirement-calculator.html'], t('c_tool'), t('c_retire'), t('c_retire_p'), C.ARROW)
 
