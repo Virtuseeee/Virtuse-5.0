@@ -24,6 +24,7 @@
 -mkdir public_html/stories/a-billion-out-bitcoin-holds-80k
 -mkdir public_html/stories/a-brief-history-of-bitcoin-crashes-and-bear-markets-2009-2022
 -mkdir public_html/stories/after-this-war-is-over-money-will-never-be-the-same
+-mkdir public_html/stories/are-bitcoin-sellers-exhausted
 -mkdir public_html/stories/are-you-using-these-3-life-hacks
 -mkdir public_html/stories/arm-yourself-with-this-strategy-and-become-a-millionaire
 -mkdir public_html/stories/assets-around-the-world-are-tumbling-except-bitcoin
@@ -684,6 +685,7 @@ put stories/8-investment-strategies-to-embrace-right-now/index.html public_html/
 put stories/a-billion-out-bitcoin-holds-80k/index.html public_html/stories/a-billion-out-bitcoin-holds-80k/index.html
 put stories/a-brief-history-of-bitcoin-crashes-and-bear-markets-2009-2022/index.html public_html/stories/a-brief-history-of-bitcoin-crashes-and-bear-markets-2009-2022/index.html
 put stories/after-this-war-is-over-money-will-never-be-the-same/index.html public_html/stories/after-this-war-is-over-money-will-never-be-the-same/index.html
+put stories/are-bitcoin-sellers-exhausted/index.html public_html/stories/are-bitcoin-sellers-exhausted/index.html
 put stories/are-you-using-these-3-life-hacks/index.html public_html/stories/are-you-using-these-3-life-hacks/index.html
 put stories/arm-yourself-with-this-strategy-and-become-a-millionaire/index.html public_html/stories/arm-yourself-with-this-strategy-and-become-a-millionaire/index.html
 put stories/assets-around-the-world-are-tumbling-except-bitcoin/index.html public_html/stories/assets-around-the-world-are-tumbling-except-bitcoin/index.html
