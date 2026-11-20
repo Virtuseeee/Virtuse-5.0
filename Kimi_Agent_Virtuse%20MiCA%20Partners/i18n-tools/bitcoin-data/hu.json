@@ -90,6 +90,8 @@
  "c_retire_p": "Mennyi gyűlhet össze idővel egy havi Bitcoin-tervvel.",
  "c_dca": "DCA kalkulátor",
  "c_dca_p": "Mit eredményezett volna a havi Bitcoin-vásárlás bármely évtől 2014 óta.",
+ "c_stack": "Stacking Strategist",
+ "c_stack_p": "Tervezze meg a Bitcoin-gyűjtését, és nézze meg, mennyibe kerül.",
  "disclaimer": "Az adatok csak tájékoztató jellegűek és késhetnek. Nem befektetési tanács.",
  "u_s": "mp",
  "u_min": "perc",
