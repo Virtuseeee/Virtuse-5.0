@@ -5093,7 +5093,7 @@
 <!-- ECOSYSTEM:START -->
   <url>
     <loc>https://virtuse.com/ecosystem/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -5178,7 +5178,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ecosystem/conferences/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -5192,6 +5192,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/ecosystem/privacy/</loc>
@@ -5297,7 +5314,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ecosystem/promote/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -5314,7 +5331,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/ecosystem/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -5399,7 +5416,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/ecosystem/conferences/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -5413,6 +5430,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/sk/ecosystem/privacy/</loc>
@@ -5518,7 +5552,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/ecosystem/promote/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -5535,7 +5569,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/cs/ecosystem/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -5620,7 +5654,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/cs/ecosystem/conferences/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -5634,6 +5668,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/cs/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/cs/ecosystem/privacy/</loc>
@@ -5739,7 +5790,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/cs/ecosystem/promote/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -5756,7 +5807,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/ecosystem/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -5841,7 +5892,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/ecosystem/conferences/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -5855,6 +5906,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/de/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/de/ecosystem/privacy/</loc>
@@ -5960,7 +6028,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/ecosystem/promote/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -5977,7 +6045,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/pl/ecosystem/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -6062,7 +6130,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/pl/ecosystem/conferences/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -6076,6 +6144,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/pl/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/pl/ecosystem/privacy/</loc>
@@ -6181,7 +6266,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/pl/ecosystem/promote/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -6198,7 +6283,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/hu/ecosystem/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -6283,7 +6368,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/hu/ecosystem/conferences/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -6297,6 +6382,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/hu/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/hu/ecosystem/privacy/</loc>
@@ -6402,7 +6504,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/hu/ecosystem/promote/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -6419,7 +6521,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/fr/ecosystem/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -6504,7 +6606,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/fr/ecosystem/conferences/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -6518,6 +6620,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/fr/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/fr/ecosystem/privacy/</loc>
@@ -6623,7 +6742,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/fr/ecosystem/promote/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -6640,7 +6759,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/es/ecosystem/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -6725,7 +6844,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/es/ecosystem/conferences/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -6739,6 +6858,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/es/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/es/ecosystem/privacy/</loc>
@@ -6844,7 +6980,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/es/ecosystem/promote/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -6861,7 +6997,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/uk/ecosystem/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -6946,7 +7082,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/uk/ecosystem/conferences/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -6960,6 +7096,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/uk/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/uk/ecosystem/privacy/</loc>
@@ -7065,7 +7218,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/uk/ecosystem/promote/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -7082,7 +7235,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ru/ecosystem/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -7167,7 +7320,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ru/ecosystem/conferences/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/conferences/"/>
@@ -7181,6 +7334,23 @@
     <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/conferences/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/conferences/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/ru/ecosystem/meetups/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://virtuse.com/cs/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://virtuse.com/de/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://virtuse.com/pl/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://virtuse.com/hu/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://virtuse.com/fr/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://virtuse.com/es/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://virtuse.com/uk/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://virtuse.com/ru/ecosystem/meetups/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/ecosystem/meetups/"/>
   </url>
   <url>
     <loc>https://virtuse.com/ru/ecosystem/privacy/</loc>
@@ -7286,7 +7456,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ru/ecosystem/promote/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>

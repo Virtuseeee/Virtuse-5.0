@@ -32,7 +32,21 @@
       "Prague": "Praga",
       "Warsaw": "Varsovia",
       "Helsinki": "Helsinki",
-      "Riga": "Riga"
+      "Riga": "Riga",
+      "Bratislava": "Bratislava",
+      "Banská Bystrica": "Banská Bystrica",
+      "Nitra": "Nitra",
+      "Partizánske": "Partizánske",
+      "Levice": "Levice",
+      "Prešov": "Prešov",
+      "Nová Dedinka": "Nová Dedinka",
+      "Banská Štiavnica": "Banská Štiavnica",
+      "Brno": "Brno",
+      "Plzeň": "Pilsen",
+      "Jihlava": "Jihlava",
+      "Kyjov": "Kyjov",
+      "Budapest": "Budapest",
+      "Miskolc": "Miskolc"
     },
     "indexRelated": [
       "Virtuse Brief: noticias semanales sobre Bitcoin",
@@ -63,7 +77,9 @@
     "listH": "Nuestras recomendaciones.",
     "listSub": "Cada entrada con una valoración de una línea.",
     "faqSub": "Respuestas breves.",
-    "onThisPage": "En esta página"
+    "onThisPage": "En esta página",
+    "tableMeetup": "Meetup",
+    "tableCountry": "País"
   },
   "promote": {
     "criteriaH": "Criterios",
@@ -268,9 +284,24 @@
       "related": [
         "Proyectos afines: otros proyectos solo Bitcoin",
         "Virtuse Brief: noticias semanales sobre Bitcoin",
-        "Charlas de conferencias en vídeo"
+        "Charlas de conferencias en vídeo",
+        "Meetups locales de Bitcoin en Europa Central"
       ],
       "h1Accent": ": fechas y entradas."
+    },
+    "meetups": {
+      "nav": "Meetups",
+      "navDesc": "Meetups locales de Bitcoin en Europa Central",
+      "h1": "Meetups de Bitcoin en Europa Central",
+      "title": "Meetups de Bitcoin en Europa Central por ciudad | Virtuse",
+      "description": "Meetups periódicos de Bitcoin en Eslovaquia, República Checa, Polonia y Hungría, por ciudad, con enlace a la página de los organizadores.",
+      "intro": "Meetups presenciales y periódicos de Bitcoin en Eslovaquia, República Checa, Polonia y Hungría, por ciudad. Cada enlace lleva a la página de los organizadores, donde se publican la próxima fecha y el lugar. Los meetups los organizan voluntarios y pueden cambiar de lugar o interrumpirse, así que consulte la página antes de ir. Virtuse no organiza estos meetups.",
+      "related": [
+        "Conferencias de Bitcoin en Europa",
+        "Proyectos afines: otros proyectos solo Bitcoin",
+        "Haga que su proyecto aparezca"
+      ],
+      "h1Accent": ": Eslovaquia, República Checa, Polonia, Hungría."
     },
     "privacy": {
       "nav": "Privacidad en Bitcoin",

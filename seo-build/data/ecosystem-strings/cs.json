@@ -32,7 +32,21 @@
       "Prague": "Praha",
       "Warsaw": "Varšava",
       "Helsinki": "Helsinky",
-      "Riga": "Riga"
+      "Riga": "Riga",
+      "Bratislava": "Bratislava",
+      "Banská Bystrica": "Banská Bystrica",
+      "Nitra": "Nitra",
+      "Partizánske": "Partizánske",
+      "Levice": "Levice",
+      "Prešov": "Prešov",
+      "Nová Dedinka": "Nová Dedinka",
+      "Banská Štiavnica": "Banská Štiavnica",
+      "Brno": "Brno",
+      "Plzeň": "Plzeň",
+      "Jihlava": "Jihlava",
+      "Kyjov": "Kyjov",
+      "Budapest": "Budapešť",
+      "Miskolc": "Miškovec"
     },
     "indexRelated": [
       "Virtuse Brief: týdenní zprávy o Bitcoinu",
@@ -63,7 +77,9 @@
     "listH": "Naše doporučení.",
     "listSub": "Každá položka s hodnocením na jeden řádek.",
     "faqSub": "Stručné odpovědi.",
-    "onThisPage": "Na této stránce"
+    "onThisPage": "Na této stránce",
+    "tableMeetup": "Meetup",
+    "tableCountry": "Země"
   },
   "promote": {
     "criteriaH": "Kritéria",
@@ -268,9 +284,24 @@
       "related": [
         "Spřátelené projekty zaměřené jen na Bitcoin",
         "Virtuse Brief: týdenní zprávy o Bitcoinu",
-        "Přednášky z konferencí na videu"
+        "Přednášky z konferencí na videu",
+        "Místní bitcoinové meetupy ve střední Evropě"
       ],
       "h1Accent": ": termíny a vstupenky."
+    },
+    "meetups": {
+      "nav": "Meetupy",
+      "navDesc": "Místní bitcoinové meetupy ve střední Evropě",
+      "h1": "Bitcoinové meetupy ve střední Evropě",
+      "title": "Bitcoinové meetupy ve střední Evropě podle měst | Virtuse",
+      "description": "Pravidelné bitcoinové meetupy na Slovensku, v Česku, Polsku a Maďarsku podle měst, s odkazem na stránku organizátorů. Ručně vybrané a ověřené.",
+      "intro": "Pravidelné osobní bitcoinové meetupy na Slovensku, v Česku, Polsku a Maďarsku podle měst. Každý odkaz vede na stránku organizátorů, kde najdete nejbližší termín a místo. Meetupy pořádají dobrovolníci a mohou se přesunout nebo přerušit, proto si stránku před cestou ověřte. Virtuse tyto meetupy nepořádá.",
+      "related": [
+        "Bitcoinové konference v Evropě",
+        "Spřátelené projekty zaměřené jen na Bitcoin",
+        "Nechte zařadit svůj projekt"
+      ],
+      "h1Accent": ": Slovensko, Česko, Polsko, Maďarsko."
     },
     "privacy": {
       "nav": "Soukromí v Bitcoinu",

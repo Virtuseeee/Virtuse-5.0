@@ -17,7 +17,7 @@
 
 import STRINGS from './strings.js';
 
-export const ECO_CATEGORIES = ['what-is-bitcoin', 'books', 'podcasts', 'videos', 'conferences', 'privacy',
+export const ECO_CATEGORIES = ['what-is-bitcoin', 'books', 'podcasts', 'videos', 'conferences', 'meetups', 'privacy',
   'spend-bitcoin', 'store-tools', 'dev-tools', 'jobs', 'peers'];
 export const ECO_COUNTRIES = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT',
   'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'CH'];

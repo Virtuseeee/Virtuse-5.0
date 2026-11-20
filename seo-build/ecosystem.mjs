@@ -123,6 +123,8 @@ for (const l of LANGS) {
   if (h1s.size !== PAGES.length) throw new Error(`${l}: duplicate H1`);
 }
 
+// A page checked later than the rest carries its own 'reviewed' date.
+const rev = (p) => p.reviewed || DATA.reviewed;
 const upcoming = (entries) => entries.filter((e) => !e.end || e.end >= TODAY);
 const liveEntries = (p) => (p.slug === 'conferences' ? upcoming(p.entries) : p.entries || []);
 const indexable = (p) => !p.entries || p.index || liveEntries(p).length >= DATA.minEntries;
@@ -140,6 +142,7 @@ const ICON = {
   code: '<path d="m8 8-4 4 4 4m8-8 4 4-4 4M14 5l-4 14"/>',
   briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
   users: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14.2A5 5 0 0 1 21 19"/>',
+  pin: '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
   megaphone: '<path d="M3 10v4h4l7 4V6L7 10zM18 9a4 4 0 0 1 0 6"/>'
 };
 const icon = (name) => `<svg class="eco-ico" viewBox="0 0 24 24" aria-hidden="true">${ICON[name]}</svg>`;
@@ -231,6 +234,21 @@ function conferencePanel(entries, p, l) {
     </div>`;
 }
 
+// Meetups: the same panel; recurring events have no date, so the columns are city and country.
+function meetupPanel(entries, p, l) {
+  const ui = S[l].ui;
+  const rows = entries.map((e) => { const v = verdict(e, p, l); return `<div class="eco-trow">
+        <span><b>${esc(e.name)}</b><small${v.en ? ' lang="en"' : ''}>${esc(v.text)}</small></span>
+        <span class="eco-c">${e.city ? esc(city(e.city, l)) : ''}</span>
+        <span class="eco-c">${esc(countryName(e.country, l))}</span>
+        <a class="hp-get" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(ui.websiteButton)} ${ARROW}</a>
+      </div>`; }).join('\n      ');
+  return `<div class="hpanel ${p.accent} eco-panel">
+      <div class="eco-trow head"><span>${esc(ui.tableMeetup)}</span><span>${esc(ui.tableCity)}</span><span>${esc(ui.tableCountry)}</span><span></span></div>
+      ${rows}
+    </div>`;
+}
+
 function pickSection(l) {
   const ui = S[l].ui;
   return `<section id="pick">
@@ -250,7 +268,7 @@ function relatedSection(p, l) {
 }
 
 function footNotes(p, l) {
-  const ui = S[l].ui, d = DATA.reviewed;
+  const ui = S[l].ui, d = rev(p);
   const priv = p.slug === 'privacy' ? ' ' + fill(ui.privacyFootNote, l) : '';
   const enNote = l !== 'en' && p.entries ? ` ${esc(ui.entriesNote)}` : '';
   return `<p class="pf-disc eco-notes">${esc(ui.notAdvice)}${enNote}${priv} ${esc(ui.reviewed)} <time datetime="${d}">${esc(fmtDate(d, l))}</time>.</p>`;
@@ -278,7 +296,7 @@ function listingBody(p, l) {
   const t = txt(l, p), ui = S[l].ui, entries = liveEntries(p);
   const parts = [];
   const notes = [t.legalNote, t.partnerNote].filter(Boolean).map((n) => `<p class="eco-note">${locHtml(n, l)}</p>`).join('\n    ');
-  const list = p.slug === 'conferences' ? conferencePanel(entries, p, l) : entryGrid(entries, p, l);
+  const list = p.slug === 'conferences' ? conferencePanel(entries, p, l) : p.slug === 'meetups' ? meetupPanel(entries, p, l) : entryGrid(entries, p, l);
   if (p.slug === 'what-is-bitcoin') parts.push(whatIsArticle(p, l));
   parts.push(`<section id="list">
     ${head2(t.listHeading || ui.listH, ui.listSub)}
@@ -515,7 +533,7 @@ function schemas(p, l) {
     : liveEntries(p).map((e) => ({ name: e.name, url: e.url }));
   graph.push({
     '@type': 'CollectionPage', '@id': absOf(p, l), url: absOf(p, l), name: t.h1, description: t.description, inLanguage: l,
-    dateModified: DATA.reviewed, publisher: { '@id': `${ORIGIN}/#org` },
+    dateModified: rev(p), publisher: { '@id': `${ORIGIN}/#org` },
     mainEntity: { '@type': 'ItemList', numberOfItems: items.length, itemListElement: items.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.name, url: x.url })) }
   });
   if (p.slug === 'what-is-bitcoin') {
@@ -567,7 +585,7 @@ function stats(p, l) {
     const n = LISTING.reduce((s, x) => s + liveEntries(x).length, 0);
     return ui.stats.replace('{c}', SUBPAGES.length).replace('{n}', n);
   }
-  if (p.entries) return ui.subStats.replace('{n}', liveEntries(p).length).replace('{date}', fmtDate(DATA.reviewed, l));
+  if (p.entries) return ui.subStats.replace('{n}', liveEntries(p).length).replace('{date}', fmtDate(rev(p), l));
   return '';
 }
 
@@ -662,7 +680,7 @@ let xml = fs.readFileSync(smPath, 'utf8');
 const alts = (p) => [...LANGS.map((x) => `    <xhtml:link rel="alternate" hreflang="${x}" href="${absOf(p, x)}"/>`), `    <xhtml:link rel="alternate" hreflang="x-default" href="${absOf(p, 'en')}"/>`].join('\n');
 const urls = written.filter((w) => w.indexable).map((w) => `  <url>
     <loc>${absOf(w.p, w.l)}</loc>
-    <lastmod>${DATA.reviewed}</lastmod>
+    <lastmod>${rev(w.p)}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${w.p === INDEX ? '0.6' : '0.5'}</priority>
 ${alts(w.p)}
