@@ -1468,5 +1468,15 @@
   "en": " min",
   "kind": "script",
   "context": "script message (build_lang.py)"
+ },
+ {
+  "en": "Local Bitcoin meetups in Central Europe",
+  "kind": "text",
+  "context": "Ecosystem menu"
+ },
+ {
+  "en": "Meetups",
+  "kind": "text",
+  "context": "Ecosystem menu"
  }
 ]

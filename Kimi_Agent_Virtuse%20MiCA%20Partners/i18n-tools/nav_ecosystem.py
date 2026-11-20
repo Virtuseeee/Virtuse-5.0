@@ -18,7 +18,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)
 REPO = os.path.dirname(SITE)
 LANGS = ['en', 'sk', 'cs', 'de', 'fr', 'es', 'pl', 'hu', 'uk', 'ru']
-SLUGS = ['', 'what-is-bitcoin', 'books', 'podcasts', 'videos', 'conferences', 'privacy', 'spend-bitcoin',
+SLUGS = ['', 'what-is-bitcoin', 'books', 'podcasts', 'videos', 'conferences', 'meetups', 'privacy', 'spend-bitcoin',
          'store-tools', 'dev-tools', 'jobs', 'peers', 'promote']
 S = {L: json.load(open(os.path.join(REPO, 'seo-build/data/ecosystem-strings/%s.json' % L), encoding='utf-8')) for L in LANGS}
 
@@ -62,6 +62,23 @@ def column(L):
     return '<div class="footer-col"><h3>%s</h3>%s</div>' % (esc(ui['navLabel']), links)
 
 
+# Pages added to the directory after the menu was first rolled out: (slug, the slug it follows).
+ADDED = [('meetups', 'conferences')]
+
+
+def upgrade(html, L):
+    """Add later pages to a menu / footer column that is already in the page (idempotent)."""
+    for slug, after in ADDED:
+        if 'href="%s"' % href(L, slug) in html:
+            continue
+        item = '<a href="%s"><span class="nd-t">%s</span><span class="nd-d">%s</span></a>' % (
+            href(L, slug), esc(page(L, slug)['nav']), esc(page(L, slug)['navDesc']))
+        link = '<a href="%s">%s</a>' % (href(L, slug), esc(page(L, slug)['nav']))
+        html = re.sub(r'(<a href="%s"><span class="nd-t">.*?</span></a>)' % re.escape(href(L, after)), lambda m: m.group(1) + item, html, count=1)
+        html = re.sub(r'(<a href="%s">(?!<span)[^<]*</a>)(?=<a href="[^"]*/ecosystem/)' % re.escape(href(L, after)), lambda m: m.group(1) + link, html, count=1)
+    return html
+
+
 def patch(html, L):
     """Insert the group before the About link and the column before the last footer column (Legal)."""
     if '<a class="nav-top"' in html and 'id="ng-eco"' not in html:
@@ -73,7 +90,7 @@ def patch(html, L):
         if j < 0:
             raise SystemExit('footer anchor not found')
         html = html[:j] + column(L) + html[j:]
-    return html
+    return upgrade(html, L)
 
 
 def strings(folder):
@@ -123,12 +140,15 @@ def built():
             if not f.endswith('.html'):
                 continue
             p = os.path.join(root, f)
-            h = open(p, encoding='utf-8').read()
-            if 'id="ng-tools"' not in h or 'id="ng-eco"' in h:
+            h = open(p, encoding='utf-8', newline='').read()
+            if 'id="ng-eco"' not in h and '/ecosystem/">' not in h:
                 continue
             L = re.search(r'<html lang="([a-z]{2})', h).group(1)
-            open(p, 'w', encoding='utf-8').write(patch(h, L))
-            n += 1
+            # verdict.html and sk/verdict.html carry the footer column but no menu group: links only.
+            new = patch(h, L) if 'id="ng-eco"' in h else upgrade(h, L)
+            if new != h:
+                open(p, 'w', encoding='utf-8', newline='').write(new)
+                n += 1
     print('built pages patched: %d' % n)
 
 
