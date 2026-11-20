@@ -1086,6 +1086,9 @@ ErrorDocument 410 /404.html
   # article.html?slug=… is a 301 (the story, or the language hub). If a slug is ever
   # served as 200 because a rewrite was skipped, keep that copy out of search results.
   Header always set X-Robots-Tag "noindex, follow" "expr=%{REQUEST_URI} == '/article.html' && %{QUERY_STRING} =~ /(?:^|&)slug=/"
+  # Our copy of the Bitcoin whitepaper (2026-11-19) is the same file as bitcoin.org/bitcoin.pdf;
+  # keep it out of search results so it does not compete with the original.
+  Header always set X-Robots-Tag "noindex" "expr=%{REQUEST_URI} == '/bitcoin-whitepaper.pdf'"
 </IfModule>
 
 # MIME types the host maps wrongly (2026-10-28). Webglobe's server-level mapping sends
