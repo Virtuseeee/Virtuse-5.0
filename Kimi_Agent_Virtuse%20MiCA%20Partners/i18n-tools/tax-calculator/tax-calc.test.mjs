@@ -73,3 +73,19 @@ test('rates agree with tax-sources.json', () => {
     for (const x of rates) assert.ok(t.includes(String(x).replace('.', '.')) , `${c.id}: ${x} not in "${t}"`);
   }
 });
+test('amounts: thousands and decimal marks, k and m', () => {
+  const ok = { '2000000': 2e6, '2 000 000': 2e6, '2.000.000': 2e6, '2,000,000': 2e6, '1.000.000': 1e6, '2.000,50': 2000.5, '2000,50': 2000.5,
+               '2,000.50': 2000.5, '250k': 250000, '2.5m': 2.5e6, '0': 0 };
+  for (const [s, n] of Object.entries(ok)) assert.equal(T.parseNum(s), n, s);
+  for (const s of ['', 'abc', '1,2,3', '-5']) assert.ok(Number.isNaN(T.parseNum(s)), s);
+});
+test('estimate: month price is the mean of the two month-end closes in euros', () => {
+  const d = { closes: { '2021-12': 110, '2022-01': 88 }, eurusd: { '2021-12': 1.1, '2022-01': 1.1 } };
+  assert.equal(T.monthPrice(d, '2022-01'), 90);
+  assert.equal(T.monthPrice(d, '2021-12'), 0);   // no close before it
+  assert.equal(T.monthPrice(d, '2030-01'), 0);
+});
+test('Germany: a long-held estimate is an exemption with the full proceeds kept, not an empty result', () => {
+  const x = run('de', { proceeds: 2918859, cost: 2000000, bought: '2024-01-31' });
+  assert.deepEqual([x.status, x.reason, x.total, x.net], ['exempt', 'hold', 0, 2918859]);
+});

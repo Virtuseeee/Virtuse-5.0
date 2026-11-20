@@ -20,11 +20,11 @@ import related_hubs
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 REPO = os.path.dirname(SITE)
 LANGS = ['en', 'sk']
-JS_V = '2'
+JS_V = '3'
 REVIEWED = False   # True once the tax adviser has signed off all 13 countries: index + sitemap
 DEFAULT = {'en': 'de', 'sk': 'sk'}
 ORDER = ['sk', 'cz', 'pl', 'hu', 'at', 'de', 'si', 'hr', 'ro', 'bg', 'nl', 'fr', 'es']
-FIELDS = {'proceeds': 20000, 'cost': 10000, 'other': 30000, 'invested': 10000}
+FIELDS = {'proceeds': 20000, 'cost': 10000, 'other': 0, 'invested': 10000}
 
 CSS = '''<style>
 /* BITCOIN TAX CALCULATOR: one Services-style panel (.hpanel), logic in /tax-calc.js */
@@ -47,15 +47,16 @@ CSS = '''<style>
 .tc-f .seg { margin: 0; align-self: flex-start; max-width: 100%; height: 48px; align-items: center; }
 .tc-est { grid-column: 1 / -1; margin: -4px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); min-height: 21px; }
 .tc-err { grid-column: 1 / -1; margin: 0; font-size: 13px; color: #f0883e; }
-.tc-out { margin-top: 28px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.06); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px 40px; align-items: end; transition: opacity .15s; }
+.tc-out { margin-top: 28px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.06); display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; transition: opacity .15s; }
+.hpanel.tc.rv, .hpanel.tc .rv { opacity: 1 !important; transform: none !important; }   /* the result never waits for the scroll reveal */
 .tc-out.off, .tc-out.off ~ * { opacity: .35; }
 .tc-big p { margin: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
-.tc-big strong { display: block; margin-top: 8px; font-size: clamp(40px, 6vw, 60px); font-weight: 600; line-height: 1; letter-spacing: -.02em; color: var(--c, var(--orange)); font-variant-numeric: tabular-nums; }
+.tc-big strong { display: block; margin-top: 8px; font-size: clamp(32px, 9vw, 60px); white-space: nowrap; font-weight: 600; line-height: 1; letter-spacing: -.02em; color: var(--c, var(--orange)); font-variant-numeric: tabular-nums; }
 .tc-big span { display: block; margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--muted); }
 .tc-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .tc-stats div { border-left: 1px solid rgba(255,255,255,.08); padding-left: 14px; min-width: 0; }
 .tc-stats p { margin: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
-.tc-stats strong { display: block; margin-top: 6px; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.tc-stats strong { display: block; margin-top: 6px; font-size: clamp(15px, 3vw, 20px); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .tc-more { margin-top: 24px; display: grid; gap: 8px; }
 .tc-more details { border: 1px solid rgba(255,255,255,.06); border-radius: 12px; background: rgba(255,255,255,.02); }
 .tc-more summary { cursor: pointer; list-style: none; padding: 14px 16px; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
@@ -69,7 +70,7 @@ CSS = '''<style>
 .tc-work tr.sum th, .tc-work tr.sum td { color: var(--text); font-weight: 600; border-top-color: var(--line-strong); }
 .tc-notes { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--muted); }
 .tc-notes li + li { margin-top: 6px; }
-.tc-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 16px 0 0; font-size: 13px; color: var(--muted); }
+.tc-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 8px 0 0; font-size: 13px; color: var(--muted); }
 .tc-meta a { color: var(--text); }
 .tc-rev { display: inline-block; border-radius: 999px; padding: 4px 10px; font: 600 11px/1 var(--sans); white-space: nowrap; }
 .tc-rev.y { color: #3fb950; background: rgba(63,185,80,.12); border: 1px solid rgba(63,185,80,.35); }
@@ -108,7 +109,7 @@ CSS = '''<style>
 @media (max-width: 760px) {
   .hpanel.tc { padding: 24px 18px; }
   .tc-f, .tc-f.w3 { grid-column: 1 / -1; }
-  .tc-out { grid-template-columns: minmax(0, 1fr); }
+  #rules, #faq { padding-bottom: 88px; }   /* the last rows scroll clear of the floating chat button */
   .tc-cmp-row { grid-template-columns: minmax(0, 1fr) 84px; padding: 8px; }
   .tc-cmp-bar, .tc-cmp-k, .tc-cmp-row.head span:nth-child(2), .tc-cmp-row.head span:nth-child(4) { display: none; }
   .tc-rule summary { grid-template-columns: minmax(0, 1fr) auto 18px; gap: 10px; padding: 14px 16px; }
@@ -117,7 +118,7 @@ CSS = '''<style>
   .tc-rule dd { margin-bottom: 10px; }
   .tc-f .seg { height: auto; }
 }
-@media (max-width: 420px) { .tc-stats { grid-template-columns: minmax(0, 1fr); } .tc-stats div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-left: 0; padding: 8px 0 0; border-top: 1px solid rgba(255,255,255,.06); } .tc-stats strong { margin: 0; } }
+@media (max-width: 560px) { .tc-stats { grid-template-columns: minmax(0, 1fr); } .tc-stats div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-left: 0; padding: 8px 0 0; border-top: 1px solid rgba(255,255,255,.06); } .tc-stats strong { margin: 0; } }
 </style>
 '''
 
@@ -134,17 +135,24 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
+SK_MONTH = {'gen': ['januára', 'februára', 'marca', 'apríla', 'mája', 'júna', 'júla', 'augusta', 'septembra', 'októbra', 'novembra', 'decembra'],
+            'dat': ['januáru', 'februáru', 'marcu', 'aprílu', 'máju', 'júnu', 'júlu', 'augustu', 'septembru', 'októbru', 'novembru', 'decembru']}
+SK_ORDINAL = re.compile(r'(\d{1,2})\.[ \u00a0](?=(?:jan|feb|mar|apr|máj|jún|júl|aug|sep|okt|nov|dec)\w*)')
+
+
 def nbsp(s, L):
-    """Slovak: no-break space before % and € after a number (site rule, v2common.PCT_SPACE)."""
+    """Slovak: no-break space before % and € after a number (site rule, v2common.PCT_SPACE);
+    dates without the ordinal point ("do 31 marca"), also in texts taken from meta.json."""
     if L != 'sk':
         return s
+    s = SK_ORDINAL.sub(r'\1 ', s)
     return re.sub(r'(\d) (%|€|Kč|CZK|PLN|lei)', '\\1\u00a0\\2', s)
 
 
-def date_text(d, L):
+def date_text(d, L, case='gen'):
     y, m, dd = (int(x) for x in d.split('-'))
     if L == 'sk':
-        return '%d. %d. %d' % (dd, m, y)
+        return '%d %s %d' % (dd, SK_MONTH[case][m - 1], y)   # 19 novembra 2026 / k 19 novembru 2026
     return F.date_str(d, L)
 
 
@@ -171,20 +179,22 @@ def table(L, t, sources, meta, rules):
         c, r = by[cid], rules['countries'][cid]
         if L == 'en':
             f = {k: c['fields'][k]['text'] for k in ('gainTax', 'exemption', 'filing')}
-            if 'healthLevy' in c['fields']:
-                f['gainTax'] += '; ' + c['fields']['healthLevy']['text']
             guide = '/bitcoin-tax/%s/' % meta['slugs']['en'][cid]
         else:
             f = {k: meta['taxSk'][cid][k] for k in ('gainTax', 'exemption', 'filing')}
             guide = '/sk/bitcoin-dane/%s/' % meta['slugs']['sk'][cid]
         assert os.path.isdir(os.path.join(SITE, guide.strip('/'))), guide
+        if r.get('levy'):   # the headline result includes the levy, so the summary names it
+            assert ('%g' % r['levy']) in t['levy_plus']
+            f['gainTax'] += ' ' + t['levy_plus']
         g = c['fields']['gainTax']
+        more = ''.join(', <a href="%s" target="_blank" rel="noopener">%s</a>' % (esc(x['url']), esc(x[L])) for x in r.get('moreSources', []))
         rows.append('''<details class="tc-rule" data-c="{id}"><summary><b>{name}</b><span class="r">{rate}</span><span class="tc-rev {cls}">{rv}</span></summary>
       <dl><dt>{le}</dt><dd>{ex}</dd><dt>{lf}</dt><dd>{fi}</dd>
-      <dt>{ls}</dt><dd><a href="{src}" target="_blank" rel="noopener">{st}</a></dd><dt>{lg}</dt><dd><a href="{guide}">{name}</a></dd></dl></details>'''.format(
-            id=cid, name=esc(names[cid]), guide=guide, le=t['rule_exempt'], lf=t['rule_filing'], ls=t['rule_source'], lg=t['rule_guide'],
+      <dt>{ls}</dt><dd><a href="{src}" target="_blank" rel="noopener">{st}</a>{more}</dd><dt>{lg}</dt><dd><a href="{guide}">{name}</a></dd></dl></details>'''.format(
+            id=cid, more=more, name=esc(names[cid]), guide=guide, le=t['rule_exempt'], lf=t['rule_filing'], ls=t['rule_source'], lg=t['rule_guide'],
             rate=esc(nbsp(f['gainTax'], L)), ex=esc(nbsp(f['exemption'], L)), fi=esc(nbsp(f['filing'], L)), src=esc(g['source']),
-            st=esc(re.split(r':| \(| – ', g['sourceTitle'])[0]), cls='y' if r['reviewed'] else 'n',
+            st=esc(re.split(r':| \(| – ', g['sourceTitle'])[0] + (': ' + t['rule_rates'] if more else '')), cls='y' if r['reviewed'] else 'n',
             rv=t['review_yes'] if r['reviewed'] else t['review_no']))
     return '<div class="tc-rules" id="tc-table">\n    %s\n    </div>' % '\n    '.join(rows)
 
@@ -229,9 +239,9 @@ def calculator(L, t, names):
         </div>
       </div>
       <div class="tc-more">
-        <details id="tc-work-w"><summary>{work_h}</summary><div class="tc-body"><table class="tc-work"><tbody id="tc-work"></tbody></table>
-          <p class="tc-meta"><span class="tc-rev" id="tc-rev"></span><span id="tc-src"></span></p></div></details>
+        <details id="tc-work-w"><summary>{work_h}</summary><div class="tc-body"><table class="tc-work"><tbody id="tc-work"></tbody></table></div></details>
         <details id="tc-notes-w"><summary>{notes_h}</summary><div class="tc-body"><ul class="tc-notes" id="tc-notes"></ul></div></details>
+        <p class="tc-meta"><span class="tc-rev" id="tc-rev"></span><span id="tc-src"></span></p>
       </div>
 
       <div class="tc-cmp-w">
@@ -253,12 +263,37 @@ def calculator(L, t, names):
            cmp_k=t['cmp_k'], cmp_h=t['cmp_h'], cc=t['cmp_col_c'], ct=t['cmp_col_t'], ck=t['cmp_col_k'], fine1=t['fine1'], cmp_note=t['cmp_note'])
 
 
+def brief_static(L, card):
+    """The static Brief teaser = the issue /site-v2.js loads at run time (same file, same rules): title, link,
+    image and alt of ONE issue. v2common.brief() ships an older issue as the fallback."""
+    f = 'issues-sk.json' if L == 'sk' else 'issues.json'
+    iss = [x for x in json.load(open(os.path.join(SITE, 'news', f)))['issues'] if x.get('slug') and x.get('title') and not x.get('essay')][0]
+    sk_done = L == 'sk' and iss.get('lang') != 'en'
+    href = '/sk/stories/%s/' % iss['slug'] if sk_done else iss.get('url') or '/stories/%s/' % iss['slug']
+    assert os.path.isdir(os.path.join(SITE, href.strip('/'))), href
+    title = re.sub(r' \(EN\)$', '', iss['title']) if L == 'sk' else iss['title']
+    note = '' if L == 'en' or sk_done else ' (%s)' % B.BRIEF_EN[L]
+    cover = {'en': 'Cover image: ', 'sk': 'Titulný obrázok: '}[L]
+    card, n1 = re.subn(r'(<a class="issue" id="briefIssue"[^>]*href=")[^"]*', lambda m: m.group(1) + href, card)
+    card, n2 = re.subn(r'(<h3 id="briefTitle">)[^<]*', lambda m: m.group(1) + esc(title + note), card)
+    card, n3 = re.subn(r'(<img id="briefImg" src=")[^"]*(" alt=")[^"]*',
+                       lambda m: m.group(1) + (iss.get('og_image') or iss['image']) + m.group(2) + esc(cover + title), card)
+    assert (n1, n2, n3) == (1, 1, 1), (n1, n2, n3)
+    return card
+
+
+def prices_json():
+    """Build-time copy of the month-end closes for the estimate mode; the page refreshes it from /data/ when it can."""
+    d = json.load(open(os.path.join(SITE, 'data', 'btc-monthly-returns.json')))
+    return json.dumps({'asOf': d['asOf'], 'closes': d['closes'], 'eurusd': {m: d['eurusd'][m] for m in d['closes']}}, separators=(',', ':'))
+
+
 def build(L, rules, sources, meta):
     t = json.load(open(os.path.join(HERE, L + '.json')))
     Bt = json.load(open(os.path.join(TOOLS, 'bots', L + '.json')))
     t.update({x: v for x, v in Bt.items() if x.startswith('b_') or x == 'email'})
     checked = date_text(rules['checked'], L)
-    fill = {'checked': checked, 'fxdate': date_text(rules['fx']['date'], L),
+    fill = {'checked': checked, 'checked_dat': date_text(rules['checked'], L, 'dat'), 'fxdate': date_text(rules['fx']['date'], L),
             'fx': ('%g' % rules['fx']['CZK']).replace('.', ',' if L == 'sk' else '.')}
     for k in ('table_lead', 'disclaimer', 'fine1'):
         t[k] = nbsp(t[k].format(**fill), L)
@@ -288,6 +323,8 @@ def build(L, rules, sources, meta):
                  robots='index, follow' if REVIEWED else 'noindex, follow', og_image=ORIGIN + '/og/bitcoin-tax.jpg')
     out = out.replace('</head>', CSS + '</head>', 1)
     nav, foot = F.chrome(L, lang_url, comma=False)
+    if L == 'sk' and os.path.exists(os.path.join(SITE, 'sk', 'news.html')):   # the Slovak Brief exists: no link to the English one
+        nav, foot = (x.replace('href="/news.html', 'href="/sk/news.html') for x in (nav, foot))
 
     steps = ''.join('''      <div class="how-log-item">
         <div class="how-log-marker"><span class="how-log-dot"></span></div>
@@ -300,7 +337,7 @@ def build(L, rules, sources, meta):
 '''.format(step=t['step'], i=i, tt=t['s%d_t' % i], pp=t['s%d_p' % i]) for i in range(1, 4))
     faq_html = '\n    '.join('<details%s><summary>%s</summary><p>%s</p></details>' % (' open' if i == 0 else '', esc(q), a) for i, (q, a) in enumerate(faq))
     rh = related_hubs.heading(L)
-    rules_js = json.dumps(rules, ensure_ascii=False).replace('</', '<\\/')
+    rules_js = json.dumps(rules, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     i18n = json.dumps(S, ensure_ascii=False).replace('</', '<\\/')
 
     out += '''<body class="page-buy page-tc no-split">
@@ -347,17 +384,23 @@ def build(L, rules, sources, meta):
 
 <script type="application/json" id="tc-rules">{rules}</script>
 <script type="application/json" id="tc-i18n">{i18n}</script>
+<script type="application/json" id="tc-prices">{prices}</script>
 '''.format(nav=nav, eyebrow=t['eyebrow'], h1=t['h1'], h1g=t['h1_grey'], noscript=t['noscript'], calc=calculator(L, t, names),
            th2a=t['table_h_a'], th2b=t['table_h_b'], tlead=t['table_lead'], table=table(L, t, sources, meta, rules),
            hh2a=t['how_h2_a'], hh2b=t['how_h2_b'], steps=steps, qh2a=t['faq_h2_a'], qh2b=t['faq_h2_b'], faq=faq_html,
-           brief=F.brief_card(L, t, 'tax_calculator_brief'), rh2a=rh[0], rh2b=rh[1], rcards=related_hubs.cards_html(L, 'tax-agent'),
-           disclaimer=t['disclaimer'], foot=foot, rules=rules_js, i18n=i18n)
+           brief=brief_static(L, F.brief_card(L, t, 'tax_calculator_brief')), rh2a=rh[0], rh2b=rh[1], rcards=related_hubs.cards_html(L, 'tax-agent'),
+           disclaimer=t['disclaimer'], foot=foot, rules=rules_js, i18n=i18n, prices=prices_json())
     sc = C.scripts('/')
     out += sc.replace('<script src="/site-v2.js', '<script src="/tax-calc.js?v=%s" defer></script>\n<script src="/site-v2.js' % JS_V, 1)
     F.check_text(out, L)
     own = re.sub(r'<header class="nav">.*?</header>|<footer\b.*?</footer>|<script\b.*?</script>', '', out, flags=re.S)
     if re.search(r'—|&mdash;|(?<!\d)–(?!\d)', own) or any('—' in str(v) for v in S.values()):
         sys.exit('%s: long dash in page text' % L)
+    if L == 'sk':   # no dotted ordinals, no "mince", no abbreviations in our own text, the strings, the FAQ JSON-LD and alt texts
+        ld_txt = ' '.join(a for _, a in faq) + t['description'] + ' '.join(re.findall(r'alt="([^"]*)"', own))
+        for bad in re.findall(r'\d{1,2}\.[ \u00a0](?:\d{1,2}\.|[a-zá-ž]{3,})|[Mm]inc[ei]\w*|\bnapr\.|\batď\.|\bresp\.|\btzn\.',
+                              re.sub(r'<[^>]+>', ' ', own) + json.dumps(S, ensure_ascii=False) + ld_txt):
+            sys.exit('sk: %r in the Slovak copy' % bad)
     open(shell, 'w').write(C.finalize(out, shell))
     print('%-40s %6d bytes' % (page, len(out)))
 

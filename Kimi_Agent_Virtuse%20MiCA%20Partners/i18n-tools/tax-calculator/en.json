@@ -1,6 +1,6 @@
 {
   "title": "Bitcoin Tax Calculator: 13 EU Countries 2026 | Virtuse",
-  "description": "Work out the tax on a Bitcoin sale in 13 EU countries: 2026 rates, bands, holding-period exemptions and limits, with the working and the source.",
+  "description": "Estimate the tax on a Bitcoin sale in 13 EU countries: 2026 rates, bands, holding-period exemptions and limits, with the working and the source.",
   "og_title": "Bitcoin Tax Calculator for 13 EU countries",
   "crumb_home": "Home",
   "crumb_page": "Bitcoin tax calculator",
@@ -42,7 +42,7 @@
   "q2": "In which countries is a Bitcoin sale tax-free?",
   "a2": "Slovenia does not tax private gains. Czechia exempts coins held more than 3 years, Croatia more than 2, Germany more than 1. In Austria, coins bought before March 2021 and held over a year are tax-free. The Netherlands taxes your wealth on 1 January, not the sale.",
   "q3": "Is swapping Bitcoin for another crypto taxed?",
-  "a3": "It depends on the country. Germany, Czechia and Spain tax a swap like a sale; Poland, France, Austria and Hungary do not. This calculator handles a sale for euros.",
+  "a3": "It depends on the country. Slovakia, Germany, Czechia and Spain tax a swap like a sale; Poland, France, Austria and Hungary do not. This calculator only handles a sale for euros.",
   "q4": "What does the calculator leave out?",
   "a4": "Your other sales in the year (annual limits are applied to this sale alone), losses from earlier years, church tax and solidarity surcharge in Germany, and each country's own details listed under the result. It is one sale by a private person in tax year 2026.",
   "q5": "Is this tax advice?",
@@ -86,7 +86,8 @@
     ],
     "note_sk": [
       "The 16% health insurance on the gain is settled by your health insurer after the year (8% with a disability). Whether it applies in your case, for example as a pensioner, is a question for a tax adviser.",
-      "A crypto loss cannot be deducted from other income."
+      "A crypto loss cannot be deducted from your salary or carried into the next year. Gains and losses on crypto sales in the same year are netted, but this calculator handles one sale.",
+      "The levy and the tax are both calculated on the full gain. The law treats the health-insurance premium as an expense that should reduce the tax base, but that circular step has not been verified against an official worked example, so the calculator does not apply it yet. Treat the result as an estimate."
     ],
     "note_pl": [
       "Crypto-to-crypto swaps are not taxed.",
@@ -130,7 +131,6 @@
       "2": "2 years",
       "3": "3 years"
     },
-    "est_loading": "Loading prices…",
     "est_err": "No price data for that month.",
     "est_line": "About {btc} BTC at {p0} per Bitcoin ({month}). Worth {val} today at {p1} ({src}).",
     "est_live": "live price",
@@ -146,7 +146,8 @@
     "r_exempt_freigrenze": "gain under €1,000",
     "r_over_holdCap": "above the exemption cap",
     "r_none": "private gains not taxed",
-    "r_box3": "wealth tax instead of a tax on the sale"
+    "r_box3": "wealth tax instead of a tax on the sale",
+    "err_est": "Enter the amount invested in euros and a purchase month that is not in the future."
   },
   "h1_grey": "One sale, 13 EU countries side by side.",
   "mode_label": "What do you know about the purchase?",
@@ -157,7 +158,7 @@
   "c_invested": "Amount invested",
   "c_invested_hint": "Roughly what you paid in euros.",
   "c_month": "Month of purchase",
-  "c_month_hint": "We take the average Bitcoin price of that month and today's price.",
+  "c_month_hint": "We use the mean of Bitcoin's closing price at the end of the previous month and at the end of that month, and today's price.",
   "cmp_k": "For comparison",
   "cmp_h": "The same sale in all 13 countries",
   "cmp_col_c": "Country",
@@ -168,5 +169,7 @@
   "rule_exempt": "Exemption",
   "rule_filing": "How you file",
   "rule_source": "Source",
-  "rule_guide": "Country guide"
+  "rule_guide": "Country guide",
+  "levy_plus": "plus 16% health insurance",
+  "rule_rates": "tax rates 2026"
 }
