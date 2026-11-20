@@ -149,66 +149,100 @@
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <script>window.VB_I18N = {"openMenu": "Otvoriť menu", "closeMenu": "Zavrieť menu", "latestBrief": "Najnovší Brief · ", "min": " min", "coverImage": "Titulný obrázok: ", "badEmail": "Zadajte platnú e-mailovú adresu.", "sending": "Odosielam...", "subscribed": "Hotovo, odber je aktívny. Brief vychádza v pondelok.", "error": "Niečo sa pokazilo. Skúste to prosím znova.", "netError": "Chyba siete. Skúste to prosím znova.", "briefLangNote": " (v angličtine)"};</script>
 <style>
-/* BITCOIN TAX CALCULATOR (logic in /tax-calc.js) */
+/* BITCOIN TAX CALCULATOR: one Services-style panel (.hpanel), logic in /tax-calc.js */
 .tc [hidden] { display: none !important; }
-.tc { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
-.tc-panel { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; min-width: 0; }
-.tc-panel h2 { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
-.tc-field { padding: 12px 0; border-top: 1px solid var(--line); }
-.tc-field:first-of-type { border-top: 0; padding-top: 0; }
-.tc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.tc-head label, .tc-lbl { font-size: 14px; color: var(--text); }
-.tc-num { width: 140px; flex: none; background: var(--inset); color: var(--c, var(--orange)); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
-.tc-num[type=date] { color-scheme: dark; text-align: left; }
-.tc-num:focus { border-color: var(--c, var(--orange)); outline: none; }
-.tc-hint { margin: 6px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
-.tc-err { margin: 10px 0 0; font-size: 13px; color: #f0883e; }
-.tc-cs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.tc-c { background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 11px; font: 500 13px var(--sans); cursor: pointer; }
-.tc-c:hover { border-color: color-mix(in srgb, var(--c, var(--orange)) 45%, transparent); }
-.tc-c[aria-pressed=true] { background: var(--c, var(--orange)); border-color: var(--c, var(--orange)); color: #0b1530; }
-.tc-res { display: grid; gap: 16px; min-width: 0; }
-.tc-verdict { border-radius: 16px; padding: 18px 20px; border: 1px solid var(--line-strong); background: var(--card); }
-.tc-verdict b { display: block; font-size: 20px; font-weight: 700; }
-.tc-verdict span { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
-.tc-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.tc-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
-.tc-box p { margin: 0; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-.tc-box strong { display: block; margin-top: 8px; font-size: 20px; font-weight: 700; overflow-wrap: anywhere; }
-.tc-box strong.o { color: var(--c, var(--orange)); }
+.tc-form { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px 16px; }
+.tc-f { grid-column: span 2; min-width: 0; display: flex; flex-direction: column; }
+.tc-f.w3 { grid-column: span 3; }
+.tc-f.w6 { grid-column: 1 / -1; }
+.tc-set { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; gap: 20px 16px; }
+.tc-f label, .tc-f .tc-lbl { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+.tc-in, .tc-sel { width: 100%; height: 48px; background: rgba(255,255,255,.04); color: var(--text); border: 1px solid var(--line-strong); border-radius: 12px; padding: 0 14px; font: 600 16px var(--sans); font-variant-numeric: tabular-nums; }
+.tc-in[type=date], .tc-in[type=month] { color-scheme: dark; }
+.tc-sel { appearance: none; -webkit-appearance: none; padding-right: 40px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%238b949e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; }
+.tc-sel option { background: #141414; color: #e6edf3; }
+.tc-in:focus, .tc-sel:focus { border-color: var(--c, var(--orange)); outline: none; }
+.tc-euro { position: relative; }
+.tc-euro .tc-in { padding-right: 34px; }
+.tc-euro::after { content: "€"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--dim); font-weight: 600; pointer-events: none; }
+.tc-hint { margin: 8px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
+.tc-f .seg { margin: 0; align-self: flex-start; max-width: 100%; height: 48px; align-items: center; }
+.tc-est { grid-column: 1 / -1; margin: -4px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); min-height: 21px; }
+.tc-err { grid-column: 1 / -1; margin: 0; font-size: 13px; color: #f0883e; }
+.tc-out { margin-top: 28px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.06); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px 40px; align-items: end; transition: opacity .15s; }
+.tc-out.off, .tc-out.off ~ * { opacity: .35; }
+.tc-big p { margin: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.tc-big strong { display: block; margin-top: 8px; font-size: clamp(40px, 6vw, 60px); font-weight: 600; line-height: 1; letter-spacing: -.02em; color: var(--c, var(--orange)); font-variant-numeric: tabular-nums; }
+.tc-big span { display: block; margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.tc-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.tc-stats div { border-left: 1px solid rgba(255,255,255,.08); padding-left: 14px; min-width: 0; }
+.tc-stats p { margin: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.tc-stats strong { display: block; margin-top: 6px; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.tc-more { margin-top: 24px; display: grid; gap: 8px; }
+.tc-more details { border: 1px solid rgba(255,255,255,.06); border-radius: 12px; background: rgba(255,255,255,.02); }
+.tc-more summary { cursor: pointer; list-style: none; padding: 14px 16px; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.tc-more summary::-webkit-details-marker { display: none; }
+.tc-more summary::after { content: "+"; color: var(--muted); font-size: 18px; font-weight: 400; }
+.tc-more details[open] summary::after { content: "\2212"; }
+.tc-more .tc-body { padding: 0 16px 16px; }
 .tc-work { width: 100%; border-collapse: collapse; font-size: 14px; }
-.tc-work th, .tc-work td { padding: 9px 0; border-top: 1px solid var(--line); text-align: left; font-weight: 400; color: var(--muted); }
+.tc-work th, .tc-work td { padding: 9px 0; border-top: 1px solid rgba(255,255,255,.06); text-align: left; font-weight: 400; color: var(--muted); }
 .tc-work td { text-align: right; white-space: nowrap; color: var(--text); font-variant-numeric: tabular-nums; padding-left: 12px; }
-.tc-work tr:first-child th, .tc-work tr:first-child td { border-top: 0; }
 .tc-work tr.sum th, .tc-work tr.sum td { color: var(--text); font-weight: 600; border-top-color: var(--line-strong); }
 .tc-notes { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--muted); }
 .tc-notes li + li { margin-top: 6px; }
-.tc-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+.tc-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 16px 0 0; font-size: 13px; color: var(--muted); }
 .tc-meta a { color: var(--text); }
-.tc-rev { display: inline-block; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
-.tc-rev.y { background: rgba(63,185,80,.15); color: var(--good); }
-.tc-rev.n { background: rgba(240,136,62,.15); color: #f0883e; }
-.tc-table-wrap { overflow-x: auto; }
-.tc-table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
-.tc-table th, .tc-table td { padding: 12px 10px 12px 0; border-top: 1px solid var(--line); vertical-align: top; }
-.tc-table thead th { border-top: 0; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-.tc-table tbody th { font-weight: 600; white-space: nowrap; }
-.tc-table td { color: var(--muted); line-height: 1.5; }
-.tc-table td a { color: var(--text); }
-.tc-table small { display: block; margin-top: 4px; }
-.tc-lead { margin: 0 0 18px; max-width: 860px; font-size: 16px; line-height: 1.6; color: var(--muted); text-align: left; }
-@media (max-width: 1100px) { .tc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 900px) { .tc { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 720px) {
-  .tc-table thead { display: none; }
-  .tc-table tr { display: block; padding: 12px 0; border-top: 1px solid var(--line); }
-  .tc-table th, .tc-table td { display: block; border: 0; padding: 3px 0; }
-  .tc-table td[data-l]::before { content: attr(data-l) ": "; color: var(--dim); }
+.tc-rev { display: inline-block; border-radius: 999px; padding: 4px 10px; font: 600 11px/1 var(--sans); white-space: nowrap; }
+.tc-rev.y { color: #3fb950; background: rgba(63,185,80,.12); border: 1px solid rgba(63,185,80,.35); }
+.tc-rev.n { color: #f0883e; background: rgba(240,136,62,.10); border: 1px solid rgba(240,136,62,.30); }
+/* comparison: the same sale in 13 countries */
+.tc-cmp-w { margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.06); }
+.tc-cmp-w h2 { margin: 6px 0 18px; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+.tc-k { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--c, var(--orange)); }
+.tc-cmp-row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr) 96px 110px; gap: 16px; align-items: center; min-height: 52px; padding: 8px 10px; border-top: 1px solid rgba(255,255,255,.06); }
+.tc-cmp-row.head { min-height: 0; padding: 0 10px 10px; border-top: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.tc-cmp-row.head span:nth-child(n+3) { text-align: right; }
+.tc-cmp-row.home { background: color-mix(in srgb, var(--c, #5faede) 9%, transparent); border-radius: 12px; border-top-color: transparent; }
+.tc-cmp-row.home + .tc-cmp-row { border-top-color: transparent; }
+.tc-cmp-n b { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 15px; font-weight: 600; }
+.tc-cmp-n small { display: block; font-size: 12px; color: var(--muted); }
+.tc-you { font: 600 11px/1 var(--sans); color: var(--c, #5faede); border: 1px solid color-mix(in srgb, var(--c, #5faede) 45%, transparent); border-radius: 999px; padding: 4px 8px; }
+.tc-cmp-bar { height: 8px; border-radius: 999px; background: rgba(255,255,255,.05); overflow: hidden; }
+.tc-cmp-bar i { display: block; height: 100%; min-width: 0; border-radius: 999px; background: rgba(255,255,255,.28); }
+.tc-cmp-row.home .tc-cmp-bar i { background: var(--c, #5faede); }
+.tc-cmp-t, .tc-cmp-k { text-align: right; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tc-cmp-k { color: var(--muted); font-weight: 500; }
+/* rules: one row per country, details on demand */
+.tc-rules { display: grid; gap: 8px; text-align: left; }
+.tc-rule { background: #141414; border: 1px solid rgba(255,255,255,.06); border-radius: 14px; }
+.tc-rule summary { cursor: pointer; list-style: none; display: grid; grid-template-columns: 150px minmax(0, 1fr) auto 18px; gap: 16px; align-items: center; padding: 16px 20px; }
+.tc-rule summary::-webkit-details-marker { display: none; }
+.tc-rule summary::after { content: "+"; color: var(--muted); font-size: 18px; text-align: right; }
+.tc-rule[open] summary::after { content: "\2212"; }
+.tc-rule summary b { font-size: 15px; font-weight: 600; }
+.tc-rule summary span.r { font-size: 14px; color: var(--muted); }
+.tc-rule dl { margin: 0; padding: 4px 20px 18px; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px 16px; font-size: 14px; line-height: 1.5; }
+.tc-rule dt { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); padding-top: 3px; }
+.tc-rule dd { margin: 0; color: var(--muted); }
+.tc-rule dd a { color: var(--text); }
+.tc-lead { margin: 0 0 20px; max-width: 760px; font-size: 16px; line-height: 1.6; color: var(--muted); text-align: left; }
+@media (max-width: 760px) {
+  .hpanel.tc { padding: 24px 18px; }
+  .tc-f, .tc-f.w3 { grid-column: 1 / -1; }
+  .tc-out { grid-template-columns: minmax(0, 1fr); }
+  .tc-cmp-row { grid-template-columns: minmax(0, 1fr) 84px; padding: 8px; }
+  .tc-cmp-bar, .tc-cmp-k, .tc-cmp-row.head span:nth-child(2), .tc-cmp-row.head span:nth-child(4) { display: none; }
+  .tc-rule summary { grid-template-columns: minmax(0, 1fr) auto 18px; gap: 10px; padding: 14px 16px; }
+  .tc-rule summary span.r { grid-column: 1 / -1; grid-row: 2; }
+  .tc-rule dl { grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 0 16px 16px; }
+  .tc-rule dd { margin-bottom: 10px; }
+  .tc-f .seg { height: auto; }
 }
-@media (max-width: 520px) { .tc-panel { padding: 18px; } .tc-num { width: 124px; } .tc-box strong { font-size: 18px; } }
+@media (max-width: 420px) { .tc-stats { grid-template-columns: minmax(0, 1fr); } .tc-stats div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-left: 0; padding: 8px 0 0; border-top: 1px solid rgba(255,255,255,.06); } .tc-stats strong { margin: 0; } }
 </style>
 </head>
-<body class="page-buy page-fee page-pf page-stack page-tc no-split">
+<body class="page-buy page-tc no-split">
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="/sk/index.html" aria-label="Virtuse – domov">
@@ -243,60 +277,119 @@
   </div>
 </header>
 
-<main class="wrap bd-v3 bd-acc-blue" id="top">
+<main class="wrap acc acc-blue" id="top">
 
-  <div class="buy-hero2 pf-hero">
-    <div class="eyebrow"><i></i>13 krajín EÚ · zdaňovacie obdobie 2026</div>
-    <h1>Kalkulačka dane z Bitcoinu</h1>
-    <p class="sp-lead">Zadajte jeden predaj. Uvidíte daň, výpočet krok za krokom a oficiálny zdroj pravidla vašej krajiny.</p>
-  </div>
-  <noscript><p class="pf-noscript">Kalkulačka potrebuje JavaScript. Tabuľka nižšie uvádza pravidlo každej krajiny aj so zdrojom.</p></noscript>
-  <div class="pf-app tc" id="calc">
-    <form class="tc-panel" id="tc-form" data-default="sk" novalidate onsubmit="return false">
-      <h2>Váš predaj</h2>
-      <div class="tc-field">
-        <span class="tc-lbl" id="tc-country-l">Krajina daňovej rezidencie</span>
-        <div class="tc-cs" id="tc-country" role="group" aria-labelledby="tc-country-l"><button type="button" class="tc-c" data-c="sk" aria-pressed="false">Slovensko</button><button type="button" class="tc-c" data-c="cz" aria-pressed="false">Česko</button><button type="button" class="tc-c" data-c="pl" aria-pressed="false">Poľsko</button><button type="button" class="tc-c" data-c="hu" aria-pressed="false">Maďarsko</button><button type="button" class="tc-c" data-c="at" aria-pressed="false">Rakúsko</button><button type="button" class="tc-c" data-c="de" aria-pressed="false">Nemecko</button><button type="button" class="tc-c" data-c="si" aria-pressed="false">Slovinsko</button><button type="button" class="tc-c" data-c="hr" aria-pressed="false">Chorvátsko</button><button type="button" class="tc-c" data-c="ro" aria-pressed="false">Rumunsko</button><button type="button" class="tc-c" data-c="bg" aria-pressed="false">Bulharsko</button><button type="button" class="tc-c" data-c="nl" aria-pressed="false">Holandsko</button><button type="button" class="tc-c" data-c="fr" aria-pressed="false">Francúzsko</button><button type="button" class="tc-c" data-c="es" aria-pressed="false">Španielsko</button></div>
+  <!-- 1. HERO + the calculator panel (Services layout: centred headline, one panel) -->
+  <div class="buy-hero2">
+    <div class="eyebrow"><i></i>Daňová kalkulačka · 13 krajín EÚ · rok 2026</div>
+    <h1>Kalkulačka dane z Bitcoinu. <span class="h1-grey">Jeden predaj, 13 krajín EÚ vedľa seba.</span></h1>
+    <noscript><p class="hp-fine">Kalkulačka potrebuje JavaScript. Tabuľka nižšie uvádza pravidlo každej krajiny aj so zdrojom.</p></noscript>
+    <div class="hpanel blue tc" id="calc">
+      <form class="tc-form" id="tc-form" data-order='["sk", "cz", "pl", "hu", "at", "de", "si", "hr", "ro", "bg", "nl", "fr", "es"]' novalidate onsubmit="return false">
+        <div class="tc-f w3"><label for="tc-country">Krajina daňovej rezidencie</label>
+          <select class="tc-sel" id="tc-country"><option value="bg">Bulharsko</option><option value="hr">Chorvátsko</option><option value="fr">Francúzsko</option><option value="nl">Holandsko</option><option value="hu">Maďarsko</option><option value="de">Nemecko</option><option value="pl">Poľsko</option><option value="at">Rakúsko</option><option value="ro">Rumunsko</option><option value="sk" selected>Slovensko</option><option value="si">Slovinsko</option><option value="cz">Česko</option><option value="es">Španielsko</option></select></div>
+        <div class="tc-f w3"><span class="tc-lbl" id="tc-mode-l">Čo viete o nákupe?</span>
+          <div class="seg" id="tc-mode" role="group" aria-labelledby="tc-mode-l"><button type="button" class="seg-btn on" data-mode="exact" aria-pressed="true">Presné sumy</button><button type="button" class="seg-btn" data-mode="est" aria-pressed="false">Len kedy a za koľko</button></div></div>
+        <div class="tc-set" id="tc-exact">
+          <div class="tc-f"><label for="tc-proceeds">Suma predaja</label>
+          <span class="tc-euro"><input class="tc-in" id="tc-proceeds" type="text" inputmode="decimal" autocomplete="off" value="20000" aria-describedby="tc-proceeds-h"></span>
+          <p class="tc-hint" id="tc-proceeds-h">Koľko dostanete v eurách po poplatku burzy.</p></div>
+          <div class="tc-f"><label for="tc-cost">Nákupná cena</label>
+          <span class="tc-euro"><input class="tc-in" id="tc-cost" type="text" inputmode="decimal" autocomplete="off" value="10000" aria-describedby="tc-cost-h"></span>
+          <p class="tc-hint" id="tc-cost-h">Koľko ste zaplatili za predávaný Bitcoin vrátane poplatkov.</p></div>
+          <div class="tc-f"><label for="tc-bought">Kúpené dňa</label>
+          <input class="tc-in" id="tc-bought" type="date" value="" aria-describedby="tc-bought-h">
+          <p class="tc-hint" id="tc-bought-h">Pri viacerých nákupoch dátum prvého z predávaných (FIFO). Predaj je dnes.</p></div>
+        </div>
+        <div class="tc-set" id="tc-estf" hidden>
+          <div class="tc-f w3"><label for="tc-invested">Investovaná suma</label>
+          <span class="tc-euro"><input class="tc-in" id="tc-invested" type="text" inputmode="decimal" autocomplete="off" value="10000" aria-describedby="tc-invested-h"></span>
+          <p class="tc-hint" id="tc-invested-h">Približne koľko ste zaplatili v eurách.</p></div>
+          <div class="tc-f w3"><label for="tc-month">Mesiac nákupu</label>
+          <input class="tc-in" id="tc-month" type="month" min="2010-08" value="2022-01" aria-describedby="tc-month-h">
+          <p class="tc-hint" id="tc-month-h">Použijeme priemernú cenu Bitcoinu v tom mesiaci a dnešnú cenu.</p></div>
+          <p class="tc-est" id="tc-est" aria-live="polite"></p>
+        </div>
+        <div class="tc-f w3"><label for="tc-other">Ostatné zdaniteľné príjmy v roku 2026</label>
+          <span class="tc-euro"><input class="tc-in" id="tc-other" type="text" inputmode="decimal" autocomplete="off" value="30000" aria-describedby="tc-other-h"></span>
+          <p class="tc-hint" id="tc-other-h">Mzda a podobne. Slovensko, Česko a Nemecko k nim zisk pripočítajú.</p></div>
+        <p class="tc-err" id="tc-err" role="alert" hidden></p>
+      </form>
+
+      <div class="tc-out" id="tc-out" aria-live="polite">
+        <div class="tc-big"><p id="tc-v-title">Daň a odvody z tohto predaja</p><strong id="tc-r-tax">&hellip;</strong><span id="tc-v-sub"></span></div>
+        <div class="tc-stats">
+          <div><p>Zisk</p><strong id="tc-r-gain">&hellip;</strong></div>
+          <div><p>Zostane vám</p><strong id="tc-r-net">&hellip;</strong></div>
+          <div><p>Efektívna sadzba</p><strong id="tc-r-eff">&hellip;</strong></div>
+        </div>
       </div>
-      <div class="tc-field">
-        <div class="tc-head"><label for="tc-proceeds">Suma predaja</label><input class="tc-num" id="tc-proceeds" type="text" inputmode="decimal" autocomplete="off" value="20000" aria-describedby="tc-proceeds-h"></div>
-        <p class="tc-hint" id="tc-proceeds-h">Koľko dostanete v eurách po poplatku burzy.</p>
+      <div class="tc-more">
+        <details id="tc-work-w"><summary>Výpočet</summary><div class="tc-body"><table class="tc-work"><tbody id="tc-work"></tbody></table>
+          <p class="tc-meta"><span class="tc-rev" id="tc-rev"></span><span id="tc-src"></span></p></div></details>
+        <details id="tc-notes-w"><summary>Čo výpočet pre túto krajinu nezahŕňa</summary><div class="tc-body"><ul class="tc-notes" id="tc-notes"></ul></div></details>
       </div>
-      <div class="tc-field">
-        <div class="tc-head"><label for="tc-cost">Nákupná cena</label><input class="tc-num" id="tc-cost" type="text" inputmode="decimal" autocomplete="off" value="10000" aria-describedby="tc-cost-h"></div>
-        <p class="tc-hint" id="tc-cost-h">Koľko ste zaplatili za predávaný Bitcoin vrátane poplatkov.</p>
+
+      <div class="tc-cmp-w">
+        <span class="tc-k">Na porovnanie</span>
+        <h2>Rovnaký predaj vo všetkých 13 krajinách</h2>
+        <div class="tc-cmp-row head"><span>Krajina</span><span></span><span>Daň</span><span>Zostane vám</span></div>
+        <div id="tc-cmp"></div>
+        <p class="hp-diff" id="tc-cmp-sum"></p>
       </div>
-      <div class="tc-field">
-        <div class="tc-head"><label for="tc-bought">Kúpené dňa</label><input class="tc-num" id="tc-bought" type="date" value="" aria-describedby="tc-bought-h"></div>
-        <p class="tc-hint" id="tc-bought-h">Pri viacerých nákupoch dátum prvého z predávaných (FIFO). Predaj je dnes.</p>
-      </div>
-      <div class="tc-field" id="tc-other-f" hidden>
-        <div class="tc-head"><label for="tc-other" id="tc-other-l">Ostatné príjmy v roku 2026 (základ dane)</label><input class="tc-num" id="tc-other" type="text" inputmode="decimal" autocomplete="off" value="30000" aria-describedby="tc-other-h"></div>
-        <p class="tc-hint" id="tc-other-h">Zisk sa pripočíta k nim: určujú, do ktorého pásma zisk padne.</p>
-      </div>
-      <p class="tc-err" id="tc-err" role="alert" hidden></p>
-    </form>
-    <div class="tc-res">
-      <div class="tc-verdict glow" id="tc-verdict" aria-live="polite"><b id="tc-v-title">&hellip;</b><span id="tc-v-sub"></span></div>
-      <div class="tc-grid">
-        <div class="tc-box glow"><p>Zisk</p><strong id="tc-r-gain">&hellip;</strong></div>
-        <div class="tc-box glow"><p>Daň a odvody</p><strong class="o" id="tc-r-tax">&hellip;</strong></div>
-        <div class="tc-box glow"><p>Zostane vám</p><strong id="tc-r-net">&hellip;</strong></div>
-        <div class="tc-box glow"><p>Efektívna sadzba</p><strong id="tc-r-eff">&hellip;</strong></div>
-      </div>
-      <div class="tc-panel" id="tc-work-w"><h2>Výpočet</h2><table class="tc-work"><tbody id="tc-work"></tbody></table></div>
-      <div class="tc-panel"><h2>Čo výpočet pre túto krajinu nezahŕňa</h2><ul class="tc-notes" id="tc-notes"></ul>
-        <p class="tc-meta"><span class="tc-rev" id="tc-rev"></span><span id="tc-src"></span></p></div>
     </div>
+    <div class="hp-fine">
+      <p>Jeden predaj fyzickej osoby za rok 2026, pravidlá k 19. 11. 2026. Nie je to daňové poradenstvo.</p>
+      <p>Len na porovnanie. Daň platíte tam, kde ste daňový rezident, a zmena rezidencie má vlastné pravidlá. Španielsko je počítané bez ostatných príjmov z úspor; Holandsko zdaňuje majetok, nie predaj.</p>
+    </div>
+
   </div>
 
+  <!-- 2. THE RULE IN EACH COUNTRY -->
   <section id="rules">
     <div class="sec-head one"><div class="sec-copy"><h2>Pravidlo <span>v každej krajine</span></h2></div></div>
-    <p class="tc-lead">Kalkulačka počíta s týmito pravidlami. Každé pochádza od daňovej správy alebo zo zákona uvedeného v stĺpci zdroj, overené 19. 11. 2026.</p>
-    <div class="tc-table-wrap"><table class="tc-table" id="tc-table">
-      <thead><tr><th scope="col">Krajina</th><th scope="col">Daň zo zisku</th><th scope="col">Oslobodenie</th><th scope="col">Ako to priznať</th><th scope="col">Zdroj</th><th scope="col">Kontrola daňovým poradcom</th></tr></thead>
-      <tbody><tr data-c="sk"><th scope="row">Slovensko<small><a href="/sk/bitcoin-dane/slovensko/">Návod</a></small></th><td data-l="Daň zo zisku">19 až 35 % daň z príjmov</td><td data-l="Oslobodenie">Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje</td><td data-l="Ako to priznať">Daňové priznanie fyzickej osoby typu B, do 31. marca</td><td data-l="Zdroj"><a href="https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026" target="_blank" rel="noopener">Finančná správa</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev y">Skontrolované</span></td></tr><tr data-c="cz"><th scope="row">Česko<small><a href="/sk/bitcoin-dane/cesko/">Návod</a></small></th><td data-l="Daň zo zisku">15 % daň z príjmov (23 % nad stanovenou hranicou)</td><td data-l="Oslobodenie">Bez dane po 3 rokoch držby (do 40 miliónov Kč ročne) alebo ak úhrn príjmov z predaja kryptoaktív v roku nepresiahne 100 000 Kč</td><td data-l="Ako to priznať">Ročné daňové priznanie fyzickej osoby</td><td data-l="Zdroj"><a href="https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace" target="_blank" rel="noopener">Finanční správa</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev n">Zatiaľ nie</span></td></tr><tr data-c="pl"><th scope="row">Poľsko<small><a href="/sk/bitcoin-dane/polsko/">Návod</a></small></th><td data-l="Daň zo zisku">19 % jednotná daň z kapitálových výnosov</td><td data-l="Oslobodenie">Bez oslobodenia podľa doby držby</td><td data-l="Ako to priznať">Ročné priznanie PIT-38</td><td data-l="Zdroj"><a href="https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-kryptowalut" target="_blank" rel="noopener">Serwis o podatkach</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev n">Zatiaľ nie</span></td></tr><tr data-c="hu"><th scope="row">Maďarsko<small><a href="/sk/bitcoin-dane/madarsko/">Návod</a></small></th><td data-l="Daň zo zisku">15 % daň z príjmov z kryptoaktív</td><td data-l="Oslobodenie">Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)</td><td data-l="Ako to priznať">Ročné priznanie k dani z príjmov fyzickej osoby</td><td data-l="Zdroj"><a href="https://nav.gov.hu/ado/szja/a-kriptougyletek-jovedelmenek-adozasa" target="_blank" rel="noopener">NAV</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev y">Skontrolované</span></td></tr><tr data-c="at"><th scope="row">Rakúsko<small><a href="/sk/bitcoin-dane/rakusko/">Návod</a></small></th><td data-l="Daň zo zisku">27,5 % KESt (daň z kapitálových výnosov)</td><td data-l="Oslobodenie">Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia</td><td data-l="Ako to priznať">Ročné priznanie pri ziskoch cez zahraničné burzy; rakúski poskytovatelia daň zrážajú</td><td data-l="Zdroj"><a href="https://www.bmf.gv.at/themen/steuern/sparen-veranlagen/steuerliche-behandlung-von-kryptowaehrungen.html" target="_blank" rel="noopener">BMF</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev y">Skontrolované</span></td></tr><tr data-c="de"><th scope="row">Nemecko<small><a href="/sk/bitcoin-dane/nemecko/">Návod</a></small></th><td data-l="Daň zo zisku">Až 45 % daň z príjmov (progresívna)</td><td data-l="Oslobodenie">0 % po 1-ročnej dobe držby; zisky spolu pod 1 000 € ročne sú bez dane</td><td data-l="Ako to priznať">Ročné daňové priznanie</td><td data-l="Zdroj"><a href="https://www.gesetze-im-internet.de/estg/__32a.html" target="_blank" rel="noopener">§ 32a EStG Einkommensteuertarif</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev n">Zatiaľ nie</span></td></tr><tr data-c="si"><th scope="row">Slovinsko<small><a href="/sk/bitcoin-dane/slovinsko/">Návod</a></small></th><td data-l="Daň zo zisku">Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)</td><td data-l="Oslobodenie">Súkromné zisky sú bez dane</td><td data-l="Ako to priznať">Pri súkromných ziskoch žiadne; príjem z ťažby vyžaduje priznanie k preddavku dane do 15 dní; podnikateľské príjmy patria do daňového priznania z podnikania</td><td data-l="Zdroj"><a href="https://www.fu.gov.si/zivljenjski_dogodki_prebivalci/trgujem_z_virtualnimi_valutami/" target="_blank" rel="noopener">FURS</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev y">Skontrolované</span></td></tr><tr data-c="hr"><th scope="row">Chorvátsko<small><a href="/sk/bitcoin-dane/chorvatsko/">Návod</a></small></th><td data-l="Daň zo zisku">12 % zo ziskov z kryptomien (od roku 2024)</td><td data-l="Oslobodenie">Bez dane po 2 rokoch držby</td><td data-l="Ako to priznať">Formulár JOPPD do konca februára (nie ročné priznanie)</td><td data-l="Zdroj"><a href="https://porezna-uprava.gov.hr/hr/dohodak-od-kapitala-po-osnovi-kapitalnih-dobitaka/4653" target="_blank" rel="noopener">Porezna uprava</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev n">Zatiaľ nie</span></td></tr><tr data-c="ro"><th scope="row">Rumunsko<small><a href="/sk/bitcoin-dane/rumunsko/">Návod</a></small></th><td data-l="Daň zo zisku">16 % daň z príjmov zo ziskov z kryptomien (do roku 2025: 10 %)</td><td data-l="Oslobodenie">Bez oslobodenia podľa doby držby</td><td data-l="Ako to priznať">Ročné priznanie (príjem z iných zdrojov)</td><td data-l="Zdroj"><a href="https://static.anaf.ro/static/10/Anaf/legislatie/L_239_2025.pdf" target="_blank" rel="noopener">Legea nr. 239/2025</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev n">Zatiaľ nie</span></td></tr><tr data-c="bg"><th scope="row">Bulharsko<small><a href="/sk/bitcoin-dane/bulharsko/">Návod</a></small></th><td data-l="Daň zo zisku">10 % jednotná daň zo ziskov</td><td data-l="Oslobodenie">Bez oslobodenia podľa doby držby</td><td data-l="Ako to priznať">Ročné daňové priznanie</td><td data-l="Zdroj"><a href="https://nra.bg/wps/portal/nra/taxes/danak-vurhu-dohodite-na-fizicheski-lica" target="_blank" rel="noopener">НАП</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev n">Zatiaľ nie</span></td></tr><tr data-c="nl"><th scope="row">Holandsko<small><a href="/sk/bitcoin-dane/holandsko/">Návod</a></small></th><td data-l="Daň zo zisku">Majetková daň Box 3 (približne 36 % z predpokladaného výnosu)</td><td data-l="Oslobodenie">Nezdaniteľná časť (59 357 € na osobu, 2026)</td><td data-l="Ako to priznať">Ročné priznanie Box 3</td><td data-l="Zdroj"><a href="https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026" target="_blank" rel="noopener">Belastingdienst</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev n">Zatiaľ nie</span></td></tr><tr data-c="fr"><th scope="row">Francúzsko<small><a href="/sk/bitcoin-dane/francuzsko/">Návod</a></small></th><td data-l="Daň zo zisku">31,4 % paušálna daň (PFU: 12,8 % daň z príjmov + 18,6 % sociálne odvody, 2026)</td><td data-l="Oslobodenie">Bez oslobodenia podľa doby držby; predaje spolu do 305 € ročne sú oslobodené</td><td data-l="Ako to priznať">Ročné priznanie s formulárom 2086; zahraničné účty na formulári 3916-bis</td><td data-l="Zdroj"><a href="https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques" target="_blank" rel="noopener">impots.gouv.fr</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev n">Zatiaľ nie</span></td></tr><tr data-c="es"><th scope="row">Španielsko<small><a href="/sk/bitcoin-dane/spanielsko/">Návod</a></small></th><td data-l="Daň zo zisku">19 až 30 % progresívna daň z kapitálových príjmov</td><td data-l="Oslobodenie">Bez oslobodenia podľa doby držby</td><td data-l="Ako to priznať">Ročné priznanie IRPF; Modelo 721 pre kryptoaktíva u zahraničných správcov nad 50 000 €</td><td data-l="Zdroj"><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764" target="_blank" rel="noopener">BOE</a></td><td data-l="Kontrola daňovým poradcom"><span class="tc-rev n">Zatiaľ nie</span></td></tr></tbody>
-    </table></div>
+    <p class="tc-lead">Každé pravidlo pochádza od daňovej správy alebo zo zákona uvedeného ako zdroj, overené 19. 11. 2026. Podrobnosti nájdete po rozbalení krajiny.</p>
+    <div class="tc-rules" id="tc-table">
+    <details class="tc-rule" data-c="sk"><summary><b>Slovensko</b><span class="r">19 až 35 % daň z príjmov</span><span class="tc-rev y">Skontrolované</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Bez oslobodenia podľa doby držby; každý predaj aj výmena krypto za krypto sa zdaňuje</dd><dt>Ako to priznať</dt><dd>Daňové priznanie fyzickej osoby typu B, do 31. marca</dd>
+      <dt>Zdroj</dt><dd><a href="https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026" target="_blank" rel="noopener">Finančná správa</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/slovensko/">Slovensko</a></dd></dl></details>
+    <details class="tc-rule" data-c="cz"><summary><b>Česko</b><span class="r">15 % daň z príjmov (23 % nad stanovenou hranicou)</span><span class="tc-rev n">Zatiaľ nie</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Bez dane po 3 rokoch držby (do 40 miliónov Kč ročne) alebo ak úhrn príjmov z predaja kryptoaktív v roku nepresiahne 100 000 Kč</dd><dt>Ako to priznať</dt><dd>Ročné daňové priznanie fyzickej osoby</dd>
+      <dt>Zdroj</dt><dd><a href="https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace" target="_blank" rel="noopener">Finanční správa</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/cesko/">Česko</a></dd></dl></details>
+    <details class="tc-rule" data-c="pl"><summary><b>Poľsko</b><span class="r">19 % jednotná daň z kapitálových výnosov</span><span class="tc-rev n">Zatiaľ nie</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Bez oslobodenia podľa doby držby</dd><dt>Ako to priznať</dt><dd>Ročné priznanie PIT-38</dd>
+      <dt>Zdroj</dt><dd><a href="https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-kryptowalut" target="_blank" rel="noopener">Serwis o podatkach</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/polsko/">Poľsko</a></dd></dl></details>
+    <details class="tc-rule" data-c="hu"><summary><b>Maďarsko</b><span class="r">15 % daň z príjmov z kryptoaktív</span><span class="tc-rev y">Skontrolované</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Bez oslobodenia podľa doby držby; malé transakcie, každá do 10 % minimálnej mzdy, sú bez dane (spolu najviac jedna minimálna mzda ročne)</dd><dt>Ako to priznať</dt><dd>Ročné priznanie k dani z príjmov fyzickej osoby</dd>
+      <dt>Zdroj</dt><dd><a href="https://nav.gov.hu/ado/szja/a-kriptougyletek-jovedelmenek-adozasa" target="_blank" rel="noopener">NAV</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/madarsko/">Maďarsko</a></dd></dl></details>
+    <details class="tc-rule" data-c="at"><summary><b>Rakúsko</b><span class="r">27,5 % KESt (daň z kapitálových výnosov)</span><span class="tc-rev y">Skontrolované</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Po 1 roku bez dane len pri kryptomenách kúpených pred marcom 2021; neskoršie nákupy bez oslobodenia</dd><dt>Ako to priznať</dt><dd>Ročné priznanie pri ziskoch cez zahraničné burzy; rakúski poskytovatelia daň zrážajú</dd>
+      <dt>Zdroj</dt><dd><a href="https://www.bmf.gv.at/themen/steuern/sparen-veranlagen/steuerliche-behandlung-von-kryptowaehrungen.html" target="_blank" rel="noopener">BMF</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/rakusko/">Rakúsko</a></dd></dl></details>
+    <details class="tc-rule" data-c="de"><summary><b>Nemecko</b><span class="r">Až 45 % daň z príjmov (progresívna)</span><span class="tc-rev n">Zatiaľ nie</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>0 % po 1-ročnej dobe držby; zisky spolu pod 1 000 € ročne sú bez dane</dd><dt>Ako to priznať</dt><dd>Ročné daňové priznanie</dd>
+      <dt>Zdroj</dt><dd><a href="https://www.gesetze-im-internet.de/estg/__32a.html" target="_blank" rel="noopener">§ 32a EStG Einkommensteuertarif</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/nemecko/">Nemecko</a></dd></dl></details>
+    <details class="tc-rule" data-c="si"><summary><b>Slovinsko</b><span class="r">Súkromné zisky z predaja sa nezdaňujú (podnikateľské obchodovanie áno)</span><span class="tc-rev y">Skontrolované</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Súkromné zisky sú bez dane</dd><dt>Ako to priznať</dt><dd>Pri súkromných ziskoch žiadne; príjem z ťažby vyžaduje priznanie k preddavku dane do 15 dní; podnikateľské príjmy patria do daňového priznania z podnikania</dd>
+      <dt>Zdroj</dt><dd><a href="https://www.fu.gov.si/zivljenjski_dogodki_prebivalci/trgujem_z_virtualnimi_valutami/" target="_blank" rel="noopener">FURS</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/slovinsko/">Slovinsko</a></dd></dl></details>
+    <details class="tc-rule" data-c="hr"><summary><b>Chorvátsko</b><span class="r">12 % zo ziskov z kryptomien (od roku 2024)</span><span class="tc-rev n">Zatiaľ nie</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Bez dane po 2 rokoch držby</dd><dt>Ako to priznať</dt><dd>Formulár JOPPD do konca februára (nie ročné priznanie)</dd>
+      <dt>Zdroj</dt><dd><a href="https://porezna-uprava.gov.hr/hr/dohodak-od-kapitala-po-osnovi-kapitalnih-dobitaka/4653" target="_blank" rel="noopener">Porezna uprava</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/chorvatsko/">Chorvátsko</a></dd></dl></details>
+    <details class="tc-rule" data-c="ro"><summary><b>Rumunsko</b><span class="r">16 % daň z príjmov zo ziskov z kryptomien (do roku 2025: 10 %)</span><span class="tc-rev n">Zatiaľ nie</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Bez oslobodenia podľa doby držby</dd><dt>Ako to priznať</dt><dd>Ročné priznanie (príjem z iných zdrojov)</dd>
+      <dt>Zdroj</dt><dd><a href="https://static.anaf.ro/static/10/Anaf/legislatie/L_239_2025.pdf" target="_blank" rel="noopener">Legea nr. 239/2025</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/rumunsko/">Rumunsko</a></dd></dl></details>
+    <details class="tc-rule" data-c="bg"><summary><b>Bulharsko</b><span class="r">10 % jednotná daň zo ziskov</span><span class="tc-rev n">Zatiaľ nie</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Bez oslobodenia podľa doby držby</dd><dt>Ako to priznať</dt><dd>Ročné daňové priznanie</dd>
+      <dt>Zdroj</dt><dd><a href="https://nra.bg/wps/portal/nra/taxes/danak-vurhu-dohodite-na-fizicheski-lica" target="_blank" rel="noopener">НАП</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/bulharsko/">Bulharsko</a></dd></dl></details>
+    <details class="tc-rule" data-c="nl"><summary><b>Holandsko</b><span class="r">Majetková daň Box 3 (približne 36 % z predpokladaného výnosu)</span><span class="tc-rev n">Zatiaľ nie</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Nezdaniteľná časť (59 357 € na osobu, 2026)</dd><dt>Ako to priznať</dt><dd>Ročné priznanie Box 3</dd>
+      <dt>Zdroj</dt><dd><a href="https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026" target="_blank" rel="noopener">Belastingdienst</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/holandsko/">Holandsko</a></dd></dl></details>
+    <details class="tc-rule" data-c="fr"><summary><b>Francúzsko</b><span class="r">31,4 % paušálna daň (PFU: 12,8 % daň z príjmov + 18,6 % sociálne odvody, 2026)</span><span class="tc-rev n">Zatiaľ nie</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Bez oslobodenia podľa doby držby; predaje spolu do 305 € ročne sú oslobodené</dd><dt>Ako to priznať</dt><dd>Ročné priznanie s formulárom 2086; zahraničné účty na formulári 3916-bis</dd>
+      <dt>Zdroj</dt><dd><a href="https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques" target="_blank" rel="noopener">impots.gouv.fr</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/francuzsko/">Francúzsko</a></dd></dl></details>
+    <details class="tc-rule" data-c="es"><summary><b>Španielsko</b><span class="r">19 až 30 % progresívna daň z kapitálových príjmov</span><span class="tc-rev n">Zatiaľ nie</span></summary>
+      <dl><dt>Oslobodenie</dt><dd>Bez oslobodenia podľa doby držby</dd><dt>Ako to priznať</dt><dd>Ročné priznanie IRPF; Modelo 721 pre kryptoaktíva u zahraničných správcov nad 50 000 €</dd>
+      <dt>Zdroj</dt><dd><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764" target="_blank" rel="noopener">BOE</a></dd><dt>Návod pre krajinu</dt><dd><a href="/sk/bitcoin-dane/spanielsko/">Španielsko</a></dd></dl></details>
+    </div>
   </section>
 
   <section id="how">
@@ -323,7 +416,7 @@
         <div class="how-log-body">
           <span class="how-log-num">Krok 03</span>
           <h3>Sadzba alebo pásma</h3>
-          <p>Jedna sadzba, alebo progresívne pásma z celého základu dane (Slovensko, Česko, Nemecko, Španielsko): daň je to, o koľko zisk zvýši daň z vašich ostatných príjmov.</p>
+          <p>Jedna sadzba, alebo progresívne pásma z celého základu dane (Slovensko, Česko, Nemecko): daň je to, o koľko zisk zvýši daň z vašich ostatných príjmov. Španielsko má vlastné pásma pre príjmy z úspor.</p>
         </div>
       </div>
     </div>
@@ -402,8 +495,8 @@
 </main>
 
 <script type="application/json" id="tc-rules">{"about": "Rules for the Bitcoin tax calculator (/bitcoin-tax-calculator.html), one sale by a private person. Every number here comes from seo-build/data/tax-sources.json (official source + quote per country) or from the source named in the country's 'src' field; build_tax_calculator.py checks the rates against tax-sources.json and stops if they differ. Change a rule here and in tax-sources.json together, then rebuild. Kinds: flat = one rate on the gain; bands = progressive rates on the whole tax base (other income + gain, the tax is the difference the gain adds); de = German income tax formula (§ 32a EStG 2026); none = private gains not taxed; box3 = wealth tax, a sale is not taxed. holdYears = years after which a sale is tax-free. reviewed = the rule was in the signed tax review of 4/5 Nov 2026.", "year": 2026, "checked": "2026-11-19", "fx": {"date": "2026-11-19", "source": "ECB reference rates via api.frankfurter.dev", "CZK": 24.427}, "countries": {"cz": {"kind": "bands", "currency": "CZK", "bands": [[1762812, 15], [null, 23]], "base": "total", "holdYears": 3, "holdCap": 40000000, "exemptProceedsMax": 100000, "reviewed": false}, "sk": {"kind": "bands", "currency": "EUR", "bands": [[43983.32, 19], [60349.21, 25], [75010.32, 30], [null, 35]], "base": "total", "levy": 16, "reviewed": true, "src": "Bands: Financial Administration of the Slovak Republic, tax year 2026 (same as the Verdict report, cloudflare-worker blocks.js TAX_EXAMPLE)"}, "pl": {"kind": "flat", "rate": 19, "reviewed": false}, "at": {"kind": "flat", "rate": 27.5, "oldBefore": "2021-03-01", "oldHoldYears": 1, "reviewed": true}, "de": {"kind": "de", "holdYears": 1, "freigrenze": 1000, "reviewed": false, "src": "§ 32a EStG from tax year 2026 (gesetze-im-internet.de, read 2026-11-19); Freigrenze § 23(3) EStG"}, "hu": {"kind": "flat", "rate": 15, "reviewed": true}, "si": {"kind": "none", "reviewed": true}, "hr": {"kind": "flat", "rate": 12, "holdYears": 2, "reviewed": false}, "ro": {"kind": "flat", "rate": 16, "reviewed": false}, "bg": {"kind": "flat", "rate": 10, "reviewed": false}, "nl": {"kind": "box3", "reviewed": false}, "fr": {"kind": "flat", "rate": 31.4, "exemptProceedsMax": 305, "reviewed": false}, "es": {"kind": "bands", "currency": "EUR", "bands": [[6000, 19], [50000, 21], [200000, 23], [300000, 27], [null, 30]], "base": "savings", "reviewed": false}}}</script>
-<script type="application/json" id="tc-i18n">{"err": "Zadajte sumy v eurách a dátum nákupu v minulosti.", "other_total": "Ostatné príjmy v roku 2026 (základ dane)", "other_de": "Ostatný zdaniteľný príjem v roku 2026", "other_savings": "Ostatné príjmy z úspor v roku 2026", "other_hint": "Zisk sa pripočíta k nim: určujú, do ktorého pásma zisk padne.", "h_taxed": "Daň {total}, efektívna sadzba {eff}", "s_taxed": "Zo zisku {gain}, podľa pravidiel krajiny {country} na rok 2026.", "h_loss": "Bez dane: predaj je stratový", "s_loss": "Predaj pod nákupnou cenou nevytvára zdaniteľný zisk.", "h_exempt_hold": "Bez dane: držané dosť dlho", "s_exempt_hold": "{country} oslobodzuje mince držané dlhšie ako {years}.", "h_exempt_old": "Bez dane podľa starých pravidiel", "s_exempt_old": "Mince kúpené pred 1. marcom 2021 a držané dlhšie ako rok sa v Rakúsku nezdaňujú.", "h_exempt_small": "Bez dane: pod ročným limitom", "s_exempt_small": "Predaje do {limit} ročne sú v krajine {country} oslobodené, ak je to váš jediný predaj v tomto roku.", "h_exempt_freigrenze": "Bez dane: zisk pod 1 000 €", "s_exempt_freigrenze": "Nemecko zdaňuje súkromné predaje, až keď celkový zisk za rok dosiahne 1 000 € alebo viac.", "h_over_holdCap": "Nad stropom oslobodenia", "s_over_holdCap": "České oslobodenie po 3 rokoch platí pre predaje do 40 miliónov Kč ročne. Nad touto sumou sa obráťte na daňového poradcu.", "h_none": "Súkromný predaj sa nezdaňuje", "s_none": "Slovinsko súkromné zisky z kryptomien nezdaňuje. Zdaňuje sa obchodovanie ako podnikanie a ťažba.", "h_box3": "Samotný predaj sa nezdaňuje", "s_box3": "Holandsko zdaňuje váš majetok k 1. januáru v Boxe 3 (nad 59 357 € na osobu v roku 2026), bez ohľadu na predaj.", "w_proceeds": "Suma predaja", "w_cost": "Nákupná cena", "w_gain": "Zisk", "w_tax": "Daň {rate} z {base}", "w_band": "Pásmo {rate} z {base}", "w_income": "Daň z príjmov z {base} (priemerne {rate})", "w_levy": "Zdravotné odvody {rate} z {base}", "w_total": "Daň a odvody", "w_net": "Zostane vám", "src": "Zdroj: {link}", "rev_yes": "Skontrolované daňovým poradcom", "rev_no": "Daňový poradca zatiaľ neskontroloval", "note_cz": ["Ročné limity rátajú všetky vaše predaje kryptomien: limit 100 000 Kč pre malé predaje a strop 40 miliónov Kč pre oslobodenie po 3 rokoch. Tu sa ráta len tento predaj.", "Limity v korunách prepočítané kurzom ECB z 19. 11. 2026: 1 EUR = 24,427 CZK. Pásmo 23 % začína pri základe dane 1 762 812 Kč."], "note_sk": ["16 % zdravotné odvody zo zisku vyúčtuje zdravotná poisťovňa po skončení roka (8 % so zdravotným postihnutím). Či sa vzťahujú aj na váš prípad, napríklad na dôchodcu, overte u daňového poradcu.", "Stratu z kryptomien nemožno odpočítať od iných príjmov."], "note_pl": ["Výmena kryptomeny za kryptomenu sa nezdaňuje.", "Solidárny odvod 4 % z príjmov nad 1 milión PLN sme neoverovali."], "note_at": ["Rakúski poskytovatelia daň zrážajú sami; predaje cez zahraničné burzy patria do priznania.", "Staking a airdropy sa zdaňujú pri predaji s nulovou obstarávacou cenou."], "note_de": ["Sadzby podľa § 32a EStG na rok 2026, samostatné zdanenie. Solidárny príplatok a cirkevná daň nie sú zahrnuté.", "Limit 1 000 € ráta všetky vaše súkromné predaje v roku. Pri 1 000 € a viac sa zdaní celý zisk."], "note_hu": ["Malé transakcie (každá do 10 % minimálnej mzdy, spolu najviac jedna minimálna mzda ročne) môžu byť bez dane; tu sa neuplatňujú.", "Stratu uvedenú v priznaní možno započítať v ďalších rokoch."], "note_si": ["Daň 25 % z kryptomien navrhnutá v roku 2025 nebola prijatá (overené 19. 11. 2026)."], "note_hr": ["Aj predaj bez dane sa uvádza na formulári JOPPD do konca februára."], "note_ro": ["Zisky do 200 lei z jedného predaja (600 lei ročne) sú oslobodené a nad určitým príjmom môže platiť zdravotný odvod CASS. Ani jedno sa tu neuplatňuje."], "note_bg": ["Zníženie o 10 % paušálnych výdavkov môže znížiť efektívnu sadzbu asi na 9 %; tu sa neuplatňuje."], "note_nl": [], "note_fr": ["Zisk je tu suma predaja mínus nákupná cena. Pri predaji časti kryptomien Francúzsko rozpočíta nákupnú cenu na celé portfólio (formulár 2086), takže skutočný zisk môže byť iný.", "Limit 305 € ráta všetky predaje v roku. Výmena kryptomeny za kryptomenu je odložená."], "note_es": ["„Ostatné príjmy z úspor“ sú úroky, dividendy a iné zisky v roku 2026; mzda sa zdaňuje podľa inej stupnice.", "Model 721, ak máte u zahraničných poskytovateľov kryptomeny za viac ako 50 000 €."], "yrs": {"1": "1 rok", "2": "2 roky", "3": "3 roky"}, "n_sk": "Slovensko", "n_cz": "Česko", "n_pl": "Poľsko", "n_hu": "Maďarsko", "n_at": "Rakúsko", "n_de": "Nemecko", "n_si": "Slovinsko", "n_hr": "Chorvátsko", "n_ro": "Rumunsko", "n_bg": "Bulharsko", "n_nl": "Holandsko", "n_fr": "Francúzsko", "n_es": "Španielsko"}</script>
-<script src="/tax-calc.js?v=1" defer></script>
+<script type="application/json" id="tc-i18n">{"err": "Zadajte sumy v eurách a dátum nákupu v minulosti.", "h_taxed": "Daň a odvody z tohto predaja", "s_taxed": "Zo zisku {gain}, podľa pravidiel krajiny {country} na rok 2026.", "h_loss": "Bez dane: predaj je stratový", "s_loss": "Predaj pod nákupnou cenou nevytvára zdaniteľný zisk.", "h_exempt_hold": "Bez dane: držané dosť dlho", "s_exempt_hold": "{country} oslobodzuje mince držané dlhšie ako {years}.", "h_exempt_old": "Bez dane podľa starých pravidiel", "s_exempt_old": "Mince kúpené pred 1. marcom 2021 a držané dlhšie ako rok sa v Rakúsku nezdaňujú.", "h_exempt_small": "Bez dane: pod ročným limitom", "s_exempt_small": "Predaje do {limit} ročne sú v krajine {country} oslobodené, ak je to váš jediný predaj v tomto roku.", "h_exempt_freigrenze": "Bez dane: zisk pod 1 000 €", "s_exempt_freigrenze": "Nemecko zdaňuje súkromné predaje, až keď celkový zisk za rok dosiahne 1 000 € alebo viac.", "h_over_holdCap": "Nad stropom oslobodenia", "s_over_holdCap": "České oslobodenie po 3 rokoch platí pre predaje do 40 miliónov Kč ročne. Nad touto sumou sa obráťte na daňového poradcu.", "h_none": "Súkromný predaj sa nezdaňuje", "s_none": "Slovinsko súkromné zisky z kryptomien nezdaňuje. Zdaňuje sa obchodovanie ako podnikanie a ťažba.", "h_box3": "Samotný predaj sa nezdaňuje", "s_box3": "Holandsko zdaňuje váš majetok k 1. januáru v Boxe 3 (nad 59 357 € na osobu v roku 2026), bez ohľadu na predaj.", "w_proceeds": "Suma predaja", "w_cost": "Nákupná cena", "w_gain": "Zisk", "w_tax": "Daň {rate} z {base}", "w_band": "Pásmo {rate} z {base}", "w_income": "Daň z príjmov z {base} (priemerne {rate})", "w_levy": "Zdravotné odvody {rate} z {base}", "w_total": "Daň a odvody", "w_net": "Zostane vám", "src": "Zdroj: {link}", "rev_yes": "Skontrolované daňovým poradcom", "rev_no": "Daňový poradca zatiaľ neskontroloval", "note_cz": ["Ročné limity rátajú všetky vaše predaje kryptomien: limit 100 000 Kč pre malé predaje a strop 40 miliónov Kč pre oslobodenie po 3 rokoch. Tu sa ráta len tento predaj.", "Limity v korunách prepočítané kurzom ECB z 19. 11. 2026: 1 EUR = 24,427 CZK. Pásmo 23 % začína pri základe dane 1 762 812 Kč."], "note_sk": ["16 % zdravotné odvody zo zisku vyúčtuje zdravotná poisťovňa po skončení roka (8 % so zdravotným postihnutím). Či sa vzťahujú aj na váš prípad, napríklad na dôchodcu, overte u daňového poradcu.", "Stratu z kryptomien nemožno odpočítať od iných príjmov."], "note_pl": ["Výmena kryptomeny za kryptomenu sa nezdaňuje.", "Solidárny odvod 4 % z príjmov nad 1 milión PLN sme neoverovali."], "note_at": ["Rakúski poskytovatelia daň zrážajú sami; predaje cez zahraničné burzy patria do priznania.", "Staking a airdropy sa zdaňujú pri predaji s nulovou obstarávacou cenou."], "note_de": ["Sadzby podľa § 32a EStG na rok 2026, samostatné zdanenie. Solidárny príplatok a cirkevná daň nie sú zahrnuté.", "Limit 1 000 € ráta všetky vaše súkromné predaje v roku. Pri 1 000 € a viac sa zdaní celý zisk."], "note_hu": ["Malé transakcie (každá do 10 % minimálnej mzdy, spolu najviac jedna minimálna mzda ročne) môžu byť bez dane; tu sa neuplatňujú.", "Stratu uvedenú v priznaní možno započítať v ďalších rokoch."], "note_si": ["Daň 25 % z kryptomien navrhnutá v roku 2025 nebola prijatá (overené 19. 11. 2026)."], "note_hr": ["Aj predaj bez dane sa uvádza na formulári JOPPD do konca februára."], "note_ro": ["Zisky do 200 lei z jedného predaja (600 lei ročne) sú oslobodené a nad určitým príjmom môže platiť zdravotný odvod CASS. Ani jedno sa tu neuplatňuje."], "note_bg": ["Zníženie o 10 % paušálnych výdavkov môže znížiť efektívnu sadzbu asi na 9 %; tu sa neuplatňuje."], "note_nl": [], "note_fr": ["Zisk je tu suma predaja mínus nákupná cena. Pri predaji časti kryptomien Francúzsko rozpočíta nákupnú cenu na celé portfólio (formulár 2086), takže skutočný zisk môže byť iný.", "Limit 305 € ráta všetky predaje v roku. Výmena kryptomeny za kryptomenu je odložená."], "note_es": ["Počítané bez ostatných príjmov z úspor (úroky, dividendy, iné zisky); s nimi padne väčšia časť zisku do vyšších pásiem. Mzda sa zdaňuje podľa inej stupnice.", "Model 721, ak máte u zahraničných poskytovateľov kryptomeny za viac ako 50 000 €."], "yrs": {"1": "1 rok", "2": "2 roky", "3": "3 roky"}, "est_loading": "Načítavam ceny…", "est_err": "Pre tento mesiac nemáme cenu.", "est_line": "Približne {btc} BTC pri cene {p0} za Bitcoin ({month}). Dnes má hodnotu {val} pri cene {p1} ({src}).", "est_live": "aktuálna cena", "est_close": "záverečná cena z {date}", "cmp_home": "vaša krajina", "cmp_diff": "{home}: {a}. Najnižšia daň: {best}, {b}. Rozdiel {d}.", "cmp_best": "{home} má pri tomto predaji najnižšiu daň z 13 krajín: {a}.", "r_taxed": "efektívna sadzba {eff}", "r_loss": "strata, bez dane", "r_exempt_hold": "bez dane po držbe dlhšej ako {years}", "r_exempt_old": "bez dane, kúpené pred marcom 2021", "r_exempt_small": "pod ročným limitom", "r_exempt_freigrenze": "zisk pod 1 000 €", "r_over_holdCap": "nad stropom oslobodenia", "r_none": "súkromné zisky sa nezdaňujú", "r_box3": "daň z majetku namiesto dane z predaja", "n_sk": "Slovensko", "n_cz": "Česko", "n_pl": "Poľsko", "n_hu": "Maďarsko", "n_at": "Rakúsko", "n_de": "Nemecko", "n_si": "Slovinsko", "n_hr": "Chorvátsko", "n_ro": "Rumunsko", "n_bg": "Bulharsko", "n_nl": "Holandsko", "n_fr": "Francúzsko", "n_es": "Španielsko"}</script>
+<script src="/tax-calc.js?v=2" defer></script>
 <script src="/site-v2.js?v=19" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>

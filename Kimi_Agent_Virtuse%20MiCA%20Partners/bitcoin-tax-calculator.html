@@ -148,66 +148,100 @@
 <link rel="stylesheet" href="/site-v2.min.css?v=24">
 <script>if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');</script>
 <style>
-/* BITCOIN TAX CALCULATOR (logic in /tax-calc.js) */
+/* BITCOIN TAX CALCULATOR: one Services-style panel (.hpanel), logic in /tax-calc.js */
 .tc [hidden] { display: none !important; }
-.tc { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 20px; align-items: start; text-align: left; }
-.tc-panel { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; min-width: 0; }
-.tc-panel h2 { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
-.tc-field { padding: 12px 0; border-top: 1px solid var(--line); }
-.tc-field:first-of-type { border-top: 0; padding-top: 0; }
-.tc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.tc-head label, .tc-lbl { font-size: 14px; color: var(--text); }
-.tc-num { width: 140px; flex: none; background: var(--inset); color: var(--c, var(--orange)); border: 1px solid var(--line-strong); border-radius: 8px; padding: 8px 10px; font: 600 14px var(--sans); text-align: right; }
-.tc-num[type=date] { color-scheme: dark; text-align: left; }
-.tc-num:focus { border-color: var(--c, var(--orange)); outline: none; }
-.tc-hint { margin: 6px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
-.tc-err { margin: 10px 0 0; font-size: 13px; color: #f0883e; }
-.tc-cs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.tc-c { background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 11px; font: 500 13px var(--sans); cursor: pointer; }
-.tc-c:hover { border-color: color-mix(in srgb, var(--c, var(--orange)) 45%, transparent); }
-.tc-c[aria-pressed=true] { background: var(--c, var(--orange)); border-color: var(--c, var(--orange)); color: #0b1530; }
-.tc-res { display: grid; gap: 16px; min-width: 0; }
-.tc-verdict { border-radius: 16px; padding: 18px 20px; border: 1px solid var(--line-strong); background: var(--card); }
-.tc-verdict b { display: block; font-size: 20px; font-weight: 700; }
-.tc-verdict span { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
-.tc-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.tc-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0; }
-.tc-box p { margin: 0; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-.tc-box strong { display: block; margin-top: 8px; font-size: 20px; font-weight: 700; overflow-wrap: anywhere; }
-.tc-box strong.o { color: var(--c, var(--orange)); }
+.tc-form { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px 16px; }
+.tc-f { grid-column: span 2; min-width: 0; display: flex; flex-direction: column; }
+.tc-f.w3 { grid-column: span 3; }
+.tc-f.w6 { grid-column: 1 / -1; }
+.tc-set { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; gap: 20px 16px; }
+.tc-f label, .tc-f .tc-lbl { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+.tc-in, .tc-sel { width: 100%; height: 48px; background: rgba(255,255,255,.04); color: var(--text); border: 1px solid var(--line-strong); border-radius: 12px; padding: 0 14px; font: 600 16px var(--sans); font-variant-numeric: tabular-nums; }
+.tc-in[type=date], .tc-in[type=month] { color-scheme: dark; }
+.tc-sel { appearance: none; -webkit-appearance: none; padding-right: 40px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%238b949e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; }
+.tc-sel option { background: #141414; color: #e6edf3; }
+.tc-in:focus, .tc-sel:focus { border-color: var(--c, var(--orange)); outline: none; }
+.tc-euro { position: relative; }
+.tc-euro .tc-in { padding-right: 34px; }
+.tc-euro::after { content: "€"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--dim); font-weight: 600; pointer-events: none; }
+.tc-hint { margin: 8px 0 0; font-size: 12px; color: var(--dim); line-height: 1.45; }
+.tc-f .seg { margin: 0; align-self: flex-start; max-width: 100%; height: 48px; align-items: center; }
+.tc-est { grid-column: 1 / -1; margin: -4px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); min-height: 21px; }
+.tc-err { grid-column: 1 / -1; margin: 0; font-size: 13px; color: #f0883e; }
+.tc-out { margin-top: 28px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.06); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px 40px; align-items: end; transition: opacity .15s; }
+.tc-out.off, .tc-out.off ~ * { opacity: .35; }
+.tc-big p { margin: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.tc-big strong { display: block; margin-top: 8px; font-size: clamp(40px, 6vw, 60px); font-weight: 600; line-height: 1; letter-spacing: -.02em; color: var(--c, var(--orange)); font-variant-numeric: tabular-nums; }
+.tc-big span { display: block; margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.tc-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.tc-stats div { border-left: 1px solid rgba(255,255,255,.08); padding-left: 14px; min-width: 0; }
+.tc-stats p { margin: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.tc-stats strong { display: block; margin-top: 6px; font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.tc-more { margin-top: 24px; display: grid; gap: 8px; }
+.tc-more details { border: 1px solid rgba(255,255,255,.06); border-radius: 12px; background: rgba(255,255,255,.02); }
+.tc-more summary { cursor: pointer; list-style: none; padding: 14px 16px; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.tc-more summary::-webkit-details-marker { display: none; }
+.tc-more summary::after { content: "+"; color: var(--muted); font-size: 18px; font-weight: 400; }
+.tc-more details[open] summary::after { content: "\2212"; }
+.tc-more .tc-body { padding: 0 16px 16px; }
 .tc-work { width: 100%; border-collapse: collapse; font-size: 14px; }
-.tc-work th, .tc-work td { padding: 9px 0; border-top: 1px solid var(--line); text-align: left; font-weight: 400; color: var(--muted); }
+.tc-work th, .tc-work td { padding: 9px 0; border-top: 1px solid rgba(255,255,255,.06); text-align: left; font-weight: 400; color: var(--muted); }
 .tc-work td { text-align: right; white-space: nowrap; color: var(--text); font-variant-numeric: tabular-nums; padding-left: 12px; }
-.tc-work tr:first-child th, .tc-work tr:first-child td { border-top: 0; }
 .tc-work tr.sum th, .tc-work tr.sum td { color: var(--text); font-weight: 600; border-top-color: var(--line-strong); }
 .tc-notes { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--muted); }
 .tc-notes li + li { margin-top: 6px; }
-.tc-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+.tc-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 16px 0 0; font-size: 13px; color: var(--muted); }
 .tc-meta a { color: var(--text); }
-.tc-rev { display: inline-block; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; }
-.tc-rev.y { background: rgba(63,185,80,.15); color: var(--good); }
-.tc-rev.n { background: rgba(240,136,62,.15); color: #f0883e; }
-.tc-table-wrap { overflow-x: auto; }
-.tc-table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; }
-.tc-table th, .tc-table td { padding: 12px 10px 12px 0; border-top: 1px solid var(--line); vertical-align: top; }
-.tc-table thead th { border-top: 0; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-.tc-table tbody th { font-weight: 600; white-space: nowrap; }
-.tc-table td { color: var(--muted); line-height: 1.5; }
-.tc-table td a { color: var(--text); }
-.tc-table small { display: block; margin-top: 4px; }
-.tc-lead { margin: 0 0 18px; max-width: 860px; font-size: 16px; line-height: 1.6; color: var(--muted); text-align: left; }
-@media (max-width: 1100px) { .tc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 900px) { .tc { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 720px) {
-  .tc-table thead { display: none; }
-  .tc-table tr { display: block; padding: 12px 0; border-top: 1px solid var(--line); }
-  .tc-table th, .tc-table td { display: block; border: 0; padding: 3px 0; }
-  .tc-table td[data-l]::before { content: attr(data-l) ": "; color: var(--dim); }
+.tc-rev { display: inline-block; border-radius: 999px; padding: 4px 10px; font: 600 11px/1 var(--sans); white-space: nowrap; }
+.tc-rev.y { color: #3fb950; background: rgba(63,185,80,.12); border: 1px solid rgba(63,185,80,.35); }
+.tc-rev.n { color: #f0883e; background: rgba(240,136,62,.10); border: 1px solid rgba(240,136,62,.30); }
+/* comparison: the same sale in 13 countries */
+.tc-cmp-w { margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.06); }
+.tc-cmp-w h2 { margin: 6px 0 18px; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+.tc-k { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--c, var(--orange)); }
+.tc-cmp-row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr) 96px 110px; gap: 16px; align-items: center; min-height: 52px; padding: 8px 10px; border-top: 1px solid rgba(255,255,255,.06); }
+.tc-cmp-row.head { min-height: 0; padding: 0 10px 10px; border-top: 0; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+.tc-cmp-row.head span:nth-child(n+3) { text-align: right; }
+.tc-cmp-row.home { background: color-mix(in srgb, var(--c, #5faede) 9%, transparent); border-radius: 12px; border-top-color: transparent; }
+.tc-cmp-row.home + .tc-cmp-row { border-top-color: transparent; }
+.tc-cmp-n b { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 15px; font-weight: 600; }
+.tc-cmp-n small { display: block; font-size: 12px; color: var(--muted); }
+.tc-you { font: 600 11px/1 var(--sans); color: var(--c, #5faede); border: 1px solid color-mix(in srgb, var(--c, #5faede) 45%, transparent); border-radius: 999px; padding: 4px 8px; }
+.tc-cmp-bar { height: 8px; border-radius: 999px; background: rgba(255,255,255,.05); overflow: hidden; }
+.tc-cmp-bar i { display: block; height: 100%; min-width: 0; border-radius: 999px; background: rgba(255,255,255,.28); }
+.tc-cmp-row.home .tc-cmp-bar i { background: var(--c, #5faede); }
+.tc-cmp-t, .tc-cmp-k { text-align: right; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tc-cmp-k { color: var(--muted); font-weight: 500; }
+/* rules: one row per country, details on demand */
+.tc-rules { display: grid; gap: 8px; text-align: left; }
+.tc-rule { background: #141414; border: 1px solid rgba(255,255,255,.06); border-radius: 14px; }
+.tc-rule summary { cursor: pointer; list-style: none; display: grid; grid-template-columns: 150px minmax(0, 1fr) auto 18px; gap: 16px; align-items: center; padding: 16px 20px; }
+.tc-rule summary::-webkit-details-marker { display: none; }
+.tc-rule summary::after { content: "+"; color: var(--muted); font-size: 18px; text-align: right; }
+.tc-rule[open] summary::after { content: "\2212"; }
+.tc-rule summary b { font-size: 15px; font-weight: 600; }
+.tc-rule summary span.r { font-size: 14px; color: var(--muted); }
+.tc-rule dl { margin: 0; padding: 4px 20px 18px; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px 16px; font-size: 14px; line-height: 1.5; }
+.tc-rule dt { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); padding-top: 3px; }
+.tc-rule dd { margin: 0; color: var(--muted); }
+.tc-rule dd a { color: var(--text); }
+.tc-lead { margin: 0 0 20px; max-width: 760px; font-size: 16px; line-height: 1.6; color: var(--muted); text-align: left; }
+@media (max-width: 760px) {
+  .hpanel.tc { padding: 24px 18px; }
+  .tc-f, .tc-f.w3 { grid-column: 1 / -1; }
+  .tc-out { grid-template-columns: minmax(0, 1fr); }
+  .tc-cmp-row { grid-template-columns: minmax(0, 1fr) 84px; padding: 8px; }
+  .tc-cmp-bar, .tc-cmp-k, .tc-cmp-row.head span:nth-child(2), .tc-cmp-row.head span:nth-child(4) { display: none; }
+  .tc-rule summary { grid-template-columns: minmax(0, 1fr) auto 18px; gap: 10px; padding: 14px 16px; }
+  .tc-rule summary span.r { grid-column: 1 / -1; grid-row: 2; }
+  .tc-rule dl { grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 0 16px 16px; }
+  .tc-rule dd { margin-bottom: 10px; }
+  .tc-f .seg { height: auto; }
 }
-@media (max-width: 520px) { .tc-panel { padding: 18px; } .tc-num { width: 124px; } .tc-box strong { font-size: 18px; } }
+@media (max-width: 420px) { .tc-stats { grid-template-columns: minmax(0, 1fr); } .tc-stats div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-left: 0; padding: 8px 0 0; border-top: 1px solid rgba(255,255,255,.06); } .tc-stats strong { margin: 0; } }
 </style>
 </head>
-<body class="page-buy page-fee page-pf page-stack page-tc no-split">
+<body class="page-buy page-tc no-split">
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="/index.html" aria-label="Virtuse home">
@@ -242,60 +276,119 @@
   </div>
 </header>
 
-<main class="wrap bd-v3 bd-acc-blue" id="top">
+<main class="wrap acc acc-blue" id="top">
 
-  <div class="buy-hero2 pf-hero">
-    <div class="eyebrow"><i></i>13 EU countries · tax year 2026</div>
-    <h1>Bitcoin tax calculator</h1>
-    <p class="sp-lead">Enter one sale. See the tax, the working line by line and the official source for your country's rule.</p>
-  </div>
-  <noscript><p class="pf-noscript">The calculator needs JavaScript. The country table below lists every rule with its source.</p></noscript>
-  <div class="pf-app tc" id="calc">
-    <form class="tc-panel" id="tc-form" data-default="de" novalidate onsubmit="return false">
-      <h2>Your sale</h2>
-      <div class="tc-field">
-        <span class="tc-lbl" id="tc-country-l">Country of tax residence</span>
-        <div class="tc-cs" id="tc-country" role="group" aria-labelledby="tc-country-l"><button type="button" class="tc-c" data-c="sk" aria-pressed="false">Slovakia</button><button type="button" class="tc-c" data-c="cz" aria-pressed="false">Czechia</button><button type="button" class="tc-c" data-c="pl" aria-pressed="false">Poland</button><button type="button" class="tc-c" data-c="hu" aria-pressed="false">Hungary</button><button type="button" class="tc-c" data-c="at" aria-pressed="false">Austria</button><button type="button" class="tc-c" data-c="de" aria-pressed="false">Germany</button><button type="button" class="tc-c" data-c="si" aria-pressed="false">Slovenia</button><button type="button" class="tc-c" data-c="hr" aria-pressed="false">Croatia</button><button type="button" class="tc-c" data-c="ro" aria-pressed="false">Romania</button><button type="button" class="tc-c" data-c="bg" aria-pressed="false">Bulgaria</button><button type="button" class="tc-c" data-c="nl" aria-pressed="false">Netherlands</button><button type="button" class="tc-c" data-c="fr" aria-pressed="false">France</button><button type="button" class="tc-c" data-c="es" aria-pressed="false">Spain</button></div>
+  <!-- 1. HERO + the calculator panel (Services layout: centred headline, one panel) -->
+  <div class="buy-hero2">
+    <div class="eyebrow"><i></i>Tax calculator · 13 EU countries · tax year 2026</div>
+    <h1>Bitcoin tax calculator. <span class="h1-grey">One sale, 13 EU countries side by side.</span></h1>
+    <noscript><p class="hp-fine">The calculator needs JavaScript. The country table below lists every rule with its source.</p></noscript>
+    <div class="hpanel blue tc" id="calc">
+      <form class="tc-form" id="tc-form" data-order='["sk", "cz", "pl", "hu", "at", "de", "si", "hr", "ro", "bg", "nl", "fr", "es"]' novalidate onsubmit="return false">
+        <div class="tc-f w3"><label for="tc-country">Country of tax residence</label>
+          <select class="tc-sel" id="tc-country"><option value="at">Austria</option><option value="bg">Bulgaria</option><option value="hr">Croatia</option><option value="cz">Czechia</option><option value="fr">France</option><option value="de" selected>Germany</option><option value="hu">Hungary</option><option value="nl">Netherlands</option><option value="pl">Poland</option><option value="ro">Romania</option><option value="sk">Slovakia</option><option value="si">Slovenia</option><option value="es">Spain</option></select></div>
+        <div class="tc-f w3"><span class="tc-lbl" id="tc-mode-l">What do you know about the purchase?</span>
+          <div class="seg" id="tc-mode" role="group" aria-labelledby="tc-mode-l"><button type="button" class="seg-btn on" data-mode="exact" aria-pressed="true">Exact amounts</button><button type="button" class="seg-btn" data-mode="est" aria-pressed="false">Only when and how much</button></div></div>
+        <div class="tc-set" id="tc-exact">
+          <div class="tc-f"><label for="tc-proceeds">Sale amount</label>
+          <span class="tc-euro"><input class="tc-in" id="tc-proceeds" type="text" inputmode="decimal" autocomplete="off" value="20000" aria-describedby="tc-proceeds-h"></span>
+          <p class="tc-hint" id="tc-proceeds-h">What you receive in euros, after the exchange's fee.</p></div>
+          <div class="tc-f"><label for="tc-cost">Purchase cost</label>
+          <span class="tc-euro"><input class="tc-in" id="tc-cost" type="text" inputmode="decimal" autocomplete="off" value="10000" aria-describedby="tc-cost-h"></span>
+          <p class="tc-hint" id="tc-cost-h">What you paid for the Bitcoin you sell, fees included.</p></div>
+          <div class="tc-f"><label for="tc-bought">Bought on</label>
+          <input class="tc-in" id="tc-bought" type="date" value="" aria-describedby="tc-bought-h">
+          <p class="tc-hint" id="tc-bought-h">For several purchases, the date of the first one you sell (FIFO). The sale is today.</p></div>
+        </div>
+        <div class="tc-set" id="tc-estf" hidden>
+          <div class="tc-f w3"><label for="tc-invested">Amount invested</label>
+          <span class="tc-euro"><input class="tc-in" id="tc-invested" type="text" inputmode="decimal" autocomplete="off" value="10000" aria-describedby="tc-invested-h"></span>
+          <p class="tc-hint" id="tc-invested-h">Roughly what you paid in euros.</p></div>
+          <div class="tc-f w3"><label for="tc-month">Month of purchase</label>
+          <input class="tc-in" id="tc-month" type="month" min="2010-08" value="2022-01" aria-describedby="tc-month-h">
+          <p class="tc-hint" id="tc-month-h">We take the average Bitcoin price of that month and today's price.</p></div>
+          <p class="tc-est" id="tc-est" aria-live="polite"></p>
+        </div>
+        <div class="tc-f w3"><label for="tc-other">Other taxable income in 2026</label>
+          <span class="tc-euro"><input class="tc-in" id="tc-other" type="text" inputmode="decimal" autocomplete="off" value="30000" aria-describedby="tc-other-h"></span>
+          <p class="tc-hint" id="tc-other-h">Salary and similar. Slovakia, Czechia and Germany add the gain on top of it.</p></div>
+        <p class="tc-err" id="tc-err" role="alert" hidden></p>
+      </form>
+
+      <div class="tc-out" id="tc-out" aria-live="polite">
+        <div class="tc-big"><p id="tc-v-title">Tax and levies on this sale</p><strong id="tc-r-tax">&hellip;</strong><span id="tc-v-sub"></span></div>
+        <div class="tc-stats">
+          <div><p>Gain</p><strong id="tc-r-gain">&hellip;</strong></div>
+          <div><p>You keep</p><strong id="tc-r-net">&hellip;</strong></div>
+          <div><p>Effective rate</p><strong id="tc-r-eff">&hellip;</strong></div>
+        </div>
       </div>
-      <div class="tc-field">
-        <div class="tc-head"><label for="tc-proceeds">Sale amount</label><input class="tc-num" id="tc-proceeds" type="text" inputmode="decimal" autocomplete="off" value="20000" aria-describedby="tc-proceeds-h"></div>
-        <p class="tc-hint" id="tc-proceeds-h">What you receive in euros, after the exchange's fee.</p>
+      <div class="tc-more">
+        <details id="tc-work-w"><summary>The working</summary><div class="tc-body"><table class="tc-work"><tbody id="tc-work"></tbody></table>
+          <p class="tc-meta"><span class="tc-rev" id="tc-rev"></span><span id="tc-src"></span></p></div></details>
+        <details id="tc-notes-w"><summary>Not included for this country</summary><div class="tc-body"><ul class="tc-notes" id="tc-notes"></ul></div></details>
       </div>
-      <div class="tc-field">
-        <div class="tc-head"><label for="tc-cost">Purchase cost</label><input class="tc-num" id="tc-cost" type="text" inputmode="decimal" autocomplete="off" value="10000" aria-describedby="tc-cost-h"></div>
-        <p class="tc-hint" id="tc-cost-h">What you paid for the Bitcoin you sell, fees included.</p>
+
+      <div class="tc-cmp-w">
+        <span class="tc-k">For comparison</span>
+        <h2>The same sale in all 13 countries</h2>
+        <div class="tc-cmp-row head"><span>Country</span><span></span><span>Tax</span><span>You keep</span></div>
+        <div id="tc-cmp"></div>
+        <p class="hp-diff" id="tc-cmp-sum"></p>
       </div>
-      <div class="tc-field">
-        <div class="tc-head"><label for="tc-bought">Bought on</label><input class="tc-num" id="tc-bought" type="date" value="" aria-describedby="tc-bought-h"></div>
-        <p class="tc-hint" id="tc-bought-h">For several purchases, the date of the first one you sell (FIFO). The sale is today.</p>
-      </div>
-      <div class="tc-field" id="tc-other-f" hidden>
-        <div class="tc-head"><label for="tc-other" id="tc-other-l">Other income in 2026 (tax base)</label><input class="tc-num" id="tc-other" type="text" inputmode="decimal" autocomplete="off" value="30000" aria-describedby="tc-other-h"></div>
-        <p class="tc-hint" id="tc-other-h">The gain is added on top of it: it decides which band the gain falls into.</p>
-      </div>
-      <p class="tc-err" id="tc-err" role="alert" hidden></p>
-    </form>
-    <div class="tc-res">
-      <div class="tc-verdict glow" id="tc-verdict" aria-live="polite"><b id="tc-v-title">&hellip;</b><span id="tc-v-sub"></span></div>
-      <div class="tc-grid">
-        <div class="tc-box glow"><p>Gain</p><strong id="tc-r-gain">&hellip;</strong></div>
-        <div class="tc-box glow"><p>Tax and levies</p><strong class="o" id="tc-r-tax">&hellip;</strong></div>
-        <div class="tc-box glow"><p>You keep</p><strong id="tc-r-net">&hellip;</strong></div>
-        <div class="tc-box glow"><p>Effective rate</p><strong id="tc-r-eff">&hellip;</strong></div>
-      </div>
-      <div class="tc-panel" id="tc-work-w"><h2>The working</h2><table class="tc-work"><tbody id="tc-work"></tbody></table></div>
-      <div class="tc-panel"><h2>Not included for this country</h2><ul class="tc-notes" id="tc-notes"></ul>
-        <p class="tc-meta"><span class="tc-rev" id="tc-rev"></span><span id="tc-src"></span></p></div>
     </div>
+    <div class="hp-fine">
+      <p>One sale by a private person, tax year 2026, rules as of 19 Nov 2026. Not tax advice.</p>
+      <p>For comparison only. You pay tax where you are tax resident, and changing residence has rules of its own. Spain is counted without other savings income; the Netherlands taxes wealth, not the sale.</p>
+    </div>
+
   </div>
 
+  <!-- 2. THE RULE IN EACH COUNTRY -->
   <section id="rules">
     <div class="sec-head one"><div class="sec-copy"><h2>The rule <span>in each country</span></h2></div></div>
-    <p class="tc-lead">The calculator uses these rules. Each one comes from the tax authority or the law named in the source column, checked 19 Nov 2026.</p>
-    <div class="tc-table-wrap"><table class="tc-table" id="tc-table">
-      <thead><tr><th scope="col">Country</th><th scope="col">Tax on the gain</th><th scope="col">Exemption</th><th scope="col">How you file</th><th scope="col">Source</th><th scope="col">Tax adviser review</th></tr></thead>
-      <tbody><tr data-c="sk"><th scope="row">Slovakia<small><a href="/bitcoin-tax/slovakia/">Guide</a></small></th><td data-l="Tax on the gain">19 to 35% income tax; 16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer</td><td data-l="Exemption">No holding-period exemption; every sale or crypto-to-crypto swap is taxed</td><td data-l="How you file">Annual personal tax return (type B), due 31 March</td><td data-l="Source"><a href="https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026" target="_blank" rel="noopener">Finančná správa</a></td><td data-l="Tax adviser review"><span class="tc-rev y">Reviewed</span></td></tr><tr data-c="cz"><th scope="row">Czechia<small><a href="/bitcoin-tax/czechia/">Guide</a></small></th><td data-l="Tax on the gain">15% income tax (23% above threshold)</td><td data-l="Exemption">Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000</td><td data-l="How you file">Annual personal tax return</td><td data-l="Source"><a href="https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace" target="_blank" rel="noopener">Finanční správa</a></td><td data-l="Tax adviser review"><span class="tc-rev n">Not yet</span></td></tr><tr data-c="pl"><th scope="row">Poland<small><a href="/bitcoin-tax/poland/">Guide</a></small></th><td data-l="Tax on the gain">19% flat capital gains tax</td><td data-l="Exemption">No holding-period exemption</td><td data-l="How you file">Annual PIT-38</td><td data-l="Source"><a href="https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-kryptowalut" target="_blank" rel="noopener">Serwis o podatkach</a></td><td data-l="Tax adviser review"><span class="tc-rev n">Not yet</span></td></tr><tr data-c="hu"><th scope="row">Hungary<small><a href="/bitcoin-tax/hungary/">Guide</a></small></th><td data-l="Tax on the gain">15% personal income tax on crypto income</td><td data-l="Exemption">No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)</td><td data-l="How you file">Annual personal income tax return</td><td data-l="Source"><a href="https://nav.gov.hu/ado/szja/a-kriptougyletek-jovedelmenek-adozasa" target="_blank" rel="noopener">NAV</a></td><td data-l="Tax adviser review"><span class="tc-rev y">Reviewed</span></td></tr><tr data-c="at"><th scope="row">Austria<small><a href="/bitcoin-tax/austria/">Guide</a></small></th><td data-l="Tax on the gain">27.5% KESt (capital gains tax)</td><td data-l="Exemption">Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption</td><td data-l="How you file">Annual return for gains via foreign exchanges; Austrian providers withhold the tax</td><td data-l="Source"><a href="https://www.bmf.gv.at/themen/steuern/sparen-veranlagen/steuerliche-behandlung-von-kryptowaehrungen.html" target="_blank" rel="noopener">BMF</a></td><td data-l="Tax adviser review"><span class="tc-rev y">Reviewed</span></td></tr><tr data-c="de"><th scope="row">Germany<small><a href="/bitcoin-tax/germany/">Guide</a></small></th><td data-l="Tax on the gain">Up to 45% income tax (progressive)</td><td data-l="Exemption">0% after a 1-year holding period; total gains under €1,000 a year are tax-free</td><td data-l="How you file">Annual tax return</td><td data-l="Source"><a href="https://www.gesetze-im-internet.de/estg/__32a.html" target="_blank" rel="noopener">§ 32a EStG Einkommensteuertarif</a></td><td data-l="Tax adviser review"><span class="tc-rev n">Not yet</span></td></tr><tr data-c="si"><th scope="row">Slovenia<small><a href="/bitcoin-tax/slovenia/">Guide</a></small></th><td data-l="Tax on the gain">No tax on private disposal gains (business trading is taxed)</td><td data-l="Exemption">Private gains are not taxed</td><td data-l="How you file">No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return</td><td data-l="Source"><a href="https://www.fu.gov.si/zivljenjski_dogodki_prebivalci/trgujem_z_virtualnimi_valutami/" target="_blank" rel="noopener">FURS</a></td><td data-l="Tax adviser review"><span class="tc-rev y">Reviewed</span></td></tr><tr data-c="hr"><th scope="row">Croatia<small><a href="/bitcoin-tax/croatia/">Guide</a></small></th><td data-l="Tax on the gain">12% on crypto gains (since 2024)</td><td data-l="Exemption">Tax-free after a 2-year holding period</td><td data-l="How you file">JOPPD form by the end of February (not the annual return)</td><td data-l="Source"><a href="https://porezna-uprava.gov.hr/hr/dohodak-od-kapitala-po-osnovi-kapitalnih-dobitaka/4653" target="_blank" rel="noopener">Porezna uprava</a></td><td data-l="Tax adviser review"><span class="tc-rev n">Not yet</span></td></tr><tr data-c="ro"><th scope="row">Romania<small><a href="/bitcoin-tax/romania/">Guide</a></small></th><td data-l="Tax on the gain">16% income tax on crypto gains (10% until 2025)</td><td data-l="Exemption">No holding-period exemption</td><td data-l="How you file">Annual return (income from other sources)</td><td data-l="Source"><a href="https://static.anaf.ro/static/10/Anaf/legislatie/L_239_2025.pdf" target="_blank" rel="noopener">Legea nr. 239/2025</a></td><td data-l="Tax adviser review"><span class="tc-rev n">Not yet</span></td></tr><tr data-c="bg"><th scope="row">Bulgaria<small><a href="/bitcoin-tax/bulgaria/">Guide</a></small></th><td data-l="Tax on the gain">10% flat tax on gains</td><td data-l="Exemption">No holding-period exemption</td><td data-l="How you file">Annual tax return</td><td data-l="Source"><a href="https://nra.bg/wps/portal/nra/taxes/danak-vurhu-dohodite-na-fizicheski-lica" target="_blank" rel="noopener">НАП</a></td><td data-l="Tax adviser review"><span class="tc-rev n">Not yet</span></td></tr><tr data-c="nl"><th scope="row">Netherlands<small><a href="/bitcoin-tax/netherlands/">Guide</a></small></th><td data-l="Tax on the gain">Box 3 wealth tax on a deemed return (about 36% of the assumed yield)</td><td data-l="Exemption">Tax-free allowance (€59,357 per person, 2026)</td><td data-l="How you file">Annual Box 3 declaration</td><td data-l="Source"><a href="https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026" target="_blank" rel="noopener">Belastingdienst</a></td><td data-l="Tax adviser review"><span class="tc-rev n">Not yet</span></td></tr><tr data-c="fr"><th scope="row">France<small><a href="/bitcoin-tax/france/">Guide</a></small></th><td data-l="Tax on the gain">31.4% flat tax (PFU: 12.8% income tax + 18.6% social charges, 2026)</td><td data-l="Exemption">No holding-period exemption; total disposals up to €305 a year are exempt</td><td data-l="How you file">Annual return with form 2086; foreign accounts on form 3916-bis</td><td data-l="Source"><a href="https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques" target="_blank" rel="noopener">impots.gouv.fr</a></td><td data-l="Tax adviser review"><span class="tc-rev n">Not yet</span></td></tr><tr data-c="es"><th scope="row">Spain<small><a href="/bitcoin-tax/spain/">Guide</a></small></th><td data-l="Tax on the gain">19–30% progressive tax on savings income</td><td data-l="Exemption">No holding-period exemption</td><td data-l="How you file">Annual IRPF return; Modelo 721 for crypto worth over €50,000 held with custodians abroad</td><td data-l="Source"><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764" target="_blank" rel="noopener">BOE</a></td><td data-l="Tax adviser review"><span class="tc-rev n">Not yet</span></td></tr></tbody>
-    </table></div>
+    <p class="tc-lead">Each rule comes from the tax authority or the law named as its source, checked 19 Nov 2026. Open a country for the details.</p>
+    <div class="tc-rules" id="tc-table">
+    <details class="tc-rule" data-c="sk"><summary><b>Slovakia</b><span class="r">19 to 35% income tax; 16% health insurance contributions on the gain (8% with a disability), settled annually by the health insurer</span><span class="tc-rev y">Reviewed</span></summary>
+      <dl><dt>Exemption</dt><dd>No holding-period exemption; every sale or crypto-to-crypto swap is taxed</dd><dt>How you file</dt><dd>Annual personal tax return (type B), due 31 March</dd>
+      <dt>Source</dt><dd><a href="https://podpora.financnasprava.sk/081400-Sadzba-dane-z-pr%C3%ADjmov-fyzickej-osoby-za-rok-2026" target="_blank" rel="noopener">Finančná správa</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/slovakia/">Slovakia</a></dd></dl></details>
+    <details class="tc-rule" data-c="cz"><summary><b>Czechia</b><span class="r">15% income tax (23% above threshold)</span><span class="tc-rev n">Not yet</span></summary>
+      <dl><dt>Exemption</dt><dd>Tax-free after 3 years of holding (up to CZK 40 million a year), or if total crypto sale proceeds in the year are at most CZK 100,000</dd><dt>How you file</dt><dd>Annual personal tax return</dd>
+      <dt>Source</dt><dd><a href="https://financnisprava.gov.cz/cs/dane/dane/dan-z-prijmu/zamestnanci-zamestnavatele/obecne-informace" target="_blank" rel="noopener">Finanční správa</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/czechia/">Czechia</a></dd></dl></details>
+    <details class="tc-rule" data-c="pl"><summary><b>Poland</b><span class="r">19% flat capital gains tax</span><span class="tc-rev n">Not yet</span></summary>
+      <dl><dt>Exemption</dt><dd>No holding-period exemption</dd><dt>How you file</dt><dd>Annual PIT-38</dd>
+      <dt>Source</dt><dd><a href="https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-kryptowalut" target="_blank" rel="noopener">Serwis o podatkach</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/poland/">Poland</a></dd></dl></details>
+    <details class="tc-rule" data-c="hu"><summary><b>Hungary</b><span class="r">15% personal income tax on crypto income</span><span class="tc-rev y">Reviewed</span></summary>
+      <dl><dt>Exemption</dt><dd>No holding-period exemption; small transactions up to 10% of the minimum wage each are tax-free (up to one minimum wage a year in total)</dd><dt>How you file</dt><dd>Annual personal income tax return</dd>
+      <dt>Source</dt><dd><a href="https://nav.gov.hu/ado/szja/a-kriptougyletek-jovedelmenek-adozasa" target="_blank" rel="noopener">NAV</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/hungary/">Hungary</a></dd></dl></details>
+    <details class="tc-rule" data-c="at"><summary><b>Austria</b><span class="r">27.5% KESt (capital gains tax)</span><span class="tc-rev y">Reviewed</span></summary>
+      <dl><dt>Exemption</dt><dd>Tax-free after 1 year only for crypto bought before March 2021; later purchases have no exemption</dd><dt>How you file</dt><dd>Annual return for gains via foreign exchanges; Austrian providers withhold the tax</dd>
+      <dt>Source</dt><dd><a href="https://www.bmf.gv.at/themen/steuern/sparen-veranlagen/steuerliche-behandlung-von-kryptowaehrungen.html" target="_blank" rel="noopener">BMF</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/austria/">Austria</a></dd></dl></details>
+    <details class="tc-rule" data-c="de"><summary><b>Germany</b><span class="r">Up to 45% income tax (progressive)</span><span class="tc-rev n">Not yet</span></summary>
+      <dl><dt>Exemption</dt><dd>0% after a 1-year holding period; total gains under €1,000 a year are tax-free</dd><dt>How you file</dt><dd>Annual tax return</dd>
+      <dt>Source</dt><dd><a href="https://www.gesetze-im-internet.de/estg/__32a.html" target="_blank" rel="noopener">§ 32a EStG Einkommensteuertarif</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/germany/">Germany</a></dd></dl></details>
+    <details class="tc-rule" data-c="si"><summary><b>Slovenia</b><span class="r">No tax on private disposal gains (business trading is taxed)</span><span class="tc-rev y">Reviewed</span></summary>
+      <dl><dt>Exemption</dt><dd>Private gains are not taxed</dd><dt>How you file</dt><dd>No return for private gains; mining income needs an advance-tax return within 15 days; business income goes on the business tax return</dd>
+      <dt>Source</dt><dd><a href="https://www.fu.gov.si/zivljenjski_dogodki_prebivalci/trgujem_z_virtualnimi_valutami/" target="_blank" rel="noopener">FURS</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/slovenia/">Slovenia</a></dd></dl></details>
+    <details class="tc-rule" data-c="hr"><summary><b>Croatia</b><span class="r">12% on crypto gains (since 2024)</span><span class="tc-rev n">Not yet</span></summary>
+      <dl><dt>Exemption</dt><dd>Tax-free after a 2-year holding period</dd><dt>How you file</dt><dd>JOPPD form by the end of February (not the annual return)</dd>
+      <dt>Source</dt><dd><a href="https://porezna-uprava.gov.hr/hr/dohodak-od-kapitala-po-osnovi-kapitalnih-dobitaka/4653" target="_blank" rel="noopener">Porezna uprava</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/croatia/">Croatia</a></dd></dl></details>
+    <details class="tc-rule" data-c="ro"><summary><b>Romania</b><span class="r">16% income tax on crypto gains (10% until 2025)</span><span class="tc-rev n">Not yet</span></summary>
+      <dl><dt>Exemption</dt><dd>No holding-period exemption</dd><dt>How you file</dt><dd>Annual return (income from other sources)</dd>
+      <dt>Source</dt><dd><a href="https://static.anaf.ro/static/10/Anaf/legislatie/L_239_2025.pdf" target="_blank" rel="noopener">Legea nr. 239/2025</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/romania/">Romania</a></dd></dl></details>
+    <details class="tc-rule" data-c="bg"><summary><b>Bulgaria</b><span class="r">10% flat tax on gains</span><span class="tc-rev n">Not yet</span></summary>
+      <dl><dt>Exemption</dt><dd>No holding-period exemption</dd><dt>How you file</dt><dd>Annual tax return</dd>
+      <dt>Source</dt><dd><a href="https://nra.bg/wps/portal/nra/taxes/danak-vurhu-dohodite-na-fizicheski-lica" target="_blank" rel="noopener">НАП</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/bulgaria/">Bulgaria</a></dd></dl></details>
+    <details class="tc-rule" data-c="nl"><summary><b>Netherlands</b><span class="r">Box 3 wealth tax on a deemed return (about 36% of the assumed yield)</span><span class="tc-rev n">Not yet</span></summary>
+      <dl><dt>Exemption</dt><dd>Tax-free allowance (€59,357 per person, 2026)</dd><dt>How you file</dt><dd>Annual Box 3 declaration</dd>
+      <dt>Source</dt><dd><a href="https://www.belastingdienst.nl/wps/wcm/connect/nl/box-3/content/berekening-box-3-inkomen-2026" target="_blank" rel="noopener">Belastingdienst</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/netherlands/">Netherlands</a></dd></dl></details>
+    <details class="tc-rule" data-c="fr"><summary><b>France</b><span class="r">31.4% flat tax (PFU: 12.8% income tax + 18.6% social charges, 2026)</span><span class="tc-rev n">Not yet</span></summary>
+      <dl><dt>Exemption</dt><dd>No holding-period exemption; total disposals up to €305 a year are exempt</dd><dt>How you file</dt><dd>Annual return with form 2086; foreign accounts on form 3916-bis</dd>
+      <dt>Source</dt><dd><a href="https://www.impots.gouv.fr/particulier/questions/comment-declarer-les-plus-ou-moins-values-sur-cessions-dactifs-numeriques" target="_blank" rel="noopener">impots.gouv.fr</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/france/">France</a></dd></dl></details>
+    <details class="tc-rule" data-c="es"><summary><b>Spain</b><span class="r">19–30% progressive tax on savings income</span><span class="tc-rev n">Not yet</span></summary>
+      <dl><dt>Exemption</dt><dd>No holding-period exemption</dd><dt>How you file</dt><dd>Annual IRPF return; Modelo 721 for crypto worth over €50,000 held with custodians abroad</dd>
+      <dt>Source</dt><dd><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764" target="_blank" rel="noopener">BOE</a></dd><dt>Country guide</dt><dd><a href="/bitcoin-tax/spain/">Spain</a></dd></dl></details>
+    </div>
   </section>
 
   <section id="how">
@@ -322,7 +415,7 @@
         <div class="how-log-body">
           <span class="how-log-num">Step 03</span>
           <h3>Rate or bands</h3>
-          <p>One rate, or progressive bands on your whole tax base (Slovakia, Czechia, Germany, Spain): the tax is what the gain adds to the tax on your other income.</p>
+          <p>One rate, or progressive bands on your whole tax base (Slovakia, Czechia, Germany): the tax is what the gain adds to the tax on your other income. Spain has its own bands for savings income.</p>
         </div>
       </div>
     </div>
@@ -401,8 +494,8 @@
 </main>
 
 <script type="application/json" id="tc-rules">{"about": "Rules for the Bitcoin tax calculator (/bitcoin-tax-calculator.html), one sale by a private person. Every number here comes from seo-build/data/tax-sources.json (official source + quote per country) or from the source named in the country's 'src' field; build_tax_calculator.py checks the rates against tax-sources.json and stops if they differ. Change a rule here and in tax-sources.json together, then rebuild. Kinds: flat = one rate on the gain; bands = progressive rates on the whole tax base (other income + gain, the tax is the difference the gain adds); de = German income tax formula (§ 32a EStG 2026); none = private gains not taxed; box3 = wealth tax, a sale is not taxed. holdYears = years after which a sale is tax-free. reviewed = the rule was in the signed tax review of 4/5 Nov 2026.", "year": 2026, "checked": "2026-11-19", "fx": {"date": "2026-11-19", "source": "ECB reference rates via api.frankfurter.dev", "CZK": 24.427}, "countries": {"cz": {"kind": "bands", "currency": "CZK", "bands": [[1762812, 15], [null, 23]], "base": "total", "holdYears": 3, "holdCap": 40000000, "exemptProceedsMax": 100000, "reviewed": false}, "sk": {"kind": "bands", "currency": "EUR", "bands": [[43983.32, 19], [60349.21, 25], [75010.32, 30], [null, 35]], "base": "total", "levy": 16, "reviewed": true, "src": "Bands: Financial Administration of the Slovak Republic, tax year 2026 (same as the Verdict report, cloudflare-worker blocks.js TAX_EXAMPLE)"}, "pl": {"kind": "flat", "rate": 19, "reviewed": false}, "at": {"kind": "flat", "rate": 27.5, "oldBefore": "2021-03-01", "oldHoldYears": 1, "reviewed": true}, "de": {"kind": "de", "holdYears": 1, "freigrenze": 1000, "reviewed": false, "src": "§ 32a EStG from tax year 2026 (gesetze-im-internet.de, read 2026-11-19); Freigrenze § 23(3) EStG"}, "hu": {"kind": "flat", "rate": 15, "reviewed": true}, "si": {"kind": "none", "reviewed": true}, "hr": {"kind": "flat", "rate": 12, "holdYears": 2, "reviewed": false}, "ro": {"kind": "flat", "rate": 16, "reviewed": false}, "bg": {"kind": "flat", "rate": 10, "reviewed": false}, "nl": {"kind": "box3", "reviewed": false}, "fr": {"kind": "flat", "rate": 31.4, "exemptProceedsMax": 305, "reviewed": false}, "es": {"kind": "bands", "currency": "EUR", "bands": [[6000, 19], [50000, 21], [200000, 23], [300000, 27], [null, 30]], "base": "savings", "reviewed": false}}}</script>
-<script type="application/json" id="tc-i18n">{"err": "Enter amounts in euros and a purchase date in the past.", "other_total": "Other income in 2026 (tax base)", "other_de": "Other taxable income in 2026", "other_savings": "Other savings income in 2026", "other_hint": "The gain is added on top of it: it decides which band the gain falls into.", "h_taxed": "Tax {total}, effective rate {eff}", "s_taxed": "On a gain of {gain}, at {country}'s 2026 rules.", "h_loss": "No tax: the sale is a loss", "s_loss": "A sale below the purchase cost creates no taxable gain.", "h_exempt_hold": "Tax-free: held long enough", "s_exempt_hold": "{country} exempts coins held more than {years}.", "h_exempt_old": "Tax-free under the old rules", "s_exempt_old": "Coins bought before 1 March 2021 and held more than a year are not taxed in Austria.", "h_exempt_small": "Tax-free: under the yearly limit", "s_exempt_small": "Sales of up to {limit} a year are exempt in {country}, if this is your only sale this year.", "h_exempt_freigrenze": "Tax-free: gain under €1,000", "s_exempt_freigrenze": "Germany taxes private sales only when the year's total gain is €1,000 or more.", "h_over_holdCap": "Above the exemption cap", "s_over_holdCap": "Czechia's 3-year exemption covers up to CZK 40 million of sales a year. Above that, ask a tax adviser.", "h_none": "No tax on a private sale", "s_none": "Slovenia does not tax private gains on crypto. Trading as a business and mining are taxed.", "h_box3": "The sale itself is not taxed", "s_box3": "The Netherlands taxes your wealth on 1 January in Box 3 (above €59,357 per person in 2026), whether you sell or not.", "w_proceeds": "Sale amount", "w_cost": "Purchase cost", "w_gain": "Gain", "w_tax": "Tax {rate} on {base}", "w_band": "Band {rate} on {base}", "w_income": "Income tax on {base} (average {rate})", "w_levy": "Health insurance {rate} on {base}", "w_total": "Tax and levies", "w_net": "You keep", "src": "Source: {link}", "rev_yes": "Reviewed by a tax adviser", "rev_no": "Not yet reviewed by a tax adviser", "note_cz": ["Yearly limits count all your crypto sales: the CZK 100,000 small-sales limit and the CZK 40 million cap on the 3-year exemption. Here this sale is counted alone.", "CZK limits converted at the ECB rate of 19 Nov 2026: 1 EUR = 24.427 CZK. The 23% band starts at a tax base of CZK 1,762,812."], "note_sk": ["The 16% health insurance on the gain is settled by your health insurer after the year (8% with a disability). Whether it applies in your case, for example as a pensioner, is a question for a tax adviser.", "A crypto loss cannot be deducted from other income."], "note_pl": ["Crypto-to-crypto swaps are not taxed.", "The 4% solidarity levy on income above PLN 1 million was not checked."], "note_at": ["Austrian providers withhold the tax; sales through foreign exchanges go on your return.", "Staking and airdrops are taxed on sale at zero acquisition cost."], "note_de": ["Rates from § 32a EStG for 2026, single filer. Solidarity surcharge and church tax are not included.", "The €1,000 limit counts all your private sales in the year. At €1,000 or more the whole gain is taxed."], "note_hu": ["Small transactions (each up to 10% of the minimum wage, one minimum wage a year in total) can be tax-free; not applied here.", "A loss declared in a return can be offset against later years."], "note_si": ["The 25% crypto tax proposed in 2025 was not enacted (checked 19 Nov 2026)."], "note_hr": ["A tax-free sale still goes on the JOPPD form by the end of February."], "note_ro": ["Gains of up to 200 lei per sale (600 lei a year) are exempt, and the health contribution (CASS) may apply above income thresholds. Neither is applied here."], "note_bg": ["A 10% deemed-expense reduction may lower the effective rate to about 9%; not applied here."], "note_nl": [], "note_fr": ["The gain here is sale minus cost. When you sell part of your crypto, France spreads the cost across your whole portfolio (form 2086), so the real gain can differ.", "The €305 limit counts all disposals in the year. Crypto-to-crypto swaps are deferred."], "note_es": ["“Other savings income” means interest, dividends and other gains in 2026; your salary is taxed on a separate scale.", "Model 721 if you hold more than €50,000 in crypto with providers abroad."], "yrs": {"1": "a year", "2": "2 years", "3": "3 years"}, "n_sk": "Slovakia", "n_cz": "Czechia", "n_pl": "Poland", "n_hu": "Hungary", "n_at": "Austria", "n_de": "Germany", "n_si": "Slovenia", "n_hr": "Croatia", "n_ro": "Romania", "n_bg": "Bulgaria", "n_nl": "Netherlands", "n_fr": "France", "n_es": "Spain"}</script>
-<script src="/tax-calc.js?v=1" defer></script>
+<script type="application/json" id="tc-i18n">{"err": "Enter amounts in euros and a purchase date in the past.", "h_taxed": "Tax and levies on this sale", "s_taxed": "On a gain of {gain}, at {country}'s 2026 rules.", "h_loss": "No tax: the sale is a loss", "s_loss": "A sale below the purchase cost creates no taxable gain.", "h_exempt_hold": "Tax-free: held long enough", "s_exempt_hold": "{country} exempts coins held more than {years}.", "h_exempt_old": "Tax-free under the old rules", "s_exempt_old": "Coins bought before 1 March 2021 and held more than a year are not taxed in Austria.", "h_exempt_small": "Tax-free: under the yearly limit", "s_exempt_small": "Sales of up to {limit} a year are exempt in {country}, if this is your only sale this year.", "h_exempt_freigrenze": "Tax-free: gain under €1,000", "s_exempt_freigrenze": "Germany taxes private sales only when the year's total gain is €1,000 or more.", "h_over_holdCap": "Above the exemption cap", "s_over_holdCap": "Czechia's 3-year exemption covers up to CZK 40 million of sales a year. Above that, ask a tax adviser.", "h_none": "No tax on a private sale", "s_none": "Slovenia does not tax private gains on crypto. Trading as a business and mining are taxed.", "h_box3": "The sale itself is not taxed", "s_box3": "The Netherlands taxes your wealth on 1 January in Box 3 (above €59,357 per person in 2026), whether you sell or not.", "w_proceeds": "Sale amount", "w_cost": "Purchase cost", "w_gain": "Gain", "w_tax": "Tax {rate} on {base}", "w_band": "Band {rate} on {base}", "w_income": "Income tax on {base} (average {rate})", "w_levy": "Health insurance {rate} on {base}", "w_total": "Tax and levies", "w_net": "You keep", "src": "Source: {link}", "rev_yes": "Reviewed by a tax adviser", "rev_no": "Not yet reviewed by a tax adviser", "note_cz": ["Yearly limits count all your crypto sales: the CZK 100,000 small-sales limit and the CZK 40 million cap on the 3-year exemption. Here this sale is counted alone.", "CZK limits converted at the ECB rate of 19 Nov 2026: 1 EUR = 24.427 CZK. The 23% band starts at a tax base of CZK 1,762,812."], "note_sk": ["The 16% health insurance on the gain is settled by your health insurer after the year (8% with a disability). Whether it applies in your case, for example as a pensioner, is a question for a tax adviser.", "A crypto loss cannot be deducted from other income."], "note_pl": ["Crypto-to-crypto swaps are not taxed.", "The 4% solidarity levy on income above PLN 1 million was not checked."], "note_at": ["Austrian providers withhold the tax; sales through foreign exchanges go on your return.", "Staking and airdrops are taxed on sale at zero acquisition cost."], "note_de": ["Rates from § 32a EStG for 2026, single filer. Solidarity surcharge and church tax are not included.", "The €1,000 limit counts all your private sales in the year. At €1,000 or more the whole gain is taxed."], "note_hu": ["Small transactions (each up to 10% of the minimum wage, one minimum wage a year in total) can be tax-free; not applied here.", "A loss declared in a return can be offset against later years."], "note_si": ["The 25% crypto tax proposed in 2025 was not enacted (checked 19 Nov 2026)."], "note_hr": ["A tax-free sale still goes on the JOPPD form by the end of February."], "note_ro": ["Gains of up to 200 lei per sale (600 lei a year) are exempt, and the health contribution (CASS) may apply above income thresholds. Neither is applied here."], "note_bg": ["A 10% deemed-expense reduction may lower the effective rate to about 9%; not applied here."], "note_nl": [], "note_fr": ["The gain here is sale minus cost. When you sell part of your crypto, France spreads the cost across your whole portfolio (form 2086), so the real gain can differ.", "The €305 limit counts all disposals in the year. Crypto-to-crypto swaps are deferred."], "note_es": ["Counted without other savings income (interest, dividends, other gains); with it, more of the gain falls into higher bands. Your salary is taxed on a separate scale.", "Model 721 if you hold more than €50,000 in crypto with providers abroad."], "yrs": {"1": "a year", "2": "2 years", "3": "3 years"}, "est_loading": "Loading prices…", "est_err": "No price data for that month.", "est_line": "About {btc} BTC at {p0} per Bitcoin ({month}). Worth {val} today at {p1} ({src}).", "est_live": "live price", "est_close": "close of {date}", "cmp_home": "your country", "cmp_diff": "{home}: {a}. Lowest: {best} with {b}. Difference {d}.", "cmp_best": "{home} has the lowest tax of the 13 on this sale: {a}.", "r_taxed": "effective rate {eff}", "r_loss": "a loss, no tax", "r_exempt_hold": "tax-free after {years}", "r_exempt_old": "tax-free, bought before March 2021", "r_exempt_small": "under the yearly limit", "r_exempt_freigrenze": "gain under €1,000", "r_over_holdCap": "above the exemption cap", "r_none": "private gains not taxed", "r_box3": "wealth tax instead of a tax on the sale", "n_sk": "Slovakia", "n_cz": "Czechia", "n_pl": "Poland", "n_hu": "Hungary", "n_at": "Austria", "n_de": "Germany", "n_si": "Slovenia", "n_hr": "Croatia", "n_ro": "Romania", "n_bg": "Bulgaria", "n_nl": "Netherlands", "n_fr": "France", "n_es": "Spain"}</script>
+<script src="/tax-calc.js?v=2" defer></script>
 <script src="/site-v2.js?v=19" defer></script>
 <script src="/concierge-launcher.js" defer></script>
 <!-- Cloudflare Web Analytics --><script>(function(d){if(location.hostname!=='staging.virtuse.com'){var s=d.createElement('script');s.type='module';s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "2ea6557e098f45879d87102065701564"}');d.body.appendChild(s);}})(document);</script>
