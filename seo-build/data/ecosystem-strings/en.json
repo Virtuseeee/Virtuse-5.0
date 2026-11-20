@@ -32,7 +32,21 @@
       "Prague": "Prague",
       "Warsaw": "Warsaw",
       "Helsinki": "Helsinki",
-      "Riga": "Riga"
+      "Riga": "Riga",
+      "Bratislava": "Bratislava",
+      "Banská Bystrica": "Banská Bystrica",
+      "Nitra": "Nitra",
+      "Partizánske": "Partizánske",
+      "Levice": "Levice",
+      "Prešov": "Prešov",
+      "Nová Dedinka": "Nová Dedinka",
+      "Banská Štiavnica": "Banská Štiavnica",
+      "Brno": "Brno",
+      "Plzeň": "Plzeň",
+      "Jihlava": "Jihlava",
+      "Kyjov": "Kyjov",
+      "Budapest": "Budapest",
+      "Miskolc": "Miskolc"
     },
     "indexRelated": [
       "Virtuse Brief: weekly Bitcoin news",
@@ -63,7 +77,9 @@
     "listH": "Our picks.",
     "listSub": "Each with a one-line verdict.",
     "faqSub": "Short answers.",
-    "onThisPage": "On this page"
+    "onThisPage": "On this page",
+    "tableMeetup": "Meetup",
+    "tableCountry": "Country"
   },
   "promote": {
     "criteriaH": "Criteria",
@@ -268,9 +284,24 @@
       "related": [
         "Bitcoin peers: fellow bitcoin-only projects",
         "Virtuse Brief: weekly Bitcoin news",
-        "Conference talks on video"
+        "Conference talks on video",
+        "Local Bitcoin meetups in Central Europe"
       ],
       "h1Accent": ": dates and tickets."
+    },
+    "meetups": {
+      "nav": "Meetups",
+      "navDesc": "Local Bitcoin meetups in Central Europe",
+      "h1": "Bitcoin Meetups in Central Europe",
+      "title": "Bitcoin Meetups in Central Europe by City | Virtuse",
+      "description": "Regular Bitcoin meetups in Slovakia, Czechia, Poland and Hungary, by city, with a link to each organiser's page. Hand-picked and checked.",
+      "intro": "Regular, in-person Bitcoin meetups in Slovakia, Czechia, Poland and Hungary, by city. Each link goes to the organisers' own page, where the next date and venue are published. Meetups are run by volunteers and can move or pause, so check the page before you go. Virtuse does not organise these meetups.",
+      "related": [
+        "Bitcoin conferences in Europe",
+        "Bitcoin peers: fellow bitcoin-only projects",
+        "Get your project featured"
+      ],
+      "h1Accent": ": Slovakia, Czechia, Poland, Hungary."
     },
     "privacy": {
       "nav": "Bitcoin Privacy",

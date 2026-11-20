@@ -364,7 +364,8 @@
       "related": [
         "/ecosystem/peers/",
         "/news.html",
-        "/ecosystem/videos/"
+        "/ecosystem/videos/",
+        "/ecosystem/meetups/"
       ],
       "entries": [
         {
@@ -473,6 +474,175 @@
       "index": true,
       "icon": "calendar",
       "accent": "blue"
+    },
+    {
+      "slug": "meetups",
+      "related": [
+        "/ecosystem/conferences/",
+        "/ecosystem/peers/",
+        "/ecosystem/promote/"
+      ],
+      "reviewed": "2026-11-20",
+      "_note": "Recurring Bitcoin meetups in SK, CZ, PL, HU; each opened and checked 2026-11-20 (an event in the last 6 months). city '' = nationwide calendar. Slovak meetups have no stable page of their own (Dvadsaťjeden listing URLs are per event), so they link the Dvadsaťjeden meetup list.",
+      "entries": [
+        {
+          "name": "Dvadsaťjeden: meetup calendar",
+          "url": "https://prevadzky.dvadsatjeden.org/explore/?type=event&category=meetupy&sort=order-by-date",
+          "city": "",
+          "country": "SK",
+          "verdict": "The Slovak Bitcoin community's calendar of meetups across the country. The Slovak meetups below publish their dates here."
+        },
+        {
+          "name": "21 meetup: ₿ivo v ₿lave",
+          "url": "https://prevadzky.dvadsatjeden.org/explore/?type=event&category=meetupy&sort=order-by-date",
+          "city": "Bratislava",
+          "country": "SK",
+          "verdict": "Monthly pub meetup of the Dvadsaťjeden community, recently held on the 21st. Entry is ticketed."
+        },
+        {
+          "name": "Bitcoin Meetup and Bitcoin Pivo Banská Bystrica",
+          "url": "https://prevadzky.dvadsatjeden.org/explore/?type=event&category=meetupy&sort=order-by-date",
+          "city": "Banská Bystrica",
+          "country": "SK",
+          "verdict": "Informal Bitcoin beers, plus meetups with a talk."
+        },
+        {
+          "name": "Bitcoin Pivo Nitra",
+          "url": "https://prevadzky.dvadsatjeden.org/explore/?type=event&category=meetupy&sort=order-by-date",
+          "city": "Nitra",
+          "country": "SK",
+          "verdict": "Informal pub meetup about Bitcoin, money, privacy and security."
+        },
+        {
+          "name": "Bitcoin Meetup Partizánske",
+          "url": "https://prevadzky.dvadsatjeden.org/explore/?type=event&category=meetupy&sort=order-by-date",
+          "city": "Partizánske",
+          "country": "SK",
+          "verdict": "Meetups with practical topics, such as running your own Bitcoin and Lightning node."
+        },
+        {
+          "name": "Levice Bitcoin Meetup",
+          "url": "https://prevadzky.dvadsatjeden.org/explore/?type=event&category=meetupy&sort=order-by-date",
+          "city": "Levice",
+          "country": "SK",
+          "verdict": "Pub meetups with a short talk, for example on accepting Bitcoin in a business."
+        },
+        {
+          "name": "21 meetup Prešov",
+          "url": "https://prevadzky.dvadsatjeden.org/explore/?type=event&category=meetupy&sort=order-by-date",
+          "city": "Prešov",
+          "country": "SK",
+          "verdict": "Monthly meeting of the local Bitcoin community with open discussion."
+        },
+        {
+          "name": "Bitcoin Meetup Nová Dedinka",
+          "url": "https://prevadzky.dvadsatjeden.org/explore/?type=event&category=meetupy&sort=order-by-date",
+          "city": "Nová Dedinka",
+          "country": "SK",
+          "verdict": "A regular Bitcoin meetup in a café near Senec, about once a month."
+        },
+        {
+          "name": "BTC Pivo Banská Štiavnica",
+          "url": "https://prevadzky.dvadsatjeden.org/explore/?type=event&category=meetupy&sort=order-by-date",
+          "city": "Banská Štiavnica",
+          "country": "SK",
+          "verdict": "The local Dvadsaťjeden group's traditional Bitcoin beer. Newcomers are welcome."
+        },
+        {
+          "name": "Jednadvacet",
+          "url": "https://jednadvacet.org/",
+          "city": "",
+          "country": "CZ",
+          "verdict": "The Czech Bitcoin community, with local groups in 47 towns. Each town has its own page and calendar."
+        },
+        {
+          "name": "Jednadvacet Praha",
+          "url": "https://jednadvacet.org/praha",
+          "city": "Prague",
+          "country": "CZ",
+          "verdict": "Bitcoin meetups with a talk, about once or twice a month. Registration is usually required."
+        },
+        {
+          "name": "Bitcoin Beer Brno",
+          "url": "https://jednadvacet.org/brno",
+          "city": "Brno",
+          "country": "CZ",
+          "verdict": "A regular pub meetup with no talks, at places where you can pay in bitcoin."
+        },
+        {
+          "name": "BTC Beer Plzeň",
+          "url": "https://jednadvacet.org/plzen",
+          "city": "Plzeň",
+          "country": "CZ",
+          "verdict": "Informal meetup on the 21st of every month. Newcomers are welcome and English is fine."
+        },
+        {
+          "name": "₿EET UP Jihlava",
+          "url": "https://jednadvacet.org/jihlava",
+          "city": "Jihlava",
+          "country": "CZ",
+          "verdict": "Meetup of Bitcoiners from the Vysočina region, usually on the 21st of the month."
+        },
+        {
+          "name": "21 meetup Kyjov",
+          "url": "https://jednadvacet.org/kyjov",
+          "city": "Kyjov",
+          "country": "CZ",
+          "verdict": "Discussion of Bitcoin news in a local brewery. Newcomers get help with their questions."
+        },
+        {
+          "name": "Bitcoin Only Events: Poland",
+          "url": "https://bitcoinonly.events/tag/poland/",
+          "city": "",
+          "country": "PL",
+          "verdict": "A calendar of bitcoin-only events in Poland, including the Warsaw and Piaseczno meetups."
+        },
+        {
+          "name": "Bitcoin Café (Bitcoin Warsaw)",
+          "url": "https://www.meetup.com/bitcoin-warsaw/",
+          "city": "Warsaw",
+          "country": "PL",
+          "verdict": "A weekly small-group meetup on Monday evenings, in English and Polish, where you can ask anything about Bitcoin."
+        },
+        {
+          "name": "BitcoinWalk Warszawa",
+          "url": "https://bitcoinwalk.org/warszawa",
+          "city": "Warsaw",
+          "country": "PL",
+          "verdict": "A Saturday walk through the Saxon Garden for people who want to talk about Bitcoin. English speakers are welcome."
+        },
+        {
+          "name": "HUSZONEGY: meetup portal",
+          "url": "https://portal.huszonegy.world/hu/meetups",
+          "city": "",
+          "country": "HU",
+          "verdict": "The Hungarian Bitcoin community's list of local meetups and their next dates."
+        },
+        {
+          "name": "Bitcoin Budapest",
+          "url": "https://www.meetup.com/bitcoinbudapest/",
+          "city": "Budapest",
+          "country": "HU",
+          "verdict": "A Bitcoin-only meetup group that meets every few months at changing venues. Event pages are in Hungarian and English."
+        },
+        {
+          "name": "SideQuest Bar Bitcoin meetup",
+          "url": "https://portal.huszonegy.world/hu/meetup/sidequest-bar-bitcoin-meetup",
+          "city": "Budapest",
+          "country": "HU",
+          "verdict": "In-person Bitcoin talk in Hungarian in the centre of Budapest, held every few months."
+        },
+        {
+          "name": "Bitcoin Miskolc",
+          "url": "https://bitcoinmiskolc.hu/",
+          "city": "Miskolc",
+          "country": "HU",
+          "verdict": "Informal conversation about Bitcoin, about once a month in Miskolctapolca."
+        }
+      ],
+      "index": true,
+      "icon": "pin",
+      "accent": "green"
     },
     {
       "slug": "privacy",

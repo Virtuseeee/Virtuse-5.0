@@ -32,7 +32,21 @@
       "Prague": "Prága",
       "Warsaw": "Varsó",
       "Helsinki": "Helsinki",
-      "Riga": "Riga"
+      "Riga": "Riga",
+      "Bratislava": "Pozsony",
+      "Banská Bystrica": "Besztercebánya",
+      "Nitra": "Nyitra",
+      "Partizánske": "Partizánske",
+      "Levice": "Léva",
+      "Prešov": "Eperjes",
+      "Nová Dedinka": "Nová Dedinka",
+      "Banská Štiavnica": "Selmecbánya",
+      "Brno": "Brno",
+      "Plzeň": "Plzeň",
+      "Jihlava": "Jihlava",
+      "Kyjov": "Kyjov",
+      "Budapest": "Budapest",
+      "Miskolc": "Miskolc"
     },
     "indexRelated": [
       "Virtuse Brief: heti Bitcoin-hírek",
@@ -63,7 +77,9 @@
     "listH": "Ajánlásaink.",
     "listSub": "Mindegyikhez egysoros értékelés tartozik.",
     "faqSub": "Rövid válaszok.",
-    "onThisPage": "Ezen az oldalon"
+    "onThisPage": "Ezen az oldalon",
+    "tableMeetup": "Meetup",
+    "tableCountry": "Ország"
   },
   "promote": {
     "criteriaH": "Feltételek",
@@ -268,9 +284,24 @@
       "related": [
         "Bitcoin-társak: más, kizárólag Bitcoinnal foglalkozó projektek",
         "Virtuse Brief: heti Bitcoin-hírek",
-        "Konferencia-előadások videón"
+        "Konferencia-előadások videón",
+        "Helyi Bitcoin-meetupok Közép-Európában"
       ],
       "h1Accent": ": időpontok és jegyek."
+    },
+    "meetups": {
+      "nav": "Meetupok",
+      "navDesc": "Helyi Bitcoin-meetupok Közép-Európában",
+      "h1": "Bitcoin-meetupok Közép-Európában",
+      "title": "Bitcoin-meetupok Közép-Európában városonként | Virtuse",
+      "description": "Rendszeres Bitcoin-meetupok Szlovákiában, Csehországban, Lengyelországban és Magyarországon városonként, a szervezők oldalára mutató linkkel.",
+      "intro": "Rendszeres, személyes Bitcoin-meetupok Szlovákiában, Csehországban, Lengyelországban és Magyarországon, városonként. Minden link a szervezők saját oldalára vezet, ahol a következő időpont és helyszín szerepel. A meetupokat önkéntesek szervezik, a helyszín változhat, és szünet is előfordulhat, ezért indulás előtt érdemes megnézni az oldalt. A Virtuse nem szervezi ezeket a meetupokat.",
+      "related": [
+        "Bitcoin-konferenciák Európában",
+        "Bitcoin-társak: más, kizárólag Bitcoinnal foglalkozó projektek",
+        "Jelentkezzen projektjével a bemutatásra"
+      ],
+      "h1Accent": ": Szlovákia, Csehország, Lengyelország, Magyarország."
     },
     "privacy": {
       "nav": "Bitcoin és adatvédelem",
