@@ -702,100 +702,290 @@ function dcaAns(lang) {
     VBDca.fill(DCA_H[lang].ans2, { p: low.partner })
   ];
 }
+const DCA_STACK = Object.fromEntries(Object.keys(DCA_H.locales).map((l) =>
+  [l, JSON.parse(fs.readFileSync(path.join(SITE, 'i18n-tools/stacking', `${l}.json`), 'utf8'))]));
+// Layout and controls follow Stacking Strategist (panels, sliders, stat row, white partner buttons);
+// hero, sections, FAQ and related cards use the shared Services classes from site-v2.css.
 const DCA_CSS = `
-.dca-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin: 14px 0 16px; }
-.dca-f { display: flex; flex-direction: column; gap: 6px; border: 0; padding: 0; margin: 0; min-width: 0; }
-.dca-f > span, .dca-f > legend { font-size: 13px; color: var(--muted); padding: 0; margin: 0 0 6px; }
-.dca-f > span { margin: 0; }
-.dca-f input, .dca-f select, .dca-seg button { min-height: 44px; width: 100%; min-width: 0; background: #0e0e0e; border: 1px solid var(--line-strong); border-radius: 10px; color: var(--text); padding: 0 12px; font: inherit; font-size: 16px; }
-.dca-f input:focus-visible, .dca-f select:focus-visible, .dca-seg button:focus-visible, .dca-share:focus-visible { outline: 2px solid var(--c, #3fb950); outline-offset: 2px; }
-.dca-row, .dca-seg { display: flex; gap: 8px; }
-.dca-row select:first-child { flex: 1.5; }
-.dca-row select { flex: 1; }
-.dca-seg button { flex: 1; cursor: pointer; }
-.dca-seg button[aria-pressed="true"] { background: var(--c, #3fb950); border-color: transparent; color: #08090a; font-weight: 700; }
-.dca-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.dca-tile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; min-width: 0; }
-.dca-tile span { display: block; font-size: 13px; color: var(--muted); }
-.dca-tile b { display: block; font-size: 1.3rem; line-height: 1.3; margin: 4px 0 2px; overflow-wrap: anywhere; }
-.dca-tile small { display: block; font-size: 13px; color: var(--muted); }
-.dca-main b { color: var(--c, #3fb950); }
-.dca-chart { margin: 20px 0 4px; }
-.dca-plot { position: relative; height: 240px; }
+.dcap .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; font-size: 13px; color: var(--muted); padding-top: 22px; }
+.dcap .crumbs a { color: var(--muted); text-decoration: none; display: inline-block; padding: 6px 0; }
+.dcap .crumbs a:hover { color: var(--text); }
+.dcap .buy-hero2 { padding-top: 40px; }
+.dcap .seo { max-width: none; margin: 0; padding: 0; }
+.dcap .disclaimers { margin: 0 0 48px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; }
+.dcap .disclaimers p { color: var(--muted); margin: 0 0 6px; }
+.dca-app { display: grid; gap: 24px; margin-top: 40px; }
+.dca-row2 { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 24px; }
+.dca-row2.dca-rev { grid-template-columns: minmax(0, 1fr) 340px; }
+.dca-panel, .dcap .answer { position: relative; min-width: 0; overflow: hidden; background-color: #141414; background-image: radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--pc, #3fb950) 10%, transparent), transparent 62%); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; padding: 20px; }
+.dca-panel::before, .dcap .answer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.22) 50%, rgba(255,255,255,.04)); }
+.dca-res { --pc: #f7931a; display: flex; flex-direction: column; }
+.dca-low { background-color: rgba(63,185,80,.05); border-color: rgba(63,185,80,.3); display: flex; flex-direction: column; }
+.dcap .answer { --pc: #8b949e; }
+.dcap .answer p { margin: 0; color: var(--text); font-size: 15px; line-height: 1.6; max-width: 900px; }
+.dca-inp { display: flex; flex-direction: column; gap: 24px; }
+.dca-fld { border: 0; padding: 0; margin: 0; min-width: 0; }
+.dca-lr { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.dca-lab { font-size: 14px; font-weight: 500; line-height: 1.2; color: #8b949e; padding: 0; }
+.dca-box { display: inline-flex; align-items: center; gap: 4px; width: 128px; flex: none; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 4px 8px; color: #3fb950; font-size: 14px; font-weight: 600; }
+.dca-box:focus-within { border-color: rgba(63,185,80,.6); }
+.dca-box input { width: 100%; min-width: 0; background: none; border: 0; outline: 0; padding: 0; margin: 0; color: inherit; font: inherit; text-align: right; }
+.dca-val { font-size: 14px; font-weight: 600; color: #3fb950; text-align: right; }
+.dca-range { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 28px; margin: 6px 0 0; padding: 0; background: none; cursor: pointer; }
+.dca-range::-webkit-slider-runnable-track { height: 6px; border-radius: 999px; background: linear-gradient(90deg, #e6edf3 var(--p, 0%), #1c1c1c var(--p, 0%)); }
+.dca-range::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; margin-top: -5px; border-radius: 50%; background: #fff; border: 1px solid #e8edf3; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+.dca-range::-moz-range-track { height: 6px; border-radius: 999px; background: #1c1c1c; }
+.dca-range::-moz-range-progress { height: 6px; border-radius: 999px; background: #e6edf3; }
+.dca-range::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 1px solid #e8edf3; }
+.dca-range:focus-visible { outline: none; }
+.dca-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgba(255,255,255,.18); }
+.dca-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px rgba(255,255,255,.18); }
+.dca-sel { display: flex; gap: 8px; margin-top: 8px; }
+.dca-sel select, .dca-seg button { flex: 1; min-width: 0; min-height: 38px; background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; color: #8b949e; padding: 8px 12px; font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; transition: border-color .15s, color .15s; }
+.dca-sel select { color: var(--text); background: #141414; }
+.dca-sel select:first-child { flex: 1.5; }
+.dca-seg { display: flex; gap: 8px; margin-top: 10px; }
+.dca-seg button:hover, .dca-sel select:hover { border-color: rgba(63,185,80,.5); color: var(--text); }
+.dca-seg button[aria-pressed="true"] { background: #3fb950; border-color: #3fb950; color: #000; }
+.dca-sel select:focus-visible, .dca-seg button:focus-visible, .dca-share:focus-visible, .dca-open:focus-visible { outline: 2px solid #3fb950; outline-offset: 2px; }
+.dca-fine { display: flex; gap: 8px; margin: 0; font-size: 12px; line-height: 1.5; color: #8b949e; }
+.dca-fine svg { flex: none; width: 14px; height: 14px; margin-top: 2px; color: #3fb950; }
+.dca-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.dca-stat span { display: block; font-size: 12px; letter-spacing: .3px; text-transform: uppercase; color: #8b949e; }
+.dca-stat b { display: block; margin-top: 4px; font-size: 20px; font-weight: 700; line-height: 1.4; overflow-wrap: anywhere; }
+.dca-stat small { display: block; font-size: 12px; color: #8b949e; }
+.dca-main b { color: #f7931a; }
+.dca-chart { margin: 20px 0 0; }
+.dca-plot { position: relative; height: 280px; }
 .dca-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.dca-grid { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.dca-area { fill: var(--c, #3fb950); opacity: .12; }
-.dca-line-val { fill: none; stroke: var(--c, #3fb950); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.dca-grid { stroke: rgba(255,255,255,.06); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.dca-area { fill: #f7931a; opacity: .1; }
+.dca-line-val { fill: none; stroke: #f7931a; stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
 .dca-line-inv { fill: none; stroke: #8b949e; stroke-width: 1.5; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
-.dca-y { position: absolute; left: 0; transform: translateY(2px); font-size: 12px; color: #8b949e; }
-.dca-x { position: relative; height: 22px; margin-top: 4px; font-size: 12px; color: #8b949e; }
+.dca-y { position: absolute; left: 0; transform: translateY(2px); font-size: 11px; color: #8b949e; }
+.dca-x { position: relative; height: 20px; margin-top: 6px; font-size: 11px; color: #8b949e; }
 .dca-x span { position: absolute; top: 0; transform: translateX(-50%); }
 .dca-x span.dca-x0 { transform: none; }
-.dca-chart figcaption { font-size: 13px; color: var(--muted); margin-top: 4px; }
-.dca-key { display: inline-block; width: 14px; height: 0; border-top: 2px solid var(--c, #3fb950); vertical-align: middle; margin: 0 6px 0 0; }
+.dca-chart figcaption { font-size: 12px; color: #8b949e; margin-top: 6px; text-align: right; }
+.dca-key { display: inline-block; width: 14px; height: 0; border-top: 2px solid #f7931a; vertical-align: middle; margin: 0 6px 0 0; }
 .dca-key-inv { border-top: 2px dashed #8b949e; margin-left: 14px; }
-.seo p.dca-warn { border-left: 3px solid var(--c, #3fb950); background: var(--card); border-radius: 0 10px 10px 0; padding: 10px 14px; margin: 16px 0 8px; color: var(--text); }
-.seo p.dca-note { font-size: 13px; color: var(--muted); margin: 8px 0; }
-.seo .dca-share { cursor: pointer; background: none; font: inherit; font-size: 14px; }
-.seo a.dca-open { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: none; color: var(--text); font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; box-shadow: none; }
-.seo a.dca-open:hover { border-color: var(--c, #3fb950); background: var(--card); }
-@media (max-width: 720px) {
-  .dca-form { grid-template-columns: 1fr 1fr; }
-  .dca-form .dca-f:nth-child(2) { grid-column: 1 / -1; order: 3; }
-  .dca-tiles { grid-template-columns: 1fr 1fr; }
-  .dca-plot { height: 200px; }
+.dca-lump { margin: 14px 0 0; font-size: 14px; color: #8b949e; }
+.dca-lump b { color: var(--text); font-weight: 600; }
+.dca-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 20px; margin-top: auto; padding-top: 16px; }
+.dca-foot p { flex: 1 1 320px; margin: 0; font-size: 12px; line-height: 1.5; color: #8b949e; }
+.dca-share { display: inline-flex; align-items: center; gap: 6px; min-height: 38px; background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 8px 14px; color: var(--text); font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+.dca-share:hover { border-color: rgba(255,255,255,.3); }
+.dca-share svg { width: 15px; height: 15px; }
+.dca-pt { margin: 0 0 4px; font-size: 18px; font-weight: 600; line-height: 1.3; }
+.dca-pt > span:not([data-dca-amt]) { color: #8b949e; font-weight: 400; }
+.dca-pi { margin: 0 0 8px; font-size: 13px; line-height: 1.5; color: #8b949e; max-width: 760px; }
+.dca-prow { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.06); }
+.dca-prow b { display: block; font-size: 15px; font-weight: 600; }
+.dca-prow small { display: block; margin-top: 3px; font-size: 12px; line-height: 1.5; color: #8b949e; }
+.dca-pf span { display: block; font-size: 11px; letter-spacing: .3px; text-transform: uppercase; color: #8b949e; }
+.dca-pf b { margin-top: 2px; }
+.dca-pf b.dca-na { font-weight: 500; color: #8b949e; font-size: 14px; }
+.dcap a.dca-open { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 40px; padding: 10px 16px; background: #e6edf3; border: 0; border-radius: 10px; color: #08090a; font-size: 13px; font-weight: 600; line-height: 1.2; text-decoration: none; box-shadow: none; transition: opacity .15s; }
+.dcap a.dca-open:hover { opacity: .85; }
+.dca-panel .aff-note, .dca-panel p.dca-bots { margin: 12px 0 0; font-size: 12px; line-height: 1.5; color: #8b949e; }
+.dca-panel .aff-note a, .dca-panel p.dca-bots a, .dca-foot a { color: #8b949e; text-underline-offset: 3px; }
+.dca-panel .aff-note a:hover, .dca-panel p.dca-bots a:hover { color: var(--text); }
+.dca-low .dca-k { font-size: 12px; letter-spacing: .3px; text-transform: uppercase; color: #3fb950; }
+.dca-low .dca-n { margin: 6px 0 0; font-size: 22px; font-weight: 700; }
+.dca-low ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.dca-low li { position: relative; padding-left: 14px; font-size: 13px; line-height: 1.5; color: #c9d1d9; }
+.dca-low li::before { content: ""; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; border-radius: 50%; background: #3fb950; }
+.dca-low .dca-sum { margin: 18px 0 0; padding: 12px 14px; background: rgba(0,0,0,.25); border-radius: 10px; font-size: 13px; color: #8b949e; }
+.dca-low .dca-sum b { color: #3fb950; }
+.dca-low .dca-open { width: 100%; margin-top: auto; }
+.dca-low .dca-gap { flex: 1; min-height: 18px; }
+.dcap #dcaTable .table-wrap { margin: 10px 0 0; }
+.dcap .dca-legacy { padding: 20px; }
+.page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
+.dcap .dca-legacy > p:first-child { margin-top: 0; }
+.dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
+.dcap .dca-legacy button { cursor: pointer; background: none; font: inherit; font-size: 14px; }
+.dcap section > .asof { margin: -24px 0 20px; font-size: 13px; color: var(--muted); }
+.dcap .qa summary h3 { font: inherit; margin: 0; }
+.dcap .qa details { max-width: none; }
+.dcap .related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 1000px) {
+  .dca-row2, .dca-row2.dca-rev { grid-template-columns: minmax(0, 1fr); }
+  .dcap .related { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 380px) { .dca-tile b { font-size: 1.1rem; } }
+@media (max-width: 640px) {
+  .dca-app { gap: 16px; margin-top: 28px; }
+  .dca-row2 { gap: 16px; }
+  .dca-panel, .dcap .answer { padding: 16px; }
+  .dca-box input, .dca-sel select { font-size: 16px; }
+  .dca-stats { grid-template-columns: 1fr 1fr; }
+  .dca-plot { height: 210px; }
+  .dca-chart figcaption { text-align: left; }
+  .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dca-prow .dca-open { justify-self: start; }
+  .dcap .related { grid-template-columns: 1fr; }
+  .dcap .buy-hero2 { padding-top: 20px; }
+}
 `.trim();
-function dcaBlock(lang, relFile) {
-  const T = DCA_H[lang], F = dcaFmt(lang), m = dcaDefault();
-  const amt = `<span data-dca-amt>${esc(F.money(m.amount))}</span>`;
+const dcaSplit = (text) => {
+  const [a, b] = text.split('|');
+  return b == null ? esc(a) : `${esc(a)}<span>${esc(b)}</span>`;
+};
+/** Rebuilds a DCA page spec as a tool page: hero, calculator, partners, table, summary, how it works, fees, FAQ, related. */
+function dcaTool(spec) {
+  const { lang, relFile } = spec;
+  const T = DCA_H[lang], ST = DCA_STACK[lang], F = dcaFmt(lang), m = dcaDefault();
+  const months = VBDca.monthList(DCA_SNAP);
   const monthF = new Intl.DateTimeFormat(DCA_H.locales[lang], { month: 'long', timeZone: 'UTC' });
-  const months = Array.from({ length: 12 }, (_, i) => {
+  const monthOpts = Array.from({ length: 12 }, (_, i) => {
     const v = String(i + 1).padStart(2, '0');
     return `<option value="${v}"${v === m.start.slice(5) ? ' selected' : ''}>${esc(monthF.format(new Date(Date.UTC(2020, i, 1))))}</option>`;
   }).join('');
   const y0 = Number(VBDca.MIN_START.slice(0, 4)), y1 = Number(DCA_SNAP.asOf.slice(0, 4));
-  const years = Array.from({ length: y1 - y0 + 1 }, (_, i) => y0 + i)
+  const yearOpts = Array.from({ length: y1 - y0 + 1 }, (_, i) => y0 + i)
     .map((y) => `<option${String(y) === m.start.slice(0, 4) ? ' selected' : ''}>${y}</option>`).join('');
-  const heads = [T.th_partner, T.th_feature, T.th_fee, T.th_year, ''];
-  const autoRows = DCA_H.auto.rows.map((r) => {
-    const cells = [
-      esc(r.partner), esc(r.feature), esc(T[r.fee]),
-      r.pct == null ? esc(T.na) : `<span data-dca-fee="${r.pct}">${esc(F.money(m.amount * 12 * r.pct))}</span>`,
-      `<a class="btn-primary dca-open" href="${esc(r.url)}" rel="sponsored noopener" target="_blank">${esc(VBDca.fill(T.open, { p: r.partner }))}</a>`
-    ];
-    return `<tr>${cells.map((c, i) => `<td${heads[i] ? ` data-label="${esc(heads[i])}"` : ''}>${c}</td>`).join('')}</tr>`;
-  }).join('');
+  const pctOf = (v, max) => `${(100 * v / (max || 1)).toFixed(2)}%`;
+  const amtI = VBDca.stepIndex(m.amount), startI = months.indexOf(m.start);
+  const amt = `<span data-dca-amt>${esc(F.money(m.amount))}</span>`;
+  const open = (r) => `<a class="btn-primary dca-open" href="${esc(r.url)}" rel="sponsored noopener" target="_blank">${esc(VBDca.fill(T.open, { p: r.partner }))} <span aria-hidden="true">↗</span></a>`;
+  const feeYear = (r) => r.pct == null
+    ? `<b class="dca-na">${esc(T.na)}</b>`
+    : `<b data-dca-fee="${r.pct}">${esc(F.money(m.amount * 12 * r.pct))}</b>`;
+  const rows = DCA_H.auto.rows.map((r) => `
+      <div class="dca-prow">
+        <div><b>${esc(r.partner)}</b><small>${esc(r.feature)} · ${esc(T[r.fee])}</small></div>
+        <div class="dca-pf"><span>${esc(T.th_year)}</span>${feeYear(r)}</div>
+        ${open(r)}
+      </div>`).join('');
+  const low = DCA_H.auto.rows.filter((r) => r.pct != null).sort((a, b) => a.pct - b.pct)[0];
   const bots = toRoot(relFile, lang === 'en' ? 'bots.html' : `${lang}/bots.html`);
-  const html = `
-<section class="dca" id="dcaApp">
-<h2>${esc(T.h2_hist)}</h2>
-<form class="dca-form" onsubmit="return false">
-  <label class="dca-f"><span>${esc(T.lbl_amount)}</span><input id="dcaAmount" type="number" inputmode="numeric" min="${VBDca.AMOUNT_MIN}" max="${VBDca.AMOUNT_MAX}" step="10" value="${m.amount}"></label>
-  <fieldset class="dca-f"><legend>${esc(T.lbl_start)}</legend><div class="dca-row"><select id="dcaMonth" aria-label="${esc(T.lbl_month)}">${months}</select><select id="dcaYear" aria-label="${esc(T.lbl_year)}">${years}</select></div></fieldset>
-  <div class="dca-f"><span id="dcaCcyL">${esc(T.lbl_ccy)}</span><div class="dca-seg" role="group" aria-labelledby="dcaCcyL"><button type="button" data-ccy="EUR" aria-pressed="true">EUR</button><button type="button" data-ccy="USD" aria-pressed="false">USD</button></div></div>
-</form>
-<div id="dcaOut" aria-live="polite">${VBDca.results(m, T, F)}</div>
-<p class="dca-warn">${esc(T.warn)}</p>
-<p class="dca-note" id="dcaNote">${esc(VBDca.note(m, T, F))}</p>
-<p><button type="button" class="cta-secondary dca-share" id="dcaShare">${esc(T.share)}</button></p>
-<h2>${esc(T.h2_table).replace('{a}', amt)}</h2>
-<div id="dcaTable">${VBDca.table(VBDca.byYear(DCA_SNAP, m.amount, m.ccy), T, F)}</div>
-<h2>${esc(T.h2_auto)}</h2>
-<p>${esc(VBDca.fill(T.auto_intro, { chk: F.day(DCA_H.auto.checked) }))}</p>
-<div class="table-wrap"><table><thead><tr>${heads.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${autoRows}</tbody></table></div>
-${affNote(relFile, lang)}
-<p>${esc(T.bots)} <a href="${esc(bots)}">${esc(T.bots_link)} →</a></p>
-</section>
-<h2>${esc(T.h2_fees)}</h2>
+
+  // old body = fee section followed by the FAQ (always last)
+  const cut = spec.bodyHtml.lastIndexOf('<h2>');
+  const feeBody = spec.bodyHtml.slice(0, cut);
+  const faqPart = spec.bodyHtml.slice(cut);
+  const faqH2 = faqPart.match(/^<h2>(.*?)<\/h2>/)[1];
+  const qas = [...faqPart.matchAll(/<h3>(.*?)<\/h3><p>(.*?)<\/p>/g)];
+  if (qas.length < 3) throw new Error(`DCA ${relFile}: FAQ not found at the end of the body`);
+  const faq = qas.map((q, i) => `<details${i === 0 ? ' open' : ''}><summary><h3>${q[1]}</h3></summary><p>${q[2]}</p></details>`).join('\n    ');
+
+  const pre = lang === 'en' ? '' : `${lang}/`;
+  const feeIdx = spec.related.find((r) => /fee-index|gebuehrenindex|index-poplatk|indeks-oplat|dijindex|indeks-komis|indice-frais|indice-comisiones/.test(r.href));
+  const cards = [
+    { href: spec.moduleCta.href, t: ST.eyebrow, p: `${ST.h1} ${ST.h1_or}` },
+    feeIdx && { href: feeIdx.href, t: ST.rel_fee_t, p: ST.rel_fee_p },
+    { href: toRoot(relFile, `${pre}retirement-calculator.html`), t: ST.rel_ret_t, p: ST.rel_ret_p },
+    { href: toRoot(relFile, `${pre}buy-bitcoin.html`), t: ST.rel_buy_t, p: ST.rel_buy_p },
+    { href: toRoot(relFile, `${pre}bitcoin-data.html`), t: ST.rel_data_t, p: ST.rel_data_p },
+    { href: toRoot(relFile, `${pre}concierge.html`), t: ST.rel_pf_t, p: ST.rel_pf_p }
+  ].filter(Boolean).map((c) => `<a class="gcard spot" href="${esc(c.href)}"><b>${esc(c.t)}</b><span>${esc(c.p)}</span></a>`).join('');
+  const steps = [1, 2, 3].map((i) => `
+      <div class="how-log-item">
+        <div class="how-log-marker"><span class="how-log-dot"></span></div>
+        <div class="how-log-body">
+          <span class="how-log-num">${esc(ST.step)} 0${i}</span>
+          <h3>${esc(T[`s${i}_t`])}</h3>
+          <p>${esc(T[`s${i}_p`])}</p>
+        </div>
+      </div>`).join('');
+  const head2 = (inner) => `<div class="sec-head one"><div class="sec-copy"><h2>${inner}</h2></div></div>`;
+
+  const bodyHtml = `
+  <div class="buy-hero2 pf-hero">
+    <div class="eyebrow"><i></i>${esc(spec.breadcrumbs[spec.breadcrumbs.length - 1].name)}</div>
+    <h1>${esc(spec.h1)} <span class="h1-grey">${esc(T.h2_hist)}</span></h1>
+    <p class="sp-lead">${esc(T.lead)}</p>
+  </div>
+
+  <div class="dca-app" id="dcaApp">
+    <div class="dca-row2">
+      <div class="dca-panel dca-inp">
+        <div class="dca-fld">
+          <div class="dca-lr"><label class="dca-lab" for="dcaAmount">${esc(T.lbl_amount)}</label><span class="dca-box"><input id="dcaAmount" type="text" inputmode="numeric" autocomplete="off" value="${m.amount}"><span data-dca-sym>€</span></span></div>
+          <input class="dca-range" id="dcaAmountR" type="range" min="0" max="${VBDca.STEPS.length - 1}" step="1" value="${amtI}" style="--p:${pctOf(amtI, VBDca.STEPS.length - 1)}" aria-label="${esc(T.lbl_amount)}">
+        </div>
+        <fieldset class="dca-fld">
+          <div class="dca-lr"><legend class="dca-lab">${esc(T.lbl_start)}</legend><span class="dca-val" id="dcaStartV">${esc(F.month(m.start))}</span></div>
+          <input class="dca-range" id="dcaStartR" type="range" min="0" max="${months.length - 1}" step="1" value="${startI}" style="--p:${pctOf(startI, months.length - 1)}" aria-label="${esc(T.lbl_start)}">
+          <div class="dca-sel"><select id="dcaMonth" aria-label="${esc(T.lbl_month)}">${monthOpts}</select><select id="dcaYear" aria-label="${esc(T.lbl_year)}">${yearOpts}</select></div>
+        </fieldset>
+        <div class="dca-fld">
+          <span class="dca-lab" id="dcaCcyL">${esc(T.lbl_ccy)}</span>
+          <div class="dca-seg" role="group" aria-labelledby="dcaCcyL"><button type="button" data-ccy="EUR" aria-pressed="true">EUR</button><button type="button" data-ccy="USD" aria-pressed="false">USD</button></div>
+        </div>
+        <p class="dca-fine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span>${esc(T.warn)}</span></p>
+      </div>
+      <div class="dca-panel dca-res">
+        <div id="dcaOut" aria-live="polite">${VBDca.results(m, T, F)}</div>
+        <div class="dca-foot">
+          <p id="dcaNote">${esc(VBDca.note(m, T, F))}</p>
+          <button type="button" class="dca-share" id="dcaShare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg><span>${esc(T.share)}</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dca-row2 dca-rev">
+      <div class="dca-panel">
+        <h3 class="dca-pt">${dcaSplit(T.h2_auto)}</h3>
+        <p class="dca-pi">${esc(VBDca.fill(T.auto_intro, { chk: F.day(DCA_H.auto.checked) }))}</p>${rows}
+        ${affNote(relFile, lang)}
+        <p class="dca-bots">${esc(T.bots)} <a href="${esc(bots)}">${esc(T.bots_link)} →</a></p>
+      </div>
+      <div class="dca-panel dca-low">
+        <span class="dca-k">${esc(T.low_h)}</span>
+        <p class="dca-n">${esc(low.partner)}</p>
+        <ul><li>${esc(low.feature)}</li><li>${esc(T[low.fee])}</li></ul>
+        <p class="dca-sum">${esc(T.th_year)}: <b data-dca-fee="${low.pct}">${esc(F.money(m.amount * 12 * low.pct))}</b></p>
+        <div class="dca-gap"></div>
+        ${open(low)}
+        ${affNote(relFile, lang)}
+      </div>
+    </div>
+
+    <div class="dca-panel">
+      <h3 class="dca-pt">${dcaSplit(T.h2_table).replace('{a}', amt)}</h3>
+      <div id="dcaTable" class="seo">${VBDca.table(VBDca.byYear(DCA_SNAP, m.amount, m.ccy), T, F)}</div>
+    </div>
+
+    <div class="answer"><p>${spec.answerHtml}</p></div>
+  </div>
+
+  <section id="how">
+    ${head2(`${esc(ST.how_h2_a)} <span>${esc(ST.how_h2_b)}</span>`)}
+    <div class="how-log">${steps}
+    </div>
+  </section>
+
+  <section id="fees">
+    ${head2(dcaSplit(T.h2_fees))}
+    <!--ASOF-->
+    <div class="dca-panel seo dca-legacy">${feeBody}
+      <p><a class="cta" href="${esc(spec.moduleCta.href)}">${esc(spec.moduleCta.label)}</a></p>
+    </div>
+  </section>
+
+  <section id="faq" class="qa">
+    <div class="sec-head one"><div class="sec-copy"><h2>${faqH2}</h2></div></div>
+    ${faq}
+  </section>
+
+  <section id="related" class="hub-related">
+    ${head2(`${esc(ST.rel_h2_a)} <span>${esc(ST.rel_h2_b)}</span>`)}
+    <div class="related">${cards}</div>
+  </section>
 `;
-  const keys = ['r_value', 'r_change', 'r_invested', 'r_n', 'r_btc', 'r_avg', 'r_lump', 'leg_value', 'leg_inv', 'chart_aria', 'note', 'share', 'copied', 't_start', 't_value', 't_change'];
-  const cfg = { lang, locale: DCA_H.locales[lang], T: Object.fromEntries(keys.map((k) => [k, T[k]])), snap: { asOf: DCA_SNAP.asOf, closes: DCA_SNAP.closes, eurusd: DCA_SNAP.eurusd } };
+  const keys = ['r_value', 'r_change', 'r_invested', 'r_n', 'r_btc', 'r_avg', 'r_lump', 'leg_value', 'leg_inv', 'chart_aria', 'note', 'share', 'copied', 't_start', 't_value', 't_change', 'ans'];
+  // The summary's first sentence carries numbers: the browser rewrites it from live data and keeps the rest.
+  const typo = lang === 'fr' ? nbspFr : lang === 'es' ? nbspEs : (x) => x;
+  const ans0 = typo(esc(dcaAns(lang)[0].replace(/\s+/g, ' ').trim()));   // fitWords collapses no-break spaces the same way
+  if (!spec.answerHtml.startsWith(ans0)) throw new Error(`DCA ${relFile}: summary does not start with the history sentence`);
+  const ansRest = spec.answerHtml.slice(ans0.length).replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  const cfg = { lang, locale: DCA_H.locales[lang], T: Object.fromEntries(keys.map((k) => [k, T[k]])), ansRest, snap: { asOf: DCA_SNAP.asOf, closes: DCA_SNAP.closes, eurusd: DCA_SNAP.eurusd } };
   const head = `<style>${DCA_CSS}</style>
 <script type="application/json" id="dcaI18n">${JSON.stringify(cfg).replace(/</g, '\\u003c')}</script>
 <script src="/dca-calc.js?v=1" defer></script>`;
-  return { html, head };
+  return { ...spec, tool: true, bodyHtml, extraHead: `${spec.extraHead || ''}\n${head}` };
 }
 
 const FI_PENDING = FI_RANKED.filter((r) => r.total == null).map((r) => r.name);
@@ -981,13 +1171,10 @@ const ACCENTS = [
 const accentFor = (relFile) => (ACCENTS.find(([re]) => re.test(relFile)) || [null, null])[1];
 
 function pushPage(spec) {
-  if (DCA_RE.test(spec.relFile)) {
-    const b = dcaBlock(spec.lang, spec.relFile);
-    spec = { ...spec, bodyHtml: b.html + spec.bodyHtml, extraHead: `${spec.extraHead || ''}\n${b.head}` };
-  }
   if (spec.guide && !spec.tools) spec = { ...spec, tools: guideTools(spec) };
   if (spec.lang === 'fr') spec = typoSpec(spec, nbspFr);
   if (spec.lang === 'es') spec = typoSpec(spec, nbspEs);
+  if (DCA_RE.test(spec.relFile)) spec = dcaTool(spec);   // after the typography pass: it must not touch the tool's attributes
   if (spec.guide) spec = guideArticle(spec);
   const html = renderPage({
     ...spec,

@@ -23,6 +23,20 @@
   var AMOUNT_MIN = 10, AMOUNT_MAX = 100000;
   var PCT_SPACE = { sk: 1, cs: 1, de: 1, fr: 1, es: 1 };
   var NBSP = ' ';
+  // Amount slider stops (typed values may go up to AMOUNT_MAX), like the stepped sliders in Stacking Strategist.
+  var STEPS = (function () {
+    var a = [], v;
+    for (v = 10; v < 100; v += 10) a.push(v);
+    for (v = 100; v < 1000; v += 50) a.push(v);
+    for (v = 1000; v <= 5000; v += 250) a.push(v);
+    return a;
+  })();
+  function stepIndex(v) { var i = 0; while (i < STEPS.length - 1 && STEPS[i + 1] <= v) i++; return i; }
+  function monthList(data) {
+    var end = lastFull(data), out = [], y = +MIN_START.slice(0, 4), m = +MIN_START.slice(5), k;
+    for (;;) { k = y + '-' + (m < 10 ? '0' : '') + m; if (k > end) break; out.push(k); if (++m > 12) { m = 1; y++; } }
+    return out;
+  }
 
   // ------------------------------------------------------------------ data
   function keys(data) { return Object.keys(data.closes).sort(); }
@@ -134,16 +148,17 @@
       '<figcaption><span class="dca-key dca-key-val"></span>' + esc(T.leg_value) + ' <span class="dca-key dca-key-inv"></span>' + esc(T.leg_inv) + '</figcaption></figure>';
   }
 
+  // Stat row + chart, laid out like the Stacking Strategist result panel.
   function results(m, T, F) {
-    var tile = function (label, value, sub, cls) {
-      return '<div class="dca-tile' + (cls ? ' ' + cls : '') + '"><span>' + esc(label) + '</span><b>' + esc(value) + '</b><small>' + esc(sub) + '</small></div>';
+    var stat = function (label, value, sub, cls) {
+      return '<div class="dca-stat' + (cls ? ' ' + cls : '') + '"><span>' + esc(label) + '</span><b>' + esc(value) + '</b>' + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</div>';
     };
-    return '<div class="dca-tiles">' +
-      tile(T.r_value, F.money(m.value), fill(T.r_change, { p: F.pct(m.change) }), 'dca-main') +
-      tile(T.r_invested, F.money(m.invested), fill(T.r_n, { n: m.n, a: F.money(m.amount) })) +
-      tile(T.r_btc, F.btc(m.btc), fill(T.r_avg, { p: F.money(m.avg) })) +
-      tile(fill(T.r_lump, { start: F.month(m.start) }), F.money(m.lump), fill(T.r_change, { p: F.pct(m.lumpChange) })) +
-      '</div>' + chart(m, T, F);
+    return '<div class="dca-stats">' +
+      stat(T.r_invested, F.money(m.invested), fill(T.r_n, { n: m.n, a: F.money(m.amount) })) +
+      stat(T.r_value, F.money(m.value), fill(T.r_change, { p: F.pct(m.change) }), 'dca-main') +
+      stat(T.r_btc, F.btc(m.btc), fill(T.r_avg, { p: F.money(m.avg) })) +
+      '</div>' + chart(m, T, F) +
+      '<p class="dca-lump">' + esc(fill(T.r_lump, { start: F.month(m.start) })) + ': <b>' + esc(F.money(m.lump)) + '</b> <span>' + esc(F.pct(m.lumpChange)) + '</span></p>';
   }
 
   function table(rows, T, F) {
@@ -163,67 +178,76 @@
     if (!app || !cfgEl) return;
     var cfg = JSON.parse(cfgEl.textContent), T = cfg.T, data = cfg.snap;
     var $ = function (id) { return document.getElementById(id); };
+    var each = function (sel, fn) { Array.prototype.forEach.call(app.querySelectorAll(sel), fn); };
     var q = new URLSearchParams(location.search);
     var st = {
       amount: clampAmount(q.get('amount') || DEFAULTS.amount),
       start: clampStart(data, q.get('start') || DEFAULTS.start),
       ccy: q.get('ccy') === 'USD' ? 'USD' : 'EUR'
     };
-    var touched = q.has('amount') || q.has('start') || q.has('ccy');
+    var amountEl = $('dcaAmount'), amountR = $('dcaAmountR'), startR = $('dcaStartR');
+    var fillRange = function (el) { el.style.setProperty('--p', (100 * (el.value - el.min) / ((el.max - el.min) || 1)) + '%'); };
 
-    function paint() {
+    function paint(keepAmount) {
       st.start = clampStart(data, st.start);
-      var F = fmt(cfg.lang, cfg.locale, st.ccy), m = model(data, st.amount, st.start, st.ccy);
+      var F = fmt(cfg.lang, cfg.locale, st.ccy), m = model(data, st.amount, st.start, st.ccy), months = monthList(data);
       $('dcaOut').innerHTML = results(m, T, F);
       $('dcaTable').innerHTML = table(byYear(data, st.amount, st.ccy), T, F);
       $('dcaNote').textContent = note(m, T, F);
+      // summary box: same default example as the static text (EUR), with live numbers
+      var ansP = document.querySelector('.answer p');
+      if (ansP && T.ans && cfg.ansRest != null) {
+        var Fd = fmt(cfg.lang, cfg.locale, DEFAULTS.ccy), md = model(data, DEFAULTS.amount, DEFAULTS.start, DEFAULTS.ccy);
+        ansP.textContent = fill(T.ans, { a: Fd.money(md.amount), inv: Fd.money(md.invested), val: Fd.money(md.value), d: Fd.day(md.asOf) }) + cfg.ansRest;
+      }
       var a = F.money(st.amount);
-      Array.prototype.forEach.call(app.querySelectorAll('[data-dca-amt]'), function (el) { el.textContent = a; });
-      Array.prototype.forEach.call(app.querySelectorAll('[data-dca-fee]'), function (el) {
-        el.textContent = F.money(st.amount * 12 * Number(el.getAttribute('data-dca-fee')));
-      });
-      $('dcaAmount').value = st.amount;
+      each('[data-dca-amt]', function (el) { el.textContent = a; });
+      each('[data-dca-fee]', function (el) { el.textContent = F.money(st.amount * 12 * Number(el.getAttribute('data-dca-fee'))); });
+      each('[data-dca-sym]', function (el) { el.textContent = st.ccy === 'USD' ? '$' : '€'; });
+      if (!keepAmount) amountEl.value = st.amount;
+      amountR.max = STEPS.length - 1; amountR.value = stepIndex(st.amount); fillRange(amountR);
+      startR.max = months.length - 1; startR.value = Math.max(0, months.indexOf(st.start)); fillRange(startR);
+      $('dcaStartV').textContent = F.month(st.start);
       $('dcaYear').value = st.start.slice(0, 4);
       $('dcaMonth').value = st.start.slice(5);
-      Array.prototype.forEach.call(app.querySelectorAll('[data-ccy]'), function (b) {
-        b.setAttribute('aria-pressed', b.getAttribute('data-ccy') === st.ccy ? 'true' : 'false');
-      });
+      each('[data-ccy]', function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-ccy') === st.ccy ? 'true' : 'false'); });
     }
     function url(extra) {
       var p = new URLSearchParams();
       p.set('amount', st.amount); p.set('start', st.start); p.set('ccy', st.ccy);
       return location.pathname + '?' + p.toString() + (extra || '');
     }
-    function changed() {
-      touched = true;
-      paint();
+    function changed(keepAmount) {
+      paint(keepAmount);
       try { history.replaceState(null, '', url()); } catch (e) {}
     }
+    var typed = function (v) { return Number(String(v).replace(/[^0-9]/g, '')); };
 
-    $('dcaAmount').addEventListener('change', function () { st.amount = clampAmount(this.value); changed(); });
-    $('dcaAmount').addEventListener('input', function () {
-      var v = Number(this.value);
-      if (v >= AMOUNT_MIN && v <= AMOUNT_MAX) { st.amount = Math.round(v); touched = true; var keep = this.value; paint(); this.value = keep; }
+    amountEl.addEventListener('input', function () {
+      var v = typed(this.value);
+      if (v >= AMOUNT_MIN && v <= AMOUNT_MAX) { st.amount = v; changed(true); }
     });
+    amountEl.addEventListener('change', function () { st.amount = clampAmount(typed(this.value)); changed(); });
+    amountR.addEventListener('input', function () { st.amount = STEPS[+this.value]; changed(); });
+    startR.addEventListener('input', function () { st.start = monthList(data)[+this.value]; changed(); });
     var pick = function () { st.start = $('dcaYear').value + '-' + $('dcaMonth').value; changed(); };
     $('dcaYear').addEventListener('change', pick);
     $('dcaMonth').addEventListener('change', pick);
-    Array.prototype.forEach.call(app.querySelectorAll('[data-ccy]'), function (b) {
-      b.addEventListener('click', function () { st.ccy = b.getAttribute('data-ccy'); changed(); });
-    });
+    each('[data-ccy]', function (b) { b.addEventListener('click', function () { st.ccy = b.getAttribute('data-ccy'); changed(); }); });
     var share = $('dcaShare');
     if (share) share.addEventListener('click', function () {
       var link = location.origin + url('&utm_source=share&utm_medium=link&utm_campaign=tool_share_dca');
+      var label = share.querySelector('span') || share;
       var done = function () {
-        share.textContent = T.copied;
-        setTimeout(function () { share.textContent = T.share; }, 2200);
+        label.textContent = T.copied;
+        setTimeout(function () { label.textContent = T.share; }, 2200);
         (window.dataLayer = window.dataLayer || []).push({ event: 'tool_share', tool: 'dca', page_lang: cfg.lang, share_method: 'copy' });
       };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(done, function () { prompt(T.share, link); });
       else prompt(T.share, link);
     });
 
-    if (touched) paint();
+    paint();
     (function load(i) {
       if (i >= SOURCES.length) return;
       fetch(SOURCES[i], { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
@@ -239,6 +263,6 @@
 
   return {
     MIN_START: MIN_START, DEFAULTS: DEFAULTS, AMOUNT_MIN: AMOUNT_MIN, AMOUNT_MAX: AMOUNT_MAX,
-    lastFull: lastFull, model: model, byYear: byYear, fmt: fmt, results: results, table: table, note: note, fill: fill
+    STEPS: STEPS, stepIndex: stepIndex, monthList: monthList, lastFull: lastFull, model: model, byYear: byYear, fmt: fmt, results: results, table: table, note: note, fill: fill
   };
 });
