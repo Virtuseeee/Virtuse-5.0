@@ -4408,6 +4408,26 @@
     <priority>0.5</priority>
   </url>
 <!-- BTC-RETURNS:END -->
+<!-- CREATORS:START -->
+  <url>
+    <loc>https://virtuse.com/creators.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/creators.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/creators.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/creators.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/creators.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/creators.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/creators.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/creators.html"/>
+  </url>
+<!-- CREATORS:END -->
 <!-- TOOLS:START -->
   <url>
     <loc>https://virtuse.com/concierge.html</loc>
