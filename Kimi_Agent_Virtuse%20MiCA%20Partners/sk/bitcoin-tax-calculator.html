@@ -234,15 +234,14 @@
   #rules, #faq { padding-bottom: 88px; }   /* the last rows scroll clear of the floating chat button */
   .tc-cmp-row { grid-template-columns: minmax(0, 1fr) 84px; padding: 8px; }
   .tc-cmp-bar, .tc-cmp-k, .tc-cmp-row.head span:nth-child(2), .tc-cmp-row.head span:nth-child(4) { display: none; }
-  .tc-rule summary { grid-template-columns: minmax(0, 1fr) auto 18px; gap: 10px; padding: 14px 72px 14px 16px; }
-  .tc-more summary { padding-right: 60px; }   /* the + / − icons stay left of the floating chat button (86 px from the right edge, 54 px on phones) */
-  #faq.qa summary { padding-right: 72px; }
+  .tc-rule summary { grid-template-columns: minmax(0, 1fr) auto 18px; gap: 10px; padding: 14px 16px; }
   .tc-rule summary span.r { grid-column: 1 / -1; grid-row: 2; }
   .tc-rule dl { grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 0 16px 16px; }
   .tc-rule dd { margin-bottom: 10px; }
   .tc-f .seg { height: auto; }
 }
-@media (max-width: 520px) { .tc-rule summary { padding-right: 56px; } .tc-more summary { padding-right: 48px; } #faq.qa summary { padding-right: 52px; } }
+/* 641-760 px: the floating chat button shows (site-v2.css hides it at 640 px and below), so the + / − icons stay left of it */
+@media (min-width: 641px) and (max-width: 760px) { .tc-rule summary, #faq.qa summary { padding-right: 72px; } .tc-more summary { padding-right: 60px; } }
 @media (max-width: 560px) { .tc-stats { grid-template-columns: minmax(0, 1fr); } .tc-stats div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-left: 0; padding: 8px 0 0; border-top: 1px solid rgba(255,255,255,.06); } .tc-stats strong { margin: 0; } }
 </style>
 </head>
