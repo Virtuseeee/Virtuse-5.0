@@ -88,6 +88,8 @@
  "c_data": "Daten",
  "c_retire": "Ruhestandsrechner",
  "c_retire_p": "Wie sich ein monatlicher Bitcoin-Plan über die Zeit summieren könnte.",
+ "c_dca": "DCA-Rechner",
+ "c_dca_p": "Was ein monatlicher Bitcoin-Sparplan seit einem beliebigen Jahr ab 2014 ergeben hätte.",
  "disclaimer": "Daten nur zur Information, sie können verzögert sein. Keine Anlageberatung.",
  "u_s": "s",
  "u_min": "Min.",

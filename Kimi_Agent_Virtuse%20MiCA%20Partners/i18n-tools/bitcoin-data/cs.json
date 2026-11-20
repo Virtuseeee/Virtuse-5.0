@@ -88,6 +88,8 @@
  "c_data": "Data",
  "c_retire": "Důchodová kalkulačka",
  "c_retire_p": "Jak by mohl měsíční plán nákupu Bitcoinu časem narůst.",
+ "c_dca": "DCA kalkulačka",
+ "c_dca_p": "Jak by dopadl pravidelný měsíční nákup Bitcoinu od libovolného roku od 2014.",
  "disclaimer": "Data slouží jen pro informaci a mohou být zpožděná. Nejde o investiční poradenství.",
  "u_s": "s",
  "u_min": "min",
