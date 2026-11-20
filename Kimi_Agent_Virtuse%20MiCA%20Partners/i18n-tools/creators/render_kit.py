@@ -8,7 +8,8 @@ Every number is read from the data files at render time; nothing is typed into a
   asset-returns    data/asset-returns.json            Bitcoin's rank and per-year return since 2016
   fee-index        seo-build/data/fee-index.json      total cost of a EUR 100 buy (same ranking as the Fee Index page;
                                                       a route whose spread is not measured yet is shown unranked)
-  monthly-returns  data/btc-monthly-returns.json      average and median return of the current month (btc-returns.js model)
+  monthly-returns  data/btc-monthly-returns.json      average and median return of the current month over all complete years,
+                                                      exactly as the Monthly Returns pages show it (btc-returns.js model, from 2010)
 Labels come from creators/<lang>.json (kit_* keys), so the SK images follow sk.json.
 
 Rendering: a local http.server serves the generated HTML; Chrome runs headless with
@@ -29,7 +30,6 @@ SIZES = {'1080x1080': (1080, 1080), '1200x675': (1200, 675)}
 GRAPHICS = ['btc-vs-gold', 'asset-returns', 'fee-index', 'monthly-returns']
 MAX_BYTES = 300 * 1024
 MONTHS_SK = ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december']
-FIRST_MONTHLY_YEAR = 2013   # handover: "average and median return of the current month since 2013"
 
 esc = lambda s: html.escape(str(s), quote=True)
 
@@ -75,19 +75,15 @@ def d_fees():
 
 
 def d_monthly():
-    """Average and median of the current calendar month over complete years since FIRST_MONTHLY_YEAR,
-    computed by the same model the Monthly Returns pages use (btc-returns.js)."""
+    """Average and median of the current calendar month over all complete years, taken from the same
+    btc-returns.js model the Monthly Returns pages use, so the image matches the site (Ras, 20 Nov: from 2010)."""
     js = r'''
-const R = require(process.argv[1]), d = require(process.argv[2]), first = +process.argv[3];
+const R = require(process.argv[1]), d = require(process.argv[2]);
 const M = R.model(d, new Date(d.asOf + 'T12:00:00Z'));
-const X = M.months[M.cm - 1], list = X.list.filter(r => r.y >= first), v = list.map(r => r.v).sort((a, b) => a - b);
-const mean = v.reduce((a, b) => a + b, 0) / v.length, mid = v.length >> 1;
-const med = v.length % 2 ? v[mid] : (v[mid - 1] + v[mid]) / 2;
-process.stdout.write(JSON.stringify({ m: M.cm, first: list[0].y, last: list[list.length - 1].y, n: v.length,
-  pos: v.filter(x => x > 0).length, avg: mean, med: med, asOf: d.asOf }));
+const X = M.months[M.cm - 1];
+process.stdout.write(JSON.stringify({ m: M.cm, first: X.first, last: X.last, n: X.n, pos: X.pos, avg: X.avg, med: X.med, asOf: d.asOf }));
 '''
-    r = subprocess.run(['node', '-e', js, os.path.join(SITE, 'btc-returns.js'), os.path.join(SITE, 'data', 'btc-monthly-returns.json'),
-                        str(FIRST_MONTHLY_YEAR)], capture_output=True, text=True, check=True)
+    r = subprocess.run(['node', '-e', js, os.path.join(SITE, 'btc-returns.js'), os.path.join(SITE, 'data', 'btc-monthly-returns.json')], capture_output=True, text=True, check=True)
     return json.loads(r.stdout)
 
 
