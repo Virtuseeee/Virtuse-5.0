@@ -205,6 +205,7 @@
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -226,6 +227,7 @@
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }</style>
@@ -319,7 +321,7 @@
           "name": "Hogyan számoljuk a múltbeli eredményt?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Minden hónap végén egy azonos összegű vásárlás a havi záróáron (CoinMetrics referenciaárfolyam USD-ben, EKB-árfolyamon EUR-ra váltva), a választott hónaptól az utolsó teljes hónapig. A megvett Bitcoint a legutóbbi napi záróáron értékeljük. A díjak és a spreadek nem szerepelnek benne."
+            "text": "Minden hónap végén egy azonos összegű vásárlás a havi záróáron (CoinMetrics referenciaárfolyam USD-ben, EKB-árfolyamon EUR-ra váltva), a választott hónaptól az utolsó teljes hónapig. A megvett Bitcoint az utolsó teljes hónap végi záróáron értékeljük. A díjak és a spreadek nem szerepelnek benne."
           }
         }
       ]
@@ -498,7 +500,7 @@
     <div class="dca-panel seo dca-legacy">
 <p>Díjpélda az első évre: havi 100 € 12 hónapon át, összesen 1200 €, egész euróra kerekítve. A Bybit EU és a Kraken esetében ez a tőzsdén saját kezűleg adott megbízás díja, nem az automatikus vásárlásé. A fenti múltbeli eredmény nem tartalmaz díjakat.</p>
 <h2>Sorrend havi 100 € esetén</h2>
-<div class="table-wrap"><table><thead><tr><th>Helyezés</th><th>Partner</th><th>Módszer</th><th>Változó díj</th><th>Éves díjak</th></tr></thead><tbody><tr><td data-label="Helyezés">1</td><td data-label="Partner">21bitcoin</td><td data-label="Módszer">Auto-Invest terv</td><td data-label="Változó díj">0%</td><td data-label="Éves díjak">0 €</td></tr><tr><td data-label="Helyezés">2</td><td data-label="Partner">Bybit EU</td><td data-label="Módszer">Spot kereskedés</td><td data-label="Változó díj">0,25%</td><td data-label="Éves díjak">3 €</td></tr><tr><td data-label="Helyezés">3</td><td data-label="Partner">Kraken</td><td data-label="Módszer">Pro kereskedés</td><td data-label="Változó díj">0,8%</td><td data-label="Éves díjak">10 €</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Helyezés</th><th>Partner</th><th>Módszer</th><th>Változó díj</th><th>Éves díjak</th></tr></thead><tbody><tr><td data-label="Helyezés">1</td><td data-label="Partner">21bitcoin</td><td data-label="Módszer">Auto-Invest terv</td><td data-label="Változó díj">0%</td><td data-label="Éves díjak">0 €<small class="dca-tnote">A 0 euró a nyolcadik naptól érvényes díjból adódik. Az első 7 napban a díj 0,99%, ezt az éves adat nem tartalmazza.</small></td></tr><tr><td data-label="Helyezés">2</td><td data-label="Partner">Bybit EU</td><td data-label="Módszer">Spot kereskedés</td><td data-label="Változó díj">0,25%</td><td data-label="Éves díjak">3 €</td></tr><tr><td data-label="Helyezés">3</td><td data-label="Partner">Kraken</td><td data-label="Módszer">Pro kereskedés</td><td data-label="Változó díj">0,8%</td><td data-label="Éves díjak">10 €</td></tr></tbody></table></div>
 
       <p><a class="cta" href="../../hu/stacking.html">Stacking Strategist megnyitása →</a></p>
     </div>
@@ -510,7 +512,7 @@
     <details><summary><h3>Mi az alapterv, Q4 2026 állapot szerint?</h3></summary><p>Havi 100 € 12 hónapon át, összesen 1200 €. A sorrend az első év díjain alapul.</p></details>
     <details><summary><h3>Melyik útnak a legalacsonyabb a közzétett díja ebben a tervben?</h3></summary><p>21bitcoin (Auto-Invest terv), 0% változó díjjal a Stacking Strategist képlete szerint. A legalacsonyabb teljes költség spreaddel együtt a Bitcoin-díjindexben: Bybit EU (0,25%) havi 100 € esetén.</p></details>
     <details><summary><h3>Befektetési tanácsadásnak számít ez?</h3></summary><p>Nem. Kizárólag oktatási célt szolgál. A KYC a partnernél történik. A Virtuse soha nem kezeli az Ön kulcsait.</p></details>
-    <details><summary><h3>Hogyan számoljuk a múltbeli eredményt?</h3></summary><p>Minden hónap végén egy azonos összegű vásárlás a havi záróáron (CoinMetrics referenciaárfolyam USD-ben, EKB-árfolyamon EUR-ra váltva), a választott hónaptól az utolsó teljes hónapig. A megvett Bitcoint a legutóbbi napi záróáron értékeljük. A díjak és a spreadek nem szerepelnek benne.</p></details>
+    <details><summary><h3>Hogyan számoljuk a múltbeli eredményt?</h3></summary><p>Minden hónap végén egy azonos összegű vásárlás a havi záróáron (CoinMetrics referenciaárfolyam USD-ben, EKB-árfolyamon EUR-ra váltva), a választott hónaptól az utolsó teljes hónapig. A megvett Bitcoint az utolsó teljes hónap végi záróáron értékeljük. A díjak és a spreadek nem szerepelnek benne.</p></details>
   </section>
 
   <section id="related" class="hub-related">
@@ -528,11 +530,11 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Csak Bitcoin, minden hétfőn.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="A Virtuse Brief futára robogón hozza a 2026. okt. 5-i számot" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/news.html">
+        <img id="briefImg" src="/news/og-card.png" alt="Borítókép: Virtuse Brief" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Legújabb Brief</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (angol nyelven)</h3>
+          <h3 id="briefTitle">Virtuse Brief</h3>
           <p id="briefExcerpt"></p>
           <span class="more">A szám elolvasása →</span>
         </div>

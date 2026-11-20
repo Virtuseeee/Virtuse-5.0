@@ -205,6 +205,7 @@
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -226,6 +227,7 @@
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }</style>
@@ -319,7 +321,7 @@
           "name": "Comment le résultat historique est-il calculé ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Un achat du même montant au cours de clôture de chaque fin de mois (cours de référence CoinMetrics en USD, converti en EUR aux cours de la BCE), du mois choisi au dernier mois complet. Le Bitcoin acheté est valorisé au dernier cours de clôture quotidien. Les frais et les spreads ne sont pas inclus."
+            "text": "Un achat du même montant au cours de clôture de chaque fin de mois (cours de référence CoinMetrics en USD, converti en EUR aux cours de la BCE), du mois choisi au dernier mois complet. Le Bitcoin acheté est valorisé au cours de clôture de la fin du dernier mois complet. Les frais et les spreads ne sont pas inclus."
           }
         }
       ]
@@ -498,7 +500,7 @@
     <div class="dca-panel seo dca-legacy">
 <p>Exemple de frais pour la première année : 100 € par mois pendant 12 mois, soit 1 200 € au total, arrondis à l’euro. Pour Bybit EU et Kraken, il s’agit des frais d’un ordre que vous passez vous-même sur la plateforme, pas d’un achat automatique. Le résultat historique ci-dessus n’inclut pas de frais.</p>
 <h2>Classement à 100 € par mois</h2>
-<div class="table-wrap"><table><thead><tr><th>Rang</th><th>Partenaire</th><th>Méthode</th><th>Frais variables</th><th>Frais annuels</th></tr></thead><tbody><tr><td data-label="Rang">1</td><td data-label="Partenaire">21bitcoin</td><td data-label="Méthode">Plan Auto-Invest</td><td data-label="Frais variables">0 %</td><td data-label="Frais annuels">0 €</td></tr><tr><td data-label="Rang">2</td><td data-label="Partenaire">Bybit EU</td><td data-label="Méthode">Trading au comptant</td><td data-label="Frais variables">0,25 %</td><td data-label="Frais annuels">3 €</td></tr><tr><td data-label="Rang">3</td><td data-label="Partenaire">Kraken</td><td data-label="Méthode">Trading Pro</td><td data-label="Frais variables">0,8 %</td><td data-label="Frais annuels">10 €</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Rang</th><th>Partenaire</th><th>Méthode</th><th>Frais variables</th><th>Frais annuels</th></tr></thead><tbody><tr><td data-label="Rang">1</td><td data-label="Partenaire">21bitcoin</td><td data-label="Méthode">Plan Auto-Invest</td><td data-label="Frais variables">0 %</td><td data-label="Frais annuels">0 €<small class="dca-tnote">Le montant de 0 euro repose sur le tarif à partir du 8e jour. Les 7 premiers jours, les frais sont de 0,99 % et ne figurent pas dans ce montant annuel.</small></td></tr><tr><td data-label="Rang">2</td><td data-label="Partenaire">Bybit EU</td><td data-label="Méthode">Trading au comptant</td><td data-label="Frais variables">0,25 %</td><td data-label="Frais annuels">3 €</td></tr><tr><td data-label="Rang">3</td><td data-label="Partenaire">Kraken</td><td data-label="Méthode">Trading Pro</td><td data-label="Frais variables">0,8 %</td><td data-label="Frais annuels">10 €</td></tr></tbody></table></div>
 
       <p><a class="cta" href="../../fr/stacking.html">Ouvrir le Stacking Strategist →</a></p>
     </div>
@@ -510,7 +512,7 @@
     <details><summary><h3>Quel plan type est utilisé ?</h3></summary><p>100 € par mois pendant 12 mois, soit 1 200 € au total. Le classement repose sur les frais de la première année.</p></details>
     <details><summary><h3>Quelle voie a les frais publiés les plus bas pour ce plan ?</h3></summary><p>21bitcoin (Plan Auto-Invest), avec des frais variables de 0 % selon la formule du Stacking Strategist. Coût total le plus bas, spread compris, dans l'Indice des frais Bitcoin : Bybit EU (0,25 %) à 100 € par mois.</p></details>
     <details><summary><h3>Est-ce un conseil en investissement ?</h3></summary><p>Non. À des fins éducatives uniquement. Le KYC se fait chez le partenaire. Virtuse ne détient jamais vos clés.</p></details>
-    <details><summary><h3>Comment le résultat historique est-il calculé ?</h3></summary><p>Un achat du même montant au cours de clôture de chaque fin de mois (cours de référence CoinMetrics en USD, converti en EUR aux cours de la BCE), du mois choisi au dernier mois complet. Le Bitcoin acheté est valorisé au dernier cours de clôture quotidien. Les frais et les spreads ne sont pas inclus.</p></details>
+    <details><summary><h3>Comment le résultat historique est-il calculé ?</h3></summary><p>Un achat du même montant au cours de clôture de chaque fin de mois (cours de référence CoinMetrics en USD, converti en EUR aux cours de la BCE), du mois choisi au dernier mois complet. Le Bitcoin acheté est valorisé au cours de clôture de la fin du dernier mois complet. Les frais et les spreads ne sont pas inclus.</p></details>
   </section>
 
   <section id="related" class="hub-related">
@@ -528,11 +530,11 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>100&nbsp;% Bitcoin, chaque lundi.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Coursier du Virtuse Brief à scooter livrant l'édition du 5&nbsp;oct. 2026" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/news.html">
+        <img id="briefImg" src="/news/og-card.png" alt="Image de couverture : Virtuse Brief" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Dernier Brief</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (en anglais)</h3>
+          <h3 id="briefTitle">Virtuse Brief</h3>
           <p id="briefExcerpt"></p>
           <span class="more">Lire le numéro →</span>
         </div>

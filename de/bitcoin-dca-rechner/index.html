@@ -205,6 +205,7 @@
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -226,6 +227,7 @@
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }</style>
@@ -319,7 +321,7 @@
           "name": "Wie wird das historische Ergebnis berechnet?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ein Kauf über denselben Betrag zu jedem Monatsschlusskurs (CoinMetrics-Referenzkurs in USD, mit EZB-Kursen in EUR umgerechnet), vom gewählten Monat bis zum letzten vollständigen Monat. Der gekaufte Bitcoin wird zum letzten Tagesschlusskurs bewertet. Gebühren und Spreads sind nicht enthalten."
+            "text": "Ein Kauf über denselben Betrag zu jedem Monatsschlusskurs (CoinMetrics-Referenzkurs in USD, mit EZB-Kursen in EUR umgerechnet), vom gewählten Monat bis zum letzten vollständigen Monat. Der gekaufte Bitcoin wird zum Schlusskurs am Ende des letzten vollständigen Monats bewertet. Gebühren und Spreads sind nicht enthalten."
           }
         }
       ]
@@ -498,7 +500,7 @@
     <div class="dca-panel seo dca-legacy">
 <p>Gebührenbeispiel für das erste Jahr: 100 € pro Monat über 12 Monate, insgesamt 1.200 €, auf ganze Euro gerundet. Bei Bybit EU und Kraken ist es die Gebühr für eine Order, die Sie selbst an der Börse aufgeben, nicht für einen automatischen Kauf. Das historische Ergebnis oben enthält keine Gebühren.</p>
 <h2>Rangfolge bei 100 €/Monat</h2>
-<div class="table-wrap"><table><thead><tr><th>Rang</th><th>Partner</th><th>Methode</th><th>Variable Gebühr</th><th>Jahreslast</th></tr></thead><tbody><tr><td data-label="Rang">1</td><td data-label="Partner">21bitcoin</td><td data-label="Methode">Auto-Invest-Plan</td><td data-label="Variable Gebühr">0 %</td><td data-label="Jahreslast">0 €</td></tr><tr><td data-label="Rang">2</td><td data-label="Partner">Bybit EU</td><td data-label="Methode">Spot-Handel</td><td data-label="Variable Gebühr">0,25 %</td><td data-label="Jahreslast">3 €</td></tr><tr><td data-label="Rang">3</td><td data-label="Partner">Kraken</td><td data-label="Methode">Pro-Handel</td><td data-label="Variable Gebühr">0,8 %</td><td data-label="Jahreslast">10 €</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Rang</th><th>Partner</th><th>Methode</th><th>Variable Gebühr</th><th>Jahreslast</th></tr></thead><tbody><tr><td data-label="Rang">1</td><td data-label="Partner">21bitcoin</td><td data-label="Methode">Auto-Invest-Plan</td><td data-label="Variable Gebühr">0 %</td><td data-label="Jahreslast">0 €<small class="dca-tnote">0 Euro beruht auf dem Satz ab Tag 8. In den ersten 7 Tagen beträgt die Gebühr 0,99 %, sie ist in dieser Jahresangabe nicht enthalten.</small></td></tr><tr><td data-label="Rang">2</td><td data-label="Partner">Bybit EU</td><td data-label="Methode">Spot-Handel</td><td data-label="Variable Gebühr">0,25 %</td><td data-label="Jahreslast">3 €</td></tr><tr><td data-label="Rang">3</td><td data-label="Partner">Kraken</td><td data-label="Methode">Pro-Handel</td><td data-label="Variable Gebühr">0,8 %</td><td data-label="Jahreslast">10 €</td></tr></tbody></table></div>
 
       <p><a class="cta" href="../../de/stacking.html">Stacking Strategist öffnen →</a></p>
     </div>
@@ -510,7 +512,7 @@
     <details><summary><h3>Was ist der Standardplan Stand Q4 2026?</h3></summary><p>100 € pro Monat über 12 Monate, insgesamt 1.200 €. Sortiert nach den Gebühren im ersten Jahr.</p></details>
     <details><summary><h3>Welcher Kaufweg hat in diesem Plan die niedrigste veröffentlichte Gebühr?</h3></summary><p>21bitcoin (Auto-Invest-Plan) mit 0 % variabler Gebühr laut Stacking-Formel. Niedrigste Gesamtkosten inkl. Spread im Bitcoin-Gebührenindex: Bybit EU (0,25 %) bei 100 €/Monat.</p></details>
     <details><summary><h3>Ist das eine Anlageberatung?</h3></summary><p>Nein. Nur eine Orientierung zu Bildungszwecken. KYC erfolgt beim Partner. Virtuse verwahrt niemals Ihre Schlüssel.</p></details>
-    <details><summary><h3>Wie wird das historische Ergebnis berechnet?</h3></summary><p>Ein Kauf über denselben Betrag zu jedem Monatsschlusskurs (CoinMetrics-Referenzkurs in USD, mit EZB-Kursen in EUR umgerechnet), vom gewählten Monat bis zum letzten vollständigen Monat. Der gekaufte Bitcoin wird zum letzten Tagesschlusskurs bewertet. Gebühren und Spreads sind nicht enthalten.</p></details>
+    <details><summary><h3>Wie wird das historische Ergebnis berechnet?</h3></summary><p>Ein Kauf über denselben Betrag zu jedem Monatsschlusskurs (CoinMetrics-Referenzkurs in USD, mit EZB-Kursen in EUR umgerechnet), vom gewählten Monat bis zum letzten vollständigen Monat. Der gekaufte Bitcoin wird zum Schlusskurs am Ende des letzten vollständigen Monats bewertet. Gebühren und Spreads sind nicht enthalten.</p></details>
   </section>
 
   <section id="related" class="hub-related">
@@ -528,11 +530,11 @@
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Nur Bitcoin, jeden Montag.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Kurier des Virtuse Brief auf einem Roller bringt die Ausgabe vom 5. Okt. 2026" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/news.html">
+        <img id="briefImg" src="/news/og-card.png" alt="Titelbild: Virtuse Brief" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Neuester Brief</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote. (auf Englisch)</h3>
+          <h3 id="briefTitle">Virtuse Brief</h3>
           <p id="briefExcerpt"></p>
           <span class="more">Ausgabe lesen →</span>
         </div>

@@ -119,9 +119,11 @@ document.addEventListener('DOMContentLoaded', function () {
       var year = per * 12 + initial * r.pct;
       return { partner: r.partner, method: r.method, pct: r.pct, year: year };
     }).sort(function (a, b) { return a.year - b.year; });
+    var note = "The 0 euros uses the rate from day 8. In the first 7 days the fee is 0.99%, which this yearly figure leaves out.";
     tbody.innerHTML = rows.map(function (r, i) {
       return '<tr><td>' + (i+1) + '</td><td>' + r.partner + '</td><td>' + r.method + '</td><td>' +
-        (Math.round(r.pct * 10000) / 100) + '%</td><td>€' + Math.round(r.year) + '</td></tr>';
+        (Math.round(r.pct * 10000) / 100) + '%</td><td>€' + Math.round(r.year) + '</td><td>' +
+        (r.partner === '21bitcoin' && r.pct === 0 ? '<small class="dca-tnote">' + note + '</small>' : '') + '</td></tr>';
     }).join('');
   });
 });
@@ -227,6 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
 .dcap #dcaTable .table-wrap { margin: 10px 0 0; }
 .dcap .dca-legacy { padding: 20px; }
 .page-dca #brief { max-width: none; margin-inline: 0; }
+.dcap .dca-tnote { display: block; margin-top: 4px; max-width: 46ch; font-size: 12px; line-height: 1.5; color: #8b949e; }
 .dcap .dca-legacy h2 { font-size: 18px; font-weight: 600; margin: 22px 0 8px; }
 .dcap .dca-legacy > p:first-child { margin-top: 0; }
 .dcap .dca-legacy input { min-height: 38px; width: 110px; margin: 4px 12px 4px 6px; background: #08090a; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: #3fb950; font: inherit; font-size: 14px; font-weight: 600; padding: 4px 8px; text-align: right; }
@@ -248,6 +251,7 @@ document.addEventListener('DOMContentLoaded', function () {
   .dca-plot { height: 210px; }
   .dca-chart figcaption { text-align: left; }
   .dca-prow { grid-template-columns: 1fr; gap: 10px; }
+  .dcap .dca-tnote { grid-column: 1 / -1; max-width: none; margin-top: 0; }
   .dcap .related { grid-template-columns: 1fr; }
   .dcap .buy-hero2 { padding-top: 20px; }
 }</style>
@@ -341,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function () {
           "name": "How is the historical result calculated?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "One purchase of the same amount at each month-end closing price (CoinMetrics reference rate in USD, converted to EUR at ECB rates), from the month you choose to the last complete month. The Bitcoin bought is valued at the latest daily close. Fees and spreads are not included."
+            "text": "One purchase of the same amount at each month-end closing price (CoinMetrics reference rate in USD, converted to EUR at ECB rates), from the month you choose to the last complete month. The Bitcoin bought is valued at the closing price at the end of the last completed month. Fees and spreads are not included."
           }
         }
       ]
@@ -525,7 +529,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </form>
 <h2>First-year fees on the default plan</h2>
 <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Partner</th><th>Method</th><th>Variable fee</th><th>First-year fees</th><th>Note</th></tr></thead>
-<tbody id="dca-body"><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest plan</td><td>0%</td><td>€0</td><td>Published fee</td></tr><tr><td>2</td><td>Bybit EU</td><td>Spot trading</td><td>0.25%</td><td>€3</td><td>Published fee</td></tr><tr><td>3</td><td>Kraken</td><td>Pro trading</td><td>0.8%</td><td>€10</td><td>Published fee</td></tr></tbody></table></div>
+<tbody id="dca-body"><tr><td>1</td><td>21bitcoin</td><td>Auto-Invest plan</td><td>0%</td><td>€0</td><td>Published fee<small class="dca-tnote">The 0 euros uses the rate from day 8. In the first 7 days the fee is 0.99%, which this yearly figure leaves out.</small></td></tr><tr><td>2</td><td>Bybit EU</td><td>Spot trading</td><td>0.25%</td><td>€3</td><td>Published fee</td></tr><tr><td>3</td><td>Kraken</td><td>Pro trading</td><td>0.8%</td><td>€10</td><td>Published fee</td></tr></tbody></table></div>
 <p class="muted">Same formula as the live Stacking Strategist: first-year fees = (monthly contribution × fee % + fixed fee + monthly subscription) × 12, plus the fee % on the initial lump sum. This table covers fees only.</p>
 <p>Planning further ahead? The <a href="../retirement-calculator.html">Bitcoin retirement calculator</a> shows year by year whether a stack and a monthly plan could cover your spending in retirement.</p>
 
@@ -539,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <details><summary><h3>What default plan is shown as of Q4 2026?</h3></summary><p>€100 a month for 12 months, €1,200 in total. The ranking is by first-year fees.</p></details>
     <details><summary><h3>Which route has the lowest published fee on that plan?</h3></summary><p>21bitcoin (Auto-Invest plan) with a 0% variable fee: €0 in first-year fees in this fee-only example. Lowest total cost incl. spread on the Bitcoin Fee Index: Bybit EU (0.25%) at €100/month.</p></details>
     <details><summary><h3>Is this financial advice?</h3></summary><p>No. It is for educational purposes only. KYC happens on the partner’s platform. Virtuse never holds your keys.</p></details>
-    <details><summary><h3>How is the historical result calculated?</h3></summary><p>One purchase of the same amount at each month-end closing price (CoinMetrics reference rate in USD, converted to EUR at ECB rates), from the month you choose to the last complete month. The Bitcoin bought is valued at the latest daily close. Fees and spreads are not included.</p></details>
+    <details><summary><h3>How is the historical result calculated?</h3></summary><p>One purchase of the same amount at each month-end closing price (CoinMetrics reference rate in USD, converted to EUR at ECB rates), from the month you choose to the last complete month. The Bitcoin bought is valued at the closing price at the end of the last completed month. Fees and spreads are not included.</p></details>
   </section>
 
   <section id="related" class="hub-related">
@@ -557,11 +561,11 @@ document.addEventListener('DOMContentLoaded', function () {
   <section id="brief">
     <div class="sec-head one"><div class="sec-copy"><h2>Virtuse Brief. <span>Bitcoin-only, every Monday.</span></h2></div></div>
     <div class="brief brief-slim">
-      <a class="issue" id="briefIssue" data-root="/" href="/stories/bitcoin-beat-the-war-november-still-gets-a-vote/">
-        <img id="briefImg" src="/news/og/brief-20261012.jpg" alt="Virtuse Brief courier on a scooter delivering the 5 Oct 2026 issue" loading="lazy">
+      <a class="issue" id="briefIssue" data-root="/" href="/news.html">
+        <img id="briefImg" src="/news/og-card.png" alt="Cover image: Virtuse Brief" loading="lazy">
         <div class="issue-body">
           <span class="k" id="briefMeta">Latest Brief</span>
-          <h3 id="briefTitle">Bitcoin Beat the War. November Still Gets a Vote.</h3>
+          <h3 id="briefTitle">Virtuse Brief</h3>
           <p id="briefExcerpt"></p>
           <span class="more">Read the issue →</span>
         </div>
