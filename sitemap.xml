@@ -4408,26 +4408,6 @@
     <priority>0.5</priority>
   </url>
 <!-- BTC-RETURNS:END -->
-<!-- CREATORS:START -->
-  <url>
-    <loc>https://virtuse.com/creators.html</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/creators.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/creators.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/creators.html"/>
-  </url>
-  <url>
-    <loc>https://virtuse.com/sk/creators.html</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/creators.html"/>
-    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/creators.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/creators.html"/>
-  </url>
-<!-- CREATORS:END -->
 <!-- TOOLS:START -->
   <url>
     <loc>https://virtuse.com/concierge.html</loc>
@@ -5113,7 +5093,7 @@
 <!-- ECOSYSTEM:START -->
   <url>
     <loc>https://virtuse.com/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -5317,7 +5297,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -5334,7 +5314,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -5538,7 +5518,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/sk/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -5555,7 +5535,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/cs/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -5759,7 +5739,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/cs/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -5776,7 +5756,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -5980,7 +5960,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/de/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -5997,7 +5977,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/pl/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -6201,7 +6181,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/pl/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -6218,7 +6198,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/hu/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -6422,7 +6402,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/hu/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -6439,7 +6419,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/fr/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -6643,7 +6623,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/fr/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -6660,7 +6640,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/es/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -6864,7 +6844,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/es/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -6881,7 +6861,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/uk/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -7085,7 +7065,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/uk/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
@@ -7102,7 +7082,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ru/ecosystem/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/"/>
@@ -7306,7 +7286,7 @@
   </url>
   <url>
     <loc>https://virtuse.com/ru/ecosystem/promote/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/ecosystem/promote/"/>
