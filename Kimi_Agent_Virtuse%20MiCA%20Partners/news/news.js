@@ -1558,7 +1558,7 @@
     });
   }
 
-  j(LANG === 'sk' ? '/news/issues-sk.json?v=20261116c' : '/news/issues.json?v=20261116c').then(function (data) {
+  j(LANG === 'sk' ? '/news/issues-sk.json?v=20261123a' : '/news/issues.json?v=20261123a').then(function (data) {
     ISSUES = ((data && data.issues) || []).filter(Boolean);
     paintIssues(ISSUES);
     loadMagazine();
