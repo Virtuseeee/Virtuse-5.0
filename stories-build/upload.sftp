@@ -46,6 +46,7 @@
 -mkdir public_html/stories/bitcoin-is-an-antidote-against-cbdcs
 -mkdir public_html/stories/bitcoin-is-not-just-an-investment-its-an-escape-hatch-from-the-financial-gulag
 -mkdir public_html/stories/bitcoin-is-now-the-largest-financial-service-company
+-mkdir public_html/stories/bitcoin-just-bottomed
 -mkdir public_html/stories/bitcoin-ordinals-about-to-flip-ethereum-nfts
 -mkdir public_html/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds
 -mkdir public_html/stories/bitcoin-patience-is-a-virtue
@@ -260,6 +261,7 @@
 -mkdir public_html/sk/stories/bitcoin-nie-je-mrtvy-to-len-vas-stary-matrix-kolabuje
 -mkdir public_html/sk/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds
 -mkdir public_html/sk/stories/bitcoin-po-zvyseni-sadzieb-fedu-znova-nad-80000
+-mkdir public_html/sk/stories/bitcoin-prave-nasiel-dno
 -mkdir public_html/sk/stories/bitcoin-sa-prepadol-o-5-percent-kvoli-obavam-z-krachu-silvergate
 -mkdir public_html/sk/stories/bitcoin-sa-stal-najvacsou-financnou-spolocnostou-na-svete-2
 -mkdir public_html/sk/stories/bitcoin-tento-indikator-signalizuje-zaciatok-noveho-bycieho-trhu
@@ -492,6 +494,7 @@ put sk/stories/bitcoin-nie-je-len-investicia-ale-aj-utek-z-financneho-gulagu/ind
 put sk/stories/bitcoin-nie-je-mrtvy-to-len-vas-stary-matrix-kolabuje/index.html public_html/sk/stories/bitcoin-nie-je-mrtvy-to-len-vas-stary-matrix-kolabuje/index.html
 put sk/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds/index.html public_html/sk/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds/index.html
 put sk/stories/bitcoin-po-zvyseni-sadzieb-fedu-znova-nad-80000/index.html public_html/sk/stories/bitcoin-po-zvyseni-sadzieb-fedu-znova-nad-80000/index.html
+put sk/stories/bitcoin-prave-nasiel-dno/index.html public_html/sk/stories/bitcoin-prave-nasiel-dno/index.html
 put sk/stories/bitcoin-sa-prepadol-o-5-percent-kvoli-obavam-z-krachu-silvergate/index.html public_html/sk/stories/bitcoin-sa-prepadol-o-5-percent-kvoli-obavam-z-krachu-silvergate/index.html
 put sk/stories/bitcoin-sa-stal-najvacsou-financnou-spolocnostou-na-svete-2/index.html public_html/sk/stories/bitcoin-sa-stal-najvacsou-financnou-spolocnostou-na-svete-2/index.html
 put sk/stories/bitcoin-tento-indikator-signalizuje-zaciatok-noveho-bycieho-trhu/index.html public_html/sk/stories/bitcoin-tento-indikator-signalizuje-zaciatok-noveho-bycieho-trhu/index.html
@@ -707,6 +710,7 @@ put stories/bitcoin-is-a-paradigm-shift-of-a-decade/index.html public_html/stori
 put stories/bitcoin-is-an-antidote-against-cbdcs/index.html public_html/stories/bitcoin-is-an-antidote-against-cbdcs/index.html
 put stories/bitcoin-is-not-just-an-investment-its-an-escape-hatch-from-the-financial-gulag/index.html public_html/stories/bitcoin-is-not-just-an-investment-its-an-escape-hatch-from-the-financial-gulag/index.html
 put stories/bitcoin-is-now-the-largest-financial-service-company/index.html public_html/stories/bitcoin-is-now-the-largest-financial-service-company/index.html
+put stories/bitcoin-just-bottomed/index.html public_html/stories/bitcoin-just-bottomed/index.html
 put stories/bitcoin-ordinals-about-to-flip-ethereum-nfts/index.html public_html/stories/bitcoin-ordinals-about-to-flip-ethereum-nfts/index.html
 put stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds/index.html public_html/stories/bitcoin-over-bonds-dalio-prefers-bitcoin-to-bonds/index.html
 put stories/bitcoin-patience-is-a-virtue/index.html public_html/stories/bitcoin-patience-is-a-virtue/index.html
