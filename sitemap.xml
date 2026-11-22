@@ -4066,6 +4066,26 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/funds-vs-bitcoin.html"/>
   </url>
 <!-- FVB:END -->
+<!-- TAXCALC:START -->
+  <url>
+    <loc>https://virtuse.com/bitcoin-tax-calculator.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-tax-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax-calculator.html"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-tax-calculator.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-tax-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-tax-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-tax-calculator.html"/>
+  </url>
+<!-- TAXCALC:END -->
 <!-- BVG:START -->
   <url>
     <loc>https://virtuse.com/bitcoin-vs-gold.html</loc>
