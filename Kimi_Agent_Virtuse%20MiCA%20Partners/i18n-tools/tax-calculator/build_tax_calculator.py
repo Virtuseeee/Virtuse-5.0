@@ -272,7 +272,8 @@ def brief_static(L, card):
     iss = [x for x in json.load(open(os.path.join(SITE, 'news', f)))['issues'] if x.get('slug') and x.get('title') and not x.get('essay')][0]
     sk_done = L == 'sk' and iss.get('lang') != 'en'
     href = '/sk/stories/%s/' % iss['slug'] if sk_done else iss.get('url') or '/stories/%s/' % iss['slug']
-    assert os.path.isdir(os.path.join(SITE, href.strip('/'))), href
+    if not os.path.isdir(os.path.join(SITE, href.strip('/'))):   # story page not built yet: the hub, as the page script does
+        href = '/sk/stories/' if L == 'sk' else '/stories/'
     title = re.sub(r' \(EN\)$', '', iss['title']) if L == 'sk' else iss['title']
     note = '' if L == 'en' or sk_done else ' (%s)' % B.BRIEF_EN[L]
     cover = {'en': 'Cover image: ', 'sk': 'Titulný obrázok: '}[L]

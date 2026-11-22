@@ -1508,5 +1508,15 @@
   "en": "Network error. Please try again.",
   "kind": "script",
   "context": "script message (build_cfo.py)"
+ },
+ {
+  "en": "Tax Calculator",
+  "kind": "text",
+  "context": "Tools menu: tax calculator"
+ },
+ {
+  "en": "Tax on a Bitcoin sale, 13 countries",
+  "kind": "text",
+  "context": "Tools menu: tax calculator"
  }
 ]

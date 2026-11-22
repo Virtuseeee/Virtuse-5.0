@@ -1137,6 +1137,10 @@ const GUIDE_TOOLS = {
   pl: { h: 'Powiązane narzędzia', tax: 'Zasady podatkowe według kraju i sprawdzenie gotowości spadkowej.', loanP: 'Sprzedaż a pożyczka pod zastaw Bitcoina.', pfP: 'Partnerzy pasujący do kryteriów.', buyT: 'Kup Bitcoin', buyP: 'Partnerzy do zakupu i ich opłaty obok siebie.' },
   hu: { h: 'Kapcsolódó eszközök', tax: 'Adószabályok országonként és öröklési felkészültségi ellenőrzés.', loanP: 'Eladás vagy hitelfelvétel Bitcoin-fedezettel.', pfP: 'Az Ön szempontjaihoz illő partnerek.', buyT: 'Bitcoin-vásárlás', buyP: 'Vásárlási partnerek és díjaik egymás mellett.' }
 };
+const TAX_CALC = {
+  en: { t: 'Bitcoin tax calculator', p: 'Enter one sale and see the tax, the working and the same sale in 13 countries.' },
+  sk: { t: 'Kalkulačka dane z Bitcoinu', p: 'Zadajte jeden predaj a uvidíte daň, výpočet aj rovnaký predaj v 13 krajinách.' }
+};
 function guideTools(spec) {
   const L = spec.lang;
   const T = GUIDE_TOOLS[L];
@@ -1147,9 +1151,15 @@ function guideTools(spec) {
   const buy = L === 'en' && c
     ? { href: to(`buy-bitcoin/${slugEn(c.id)}/`), title: `Buy Bitcoin in ${theEn(c)}`, text: T.buyP }
     : { href: to(`${pre}buy-bitcoin.html`), title: T.buyT, text: T.buyP };
+  // Tax and DAC8 guides in the languages that have the tax calculator (i18n-tools/tax-calculator): one wide card
+  // above the four, with the country filled in on a country page.
+  const calc = TAX_CALC[L] && accentFor(spec.relFile) === 'blue'
+    ? [{ href: to(`${pre}bitcoin-tax-calculator.html${c ? `?country=${c.id}` : ''}`), title: TAX_CALC[L].t, text: TAX_CALC[L].p, acc: 'blue', wide: true }]
+    : [];
   return {
     heading: T.h,
     items: [
+      ...calc,
       { href: to(`${pre}${TAX_AGENT}${c ? `?country=${c.id}` : ''}`), title: 'Tax & Inheritance Agent', text: T.tax, acc: 'blue' },
       { href: to(`${pre}loan.html`), title: 'Loan & Liquidity Copilot', text: T.loanP, acc: 'purple' },
       { href: to(`${pre}concierge.html`), title: 'Partner Finder', text: T.pfP, acc: 'pink' },

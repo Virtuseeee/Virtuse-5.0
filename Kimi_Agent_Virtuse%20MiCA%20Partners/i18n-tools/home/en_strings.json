@@ -1468,5 +1468,15 @@
   "en": " min",
   "kind": "script",
   "context": "script message (build_lang.py)"
+ },
+ {
+  "en": "Tax Calculator",
+  "kind": "text",
+  "context": "Tools menu: tax calculator"
+ },
+ {
+  "en": "Tax on a Bitcoin sale, 13 countries",
+  "kind": "text",
+  "context": "Tools menu: tax calculator"
  }
 ]

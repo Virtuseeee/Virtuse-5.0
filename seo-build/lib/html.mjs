@@ -209,7 +209,7 @@ export function renderPage({
   // "Related tools" cards (tax guides): descriptive anchors to the same-language tools.
   const toolsHtml = tools && tools.items.length
     ? `<h2>${esc(tools.heading)}</h2><div class="seo-tools">${tools.items.map((x) =>
-      `<a href="${esc(x.href)}"${x.acc ? ` class="acc-${x.acc}"` : ''}><b>${esc(x.title)}</b><span>${esc(x.text)}</span></a>`
+      `<a href="${esc(x.href)}"${x.acc ? ` class="acc-${x.acc}"` : ''}${x.wide ? ' style="grid-column:1/-1"' : ''}><b>${esc(x.title)}</b><span>${esc(x.text)}</span></a>`
     ).join('')}</div>`
     : '';
 

@@ -55,11 +55,13 @@ def build(L):
                     '<a class="hp-get btn-primary" href="{url}" target="_blank" rel="sponsored noopener" aria-label="{cta}">{get} {arrow}</a></div>'.format(
                         root=root, logo=p['logo'], name=p['name'], price=t('pr_%s_price' % i), free=t('pr_%s_free' % i), cty=t('pr_%s_countries' % i),
                         use=t('pr_%s_use' % i), url=p['url'], cta=t('pr_%s_cta' % i), get=t('get'), arrow=C.ARROW))
+    # the tax calculator exists in English and Slovak (i18n-tools/tax-calculator); "calc" in <lang>.json switches the link on
+    calc_link = ('<a class="tlink" href="%s/bitcoin-tax-calculator.html">%s %s</a>' % ('' if L == 'en' else '/' + L, T['calc'], C.ARROW)) if 'calc' in T else ''
     panel = '''<div class="hpanel blue tx-panel">
       <div class="tx-part tx-a">
         <div class="tx-label">{a_label}</div>
         <div class="cpills">{pills}</div>
-        <div class="tx-links"><a class="tlink" href="{root}tax-agent.html">{agent} {arrow}</a>{de_link}</div>
+        <div class="tx-links">{calc_link}<a class="tlink" href="{root}tax-agent.html">{agent} {arrow}</a>{de_link}</div>
       </div>
       <div class="tx-part tx-b">
         <div class="tx-label">{b_label}</div>
@@ -67,7 +69,7 @@ def build(L):
         {rows}
         {aff}
       </div>
-    </div>'''.format(aff=A.note(t), a_label=t('a_label'), pills=pills, root=root, agent=t('agent'), arrow=C.ARROW, de_link=de_link, b_label=t('b_label'),
+    </div>'''.format(aff=A.note(t), a_label=t('a_label'), pills=pills, root=root, agent=t('agent'), arrow=C.ARROW, de_link=de_link, calc_link=calc_link, b_label=t('b_label'),
                      c1=t('col_tool'), c2=t('col_price'), c3=t('col_free'), c4=t('col_countries'), c5=t('col_use'), rows='\n        '.join(rows))
 
     logos = ''.join('<img src="%s%s" alt="%s" width="22" height="22" loading="lazy">' % (root, p['logo'], p['name']) for p in PARTNERS)

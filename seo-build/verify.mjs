@@ -242,8 +242,12 @@ for (const rel of htmlFiles) {
     // "Related tools" block: Tax Agent (?country= on country pages), Loan Copilot, Partner Finder
     // and a buy page, all in the page's own language and all existing files.
     const toolsBlock = (html.match(/<div class="seo-tools">([\s\S]*?)<\/div>/) || [, ''])[1];
-    const toolHrefs = [...toolsBlock.matchAll(/<a href="([^"]+)"(?: class="[^"]*")?>/g)].map((x) => x[1].replace(/&amp;/g, '&'));
-    if (toolHrefs.length < 3 || toolHrefs.length > 4) fail(`${rel} related tools block has ${toolHrefs.length} cards (need 3-4)`);
+    const toolHrefs = [...toolsBlock.matchAll(/<a href="([^"]+)"(?: class="[^"]*")?(?: style="[^"]*")?>/g)].map((x) => x[1].replace(/&amp;/g, '&'));
+    // en + sk tax and DAC8 guides carry one more card, the tax calculator
+    const calcHref = toolHrefs.find((h) => /bitcoin-tax-calculator\.html/.test(h));
+    const maxCards = calcHref ? 5 : 4;
+    if (toolHrefs.length < 3 || toolHrefs.length > maxCards) fail(`${rel} related tools block has ${toolHrefs.length} cards (need 3-${maxCards})`);
+    if (isCountry && calcHref && !/\?country=[a-z]{2}$/.test(calcHref)) fail(`${rel} tax calculator card has no ?country= (${calcHref})`);
     const agentHref = toolHrefs.find((h) => /tax-agent\.html/.test(h)) || '';
     if (!agentHref) fail(`${rel} related tools miss the Tax & Inheritance Agent`);
     if (isCountry && !/\?country=[a-z]{2}$/.test(agentHref)) fail(`${rel} Tax Agent card has no ?country= (${agentHref})`);
