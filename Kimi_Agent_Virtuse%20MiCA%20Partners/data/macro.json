@@ -1,45 +1,45 @@
 {
- "generated": "2026-11-20T03:40:08.843Z",
+ "generated": "2026-11-22T18:51:48.377Z",
  "quotes": {
-  "spx": {
-   "value": 7175.83,
-   "prev": 7323.63,
-   "change_pct": -2.02,
-   "date": "2026-11-19",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
-  },
-  "gold": {
-   "value": 3523.2,
-   "prev": 3685.5,
-   "change_pct": -4.4,
-   "date": "2026-11-20",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
-  },
-  "us10y": {
-   "value": 5.052,
-   "prev": 5.066,
-   "change_pct": -0.28,
-   "date": "2026-11-19",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/%5ETNX"
-  },
   "brent": {
-   "value": 89.74,
+   "value": 89.95,
    "prev": 91.98,
-   "change_pct": -2.44,
+   "change_pct": -2.21,
    "date": "2026-11-20",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
+  "gold": {
+   "value": 3515.4,
+   "prev": 3685.5,
+   "change_pct": -4.62,
+   "date": "2026-11-20",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
+  },
+  "spx": {
+   "value": 6910.39,
+   "prev": 7175.83,
+   "change_pct": -3.7,
+   "date": "2026-11-20",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
+  },
   "eurusd": {
-   "value": 1.0978,
+   "value": 1.097,
    "prev": 1.0972,
-   "change_pct": 0.06,
+   "change_pct": -0.02,
    "date": "2026-11-20",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+  },
+  "us10y": {
+   "value": 4.912,
+   "prev": 5.052,
+   "change_pct": -2.77,
+   "date": "2026-11-20",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/%5ETNX"
   }
  },
  "inflation": {
@@ -56,20 +56,20 @@
    "source": "U.S. Bureau of Labor Statistics, CPI-U",
    "source_url": "https://www.bls.gov/cpi/"
   },
-  "sk": {
-   "value": 2.9,
-   "month": "2026-10",
-   "flash": false,
-   "status_flag": null,
-   "source": "Eurostat, HICP SK",
-   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
-  },
   "ea": {
    "value": 4,
    "month": "2026-10",
    "flash": false,
    "status_flag": null,
    "source": "Eurostat, HICP euro area",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
+  },
+  "sk": {
+   "value": 2.9,
+   "month": "2026-10",
+   "flash": false,
+   "status_flag": null,
+   "source": "Eurostat, HICP SK",
    "source_url": "https://ec.europa.eu/eurostat/web/hicp"
   }
  },
@@ -78,7 +78,7 @@
    "rate": "3.75–4.00%",
    "low": 3.75,
    "high": 4,
-   "date": "2026-11-18",
+   "date": "2026-11-19",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -94,9 +94,9 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 91,
+    "prob": 89,
     "meeting": "2026-12-09",
-    "as_of": "2026-11-20",
+    "as_of": "2026-11-22",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxfeddecision"
    }
@@ -105,7 +105,7 @@
    "rate": "4.00%",
    "low": 4,
    "high": 4,
-   "date": "2026-11-18",
+   "date": "2026-11-19",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -121,9 +121,9 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 68,
+    "prob": 73,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-20",
+    "as_of": "2026-11-22",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
    }
@@ -150,7 +150,7 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 88,
     "meeting": "2026-12-18",
-    "as_of": "2026-11-20",
+    "as_of": "2026-11-22",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
    }
@@ -159,7 +159,7 @@
    "rate": "2.50%",
    "low": 2.5,
    "high": 2.5,
-   "date": "2026-11-20",
+   "date": "2026-11-22",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -175,9 +175,9 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 95,
+    "prob": 94,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-20",
+    "as_of": "2026-11-22",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
    }

@@ -1,6 +1,17 @@
 {
   "issues": [
     {
+      "date": "2026-11-23",
+      "title": "Bitcoin práve našiel dno (shorty sú zničené)",
+      "excerpt": "Bitcoin zletel okolo 55-tisíc, najnižšie od septembra 2024, a do víkendu sa vrátil k 60k. Prečo najplytší prepad v histórii a volebný cyklus ukazujú na dno.",
+      "slug": "bitcoin-prave-nasiel-dno",
+      "image": "/news/covers/brief-20261123.jpg",
+      "read_min": 3,
+      "author": "Ras Vasilisin",
+      "alt_url": "/stories/bitcoin-just-bottomed/",
+      "en_slug": "bitcoin-just-bottomed"
+    },
+    {
       "date": "2026-11-16",
       "title": "Kto naozaj zatriasol trhom: Za pádom Bitcoinu nehľadajte Fed, ale Binance",
       "excerpt": "Bitcoin za týždeň padol o 12,6 % a všetci ukazujú na Fed. Sledujem peniaze od hacku Binance za 6,3 miliardy a vysvetľujem, prečo si myslím, že stojí za prepadom.",
