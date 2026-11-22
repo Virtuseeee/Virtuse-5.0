@@ -9,7 +9,8 @@ Rules:  seo-build/data/tax-rules.json (numbers the calculator uses), checked her
 Logic:  /tax-calc.js (shared, also run by tax-calc.test.mjs in Node).
 Texts:  <lang>.json next to this file; the country table reuses tax-sources.json (EN) and
         seo-build/data/meta.json taxSk (SK), the same texts as the /bitcoin-tax/ guides.
-Until a tax adviser has reviewed every country the page is noindex and not in the sitemap (REVIEWED).
+INDEXED switches robots and the sitemap block (<!-- TAXCALC:START/END --> in sitemap.xml, before BVG). Ras opened the page to
+search engines on 22 Nov 2026; the tax adviser had reviewed 4 of 13 countries then, and each rule shows its review status.
 """
 import html, json, os, re, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -21,7 +22,8 @@ C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 REPO = os.path.dirname(SITE)
 LANGS = ['en', 'sk']
 JS_V = '4'
-REVIEWED = False   # True once the tax adviser has signed off all 13 countries: index + sitemap
+INDEXED = True     # index, follow + sitemap (Ras, 22 Nov 2026). False = noindex and no sitemap entry
+LASTMOD = '2026-11-22'   # sitemap date: change it when the page content changes
 DEFAULT = {'en': 'de', 'sk': 'sk'}
 ORDER = ['sk', 'cz', 'pl', 'hu', 'at', 'de', 'si', 'hr', 'ro', 'bg', 'nl', 'fr', 'es']
 FIELDS = {'proceeds': 20000, 'cost': 10000, 'other': 0, 'invested': 10000}
@@ -323,7 +325,7 @@ def build(L, rules, sources, meta):
          'publisher': {'@id': ORIGIN + '/#org'}, 'dateModified': rules['checked']},
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
     out = F.head(L, t['title'], t['description'], page, alts, ld, og_title=t['og_title'], og_alt=t['og_title'],
-                 robots='index, follow' if REVIEWED else 'noindex, follow', og_image=ORIGIN + '/og/bitcoin-tax.jpg')
+                 robots='index, follow' if INDEXED else 'noindex, follow', og_image=ORIGIN + '/og/bitcoin-tax.jpg')
     out = out.replace('</head>', CSS + '</head>', 1)
     nav, foot = F.chrome(L, lang_url, comma=False)
     if L == 'sk' and os.path.exists(os.path.join(SITE, 'sk', 'news.html')):   # the Slovak Brief exists: no link to the English one
@@ -408,6 +410,22 @@ def build(L, rules, sources, meta):
     print('%-40s %6d bytes' % (page, len(out)))
 
 
+def sitemap():
+    """Own block in sitemap.xml: both languages with hreflang, or nothing while INDEXED is off."""
+    p = os.path.join(SITE, 'sitemap.xml')
+    x = open(p).read()
+    x = re.sub(r'<!-- TAXCALC:START -->.*?<!-- TAXCALC:END -->\n', '', x, flags=re.S)
+    if INDEXED:
+        alts = ''.join('    <xhtml:link rel="alternate" hreflang="%s" href="%s%s"/>\n' % (h, ORIGIN, url(L))
+                       for h, L in [(L, L) for L in LANGS] + [('x-default', 'en')])
+        urls = ''.join('  <url>\n    <loc>%s%s</loc>\n    <lastmod>%s</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n%s  </url>\n'
+                       % (ORIGIN, url(L), LASTMOD, alts) for L in LANGS)
+        a = '<!-- BVG:START -->'
+        assert x.count(a) == 1
+        x = x.replace(a, '<!-- TAXCALC:START -->\n' + urls + '<!-- TAXCALC:END -->\n' + a)
+    open(p, 'w').write(x)
+
+
 def main():
     data = os.path.join(REPO, 'seo-build', 'data')
     rules = json.load(open(os.path.join(data, 'tax-rules.json')))
@@ -419,6 +437,7 @@ def main():
         sys.exit(r.stdout[-2000:] + r.stderr[-2000:])
     for L in sys.argv[1:] or LANGS:
         build(L, rules, sources, meta)
+    sitemap()
 
 
 if __name__ == '__main__':
