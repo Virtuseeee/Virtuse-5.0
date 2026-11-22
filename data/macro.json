@@ -1,6 +1,14 @@
 {
- "generated": "2026-11-21T18:29:18.302Z",
+ "generated": "2026-11-22T18:51:48.377Z",
  "quotes": {
+  "brent": {
+   "value": 89.95,
+   "prev": 91.98,
+   "change_pct": -2.21,
+   "date": "2026-11-20",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
+  },
   "gold": {
    "value": 3515.4,
    "prev": 3685.5,
@@ -16,14 +24,6 @@
    "date": "2026-11-20",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
-  },
-  "brent": {
-   "value": 92.57,
-   "prev": 91.98,
-   "change_pct": 0.64,
-   "date": "2026-11-20",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
   "eurusd": {
    "value": 1.097,
@@ -56,20 +56,20 @@
    "source": "U.S. Bureau of Labor Statistics, CPI-U",
    "source_url": "https://www.bls.gov/cpi/"
   },
-  "sk": {
-   "value": 2.9,
-   "month": "2026-10",
-   "flash": false,
-   "status_flag": null,
-   "source": "Eurostat, HICP SK",
-   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
-  },
   "ea": {
    "value": 4,
    "month": "2026-10",
    "flash": false,
    "status_flag": null,
    "source": "Eurostat, HICP euro area",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
+  },
+  "sk": {
+   "value": 2.9,
+   "month": "2026-10",
+   "flash": false,
+   "status_flag": null,
+   "source": "Eurostat, HICP SK",
    "source_url": "https://ec.europa.eu/eurostat/web/hicp"
   }
  },
@@ -94,9 +94,9 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 90,
+    "prob": 89,
     "meeting": "2026-12-09",
-    "as_of": "2026-11-21",
+    "as_of": "2026-11-22",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxfeddecision"
    }
@@ -123,7 +123,7 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 73,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-21",
+    "as_of": "2026-11-22",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
    }
@@ -148,9 +148,9 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 86,
+    "prob": 88,
     "meeting": "2026-12-18",
-    "as_of": "2026-11-21",
+    "as_of": "2026-11-22",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
    }
@@ -159,7 +159,7 @@
    "rate": "2.50%",
    "low": 2.5,
    "high": 2.5,
-   "date": "2026-11-21",
+   "date": "2026-11-22",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -177,7 +177,7 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 94,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-21",
+    "as_of": "2026-11-22",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
    }
