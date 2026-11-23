@@ -6,6 +6,10 @@ import { allSegments, segmentFor } from './segments.js';
 import { unsubscribeUrl } from './unsubscribe-link.js';
 import { welcomeEmailFor } from './welcome.js';
 
+// The Brief sender. Staging has no RESEND_FROM_EMAIL secret: it falls back to the
+// RESEND_SEND_FROM var (plan@virtuse.com), so test emails still go out.
+export const briefFrom = (env) => env.RESEND_FROM_EMAIL || env.RESEND_SEND_FROM;
+
 export function createBriefList({ env, resend }) {
   async function addContact(email, lang) {
     // `lang` is stored as a Contact Property, which must exist in Resend
@@ -17,7 +21,7 @@ export function createBriefList({ env, resend }) {
     const template = welcomeEmailFor(lang);
     const link = await unsubscribeUrl(env.UNSUB_SECRET, email);
     await resend.sendEmail({
-      from: env.RESEND_FROM_EMAIL,
+      from: briefFrom(env),
       to: [email],
       subject: template.subject,
       html: template.html(link),

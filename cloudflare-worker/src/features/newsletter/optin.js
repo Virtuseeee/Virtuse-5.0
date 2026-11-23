@@ -17,6 +17,7 @@
 import { CONSENT_VERSION, CONFIRM_TTL_MS, EMAIL_RE, OPTIN_ADDRESS_LIMIT } from '../../config.js';
 import { equalStrings, hmacSha256Hex, ipHash, sha256Hex } from '../../shared/crypto.js';
 import OPERATOR from '../../generated/waitlist-strings.js';
+import { briefFrom } from './brief-list.js';
 
 export const optinEnabled = (env) => env.BRIEF_DOUBLE_OPTIN === '1';
 
@@ -129,7 +130,7 @@ export async function startOptin({ env, services, email, lang, ref, source, work
   const to = env.SUBSCRIBE_DRY_RUN === '1' ? env.BRIEF_TEST_TO : email;
   if (!to) return 'skipped';
   await services.resend.sendEmail({
-    from: env.RESEND_FROM_EMAIL,
+    from: briefFrom(env),
     to: [to],
     subject: (env.SUBSCRIBE_DRY_RUN === '1' ? '[TEST] ' : '') + T(lang).subject,
     html: confirmEmailHtml(lang, link),
