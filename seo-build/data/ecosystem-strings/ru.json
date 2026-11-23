@@ -37,7 +37,7 @@
     "indexRelated": [
       "Virtuse Brief: еженедельные новости о Биткоине",
       "Новичок в Биткоине? Начните здесь",
-      "Are you a creator? See how to work with us."
+      "Вы создаёте контент? Узнайте, как работать с нами."
     ],
     "promoteCrumb": "Попасть в подборку",
     "eyebrowIndex": "Экосистема Биткоина",
@@ -64,8 +64,7 @@
     "listH": "Наша подборка.",
     "listSub": "Каждая запись с оценкой в одну строку.",
     "faqSub": "Короткие ответы.",
-    "onThisPage": "На этой странице",
-    "_todo_indexRelated": "translate (last item)"
+    "onThisPage": "На этой странице"
   },
   "promote": {
     "criteriaH": "Критерии",
@@ -111,8 +110,7 @@
     "applySub": "Рассматриваем лично, ничего не публикуется автоматически.",
     "mCaptcha": "Пожалуйста, пройдите проверку безопасности и отправьте форму ещё раз.",
     "mRate": "Слишком много попыток с вашего подключения. Попробуйте ещё раз через час.",
-    "creatorsLine": "Are you a creator? See how to work with us.",
-    "_todo_creatorsLine": "translate"
+    "creatorsLine": "Вы создаёте контент? Узнайте, как работать с нами."
   },
   "pages": {
     "index": {

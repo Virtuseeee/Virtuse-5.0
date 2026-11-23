@@ -37,7 +37,7 @@
     "indexRelated": [
       "Virtuse Brief: wöchentliche Bitcoin-News",
       "Neu bei Bitcoin? Hier starten",
-      "Are you a creator? See how to work with us."
+      "Sie erstellen Inhalte? So arbeiten Sie mit uns zusammen."
     ],
     "promoteCrumb": "Aufnahme beantragen",
     "eyebrowIndex": "Bitcoin-Ökosystem",
@@ -64,8 +64,7 @@
     "listH": "Unsere Empfehlungen.",
     "listSub": "Jede mit einer Einschätzung in einer Zeile.",
     "faqSub": "Kurze Antworten.",
-    "onThisPage": "Auf dieser Seite",
-    "_todo_indexRelated": "translate (last item)"
+    "onThisPage": "Auf dieser Seite"
   },
   "promote": {
     "criteriaH": "Kriterien",
@@ -111,8 +110,7 @@
     "applySub": "Persönlich geprüft, nie automatisch veröffentlicht.",
     "mCaptcha": "Bitte schließen Sie die Sicherheitsprüfung ab und senden Sie das Formular erneut.",
     "mRate": "Zu viele Versuche von Ihrer Verbindung. Bitte versuchen Sie es in einer Stunde erneut.",
-    "creatorsLine": "Are you a creator? See how to work with us.",
-    "_todo_creatorsLine": "translate"
+    "creatorsLine": "Sie erstellen Inhalte? So arbeiten Sie mit uns zusammen."
   },
   "pages": {
     "index": {

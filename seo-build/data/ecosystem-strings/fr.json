@@ -37,7 +37,7 @@
     "indexRelated": [
       "Virtuse Brief : l'actualité Bitcoin de la semaine",
       "Vous découvrez Bitcoin ? Commencez ici",
-      "Are you a creator? See how to work with us."
+      "Vous créez du contenu ? Voyez comment travailler avec nous."
     ],
     "promoteCrumb": "Figurer dans l'annuaire",
     "eyebrowIndex": "Écosystème Bitcoin",
@@ -64,8 +64,7 @@
     "listH": "Nos sélections.",
     "listSub": "Chacune avec un avis d'une ligne.",
     "faqSub": "Des réponses courtes.",
-    "onThisPage": "Sur cette page",
-    "_todo_indexRelated": "translate (last item)"
+    "onThisPage": "Sur cette page"
   },
   "promote": {
     "criteriaH": "Critères",
@@ -111,8 +110,7 @@
     "applySub": "Examinée personnellement, jamais publiée automatiquement.",
     "mCaptcha": "Veuillez terminer la vérification de sécurité et renvoyer le formulaire.",
     "mRate": "Trop de tentatives depuis votre connexion. Veuillez réessayer dans une heure.",
-    "creatorsLine": "Are you a creator? See how to work with us.",
-    "_todo_creatorsLine": "translate"
+    "creatorsLine": "Vous créez du contenu ? Voyez comment travailler avec nous."
   },
   "pages": {
     "index": {
