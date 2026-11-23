@@ -19,8 +19,11 @@ body { margin: 0; background: #08090a; color: #e6edf3; font: 14px/1.5 Inter, -ap
 h1 { font-size: 16px; margin: 0 0 4px; }
 p { margin: 0 0 10px; color: #8b949e; font-size: 12px; }
 .tw { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; }
-th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid rgba(255,255,255,.08); white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 4px 7px; border-bottom: 1px solid rgba(255,255,255,.08); white-space: nowrap; }
+td:first-child { white-space: normal; }
+@media (max-width: 479px) { th:nth-child(2), td:nth-child(2) { display: none; } th { white-space: normal; } }
+@media (max-width: 359px) { .w { padding: 12px 8px; } th, td { padding: 4px 5px; } }
 th { color: #8b949e; font-weight: 600; font-size: 12px; }
 td + td, th + th { text-align: right; font-variant-numeric: tabular-nums; }
 a { color: #f7931a; }
@@ -29,8 +32,8 @@ a { color: #f7931a; }
 <body>
 <div class="w">
   <h1>Asset class returns</h1>
-  <p>Total return in USD, distributions reinvested. As of <span id="a">20 Oct 2026</span>.</p>
-  <div class="tw"><table><thead id="h"><tr><th>Asset</th><th>Ticker</th><th>YTD 2026</th><th>Per year since 2016</th></tr></thead><tbody id="b"><tr><td>Commodities</td><td>DBC</td><td>+50.9%</td><td>+10.7%</td></tr><tr><td>US Value</td><td>IWD</td><td>+22.9%</td><td>+11.7%</td></tr><tr><td>US Nasdaq 100</td><td>QQQ</td><td>+15.9%</td><td>+19.5%</td></tr><tr><td>US Large Caps</td><td>SPY</td><td>+12.8%</td><td>+14.8%</td></tr><tr><td>US Small Caps</td><td>IWM</td><td>+10.6%</td><td>+9.8%</td></tr><tr><td>US Mid Caps</td><td>MDY</td><td>+10.2%</td><td>+10.6%</td></tr><tr><td>Developed International</td><td>EFA</td><td>+9.5%</td><td>+8.5%</td></tr><tr><td>Emerging Markets</td><td>VWO</td><td>+8.3%</td><td>+8.4%</td></tr><tr><td>Convertible Bonds</td><td>CWB</td><td>+7.8%</td><td>+10.8%</td></tr><tr><td>US REITs</td><td>VNQ</td><td>+6.6%</td><td>+5.4%</td></tr><tr><td>European Stocks</td><td>VGK</td><td>+6.6%</td><td>+8.8%</td></tr><tr><td>Euro Stoxx 50</td><td>FEZ</td><td>+4.2%</td><td>+9.3%</td></tr><tr><td>US Growth</td><td>IWF</td><td>+2.9%</td><td>+16.8%</td></tr><tr><td>US Cash</td><td>BIL</td><td>+2.9%</td><td>+2.1%</td></tr><tr><td>High Yield Bonds</td><td>HYG</td><td>−0.4%</td><td>+5.0%</td></tr><tr><td>TIPS</td><td>TIP</td><td>−0.7%</td><td>+2.6%</td></tr><tr><td>EM Bonds (USD)</td><td>EMB</td><td>−1.1%</td><td>+3.5%</td></tr><tr><td>US Total Bond Market</td><td>BND</td><td>−1.5%</td><td>+1.8%</td></tr><tr><td>Preferred Stocks</td><td>PFF</td><td>−3.0%</td><td>+2.9%</td></tr><tr><td>Gold</td><td>GLD</td><td>−3.6%</td><td>+13.1%</td></tr><tr><td>Euro Corporate Bonds</td><td>EUN5</td><td>−5.2%</td><td>+1.4%</td></tr><tr><td>Bitcoin</td><td>BTC</td><td>−7.2%</td><td>+62.4%</td></tr><tr><td>Euro Government Bonds</td><td>EUNH</td><td>−7.2%</td><td>+0.0%</td></tr></tbody></table></div>
+  <p>Total return in USD, distributions reinvested. As of <span id="a">20 Nov 2026</span>.</p>
+  <div class="tw"><table><thead id="h"><tr><th>Asset</th><th>Ticker</th><th>YTD 2026</th><th>Per year since 2016</th></tr></thead><tbody id="b"><tr><td>Bitcoin</td><td>BTC</td><td>−29.2%</td><td>+57.8%</td></tr><tr><td>US Nasdaq 100</td><td>QQQ</td><td>+5.4%</td><td>+18.3%</td></tr><tr><td>US Growth</td><td>IWF</td><td>−8.3%</td><td>+15.4%</td></tr><tr><td>US Large Caps</td><td>SPY</td><td>+5.8%</td><td>+14.0%</td></tr><tr><td>Gold</td><td>GLD</td><td>−15.4%</td><td>+11.6%</td></tr><tr><td>US Value</td><td>IWD</td><td>+20.8%</td><td>+11.4%</td></tr><tr><td>US Mid Caps</td><td>MDY</td><td>+7.4%</td><td>+10.2%</td></tr><tr><td>Convertible Bonds</td><td>CWB</td><td>+1.2%</td><td>+10.1%</td></tr><tr><td>US Small Caps</td><td>IWM</td><td>+8.1%</td><td>+9.5%</td></tr><tr><td>Commodities</td><td>DBC</td><td>+32.5%</td><td>+9.3%</td></tr><tr><td>Euro Stoxx 50</td><td>FEZ</td><td>+0.1%</td><td>+8.8%</td></tr><tr><td>European Stocks</td><td>VGK</td><td>+3.3%</td><td>+8.4%</td></tr><tr><td>Developed International</td><td>EFA</td><td>+4.5%</td><td>+8.0%</td></tr><tr><td>Emerging Markets</td><td>VWO</td><td>−1.7%</td><td>+7.3%</td></tr><tr><td>US REITs</td><td>VNQ</td><td>+8.6%</td><td>+5.5%</td></tr><tr><td>High Yield Bonds</td><td>HYG</td><td>−0.3%</td><td>+5.0%</td></tr><tr><td>EM Bonds (USD)</td><td>EMB</td><td>−2.0%</td><td>+3.4%</td></tr><tr><td>TIPS</td><td>TIP</td><td>−1.0%</td><td>+2.6%</td></tr><tr><td>Preferred Stocks</td><td>PFF</td><td>−7.8%</td><td>+2.4%</td></tr><tr><td>US Cash</td><td>BIL</td><td>+3.2%</td><td>+2.2%</td></tr><tr><td>US Total Bond Market</td><td>BND</td><td>−1.0%</td><td>+1.8%</td></tr><tr><td>Euro Corporate Bonds</td><td>EUN5</td><td>−7.2%</td><td>+1.2%</td></tr><tr><td>Euro Government Bonds</td><td>EUNH</td><td>−8.6%</td><td>−0.1%</td></tr></tbody></table></div>
   <p id="n"></p>
   <p>Source: <a href="https://virtuse.com/asset-returns.html?utm_source=embed&amp;utm_medium=referral&amp;utm_campaign=asset_returns" target="_blank" rel="noopener">Virtuse, Asset class returns</a>. Past performance does not guarantee future results. Not investment advice.</p>
 </div>
@@ -41,7 +44,7 @@ function pct(v){if(v==null)return '–';var p=v*100,a=Math.abs(p),s=a>=100?a.toF
 var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function dt(iso){var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso||'');return m?(+m[3])+' '+M[+m[2]-1]+' '+m[1]:'';}
 function head(d){return '<tr><th>Asset</th><th>Ticker</th><th>YTD '+d.ytdYear+'</th><th>Per year since '+d.years[0]+'</th></tr>';}
-function rows(d){var r=d.rows.slice().sort(function(a,b){var x=a.returns[a.returns.length-1],y=b.returns[b.returns.length-1];return (y==null?-9:y)-(x==null?-9:x);});
+function rows(d){var r=d.rows.slice().sort(function(a,b){var x=a.annualized,y=b.annualized;return (y==null?-9:y)-(x==null?-9:x);});
 return r.map(function(x){return '<tr><td>'+e(x.name)+'</td><td>'+e(x.ticker)+'</td><td>'+pct(x.returns[x.returns.length-1])+'</td><td>'+pct(x.annualized)+'</td></tr>';}).join('');}
 function note(d){return '';}
 function show(d){if(!d)return;document.getElementById('h').innerHTML=head(d);document.getElementById('b').innerHTML=rows(d);

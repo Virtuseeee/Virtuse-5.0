@@ -36,7 +36,8 @@
     },
     "indexRelated": [
       "Virtuse Brief: weekly Bitcoin news",
-      "New to Bitcoin? Start here"
+      "New to Bitcoin? Start here",
+      "Are you a creator? See how to work with us."
     ],
     "promoteCrumb": "Get featured",
     "eyebrowIndex": "Bitcoin Ecosystem",
@@ -108,7 +109,8 @@
     "criteriaSub": "What every listing must meet.",
     "applySub": "Reviewed personally, never published automatically.",
     "mCaptcha": "Please complete the security check and send the form again.",
-    "mRate": "Too many attempts from your connection. Please try again in an hour."
+    "mRate": "Too many attempts from your connection. Please try again in an hour.",
+    "creatorsLine": "Are you a creator? See how to work with us."
   },
   "pages": {
     "index": {

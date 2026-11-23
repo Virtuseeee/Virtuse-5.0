@@ -629,7 +629,7 @@ ${nav}
     ${eyebrow(p, l)}
     <h1>${heroH1(t)}</h1>
     <p class="sp-lead">${esc(t.intro)}</p>
-${st ? `    <p class="pf-counts">${esc(st)}</p>\n` : ''}${cta}  </div>
+${p.slug === 'promote' ? `    <p class="sp-lead"><a href="${esc(loc('/creators.html', l))}">${esc(S[l].promote.creatorsLine)}</a></p>\n` : ''}${st ? `    <p class="pf-counts">${esc(st)}</p>\n` : ''}${cta}  </div>
   ${body}
   ${footNotes(p, l)}
 ${p.slug !== 'promote' ? '\n  ' + brief + '\n' : ''}

@@ -36,7 +36,8 @@
     },
     "indexRelated": [
       "Virtuse Brief: heti Bitcoin-hírek",
-      "Új a Bitcoin világában? Kezdje itt"
+      "Új a Bitcoin világában? Kezdje itt",
+      "Tartalmat készít? Nézze meg, hogyan dolgozhat velünk."
     ],
     "promoteCrumb": "Bemutatkozás",
     "eyebrowIndex": "Bitcoin-ökoszisztéma",
@@ -108,7 +109,8 @@
     "criteriaSub": "Amit minden bejegyzésnek teljesítenie kell.",
     "applySub": "Személyesen bíráljuk el, semmi sem jelenik meg automatikusan.",
     "mCaptcha": "Kérjük, végezze el a biztonsági ellenőrzést, és küldje el újra az űrlapot.",
-    "mRate": "Túl sok próbálkozás érkezett az Ön kapcsolatáról. Kérjük, próbálja újra egy óra múlva."
+    "mRate": "Túl sok próbálkozás érkezett az Ön kapcsolatáról. Kérjük, próbálja újra egy óra múlva.",
+    "creatorsLine": "Tartalmat készít? Nézze meg, hogyan dolgozhat velünk."
   },
   "pages": {
     "index": {

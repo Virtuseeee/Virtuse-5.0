@@ -36,7 +36,8 @@
     },
     "indexRelated": [
       "Virtuse Brief : l'actualité Bitcoin de la semaine",
-      "Vous découvrez Bitcoin ? Commencez ici"
+      "Vous découvrez Bitcoin ? Commencez ici",
+      "Vous créez du contenu ? Voyez comment travailler avec nous."
     ],
     "promoteCrumb": "Figurer dans l'annuaire",
     "eyebrowIndex": "Écosystème Bitcoin",
@@ -108,7 +109,8 @@
     "criteriaSub": "Ce que chaque entrée doit respecter.",
     "applySub": "Examinée personnellement, jamais publiée automatiquement.",
     "mCaptcha": "Veuillez terminer la vérification de sécurité et renvoyer le formulaire.",
-    "mRate": "Trop de tentatives depuis votre connexion. Veuillez réessayer dans une heure."
+    "mRate": "Trop de tentatives depuis votre connexion. Veuillez réessayer dans une heure.",
+    "creatorsLine": "Vous créez du contenu ? Voyez comment travailler avec nous."
   },
   "pages": {
     "index": {

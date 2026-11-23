@@ -36,7 +36,8 @@
     },
     "indexRelated": [
       "Virtuse Brief: týždenné správy o Bitcoine",
-      "S Bitcoinom začínate? Začnite tu"
+      "S Bitcoinom začínate? Začnite tu",
+      "Ste tvorca? Pozrite sa, ako s nami spolupracovať."
     ],
     "promoteCrumb": "Zaradenie",
     "eyebrowIndex": "Bitcoinový ekosystém",
@@ -108,7 +109,8 @@
     "criteriaSub": "Čo musí spĺňať každá položka.",
     "applySub": "Posudzujeme osobne, nič sa nezverejňuje automaticky.",
     "mCaptcha": "Dokončite, prosím, bezpečnostnú kontrolu a formulár odošlite znova.",
-    "mRate": "Z vášho pripojenia prišlo priveľa pokusov. Skúste to, prosím, znova o hodinu."
+    "mRate": "Z vášho pripojenia prišlo priveľa pokusov. Skúste to, prosím, znova o hodinu.",
+    "creatorsLine": "Ste tvorca? Pozrite sa, ako s nami spolupracovať."
   },
   "pages": {
     "index": {
