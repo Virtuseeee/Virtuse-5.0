@@ -4,7 +4,7 @@
 usage: python3 render_kit.py            (needs Google Chrome, Node 18+ and network for Google Fonts)
 
 Every number is read from the data files at render time; nothing is typed into a template.
-  btc-vs-gold      data/bitcoin-vs-commodities.json   Bitcoin and gold, YTD and 1 year, USD
+  btc-vs-gold      data/bitcoin-vs-commodities.json   Bitcoin and gold, 10 years: total and per year, USD
   asset-returns    data/asset-returns.json            Bitcoin's rank and per-year return since 2016
   fee-index        seo-build/data/fee-index.json      total cost of a EUR 100 buy (same ranking as the Fee Index page;
                                                       a route whose spread is not measured yet is shown unranked)
@@ -29,7 +29,7 @@ LANGS = ['en', 'sk']
 SIZES = {'1080x1080': (1080, 1080), '1200x675': (1200, 675)}
 GRAPHICS = ['btc-vs-gold', 'asset-returns', 'fee-index', 'monthly-returns']
 MAX_BYTES = 300 * 1024
-MONTHS_SK = ['január', 'február', 'marec', 'apríl', 'máj', 'jún', 'júl', 'august', 'september', 'október', 'november', 'december']
+MONTHS_SK = ['januári', 'februári', 'marci', 'apríli', 'máji', 'júni', 'júli', 'auguste', 'septembri', 'októbri', 'novembri', 'decembri']  # locative: "Bitcoin v novembri"
 
 esc = lambda s: html.escape(str(s), quote=True)
 
@@ -57,8 +57,8 @@ def ret(v, L, signed=True):
 def d_gold():
     d = json.load(open(os.path.join(SITE, 'data', 'bitcoin-vs-commodities.json')))
     a = {x['id']: x for x in d['assets']}
-    return {'asOf': d['asOf'], 'ytdYear': d['ytdYear'],
-            'rows': [(k, a[k]['periods']['ytd']['usd'], a[k]['periods']['y1']['usd']) for k in ('btc', 'gold')]}
+    return {'asOf': d['asOf'],
+            'rows': [(k, a[k]['periods']['y10']['usd'], a[k]['periods']['y10']['usdPa']) for k in ('btc', 'gold')]}
 
 
 def d_assets():
@@ -139,9 +139,9 @@ def page(size, eye, h1, main, asof, t):
 
 def g_gold(D, t, L, size):
     rows = ''.join('<tr%s><td>%s</td><td>%s</td><td>%s</td></tr>' % (' class="btc"' if k == 'btc' else '', esc(t['kit_btc'] if k == 'btc' else t['kit_gold']),
-                                                                   ret(ytd, L), ret(y1, L)) for k, ytd, y1 in D['rows'])
+                                                                   ret(tot, L), ret(pa, L)) for k, tot, pa in D['rows'])
     main = '<table><thead><tr><th></th><th>%s</th><th>%s</th></tr></thead><tbody>%s</tbody></table><p class="note">%s</p>' % (
-        esc(t['kit_ytd'].replace('{year}', str(D['ytdYear']))), esc(t['kit_1y']), rows, esc(t['kit_usd_total']))
+        esc(t['kit_10y']), esc(t['kit_pa']), rows, esc(t['kit_usd_total']))
     return page(size, t['kit_gold_eye'], esc(t['kit_gold_h1']).replace('{em}', '<em>').replace('{/em}', '</em>'), main,
                 t['kit_asof'].replace('{date}', F.date_str(D['asOf'], L)), t)
 
