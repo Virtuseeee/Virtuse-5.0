@@ -16,6 +16,7 @@ import { createKvLimiter } from './shared/rate-limiter.js';
 import { runBriefHealth } from './features/brief-health/handler.js';
 import { handleEcosystemApply } from './features/ecosystem/handler.js';
 import { createBriefList } from './features/newsletter/brief-list.js';
+import { handleConfirm } from './features/newsletter/confirm-handler.js';
 import { handleSubscribe } from './features/newsletter/subscribe-handler.js';
 import { handleUnsubscribe } from './features/newsletter/unsubscribe-handler.js';
 import { handlePulse } from './features/pulse/handler.js';
@@ -111,7 +112,9 @@ const route = pipeline(
   on(ANY, '/resend/webhook', handleResendWebhook),
   on(['OPTIONS'], ANY, (c) => preflight(c.origin)),
   // Clicked from an email client: no Origin; the HMAC token is the proof.
-  on(['GET'], '/unsubscribe', handleUnsubscribe),
+  on(['GET', 'POST'], '/unsubscribe', handleUnsubscribe),
+  // Double opt-in: the confirmation link (GET shows a button, POST confirms). Token = proof.
+  on(['GET', 'POST'], '/confirm', handleConfirm),
 
   siteOnly,
   postOnly,

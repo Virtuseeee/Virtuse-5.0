@@ -15,6 +15,7 @@ import { EMAIL_MAX_LENGTH, EMAIL_RE } from '../../config.js';
 import { clientIp, readJson } from '../../http/request.js';
 import { json } from '../../http/responses.js';
 import { ipHash, sha256Hex } from '../../shared/crypto.js';
+import { optinEnabled, startOptin } from '../newsletter/optin.js';
 import { WELCOME_LANGS } from '../newsletter/welcome.js';
 import { SEND_KINDS, SEND_SOURCES, SITE_LANGS, oneOf, renderSendEmail, validatePayload } from './domain.js';
 
@@ -33,11 +34,11 @@ async function addressKey(email) {
   return `sendlimit:${await sha256Hex(email.trim().toLowerCase())}`;
 }
 
-export async function handleSend({ request, env, origin, services }) {
+export async function handleSend({ request, env, origin, url, now, services }) {
   const parsed = await readJson(request);
   if (parsed.tooLarge) return json(413, { error: 'Request too large.' }, origin);
   if (!parsed.ok) return json(400, { error: 'Invalid JSON body' }, origin);
-  const { email, hp, lang: rawLang, kind, source, payload, brief, turnstile } = parsed.value || {};
+  const { email, hp, lang: rawLang, kind, source, payload, brief, turnstile, ref } = parsed.value || {};
 
   if (hp) return json(200, { ok: true }, origin);
 
@@ -120,7 +121,13 @@ export async function handleSend({ request, env, origin, services }) {
   try {
     // The Brief welcome follows the page language when it has a template.
     // Staging (SUBSCRIBE_DRY_RUN=1) sends the result email but, like /subscribe there, adds nobody to the Brief.
-    if (wantsBrief && env.SUBSCRIBE_DRY_RUN !== '1') await services.brief.join(email, WELCOME_LANGS.includes(lang) ? lang : 'en');
+    const briefLang = WELCOME_LANGS.includes(lang) ? lang : 'en';
+    if (wantsBrief && optinEnabled(env)) {
+      // Double opt-in: the ticked box asks for the Brief; the confirmation email does the rest.
+      await startOptin({ env, services, email, lang: briefLang, ref, source: 'send_' + source, workerOrigin: url.origin, now });
+      return json(200, { ok: true, pending: true }, origin);
+    }
+    if (wantsBrief && env.SUBSCRIBE_DRY_RUN !== '1') await services.brief.join(email, briefLang);
   } catch (e) {
     console.error(e);
     return json(502, { error: 'Something went wrong. Please try again in a moment.' }, origin);

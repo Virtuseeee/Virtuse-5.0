@@ -39,6 +39,13 @@ export const EMAIL_CAPS = { forms: 120, withdraw: 30 };
 export const TURNSTILE_SITEKEY = '0x4AAAAAAFheOLDBd1DyVOhF';
 export const TURNSTILE_FORM_HOSTS = ['virtuse.com', 'www.virtuse.com', 'staging.virtuse.com'];
 
+// Double opt-in (features/newsletter/optin.js). A confirmation link works for 7 days; one address
+// can ask for at most 3 confirmation emails a day. CONSENT_VERSION names the wording of the sign-up
+// forms and the privacy text the consent record refers to; change it when either changes.
+export const CONFIRM_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+export const OPTIN_ADDRESS_LIMIT = { max: 3, windowSeconds: 24 * 60 * 60 };
+export const CONSENT_VERSION = '2026-11-23';
+
 export function isAllowedOrigin(origin) {
   return ALLOWED_ORIGINS.includes(origin);
 }

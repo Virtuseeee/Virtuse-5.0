@@ -6,9 +6,25 @@ export const UNSUBSCRIBE_MESSAGES = {
   failed: 'Something went wrong processing your request. Please try again in a moment.',
   leftWaitlist: "You've left the Virtuse CFO · Verdict waitlist. We won't email you about it again.",
   leftBrief: "You've been unsubscribed from the Virtuse Brief. Sorry to see you go.",
+  askBrief: 'Unsubscribe from the Virtuse Brief?',
+  askWaitlist: 'Leave the Virtuse CFO · Verdict waitlist?',
+  button: 'Unsubscribe',
 };
 
-export function unsubscribePage(message) {
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+// The GET page: one button that POSTs the same signed fields.
+export function unsubscribeButtonPage({ email, token, list }) {
+  const ask = list === 'cfo' ? UNSUBSCRIBE_MESSAGES.askWaitlist : UNSUBSCRIBE_MESSAGES.askBrief;
+  return unsubscribePage(ask, `
+<form method="post" action="/unsubscribe" style="margin:24px 0 0 0;">
+<input type="hidden" name="email" value="${esc(email)}"><input type="hidden" name="token" value="${esc(token)}">${list ? `<input type="hidden" name="list" value="${esc(list)}">` : ''}
+<button type="submit" style="border:0;border-radius:8px;background:#e6edf3;color:#08090a;font-size:16px;font-weight:700;padding:12px 22px;cursor:pointer;">${UNSUBSCRIBE_MESSAGES.button}</button>
+</form>`);
+}
+
+// extraHtml: trusted markup built here (the button form), placed under the message.
+export function unsubscribePage(message, extraHtml = '') {
   return `<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Virtuse</title></head>
@@ -18,7 +34,7 @@ export function unsubscribePage(message) {
 <table role="presentation" width="480" cellpadding="0" cellspacing="0" border="0" style="width:480px;max-width:100%;background-color:#111a2b;border:1px solid #30363d;border-radius:16px;">
 <tr><td style="padding:40px 36px;text-align:center;">
 <p style="margin:0 0 20px 0;font-size:22px;font-weight:800;"><span style="color:#5FAEDE;">V</span><span style="color:#e6edf3;">irtuse</span></p>
-<p style="margin:0;font-size:16px;line-height:26px;color:#c3ccd6;">${message}</p>
+<p style="margin:0;font-size:16px;line-height:26px;color:#c3ccd6;">${message}</p>${extraHtml}
 </td></tr></table>
 </td></tr></table>
 </body></html>`;

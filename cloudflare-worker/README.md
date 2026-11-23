@@ -547,3 +547,34 @@ the real site key (public) goes into `seo-build/data/ecosystem.json`, its secret
   result email itself is still sent, so a staging test reaches the inbox.
 - **Delivery alert.** The internal "Verdict delivery problem" email shows the order number and
   the first 18 characters of the Checkout Session id, not the whole id.
+
+## Double opt-in for the Brief (BRIEF_DOUBLE_OPTIN)
+
+Since 2026-11-23 (creators phase 2), behind the Worker var `BRIEF_DOUBLE_OPTIN = "1"` (staging only for now):
+
+1. `POST /subscribe` (and `/send` with `brief: true`) sends one confirmation email and answers
+   `{ ok: true, pending: true }`. Nobody is added yet. Optional fields: `ref` (creator code,
+   `[a-z0-9-]`, 2 to 32 characters) and `source` (the form, `[a-z0-9_-]`, up to 40).
+2. The email links to `GET /confirm?t=<token>`: a page with one button. The token is stateless
+   (base64url JSON + HMAC with `UNSUB_SECRET`, valid 7 days), so nothing is stored before the click.
+3. The button posts to `POST /confirm`: the contact joins the Brief (`brief.join`), gets the welcome
+   email, and the Worker stores `consent:<sha256(address)>` in RATE_LIMIT_KV
+   (`at`, `requestedAt`, `version` = `CONSENT_VERSION` in `src/config.js`, `lang`, `source`, `ref`,
+   day-salted `ipHash`; no address). If KV holds `creator:<code>`, it also stores
+   `refsub:<code>:<sha256(address)>` once.
+4. One address can ask for at most 3 confirmation emails a day; the 4th answers the same and sends nothing.
+
+Creator codes: add one when Ras accepts a creator,
+`npx wrangler kv key put "creator:<code>" '{"name":"..."}' --binding RATE_LIMIT_KV --remote`
+(staging keys carry the `stg:` prefix). Count a creator's confirmed sign-ups with
+`npx wrangler kv key list --binding RATE_LIMIT_KV --remote --prefix "refsub:<code>:"`.
+
+Staging: with `SUBSCRIBE_DRY_RUN = "1"` the confirmation and the welcome go only to `BRIEF_TEST_TO`
+(subject starts with `[TEST]`) and no contact is created.
+
+Unsubscribe: `GET /unsubscribe` now shows a button and `POST /unsubscribe` acts (also the RFC 8058
+one-click POST from mail clients). The welcome email carries `List-Unsubscribe` and
+`List-Unsubscribe-Post` headers.
+
+Before switching it on in production: the site forms must handle `pending: true`
+("check your inbox"), and the privacy policy must describe the consent record.

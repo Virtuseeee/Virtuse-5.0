@@ -65,10 +65,13 @@ id = "7fbee7d7c384406a8270cd3bfae0e302"
 # TURNSTILE_FORMS = "require": /subscribe, /send and /waitlist ask for a Cloudflare Turnstile token (src/config.js).
 # Staging only for now; production gets it only after Ras's yes and the privacy text names Turnstile for these forms.
 # Needs the secret TURNSTILE_SECRET_KEY (--env staging); without it the forms stay open and the Worker logs an error.
+# BRIEF_DOUBLE_OPTIN = "1": Brief sign-ups get a confirmation email first (src/features/newsletter/optin.js,
+# creators phase 2, 2026-11-23). Staging only until the site forms show "check your inbox" (Mykyta's handover).
+# BRIEF_TEST_TO: with SUBSCRIBE_DRY_RUN, the confirmation and welcome emails go only to this address.
 [env.staging]
 name = "virtuse-newsletter-staging"
 triggers = { crons = [] }
-vars = { KV_PREFIX = "stg:", STRIPE_AUTOMATIC_TAX = "1", STRIPE_INVOICE = "1", VERDICT_ENABLED = "0", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", SEND_IP_LIMIT_PER_HOUR = "30", SEND_ADDRESS_LIMIT_PER_HOUR = "10", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1", VERDICT_RECEIPT_TO = "vasilisin@virtuse.com", RESEND_SEND_FROM = "Virtuse <plan@virtuse.com>", TURNSTILE_FORMS = "require" }
+vars = { KV_PREFIX = "stg:", STRIPE_AUTOMATIC_TAX = "1", STRIPE_INVOICE = "1", VERDICT_ENABLED = "0", VERDICT_REPORT_PREVIEW = "1", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_TAX_MODULE = "1", WAITLIST_DRY_RUN = "1", SUBSCRIBE_DRY_RUN = "1", SEND_IP_LIMIT_PER_HOUR = "30", SEND_ADDRESS_LIMIT_PER_HOUR = "10", VERDICT_PER_IP_BOOST = "50:2026-10-27", VERDICT_PAYMENTS = "1", STRIPE_TEST_ONLY = "1", VERDICT_RECEIPT_TO = "vasilisin@virtuse.com", RESEND_SEND_FROM = "Virtuse <plan@virtuse.com>", TURNSTILE_FORMS = "require", BRIEF_DOUBLE_OPTIN = "1", BRIEF_TEST_TO = "vasilisin@virtuse.com" }
 
 [[env.staging.kv_namespaces]]
 binding = "RATE_LIMIT_KV"

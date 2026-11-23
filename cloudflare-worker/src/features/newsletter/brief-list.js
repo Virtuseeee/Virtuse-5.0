@@ -21,10 +21,14 @@ export function createBriefList({ env, resend }) {
       to: [email],
       subject: template.subject,
       html: template.html(link),
+      // RFC 8058 one-click unsubscribe: Gmail and Apple Mail show their own button,
+      // which POSTs to the same signed link (handled by POST /unsubscribe).
+      headers: { 'List-Unsubscribe': `<${link}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
     });
   }
 
   return {
+    sendWelcome,
     // The welcome email goes to genuinely new contacts and to someone who had
     // unsubscribed and signs up again, never to someone already on the list.
     async join(email, lang) {

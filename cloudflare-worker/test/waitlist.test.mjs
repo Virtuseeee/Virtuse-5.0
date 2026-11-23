@@ -127,7 +127,12 @@ test('leave link with &list=cfo only touches the CFO audience', withFetch(async 
   await worker.fetch(req({ email: 'a@b.co' }), e);
   const link = new URL(calls[1].body.html.match(/href="([^"]+list=cfo)"/)[1].replace(/&amp;/g, '&'));
   calls.length = 0;
-  const res = await worker.fetch(new Request('https://w.example' + link.pathname + link.search), e);
+  // GET only shows the button (mail scanners open links); nothing is changed yet.
+  const ask = await worker.fetch(new Request('https://w.example' + link.pathname + link.search), e);
+  assert.equal(ask.status, 200);
+  assert.match(await ask.text(), /Leave the Virtuse CFO · Verdict waitlist\?[\s\S]*method="post"/);
+  assert.equal(calls.length, 0);
+  const res = await worker.fetch(new Request('https://w.example' + link.pathname + link.search, { method: 'POST' }), e);
   assert.equal(res.status, 200);
   assert.match(await res.text(), /left the Virtuse CFO · Verdict waitlist/);
   assert.equal(calls.length, 1);
@@ -135,12 +140,17 @@ test('leave link with &list=cfo only touches the CFO audience', withFetch(async 
   assert.equal(calls[0].method, 'PATCH');
 }));
 
-test('Brief unsubscribe (no list param) is unchanged and skips the CFO audience', withFetch(async (calls) => {
+test('Brief unsubscribe (no list param) asks first, then leaves the Brief and skips the CFO audience', withFetch(async (calls) => {
   const e = env();
   await worker.fetch(req({ email: 'a@b.co' }), e);
   const link = new URL(calls[1].body.html.match(/href="([^"]+)list=cfo"/)[1].replace(/&amp;/g, '&').replace(/&$/, ''));
   calls.length = 0;
-  const res = await worker.fetch(new Request('https://w.example' + link.pathname + link.search), e);
+  const ask = await worker.fetch(new Request('https://w.example' + link.pathname + link.search), e);
+  assert.match(await ask.text(), /Unsubscribe from the Virtuse Brief\?/);
+  assert.equal(calls.length, 0);
+  // The mail client's RFC 8058 one-click POST (fields in the URL, form body) acts directly.
+  const res = await worker.fetch(new Request('https://w.example' + link.pathname + link.search, {
+    method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'List-Unsubscribe=One-Click' }), e);
   assert.equal(res.status, 200);
   assert.match(await res.text(), /unsubscribed from the Virtuse Brief/);
   assert.ok(calls.every((c) => !c.url.includes('aud-cfo')));
