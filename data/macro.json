@@ -1,45 +1,45 @@
 {
- "generated": "2026-11-24T06:17:09.453Z",
+ "generated": "2026-11-25T04:59:21.621Z",
  "quotes": {
   "gold": {
-   "value": 3622.9,
-   "prev": 3651.4,
-   "change_pct": -0.78,
-   "date": "2026-11-24",
+   "value": 3548.1,
+   "prev": 3561.9,
+   "change_pct": -0.39,
+   "date": "2026-11-25",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/GC%3DF"
   },
-  "us10y": {
-   "value": 4.918,
-   "prev": 4.912,
-   "change_pct": 0.12,
-   "date": "2026-11-23",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/%5ETNX"
-  },
-  "spx": {
-   "value": 7237.17,
-   "prev": 6910.39,
-   "change_pct": 4.73,
-   "date": "2026-11-23",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
-  },
   "eurusd": {
-   "value": 1.0912,
-   "prev": 1.0972,
-   "change_pct": -0.54,
-   "date": "2026-11-24",
+   "value": 1.0948,
+   "prev": 1.0908,
+   "change_pct": 0.37,
+   "date": "2026-11-25",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
   },
-  "brent": {
-   "value": 86.33,
-   "prev": 89.37,
-   "change_pct": -3.4,
+  "spx": {
+   "value": 7201.09,
+   "prev": 7237.17,
+   "change_pct": -0.5,
    "date": "2026-11-24",
    "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
+  },
+  "brent": {
+   "value": 87.48,
+   "prev": 91.4,
+   "change_pct": -4.29,
+   "date": "2026-11-25",
+   "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
+  },
+  "us10y": {
+   "value": 4.904,
+   "prev": 4.918,
+   "change_pct": -0.28,
+   "date": "2026-11-24",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/%5ETNX"
   }
  },
  "inflation": {
@@ -74,38 +74,11 @@
   }
  },
  "central_banks": {
-  "fed": {
-   "rate": "3.75–4.00%",
-   "low": 3.75,
-   "high": 4,
-   "date": "2026-11-20",
-   "last_move": {
-    "dir": "up",
-    "bp": 25,
-    "date": "2026-09-17",
-    "effective": true,
-    "source_url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm"
-   },
-   "label": "Fed funds target",
-   "source": "Federal Reserve Bank of New York",
-   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
-   "next_meeting": "2026-12-09",
-   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-   "expects": {
-    "scenario": "Hike 25 bp",
-    "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 93,
-    "meeting": "2026-12-09",
-    "as_of": "2026-11-24",
-    "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxfeddecision"
-   }
-  },
   "boe": {
    "rate": "4.00%",
    "low": 4,
    "high": 4,
-   "date": "2026-11-20",
+   "date": "2026-11-23",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -123,43 +96,43 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 76,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-24",
+    "as_of": "2026-11-25",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
    }
   },
-  "ecb": {
-   "rate": "2.50%",
-   "low": 2.5,
-   "high": 2.5,
-   "date": "2026-11-24",
+  "fed": {
+   "rate": "3.75–4.00%",
+   "low": 3.75,
+   "high": 4,
+   "date": "2026-11-23",
    "last_move": {
     "dir": "up",
     "bp": 25,
-    "date": "2026-09-16",
+    "date": "2026-09-17",
     "effective": true,
-    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+    "source_url": "https://www.federalreserve.gov/monetarypolicy/openmarket.htm"
    },
-   "label": "Deposit facility rate",
-   "source": "European Central Bank",
-   "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
-   "next_meeting": "2026-12-17",
-   "calendar_url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+   "label": "Fed funds target",
+   "source": "Federal Reserve Bank of New York",
+   "source_url": "https://www.newyorkfed.org/markets/reference-rates/effr",
+   "next_meeting": "2026-12-09",
+   "calendar_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 94,
-    "meeting": "2026-12-17",
-    "as_of": "2026-11-24",
+    "prob": 91,
+    "meeting": "2026-12-09",
+    "as_of": "2026-11-25",
     "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
+    "source_url": "https://kalshi.com/markets/kxfeddecision"
    }
   },
   "boj": {
    "rate": "1.25%",
    "low": 1.25,
    "high": 1.25,
-   "date": "2026-11-19",
+   "date": "2026-11-23",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -175,11 +148,38 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 86,
+    "prob": 87,
     "meeting": "2026-12-18",
-    "as_of": "2026-11-24",
+    "as_of": "2026-11-25",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
+   }
+  },
+  "ecb": {
+   "rate": "2.50%",
+   "low": 2.5,
+   "high": 2.5,
+   "date": "2026-11-25",
+   "last_move": {
+    "dir": "up",
+    "bp": 25,
+    "date": "2026-09-16",
+    "effective": true,
+    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+   },
+   "label": "Deposit facility rate",
+   "source": "European Central Bank",
+   "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
+   "next_meeting": "2026-12-17",
+   "calendar_url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+   "expects": {
+    "scenario": "Hike 25 bp",
+    "scenario_sk": "Zvýšenie o 25 bp",
+    "prob": 96,
+    "meeting": "2026-12-17",
+    "as_of": "2026-11-25",
+    "source": "Kalshi prediction market",
+    "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
    }
   }
  },
