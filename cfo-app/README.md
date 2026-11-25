@@ -5,7 +5,8 @@ Local-first wealth overview for investor and partner demos. Not deployed anywher
 ```bash
 cd cfo-app
 npm ci
-npm test        # 28 tests: CSV, Kraken/XTB/IBKR/Trading 212 import, portfolio math, upload summary, vault
+npm test        # 36 tests: CSV, imports, prices/FX, portfolio math, upload summary, vault
+npm run prices  # refresh src/data/prices.json (ECB rates + last closes)
 npm run dev     # http://localhost:5181
 npm run build   # dist/
 ```
@@ -24,7 +25,15 @@ npm run build   # dist/
 - **Save encrypted** – PBKDF2-SHA256 (310k) → AES-GCM in this browser (`localStorage`), passphrase never leaves the device.
 - **What leaves your device** – the rounded totals an AI CFO would get later (`src/core/upload.ts`). The prototype sends nothing; a test fails if ids, dates, names or exact amounts appear there.
 
-The only network call is an optional BTC/EUR price request to CoinGecko.
+## Prices and exchange rates
+
+`src/data/prices.json` holds ECB euro reference rates and the last close for the instruments in `scripts/universe.json` (popular UCITS ETFs, a few stocks, BTC-EUR). `npm run prices` rebuilds it: ECB `eurofxref-daily.xml` and the Yahoo Finance chart API (unofficial, the same source as the site's asset-returns build; the final provider is a phase 0 decision). Failed quotes keep the last known price, marked `stale`.
+
+Every user gets the same file, and holdings are matched to it on the device (ISIN first, then ticker aliases such as CSPX.UK → the same fund listed in EUR). Each holding shows where its value comes from: Virtuse price, the broker's own value converted at the ECB rate, or purchase price.
+
+The prototype bundles a snapshot. In production the file would be rebuilt daily by a GitHub Action and served from Virtuse.
+
+The only other network call is an optional live BTC/EUR request to CoinGecko.
 
 ## Layout
 

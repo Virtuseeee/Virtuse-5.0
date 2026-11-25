@@ -2,6 +2,7 @@
 // Facts about the user's own data only: no forecasts, no advice.
 
 import { ASSET_CLASSES, type AssetClass, type Profile } from './model'
+import { revalue, type PriceBook } from './prices'
 
 export interface BitcoinFacts {
   /** BTC held: bought − sold − BTC fees + typed-in BTC. */
@@ -34,8 +35,8 @@ export interface BrokerTotals {
   cashEur: number
   feesEur: number
   dividendsEur: number
-  /** True when some positions are shown at purchase price, not market. */
-  anyAtCost: boolean
+  /** Holdings with no price, shown at purchase price. */
+  unpriced: number
 }
 
 export interface Overview {
@@ -97,20 +98,21 @@ export function bitcoinFacts(profile: Profile, priceEur: number): BitcoinFacts {
   }
 }
 
-export function overview(profile: Profile, priceEur: number): Overview {
+export function overview(profile: Profile, priceEur: number, book: PriceBook | null = null): Overview {
   const bitcoin = bitcoinFacts(profile, priceEur)
   const byClass = new Map<AssetClass, number>(ASSET_CLASSES.map((c) => [c, 0]))
   byClass.set('bitcoin', bitcoin.valueEur)
   for (const a of profile.manualAssets) {
     byClass.set(a.assetClass, (byClass.get(a.assetClass) ?? 0) + Math.max(0, a.valueEur))
   }
-  const brokers: BrokerTotals = { investedValueEur: 0, cashEur: 0, feesEur: 0, dividendsEur: 0, anyAtCost: false }
-  for (const b of profile.brokers ?? []) {
+  const brokers: BrokerTotals = { investedValueEur: 0, cashEur: 0, feesEur: 0, dividendsEur: 0, unpriced: 0 }
+  for (const raw of profile.brokers ?? []) {
+    const { account: b, unpriced } = revalue(raw, book)
+    brokers.unpriced += unpriced
     brokers.investedValueEur += b.investedValueEur
     brokers.cashEur += b.cashEur
     brokers.feesEur += b.feesEur
     brokers.dividendsEur += b.dividendsEur
-    if (b.has.positions && b.valuedAt === 'cost' && b.investedValueEur > 0) brokers.anyAtCost = true
   }
   byClass.set('stocks', (byClass.get('stocks') ?? 0) + brokers.investedValueEur)
   byClass.set('cash', (byClass.get('cash') ?? 0) + brokers.cashEur)

@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "test": "vitest run",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prices": "node scripts/build-prices.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

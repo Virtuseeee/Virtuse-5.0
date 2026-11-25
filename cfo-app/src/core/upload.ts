@@ -4,6 +4,7 @@
 
 import type { AssetClass, Profile } from './model'
 import { overview } from './portfolio'
+import type { PriceBook } from './prices'
 
 export interface UploadSummary {
   country: string
@@ -33,8 +34,8 @@ export const UPLOAD_KEYS: (keyof UploadSummary)[] = [
   'brokers',
 ]
 
-export function buildSummary(profile: Profile, priceEur: number): UploadSummary {
-  const o = overview(profile, priceEur)
+export function buildSummary(profile: Profile, priceEur: number, book: PriceBook | null = null): UploadSummary {
+  const o = overview(profile, priceEur, book)
   const class_pct: Partial<Record<AssetClass, number>> = {}
   for (const s of o.allocation) class_pct[s.assetClass] = Math.round(s.pct)
   return {

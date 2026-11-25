@@ -75,3 +75,6 @@ button.link { background: none; color: var(--muted); padding: 4px; font-weight: 
 .holdings { margin-top: 12px; }
 .holdings li { grid-template-columns: 1fr auto auto; }
 .holdings em { min-width: 70px; }
+.sources { flex-basis: 100%; margin: 0; }
+.basis { display: block; font-size: 11px; color: var(--muted); font-weight: 400; }
+.basis.b-cost, .basis.b-none { color: var(--accent); }

@@ -1,0 +1,234 @@
+{
+ "builtAt": "2026-11-25T17:35Z",
+ "fx": {
+  "source": "ECB euro reference rates",
+  "date": "2026-11-25",
+  "perEur": {
+   "EUR": 1,
+   "USD": 1.0935,
+   "JPY": 174.22,
+   "CZK": 24.435,
+   "DKK": 7.4743,
+   "GBP": 0.8373,
+   "HUF": 373.44,
+   "PLN": 4.48,
+   "RON": 5.343,
+   "SEK": 11.2385,
+   "CHF": 0.9085,
+   "ISK": 137.2,
+   "NOK": 10.7778,
+   "TRY": 55.4163,
+   "AUD": 1.6644,
+   "BRL": 6.4531,
+   "CAD": 1.5591,
+   "CNY": 7.2999,
+   "HKD": 8.5709,
+   "IDR": 20055.72,
+   "ILS": 3.6948,
+   "INR": 100.859,
+   "KRW": 1471.19,
+   "MXN": 21.5422,
+   "MYR": 4.5047,
+   "NZD": 2.0046,
+   "PHP": 69.558,
+   "SGD": 1.4129,
+   "THB": 37.321,
+   "ZAR": 19.3514,
+   "GBX": 83.73
+  }
+ },
+ "prices": {
+  "source": "Yahoo Finance (last close)",
+  "instruments": [
+   {
+    "id": "VWCE",
+    "isin": "IE00BK5BQT80",
+    "name": "Vanguard FTSE All-World (Acc)",
+    "aliases": [
+     "VWCE",
+     "VWCE.DE",
+     "VWCE.DEX",
+     "VWRA",
+     "VWCE.MI"
+    ],
+    "price": 158.72,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "VWRL",
+    "isin": "IE00B3RBWM25",
+    "name": "Vanguard FTSE All-World (Dist)",
+    "aliases": [
+     "VWRL",
+     "VWRL.AS",
+     "VGWL.DE",
+     "VWRL.NL"
+    ],
+    "price": 153.42,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "IWDA",
+    "isin": "IE00B4L5Y983",
+    "name": "iShares Core MSCI World",
+    "aliases": [
+     "IWDA",
+     "IWDA.AS",
+     "EUNL",
+     "EUNL.DE",
+     "IWDA.NL",
+     "SWDA"
+    ],
+    "price": 122.24,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "SXR8",
+    "isin": "IE00B5BMR087",
+    "name": "iShares Core S&P 500",
+    "aliases": [
+     "SXR8",
+     "SXR8.DE",
+     "CSPX",
+     "CSPX.UK",
+     "CSPX.L",
+     "CSP1"
+    ],
+    "price": 690.04,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "VUSA",
+    "isin": "IE00B3XXRP09",
+    "name": "Vanguard S&P 500 (Dist)",
+    "aliases": [
+     "VUSA",
+     "VUSA.AS",
+     "VUSA.NL",
+     "VUSA.L",
+     "VUSA.DE"
+    ],
+    "price": 121.157,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "EQQQ",
+    "isin": "IE0032077012",
+    "name": "Invesco EQQQ Nasdaq-100",
+    "aliases": [
+     "EQQQ",
+     "EQQQ.DE",
+     "EQQQ.L",
+     "EQQQ.UK"
+    ],
+    "price": 558.9,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "XDWD",
+    "isin": "IE00BJ0KDQ92",
+    "name": "Xtrackers MSCI World",
+    "aliases": [
+     "XDWD",
+     "XDWD.DE"
+    ],
+    "price": 133.785,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "EIMI",
+    "isin": "IE00BKM4GZ66",
+    "name": "iShares Core MSCI EM IMI",
+    "aliases": [
+     "EIMI",
+     "EIMI.L",
+     "IS3N",
+     "IS3N.DE",
+     "EIMI.UK"
+    ],
+    "price": 40.723,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "AAPL",
+    "isin": "US0378331005",
+    "name": "Apple",
+    "aliases": [
+     "AAPL",
+     "AAPL.US"
+    ],
+    "price": 351.92,
+    "currency": "USD",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "MSFT",
+    "isin": "US5949181045",
+    "name": "Microsoft",
+    "aliases": [
+     "MSFT",
+     "MSFT.US"
+    ],
+    "price": 486.52,
+    "currency": "USD",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "NVDA",
+    "isin": "US67066G1040",
+    "name": "NVIDIA",
+    "aliases": [
+     "NVDA",
+     "NVDA.US"
+    ],
+    "price": 143.88,
+    "currency": "USD",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "MSTR",
+    "isin": "US5949724083",
+    "name": "Strategy",
+    "aliases": [
+     "MSTR",
+     "MSTR.US"
+    ],
+    "price": 75.31,
+    "currency": "USD",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "ASML",
+    "isin": "NL0010273215",
+    "name": "ASML",
+    "aliases": [
+     "ASML",
+     "ASML.NL",
+     "ASML.AS"
+    ],
+    "price": 1131.6,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   },
+   {
+    "id": "BTC",
+    "name": "Bitcoin",
+    "aliases": [
+     "BTC",
+     "XBT"
+    ],
+    "price": 54057.6992,
+    "currency": "EUR",
+    "date": "2026-11-25"
+   }
+  ]
+ }
+}

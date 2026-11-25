@@ -10,6 +10,7 @@ export const BROKER_NAMES: Record<BrokerSource, string> = {
 
 export interface Holding {
   symbol: string
+  isin?: string
   name?: string
   quantity: number
   currency: string

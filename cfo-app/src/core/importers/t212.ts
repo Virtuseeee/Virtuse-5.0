@@ -55,7 +55,7 @@ export function importT212(records: Record<string, string>[]): BrokerAccount {
     if (/\b(buy|sell)\b/.test(action)) {
       const key = r.ISIN || r.Ticker
       const qty = Math.abs(toNumber(r['No. of shares'], `row ${line} shares`))
-      const h = pos.get(key) ?? { symbol: r.Ticker || key, name: r.Name || undefined, quantity: 0, currency: r['Currency (Price / share)'] || 'EUR', costEur: 0 }
+      const h = pos.get(key) ?? { symbol: r.Ticker || key, isin: r.ISIN || undefined, name: r.Name || undefined, quantity: 0, currency: r['Currency (Price / share)'] || 'EUR', costEur: 0 }
       if (action.includes('buy')) {
         h.quantity += qty
         h.costEur = (h.costEur ?? 0) + eur

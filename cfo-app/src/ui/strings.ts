@@ -8,9 +8,9 @@ const S = {
     lead: 'Virtuse CFO číta exporty z búrz a čísla, ktoré zadáte. Počíta v prehliadači, nič neposiela a nič nekupuje ani nepredáva.',
     demo: 'Ukážka: Anna',
     own: 'Vlastné údaje',
-    demoBanner: 'Ukážkové údaje. Anna nie je skutočná osoba a ceny sú ilustračné.',
+    demoBanner: 'Ukážkové údaje. Anna nie je skutočná osoba, jej nákupy sú za ilustračné ceny. Dnešné ceny sú skutočné posledné uzatváracie ceny.',
     price: 'Cena BTC v EUR',
-    priceHint: 'Zadáte ju vy alebo ju načítame z CoinGecko. Odošle sa len žiadosť o cenu.',
+    priceHint: 'Predvyplnená z cenníka Virtuse. Môžete ju zmeniť alebo načítať živú cenu z CoinGecko.',
     loadPrice: 'Načítať aktuálnu cenu',
     priceFail: 'Cenu sa nepodarilo načítať. Zadajte ju ručne.',
     netWorth: 'Čistý majetok',
@@ -43,9 +43,12 @@ const S = {
     importedBroker: (b: string, n: number) => n < 0 ? `${b}: načítané peňažné operácie.` : `${b}: načítané, ${n} ${n === 1 ? 'pozícia' : n >= 2 && n <= 4 ? 'pozície' : 'pozícií'}.`,
     unknownFormat: 'Tento formát zatiaľ nepoznáme. Podporujeme Kraken, XTB, IBKR a Trading 212.',
     readError: 'Súbor sa nepodarilo prečítať.',
+    sources: (fx: string, px: string, n: number) => `Kurzy ECB k ${fx}, ceny ${n} nástrojov k ${px} (posledná uzatváracia cena). Cenník sťahuje každý rovnako, takže nič neprezradí o vašich pozíciách.`,
+    basis: { price: 'cena Virtuse', broker: 'hodnota od brokera', cost: 'nákupná cena', none: 'bez ceny' } as Record<string, string>,
+    unpricedNote: (n: number) => `${n} ${n === 1 ? 'pozícia nemá' : n <= 4 ? 'pozície nemajú' : 'pozícií nemá'} cenu v cenníku Virtuse, ${n === 1 ? 'je' : 'sú'} v nákupnej cene.`,
     brokers: 'Brokerské účty',
     pcs: 'ks',
-    investedMarket: 'Investície (trhová hodnota u brokera)',
+    investedMarket: 'Investície (dnešná hodnota)',
     investedAtCost: 'Investície (v nákupnej cene, bez aktuálnych cien)',
     cash: 'Voľná hotovosť',
     deposited: 'Vložené (vklady − výbery)',
@@ -55,7 +58,7 @@ const S = {
     missingPositions: 'Chýba súbor s otvorenými pozíciami.',
     missingCash: 'Chýba súbor s peňažnými operáciami.',
     note: (n: string) => {
-      if (n === 'valued_at_cost') return 'Export neobsahuje aktuálne ceny, pozície sú v nákupnej cene. Ceny ETF doplníme vo fáze 2.'
+      if (n === 'valued_at_cost') return 'Export neobsahuje aktuálne ceny.'
       if (n === 'period_totals') return 'Vklady, dividendy a poplatky sú za obdobie výpisu.'
       if (n === 'xtb_fx_in_price') return 'Poplatok za zmenu meny XTB započítava do ceny, samostatne ho v exporte nevidno.'
       if (n === 'tax_other_currency') return 'Daň zrazená v inej mene ako EUR nie je v súčte.'
@@ -105,9 +108,9 @@ const S = {
     lead: 'Virtuse CFO reads exchange exports and the numbers you type in. It calculates in the browser, sends nothing, and never buys or sells.',
     demo: 'Demo: Anna',
     own: 'My data',
-    demoBanner: 'Sample data. Anna is not a real person and prices are illustrative.',
+    demoBanner: 'Sample data. Anna is not a real person and her past buys use illustrative prices. Today’s prices are real last closes.',
     price: 'BTC price in EUR',
-    priceHint: 'Type it in or load it from CoinGecko. Only a price request is sent.',
+    priceHint: 'Filled in from the Virtuse price file. Change it or load a live price from CoinGecko.',
     loadPrice: 'Load current price',
     priceFail: 'Could not load the price. Type it in.',
     netWorth: 'Net worth',
@@ -140,9 +143,12 @@ const S = {
     importedBroker: (b: string, n: number) => n < 0 ? `${b}: cash operations loaded.` : `${b}: loaded, ${n} ${n === 1 ? 'position' : 'positions'}.`,
     unknownFormat: 'We do not know this format yet. Kraken, XTB, IBKR and Trading 212 are supported.',
     readError: 'Could not read the file.',
+    sources: (fx: string, px: string, n: number) => `ECB rates as of ${fx}, prices for ${n} instruments as of ${px} (last close). Everyone downloads the same price file, so it reveals nothing about your holdings.`,
+    basis: { price: 'Virtuse price', broker: 'broker value', cost: 'purchase price', none: 'no price' } as Record<string, string>,
+    unpricedNote: (n: number) => `${n} ${n === 1 ? 'holding has' : 'holdings have'} no price in the Virtuse price file and ${n === 1 ? 'is' : 'are'} shown at purchase price.`,
     brokers: 'Broker accounts',
     pcs: 'units',
-    investedMarket: 'Investments (market value at the broker)',
+    investedMarket: 'Investments (value today)',
     investedAtCost: 'Investments (at purchase price, no current prices)',
     cash: 'Free cash',
     deposited: 'Put in (deposits − withdrawals)',
@@ -152,7 +158,7 @@ const S = {
     missingPositions: 'The open positions file is missing.',
     missingCash: 'The cash operations file is missing.',
     note: (n: string) => {
-      if (n === 'valued_at_cost') return 'The export has no current prices, so positions are at purchase price. ETF prices come in phase 2.'
+      if (n === 'valued_at_cost') return 'The export has no current prices.'
       if (n === 'period_totals') return 'Deposits, dividends and fees cover the statement period.'
       if (n === 'xtb_fx_in_price') return 'XTB includes its currency conversion fee in the price; the export does not show it separately.'
       if (n === 'tax_other_currency') return 'Tax withheld in a currency other than EUR is not in the total.'

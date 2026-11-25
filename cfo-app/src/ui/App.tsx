@@ -8,6 +8,8 @@ import { overview } from '../core/portfolio'
 import { buildSummary } from '../core/upload'
 import { forgetSealed, loadSealed, open, saveSealed, seal } from '../core/vault'
 import { annaKrakenCsv, annaProfile, DEMO_PRICE_EUR } from '../data/demo'
+import priceData from '../data/prices.json'
+import { btcPriceEur, revalue, type PriceBook } from '../core/prices'
 import { SAMPLES } from '../data/samples'
 import { strings } from './strings'
 
@@ -22,6 +24,9 @@ const CLASS_COLOR: Record<AssetClass, string> = {
 }
 const MANUAL_CLASSES: Exclude<AssetClass, 'bitcoin'>[] = ['cash', 'stocks', 'real_estate', 'pension', 'other']
 
+const BOOK = priceData as PriceBook
+const START_PRICE = Math.round(btcPriceEur(BOOK) ?? DEMO_PRICE_EUR)
+
 let idSeq = 0
 const newId = () => `m${Date.now().toString(36)}${idSeq++}`
 
@@ -30,12 +35,12 @@ export function App() {
   const t = strings(lang)
   const [mode, setMode] = useState<Mode>('demo')
   const [own, setOwn] = useState<Profile>(() => emptyProfile())
-  const [price, setPrice] = useState(DEMO_PRICE_EUR)
+  const [price, setPrice] = useState(START_PRICE)
   const [note, setNote] = useState('')
   const demo = useMemo(() => annaProfile(), [])
   const profile = mode === 'demo' ? demo : own
-  const o = useMemo(() => overview(profile, price), [profile, price])
-  const summary = useMemo(() => buildSummary(profile, price), [profile, price])
+  const o = useMemo(() => overview(profile, price, BOOK), [profile, price])
+  const summary = useMemo(() => buildSummary(profile, price, BOOK), [profile, price])
   const hasData = o.assetsEur > 0 || profile.txs.length > 0
 
   return (
@@ -58,13 +63,13 @@ export function App() {
         <h1>{t.title}</h1>
         <p className="lead">{t.lead}</p>
         <div className="seg big" role="tablist">
-          <button role="tab" aria-selected={mode === 'demo'} className={mode === 'demo' ? 'on' : ''} onClick={() => { setMode('demo'); setPrice(DEMO_PRICE_EUR); setNote('') }}>{t.demo}</button>
+          <button role="tab" aria-selected={mode === 'demo'} className={mode === 'demo' ? 'on' : ''} onClick={() => { setMode('demo'); setPrice(START_PRICE); setNote('') }}>{t.demo}</button>
           <button role="tab" aria-selected={mode === 'own'} className={mode === 'own' ? 'on' : ''} onClick={() => { setMode('own'); setNote('') }}>{t.own}</button>
         </div>
         {mode === 'demo' && <p className="banner">{t.demoBanner}</p>}
       </section>
 
-      <PriceBox lang={lang} price={price} setPrice={setPrice} />
+      <PriceBox lang={lang} price={price} setPrice={setPrice} book={BOOK} />
 
       {hasData ? (
         <>
@@ -107,7 +112,7 @@ export function App() {
               </ul>
             </div>
           </section>
-          {profile.brokers.length > 0 && <BrokersCard lang={lang} accounts={profile.brokers} />}
+          {profile.brokers.length > 0 && <BrokersCard lang={lang} accounts={profile.brokers} book={BOOK} />}
         </>
       ) : (
         <p className="card empty">{t.empty}</p>
@@ -158,7 +163,7 @@ function Fact({ k, v }: { k: string; v: string }) {
   )
 }
 
-function PriceBox({ lang, price, setPrice }: { lang: Lang; price: number; setPrice: (n: number) => void }) {
+function PriceBox({ lang, price, setPrice, book }: { lang: Lang; price: number; setPrice: (n: number) => void; book: PriceBook }) {
   const t = strings(lang)
   const [err, setErr] = useState(false)
   async function load() {
@@ -180,6 +185,7 @@ function PriceBox({ lang, price, setPrice }: { lang: Lang; price: number; setPri
       </label>
       <button className="ghost" onClick={load}>{t.loadPrice}</button>
       <span className="muted small">{err ? t.priceFail : t.priceHint}</span>
+      <p className="muted small sources">{t.sources(F.date(book.fx.date, lang), F.date(book.prices.instruments[0]?.date ?? book.fx.date, lang), book.prices.instruments.length)}</p>
     </section>
   )
 }
@@ -243,39 +249,44 @@ function ImportBox({ lang, onTxs, onBroker, onNote }: { lang: Lang; onTxs: (txs:
   )
 }
 
-function BrokersCard({ lang, accounts }: { lang: Lang; accounts: BrokerAccount[] }) {
+function BrokersCard({ lang, accounts, book }: { lang: Lang; accounts: BrokerAccount[]; book: PriceBook }) {
   const t = strings(lang)
   return (
     <section className="card">
       <h2>{t.brokers}</h2>
       <div className="brokers">
-        {accounts.map((a) => (
-          <div key={a.source} className="broker">
-            <h3>{BROKER_NAMES[a.source]}{a.period && <span className="muted small"> · {a.period}</span>}</h3>
-            <dl className="facts">
-              {a.has.positions && <Fact k={a.valuedAt === 'cost' ? t.investedAtCost : t.investedMarket} v={F.eur(a.investedValueEur, lang)} />}
-              {a.has.cash && <Fact k={t.cash} v={F.eur(a.cashEur, lang)} />}
-              {a.has.cash && <Fact k={t.deposited} v={F.eur(a.depositedEur - a.withdrawnEur, lang)} />}
-              {a.has.cash && <Fact k={t.income} v={F.eur(a.dividendsEur, lang, 2)} />}
-              {a.has.cash && a.taxWithheldEur > 0 && <Fact k={t.taxWithheld} v={F.eur(a.taxWithheldEur, lang, 2)} />}
-              {a.has.cash && <Fact k={t.brokerFees} v={F.eur(a.feesEur, lang, 2)} />}
-            </dl>
-            {a.has.positions && a.holdings.length > 0 && (
-              <ul className="items holdings">
-                {a.holdings.map((h) => (
-                  <li key={h.symbol}>
-                    <span>{h.symbol}</span>
-                    <em>{F.qty(h.quantity, lang)} {t.pcs}</em>
-                    <b>{h.value !== undefined ? F.money(h.value, h.currency, lang) : h.costEur !== undefined ? F.eur(h.costEur, lang) : '–'}</b>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {!a.has.positions && <p className="muted small">{t.missingPositions}</p>}
-            {!a.has.cash && <p className="muted small">{t.missingCash}</p>}
-            {a.notes.map((n) => <p key={n} className="muted small">{t.note(n)}</p>)}
-          </div>
-        ))}
+        {accounts.map((raw) => {
+          const { account: a, holdings, unpriced } = revalue(raw, book)
+          const notes = a.notes.filter((n) => !(n === 'valued_at_cost' && unpriced === 0 && holdings.length > 0))
+          return (
+            <div key={a.source} className="broker">
+              <h3>{BROKER_NAMES[a.source]}{a.period && <span className="muted small"> · {a.period}</span>}</h3>
+              <dl className="facts">
+                {a.has.positions && <Fact k={a.valuedAt === 'cost' ? t.investedAtCost : t.investedMarket} v={F.eur(a.investedValueEur, lang)} />}
+                {a.has.cash && <Fact k={t.cash} v={F.eur(a.cashEur, lang)} />}
+                {a.has.cash && <Fact k={t.deposited} v={F.eur(a.depositedEur - a.withdrawnEur, lang)} />}
+                {a.has.cash && <Fact k={t.income} v={F.eur(a.dividendsEur, lang, 2)} />}
+                {a.has.cash && a.taxWithheldEur > 0 && <Fact k={t.taxWithheld} v={F.eur(a.taxWithheldEur, lang, 2)} />}
+                {a.has.cash && <Fact k={t.brokerFees} v={F.eur(a.feesEur, lang, 2)} />}
+              </dl>
+              {holdings.length > 0 && (
+                <ul className="items holdings">
+                  {holdings.map((h) => (
+                    <li key={h.symbol}>
+                      <span>{h.symbol}<small className={`basis b-${h.basis}`}>{t.basis[h.basis]}</small></span>
+                      <em>{F.qty(h.quantity, lang)} {t.pcs}</em>
+                      <b title={h.currency !== 'EUR' && h.value !== undefined ? F.money(h.value, h.currency, lang) : undefined}>{h.basis === 'none' ? '–' : F.eur(h.valueEur, lang)}</b>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {unpriced > 0 && <p className="muted small">{t.unpricedNote(unpriced)}</p>}
+              {!a.has.positions && <p className="muted small">{t.missingPositions}</p>}
+              {!a.has.cash && <p className="muted small">{t.missingCash}</p>}
+              {notes.map((n) => <p key={n} className="muted small">{t.note(n)}</p>)}
+            </div>
+          )
+        })}
       </div>
     </section>
   )

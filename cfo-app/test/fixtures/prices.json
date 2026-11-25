@@ -1,0 +1,10 @@
+{
+ "builtAt": "2026-11-20T18:00Z",
+ "fx": { "source": "ECB", "date": "2026-11-20", "perEur": { "EUR": 1, "USD": 1.1, "GBP": 0.85, "GBX": 85 } },
+ "prices": { "source": "test", "instruments": [
+  { "id": "VWCE", "isin": "IE00BK5BQT80", "name": "Vanguard FTSE All-World", "aliases": ["VWCE", "VWCE.DE"], "price": 150, "currency": "EUR", "date": "2026-11-20" },
+  { "id": "SXR8", "isin": "IE00B5BMR087", "name": "iShares Core S&P 500", "aliases": ["SXR8", "CSPX", "CSPX.UK"], "price": 600, "currency": "EUR", "date": "2026-11-20" },
+  { "id": "AAPL", "isin": "US0378331005", "name": "Apple", "aliases": ["AAPL"], "price": 220, "currency": "USD", "date": "2026-11-20" },
+  { "id": "BTC", "name": "Bitcoin", "aliases": ["BTC"], "price": 80000, "currency": "EUR", "date": "2026-11-20" }
+ ] }
+}
