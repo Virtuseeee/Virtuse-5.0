@@ -3,7 +3,10 @@
 
 import type { Profile } from '../core/model'
 import { importKrakenLedgers } from '../core/importers/kraken'
-import { parseCsv } from '../core/csv'
+import { mergeAccount } from '../core/brokers'
+import { parseCsv, parseRows } from '../core/csv'
+import { importXtb } from '../core/importers/xtb'
+import { SAMPLES } from './samples'
 
 /** Illustrative EUR price used for "today" in demo mode. */
 export const DEMO_PRICE_EUR = 78_000
@@ -54,10 +57,11 @@ export function annaProfile(): Profile {
     extraBtc: 0,
     manualAssets: [
       { id: 'a1', name: 'Sporiaci účet', assetClass: 'cash', valueEur: 18_000 },
-      { id: 'a2', name: 'ETF účet', assetClass: 'stocks', valueEur: 42_000 },
       { id: 'a3', name: 'Byt v Bratislave', assetClass: 'real_estate', valueEur: 210_000 },
       { id: 'a4', name: 'Dôchodkové sporenie (3. pilier)', assetClass: 'pension', valueEur: 14_500 },
     ],
     liabilities: [{ id: 'l1', name: 'Hypotéka', kind: 'mortgage', balanceEur: 96_000 }],
+    // Her ETF account at XTB, from the two synthetic sample exports.
+    brokers: [mergeAccount(importXtb(parseRows(SAMPLES.xtbPositions)), importXtb(parseRows(SAMPLES.xtbCash)))],
   }
 }

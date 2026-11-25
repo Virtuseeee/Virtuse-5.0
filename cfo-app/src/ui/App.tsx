@@ -1,12 +1,14 @@
 import { useMemo, useRef, useState } from 'react'
 import * as F from '../core/format'
 import type { Lang } from '../core/format'
+import { BROKER_NAMES, mergeAccount, type BrokerAccount } from '../core/brokers'
 import { importCsv, UnknownFormatError } from '../core/importers'
 import { emptyProfile, type AssetClass, type Liability, type ManualAsset, type Profile } from '../core/model'
 import { overview } from '../core/portfolio'
 import { buildSummary } from '../core/upload'
 import { forgetSealed, loadSealed, open, saveSealed, seal } from '../core/vault'
 import { annaKrakenCsv, annaProfile, DEMO_PRICE_EUR } from '../data/demo'
+import { SAMPLES } from '../data/samples'
 import { strings } from './strings'
 
 type Mode = 'demo' | 'own'
@@ -105,6 +107,7 @@ export function App() {
               </ul>
             </div>
           </section>
+          {profile.brokers.length > 0 && <BrokersCard lang={lang} accounts={profile.brokers} />}
         </>
       ) : (
         <p className="card empty">{t.empty}</p>
@@ -112,7 +115,12 @@ export function App() {
 
       {mode === 'own' && (
         <>
-          <ImportBox lang={lang} onImport={(txs, msg) => { setOwn((p) => ({ ...p, txs })); setNote(msg) }} onError={setNote} />
+          <ImportBox
+            lang={lang}
+            onTxs={(txs) => setOwn((p) => ({ ...p, txs }))}
+            onBroker={(a) => setOwn((p) => ({ ...p, brokers: [...p.brokers.filter((b) => b.source !== a.source), mergeAccount(p.brokers.find((b) => b.source === a.source), a)] }))}
+            onNote={setNote}
+          />
           {note && <p className="note" role="status">{note}</p>}
           <ManualBox lang={lang} profile={own} setProfile={setOwn} />
           <VaultBox lang={lang} profile={own} onOpen={(p) => setOwn(p)} />
@@ -176,35 +184,98 @@ function PriceBox({ lang, price, setPrice }: { lang: Lang; price: number; setPri
   )
 }
 
-function ImportBox({ lang, onImport, onError }: { lang: Lang; onImport: (txs: Profile['txs'], msg: string) => void; onError: (m: string) => void }) {
+function ImportBox({ lang, onTxs, onBroker, onNote }: { lang: Lang; onTxs: (txs: Profile['txs']) => void; onBroker: (a: BrokerAccount) => void; onNote: (m: string) => void }) {
   const t = strings(lang)
   const input = useRef<HTMLInputElement>(null)
-  function handle(text: string) {
-    try {
-      const r = importCsv(text)
-      onImport(r.txs, t.imported(r.txs.length, r.skipped))
-    } catch (e) {
-      onError(e instanceof UnknownFormatError ? t.unknownFormat : t.readError)
+  function handle(texts: string[]) {
+    const msgs: string[] = []
+    for (const text of texts) {
+      try {
+        const r = importCsv(text)
+        if (r.kind === 'btc') {
+          onTxs(r.txs)
+          msgs.push(t.imported(r.txs.length, r.skipped))
+        } else {
+          onBroker(r.account)
+          msgs.push(t.importedBroker(BROKER_NAMES[r.account.source], r.account.has.positions ? r.account.holdings.length : -1))
+        }
+      } catch (e) {
+        msgs.push(e instanceof UnknownFormatError ? t.unknownFormat : t.readError)
+      }
     }
+    onNote(msgs.join(' '))
   }
+  const samples: [string, string[]][] = [
+    ['Kraken', [annaKrakenCsv()]],
+    ['XTB', [SAMPLES.xtbPositions, SAMPLES.xtbCash]],
+    ['IBKR', [SAMPLES.ibkr]],
+    ['Trading 212', [SAMPLES.t212]],
+  ]
   return (
     <section className="card">
       <h2>{t.import}</h2>
       <p className="muted">{t.importLead}</p>
+      <ul className="howto">
+        {t.howto.map(([who, how]) => <li key={who}><b>{who}</b> {how}</li>)}
+      </ul>
       <div className="row">
         <button onClick={() => input.current?.click()}>{t.chooseFile}</button>
-        <button className="ghost" onClick={() => handle(annaKrakenCsv())}>{t.sampleFile}</button>
         <input
           ref={input}
           type="file"
           accept=".csv,text/csv"
+          multiple
           hidden
           onChange={async (e) => {
-            const f = e.target.files?.[0]
-            if (f) handle(await f.text())
+            const files = [...(e.target.files ?? [])]
+            if (files.length) handle(await Promise.all(files.map((f) => f.text())))
             e.target.value = ''
           }}
         />
+      </div>
+      <div className="row">
+        <span className="muted small">{t.sampleFile}:</span>
+        {samples.map(([name, texts]) => (
+          <button key={name} className="ghost" onClick={() => handle(texts)}>{name}</button>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function BrokersCard({ lang, accounts }: { lang: Lang; accounts: BrokerAccount[] }) {
+  const t = strings(lang)
+  return (
+    <section className="card">
+      <h2>{t.brokers}</h2>
+      <div className="brokers">
+        {accounts.map((a) => (
+          <div key={a.source} className="broker">
+            <h3>{BROKER_NAMES[a.source]}{a.period && <span className="muted small"> · {a.period}</span>}</h3>
+            <dl className="facts">
+              {a.has.positions && <Fact k={a.valuedAt === 'cost' ? t.investedAtCost : t.investedMarket} v={F.eur(a.investedValueEur, lang)} />}
+              {a.has.cash && <Fact k={t.cash} v={F.eur(a.cashEur, lang)} />}
+              {a.has.cash && <Fact k={t.deposited} v={F.eur(a.depositedEur - a.withdrawnEur, lang)} />}
+              {a.has.cash && <Fact k={t.income} v={F.eur(a.dividendsEur, lang, 2)} />}
+              {a.has.cash && a.taxWithheldEur > 0 && <Fact k={t.taxWithheld} v={F.eur(a.taxWithheldEur, lang, 2)} />}
+              {a.has.cash && <Fact k={t.brokerFees} v={F.eur(a.feesEur, lang, 2)} />}
+            </dl>
+            {a.has.positions && a.holdings.length > 0 && (
+              <ul className="items holdings">
+                {a.holdings.map((h) => (
+                  <li key={h.symbol}>
+                    <span>{h.symbol}</span>
+                    <em>{F.qty(h.quantity, lang)} {t.pcs}</em>
+                    <b>{h.value !== undefined ? F.money(h.value, h.currency, lang) : h.costEur !== undefined ? F.eur(h.costEur, lang) : '–'}</b>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {!a.has.positions && <p className="muted small">{t.missingPositions}</p>}
+            {!a.has.cash && <p className="muted small">{t.missingCash}</p>}
+            {a.notes.map((n) => <p key={n} className="muted small">{t.note(n)}</p>)}
+          </div>
+        ))}
       </div>
     </section>
   )

@@ -4,6 +4,8 @@
 // talks to the network. It is the "trust layer" meant to be published as
 // open source later: raw rows, addresses and transaction ids stay here.
 
+import type { BrokerAccount } from './brokers'
+
 export type AssetClass =
   | 'bitcoin'
   | 'cash'
@@ -66,6 +68,8 @@ export interface Profile {
   extraBtc: number
   manualAssets: ManualAsset[]
   liabilities: Liability[]
+  /** Broker accounts from XTB, IBKR, Trading 212 exports. One per broker. */
+  brokers: BrokerAccount[]
 }
 
 export function emptyProfile(label = ''): Profile {
@@ -77,5 +81,6 @@ export function emptyProfile(label = ''): Profile {
     extraBtc: 0,
     manualAssets: [],
     liabilities: [],
+    brokers: [],
   }
 }

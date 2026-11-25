@@ -8,7 +8,8 @@ import { annaProfile, DEMO_PRICE_EUR } from '../src/data/demo'
 const csv = readFileSync(new URL('./fixtures/kraken-ledgers.csv', import.meta.url), 'utf8')
 
 describe('bitcoinFacts', () => {
-  const p = { ...emptyProfile('t'), txs: importCsv(csv).txs }
+  const res = importCsv(csv)
+  const p = { ...emptyProfile('t'), txs: res.kind === 'btc' ? res.txs : [] }
   const f = bitcoinFacts(p, 100_000)
 
   it('counts BTC after buys, sells and fees; a withdrawal to own wallet stays owned', () => {
@@ -38,6 +39,8 @@ describe('overview', () => {
     expect(o.allocation.reduce((s, c) => s + c.pct, 0)).toBeCloseTo(100, 6)
     expect(o.btcSharePct).toBeGreaterThan(0)
     expect(o.btcSharePct).toBeLessThan(15)
+    expect(o.brokers.investedValueEur).toBe(10294.2)
+    expect(o.allocation.find((s) => s.assetClass === 'stocks')?.valueEur).toBe(10294.2)
   })
 
   it('is all zeros for an empty profile', () => {

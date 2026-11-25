@@ -67,7 +67,7 @@ export async function open(sealed: Sealed, passphrase: string): Promise<Profile>
   }
   const profile = JSON.parse(dec.decode(plain)) as Profile
   if (profile.version !== 1) throw new Error('unknown_version')
-  return profile
+  return { ...profile, brokers: profile.brokers ?? [] }
 }
 
 const STORE_KEY = 'vcfo-vault-v1'

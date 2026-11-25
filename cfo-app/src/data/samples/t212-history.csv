@@ -1,0 +1,8 @@
+Action,Time,ISIN,Ticker,Name,No. of shares,Price / share,Currency (Price / share),Exchange rate,Result,Currency (Result),Total,Currency (Total),Withholding tax,Currency (Withholding tax),Notes,ID,Currency conversion fee,Currency (Currency conversion fee)
+Deposit,2026-01-02 08:00:00,,,,,,,,,,2000.00,EUR,,,,D1,,
+Market buy,2026-01-05 09:30:00,IE00BK5BQT80,VWCE,Vanguard FTSE All-World (Acc),10,120.00,EUR,1.00,,EUR,1200.00,EUR,,,,B1,,
+Market buy,2026-01-06 15:40:00,US0378331005,AAPL,Apple,2,200.00,USD,1.10,,EUR,365.00,EUR,,,,B2,1.36,EUR
+Market sell,2026-02-10 10:00:00,IE00BK5BQT80,VWCE,Vanguard FTSE All-World (Acc),4,125.00,EUR,1.00,20.00,EUR,500.00,EUR,,,,S1,,
+Dividend (Dividend),2026-02-15 12:00:00,US0378331005,AAPL,Apple,2,0.25,USD,,,,0.39,EUR,0.07,USD,,V1,,
+Interest on cash,2026-02-28 23:00:00,,,,,,,,,,1.20,EUR,,,,I1,,
+Withdrawal,2026-03-01 08:00:00,,,,,,,,,,100.00,EUR,,,,W1,,

@@ -1,12 +1,35 @@
-// Minimal RFC 4180 CSV reader: quoted fields, doubled quotes, CRLF or LF.
-// Returns rows as objects keyed by the header line.
+// Minimal RFC 4180 CSV reader: quoted fields, doubled quotes, CRLF or LF,
+// comma or semicolon (detected from the first line).
+
+export type Delimiter = ',' | ';' | '\t'
+
+export function detectDelimiter(text: string): Delimiter {
+  const first = text.replace(/^﻿/, '').split(/\r?\n/, 1)[0] ?? ''
+  const count = (d: string) => {
+    let n = 0
+    let q = false
+    for (const ch of first) {
+      if (ch === '"') q = !q
+      else if (!q && ch === d) n++
+    }
+    return n
+  }
+  const c = count(','), s = count(';'), t = count('\t')
+  if (t > c && t > s) return '\t'
+  return s > c ? ';' : ','
+}
 
 export function parseCsv(text: string): Record<string, string>[] {
-  const rows = parseRows(text.replace(/^﻿/, ''))
+  const rows = parseRows(text)
   if (rows.length === 0) return []
-  const header = rows[0].map((h) => h.trim())
+  return recordsFrom(rows, 0)
+}
+
+/** Rows below `headerIndex`, keyed by that row. Blank rows are dropped. */
+export function recordsFrom(rows: string[][], headerIndex: number): Record<string, string>[] {
+  const header = rows[headerIndex].map((h) => h.trim())
   return rows
-    .slice(1)
+    .slice(headerIndex + 1)
     .filter((r) => r.some((cell) => cell.trim() !== ''))
     .map((r) => {
       const obj: Record<string, string> = {}
@@ -17,7 +40,9 @@ export function parseCsv(text: string): Record<string, string>[] {
     })
 }
 
-function parseRows(text: string): string[][] {
+export function parseRows(text: string, delimiter?: Delimiter): string[][] {
+  text = text.replace(/^﻿/, '')
+  const d = delimiter ?? detectDelimiter(text)
   const rows: string[][] = []
   let row: string[] = []
   let field = ''
@@ -40,7 +65,7 @@ function parseRows(text: string): string[][] {
     }
     if (ch === '"') {
       inQuotes = true
-    } else if (ch === ',') {
+    } else if (ch === d) {
       row.push(field)
       field = ''
     } else if (ch === '\n' || ch === '\r') {
@@ -58,4 +83,27 @@ function parseRows(text: string): string[][] {
     rows.push(row)
   }
   return rows
+}
+
+/** "1 234,56", "1,234.56", "-12.5", "" → number. Throws on garbage. */
+export function toNumber(v: string, where = ''): number {
+  let s = (v ?? '').replace(/[\s ']/g, '')
+  if (s === '' || s === '-' || s === '--') return 0
+  if (s.includes(',') && s.includes('.')) {
+    s = s.lastIndexOf(',') > s.lastIndexOf('.') ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, '')
+  } else if (s.includes(',')) {
+    s = s.replace(',', '.')
+  }
+  const n = Number(s)
+  if (!Number.isFinite(n)) throw new Error(`not_a_number ${where} "${v}"`)
+  return n
+}
+
+/** Finds the first row (within `limit`) that contains every given cell. */
+export function findHeader(rows: string[][], cells: string[], limit = 20): number {
+  for (let i = 0; i < Math.min(rows.length, limit); i++) {
+    const r = rows[i].map((c) => c.trim())
+    if (cells.every((c) => r.includes(c))) return i
+  }
+  return -1
 }

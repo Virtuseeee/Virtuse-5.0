@@ -1,0 +1,9 @@
+Account number;12345678;;;;;;;;;;;;;;
+Currency;EUR;;;;;;;;;;;;;;
+Balance;1250.40;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+Position;Symbol;Type;Volume;Open time;Open price;Market price;Purchase value;SL;TP;Margin;Commission;Swap;Rollover;Gross P/L;Comment
+900111;VWCE.DE;BUY;40;05.02.2025 10:01:12;118.20;128.40;4728.00;0;0;0;0;0;0;408.00;
+900222;VWCE.DE;BUY;20;05.06.2025 10:03:40;121.00;128.40;2420.00;0;0;0;0;0;0;148.00;
+900333;CSPX.UK;BUY;5;12.03.2025 15:22:05;520.00;560.00;2405.20;0;0;0;0;0;0;185.00;
+;;;Total;;;;9553.20;;;;;;;741.00;

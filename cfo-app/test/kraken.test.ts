@@ -5,7 +5,9 @@ import { importCsv, UnknownFormatError } from '../src/core/importers'
 const csv = readFileSync(new URL('./fixtures/kraken-ledgers.csv', import.meta.url), 'utf8')
 
 describe('Kraken ledgers import', () => {
-  const r = importCsv(csv)
+  const res = importCsv(csv)
+  if (res.kind !== 'btc') throw new Error('expected btc')
+  const r = res
 
   it('pairs trade rows by refid and skips rows without BTC', () => {
     expect(r.source).toBe('kraken')

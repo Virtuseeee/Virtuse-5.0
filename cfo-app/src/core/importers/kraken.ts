@@ -3,7 +3,7 @@
 // A trade is two rows that share a refid: one in BTC, one in EUR.
 
 import type { Tx } from '../model'
-import type { ImportResult } from './types'
+import type { BtcImport } from './types'
 
 const REQUIRED = ['txid', 'refid', 'time', 'type', 'asset', 'amount', 'fee']
 
@@ -40,7 +40,7 @@ interface Row {
   fee: number
 }
 
-export function importKrakenLedgers(records: Record<string, string>[]): ImportResult {
+export function importKrakenLedgers(records: Record<string, string>[]): BtcImport {
   const rows: Row[] = records.map((r, i) => ({
     line: i + 2,
     refid: r.refid,

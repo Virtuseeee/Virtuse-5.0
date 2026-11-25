@@ -30,12 +30,39 @@ const S = {
     since: 'od',
     allocation: 'Rozdelenie majetku',
     import: 'Import z búrzy',
-    importLead: 'Kraken: History → Export → Ledgers (CSV). Súbor sa prečíta v tomto prehliadači.',
-    chooseFile: 'Vybrať CSV súbor',
-    sampleFile: 'Použiť ukážkový súbor',
-    imported: (n: number, s: number) => `Načítané: ${n} pohybov Bitcoinu, ${s} riadkov bez BTC preskočených.`,
-    unknownFormat: 'Tento formát zatiaľ nepoznáme. Podporovaný je Kraken Ledgers CSV.',
+    importLead: 'Súbory sa prečítajú v tomto prehliadači. Môžete vybrať viac súborov naraz.',
+    howto: [
+      ['Kraken:', 'History → Export → Ledgers (CSV).'],
+      ['XTB:', 'xStation → História účtu → export do Excelu; hárky „Otvorené pozície“ a „Peňažné operácie“ uložte ako CSV.'],
+      ['IBKR:', 'Reports → Statements → Activity, formát CSV, mena účtu EUR.'],
+      ['Trading 212:', 'História → Exportovať históriu (CSV).'],
+    ] as [string, string][],
+    chooseFile: 'Vybrať CSV súbory',
+    sampleFile: 'Ukážkové súbory',
+    imported: (n: number, s: number) => `Kraken: ${n} pohybov Bitcoinu, ${s} riadkov bez BTC preskočených.`,
+    importedBroker: (b: string, n: number) => n < 0 ? `${b}: načítané peňažné operácie.` : `${b}: načítané, ${n} ${n === 1 ? 'pozícia' : n >= 2 && n <= 4 ? 'pozície' : 'pozícií'}.`,
+    unknownFormat: 'Tento formát zatiaľ nepoznáme. Podporujeme Kraken, XTB, IBKR a Trading 212.',
     readError: 'Súbor sa nepodarilo prečítať.',
+    brokers: 'Brokerské účty',
+    pcs: 'ks',
+    investedMarket: 'Investície (trhová hodnota u brokera)',
+    investedAtCost: 'Investície (v nákupnej cene, bez aktuálnych cien)',
+    cash: 'Voľná hotovosť',
+    deposited: 'Vložené (vklady − výbery)',
+    income: 'Dividendy a úroky',
+    taxWithheld: 'Zrazená daň',
+    brokerFees: 'Poplatky',
+    missingPositions: 'Chýba súbor s otvorenými pozíciami.',
+    missingCash: 'Chýba súbor s peňažnými operáciami.',
+    note: (n: string) => {
+      if (n === 'valued_at_cost') return 'Export neobsahuje aktuálne ceny, pozície sú v nákupnej cene. Ceny ETF doplníme vo fáze 2.'
+      if (n === 'period_totals') return 'Vklady, dividendy a poplatky sú za obdobie výpisu.'
+      if (n === 'xtb_fx_in_price') return 'Poplatok za zmenu meny XTB započítava do ceny, samostatne ho v exporte nevidno.'
+      if (n === 'tax_other_currency') return 'Daň zrazená v inej mene ako EUR nie je v súčte.'
+      if (n.startsWith('skipped_currency:')) return `Riadky v mene ${n.split(':')[1]} sme preskočili (zatiaľ len EUR účty).`
+      if (n.startsWith('base_currency:')) return `Mena účtu je ${n.split(':')[1]}, zatiaľ podporujeme len EUR.`
+      return n
+    },
     manual: 'Ďalší majetok a záväzky',
     manualLead: 'Úspory, byt, ETF, dôchodok, hypotéka. Stačí odhad.',
     name: 'Názov',
@@ -100,12 +127,39 @@ const S = {
     since: 'since',
     allocation: 'How your assets split',
     import: 'Import from an exchange',
-    importLead: 'Kraken: History → Export → Ledgers (CSV). The file is read in this browser.',
-    chooseFile: 'Choose CSV file',
-    sampleFile: 'Use the sample file',
-    imported: (n: number, s: number) => `Loaded ${n} Bitcoin movements, skipped ${s} rows without BTC.`,
-    unknownFormat: 'We do not know this format yet. Kraken Ledgers CSV is supported.',
+    importLead: 'Files are read in this browser. You can pick several at once.',
+    howto: [
+      ['Kraken:', 'History → Export → Ledgers (CSV).'],
+      ['XTB:', 'xStation → Account history → export to Excel; save the "Open positions" and "Cash operations" sheets as CSV.'],
+      ['IBKR:', 'Reports → Statements → Activity, CSV format, base currency EUR.'],
+      ['Trading 212:', 'History → Export history (CSV).'],
+    ] as [string, string][],
+    chooseFile: 'Choose CSV files',
+    sampleFile: 'Sample files',
+    imported: (n: number, s: number) => `Kraken: ${n} Bitcoin movements, ${s} rows without BTC skipped.`,
+    importedBroker: (b: string, n: number) => n < 0 ? `${b}: cash operations loaded.` : `${b}: loaded, ${n} ${n === 1 ? 'position' : 'positions'}.`,
+    unknownFormat: 'We do not know this format yet. Kraken, XTB, IBKR and Trading 212 are supported.',
     readError: 'Could not read the file.',
+    brokers: 'Broker accounts',
+    pcs: 'units',
+    investedMarket: 'Investments (market value at the broker)',
+    investedAtCost: 'Investments (at purchase price, no current prices)',
+    cash: 'Free cash',
+    deposited: 'Put in (deposits − withdrawals)',
+    income: 'Dividends and interest',
+    taxWithheld: 'Tax withheld',
+    brokerFees: 'Fees',
+    missingPositions: 'The open positions file is missing.',
+    missingCash: 'The cash operations file is missing.',
+    note: (n: string) => {
+      if (n === 'valued_at_cost') return 'The export has no current prices, so positions are at purchase price. ETF prices come in phase 2.'
+      if (n === 'period_totals') return 'Deposits, dividends and fees cover the statement period.'
+      if (n === 'xtb_fx_in_price') return 'XTB includes its currency conversion fee in the price; the export does not show it separately.'
+      if (n === 'tax_other_currency') return 'Tax withheld in a currency other than EUR is not in the total.'
+      if (n.startsWith('skipped_currency:')) return `Rows in ${n.split(':')[1]} were skipped (EUR accounts only for now).`
+      if (n.startsWith('base_currency:')) return `The account currency is ${n.split(':')[1]}; only EUR is supported for now.`
+      return n
+    },
     manual: 'Other assets and debts',
     manualLead: 'Savings, flat, ETFs, pension, mortgage. An estimate is enough.',
     name: 'Name',

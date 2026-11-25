@@ -1,0 +1,29 @@
+Statement,Header,Field Name,Field Value
+Statement,Data,BrokerName,Interactive Brokers Ireland Limited
+Statement,Data,Title,Activity Statement
+Statement,Data,Period,"January 1, 2026 - November 20, 2026"
+Account Information,Header,Field Name,Field Value
+Account Information,Data,Name,Demo Investor
+Account Information,Data,Account,U0000000
+Account Information,Data,Base Currency,EUR
+Net Asset Value,Header,Asset Class,Prior Total,Current Long,Current Short,Current Total,Change
+Net Asset Value,Data,Cash,1200.00,840.55,0,840.55,-359.45
+Net Asset Value,Data,Stock,30100.00,36420.30,0,36420.30,6320.30
+Net Asset Value,Data,Dividend Accruals,0,12.10,0,12.10,12.10
+Net Asset Value,Data,Total,31300.00,37272.95,0,37272.95,5972.95
+Change in NAV,Header,Field Name,Field Value
+Change in NAV,Data,Starting Value,31300.00
+Change in NAV,Data,Mark-to-Market,1800.40
+Change in NAV,Data,Deposits & Withdrawals,4000.00
+Change in NAV,Data,Dividends,210.35
+Change in NAV,Data,Withholding Tax,-31.55
+Change in NAV,Data,Commissions,-14.25
+Change in NAV,Data,Other Fees,-6.00
+Change in NAV,Data,Ending Value,37272.95
+Open Positions,Header,DataDiscriminator,Asset Category,Currency,Symbol,Quantity,Mult,Cost Price,Cost Basis,Close Price,Value,Unrealized P/L,Code
+Open Positions,Data,Summary,Stocks,EUR,VWCE,180,1,112.40,20232.00,128.40,23112.00,2880.00,
+Open Positions,Data,Summary,Stocks,USD,AAPL,30,1,190.00,5700.00,230.10,6903.00,1203.00,
+Open Positions,Data,Summary,Stocks,EUR,ASML,9,1,640.00,5760.00,700.00,6300.00,540.00,
+Open Positions,Total,,Stocks,EUR,,,,,,,36420.30,,
+Trades,Header,DataDiscriminator,Asset Category,Currency,Symbol,Date/Time,Quantity,T. Price,C. Price,Proceeds,Comm/Fee,Basis,Realized P/L,MTM P/L,Code
+Trades,Data,Order,Stocks,EUR,VWCE,"2026-03-04, 10:12:01",20,118.00,118.10,-2360.00,-3.00,2363.00,0,2.00,O

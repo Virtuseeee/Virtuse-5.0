@@ -37,3 +37,15 @@ export function date(iso: string, lang: Lang): string {
     timeZone: 'UTC',
   }).format(new Date(iso))
 }
+
+export function money(n: number, currency: string, lang: Lang): string {
+  try {
+    return new Intl.NumberFormat(LOCALE[lang], { style: 'currency', currency, currencyDisplay: 'narrowSymbol', maximumFractionDigits: 0 }).format(n)
+  } catch {
+    return `${Math.round(n)} ${currency}`
+  }
+}
+
+export function qty(n: number, lang: Lang): string {
+  return new Intl.NumberFormat(LOCALE[lang], { maximumFractionDigits: 6 }).format(n)
+}

@@ -19,6 +19,8 @@ describe('buildSummary (what may leave the device)', () => {
     for (const a of profile.manualAssets) expect(json).not.toContain(a.name)
     for (const l of profile.liabilities) expect(json).not.toContain(l.name)
     expect(json).not.toContain(String(profile.liabilities[0].balanceEur))
+    for (const b of profile.brokers) for (const h of b.holdings) expect(json).not.toContain(h.symbol)
+    expect(json).not.toContain('12345678')
   })
 
   it('rounds the money totals', () => {
@@ -26,5 +28,7 @@ describe('buildSummary (what may leave the device)', () => {
     expect(s.invested_eur % 100).toBe(0)
     expect(Number.isInteger(s.btc_share_pct)).toBe(true)
     expect(s.has_debt).toBe(true)
+    expect(s.brokers).toEqual(['xtb'])
+    expect(s.broker_fees_eur % 10).toBe(0)
   })
 })

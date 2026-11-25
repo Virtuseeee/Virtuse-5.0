@@ -29,8 +29,18 @@ export interface ClassSlice {
   pct: number
 }
 
+export interface BrokerTotals {
+  investedValueEur: number
+  cashEur: number
+  feesEur: number
+  dividendsEur: number
+  /** True when some positions are shown at purchase price, not market. */
+  anyAtCost: boolean
+}
+
 export interface Overview {
   bitcoin: BitcoinFacts
+  brokers: BrokerTotals
   assetsEur: number
   liabilitiesEur: number
   netWorthEur: number
@@ -94,6 +104,16 @@ export function overview(profile: Profile, priceEur: number): Overview {
   for (const a of profile.manualAssets) {
     byClass.set(a.assetClass, (byClass.get(a.assetClass) ?? 0) + Math.max(0, a.valueEur))
   }
+  const brokers: BrokerTotals = { investedValueEur: 0, cashEur: 0, feesEur: 0, dividendsEur: 0, anyAtCost: false }
+  for (const b of profile.brokers ?? []) {
+    brokers.investedValueEur += b.investedValueEur
+    brokers.cashEur += b.cashEur
+    brokers.feesEur += b.feesEur
+    brokers.dividendsEur += b.dividendsEur
+    if (b.has.positions && b.valuedAt === 'cost' && b.investedValueEur > 0) brokers.anyAtCost = true
+  }
+  byClass.set('stocks', (byClass.get('stocks') ?? 0) + brokers.investedValueEur)
+  byClass.set('cash', (byClass.get('cash') ?? 0) + brokers.cashEur)
   const assetsEur = [...byClass.values()].reduce((s, v) => s + v, 0)
   const liabilitiesEur = profile.liabilities.reduce((s, l) => s + Math.max(0, l.balanceEur), 0)
   const allocation = ASSET_CLASSES.map((c) => {
@@ -103,6 +123,7 @@ export function overview(profile: Profile, priceEur: number): Overview {
 
   return {
     bitcoin,
+    brokers,
     assetsEur,
     liabilitiesEur,
     netWorthEur: assetsEur - liabilitiesEur,

@@ -16,6 +16,10 @@ export interface UploadSummary {
   /** Whole percent per asset class. */
   class_pct: Partial<Record<AssetClass, number>>
   has_debt: boolean
+  /** Broker fees, rounded to the nearest 10 EUR. */
+  broker_fees_eur: number
+  /** Which brokers are connected (names only, no account numbers). */
+  brokers: string[]
 }
 
 export const UPLOAD_KEYS: (keyof UploadSummary)[] = [
@@ -25,6 +29,8 @@ export const UPLOAD_KEYS: (keyof UploadSummary)[] = [
   'btc_share_pct',
   'class_pct',
   'has_debt',
+  'broker_fees_eur',
+  'brokers',
 ]
 
 export function buildSummary(profile: Profile, priceEur: number): UploadSummary {
@@ -38,5 +44,7 @@ export function buildSummary(profile: Profile, priceEur: number): UploadSummary 
     btc_share_pct: Math.round(o.btcSharePct),
     class_pct,
     has_debt: o.liabilitiesEur > 0,
+    broker_fees_eur: Math.round(o.brokers.feesEur / 10) * 10,
+    brokers: (profile.brokers ?? []).map((b) => b.source).sort(),
   }
 }
