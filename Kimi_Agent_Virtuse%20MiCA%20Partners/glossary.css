@@ -3,7 +3,9 @@
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .page-gl .gl-hero { padding-bottom: 8px; }
 .page-gl .gl-position { font-size: 15px; color: var(--dim); }
-.gl-wrap { max-width: 860px; margin: 0 auto; padding-top: 24px; }
+.gl-wrap { max-width: 860px; margin: 0 auto; }
+.page-gl main > section.gl-wrap { padding-top: 8px; padding-bottom: 24px; }
+.page-gl .gl-group:first-of-type .gl-letter { margin-top: 12px; }
 
 .gl-tools { padding: 12px 0 10px; margin-bottom: 8px; border-bottom: 1px solid var(--line); }
 .gl-search input { width: 100%; min-height: 48px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line-strong); background: var(--card); color: var(--text); font: inherit; font-size: 16px; }
@@ -21,7 +23,7 @@
 .gl-count { margin: 10px 0 0; font-size: 13px; color: var(--dim); }
 .gl-empty { margin: 24px 0; padding: 20px; border-radius: 12px; background: var(--card); color: var(--muted); }
 
-.gl-group { padding: 0; }
+.page-gl section.gl-group { padding: 0; min-height: 0; }
 .gl-letter { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--blue); letter-spacing: .08em; margin: 28px 0 4px; padding-bottom: 8px; border-bottom: 1px solid var(--line); scroll-margin-top: 96px; }
 .gl-list { margin: 0; }
 .gl-term { padding: 18px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 96px; border-radius: 4px; transition: background .4s; }
@@ -40,6 +42,10 @@
 .gl-term[hidden], .gl-group[hidden] { display: none; }
 .gl-reviewed { margin: 28px 0 0; font-size: 13px; color: var(--dim); }
 .gl-toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); padding: 10px 16px; border-radius: 10px; background: var(--text); color: var(--dark, #08090a); font-size: 14px; z-index: 50; }
+@media (min-width: 641px) {
+  .gl-az { flex-wrap: wrap; overflow: visible; }
+  .gl-az a, .gl-az span { min-width: 28px; }
+}
 @media (max-width: 640px) {
   .gl-term dfn { font-size: 18px; }
   .gl-cat { margin-left: 0; width: 100%; }
