@@ -10,16 +10,20 @@ import { dayMoveEur, portfolioRows } from './holdings'
 import type { Profile } from './model'
 import { overview } from './portfolio'
 import type { PriceBook } from './prices'
+import { skTaxYears } from './tax-sk'
+import { cashFlow, type Category } from './bank'
 
 export interface Answer {
   kind: 'answer' | 'advice' | 'unknown'
+  /** Written by the AI model from rounded totals (AI Act art. 50 label). */
+  ai?: boolean
   lines: string[]
   sources: string[]
 }
 
 const fold = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
 
-const ADVICE = /\b(kupit|kup|predat|predaj|mal by som|mala by som|oplati|investovat do|odporuc|poradi|kedy kupit|kam pojde|predpoved|bude rast|bude klesat|should i|buy|sell|worth it|recommend|forecast|will .* (go|rise|fall)|good time|hold or)\b/
+const ADVICE = /\b(kupit|kup|predat|predaj|mal by som|mala by som|oplati|investovat do|odporuc|poradi|kedy kupit|kam pojde|predpoved|bude rast|bude klesat|should i|(i|to|we) (buy|sell)|buy (more|now|some)|sell (my|now|some|all)|worth it|recommend|forecast|will .* (go|rise|fall)|good time|hold or|najlepsi|(je|bolo by) (teraz |to )?(dobry cas|rozumne)|odporucis|nemal(a)? by som|rebalanc|stoji za to|klesne|stupne|pravdepodobnost|which (broker|etf|stock|holding|exchange)|would it be (sensible|wise)|shouldn.?t i|better to (hold|buy|sell)|would you (buy|sell)|odds|in \d+ years|will the market|where will)\b/
 
 const has = (q: string, re: RegExp) => re.test(q)
 
@@ -65,6 +69,35 @@ export function ask(question: string, profile: Profile, priceEur: number, book: 
         [brokerSrc(b.source), src.prices],
       )
     }
+  }
+
+  if (has(q, /\bdan|\btax|priznan|odvod/)) {
+    const y = skTaxYears(profile.txs)[0]
+    if (!y) return out([sk ? 'V načítaných údajoch nie je žiadny predaj Bitcoinu, takže z nich nevzniká daň. Presun do vlastnej peňaženky nie je predaj.' : 'The loaded data has no Bitcoin sale, so there is nothing to tax from it. Moving coins to your own wallet is not a sale.'], [src.kraken])
+    const lines = [
+      sk ? `Rok ${y.year}: predaje ${eur(y.proceedsEur)}, náklady podľa FIFO ${eur(y.costEur)}, zisk ${eur(y.netEur)}.` : `${y.year}: sales ${eur(y.proceedsEur)}, FIFO cost ${eur(y.costEur)}, gain ${eur(y.netEur)}.`,
+    ]
+    if (y.incomeTaxEur !== null) lines.push(sk ? `Odhad dane z príjmov ${eur(y.incomeTaxEur, 2)} a zdravotných odvodov ${eur(y.healthEur ?? 0, 2)}, ak nemáte iné ostatné príjmy podľa § 8.` : `Estimated income tax ${eur(y.incomeTaxEur, 2)} and health contributions ${eur(y.healthEur ?? 0, 2)}, if you have no other § 8 income.`)
+    lines.push(sk ? `Daňové priznanie typu B do ${F.date(y.dueDate, lang)}. Je to odhad, nie daňové poradenstvo; podrobnosti na obrazovke Dane.` : `Type B return due ${F.date(y.dueDate, lang)}. An estimate, not tax advice; details on the Tax screen.`)
+    return out(lines, [src.kraken, sk ? 'Finančná správa: pravidlá pre kryptoaktíva a sadzby 2026' : 'Slovak tax office: crypto-asset rules and 2026 rates'])
+  }
+
+  if (has(q, /minul|minula|vydav|vydaj|prijm|cash flow|spend|spent|income|predplat|subscription/)) {
+    const flows = cashFlow(profile.banks ?? [])
+    if (!flows.length) return out([sk ? 'Nemám načítaný bankový výpis. Pridajte ho v sekcii Údaje a súkromie.' : 'No bank statement loaded. Add one under Data and privacy.'], [])
+    const thisMonth = new Date().toISOString().slice(0, 7)
+    const wantsLast = /minul\w* mesiac|predchadzajuc|last month|previous month/.test(q)
+    const f = (wantsLast ? flows.filter((x) => x.month < thisMonth).pop() : undefined) ?? flows[flows.length - 1]
+    const names: Record<Category, [string, string]> = { income: ['Príjem', 'Income'], groceries: ['Potraviny', 'Groceries'], housing: ['Bývanie a energie', 'Housing and utilities'], transport: ['Doprava', 'Transport'], eating_out: ['Jedlo vonku', 'Eating out'], subscriptions: ['Predplatné', 'Subscriptions'], shopping: ['Nákupy', 'Shopping'], health: ['Zdravie', 'Health'], investing: ['Investovanie', 'Investing'], transfers: ['Prevody', 'Transfers'], cash: ['Hotovosť', 'Cash'], other: ['Ostatné', 'Other'] }
+    const top = Object.entries(f.byCategory).filter(([c]) => c !== 'investing' && c !== 'transfers').sort((x, y) => (y[1] ?? 0) - (x[1] ?? 0)).slice(0, 4)
+    return out(
+      [
+        sk ? `${f.month}: príjmy ${eur(f.incomeEur)}, výdavky ${eur(f.spendingEur)}, rozdiel ${eur(f.netEur)}.` : `${f.month}: income ${eur(f.incomeEur)}, spending ${eur(f.spendingEur)}, difference ${eur(f.netEur)}.`,
+        ...top.map(([c, v]) => `${names[c as Category][sk ? 0 : 1]}: ${eur(v ?? 0, 2)}`),
+        f.byCategory.investing ? (sk ? `Investovanie (mimo výdavkov): ${eur(f.byCategory.investing)}.` : `Investing (not counted as spending): ${eur(f.byCategory.investing)}.`) : '',
+      ].filter(Boolean),
+      [sk ? 'Bankový výpis (vo vašom zariadení)' : 'Bank statement (on your device)'],
+    )
   }
 
   if (has(q, /poplat|fee|naklad|cost/)) {
@@ -160,6 +193,6 @@ export function ask(question: string, profile: Profile, priceEur: number, book: 
 }
 
 export const SUGGESTED: Record<Lang, string[]> = {
-  sk: ['Aký je môj čistý majetok?', 'Ako mám rozdelený majetok?', 'Koľko som zaplatil na poplatkoch?', 'Čo sa dnes najviac pohlo?', 'Aké sú moje najväčšie pozície?', 'Mám kúpiť viac Bitcoinu?'],
-  en: ['What is my net worth?', 'How are my assets split?', 'How much have I paid in fees?', 'What moved most today?', 'What are my largest holdings?', 'Should I buy more Bitcoin?'],
+  sk: ['Koľko som minul minulý mesiac?', 'Aký je môj čistý majetok?', 'Ako mám rozdelený majetok?', 'Koľko som zaplatil na poplatkoch?', 'Čo sa dnes najviac pohlo?', 'Aké sú moje najväčšie pozície?', 'Mám kúpiť viac Bitcoinu?'],
+  en: ['How much did I spend last month?', 'What is my net worth?', 'How are my assets split?', 'How much have I paid in fees?', 'What moved most today?', 'What are my largest holdings?', 'Should I buy more Bitcoin?'],
 }

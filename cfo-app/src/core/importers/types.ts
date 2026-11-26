@@ -1,3 +1,4 @@
+import type { BankAccount } from '../bank'
 import type { BrokerAccount } from '../brokers'
 import type { Tx } from '../model'
 
@@ -11,3 +12,4 @@ export interface BtcImport {
 export type ImportResult =
   | ({ kind: 'btc' } & BtcImport)
   | { kind: 'broker'; account: BrokerAccount }
+  | { kind: 'bank'; account: BankAccount }

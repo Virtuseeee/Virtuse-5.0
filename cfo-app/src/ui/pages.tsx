@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ask, SUGGESTED, type Answer } from '../core/ask'
+import type { Chat, ChatMsg } from '../core/chat'
+import { cashFlow, type BankAccount } from '../core/bank'
 import type { BrokerAccount } from '../core/brokers'
 import * as F from '../core/format'
 import type { Lang } from '../core/format'
@@ -10,7 +12,12 @@ import { findInstrument } from '../core/prices'
 import { DEFAULT_RADAR, type RadarItem } from '../core/radar'
 import { checkRules, parseRule, type Rule } from '../core/rules'
 import { goalProgress, type Goal } from '../core/goals'
+import { btcHistory, cutRange, type Range } from '../core/history'
+import { SK_SOURCES, skTaxYears } from '../core/tax-sk'
+import { LineChart } from './Chart'
 import { buildSummary } from '../core/upload'
+import { buildAiContext } from '../core/ai-context'
+import { aiEndpoint, askAi } from '../core/ai-client'
 import { BOOK, BrokersCard, CLASS_COLOR, Fact, ImportBox, ManualBox, PriceBox, VaultBox, type Mode } from './parts'
 import { strings } from './strings'
 import { app, radarText, type Page } from './strings-app'
@@ -55,7 +62,7 @@ const dayClass = (n?: number) => (n === undefined ? '' : n > 0 ? 'up' : n < 0 ? 
 
 /* ------------------------------------------------------------- Dashboard */
 
-export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk, setup }: Ctx & { onAsk: (q: string) => void; setup: { chats: boolean; vault: boolean } }) {
+export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk, setup }: Ctx & { onAsk: (q: string) => void; setup: { vault: boolean } }) {
   const a = app(lang)
   const t = strings(lang)
   const [q, setQ] = useState('')
@@ -68,7 +75,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
   return (
     <>
       <Head eyebrow={a.nav.dashboard} title={mode === 'demo' ? <>{a.hello('Anna').replace('Anna', '')}<span className="grad">Anna</span></> : a.hello('')} lead={mode === 'demo' ? `${a.helloSub} ${t.demoBanner}` : a.helloSub} />
-      {mode === 'own' && <SetupCard lang={lang} go={go} done={[profile.txs.length > 0 || profile.brokers.length > 0, profile.manualAssets.length > 0 || profile.liabilities.length > 0, setup.chats, (profile.rules ?? []).length > 0, (profile.goals ?? []).length > 0, setup.vault]} />}
+      {mode === 'own' && <SetupCard lang={lang} go={go} done={[profile.txs.length > 0 || profile.brokers.length > 0 || (profile.banks ?? []).length > 0, profile.manualAssets.length > 0 || profile.liabilities.length > 0, (profile.chats ?? []).length > 0, (profile.rules ?? []).length > 0, (profile.goals ?? []).length > 0, setup.vault]} />}
       {!hasData ? (
         <Empty lang={lang} go={go} />
       ) : (
@@ -79,6 +86,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
             <Tile acc="teal" label={a.cash} value={F.eur(cash, lang)} />
             <Tile acc="purple" label={a.liabilities} value={F.eur(o.liabilitiesEur, lang)} onClick={() => go('data')} />
           </section>
+          <HistoryCard lang={lang} profile={profile} mode={mode} />
           <section className="dash-grid">
             <div className="card acc-orange">
               <h2>{a.assets}</h2>
@@ -135,7 +143,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
               </ul>
             </div>
 
-            <div className="card span2 acc-pink">
+            <div className="card span4 acc-pink">
               <div className="card-head"><h2>{a.radarTitle}</h2><button className="link" onClick={() => go('radar')}>{a.radarAll}</button></div>
               {radar.length === 0 ? <p className="muted small">{a.radarEmpty}</p> : (
                 <ul className="radar-list">
@@ -144,6 +152,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
               )}
             </div>
 
+            <CashFlowCard lang={lang} banks={profile.banks ?? []} go={go} />
             <div className="card span2 acc-orange">
               <h2>{t.btcTitle}</h2>
               <dl className="facts">
@@ -159,6 +168,66 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
       )}
       <footer className="foot">{t.foot}</footer>
     </>
+  )
+}
+
+function CashFlowCard({ lang, banks, go }: { lang: Lang; banks: BankAccount[]; go: (p: Page) => void }) {
+  const a = app(lang)
+  const flows = useMemo(() => cashFlow(banks), [banks])
+  const now = new Date().toISOString().slice(0, 7)
+  const f = flows.filter((x) => x.month < now).pop() ?? flows[flows.length - 1]
+  if (!f) return <div className="card span2 acc-teal"><h2>{a.cashflowTitle}</h2><p className="muted small">{a.cashNone}</p><button className="ghost" style={{ marginTop: 12 }} onClick={() => go('data')}>{a.emptyCta}</button></div>
+  const cats = Object.entries(f.byCategory).filter(([c]) => c !== 'investing' && c !== 'transfers').sort((x, y) => (y[1] ?? 0) - (x[1] ?? 0)).slice(0, 5)
+  const max = Math.max(...cats.map(([, v]) => v ?? 0), 1)
+  return (
+    <div className="card span2 acc-teal">
+      <div className="card-head"><h2>{a.cashflowTitle}</h2><span className="k">{f.month}</span></div>
+      <div className="cf-tiles">
+        <div><span className="k">{a.cashIncome}</span><b className="up">{F.eur(f.incomeEur, lang)}</b></div>
+        <div><span className="k">{a.cashSpending}</span><b>{F.eur(f.spendingEur, lang)}</b></div>
+        <div><span className="k">{a.cashNet}</span><b className={f.netEur < 0 ? 'down' : ''}>{F.eur(f.netEur, lang)}</b></div>
+      </div>
+      <ul className="cf-bars">
+        {cats.map(([c, v]) => (
+          <li key={c}><span>{a.cats[c]}</span><i><em style={{ width: `${((v ?? 0) / max) * 100}%` }} /></i><b>{F.eur(v ?? 0, lang)}</b></li>
+        ))}
+      </ul>
+      {!!f.byCategory.investing && <p className="muted small">{a.cashInvesting}: {F.eur(f.byCategory.investing, lang)}</p>}
+    </div>
+  )
+}
+
+function HistoryCard({ lang, profile, mode }: { lang: Lang; profile: Profile; mode: Mode }) {
+  const a = app(lang)
+  const [range, setRange] = useState<Range>('1y')
+  const today = new Date().toISOString().slice(0, 10)
+  const pts = useMemo(() => btcHistory(profile.txs, BOOK.btcMonthlyEur, today, profile.extraBtc), [profile.txs, profile.extraBtc, today])
+  const shown = cutRange(pts, range, today)
+  const snaps = profile.snapshots ?? []
+  if (pts.length < 2 && snaps.length < 2) return mode === 'own' ? <p className="muted small snap-note">{a.snapNote(snaps.length)}</p> : null
+  return (
+    <section className="card acc-orange history-card">
+      <div className="card-head">
+        <h2>{a.chartTitle}</h2>
+        <div className="seg small-seg" role="group">
+          {(['3m', '1y', '3y', 'all'] as Range[]).map((r) => <button key={r} className={r === range ? 'on' : ''} onClick={() => setRange(r)}>{a.ranges[r]}</button>)}
+        </div>
+      </div>
+      {shown.length >= 2 && (
+        <LineChart
+          lang={lang}
+          x={shown.map((p) => p.month)}
+          series={[
+            { label: a.chartValue, color: '#f7931a', values: shown.map((p) => p.valueEur) },
+            { label: a.chartInvested, color: '#8b949e', values: shown.map((p) => p.investedEur), dashed: true },
+          ]}
+        />
+      )}
+      <p className="muted small">{a.chartNote}{mode === 'own' ? ` ${a.snapNote(snaps.length)}` : ''}</p>
+      {snaps.length >= 2 && (
+        <LineChart lang={lang} height={160} x={snaps.map((s) => s.date)} series={[{ label: a.chartNetWorth, color: '#5faede', values: snaps.map((s) => s.netWorthEur) }]} />
+      )}
+    </section>
   )
 }
 
@@ -245,18 +314,11 @@ function Composer({ lang, onSend, mode, setMode, modes = ['chat', 'radar'], plac
 
 /* ------------------------------------------------------------- Ask */
 
-export interface ChatMsg {
-  role: 'user' | 'cfo'
-  text: string
-  answer?: Answer
-}
-export interface Chat {
-  id: string
-  title: string
-  msgs: ChatMsg[]
-}
+export type { Chat, ChatMsg } from '../core/chat'
 
-export function AskPage({ lang, profile, price, o, setProfile, chats, setChats, pending, pendingMode, clearPending }: Ctx & { chats: Chat[]; setChats: (fn: (c: Chat[]) => Chat[]) => void; pending: string; pendingMode: ComposerMode; clearPending: () => void }) {
+export function AskPage({ lang, profile, price, o, mode: appMode, setProfile, pending, pendingMode, clearPending }: Ctx & { pending: string; pendingMode: ComposerMode; clearPending: () => void }) {
+  const chats = profile.chats ?? []
+  const setChats = (fn: (c: Chat[]) => Chat[]) => setProfile((p) => ({ ...p, chats: fn(p.chats ?? []) }))
   const a = app(lang)
   const [activeId, setActiveId] = useState<string | null>(chats[0]?.id ?? null)
   const [mode, setMode] = useState<ComposerMode>(pendingMode)
@@ -275,17 +337,29 @@ export function AskPage({ lang, profile, price, o, setProfile, chats, setChats, 
     return ask(question, profile, price, BOOK, lang)
   }
 
+  const endpoint = aiEndpoint(location.hostname)
+  const [waiting, setWaiting] = useState(false)
+
   function send(text: string, m: ComposerMode) {
     const question = text.trim()
-    if (!question) return
-    const msgs: ChatMsg[] = [{ role: 'user', text: question }, { role: 'cfo', text: '', answer: reply(question, m) }]
+    if (!question || waiting) return
+    const local = reply(question, m)
+    const useAi = m === 'chat' && local.kind === 'unknown' && !!endpoint
+    const msgs: ChatMsg[] = [{ role: 'user', text: question }, { role: 'cfo', text: '', answer: useAi ? { kind: 'answer', lines: [a.aiThinking], sources: [], ai: true } : local }]
+    const chatId = active?.id ?? `c${Date.now()}`
     if (active) {
-      setChats((cs) => cs.map((c) => (c.id === active.id ? { ...c, msgs: [...c.msgs, ...msgs] } : c)))
+      setChats((cs) => cs.map((c) => (c.id === chatId ? { ...c, msgs: [...c.msgs, ...msgs] } : c)))
     } else {
-      const id = `c${Date.now()}`
-      setChats((cs) => [{ id, title: question.slice(0, 48), msgs }, ...cs])
-      setActiveId(id)
+      setChats((cs) => [{ id: chatId, title: question.slice(0, 48), msgs }, ...cs])
+      setActiveId(chatId)
     }
+    if (!useAi || !endpoint) return
+    setWaiting(true)
+    askAi(endpoint, question, buildAiContext(profile, price, BOOK, new Date().toISOString().slice(0, 10)), lang).then((r) => {
+      const answer: Answer = r.ok ? r.answer : { ...local, lines: [...local.lines, r.reason === 'limit' ? a.aiLimit : r.reason === 'off' ? a.aiOff : a.aiError] }
+      setChats((cs) => cs.map((c) => (c.id === chatId ? { ...c, msgs: c.msgs.map((x, i) => (i === c.msgs.length - 1 && x.role === 'cfo' ? { ...x, answer } : x)) } : c)))
+      setWaiting(false)
+    })
   }
 
   const handled = useRef('')
@@ -328,11 +402,12 @@ export function AskPage({ lang, profile, price, o, setProfile, chats, setChats, 
             ) : (
               <div key={i} className={`msg cfo ${m.answer?.kind}`}>
                 {m.answer?.kind === 'advice' && <span className="tag warn">{a.adviceTag}</span>}
+                {m.answer?.ai && <span className="tag ai" title={a.aiLabelLong}>{a.aiLabel}</span>}
                 {m.answer?.lines.map((l, j) => <p key={j}>{l}</p>)}
                 {!!m.answer?.sources.length && (
                   <div className="sources">
                     <span>{a.sources}:</span>
-                    {m.answer.sources.map((s) => <em key={s}>{s}</em>)}
+                    {m.answer.sources.map((s) => <em key={s}>{m.answer?.ai ? a.aiSources[s] ?? s : s}</em>)}
                   </div>
                 )}
               </div>
@@ -356,7 +431,7 @@ export function AskPage({ lang, profile, price, o, setProfile, chats, setChats, 
             ))}
           </ul>
         )}
-        <p className="muted small">{a.chatsNotSaved}</p>
+        <p className="muted small">{appMode === 'own' ? a.chatsSaved : a.chatsNotSaved}</p>
       </aside>
     </section>
   )
@@ -441,6 +516,7 @@ function ruleLine(rule: Rule, actual: number | undefined, symbol: string | undef
     case 'networth_below': return sk ? `Čistý majetok ${F.eur(actual, lang)}` : `Net worth ${F.eur(actual, lang)}`
     case 'btc_fee_above': return sk ? `Poplatky ${F.pct(actual, lang, 2)} z nákupov` : `Fees ${F.pct(actual, lang, 2)} of buys`
     case 'cash_below': return sk ? `Hotovosť ${F.eur(actual, lang)}` : `Cash ${F.eur(actual, lang)}`
+    case 'expense_above': return `${symbol}: ${F.eur(actual, lang, 2)}`
   }
 }
 
@@ -594,6 +670,91 @@ export function PortfolioPage({ lang, profile, price, o, go }: Ctx) {
   )
 }
 
+/* ------------------------------------------------------------- Tax */
+
+export function TaxPage({ lang, profile, go }: Ctx) {
+  const a = app(lang)
+  const years = useMemo(() => skTaxYears(profile.txs), [profile.txs])
+  const [sel, setSel] = useState(0)
+  const y = years[Math.min(sel, Math.max(0, years.length - 1))]
+  const withheld = profile.brokers.filter((b) => b.taxWithheldEur > 0)
+  const eur2 = (n: number) => F.eur(n, lang, 2)
+  const sources = [SK_SOURCES.rates, SK_SOURCES.crypto, SK_SOURCES.filing, SK_SOURCES.health]
+  return (
+    <>
+      <Head eyebrow={a.nav.tax} title={a.titles.tax} lead={a.taxLead} />
+      {years.length === 0 ? (
+        <div className="card empty-state"><p className="muted">{a.taxNoSales}</p><button onClick={() => go('data')}>{a.emptyCta}</button></div>
+      ) : (
+        <>
+          {years.length > 1 && (
+            <div className="seg tabs-years">
+              {years.map((x, i) => <button key={x.year} className={i === sel ? 'on' : ''} onClick={() => setSel(i)}>{x.year}</button>)}
+            </div>
+          )}
+          <section className="kpis">
+            <div className="kpi acc-blue"><span className="k">{a.taxProceeds} {y.year}</span><span className="v">{F.eur(y.proceedsEur, lang)}</span></div>
+            <div className="kpi acc-blue"><span className="k">{a.taxCost}</span><span className="v">{F.eur(y.costEur, lang)}</span></div>
+            <div className="kpi acc-blue"><span className="k">{a.taxNet}</span><span className={`v ${y.netEur < 0 ? 'down' : ''}`}>{F.eur(y.netEur, lang)}</span></div>
+            <div className="kpi acc-blue"><span className="k">{a.taxBase}</span><span className="v">{F.eur(y.baseEur, lang)}</span><span className="s">{a.taxBaseSub}</span></div>
+          </section>
+          <section className="dash-grid">
+            <div className="card span2 acc-blue">
+              <h2>{a.taxTotal}</h2>
+              {y.incomeTaxEur !== null ? (
+                <>
+                  <div className="lrow"><span>{a.taxIncome}</span><b>{eur2(y.incomeTaxEur)}</b></div>
+                  {y.healthEur !== null && <div className="lrow"><span>{a.taxHealth(F.pct((y.healthRate ?? 0) * 100, lang, 0))}</span><b>{eur2(y.healthEur)}</b></div>}
+                  <div className="lrow strong total"><span>{a.taxTotal}</span><b>{eur2(y.incomeTaxEur + (y.healthEur ?? 0))}</b></div>
+                  <p className="muted small">{a.taxBandsNote}</p>
+                </>
+              ) : (
+                <>
+                  {y.healthEur !== null && <div className="lrow"><span>{a.taxHealth(F.pct((y.healthRate ?? 0) * 100, lang, 0))}</span><b>{eur2(y.healthEur)}</b></div>}
+                  <p className="muted small">{a.taxNoBands}</p>
+                </>
+              )}
+              <p className="due">{a.taxDue(F.date(y.dueDate, lang))}</p>
+            </div>
+            <div className="card span2 acc-yellow">
+              <h2>{a.taxAssumptions}</h2>
+              <ul className="assume">{a.taxAssumptionList.map((x) => <li key={x}>{x}</li>)}</ul>
+              {y.uncoveredBtc > 1e-9 && <p className="warn-line">{a.taxUncovered(F.btc(y.uncoveredBtc, lang))}</p>}
+            </div>
+          </section>
+          <section className="card table-card acc-blue" style={{ marginTop: 14 }}>
+            <h2>{a.taxSales} {y.year}</h2>
+            <table>
+              <thead><tr><th>{a.colDate}</th><th className="r">BTC</th><th className="r">{a.colProceeds}</th><th className="r">{a.colCost}</th><th className="r">{a.colGain}</th></tr></thead>
+              <tbody>
+                {y.sales.map((x) => (
+                  <tr key={x.time}>
+                    <td>{F.date(x.time, lang)}</td>
+                    <td className="r">{F.btc(x.btc, lang).replace(' BTC', '')}</td>
+                    <td className="r">{eur2(x.proceedsEur)}</td>
+                    <td className="r">{eur2(x.costEur)}</td>
+                    <td className={`r ${x.gainEur < 0 ? 'down' : 'up'}`}>{eur2(x.gainEur)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        </>
+      )}
+      {withheld.length > 0 && (
+        <section className="card acc-blue">
+          <h2>{a.taxWithheld}</h2>
+          <ul className="items">{withheld.map((b) => <li key={b.source} className="two"><span>{b.source.toUpperCase()}{b.period && <small className="basis">{b.period}</small>}</span><b>{eur2(b.taxWithheldEur)}</b></li>)}</ul>
+        </section>
+      )}
+      <section className="card acc-blue">
+        <h2>{a.taxSources}</h2>
+        <ul className="guides">{sources.map((u, i) => <li key={u}><a href={u} target="_blank" rel="noopener">{a.taxSourceLabels[i]} ↗</a></li>)}</ul>
+      </section>
+    </>
+  )
+}
+
 /* ------------------------------------------------------------- Goals */
 
 export function GoalsPage({ lang, profile, price, setProfile }: Ctx) {
@@ -650,13 +811,18 @@ export function GoalsPage({ lang, profile, price, setProfile }: Ctx) {
 
 export function TransactionsPage({ lang, profile }: Ctx) {
   const a = app(lang)
+  const [tab, setTab] = useState(profile.txs.length === 0 && (profile.banks ?? []).length ? 1 : 0)
   const [kind, setKind] = useState<string>('all')
   const txs = [...profile.txs].reverse().filter((x) => kind === 'all' || x.kind === kind)
   const kinds = ['all', ...new Set(profile.txs.map((x) => x.kind))]
+  const bankTxs = (profile.banks ?? []).flatMap((b) => b.txs).sort((x, y) => y.date.localeCompare(x.date))
+  const cats = ['all', ...new Set(bankTxs.map((x) => x.category))]
+  const [cat, setCat] = useState('all')
   return (
     <>
       <Head eyebrow={a.nav.transactions} title={a.titles.transactions} lead={a.txLead} />
-      {profile.txs.length === 0 ? <div className="card"><p className="muted">{a.txNone}</p></div> : (
+      <div className="tabs-line">{a.txTabs.map((x, i) => <button key={x} className={i === tab ? 'on' : ''} onClick={() => setTab(i)}>{x}</button>)}</div>
+      {tab === 0 && (profile.txs.length === 0 ? <div className="card"><p className="muted">{a.txNone}</p></div> : (
         <section className="card table-card">
           <div className="seg wrap">
             {kinds.map((k) => <button key={k} className={k === kind ? 'on' : ''} onClick={() => setKind(k)}>{k === 'all' ? a.all : a.txKinds[k]}</button>)}
@@ -676,14 +842,35 @@ export function TransactionsPage({ lang, profile }: Ctx) {
             </tbody>
           </table>
         </section>
-      )}
+      ))}
+      {tab === 1 && (bankTxs.length === 0 ? <div className="card"><p className="muted">{a.bankNone}</p></div> : (
+        <section className="card table-card">
+          <div className="seg wrap">
+            {cats.map((k) => <button key={k} className={k === cat ? 'on' : ''} onClick={() => setCat(k)}>{k === 'all' ? a.all : a.cats[k]}</button>)}
+          </div>
+          <table>
+            <thead><tr><th>{a.colDate}</th><th>{a.colDesc}</th><th>{a.colCat}</th><th className="r">{a.colAmount}</th></tr></thead>
+            <tbody>
+              {bankTxs.filter((x) => cat === 'all' || x.category === cat).map((x, i) => (
+                <tr key={i}>
+                  <td>{F.date(x.date, lang)}</td>
+                  <td>{x.description}</td>
+                  <td><small className="basis">{a.cats[x.category]}</small></td>
+                  <td className={`r ${x.amountEur > 0 ? 'up' : ''}`}>{F.eur(x.amountEur, lang, 2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      ))}
     </>
   )
 }
 
 /* ------------------------------------------------------------- Data & privacy */
 
-export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, onBroker, onVaultSaved }: Ctx & {
+export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, onBroker, onBank, onVaultSaved }: Ctx & {
+  onBank: (a: BankAccount) => void
   onVaultSaved: () => void
   setPrice: (n: number) => void
   own: Profile
@@ -694,6 +881,7 @@ export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, on
   const t = strings(lang)
   const [note, setNote] = useState('')
   const summary = useMemo(() => buildSummary(profile, price, BOOK), [profile, price])
+  const aiFacts = useMemo(() => buildAiContext(profile, price, BOOK, new Date().toISOString().slice(0, 10)), [profile, price])
   return (
     <>
       <Head eyebrow={a.nav.data} title={a.titles.data} lead={a.dataLead} />
@@ -702,7 +890,7 @@ export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, on
         <p className="card muted">{a.demoReadOnly}</p>
       ) : (
         <>
-          <ImportBox lang={lang} onTxs={(txs) => setOwn((p) => ({ ...p, txs }))} onBroker={onBroker} onNote={setNote} />
+          <ImportBox lang={lang} onTxs={(txs) => setOwn((p) => ({ ...p, txs }))} onBroker={onBroker} onBank={onBank} onNote={setNote} />
           {note && <p className="note" role="status">{note}</p>}
           <ManualBox lang={lang} profile={own} setProfile={setOwn} />
           <VaultBox lang={lang} profile={own} onOpen={(p) => setOwn(() => p)} onSaved={onVaultSaved} />
@@ -713,6 +901,9 @@ export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, on
         <p className="muted">{t.leavesLead}</p>
         <pre className="payload">{JSON.stringify(summary, null, 2)}</pre>
         <p className="muted small">{t.stays}</p>
+        <h3>{a.aiLeavesTitle}</h3>
+        <p className="muted">{a.aiLeavesLead}</p>
+        <pre className="payload">{JSON.stringify(aiFacts, null, 2)}</pre>
       </section>
       <footer className="foot">{t.foot}</footer>
     </>
