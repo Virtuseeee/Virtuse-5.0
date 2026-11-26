@@ -22,11 +22,15 @@ not know; it records why things are the way they are. Do not paste session logs 
 - **Worker**: `cloudflare-worker/` (Cloudflare Worker `virtuse-newsletter`, staging
   `virtuse-newsletter-staging`). Routes: `/subscribe`, `/unsubscribe`, `/send`, `/waitlist`,
   `/ecosystem-apply`, `/pulse.json`, `/wp/*`, `/verdict/*` (checkout, stripe-webhook, report,
-  withdraw, status), `/resend/webhook`, `/version`. Uses Resend (email), Stripe Checkout
+  withdraw, status), `/resend/webhook`, `/cfo/ask` (staging only), `/version`. Uses Resend (email), Stripe Checkout
   (the €14 Verdict report), KV (`RATE_LIMIT_KV`, `PULSE_KV`), Turnstile. Secrets live only in
   Wrangler (`wrangler secret put`), never in git, chat or files.
   Forms (`/subscribe`, `/send`, `/waitlist`) share an hourly email cap; Turnstile on them is
   required only where `TURNSTILE_FORMS=require` (staging; production waits for the lawyer).
+- **Virtuse CFO app**: `cfo-app/` (React + Vite + TypeScript, `npm ci && npm test && npm run
+  build`), built to staging.virtuse.com/cfo. Local-first: the profile is encrypted on the device
+  (`src/core/vault.ts`), only rounded totals may leave it (`src/core/upload.ts`,
+  `buildAiContext`). See `cfo-app/README.md`.
 - **Tool modules**: `layer2-src/` (React + Vite) builds Partner Finder, Stacking, Loan and
   Tax Agent into `concierge-assets/` plus 40 page shells.
 - **Generators**: `seo-build/` (tax, fee index, DCA, DAC8, ecosystem pages), `stories-build/`
@@ -96,6 +100,7 @@ download the live file first, compare, then upload.
 | `…/i18n-tools/` | builders; `<page>/<lang>.json` hold the translations |
 | `cloudflare-worker/src/features/<name>/` | one folder per route; `test/` has the tests |
 | `cloudflare-worker/src/features/data-freshness/` | daily data check, run by the existing cron next to `brief-health` (unchanged) and by `.github/workflows/data-freshness.yml` (read-only, daily 07:30 UTC + manual, red run on a problem, sends nothing). Daily files on GitHub ≤ 2 days, Pulse, production copy as a note (Ras chose option C on 2026-11-26: `virtuse.com/data/` is "last deployed", nothing should read it; `CHECK_PROD_COPY` "1" would make its lag a problem). Email only to `DATA_ALERT_TO` = vasilisin@virtuse.com, no fallback. On main 2026-11-26; Worker not deployed yet |
+| `cloudflare-worker/src/features/cfo-ask/` | `POST /cfo/ask`, AI answers for the CFO app (PR #221, merged 2026-11-26). Questions are answered on the device first (`cfo-app/src/core/ask.ts`); advice questions are refused there and again in the Worker before any model call; only unknown questions go to the model with rounded totals (`cleanContext` whitelist). The answer is marked as AI (`X-AI-Generated`). On staging only: `CFO_ASK_ENABLED` "1", `CFO_ASK_MONTHLY_CAP_EUR` "10", `CFO_ASK_PER_IP_DAY` "30" (400 only for the eval on 2026-11-26; back to 30 in `4b32912`, staging Worker `d613a1bd` deployed by Ras the same day, `/version` = `4b32912`). Production has it off. Eval `cloudflare-worker/cfo-eval/` (248 cases, `--live --worker --yes` asks the staging Worker, which holds the key): 246/248, the two tax-adviser referral answers fixed and rechecked 5/5. The chat `!` input cannot read hidden input, so a key typed there arrives empty: run key-based commands through the staging Worker or in Terminal.app. Open: bank aggregator sandbox, anonymised XTB/IBKR/T212 exports, the tax adviser on FIFO and on the model's statement that the SK filing deadline can be extended |
 | `cloudflare-worker/src/generated/` | built from `seo-build/data`, `email/`, `data/`; committed |
 | `seo-build/data/` | tax, fee and partner facts (one source for pages, tools and the Worker) |
 | `seo-ops/` | redirects, `.htaccess`, sitemap and Search Console scripts, WordPress plugins |
