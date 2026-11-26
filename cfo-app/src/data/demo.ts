@@ -37,6 +37,16 @@ export function annaKrakenCsv(): string {
     lines.push(`"LEUR${i}","${ref}","${day} 09:12:33","trade","","currency","ZEUR","spot / main","-${spend.toFixed(4)}","${fee.toFixed(4)}","${eurBal.toFixed(4)}"`)
     btcBal += got
     lines.push(`"LBTC${i}","${ref}","${day} 09:12:33","trade","","currency","XXBT","spot / main","${got.toFixed(10)}","0.0000000000","${btcBal.toFixed(10)}"`)
+    // September 2026: she sells 0.015 BTC (shows up in the tax overview).
+    if (i === 32) {
+      const sold = 0.015
+      const eur = Math.round(sold * price * 100) / 100
+      const sfee = Math.round(eur * 0.004 * 100) / 100
+      btcBal -= sold
+      eurBal += eur - sfee
+      lines.push(`"LSB${i}","QSELL${i}","${y}-${m}-20 10:00:00","trade","","currency","XXBT","spot / main","-${sold.toFixed(10)}","0.0000000000","${btcBal.toFixed(10)}"`)
+      lines.push(`"LSE${i}","QSELL${i}","${y}-${m}-20 10:00:00","trade","","currency","ZEUR","spot / main","${eur.toFixed(4)}","${sfee.toFixed(4)}","${eurBal.toFixed(4)}"`)
+    }
     // Every 6th month the coins go to her own hardware wallet.
     if (i % 6 === 5) {
       const wfee = 0.00001

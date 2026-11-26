@@ -20,6 +20,8 @@ export interface PricedInstrument {
 }
 
 export interface PriceBook {
+  /** Month-end BTC/EUR close by 'YYYY-MM' (the current month = latest close). */
+  btcMonthlyEur?: Record<string, number>
   builtAt: string
   fx: { source: string; date: string; perEur: Record<string, number> }
   prices: { source: string; instruments: PricedInstrument[] }

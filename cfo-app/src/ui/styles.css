@@ -335,3 +335,22 @@ tbody tr:hover td { background: rgba(255,255,255,.02); }
 @media (prefers-reduced-motion: reduce) { .spot::after { display: none; } * { transition: none !important; } }
 .chat-top > button { white-space: nowrap; flex: none; }
 .pricebox p.sources { display: block; font: 400 13px/1.5 var(--sans); letter-spacing: 0; text-transform: none; color: var(--dim); border: 0; padding: 0; margin: 0; }
+.acc-gray { --c: #8b949e; }
+/* history chart */
+.history-card { margin-bottom: 14px; }
+.chart svg { width: 100%; height: auto; display: block; touch-action: pan-y; }
+.chart .grid { stroke: rgba(255,255,255,.06); }
+.chart .axis { fill: var(--dim); font: 500 11px var(--mono); }
+.chart .cross { stroke: rgba(255,255,255,.25); stroke-dasharray: 3 3; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; font-size: 13px; color: var(--muted); margin-bottom: 6px; min-height: 22px; }
+.chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.chart-legend i { width: 10px; height: 3px; border-radius: 2px; }
+.chart-legend b { color: var(--text); font-variant-numeric: tabular-nums; }
+.chart-legend em { margin-left: auto; font: 500 11px var(--mono); color: var(--dim); font-style: normal; }
+.snap-note { margin: 0 0 14px; }
+/* tax */
+.tabs-years { margin-bottom: 14px; }
+.lrow.total { border-top: 1px solid var(--line); border-bottom: 0; margin: 4px 0 8px; padding-top: 10px; }
+.due { margin-top: 12px; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--blue) 10%, transparent); border: 1px solid color-mix(in srgb, var(--blue) 30%, transparent); font-size: 14px; }
+.assume { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--muted); font-size: 14px; }
+.warn-line { margin-top: 12px; color: var(--orange); font-size: 14px; }

@@ -5,7 +5,7 @@ Local-first wealth overview for investor and partner demos. Not deployed anywher
 ```bash
 cd cfo-app
 npm ci
-npm test        # 46 tests: CSV, imports, prices/FX, portfolio math, upload summary, vault
+npm test        # 56 tests: CSV, imports, prices/FX, portfolio math, upload summary, vault
 npm run prices  # refresh src/data/prices.json (ECB rates + last closes)
 npm run dev     # http://localhost:5181
 npm run build   # dist/
@@ -26,6 +26,8 @@ Sidebar app with eight screens, same structure as other AI-CFO products (overvie
 - **Portfólio** – tabs Overview / Accounts / Assets / Debts, every priced holding with share of assets, today's move and price basis, asset-type grid.
 - Own-data overview shows a setup checklist with a percentage until all six steps are done.
 - **Transakcie** – Bitcoin movements from the Kraken export.
+- **Dane / Tax** – Slovak overview of Bitcoin sales per year (`src/core/tax-sk.ts`): FIFO cost, gain, § 8 base, 2026 band estimate and 16 % health contributions, filing deadline, official sources (same facts as `seo-build/data/tax-sources.json`). Assumptions shown on screen; stocks/ETFs left out until rules are checked.
+- Overview chart: Bitcoin value vs money put in, month by month, rebuilt from transactions and the month-end BTC/EUR closes in the price file; own data also records one net-worth snapshot a day in the (encrypted) profile.
 - **Ciele / Goals** – net worth, BTC, cash or debt payoff targets with progress from the user's numbers (`src/core/goals.ts`).
 - **Údaje a súkromie / Data and privacy** – BTC price, imports, manual assets and debts, encrypted vault, what would leave the device.
 

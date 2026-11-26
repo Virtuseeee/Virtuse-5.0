@@ -7,6 +7,7 @@
 import type { BrokerAccount } from './brokers'
 import type { Goal } from './goals'
 import type { Rule } from './rules'
+import type { Snapshot } from './history'
 
 export type AssetClass =
   | 'bitcoin'
@@ -75,6 +76,8 @@ export interface Profile {
   /** Goals and Radar rules the user set. Optional for older saved vaults. */
   goals?: Goal[]
   rules?: Rule[]
+  /** One net-worth snapshot per day the app was opened (own data only). */
+  snapshots?: Snapshot[]
 }
 
 export function emptyProfile(label = ''): Profile {

@@ -6,8 +6,9 @@ import { dayMoveEur, portfolioRows } from './holdings'
 import type { Profile } from './model'
 import { overview } from './portfolio'
 import { revalue, type PriceBook } from './prices'
+import { skTaxYears } from './tax-sk'
 
-export type RadarKind = 'move' | 'fees' | 'concentration' | 'debt' | 'cash' | 'data' | 'custody'
+export type RadarKind = 'move' | 'fees' | 'concentration' | 'debt' | 'cash' | 'data' | 'custody' | 'tax'
 
 export interface RadarItem {
   id: string
@@ -68,6 +69,12 @@ export function radarItems(profile: Profile, priceEur: number, book: PriceBook |
   const withdrawals = profile.txs.filter((t) => t.kind === 'withdrawal').length
   if (withdrawals > 0) {
     items.push({ id: 'custody', kind: 'custody', level: 'info', code: 'own_wallet', vars: { n: withdrawals } })
+  }
+
+  const year = Number(opts.today.slice(0, 4))
+  const ty = skTaxYears(profile.txs).find((y) => y.year === year || y.year === year - 1)
+  if (ty && ty.baseEur > 0 && opts.today <= ty.dueDate) {
+    items.push({ id: `tax:${ty.year}`, kind: 'tax', level: 'info', code: 'tax_due', vars: { year: ty.year, eur: Math.round(ty.baseEur), date: ty.dueDate } })
   }
 
   if (book) {

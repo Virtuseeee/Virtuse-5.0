@@ -10,6 +10,7 @@ import { dayMoveEur, portfolioRows } from './holdings'
 import type { Profile } from './model'
 import { overview } from './portfolio'
 import type { PriceBook } from './prices'
+import { skTaxYears } from './tax-sk'
 
 export interface Answer {
   kind: 'answer' | 'advice' | 'unknown'
@@ -65,6 +66,17 @@ export function ask(question: string, profile: Profile, priceEur: number, book: 
         [brokerSrc(b.source), src.prices],
       )
     }
+  }
+
+  if (has(q, /\bdan|\btax|priznan|odvod/)) {
+    const y = skTaxYears(profile.txs)[0]
+    if (!y) return out([sk ? 'V načítaných údajoch nie je žiadny predaj Bitcoinu, takže z nich nevzniká daň. Presun do vlastnej peňaženky nie je predaj.' : 'The loaded data has no Bitcoin sale, so there is nothing to tax from it. Moving coins to your own wallet is not a sale.'], [src.kraken])
+    const lines = [
+      sk ? `Rok ${y.year}: predaje ${eur(y.proceedsEur)}, náklady podľa FIFO ${eur(y.costEur)}, zisk ${eur(y.netEur)}.` : `${y.year}: sales ${eur(y.proceedsEur)}, FIFO cost ${eur(y.costEur)}, gain ${eur(y.netEur)}.`,
+    ]
+    if (y.incomeTaxEur !== null) lines.push(sk ? `Odhad dane z príjmov ${eur(y.incomeTaxEur, 2)} a zdravotných odvodov ${eur(y.healthEur ?? 0, 2)}, ak nemáte iné ostatné príjmy podľa § 8.` : `Estimated income tax ${eur(y.incomeTaxEur, 2)} and health contributions ${eur(y.healthEur ?? 0, 2)}, if you have no other § 8 income.`)
+    lines.push(sk ? `Daňové priznanie typu B do ${F.date(y.dueDate, lang)}. Je to odhad, nie daňové poradenstvo; podrobnosti na obrazovke Dane.` : `Type B return due ${F.date(y.dueDate, lang)}. An estimate, not tax advice; details on the Tax screen.`)
+    return out(lines, [src.kraken, sk ? 'Finančná správa: pravidlá pre kryptoaktíva a sadzby 2026' : 'Slovak tax office: crypto-asset rules and 2026 rates'])
   }
 
   if (has(q, /poplat|fee|naklad|cost/)) {

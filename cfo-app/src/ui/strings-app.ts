@@ -2,12 +2,12 @@ import * as F from '../core/format'
 import type { Lang } from '../core/format'
 import type { RadarItem } from '../core/radar'
 
-export type Page = 'dashboard' | 'ask' | 'research' | 'radar' | 'portfolio' | 'transactions' | 'goals' | 'data'
+export type Page = 'dashboard' | 'ask' | 'research' | 'radar' | 'portfolio' | 'transactions' | 'tax' | 'goals' | 'data'
 
 const SK = {
-  nav: { dashboard: 'Prehľad', ask: 'Opýtaj sa CFO', research: 'Výskum', radar: 'Radar', portfolio: 'Portfólio', transactions: 'Transakcie', goals: 'Ciele', data: 'Údaje a súkromie' } as Record<Page, string>,
+  nav: { dashboard: 'Prehľad', ask: 'Opýtaj sa CFO', research: 'Výskum', radar: 'Radar', portfolio: 'Portfólio', transactions: 'Transakcie', tax: 'Dane', goals: 'Ciele', data: 'Údaje a súkromie' } as Record<Page, string>,
   hello: (name: string) => (name ? `Dobrý deň, ${name}` : 'Váš prehľad'),
-  titles: { dashboard: '', ask: 'Opýtajte sa na svoje čísla.', research: '', radar: 'Čo sa deje s vaším majetkom.', portfolio: 'Všetko, čo vlastníte, v dnešných cenách.', transactions: 'Každý pohyb vášho Bitcoinu.', goals: 'Kam smerujete a kde ste dnes.', data: 'Vaše údaje zostávajú vo vašom zariadení.' } as Record<Page, string>,
+  titles: { dashboard: '', ask: 'Opýtajte sa na svoje čísla.', research: '', radar: 'Čo sa deje s vaším majetkom.', portfolio: 'Všetko, čo vlastníte, v dnešných cenách.', transactions: 'Každý pohyb vášho Bitcoinu.', tax: 'Čo ste predali a čo z toho plynie pre dane.', goals: 'Kam smerujete a kde ste dnes.', data: 'Vaše údaje zostávajú vo vašom zariadení.' } as Record<Page, string>,
   helloSub: 'Tu je váš majetok dnes.',
   demoChip: 'Ukážka: Anna',
   ownChip: 'Vlastné údaje',
@@ -76,7 +76,7 @@ const SK = {
   feeTh: 'Poplatky za Bitcoin od',
   concTh: 'Jedna pozícia tvorí od',
   cashTh: 'Hotovosť tvorí od',
-  kinds: { move: 'Pohyby', fees: 'Poplatky', concentration: 'Rozloženie', debt: 'Dlhy', cash: 'Hotovosť', data: 'Údaje', custody: 'Úschova' } as Record<RadarItem['kind'], string>,
+  kinds: { move: 'Pohyby', fees: 'Poplatky', concentration: 'Rozloženie', debt: 'Dlhy', cash: 'Hotovosť', data: 'Údaje', custody: 'Úschova', tax: 'Dane' } as Record<RadarItem['kind'], string>,
   // Portfolio
   portfolioLead: 'Všetko, čo má trhovú cenu: Bitcoin a pozície u brokerov.',
   colName: 'Nástroj',
@@ -155,15 +155,51 @@ const SK = {
   setupTitle: (p: number) => `Nastavenie je na ${p} %`,
   setupLead: 'Tieto kroky ukážu aplikáciu naplno.',
   setupSteps: ['Načítať export z búrzy alebo brokera', 'Pridať ďalší majetok alebo dlh', 'Opýtať sa CFO', 'Nastaviť pravidlo v Radare', 'Nastaviť prvý cieľ', 'Uložiť údaje zašifrovane'],
+  chartTitle: 'Vývoj Bitcoinu',
+  chartValue: 'Hodnota',
+  chartInvested: 'Vložené',
+  chartNetWorth: 'Čistý majetok',
+  ranges: { '3m': '3 M', '1y': '1 R', '3y': '3 R', all: 'Všetko' } as Record<string, string>,
+  chartNote: 'Hodnota na konci každého mesiaca z vašich transakcií a mesačných cien BTC/EUR v cenníku Virtuse.',
+  snapNote: (n: number) => (n < 2 ? 'Čistý majetok sa zaznamenáva od dnes, raz denne pri otvorení aplikácie. Graf sa ukáže po druhom dni.' : `Čistý majetok: ${n} denných záznamov uložených s vašimi údajmi.`),
+  taxLead: 'Odhad zo súborov, ktoré ste načítali, podľa pravidiel Finančnej správy pre kryptoaktíva. Nie je to daňové priznanie ani daňové poradenstvo.',
+  taxYear: 'Rok',
+  taxNoSales: 'V načítaných údajoch nie je žiadny predaj Bitcoinu. Presun do vlastnej peňaženky nie je predaj.',
+  taxProceeds: 'Príjem z predajov',
+  taxCost: 'Náklady (FIFO)',
+  taxNet: 'Zisk / strata',
+  taxBase: 'Základ dane (§ 8)',
+  taxBaseSub: 'strata za rok sa počíta ako 0',
+  taxIncome: 'Daň z príjmov (odhad)',
+  taxHealth: (r: string) => `Zdravotné odvody ${r}`,
+  taxTotal: 'Spolu (odhad)',
+  taxBandsNote: 'Pásma 19 / 25 / 30 / 35 % pre rok 2026 sú počítané len z týchto predajov. Ak máte iné ostatné príjmy podľa § 8, pásma sa počítajú zo súčtu.',
+  taxNoBands: 'Sadzby dane pre tento rok v aplikácii nemáme overené, ukazujeme len základ.',
+  taxDue: (d: string) => `Daňové priznanie typu B do ${d}. Zdravotné odvody vyúčtuje poisťovňa v ročnom zúčtovaní.`,
+  taxSales: 'Predaje',
+  colProceeds: 'Príjem',
+  colCost: 'Náklad',
+  colGain: 'Zisk',
+  taxUncovered: (b: string) => `${b} predaného BTC nemá v načítaných nákupoch pôvod. Počítame ho s nákladom 0 €. Načítajte staršie exporty.`,
+  taxAssumptions: 'Predpoklady na overenie s daňovým poradcom',
+  taxAssumptionList: [
+    'Náklady podľa metódy FIFO: predávajú sa najstaršie nakúpené mince.',
+    'Poplatok pri nákupe je súčasť nákladu, poplatok pri predaji znižuje príjem.',
+    'Zahŕňa len predaje Bitcoinu za EUR z načítaných búrz. Výmena kryptoaktíva za iné kryptoaktívum je tiež predaj, ale tieto údaje ju neobsahujú.',
+    'Akcie a ETF: pravidlá pre cenné papiere zatiaľ nemáme overené, preto ich prehľad nezahŕňa.',
+  ],
+  taxSources: 'Zdroje',
+  taxSourceLabels: ['Finančná správa: sadzby dane 2026', 'Finančná správa: príjmy z predaja kryptoaktív', 'Finančná správa: povinnosť podať priznanie za rok 2026', 'VšZP: zmeny od 1. 1. 2026 (16 %)'],
+  taxWithheld: 'Zrazená daň z dividend u brokerov',
   dataLead: 'Importy, ručne zadaný majetok, šifrované uloženie a to, čo by opustilo vaše zariadenie.',
 }
 
 type S = typeof SK
 
 const EN: S = {
-  nav: { dashboard: 'Overview', ask: 'Ask your CFO', research: 'Research', radar: 'Radar', portfolio: 'Portfolio', transactions: 'Transactions', goals: 'Goals', data: 'Data and privacy' },
+  nav: { dashboard: 'Overview', ask: 'Ask your CFO', research: 'Research', radar: 'Radar', portfolio: 'Portfolio', transactions: 'Transactions', tax: 'Tax', goals: 'Goals', data: 'Data and privacy' },
   hello: (name: string) => (name ? `Good day, ${name}` : 'Your overview'),
-  titles: { dashboard: '', ask: 'Ask about your own numbers.', research: '', radar: 'What is happening to your money.', portfolio: 'Everything you own, at today’s prices.', transactions: 'Every move of your Bitcoin.', goals: 'Where you are heading, and where you are today.', data: 'Your data stays on your device.' },
+  titles: { dashboard: '', ask: 'Ask about your own numbers.', research: '', radar: 'What is happening to your money.', portfolio: 'Everything you own, at today’s prices.', transactions: 'Every move of your Bitcoin.', tax: 'What you sold and what it means for tax.', goals: 'Where you are heading, and where you are today.', data: 'Your data stays on your device.' },
   helloSub: 'Here is what you own today.',
   demoChip: 'Demo: Anna',
   ownChip: 'My data',
@@ -229,7 +265,7 @@ const EN: S = {
   feeTh: 'Bitcoin fees from',
   concTh: 'One holding is at least',
   cashTh: 'Cash is at least',
-  kinds: { move: 'Moves', fees: 'Fees', concentration: 'Mix', debt: 'Debts', cash: 'Cash', data: 'Data', custody: 'Custody' },
+  kinds: { move: 'Moves', fees: 'Fees', concentration: 'Mix', debt: 'Debts', cash: 'Cash', data: 'Data', custody: 'Custody', tax: 'Tax' },
   portfolioLead: 'Everything with a market price: Bitcoin and broker positions.',
   colName: 'Instrument',
   colWhere: 'Where',
@@ -305,6 +341,42 @@ const EN: S = {
   setupTitle: (p: number) => `Setup is ${p}% complete`,
   setupLead: 'These steps show the app at its best.',
   setupSteps: ['Load an exchange or broker export', 'Add another asset or debt', 'Ask your CFO', 'Set a Radar rule', 'Set your first goal', 'Save your data encrypted'],
+  chartTitle: 'Your Bitcoin over time',
+  chartValue: 'Value',
+  chartInvested: 'Put in',
+  chartNetWorth: 'Net worth',
+  ranges: { '3m': '3M', '1y': '1Y', '3y': '3Y', all: 'All' },
+  chartNote: 'Month-end value from your transactions and the monthly BTC/EUR closes in the Virtuse price file.',
+  snapNote: (n: number) => (n < 2 ? 'Net worth is recorded from today, once a day when you open the app. The chart appears after the second day.' : `Net worth: ${n} daily records saved with your data.`),
+  taxLead: 'An estimate from the files you loaded, using the Slovak tax office rules for crypto-assets. Not a tax return and not tax advice.',
+  taxYear: 'Year',
+  taxNoSales: 'The loaded data has no Bitcoin sale. Moving coins to your own wallet is not a sale.',
+  taxProceeds: 'Proceeds from sales',
+  taxCost: 'Cost (FIFO)',
+  taxNet: 'Gain / loss',
+  taxBase: 'Tax base (§ 8)',
+  taxBaseSub: 'a loss for the year counts as 0',
+  taxIncome: 'Income tax (estimate)',
+  taxHealth: (r: string) => `Health contributions ${r}`,
+  taxTotal: 'Total (estimate)',
+  taxBandsNote: 'The 2026 bands of 19 / 25 / 30 / 35 % are applied to these sales alone. Other § 8 income is added before the bands apply.',
+  taxNoBands: 'The app has no checked tax rates for this year, so it shows the base only.',
+  taxDue: (d: string) => `Type B tax return due ${d}. Health contributions are settled by the insurer in the annual settlement.`,
+  taxSales: 'Sales',
+  colProceeds: 'Proceeds',
+  colCost: 'Cost',
+  colGain: 'Gain',
+  taxUncovered: (b: string) => `${b} of the BTC sold has no matching buy in the loaded data and counts at a cost of €0. Load older exports.`,
+  taxAssumptions: 'Assumptions to check with a tax adviser',
+  taxAssumptionList: [
+    'Cost by FIFO: the oldest coins bought are sold first.',
+    'A buy fee is part of the cost; a sale fee reduces the proceeds.',
+    'Only Bitcoin sold for EUR on the loaded exchanges. A crypto-to-crypto swap is also a sale, but this data does not contain any.',
+    'Stocks and ETFs: the app has no checked rules for securities yet, so they are left out.',
+  ],
+  taxSources: 'Sources',
+  taxSourceLabels: ['Slovak tax office: 2026 tax rates', 'Slovak tax office: income from selling crypto-assets', 'Slovak tax office: filing duty for 2026', 'VšZP: changes from 1 Jan 2026 (16 %)'],
+  taxWithheld: 'Tax withheld on dividends at brokers',
   dataLead: 'Imports, assets you enter, encrypted saving and what would leave your device.',
 }
 
@@ -341,6 +413,8 @@ export function radarText(item: RadarItem, lang: Lang): { title: string; why: st
       return { title: sk ? `Hotovosť ${eur(v.eur)} tvorí ${pct(v.pct)} majetku.` : `Cash of ${eur(v.eur)} is ${pct(v.pct)} of your assets.`, why: sk ? 'Podiel hotovosti prekročil prah, ktorý ste nastavili.' : 'The cash share crossed the threshold you set.' }
     case 'own_wallet':
       return { title: sk ? `Bitcoin ste ${v.n}× vybrali z búrzy do vlastnej peňaženky.` : `You withdrew Bitcoin from the exchange to your own wallet ${v.n} times.`, why: sk ? 'Coiny vo vlastnej úschove počítame ako vaše, odpočítame len poplatok siete.' : 'Coins in your own custody count as yours; only the network fee is deducted.' }
+    case 'tax_due':
+      return { title: sk ? `Za rok ${v.year} je zisk z predajov Bitcoinu ${eur(v.eur)}.` : `Your gain from Bitcoin sales in ${v.year} is ${eur(v.eur)}.`, why: sk ? `Daňové priznanie typu B do ${F.date(String(v.date), lang)}. Odhad je na obrazovke Dane.` : `Type B return due ${F.date(String(v.date), lang)}. The estimate is on the Tax screen.` }
     case 'prices_stale':
       return { title: sk ? `Cenník je z ${F.date(String(v.date), lang)}.` : `The price file is from ${F.date(String(v.date), lang)}.`, why: sk ? 'Hodnoty pozícií môžu byť staršie ako tri dni.' : 'Holding values may be more than three days old.' }
     case 'missing_positions':

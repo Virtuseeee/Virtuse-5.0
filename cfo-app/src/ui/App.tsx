@@ -4,12 +4,13 @@ import { mergeAccount } from '../core/brokers'
 import { emptyProfile, type Profile } from '../core/model'
 import { overview } from '../core/portfolio'
 import { DEFAULT_RADAR, radarItems } from '../core/radar'
+import { upsertSnapshot } from '../core/history'
 import { annaProfile } from '../data/demo'
-import { AskPage, DashboardPage, DataPage, GoalsPage, PortfolioPage, RadarPage, ResearchPage, TransactionsPage, type Chat } from './pages'
+import { AskPage, DashboardPage, DataPage, GoalsPage, TaxPage, PortfolioPage, RadarPage, ResearchPage, TransactionsPage, type Chat } from './pages'
 import { BOOK, startPrice, type Mode } from './parts'
 import { app, type Page } from './strings-app'
 
-const PAGES: Page[] = ['dashboard', 'ask', 'research', 'radar', 'portfolio', 'transactions', 'goals', 'data']
+const PAGES: Page[] = ['dashboard', 'ask', 'research', 'radar', 'portfolio', 'transactions', 'tax', 'goals', 'data']
 const ICONS: Record<Page, string> = {
   dashboard: 'M3 3h7v7H3zM14 3h7v4h-7zM14 10h7v11h-7zM3 13h7v8H3z',
   ask: 'M4 5h16v11H8l-4 4z',
@@ -17,11 +18,12 @@ const ICONS: Record<Page, string> = {
   radar: 'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 12m-5 0a5 5 0 1 0 10 0a5 5 0 1 0-10 0M12 12l6-6',
   portfolio: 'M3 7h18v13H3zM8 7V4h8v3',
   transactions: 'M4 7h13l-3-3M20 17H7l3 3',
+  tax: 'M6 3h9l4 4v14H6zM14 3v5h5M9 13h6M9 17h6',
   goals: 'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0-18 0M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0-8 0M12 12h.01',
   data: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z',
 }
 
-export const PAGE_ACC: Record<Page, string> = { dashboard: 'orange', ask: 'purple', research: 'blue', radar: 'pink', portfolio: 'green', transactions: 'teal', goals: 'yellow', data: 'indigo' }
+export const PAGE_ACC: Record<Page, string> = { dashboard: 'orange', ask: 'purple', research: 'blue', radar: 'pink', portfolio: 'green', transactions: 'teal', tax: 'blue', goals: 'yellow', data: 'gray' }
 const SPOT = '.card, .kpi, .tmpl, .type-card, .how3-card'
 
 function readPrefs(): typeof DEFAULT_RADAR {
@@ -66,6 +68,15 @@ export function App() {
   useEffect(() => {
     document.documentElement.lang = lang
   }, [lang])
+  // One net-worth snapshot a day for own data, kept in the profile (encrypted with it).
+  useEffect(() => {
+    if (mode !== 'own' || o.assetsEur <= 0) return
+    const snap = { date: new Date().toISOString().slice(0, 10), netWorthEur: Math.round(o.netWorthEur), assetsEur: Math.round(o.assetsEur), liabilitiesEur: Math.round(o.liabilitiesEur) }
+    setOwn((p) => {
+      const next = upsertSnapshot(p.snapshots, snap)
+      return next === p.snapshots ? p : { ...p, snapshots: next }
+    })
+  }, [mode, o.netWorthEur, o.assetsEur, o.liabilitiesEur])
   // Cursor spotlight on cards, as on virtuse.com (site-v2.js): .pm only once the pointer really moved.
   useEffect(() => {
     let raf = 0
@@ -155,6 +166,7 @@ export function App() {
         {page === 'radar' && <RadarPage {...ctx} prefs={prefs} setPrefs={setPrefs} onCreate={(q) => askWith(q, 'radar')} />}
         {page === 'portfolio' && <PortfolioPage {...ctx} />}
         {page === 'transactions' && <TransactionsPage {...ctx} />}
+        {page === 'tax' && <TaxPage {...ctx} />}
         {page === 'goals' && <GoalsPage {...ctx} />}
         {page === 'data' && (
           <DataPage
