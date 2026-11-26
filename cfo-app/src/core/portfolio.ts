@@ -3,6 +3,7 @@
 
 import { ASSET_CLASSES, type AssetClass, type Profile } from './model'
 import { revalue, type PriceBook } from './prices'
+import { bankBalance } from './bank'
 
 export interface BitcoinFacts {
   /** BTC held: bought − sold − BTC fees + typed-in BTC. */
@@ -115,7 +116,7 @@ export function overview(profile: Profile, priceEur: number, book: PriceBook | n
     brokers.dividendsEur += b.dividendsEur
   }
   byClass.set('stocks', (byClass.get('stocks') ?? 0) + brokers.investedValueEur)
-  byClass.set('cash', (byClass.get('cash') ?? 0) + brokers.cashEur)
+  byClass.set('cash', (byClass.get('cash') ?? 0) + brokers.cashEur + Math.max(0, bankBalance(profile.banks)))
   const assetsEur = [...byClass.values()].reduce((s, v) => s + v, 0)
   const liabilitiesEur = profile.liabilities.reduce((s, l) => s + Math.max(0, l.balanceEur), 0)
   const allocation = ASSET_CLASSES.map((c) => {

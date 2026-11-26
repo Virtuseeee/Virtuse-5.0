@@ -6,6 +6,7 @@ import { importKrakenLedgers } from '../core/importers/kraken'
 import { mergeAccount } from '../core/brokers'
 import { parseCsv, parseRows } from '../core/csv'
 import { importXtb } from '../core/importers/xtb'
+import { importBank } from '../core/importers/bank'
 import { SAMPLES } from './samples'
 
 /** Illustrative EUR price used for "today" in demo mode. */
@@ -37,6 +38,16 @@ export function annaKrakenCsv(): string {
     lines.push(`"LEUR${i}","${ref}","${day} 09:12:33","trade","","currency","ZEUR","spot / main","-${spend.toFixed(4)}","${fee.toFixed(4)}","${eurBal.toFixed(4)}"`)
     btcBal += got
     lines.push(`"LBTC${i}","${ref}","${day} 09:12:33","trade","","currency","XXBT","spot / main","${got.toFixed(10)}","0.0000000000","${btcBal.toFixed(10)}"`)
+    // September 2026: she sells 0.015 BTC (shows up in the tax overview).
+    if (i === 32) {
+      const sold = 0.015
+      const eur = Math.round(sold * price * 100) / 100
+      const sfee = Math.round(eur * 0.004 * 100) / 100
+      btcBal -= sold
+      eurBal += eur - sfee
+      lines.push(`"LSB${i}","QSELL${i}","${y}-${m}-20 10:00:00","trade","","currency","XXBT","spot / main","-${sold.toFixed(10)}","0.0000000000","${btcBal.toFixed(10)}"`)
+      lines.push(`"LSE${i}","QSELL${i}","${y}-${m}-20 10:00:00","trade","","currency","ZEUR","spot / main","${eur.toFixed(4)}","${sfee.toFixed(4)}","${eurBal.toFixed(4)}"`)
+    }
     // Every 6th month the coins go to her own hardware wallet.
     if (i % 6 === 5) {
       const wfee = 0.00001
@@ -68,6 +79,7 @@ export function annaProfile(): Profile {
       { id: 'g3', name: 'Splatiť hypotéku', kind: 'debt_free', target: 0, startDebt: 120_000 },
     ],
     rules: [{ id: 'r1', kind: 'move', symbol: 'BTC', value: 5, text: 'BTC sa pohne o viac ako 5 % za deň' }],
+    banks: [{ ...importBank(parseRows(SAMPLES.bank), 'Bežný účet'), id: 'b1' }],
     brokers: [mergeAccount(importXtb(parseRows(SAMPLES.xtbPositions)), importXtb(parseRows(SAMPLES.xtbCash)))],
   }
 }

@@ -59,6 +59,18 @@ async function quote(symbol) {
   throw new Error(`no close for ${symbol}`)
 }
 
+async function btcMonthly() {
+  const r = await get('https://query1.finance.yahoo.com/v8/finance/chart/BTC-EUR?range=max&interval=1mo')
+  const res = (await r.json()).chart?.result?.[0]
+  const out = {}
+  const closes = res?.indicators?.quote?.[0]?.close ?? []
+  ;(res?.timestamp ?? []).forEach((t, i) => {
+    if (closes[i] != null) out[new Date(t * 1000).toISOString().slice(0, 7)] = Math.round(closes[i])
+  })
+  if (Object.keys(out).length < 24) throw new Error('BTC monthly history too short')
+  return out
+}
+
 const fx = await ecb()
 const instruments = []
 const failed = []
@@ -73,12 +85,16 @@ for (const ins of universe.instruments) {
 let previous = null
 try { previous = JSON.parse(readFileSync(out, 'utf8')) } catch {}
 // Keep the last known price for anything that failed this time.
-for (const p of previous?.instruments ?? []) {
+for (const p of previous?.prices?.instruments ?? []) {
   if (!instruments.some((i) => i.id === p.id) && universe.instruments.some((u) => u.id === p.id)) instruments.push({ ...p, stale: true })
 }
 if (instruments.length === 0) throw new Error('no prices at all')
 
+let monthly = previous?.btcMonthlyEur ?? {}
+try { monthly = await btcMonthly() } catch (e) { failed.push(`BTC monthly: ${e.message}`) }
+
 const book = {
+  btcMonthlyEur: monthly,
   builtAt: new Date().toISOString().slice(0, 16) + 'Z',
   fx: { source: 'ECB euro reference rates', date: fx.date, perEur: fx.rates },
   prices: { source: 'Yahoo Finance (last close)', instruments },

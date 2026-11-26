@@ -25,6 +25,8 @@ import { handleCheckout, handleReport, handleStripeWebhook } from './features/ve
 import { handleWithdraw } from './features/verdict-pay/withdraw.js';
 import { handleVerdict } from './features/verdict/handler.js';
 import { askClaude } from './features/verdict/model.js';
+import { handleCfoAsk } from './features/cfo-ask/handler.js';
+import { askCfoModel } from './features/cfo-ask/model.js';
 import { handleVersion } from './features/version/handler.js';
 import { handleVerdictStatus } from './features/verdict-pay/status.js';
 import { handleWaitlist } from './features/waitlist/handler.js';
@@ -56,6 +58,7 @@ function createServices(env, fetchImpl) {
       return ok ? null : json(403, { error: 'Please confirm you are not a robot and try again.', code: 'captcha', sitekey: TURNSTILE_SITEKEY }, origin);
     },
     verdictModel: { ask: (text, lang, profile) => askClaude(env, text, lang, profile) },
+    cfoModel: { ask: (question, facts, lang) => askCfoModel(env, question, facts, lang) },
   };
 }
 
@@ -118,6 +121,7 @@ const route = pipeline(
   postOnly,
   on(['POST'], '/send', handleSend),
   on(['POST'], '/verdict', handleVerdict),
+  on(['POST'], '/cfo/ask', handleCfoAsk),
   on(['POST'], '/verdict/checkout', handleCheckout),
   on(['POST'], '/verdict/report', handleReport),
   on(['POST'], '/verdict/withdraw', handleWithdraw),

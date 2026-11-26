@@ -49,3 +49,8 @@ export function money(n: number, currency: string, lang: Lang): string {
 export function qty(n: number, lang: Lang): string {
   return new Intl.NumberFormat(LOCALE[lang], { maximumFractionDigits: 6 }).format(n)
 }
+
+/** Compact euro for chart axes: "75 tis. €" / "€75k". */
+export function eurShort(n: number, lang: Lang): string {
+  return new Intl.NumberFormat(LOCALE[lang], { style: 'currency', currency: 'EUR', currencyDisplay: 'narrowSymbol', notation: 'compact', maximumFractionDigits: 0 }).format(n)
+}

@@ -6,7 +6,7 @@ import type { Profile } from './model'
 import { overview } from './portfolio'
 import type { PriceBook } from './prices'
 
-export type RuleKind = 'move' | 'share_above' | 'networth_below' | 'btc_fee_above' | 'cash_below'
+export type RuleKind = 'move' | 'share_above' | 'networth_below' | 'btc_fee_above' | 'cash_below' | 'expense_above'
 
 export interface Rule {
   id: string
@@ -43,6 +43,7 @@ export function parseRule(text: string, knownSymbols: string[]): Rule | null {
   if (n === null) return null
   const sym = knownSymbols.find((s) => new RegExp(`\\b${s.toLowerCase().replace('.', '\\.')}\\b`).test(q)) ?? (/\b(bitcoin|btc)\b/.test(q) ? 'BTC' : undefined)
   const base = { id: `r${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`, text: text.trim() }
+  if (/vydav|platb|expense|spend|payment/.test(q)) return { ...base, kind: 'expense_above', value: n }
   if (/poplat|fee/.test(q)) return { ...base, kind: 'btc_fee_above', value: n }
   if (/hotovost|cash|uspor/.test(q) && /pod|below|menej|less/.test(q)) return { ...base, kind: 'cash_below', value: n }
   if (/majet|net worth|worth/.test(q) && /pod|below|klesne|drops|falls/.test(q)) return { ...base, kind: 'networth_below', value: n }
@@ -51,7 +52,7 @@ export function parseRule(text: string, knownSymbols: string[]): Rule | null {
   return null
 }
 
-export function checkRules(rules: Rule[], profile: Profile, priceEur: number, book: PriceBook | null): RuleHit[] {
+export function checkRules(rules: Rule[], profile: Profile, priceEur: number, book: PriceBook | null, today = new Date().toISOString().slice(0, 10)): RuleHit[] {
   const o = overview(profile, priceEur, book)
   const rows = portfolioRows(profile, priceEur, book, o.assetsEur)
   const pick = (s?: string) => (s && s !== 'ANY' ? rows.filter((r) => r.symbol.toUpperCase() === s.toUpperCase()) : rows)
@@ -70,6 +71,13 @@ export function checkRules(rules: Rule[], profile: Profile, priceEur: number, bo
       case 'btc_fee_above':
         if (o.bitcoin.boughtEur > 0 && o.bitcoin.feePct >= rule.value) hits.push({ rule, actual: o.bitcoin.feePct })
         break
+      case 'expense_above': {
+        const from = new Date(Date.parse(today) - 31 * 86_400_000).toISOString().slice(0, 10)
+        for (const acc of profile.banks ?? []) for (const t of acc.txs) {
+          if (t.date >= from && t.amountEur < 0 && -t.amountEur >= rule.value && t.category !== 'transfers' && t.category !== 'investing') hits.push({ rule, actual: -t.amountEur, symbol: t.description.slice(0, 40) })
+        }
+        break
+      }
       case 'cash_below': {
         const cash = o.allocation.find((s) => s.assetClass === 'cash')?.valueEur ?? 0
         if (cash < rule.value) hits.push({ rule, actual: cash })
