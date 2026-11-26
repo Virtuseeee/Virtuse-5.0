@@ -50,6 +50,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--m
 .eyebrow i { width: 6px; height: 6px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 15%, transparent); }
 .k { font: 500 11px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
 .tag { font: 500 10px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 4px 9px; display: inline-block; }
+.tag.ai { color: var(--acc, #60a5fa); border-color: color-mix(in srgb, var(--acc, #60a5fa) 45%, transparent); margin-bottom: 8px; }
 .tag.warn { color: var(--orange); border-color: color-mix(in srgb, var(--orange) 45%, transparent); margin-bottom: 8px; }
 .grad { background: linear-gradient(90deg, #ffb347 0%, var(--orange) 40%, var(--blue) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 

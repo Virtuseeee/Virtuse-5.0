@@ -15,13 +15,15 @@ import { cashFlow, type Category } from './bank'
 
 export interface Answer {
   kind: 'answer' | 'advice' | 'unknown'
+  /** Written by the AI model from rounded totals (AI Act art. 50 label). */
+  ai?: boolean
   lines: string[]
   sources: string[]
 }
 
 const fold = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
 
-const ADVICE = /\b(kupit|kup|predat|predaj|mal by som|mala by som|oplati|investovat do|odporuc|poradi|kedy kupit|kam pojde|predpoved|bude rast|bude klesat|should i|buy|sell|worth it|recommend|forecast|will .* (go|rise|fall)|good time|hold or)\b/
+const ADVICE = /\b(kupit|kup|predat|predaj|mal by som|mala by som|oplati|investovat do|odporuc|poradi|kedy kupit|kam pojde|predpoved|bude rast|bude klesat|should i|(i|to|we) (buy|sell)|buy (more|now|some)|sell (my|now|some|all)|worth it|recommend|forecast|will .* (go|rise|fall)|good time|hold or|najlepsi|(je|bolo by) (teraz |to )?(dobry cas|rozumne)|odporucis|nemal(a)? by som|rebalanc|stoji za to|klesne|stupne|pravdepodobnost|which (broker|etf|stock|holding|exchange)|would it be (sensible|wise)|shouldn.?t i|better to (hold|buy|sell)|would you (buy|sell)|odds|in \d+ years|will the market|where will)\b/
 
 const has = (q: string, re: RegExp) => re.test(q)
 

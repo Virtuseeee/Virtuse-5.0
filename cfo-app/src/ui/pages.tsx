@@ -16,6 +16,8 @@ import { btcHistory, cutRange, type Range } from '../core/history'
 import { SK_SOURCES, skTaxYears } from '../core/tax-sk'
 import { LineChart } from './Chart'
 import { buildSummary } from '../core/upload'
+import { buildAiContext } from '../core/ai-context'
+import { aiEndpoint, askAi } from '../core/ai-client'
 import { BOOK, BrokersCard, CLASS_COLOR, Fact, ImportBox, ManualBox, PriceBox, VaultBox, type Mode } from './parts'
 import { strings } from './strings'
 import { app, radarText, type Page } from './strings-app'
@@ -335,17 +337,29 @@ export function AskPage({ lang, profile, price, o, mode: appMode, setProfile, pe
     return ask(question, profile, price, BOOK, lang)
   }
 
+  const endpoint = aiEndpoint(location.hostname)
+  const [waiting, setWaiting] = useState(false)
+
   function send(text: string, m: ComposerMode) {
     const question = text.trim()
-    if (!question) return
-    const msgs: ChatMsg[] = [{ role: 'user', text: question }, { role: 'cfo', text: '', answer: reply(question, m) }]
+    if (!question || waiting) return
+    const local = reply(question, m)
+    const useAi = m === 'chat' && local.kind === 'unknown' && !!endpoint
+    const msgs: ChatMsg[] = [{ role: 'user', text: question }, { role: 'cfo', text: '', answer: useAi ? { kind: 'answer', lines: [a.aiThinking], sources: [], ai: true } : local }]
+    const chatId = active?.id ?? `c${Date.now()}`
     if (active) {
-      setChats((cs) => cs.map((c) => (c.id === active.id ? { ...c, msgs: [...c.msgs, ...msgs] } : c)))
+      setChats((cs) => cs.map((c) => (c.id === chatId ? { ...c, msgs: [...c.msgs, ...msgs] } : c)))
     } else {
-      const id = `c${Date.now()}`
-      setChats((cs) => [{ id, title: question.slice(0, 48), msgs }, ...cs])
-      setActiveId(id)
+      setChats((cs) => [{ id: chatId, title: question.slice(0, 48), msgs }, ...cs])
+      setActiveId(chatId)
     }
+    if (!useAi || !endpoint) return
+    setWaiting(true)
+    askAi(endpoint, question, buildAiContext(profile, price, BOOK, new Date().toISOString().slice(0, 10)), lang).then((r) => {
+      const answer: Answer = r.ok ? r.answer : { ...local, lines: [...local.lines, r.reason === 'limit' ? a.aiLimit : r.reason === 'off' ? a.aiOff : a.aiError] }
+      setChats((cs) => cs.map((c) => (c.id === chatId ? { ...c, msgs: c.msgs.map((x, i) => (i === c.msgs.length - 1 && x.role === 'cfo' ? { ...x, answer } : x)) } : c)))
+      setWaiting(false)
+    })
   }
 
   const handled = useRef('')
@@ -388,11 +402,12 @@ export function AskPage({ lang, profile, price, o, mode: appMode, setProfile, pe
             ) : (
               <div key={i} className={`msg cfo ${m.answer?.kind}`}>
                 {m.answer?.kind === 'advice' && <span className="tag warn">{a.adviceTag}</span>}
+                {m.answer?.ai && <span className="tag ai" title={a.aiLabelLong}>{a.aiLabel}</span>}
                 {m.answer?.lines.map((l, j) => <p key={j}>{l}</p>)}
                 {!!m.answer?.sources.length && (
                   <div className="sources">
                     <span>{a.sources}:</span>
-                    {m.answer.sources.map((s) => <em key={s}>{s}</em>)}
+                    {m.answer.sources.map((s) => <em key={s}>{m.answer?.ai ? a.aiSources[s] ?? s : s}</em>)}
                   </div>
                 )}
               </div>
@@ -866,6 +881,7 @@ export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, on
   const t = strings(lang)
   const [note, setNote] = useState('')
   const summary = useMemo(() => buildSummary(profile, price, BOOK), [profile, price])
+  const aiFacts = useMemo(() => buildAiContext(profile, price, BOOK, new Date().toISOString().slice(0, 10)), [profile, price])
   return (
     <>
       <Head eyebrow={a.nav.data} title={a.titles.data} lead={a.dataLead} />
@@ -885,6 +901,9 @@ export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, on
         <p className="muted">{t.leavesLead}</p>
         <pre className="payload">{JSON.stringify(summary, null, 2)}</pre>
         <p className="muted small">{t.stays}</p>
+        <h3>{a.aiLeavesTitle}</h3>
+        <p className="muted">{a.aiLeavesLead}</p>
+        <pre className="payload">{JSON.stringify(aiFacts, null, 2)}</pre>
       </section>
       <footer className="foot">{t.foot}</footer>
     </>

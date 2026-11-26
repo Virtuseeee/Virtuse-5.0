@@ -57,6 +57,26 @@ The prototype bundles a snapshot. In production the file would be rebuilt daily 
 
 The only other network call is an optional live BTC/EUR request to CoinGecko.
 
+## AI CFO (phase 4, staging only)
+
+Ask your CFO first answers on the device (`src/core/ask.ts`). Questions about
+buying, selling, holding, timing or forecasts are refused there and never sent.
+Only a question the device marks `unknown` goes to the Worker's
+`POST /cfo/ask`, together with `buildAiContext()` (`src/core/ai-context.ts`):
+rounded totals, class shares, the last month's income and spending by
+category, tax-year totals and goal progress. No holding names or symbols,
+single transactions or their dates, account numbers or exact amounts.
+The Data page shows that exact object under "When you ask the AI CFO".
+
+- `src/core/ai-client.ts`: calls the Worker; only `staging.virtuse.com` and
+  localhost get an endpoint, production has none. 503 (switched off), 429
+  (limit) and network errors fall back to the local answer with a note.
+- AI answers carry the "AI answer" tag (AI Act art. 50); declines show as
+  "Out of scope".
+- `test/ai-contract.test.ts` checks that the categories, classes, goal and
+  debt kinds equal the Worker's lists, which reject anything else.
+- Eval: `cloudflare-worker/cfo-eval/` (see the Worker README).
+
 ## Layout
 
 - `src/core/` – trust layer, no network: model, CSV parser, importers, portfolio math, upload summary, vault. Planned to be published under AGPL.
