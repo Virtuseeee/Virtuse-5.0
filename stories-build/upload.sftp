@@ -430,6 +430,7 @@
 -mkdir public_html/sk/stories/zaujem-firiem-o-bitcoin-neprichadza-uz-prisiel
 -mkdir public_html/sk/stories/zavedie-argentina-bitcoin-ako-legalnu-menu-2
 -mkdir public_html/sk/stories/zhodnotenie-bitcoinu-je-neodvratne-rovnako-ako-aj-potreba-prerodu-sucasneho-financneho-sveta
+-mkdir public_html/sk/stories/ziadni-polobohovia-len-ai-naskok-ktory-rastie-kazdym-mesiacom
 -mkdir public_html/sk/stories/zlato-je-len-dymovy-detektor-bitcoin-je-unikova-cesta-preco-v-roku-2026-vitazi-matematika-nad-historiou
 -mkdir public_html/sk/stories/zlato-je-spat-a-proti-krize-uz-ma-spojenca-2
 -mkdir public_html/sk/stories/zosadenie-dolara-z-tronu-rezervnej-meny-sa-stava-skutocnostou
@@ -664,6 +665,7 @@ put sk/stories/zatial-co-oni-tlacia-biliony-vy-chudobniete-existuje-vsak-unikovy
 put sk/stories/zaujem-firiem-o-bitcoin-neprichadza-uz-prisiel/index.html public_html/sk/stories/zaujem-firiem-o-bitcoin-neprichadza-uz-prisiel/index.html
 put sk/stories/zavedie-argentina-bitcoin-ako-legalnu-menu-2/index.html public_html/sk/stories/zavedie-argentina-bitcoin-ako-legalnu-menu-2/index.html
 put sk/stories/zhodnotenie-bitcoinu-je-neodvratne-rovnako-ako-aj-potreba-prerodu-sucasneho-financneho-sveta/index.html public_html/sk/stories/zhodnotenie-bitcoinu-je-neodvratne-rovnako-ako-aj-potreba-prerodu-sucasneho-financneho-sveta/index.html
+put sk/stories/ziadni-polobohovia-len-ai-naskok-ktory-rastie-kazdym-mesiacom/index.html public_html/sk/stories/ziadni-polobohovia-len-ai-naskok-ktory-rastie-kazdym-mesiacom/index.html
 put sk/stories/zlato-je-len-dymovy-detektor-bitcoin-je-unikova-cesta-preco-v-roku-2026-vitazi-matematika-nad-historiou/index.html public_html/sk/stories/zlato-je-len-dymovy-detektor-bitcoin-je-unikova-cesta-preco-v-roku-2026-vitazi-matematika-nad-historiou/index.html
 put sk/stories/zlato-je-spat-a-proti-krize-uz-ma-spojenca-2/index.html public_html/sk/stories/zlato-je-spat-a-proti-krize-uz-ma-spojenca-2/index.html
 put sk/stories/zosadenie-dolara-z-tronu-rezervnej-meny-sa-stava-skutocnostou/index.html public_html/sk/stories/zosadenie-dolara-z-tronu-rezervnej-meny-sa-stava-skutocnostou/index.html
