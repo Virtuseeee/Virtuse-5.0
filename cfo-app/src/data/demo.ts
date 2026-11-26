@@ -62,6 +62,12 @@ export function annaProfile(): Profile {
     ],
     liabilities: [{ id: 'l1', name: 'Hypotéka', kind: 'mortgage', balanceEur: 96_000 }],
     // Her ETF account at XTB, from the two synthetic sample exports.
+    goals: [
+      { id: 'g1', name: '1 BTC', kind: 'btc', target: 1 },
+      { id: 'g2', name: 'Rezerva na 6 mesiacov', kind: 'cash', target: 24_000 },
+      { id: 'g3', name: 'Splatiť hypotéku', kind: 'debt_free', target: 0, startDebt: 120_000 },
+    ],
+    rules: [{ id: 'r1', kind: 'move', symbol: 'BTC', value: 5, text: 'BTC sa pohne o viac ako 5 % za deň' }],
     brokers: [mergeAccount(importXtb(parseRows(SAMPLES.xtbPositions)), importXtb(parseRows(SAMPLES.xtbCash)))],
   }
 }

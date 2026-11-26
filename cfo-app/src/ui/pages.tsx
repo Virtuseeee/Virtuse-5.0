@@ -8,6 +8,8 @@ import type { Profile } from '../core/model'
 import type { Overview } from '../core/portfolio'
 import { findInstrument } from '../core/prices'
 import { DEFAULT_RADAR, type RadarItem } from '../core/radar'
+import { checkRules, parseRule, type Rule } from '../core/rules'
+import { goalProgress, type Goal } from '../core/goals'
 import { buildSummary } from '../core/upload'
 import { BOOK, BrokersCard, CLASS_COLOR, Fact, ImportBox, ManualBox, PriceBox, VaultBox, type Mode } from './parts'
 import { strings } from './strings'
@@ -21,6 +23,7 @@ interface Ctx {
   radar: RadarItem[]
   go: (p: Page) => void
   mode: Mode
+  setProfile: (fn: (p: Profile) => Profile) => void
 }
 
 function Head({ title, lead, right }: { title: string; lead?: string; right?: React.ReactNode }) {
@@ -51,7 +54,7 @@ const dayClass = (n?: number) => (n === undefined ? '' : n > 0 ? 'up' : n < 0 ? 
 
 /* ------------------------------------------------------------- Dashboard */
 
-export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk }: Ctx & { onAsk: (q: string) => void }) {
+export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk, setup }: Ctx & { onAsk: (q: string) => void; setup: { chats: boolean; vault: boolean } }) {
   const a = app(lang)
   const t = strings(lang)
   const [q, setQ] = useState('')
@@ -64,6 +67,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk 
   return (
     <>
       <Head title={a.hello(mode === 'demo' ? 'Anna' : '')} lead={mode === 'demo' ? t.demoBanner : undefined} />
+      {mode === 'own' && <SetupCard lang={lang} go={go} done={[profile.txs.length > 0 || profile.brokers.length > 0, profile.manualAssets.length > 0 || profile.liabilities.length > 0, setup.chats, (profile.rules ?? []).length > 0, (profile.goals ?? []).length > 0, setup.vault]} />}
       {!hasData ? (
         <Empty lang={lang} go={go} />
       ) : (
@@ -183,6 +187,61 @@ function RadarRow({ item, lang }: { item: RadarItem; lang: Lang }) {
   )
 }
 
+function SetupCard({ lang, go, done }: { lang: Lang; go: (p: Page) => void; done: boolean[] }) {
+  const a = app(lang)
+  const pct = Math.round((done.filter(Boolean).length / done.length) * 100)
+  if (pct === 100) return null
+  const target: Page[] = ['data', 'data', 'ask', 'radar', 'goals', 'data']
+  return (
+    <section className="card setup">
+      <div className="setup-head">
+        <div>
+          <h2>{a.setupTitle(pct)}</h2>
+          <p className="muted small">{a.setupLead}</p>
+        </div>
+        <div className="ring" style={{ ['--p' as string]: pct }}><span>{pct} %</span></div>
+      </div>
+      <ul>
+        {a.setupSteps.map((step, i) => (
+          <li key={step} className={done[i] ? 'done' : ''}>
+            <span className="tick">{done[i] ? '✓' : '+'}</span>
+            {done[i] ? <span>{step}</span> : <button className="link plain" onClick={() => go(target[i])}>{step}</button>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------- Composer (shared) */
+
+type ComposerMode = 'chat' | 'radar'
+
+function Composer({ lang, onSend, mode, setMode, modes = ['chat', 'radar'], placeholder }: { lang: Lang; onSend: (q: string, m: ComposerMode) => void; mode: ComposerMode; setMode: (m: ComposerMode) => void; modes?: ComposerMode[]; placeholder?: string }) {
+  const a = app(lang)
+  const [q, setQ] = useState('')
+  return (
+    <form className="composer2" onSubmit={(e) => { e.preventDefault(); if (q.trim()) { onSend(q.trim(), mode); setQ('') } }}>
+      <textarea
+        value={q}
+        rows={2}
+        onChange={(e) => setQ(e.target.value)}
+        onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (q.trim()) { onSend(q.trim(), mode); setQ('') } } }}
+        placeholder={placeholder ?? (mode === 'radar' ? a.radarPh : a.askPlaceholder)}
+        aria-label={a.askTitle}
+      />
+      <div className="composer-bar">
+        {modes.length > 1 ? (
+          <div className="seg small-seg" role="group">
+            {modes.map((m) => <button type="button" key={m} className={m === mode ? 'on' : ''} onClick={() => setMode(m)}>{m === 'chat' ? a.modeChat : a.modeRadar}</button>)}
+          </div>
+        ) : <span />}
+        <button type="submit" className="send" aria-label={a.askSend}>↑</button>
+      </div>
+    </form>
+  )
+}
+
 /* ------------------------------------------------------------- Ask */
 
 export interface ChatMsg {
@@ -196,18 +255,29 @@ export interface Chat {
   msgs: ChatMsg[]
 }
 
-export function AskPage({ lang, profile, price, chats, setChats, pending, clearPending }: Ctx & { chats: Chat[]; setChats: (fn: (c: Chat[]) => Chat[]) => void; pending: string; clearPending: () => void }) {
+export function AskPage({ lang, profile, price, o, setProfile, chats, setChats, pending, pendingMode, clearPending }: Ctx & { chats: Chat[]; setChats: (fn: (c: Chat[]) => Chat[]) => void; pending: string; pendingMode: ComposerMode; clearPending: () => void }) {
   const a = app(lang)
   const [activeId, setActiveId] = useState<string | null>(chats[0]?.id ?? null)
-  const [q, setQ] = useState('')
+  const [mode, setMode] = useState<ComposerMode>(pendingMode)
+  const [filter, setFilter] = useState('')
   const end = useRef<HTMLDivElement>(null)
   const active = chats.find((c) => c.id === activeId) ?? null
+  const symbols = useMemo(() => portfolioRows(profile, price, BOOK, o.assetsEur).map((r) => r.symbol), [profile, price, o.assetsEur])
 
-  function send(text: string) {
+  function reply(question: string, m: ComposerMode): Answer {
+    if (m === 'radar') {
+      const rule = parseRule(question, symbols)
+      if (!rule) return { kind: 'unknown', lines: [a.ruleNotUnderstood], sources: [] }
+      setProfile((p) => ({ ...p, rules: [...(p.rules ?? []), rule] }))
+      return { kind: 'answer', lines: [a.ruleAdded(rule.text)], sources: [] }
+    }
+    return ask(question, profile, price, BOOK, lang)
+  }
+
+  function send(text: string, m: ComposerMode) {
     const question = text.trim()
     if (!question) return
-    const answer = ask(question, profile, price, BOOK, lang)
-    const msgs: ChatMsg[] = [{ role: 'user', text: question }, { role: 'cfo', text: '', answer }]
+    const msgs: ChatMsg[] = [{ role: 'user', text: question }, { role: 'cfo', text: '', answer: reply(question, m) }]
     if (active) {
       setChats((cs) => cs.map((c) => (c.id === active.id ? { ...c, msgs: [...c.msgs, ...msgs] } : c)))
     } else {
@@ -215,100 +285,113 @@ export function AskPage({ lang, profile, price, chats, setChats, pending, clearP
       setChats((cs) => [{ id, title: question.slice(0, 48), msgs }, ...cs])
       setActiveId(id)
     }
-    setQ('')
   }
 
+  const handled = useRef('')
   useEffect(() => {
-    if (pending) {
-      send(pending)
-      clearPending()
+    if (!pending) {
+      handled.current = ''
+      return
     }
+    if (handled.current === pending) return
+    handled.current = pending
+    setMode(pendingMode)
+    send(pending, pendingMode)
+    clearPending()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pending])
   useEffect(() => {
     end.current?.scrollIntoView({ block: 'end' })
   }, [active?.msgs.length])
 
+  const shown = chats.filter((c) => !filter || c.title.toLowerCase().includes(filter.toLowerCase()))
+
   return (
-    <>
-      <Head title={a.askTitle} lead={a.askLead} />
-      <section className="ask-layout">
-        <aside className="card chat-list">
-          <button className="ghost full" onClick={() => setActiveId(null)}>+ {a.newChat}</button>
+    <section className="ask-layout2">
+      <div className="chat2">
+        <div className="chat-top">
+          <h1>{a.askTitle}</h1>
+          <button className="ghost" onClick={() => setActiveId(null)}>+ {a.newChat}</button>
+        </div>
+        <div className="msgs">
+          {!active && (
+            <div className="chat-empty">
+              <p>{a.askLead}</p>
+              <p className="muted">{a.askNote}</p>
+              <div className="chips">{SUGGESTED[lang].map((s) => <button key={s} className="chip" onClick={() => send(s, 'chat')}>{s}</button>)}</div>
+            </div>
+          )}
+          {active?.msgs.map((m, i) =>
+            m.role === 'user' ? (
+              <div key={i} className="msg user">{m.text}</div>
+            ) : (
+              <div key={i} className={`msg cfo ${m.answer?.kind}`}>
+                {m.answer?.kind === 'advice' && <span className="tag warn">{a.adviceTag}</span>}
+                {m.answer?.lines.map((l, j) => <p key={j}>{l}</p>)}
+                {!!m.answer?.sources.length && (
+                  <div className="sources">
+                    <span>{a.sources}:</span>
+                    {m.answer.sources.map((s) => <em key={s}>{s}</em>)}
+                  </div>
+                )}
+              </div>
+            ),
+          )}
+          <div ref={end} />
+        </div>
+        <Composer lang={lang} onSend={send} mode={mode} setMode={setMode} />
+        <p className="disclaimer">{a.disclaimer}</p>
+      </div>
+      <aside className="history">
+        <h2>{a.history}</h2>
+        <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder={a.search} aria-label={a.search} />
+        {shown.length === 0 ? <p className="muted small">{a.noHistory}</p> : (
           <ul>
-            {chats.map((c) => (
+            {shown.map((c) => (
               <li key={c.id} className={c.id === activeId ? 'on' : ''}>
                 <button className="chat-title" onClick={() => setActiveId(c.id)}>{c.title || a.untitled}</button>
-                <button className="link" onClick={() => { setChats((cs) => cs.filter((x) => x.id !== c.id)); if (activeId === c.id) setActiveId(null) }}>{a.deleteChat}</button>
+                <button className="link" onClick={() => { setChats((cs) => cs.filter((x) => x.id !== c.id)); if (activeId === c.id) setActiveId(null) }} aria-label={a.deleteChat}>×</button>
               </li>
             ))}
           </ul>
-          <p className="muted small">{a.chatsNotSaved}</p>
-        </aside>
-        <div className="card chat">
-          <div className="msgs">
-            {!active && (
-              <div className="chat-empty">
-                <p className="muted">{a.askNote}</p>
-                <div className="chips">{SUGGESTED[lang].map((s) => <button key={s} className="chip" onClick={() => send(s)}>{s}</button>)}</div>
-              </div>
-            )}
-            {active?.msgs.map((m, i) =>
-              m.role === 'user' ? (
-                <div key={i} className="msg user">{m.text}</div>
-              ) : (
-                <div key={i} className={`msg cfo ${m.answer?.kind}`}>
-                  {m.answer?.kind === 'advice' && <span className="tag warn">{a.adviceTag}</span>}
-                  {m.answer?.lines.map((l, j) => <p key={j}>{l}</p>)}
-                  {!!m.answer?.sources.length && (
-                    <div className="sources">
-                      <span>{a.sources}:</span>
-                      {m.answer.sources.map((s) => <em key={s}>{s}</em>)}
-                    </div>
-                  )}
-                </div>
-              ),
-            )}
-            <div ref={end} />
-          </div>
-          <form className="composer" onSubmit={(e) => { e.preventDefault(); send(q) }}>
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={a.askPlaceholder} aria-label={a.askTitle} />
-            <button type="submit">{a.askSend}</button>
-          </form>
-        </div>
-      </section>
-    </>
+        )}
+        <p className="muted small">{a.chatsNotSaved}</p>
+      </aside>
+    </section>
   )
 }
 
 /* ------------------------------------------------------------- Research */
 
-export function ResearchPage({ lang, profile, price, o, go }: Ctx) {
+export function ResearchPage({ lang, profile, price, o, topics, setTopics }: Ctx & { topics: string[]; setTopics: (fn: (t: string[]) => string[]) => void }) {
   const a = app(lang)
   const rows = useMemo(() => portfolioRows(profile, price, BOOK, o.assetsEur), [profile, price, o.assetsEur])
   const priced = rows
     .map((r) => ({ r, ins: r.symbol === 'BTC' ? BOOK.prices.instruments.find((i) => i.id === 'BTC') ?? null : findInstrument({ symbol: r.symbol }, BOOK) }))
     .filter((x) => x.ins)
   const [sel, setSel] = useState(0)
-  const [topic, setTopic] = useState('')
-  const [topics, setTopics] = useState<string[]>([])
+  const [tab, setTab] = useState<'ideas' | 'reports'>('ideas')
+  const [mode, setMode] = useState<ComposerMode>('chat')
   const cur = priced[Math.min(sel, priced.length - 1)]
+  const add = (q: string) => { setTopics((t) => [q, ...t]); setTab('reports') }
 
   return (
     <>
-      <Head title={app(lang).nav.research} lead={a.researchLead} />
-      <section className="card">
-        <h2>{a.newTopic}</h2>
-        <form className="row" onSubmit={(e) => { e.preventDefault(); if (topic.trim()) { setTopics((t) => [topic.trim(), ...t]); setTopic('') } }}>
-          <input value={topic} onChange={(e) => setTopic(e.target.value)} placeholder={a.newTopicPh} aria-label={a.newTopic} />
-          <button type="submit" className="ghost">{a.addTopic}</button>
-        </form>
-        <p className="muted small">{a.newTopicNote}</p>
-        {topics.length > 0 && <ul className="items">{topics.map((x, i) => <li key={i} className="two"><span>{x}</span><em>{a.queued}</em></li>)}</ul>}
+      <section className="research-hero">
+        <h1>{a.researchHero}</h1>
+        <p className="muted">{a.researchSub}</p>
+        <Composer lang={lang} onSend={(q) => add(q)} mode={mode} setMode={setMode} modes={['chat']} placeholder={a.newTopicPh} />
+        <div className="seg tabs">
+          <button className={tab === 'ideas' ? 'on' : ''} onClick={() => setTab('ideas')}>{a.suggested}</button>
+          <button className={tab === 'reports' ? 'on' : ''} onClick={() => setTab('reports')}>{a.reports}{topics.length ? ` (${topics.length})` : ''}</button>
+        </div>
+        {tab === 'ideas' ? (
+          <ul className="idea-list">{a.researchIdeas.map((x) => <li key={x}><button className="plain-row" onClick={() => add(x)}>{x}</button></li>)}</ul>
+        ) : topics.length === 0 ? <p className="muted small">{a.noReports}</p> : (
+          <ul className="idea-list">{topics.map((x, i) => <li key={i} className="report-row"><span>{x}</span><em>{a.queued}</em></li>)}</ul>
+        )}
       </section>
-      {priced.length === 0 ? (
-        <div className="card empty-state"><p className="muted">{a.noInstruments}</p><button onClick={() => go('data')}>{a.emptyCta}</button></div>
-      ) : (
+      {priced.length > 0 && (
         <section className="research">
           <aside className="card inst-list">
             <h2>{a.yourInstruments}</h2>
@@ -347,8 +430,22 @@ export function ResearchPage({ lang, profile, price, o, go }: Ctx) {
 
 /* ------------------------------------------------------------- Radar */
 
-export function RadarPage({ lang, radar, prefs, setPrefs }: Ctx & { prefs: typeof DEFAULT_RADAR; setPrefs: (p: typeof DEFAULT_RADAR) => void }) {
+function ruleLine(rule: Rule, actual: number | undefined, symbol: string | undefined, lang: Lang): string {
+  if (actual === undefined) return rule.text
+  const sk = lang === 'sk'
+  switch (rule.kind) {
+    case 'move': return sk ? `${symbol}: ${signed(actual, lang)} za deň` : `${symbol}: ${signed(actual, lang)} in a day`
+    case 'share_above': return sk ? `${symbol} tvorí ${F.pct(actual, lang)} majetku` : `${symbol} is ${F.pct(actual, lang)} of assets`
+    case 'networth_below': return sk ? `Čistý majetok ${F.eur(actual, lang)}` : `Net worth ${F.eur(actual, lang)}`
+    case 'btc_fee_above': return sk ? `Poplatky ${F.pct(actual, lang, 2)} z nákupov` : `Fees ${F.pct(actual, lang, 2)} of buys`
+    case 'cash_below': return sk ? `Hotovosť ${F.eur(actual, lang)}` : `Cash ${F.eur(actual, lang)}`
+  }
+}
+
+export function RadarPage({ lang, profile, price, radar, prefs, setPrefs, setProfile, onCreate }: Ctx & { prefs: typeof DEFAULT_RADAR; setPrefs: (p: typeof DEFAULT_RADAR) => void; onCreate: (q: string) => void }) {
   const a = app(lang)
+  const rules = profile.rules ?? []
+  const hits = useMemo(() => checkRules(rules, profile, price, BOOK), [rules, profile, price])
   const fields: [keyof typeof DEFAULT_RADAR, string, number][] = [
     ['movePct', a.moveTh, 0.5],
     ['feePct', a.feeTh, 0.1],
@@ -357,10 +454,54 @@ export function RadarPage({ lang, radar, prefs, setPrefs }: Ctx & { prefs: typeo
   ]
   return (
     <>
-      <Head title={a.radarTitle} lead={a.radarLead} />
+      <Head title={a.radarTitle} lead={a.radarLead} right={<button onClick={() => onCreate('')}>{a.create} +</button>} />
+      <section className="how3">
+        {a.radarHow.map(([h, p], i) => (
+          <div key={h} className="card how3-card">
+            <span className="step-n">{i + 1}</span>
+            <h3>{h}</h3>
+            <p className="muted small">{p}</p>
+          </div>
+        ))}
+      </section>
+
       <section className="radar-layout">
-        <div className="card">
-          {radar.length === 0 ? <p className="muted">{a.radarEmpty}</p> : <ul className="radar-list">{radar.map((r) => <RadarRow key={r.id} item={r} lang={lang} />)}</ul>}
+        <div>
+          <div className="card">
+            <h2>{a.yourRules}</h2>
+            {rules.length === 0 ? <p className="muted small">{a.noRules}</p> : (
+              <ul className="rule-list">
+                {rules.map((r) => {
+                  const own = hits.filter((h) => h.rule.id === r.id)
+                  return (
+                    <li key={r.id}>
+                      <div>
+                        <p>{r.text}</p>
+                        {own.map((h, i) => <p key={i} className="small hit">● {ruleLine(r, h.actual, h.symbol, lang)}</p>)}
+                      </div>
+                      <span className={`lvl ${own.length ? 'watch' : ''}`}>{own.length ? a.ruleHit : a.ruleQuiet}</span>
+                      <button className="link" onClick={() => setProfile((p) => ({ ...p, rules: (p.rules ?? []).filter((x) => x.id !== r.id) }))}>{a.remove}</button>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
+          </div>
+          <div className="card">
+            <h2>{a.templates}</h2>
+            <div className="tmpl-grid">
+              {a.ruleTemplates.map(([k, text]) => (
+                <button key={text} className="tmpl" onClick={() => onCreate(text)}>
+                  <b>{k}</b>
+                  <span>{text}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="card">
+            <h2>{a.autoFeed}</h2>
+            {radar.length === 0 ? <p className="muted">{a.radarEmpty}</p> : <ul className="radar-list">{radar.map((r) => <RadarRow key={r.id} item={r} lang={lang} />)}</ul>}
+          </div>
         </div>
         <aside className="card">
           <h2>{a.settings}</h2>
@@ -385,12 +526,16 @@ export function RadarPage({ lang, radar, prefs, setPrefs }: Ctx & { prefs: typeo
 export function PortfolioPage({ lang, profile, price, o, go }: Ctx) {
   const a = app(lang)
   const t = strings(lang)
+  const [tab, setTab] = useState(0)
   const rows = useMemo(() => portfolioRows(profile, price, BOOK, o.assetsEur), [profile, price, o.assetsEur])
   const basisLabel = (r: PortfolioRow) => (r.basis === 'btc' ? a.basisBtc : t.basis[r.basis])
   return (
     <>
-      <Head title={a.nav.portfolio} lead={a.portfolioLead} />
-      {rows.length === 0 ? <Empty lang={lang} go={go} /> : (
+      <Head title={a.nav.portfolio} lead={a.portfolioLead} right={<button onClick={() => go('data')}>+ {a.addAssetType}</button>} />
+      <div className="tabs-line">
+        {a.tabsPortfolio.map((x, i) => <button key={x} className={i === tab ? 'on' : ''} onClick={() => setTab(i)}>{x}</button>)}
+      </div>
+      {tab === 0 && (rows.length === 0 ? <Empty lang={lang} go={go} /> : (
         <section className="card table-card">
           <table>
             <thead>
@@ -411,8 +556,90 @@ export function PortfolioPage({ lang, profile, price, o, go }: Ctx) {
             </tbody>
           </table>
         </section>
+      ))}
+      {tab === 1 && (profile.brokers.length > 0 ? <BrokersCard lang={lang} accounts={profile.brokers} book={BOOK} /> : <Empty lang={lang} go={go} />)}
+      {tab === 2 && (
+        <>
+          <section className="card">
+            {profile.manualAssets.length === 0 ? <p className="muted small">{a.noManual}</p> : (
+              <ul className="items">
+                {profile.manualAssets.map((m) => <li key={m.id} className="two"><span>{m.name}<small className="basis">{t.classes[m.assetClass]}</small></span><b>{F.eur(m.valueEur, lang)}</b></li>)}
+              </ul>
+            )}
+          </section>
+          <section className="card">
+            <h2>{a.addAssetType}</h2>
+            <div className="type-grid">
+              {a.assetTypes.map(([h, p]) => (
+                <button key={h} className="type-card" onClick={() => go('data')}>
+                  <b>{h}</b>
+                  <span>{p}</span>
+                </button>
+              ))}
+            </div>
+          </section>
+        </>
       )}
-      {profile.brokers.length > 0 && <BrokersCard lang={lang} accounts={profile.brokers} book={BOOK} />}
+      {tab === 3 && (
+        <section className="card">
+          <div className="lrow strong"><span>{a.allLiabilities}</span><b>{F.eur(o.liabilitiesEur, lang)}</b></div>
+          <ul className="items">
+            {profile.liabilities.map((l) => <li key={l.id} className="two"><span>{l.name}<small className="basis">{t.debtKinds[l.kind]}</small></span><b className="down">−{F.eur(l.balanceEur, lang)}</b></li>)}
+          </ul>
+        </section>
+      )}
+    </>
+  )
+}
+
+/* ------------------------------------------------------------- Goals */
+
+export function GoalsPage({ lang, profile, price, setProfile }: Ctx) {
+  const a = app(lang)
+  const goals = profile.goals ?? []
+  const progress = useMemo(() => goalProgress(goals, profile, price, BOOK), [goals, profile, price])
+  const [name, setName] = useState('')
+  const [kind, setKind] = useState<Goal['kind']>('net_worth')
+  const [target, setTarget] = useState('')
+  const fmt = (g: Goal, n: number) => (g.kind === 'btc' ? F.btc(n, lang) : F.eur(n, lang))
+  return (
+    <>
+      <Head title={a.nav.goals} lead={a.goalsLead} />
+      {progress.length === 0 ? <div className="card empty-state"><p className="muted">{a.noGoals}</p></div> : (
+        <section className="goal-grid">
+          {progress.map((p) => (
+            <div key={p.goal.id} className="card goal">
+              <div className="card-head">
+                <h2>{p.goal.name}</h2>
+                <button className="link" onClick={() => setProfile((x) => ({ ...x, goals: (x.goals ?? []).filter((g) => g.id !== p.goal.id) }))}>{a.remove}</button>
+              </div>
+              <p className="muted small">{a.goalKinds[p.goal.kind]}</p>
+              <div className="progress"><span style={{ width: `${p.pct}%` }} /></div>
+              <div className="lrow">
+                <span>{p.goal.kind === 'debt_free' ? `${fmt(p.goal, p.current)}` : `${fmt(p.goal, p.current)} ${a.goalOf} ${fmt(p.goal, p.target)}`}</span>
+                <b>{p.done ? a.goalDone : F.pct(p.pct, lang, 0)}</b>
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
+      <section className="card">
+        <h2>{a.addGoal}</h2>
+        <form className="row" onSubmit={(e) => {
+          e.preventDefault()
+          const v = Number(target)
+          if (!name.trim() || (kind !== 'debt_free' && !(v > 0))) return
+          setProfile((p) => ({ ...p, goals: [...(p.goals ?? []), { id: `g${Date.now()}`, name: name.trim(), kind, target: kind === 'debt_free' ? 0 : v, startDebt: kind === 'debt_free' ? p.liabilities.reduce((s, l) => s + l.balanceEur, 0) : undefined }] }))
+          setName(''); setTarget('')
+        }}>
+          <input placeholder={a.goalName} value={name} onChange={(e) => setName(e.target.value)} aria-label={a.goalName} />
+          <select value={kind} onChange={(e) => setKind(e.target.value as Goal['kind'])} aria-label={a.goalTarget}>
+            {Object.entries(a.goalKinds).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+          </select>
+          {kind !== 'debt_free' && <input type="number" min={0} step="any" placeholder={a.goalTarget} value={target} onChange={(e) => setTarget(e.target.value)} aria-label={a.goalTarget} />}
+          <button type="submit">{a.addGoal}</button>
+        </form>
+      </section>
     </>
   )
 }
@@ -454,7 +681,8 @@ export function TransactionsPage({ lang, profile }: Ctx) {
 
 /* ------------------------------------------------------------- Data & privacy */
 
-export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, onBroker }: Ctx & {
+export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, onBroker, onVaultSaved }: Ctx & {
+  onVaultSaved: () => void
   setPrice: (n: number) => void
   own: Profile
   setOwn: (fn: (p: Profile) => Profile) => void
@@ -475,7 +703,7 @@ export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, on
           <ImportBox lang={lang} onTxs={(txs) => setOwn((p) => ({ ...p, txs }))} onBroker={onBroker} onNote={setNote} />
           {note && <p className="note" role="status">{note}</p>}
           <ManualBox lang={lang} profile={own} setProfile={setOwn} />
-          <VaultBox lang={lang} profile={own} onOpen={(p) => setOwn(() => p)} />
+          <VaultBox lang={lang} profile={own} onOpen={(p) => setOwn(() => p)} onSaved={onVaultSaved} />
         </>
       )}
       <section className="card">

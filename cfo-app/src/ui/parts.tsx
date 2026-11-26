@@ -240,7 +240,7 @@ export function ManualBox({ lang, profile, setProfile }: { lang: Lang; profile: 
   )
 }
 
-export function VaultBox({ lang, profile, onOpen }: { lang: Lang; profile: Profile; onOpen: (p: Profile) => void }) {
+export function VaultBox({ lang, profile, onOpen, onSaved }: { lang: Lang; profile: Profile; onOpen: (p: Profile) => void; onSaved?: () => void }) {
   const t = strings(lang)
   const [pass, setPass] = useState('')
   const [msg, setMsg] = useState('')
@@ -251,7 +251,7 @@ export function VaultBox({ lang, profile, onOpen }: { lang: Lang; profile: Profi
       <div className="row">
         <input type="password" autoComplete="new-password" placeholder={t.passphrase} value={pass} onChange={(e) => setPass(e.target.value)} aria-label={t.passphrase} />
         <button onClick={async () => {
-          try { saveSealed(await seal(profile, pass)); setMsg(t.saved) } catch { setMsg(t.shortPass) }
+          try { saveSealed(await seal(profile, pass)); setMsg(t.saved); onSaved?.() } catch { setMsg(t.shortPass) }
         }}>{t.save}</button>
         <button className="ghost" onClick={async () => {
           const s = loadSealed()

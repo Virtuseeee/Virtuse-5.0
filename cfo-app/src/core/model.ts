@@ -5,6 +5,8 @@
 // open source later: raw rows, addresses and transaction ids stay here.
 
 import type { BrokerAccount } from './brokers'
+import type { Goal } from './goals'
+import type { Rule } from './rules'
 
 export type AssetClass =
   | 'bitcoin'
@@ -70,6 +72,9 @@ export interface Profile {
   liabilities: Liability[]
   /** Broker accounts from XTB, IBKR, Trading 212 exports. One per broker. */
   brokers: BrokerAccount[]
+  /** Goals and Radar rules the user set. Optional for older saved vaults. */
+  goals?: Goal[]
+  rules?: Rule[]
 }
 
 export function emptyProfile(label = ''): Profile {
