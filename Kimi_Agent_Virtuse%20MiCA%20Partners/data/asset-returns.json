@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26T04:17:53.573Z",
+ "generated": "2026-11-26T12:31:27.191Z",
  "asOf": "2026-11-26",
  "years": [
   2016,
@@ -27,9 +27,9 @@
   "2023": 1.10682,
   "2024": 1.04062,
   "2025": 1.17473,
-  "2026": 1.09637
+  "2026": 1.09745
  },
- "yearsElapsed": 10.9049,
+ "yearsElapsed": 10.9058,
  "source": "Yahoo Finance adjusted close (total return, dividends reinvested), in USD. EUR-listed ETFs converted with EUR/USD; the page converts every row to EUR on request.",
  "rows": [
   {
@@ -46,10 +46,10 @@
     1.5542,
     1.2105,
     -0.0634,
-    -0.3045
+    -0.3085
    ],
-   "cumulative": 140.3509,
-   "annualized": 0.5747
+   "cumulative": 139.5482,
+   "annualized": 0.5738
   },
   {
    "ticker": "DBC",
@@ -448,10 +448,10 @@
     0.1092,
     -0.0434,
     0.1379,
-    -0.0884
+    -0.0816
    ],
-   "cumulative": -0.0147,
-   "annualized": -0.0014
+   "cumulative": -0.0073,
+   "annualized": -0.0007
   },
   {
    "ticker": "EUN5",
@@ -468,10 +468,10 @@
     0.116,
     -0.0164,
     0.1629,
-    -0.0756
+    -0.0693
    ],
-   "cumulative": 0.1331,
-   "annualized": 0.0115
+   "cumulative": 0.1409,
+   "annualized": 0.0122
   }
  ]
 }
