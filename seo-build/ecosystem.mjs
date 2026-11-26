@@ -90,7 +90,9 @@ const fmtDate = (iso, l) => new Date(iso + 'T12:00:00Z').toLocaleDateString(LOCA
 // EN -> language links from the v2 chrome (same 51 links in the same order in every language).
 const LINKMAP = {};
 // Internal links only: external ones (e.g. the LinkedIn link in the EN/SK footer) are not localised.
-const chromeHrefs = (l) => (CHROME[l].nav + CHROME[l].foot).match(/href="(\/[^"{]*)"/g).map((h) => h.slice(6, -1).replace(/&amp;/g, '&'));
+// The glossary links exist in EN and SK only (i18n-tools/nav_glossary.py), so they are left out of the count.
+const chromeHrefs = (l) => (CHROME[l].nav + CHROME[l].foot).match(/href="(\/[^"{]*)"/g).map((h) => h.slice(6, -1).replace(/&amp;/g, '&'))
+  .filter((h) => !/^\/(sk\/bitcoin-slovnik|bitcoin-glossary)\/$/.test(h));
 for (const l of ALL_LANGS) {
   const en = chromeHrefs('en'), xx = chromeHrefs(l);
   if (en.length !== xx.length) throw new Error(`chrome link count differs for ${l}`);

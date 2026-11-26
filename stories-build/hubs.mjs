@@ -305,7 +305,23 @@ export function applyStoryExtras(html, info, template) {
       `      ${follow}\n    </nav>`);
   }
   h = h.replaceAll('rastislav-ras-vasilisin', 'rastislav-vasilisin');
+  h = glossaryNote(h, storyPath, root);
   return localizeStatic(h, lang, root, info.deskId);
+}
+
+// The old generic crypto glossary story points readers to the Bitcoin glossary (seo-build/glossary.mjs,
+// handover 2026-11-26). The note sits above the body, so article.js re-rendering the body keeps it.
+const GL_START = '<!-- gl-note:start -->', GL_END = '<!-- gl-note:end -->';
+const GLOSSARY_NOTES = {
+  'stories/most-comprehensive-guide-to-cryptocurrency-terms/':
+    'This is an older, general crypto glossary. For Bitcoin, EU rules (MiCA, DAC8, Travel Rule), tax and macro terms with official sources, see the <a href="{root}bitcoin-glossary/">Bitcoin glossary</a>.'
+};
+function glossaryNote(h, storyPath, root) {
+  h = h.replace(new RegExp(`\\s*${reEsc(GL_START)}[\\s\\S]*?${reEsc(GL_END)}`), '');
+  const text = GLOSSARY_NOTES[storyPath];
+  if (!text) return h;
+  const note = `${GL_START}<p class="story-note" style="border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 16px;margin:0 0 20px">${text.replace('{root}', root)}</p>${GL_END}`;
+  return must(h, /(<div class="story-body" id="articleBody")/, (m, a) => `${note}\n        ${a}`, 'gl-note');
 }
 
 // Story bodies embed images from other hosts (giphy, medium, cloudfront, satosi.sk ...), while the

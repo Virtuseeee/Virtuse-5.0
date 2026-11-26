@@ -121,6 +121,7 @@ TEXT = {
     "See the rules": "Pozrieť pravidlá",
     "Virtuse Brief. Bitcoin and the macro that moves it. No tokens. No PR.": "Virtuse Brief. Bitcoin a makro, ktoré ním hýbe. Žiadne tokeny. Žiadne PR.",
     "Archive": "Archív",
+    "Glossary": "Slovník",
     "Privacy policy": "Ochrana osobných údajov",
     "Terms": "Podmienky",
     "Unsubscribe": "Odhlásiť sa",
@@ -241,6 +242,8 @@ def main():
         page = path.split("?")[0].split("#")[0]
         if page in SK_PAGES:
             return f'{attr}="/sk/{path}"'
+        if page == "bitcoin-glossary/":  # Slovak glossary (seo-build/glossary.mjs)
+            return f'{attr}="/sk/bitcoin-slovnik/{path[len("bitcoin-glossary/"):]}"'
         if page == "stories/":
             return f'{attr}="/sk/stories/{path[len("stories/"):]}"'
         if path == "":

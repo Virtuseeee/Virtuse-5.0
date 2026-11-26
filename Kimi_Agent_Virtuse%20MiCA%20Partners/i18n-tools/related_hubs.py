@@ -69,6 +69,13 @@ CLUSTER = {
 HUB_KEYS_LANG = {
     ('retirement', 'en'): ['mr', 'wma', 'y2025', 'stacking', 'fvb', 'concierge'],
     ('retirement', 'sk'): ['mr', 'wma', 'stacking', 'fvb', 'news', 'concierge'],
+    # Bitcoin glossary (SEO Bod E): only en and sk have it, so only their pages get a fifth card.
+    ('bitcoin-data', 'en'): ['monthly', 'news', 'stories', 'retirement', 'glossary'],
+    ('bitcoin-data', 'sk'): ['monthly', 'news', 'stories', 'retirement', 'glossary'],
+    ('tax-agent', 'en'): ['taxguide', 'loan', 'inheritance', 'concierge', 'glossary'],
+    ('tax-agent', 'sk'): ['taxguide', 'loan', 'inheritance', 'concierge', 'glossary'],
+    ('secure', 'en'): ['inheritance', 'taxagent', 'concierge', 'treasury', 'glossary'],
+    ('secure', 'sk'): ['inheritance', 'taxagent', 'concierge', 'treasury', 'glossary'],
 }
 
 
@@ -206,7 +213,12 @@ MONTHLY_DEK = {
     'uk': 'Прибутковість Біткоїна за кожен місяць від 2010 року.',
     'ru': 'Доходность Биткоина за каждый месяц с 2010 года.',
 }
+GLOSSARY = {
+    'en': ('Bitcoin glossary', 'Plain definitions, EU rules, tax and macro, with sources.'),
+    'sk': ('Bitcoin slovník', 'Pojmy zrozumiteľne, pravidlá EÚ, dane a makro, so zdrojmi.'),
+}
 EXTRA = {
+    'glossary': GLOSSARY,
     'news': NEWS, 'stories': STORIES, 'inheritance': INHERIT, 'treasury': TREASURY,
     'tax': TAXCAT,
 }
@@ -279,6 +291,8 @@ def href_of(key, L):
         return _page(L, 'ma-200w.html')
     if key == 'y2025':
         return '/bitcoin-returns/2025/'
+    if key == 'glossary':
+        return '/sk/bitcoin-slovnik/' if L == 'sk' else '/bitcoin-glossary/'
     if key == 'fvb':
         return '/sk/fondy-vs-bitcoin.html' if L == 'sk' else '/funds-vs-bitcoin.html'
     files = {

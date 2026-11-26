@@ -91,6 +91,9 @@ def tighten(html, page_path):
     # here, not at module load, so build_lang -> csp_tight does not cycle.
     import related_hubs
     html = related_hubs.apply(html, page_path)
+    # Bitcoin glossary link in the Learn menu + footer, EN/SK only (nav_glossary.py).
+    import nav_glossary
+    html = nav_glossary.apply(html, page_path)
     m = CSP_RE.search(html)
     if not m or skipped(html):
         return html

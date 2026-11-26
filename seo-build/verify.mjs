@@ -441,6 +441,46 @@ for (const [name, html] of [['EN czechia', cz], ['DE tschechien', tschechien], [
 if (!checaEs.includes('bitcoin-tax/czechia') || !checaEs.includes('fr/bitcoin-fiscalite/tchequie')) fail('ES republica-checa missing EN/FR hreflang');
 if (/\d [%€]/.test(stripTags(checaEs))) fail('ES republica-checa has a plain space before % or €');
 
+// Bitcoin glossary (seo-build/glossary.mjs): sources, no tax rates, hreflang en/sk only, JSON-LD = visible text.
+{
+  const G = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/glossary.json'), 'utf8'));
+  const n = G.terms.length;
+  if (n < 45 || n > 60) fail(`glossary has ${n} terms (want 45-60)`);
+  for (const t of G.terms) {
+    if (['eu', 'tax', 'macro'].includes(t.cat) && !(t.sources && t.sources.length && t.checked)) fail(`glossary ${t.id}: ${t.cat} term without sources/checked`);
+  }
+  const langs = Object.keys(G.paths);
+  for (const l of langs) {
+    const rel = G.paths[l];
+    const html = fs.readFileSync(path.join(SITE, rel), 'utf8');
+    const url = `${ORIGIN}/${rel.replace(/index\.html$/, '')}`;
+    const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
+    const desc = attr(html, /<meta name="description" content="([^"]*)"/);
+    if (title.length > 60) fail(`${rel} title > 60`);
+    if (!desc || desc.length > 155) fail(`${rel} description missing or > 155`);
+    if (!html.includes(`<link rel="canonical" href="${url}">`)) fail(`${rel} canonical`);
+    if (!html.includes('<meta name="robots" content="index, follow">')) fail(`${rel} not index, follow`);
+    const hl = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/g)].map((m) => m[1]).sort().join(' ');
+    if (hl !== [...langs, 'x-default'].sort().join(' ')) fail(`${rel} hreflang ${hl} (want ${langs.join(' ')} x-default)`);
+    for (const x of langs) if (!html.includes(`hreflang="${x}" href="${ORIGIN}/${G.paths[x].replace(/index\.html$/, '')}"`)) fail(`${rel} missing hreflang ${x}`);
+    const terms = (html.match(/class="pcard2 [a-z]+ gl-term"/g) || []).length;
+    if (terms !== n) fail(`${rel}: ${terms} terms rendered, data has ${n}`);
+    for (const t of G.terms) if (!html.includes(`id="${t.id}"`)) fail(`${rel} missing anchor #${t.id}`);
+    const ld = JSON.parse((html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/) || [])[1] || '{}');
+    const set = (ld['@graph'] || []).find((x) => x['@type'] === 'DefinedTermSet');
+    if (!set || set.hasDefinedTerm.length !== n) fail(`${rel} DefinedTermSet missing or incomplete`);
+    const defs = [...html.matchAll(/<p class="gl-def">([^<]*)<\/p>/g)].map((m) => m[1].replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
+    for (const d of set ? set.hasDefinedTerm : []) if (!defs.includes(d.description)) fail(`${rel} JSON-LD description differs from visible text: ${d['@id']}`);
+    for (const m of html.matchAll(/<article class="pcard2 [a-z]+ gl-term" id="[^"]+" data-cat="tax"[\s\S]*?<p class="gl-def">([^<]*)<\/p>/g)) if (/%/.test(m[1])) fail(`${rel}: tax rate in the glossary`);
+    if (html.includes('sk/bitcoin-dane/cesko/dac8')) fail(`${rel} links sk/bitcoin-dane/cesko/dac8 (does not exist)`);
+    if (html.replaceAll("location.hostname!=='staging.virtuse.com'", '').includes('staging.virtuse.com')) fail(`${rel} contains staging.virtuse.com`);
+    if (!/<script src="\/glossary\.js\?v=\d+" defer><\/script>/.test(html)) fail(`${rel} missing glossary.js`);
+    if (!sitemap.includes(`<loc>${url}</loc>`)) fail(`sitemap missing ${url}`);
+  }
+  if (!sitemap.includes('<!-- GLOSSARY:START -->')) fail('sitemap missing GLOSSARY block');
+  for (const f of ['llms.txt', 'llms-full.txt']) if (!fs.readFileSync(path.join(SITE, f), 'utf8').includes(`${ORIGIN}/bitcoin-glossary/`)) fail(`${f} missing the glossary`);
+}
+
 // Determinism: second generate should not change bytes of one page
 const before = fs.readFileSync(path.join(SITE, 'bitcoin-dca-calculator/index.html'));
 const { spawnSync } = await import('node:child_process');
