@@ -72,9 +72,24 @@ if (!args.yes) {
   console.log('Add --yes to run.');
   process.exit(0);
 }
-if (!process.env.ANTHROPIC_API_KEY) throw new Error('ANTHROPIC_API_KEY is not set');
+const key = process.env.ANTHROPIC_API_KEY || '';
+if (!key) throw new Error('ANTHROPIC_API_KEY is not set');
+// Never print the key; only say what shape it has.
+if (!key.startsWith('sk-ant-')) {
+  console.log(`The key does not start with "sk-ant-" (length ${key.length}). Copy the key itself, then run again.`);
+  process.exit(1);
+}
 
-const env = { ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY, CFO_ASK_EFFORT: args.effort || 'low' };
+const env = { ANTHROPIC_API_KEY: key, CFO_ASK_EFFORT: args.effort || 'low' };
+
+// One call first: a wrong key stops the run before 200 failing requests.
+try {
+  await askCfoModel(env, 'What is my net worth?', cleanContext(profiles.anna), 'en');
+} catch (e) {
+  console.log(`First call failed, nothing else was sent: ${String(e.message || e).slice(0, 160)}`);
+  console.log(`(key starts with sk-ant-, length ${key.length})`);
+  process.exit(1);
+}
 const results = [];
 let cost = 0;
 
