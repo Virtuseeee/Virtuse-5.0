@@ -87,8 +87,12 @@ export function cleanQuestion(q) {
   return redact(t.slice(0, MAX_QUESTION));
 }
 
+// A sentence that only points the person to a tax adviser is not advice, even
+// when it says "odporúčame" / "we recommend". Every other banned phrase counts.
+const REFERRAL = /(da[nň]ov\p{L}* poradc|poradc\p{L}* pre dane|tax (adviser|advisor|professional))/iu;
+const REFERRAL_WORDS = [/odporúč/i, /\brecommend/i, /\bwe recommend\b/i];
 export function adviceInAnswer(lines) {
-  return lines.some((t) => BANNED.some((re) => re.test(t)));
+  return lines.some((t) => BANNED.some((re) => re.test(t) && !(REFERRAL.test(t) && REFERRAL_WORDS.some((w) => w.source === re.source))));
 }
 
 export const SCHEMA = {
@@ -123,7 +127,7 @@ What you never do (the app is not licensed for investment advice under MiCA / Mi
 - Say or suggest what to buy, sell, hold, rebalance, borrow, move, or when to do it.
 - Judge a choice as good, bad, right, safe, risky, better or best.
 - Forecast prices, returns or markets.
-- Give personal tax or legal advice beyond the stated facts; for tax, point to the Tax screen estimate and a tax adviser.
+- Give personal tax or legal advice beyond the stated facts; for tax, point to the Tax screen estimate and say they can check it with a tax adviser (write "overte si to u daňového poradcu" / "check it with a tax adviser", not "we recommend").
 If the question asks for any of these, set kind to "decline" and in lines say briefly that you only show facts about their own numbers, then offer one related fact you can show.
 
 Output: JSON matching the schema. lines = at most 5 short sentences in ${language}, each under 30 words, plain words, numbers written as in ${lang === 'sk' ? 'Slovak (1 234 €, 5,2 %)' : 'English (€1,234, 5.2%)'}. sources = the keys of <facts> you used, or "general" for an explanation not based on their numbers.`;
