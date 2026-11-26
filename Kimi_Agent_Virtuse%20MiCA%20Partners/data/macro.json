@@ -1,45 +1,45 @@
 {
- "generated": "2026-11-25T04:59:21.621Z",
+ "generated": "2026-11-26T04:17:57.296Z",
  "quotes": {
   "gold": {
-   "value": 3548.1,
-   "prev": 3561.9,
-   "change_pct": -0.39,
-   "date": "2026-11-25",
+   "value": 3605.9,
+   "prev": 3535.8,
+   "change_pct": 1.98,
+   "date": "2026-11-26",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/GC%3DF"
   },
-  "eurusd": {
-   "value": 1.0948,
-   "prev": 1.0908,
-   "change_pct": 0.37,
-   "date": "2026-11-25",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
-  },
-  "spx": {
-   "value": 7201.09,
-   "prev": 7237.17,
-   "change_pct": -0.5,
-   "date": "2026-11-24",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
-  },
   "brent": {
-   "value": 87.48,
-   "prev": 91.4,
-   "change_pct": -4.29,
-   "date": "2026-11-25",
+   "value": 91.11,
+   "prev": 94.61,
+   "change_pct": -3.7,
+   "date": "2026-11-26",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
+  "eurusd": {
+   "value": 1.0964,
+   "prev": 1.0962,
+   "change_pct": 0.01,
+   "date": "2026-11-26",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+  },
   "us10y": {
-   "value": 4.904,
-   "prev": 4.918,
-   "change_pct": -0.28,
-   "date": "2026-11-24",
+   "value": 4.848,
+   "prev": 4.904,
+   "change_pct": -1.14,
+   "date": "2026-11-25",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5ETNX"
+  },
+  "spx": {
+   "value": 7182.78,
+   "prev": 7201.09,
+   "change_pct": -0.25,
+   "date": "2026-11-25",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
   }
  },
  "inflation": {
@@ -74,38 +74,11 @@
   }
  },
  "central_banks": {
-  "boe": {
-   "rate": "4.00%",
-   "low": 4,
-   "high": 4,
-   "date": "2026-11-23",
-   "last_move": {
-    "dir": "up",
-    "bp": 25,
-    "date": "2026-11-05",
-    "effective": true,
-    "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
-   },
-   "label": "Bank Rate",
-   "source": "Bank of England",
-   "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
-   "next_meeting": "2026-12-17",
-   "calendar_url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
-   "expects": {
-    "scenario": "Hike 25 bp",
-    "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 76,
-    "meeting": "2026-12-17",
-    "as_of": "2026-11-25",
-    "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
-   }
-  },
   "fed": {
    "rate": "3.75–4.00%",
    "low": 3.75,
    "high": 4,
-   "date": "2026-11-23",
+   "date": "2026-11-24",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -121,38 +94,38 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 91,
+    "prob": 93,
     "meeting": "2026-12-09",
-    "as_of": "2026-11-25",
+    "as_of": "2026-11-26",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxfeddecision"
    }
   },
-  "boj": {
-   "rate": "1.25%",
-   "low": 1.25,
-   "high": 1.25,
-   "date": "2026-11-23",
+  "boe": {
+   "rate": "4.00%",
+   "low": 4,
+   "high": 4,
+   "date": "2026-11-24",
    "last_move": {
     "dir": "up",
     "bp": 25,
-    "date": "2026-09-24",
+    "date": "2026-11-05",
     "effective": true,
-    "source_url": "https://www.boj.or.jp/en/mopo/mpmdeci/index.htm"
+    "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate"
    },
-   "label": "Policy rate (overnight call rate target)",
-   "source": "Bank of Japan",
-   "source_url": "https://www.boj.or.jp/en/mopo/index.htm",
-   "next_meeting": "2026-12-18",
-   "calendar_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
+   "label": "Bank Rate",
+   "source": "Bank of England",
+   "source_url": "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate",
+   "next_meeting": "2026-12-17",
+   "calendar_url": "https://www.bankofengland.co.uk/monetary-policy/upcoming-mpc-dates",
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 87,
-    "meeting": "2026-12-18",
-    "as_of": "2026-11-25",
+    "prob": 78,
+    "meeting": "2026-12-17",
+    "as_of": "2026-11-26",
     "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
+    "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
    }
   },
   "ecb": {
@@ -177,9 +150,36 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 96,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-25",
+    "as_of": "2026-11-26",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
+   }
+  },
+  "boj": {
+   "rate": "1.25%",
+   "low": 1.25,
+   "high": 1.25,
+   "date": "2026-11-24",
+   "last_move": {
+    "dir": "up",
+    "bp": 25,
+    "date": "2026-09-24",
+    "effective": true,
+    "source_url": "https://www.boj.or.jp/en/mopo/mpmdeci/index.htm"
+   },
+   "label": "Policy rate (overnight call rate target)",
+   "source": "Bank of Japan",
+   "source_url": "https://www.boj.or.jp/en/mopo/index.htm",
+   "next_meeting": "2026-12-18",
+   "calendar_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/index.htm",
+   "expects": {
+    "scenario": "Hike 25 bp",
+    "scenario_sk": "Zvýšenie o 25 bp",
+    "prob": 80,
+    "meeting": "2026-12-18",
+    "as_of": "2026-11-26",
+    "source": "Kalshi prediction market",
+    "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
    }
   }
  },
