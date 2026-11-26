@@ -145,9 +145,9 @@
   "2026-08": 67609,
   "2026-09": 73765,
   "2026-10": 69141,
-  "2026-11": 55491
+  "2026-11": 55181
  },
- "builtAt": "2026-11-26T09:46Z",
+ "builtAt": "2026-11-26T11:16Z",
  "fx": {
   "source": "ECB euro reference rates",
   "date": "2026-11-25",
@@ -199,9 +199,9 @@
      "VWRA",
      "VWCE.MI"
     ],
-    "price": 163.12,
+    "price": 163,
     "prevClose": 158.72,
-    "changePct": 2.77,
+    "changePct": 2.7,
     "currency": "EUR",
     "date": "2026-11-26"
    },
@@ -215,9 +215,9 @@
      "VGWL.DE",
      "VWRL.NL"
     ],
-    "price": 157.58,
+    "price": 157.36,
     "prevClose": 153.42,
-    "changePct": 2.71,
+    "changePct": 2.57,
     "currency": "EUR",
     "date": "2026-11-26"
    },
@@ -233,9 +233,9 @@
      "IWDA.NL",
      "SWDA"
     ],
-    "price": 125.495,
+    "price": 125.375,
     "prevClose": 122.24,
-    "changePct": 2.66,
+    "changePct": 2.56,
     "currency": "EUR",
     "date": "2026-11-26"
    },
@@ -251,9 +251,9 @@
      "CSPX.L",
      "CSP1"
     ],
-    "price": 709.86,
+    "price": 709.56,
     "prevClose": 690.04,
-    "changePct": 2.87,
+    "changePct": 2.83,
     "currency": "EUR",
     "date": "2026-11-26"
    },
@@ -268,9 +268,9 @@
      "VUSA.L",
      "VUSA.DE"
     ],
-    "price": 124.642,
+    "price": 124.58,
     "prevClose": 121.157,
-    "changePct": 2.88,
+    "changePct": 2.83,
     "currency": "EUR",
     "date": "2026-11-26"
    },
@@ -284,9 +284,9 @@
      "EQQQ.L",
      "EQQQ.UK"
     ],
-    "price": 582.4,
+    "price": 581.3,
     "prevClose": 558.9,
-    "changePct": 4.2,
+    "changePct": 4.01,
     "currency": "EUR",
     "date": "2026-11-26"
    },
@@ -298,9 +298,9 @@
      "XDWD",
      "XDWD.DE"
     ],
-    "price": 137.34,
+    "price": 137.22,
     "prevClose": 133.785,
-    "changePct": 2.66,
+    "changePct": 2.57,
     "currency": "EUR",
     "date": "2026-11-26"
    },
@@ -315,9 +315,9 @@
      "IS3N.DE",
      "EIMI.UK"
     ],
-    "price": 42.374,
+    "price": 42.249,
     "prevClose": 40.723,
-    "changePct": 4.05,
+    "changePct": 3.75,
     "currency": "EUR",
     "date": "2026-11-26"
    },
@@ -386,9 +386,9 @@
      "ASML.NL",
      "ASML.AS"
     ],
-    "price": 1162.4,
+    "price": 1164,
     "prevClose": 1131.6,
-    "changePct": 2.72,
+    "changePct": 2.86,
     "currency": "EUR",
     "date": "2026-11-26"
    },
@@ -399,9 +399,9 @@
      "BTC",
      "XBT"
     ],
-    "price": 55491.2617,
+    "price": 55181.4805,
     "prevClose": 55037.9297,
-    "changePct": 0.82,
+    "changePct": 0.26,
     "currency": "EUR",
     "date": "2026-11-26"
    }
