@@ -12,7 +12,9 @@
 //     must not be older than SOURCE_MAX_AGE_DAYS;
 //  2. only with checkProdCopy: the copy on virtuse.com/data/ must not be more than
 //     PROD_LAG_MAX_DAYS behind main (today it is 10 days behind: off by default);
-//  3. the Pulse (Worker /pulse.json or KV): same rule as features/brief-health;
+//  3. the Pulse (Worker /pulse.json or KV): brief-health's rule, measured at the latest
+//     06:40 UTC (the cron time) and not at "now", so a run later in the day does not fail
+//     on a Pulse that arrived on time;
 //  4. the Pulse fallback news/news-pulse.json on virtuse.com: a note when older
 //     than PULSE_FALLBACK_NOTE_DAYS;
 //  5. funds-vs-bitcoin.json (manual file): a note with its age only.
@@ -40,6 +42,14 @@ export const DAILY_FILES = [
 const FUNDS = { file: 'funds-vs-bitcoin.json', fields: ['asOf'] };
 
 const DAY = 864e5;
+const PULSE_DUE_UTC_MIN = 6 * 60 + 40; // 06:40 UTC, the cron (wrangler.toml)
+
+// The latest 06:40 UTC at or before `now`.
+export function pulseReference(now) {
+  const d = new Date(now);
+  const t = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) + PULSE_DUE_UTC_MIN * 6e4;
+  return t <= now ? t : t - DAY;
+}
 const UA = { 'User-Agent': 'virtuse-data-freshness', Accept: 'application/json' };
 
 // Today's calendar date in Bratislava (YYYY-MM-DD), the same zone news.js uses.
@@ -116,7 +126,16 @@ export async function dataFreshnessProblems({ fetchImpl, now, checkProdCopy = fa
       problems.push(`Pulse: ${PULSE_URL} could not be read (${e.message}).`);
     }
   }
-  if (raw !== null || pulseRaw !== undefined) problems.push(...pulseProblems(raw, now));
+  if (raw !== null || pulseRaw !== undefined) {
+    const ref = pulseReference(now);
+    let updated = '';
+    try { updated = JSON.parse(raw)?.updated || ''; } catch { /* pulseProblems reports it */ }
+    for (const p of pulseProblems(raw, ref)) {
+      problems.push(p.startsWith('Pulse: last published')
+        ? `Pulse: last published ${updated}; the ${new Date(ref).toISOString().slice(0, 10)} publish had not arrived by 06:40 UTC.`
+        : p);
+    }
+  }
 
   // 4: Pulse fallback on the server (used when the Worker does not answer within 3 s).
   try {

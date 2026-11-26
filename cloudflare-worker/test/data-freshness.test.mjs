@@ -79,7 +79,16 @@ test('Pulse older than 4 h is a problem (read from the Worker when no KV value i
   const { fetchImpl } = site({ pulse: JSON.stringify({ updated: '2026-11-25T05:51:21Z', items: [{ title: 'a', title_sk: 'a' }] }) });
   const { problems } = await dataFreshnessProblems({ fetchImpl, now: NOW });
   assert.equal(problems.length, 1);
-  assert.match(problems[0], /^Pulse: last published 24\.8 h ago/);
+  assert.match(problems[0], /^Pulse: last published 2026-11-25T05:51:21Z; the 2026-11-26 publish had not arrived by 06:40 UTC\.$/);
+});
+
+test('Pulse is judged at 06:40 UTC: a later run passes on time, an early run uses yesterday', async () => {
+  const { fetchImpl } = site();
+  const late = await dataFreshnessProblems({ fetchImpl, now: Date.parse('2026-11-26T15:00:00Z') });
+  assert.deepEqual(late.problems, []);
+  const yday = site({ pulse: JSON.stringify({ updated: '2026-11-25T05:40:00Z', items: [{ title: 'a', title_sk: 'a' }] }) });
+  const early = await dataFreshnessProblems({ fetchImpl: yday.fetchImpl, now: Date.parse('2026-11-26T05:00:00Z') });
+  assert.deepEqual(early.problems, []);
 });
 
 test('Pulse endpoint down is one problem, not two', async () => {
