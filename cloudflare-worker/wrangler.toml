@@ -17,8 +17,8 @@ compatibility_date = "2026-08-14"
 # The webhook emails the buyer a confirmation with the report PDF via Resend
 # (RESEND_API_KEY, RESEND_SEND_FROM; reply-to RESEND_REPLY_TO or info@virtuse.com).
 # DATA_ALERT_TO: recipient of the data freshness check (src/features/data-freshness/); the code
-# sends only to vasilisin@virtuse.com and to nobody else. CHECK_PROD_COPY: also compare the
-# copies on virtuse.com/data/ with GitHub main; "0" until Ras decides how data reaches production.
+# sends only to vasilisin@virtuse.com and to nobody else. CHECK_PROD_COPY "0": the copies on
+# virtuse.com/data/ are "last deployed" (Ras chose option C, 2026-11-26), so their lag is a note only.
 vars = { VERDICT_ENABLED = "0", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_PAYMENTS = "1", STRIPE_AUTOMATIC_TAX = "1", STRIPE_INVOICE = "1", DATA_ALERT_TO = "vasilisin@virtuse.com", CHECK_PROD_COPY = "0" }
 
 # Daily Brief health check (src/features/brief-health/) and data freshness check

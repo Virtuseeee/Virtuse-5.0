@@ -3,7 +3,8 @@
 //
 // Recipient: only DATA_ALERT_TO, and only when it is exactly ALERT_TO below. There is
 // no fallback: a missing or different value sends nothing and only logs the problems.
-// The production copy check is off unless CHECK_PROD_COPY is "1" or "true".
+// The production copy is a note (option C, 2026-11-26); CHECK_PROD_COPY "1" or "true"
+// makes its lag a problem again.
 // Never throws.
 
 import { dataFreshnessProblems } from './checks.js';

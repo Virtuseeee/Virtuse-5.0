@@ -55,7 +55,7 @@ Bitcoin kaufen in Österreich (DE): https://virtuse.com/de/bitcoin-kaufen/oester
 ## Bitcoin data (updated daily)
 
 - Bitcoin vs gold, silver and commodities: YTD, 1, 5 and 10-year returns, every year since 2016, BTC/gold ratio (10 languages, e.g. https://virtuse.com/sk/bitcoin-vs-gold.html): https://virtuse.com/bitcoin-vs-gold.html
-- Data behind it (JSON): https://virtuse.com/data/bitcoin-vs-commodities.json
+- Data behind it (JSON, updated daily): https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json
 - Asset class returns since 2016: https://virtuse.com/asset-returns.html
 - Bitcoin data dashboard: https://virtuse.com/bitcoin-data.html
 

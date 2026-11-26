@@ -5217,7 +5217,7 @@ ${Object.values(BUY_COUNTRY).map((pg) => `${pg.h1} (${pg.lang.toUpperCase()}): $
 ## Bitcoin data (updated daily)
 
 - Bitcoin vs gold, silver and commodities: YTD, 1, 5 and 10-year returns, every year since 2016, BTC/gold ratio (10 languages, e.g. ${ORIGIN}/sk/bitcoin-vs-gold.html): ${ORIGIN}/bitcoin-vs-gold.html
-- Data behind it (JSON): ${ORIGIN}/data/bitcoin-vs-commodities.json
+- Data behind it (JSON, updated daily): https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json
 - Asset class returns since 2016: ${ORIGIN}/asset-returns.html
 - Bitcoin data dashboard: ${ORIGIN}/bitcoin-data.html
 

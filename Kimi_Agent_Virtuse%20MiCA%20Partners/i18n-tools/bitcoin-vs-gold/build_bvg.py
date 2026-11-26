@@ -238,7 +238,7 @@ def build(L):
          'dateModified': DATA['asOf'], 'temporalCoverage': '2016-01-01/..',
          'variableMeasured': ['Bitcoin', 'Gold', 'Silver', 'WTI crude oil', 'Copper', 'Platinum', 'Commodities basket', 'BTC/gold ratio', 'BTC/silver ratio'],
          'creator': {'@id': ORIGIN + '/#org'}, 'isAccessibleForFree': True, 'inLanguage': L,
-         'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': ORIGIN + '/data/bitcoin-vs-commodities.json'}]},
+         'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': RAW}]},
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
     # OG image: own Slovak image, every other language the English one (og/README in i18n-tools/bitcoin-vs-gold/og)
     og_file = 'bitcoin-vs-gold-sk.jpg' if L == 'sk' else 'bitcoin-vs-gold.jpg'

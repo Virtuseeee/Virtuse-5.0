@@ -48,7 +48,7 @@
 
     { "id": "dca", "cat": "markets", "links": { "en": ["/bitcoin-dca-calculator/", "/stacking.html"], "sk": ["/sk/bitcoin-dca-kalkulacka/", "/sk/stacking.html"] }, "see": ["drawdown"] },
     { "id": "drawdown", "cat": "markets", "links": { "en": ["/verdict.html", "/btc-monthly-returns.html"], "sk": ["/sk/verdict.html", "/sk/btc-monthly-returns.html"] },
-      "sources": [{ "url": "https://virtuse.com/data/btc-monthly-returns.json", "title": "Virtuse data: Bitcoin month-end closes (CoinMetrics)" }], "checked": "2026-11-26", "see": ["dca", "200-week-ma"] },
+      "sources": [{ "url": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/btc-monthly-returns.json", "title": "Virtuse data: Bitcoin month-end closes (CoinMetrics)" }], "checked": "2026-11-26", "see": ["dca", "200-week-ma"] },
     { "id": "spot-bitcoin-etf", "cat": "markets", "links": { "en": ["/news.html"], "sk": ["/sk/news.html"] },
       "sources": [{ "url": "https://www.sec.gov/news/statement/gensler-statement-spot-bitcoin-011023", "title": "SEC Chair statement, 10 January 2024" }], "checked": "2026-11-26", "see": ["bitcoin-etp", "custodian"] },
     { "id": "bitcoin-etp", "cat": "markets", "links": { "en": ["/buy-bitcoin.html"], "sk": ["/sk/buy-bitcoin.html"] }, "see": ["spot-bitcoin-etf", "self-custody"] },

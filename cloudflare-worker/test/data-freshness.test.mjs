@@ -65,11 +65,11 @@ test('a missing date field and an HTTP error are problems', async () => {
   assert.ok(problems.some((p) => /btc-treasuries\.json on GitHub main could not be read \(HTTP 503\)/.test(p)));
 });
 
-test('production copy 10 days behind: reported only with checkProdCopy', async () => {
-  const { fetchImpl, calls } = site({ prod: TEN_DAYS_OLD });
+test('production copy 10 days behind: a note by default (option C), a problem with checkProdCopy', async () => {
+  const { fetchImpl } = site({ prod: TEN_DAYS_OLD });
   const off = await dataFreshnessProblems({ fetchImpl, now: NOW });
   assert.deepEqual(off.problems, []);
-  assert.equal(calls.filter((c) => c.url.startsWith('https://virtuse.com/data/')).length, 0);
+  assert.ok(off.notes.some((n) => /^Production copies .*asset-returns\.json 10 days, bitcoin-vs-commodities\.json 10 days, .*macro\.json 10 days behind GitHub main\.$/.test(n)));
   const on = await dataFreshnessProblems({ fetchImpl, now: NOW, checkProdCopy: true });
   assert.equal(on.problems.length, 5);
   assert.ok(on.problems.every((p) => /^Production copy: .* is from 2026-11-16, 10 days behind GitHub main \(2026-11-26\)/.test(p)));

@@ -1,7 +1,9 @@
 # Data freshness: why the copies on virtuse.com go stale, and options (2026-11-26)
 
-Analysis only. Nothing in this PR uploads to production; the choice between the options is Ras's
-(open question 1 in the handover `handover_data_freshness.md`).
+Nothing in this PR uploads to production.
+
+**Decision (Ras, 26 Nov 2026): option C.** The copies in `virtuse.com/data/` stay "last deployed";
+nothing should depend on them. What was changed for it is in section 6.
 
 Checked on `origin/main` `36009cfcb` (26 Nov 2026, 05:19 UTC), re-checked after rebase on `aa7a490bd`,
 and on the live sites on 26 Nov 2026 between 09:00 and 10:40 UTC.
@@ -95,3 +97,22 @@ check prints the file's age as a note only, and the page shows no note.
 - With `CHECK_PROD_COPY` off (default): 0 problems; 2 notes (Pulse fallback 16 days, funds 20 days).
 - With it on: the five production copies, 9–10 days behind. That is why it stays off until option A–D is
   chosen; otherwise the alert would arrive every day with nothing to do about it.
+
+## 6. Option C, applied in this PR
+
+- **JSON-LD `contentUrl`** of the Dataset on the 10 `bitcoin-vs-gold` pages, the 28 `bitcoin-returns/`
+  pages and `btc-monthly-returns.html` (+ its `legacy/src`) now points to GitHub main
+  (`raw.githubusercontent.com/…/data/<file>.json`; builders `build_bvg.py`, `build_returns.py` changed with
+  them). Raw serves the file as `text/plain`; the Dataset keeps `encodingFormat: application/json`.
+- **`llms.txt`** ("Data behind it") and the **glossary** source link (EN + SK, `seo-build/data/glossary.json`)
+  point to the same GitHub URL. `node seo-build/generate.mjs` reproduces every other page; `verify.mjs` passes.
+- **`funds-vs-bitcoin.json` unchanged**: it has no workflow and is deployed by hand together with its page, so
+  the copy on virtuse.com is the current one.
+- **Page fallback unchanged** (GitHub raw first, then the page's own copy). Adding staging in between was
+  considered and left out: staging is GitHub Pages, so it fails together with raw GitHub, and the page's own
+  copy now shows a visible note with its date when it is old (bod 2a).
+- **Daily check:** the production copy's lag is a note in the report, not an alert (`CHECK_PROD_COPY` stays
+  `"0"`; it turns the lag back into a problem if option A or B is ever chosen).
+- **Outside this repo:** the Tweet CRM (`/workspace/tweet-crm/crm.py:338` and `:465`) still reads
+  `virtuse.com/data/…json`. Under option C it must read GitHub main first (handover bod 4, point 1, for the
+  Grok bot); until then its drafts carry 10-day-old numbers.

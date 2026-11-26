@@ -10,8 +10,10 @@
 // What it compares:
 //  1. the five daily data files on GitHub main (the source the pages read first)
 //     must not be older than SOURCE_MAX_AGE_DAYS;
-//  2. only with checkProdCopy: the copy on virtuse.com/data/ must not be more than
-//     PROD_LAG_MAX_DAYS behind main (today it is 10 days behind: off by default);
+//  2. the copy on virtuse.com/data/ against main. Ras chose option C (2026-11-26): nothing
+//     reads that copy any more except a page's last-resort fallback, so it is only "last
+//     deployed" and a lag is a note. With checkProdCopy (CHECK_PROD_COPY) a lag over
+//     PROD_LAG_MAX_DAYS is a problem again, for a future option A or B;
 //  3. the Pulse (Worker /pulse.json or KV): brief-health's rule, measured at the latest
 //     06:40 UTC (the cron time) and not at "now", so a run later in the day does not fail
 //     on a Pulse that arrived on time;
@@ -91,7 +93,8 @@ export async function dataFreshnessProblems({ fetchImpl, now, checkProdCopy = fa
   const problems = [];
   const notes = [];
 
-  // 1 + 2: daily files, source on GitHub, then optionally the production copy.
+  // 1 + 2: daily files, source on GitHub, then the production copy.
+  const lagging = [];
   for (const spec of DAILY_FILES) {
     const src = await readDay(fetchImpl, RAW, spec);
     if (src.error) {
@@ -102,16 +105,20 @@ export async function dataFreshnessProblems({ fetchImpl, now, checkProdCopy = fa
     if (age > SOURCE_MAX_AGE_DAYS) {
       problems.push(`Source: ${spec.file} on GitHub main is from ${src.day} (${age} days old, limit ${SOURCE_MAX_AGE_DAYS}); the daily data Action is not updating it.`);
     }
-    if (!checkProdCopy) continue;
     const prod = await readDay(fetchImpl, PROD, spec);
     if (prod.error) {
-      problems.push(`Production copy: virtuse.com/data/${spec.file} ${prod.error}.`);
+      if (checkProdCopy) problems.push(`Production copy: virtuse.com/data/${spec.file} ${prod.error}.`);
+      else lagging.push(`${spec.file} ${prod.error}`);
       continue;
     }
     const lag = daysBetween(prod.day, src.day);
-    if (lag > PROD_LAG_MAX_DAYS) {
+    if (lag <= PROD_LAG_MAX_DAYS) continue;
+    if (checkProdCopy) {
       problems.push(`Production copy: virtuse.com/data/${spec.file} is from ${prod.day}, ${lag} days behind GitHub main (${src.day}); pages that fall back to it show old numbers.`);
-    }
+    } else lagging.push(`${spec.file} ${lag} days`);
+  }
+  if (lagging.length) {
+    notes.push(`Production copies (last deploy; read only when GitHub is down, and the page then shows their date): ${lagging.join(', ')} behind GitHub main.`);
   }
 
   // 3: Pulse. The Worker cron passes the KV value; the Action passes nothing and reads the Worker.
