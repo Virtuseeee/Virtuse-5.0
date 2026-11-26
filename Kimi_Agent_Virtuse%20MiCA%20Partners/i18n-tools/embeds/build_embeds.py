@@ -83,9 +83,10 @@ var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function dt(iso){var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(iso||'');return m?(+m[3])+' '+M[+m[2]-1]+' '+m[1]:'';}
 __BODY__
 function show(d){if(!d)return;document.getElementById('h').innerHTML=head(d);document.getElementById('b').innerHTML=rows(d);
-var n=note(d);if(n)document.getElementById('n').textContent=n;document.getElementById('a').textContent=dt(d.asOf);}
+var n=note(d);if(n)document.getElementById('n').textContent=n;document.getElementById('a').textContent=dt(d.asOf);
+if(window.VBFresh)VBFresh.show(document.getElementById('a'),d.asOf,{lang:'en',compact:true});}
 function get(u){return fetch(u,{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});}
-if(window.fetch){get('__RAW__').catch(function(){return get('/data/__FILE__');}).then(show).catch(function(){});}
+if(window.fetch){get('__RAW__').catch(function(){return get('/data/__FILE__');}).then(show).catch(function(){if(window.VBFresh)VBFresh.show(document.getElementById('a'),'__ASOF__',{lang:'en',compact:true});});}
 })();"""
 
 
@@ -96,7 +97,7 @@ def build_embed(key):
     note = ''
     utm = '?utm_source=embed&amp;utm_medium=referral&amp;utm_campaign=' + c['campaign']
     url = '%s/%s' % (ORIGIN, c['path'][:-len('index.html')])
-    js = COMMON_JS.replace('__BODY__', JS[key]).replace('__RAW__', RAW + c['data']).replace('__FILE__', c['data'])
+    js = COMMON_JS.replace('__BODY__', JS[key]).replace('__RAW__', RAW + c['data']).replace('__FILE__', c['data']).replace('__ASOF__', d['asOf'])
     out = '''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,7 +105,7 @@ def build_embed(key):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} embed</title>
 <meta name="description" content="Embeddable Virtuse table: {lc}, total return in USD, updated daily. Attribution required.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="{url}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -136,6 +137,7 @@ a {{ color: #f7931a; }}
   <p id="n">{note}</p>
   <p>Source: <a href="{origin}/{page}{utm}" target="_blank" rel="noopener">Virtuse, {title}</a>. Past performance does not guarantee future results. Not investment advice.</p>
 </div>
+<script src="/data-freshness.js?v=1"></script>
 <script>
 {js}
 </script>

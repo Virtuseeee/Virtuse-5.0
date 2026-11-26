@@ -223,7 +223,13 @@ def build(L, page):
 
     page_js = []
     tail = old[old.index('</footer>'):]
-    for m in re.finditer(r'<script(?![^>]*\bsrc=)([^>]*)>(.*?)</script>', tail, re.S):
+    for m in re.finditer(r'<script\b([^>]*)>(.*?)</script>', tail, re.S):
+        src = re.search(r'\bsrc="([^"]*)"', m.group(1))
+        if src:
+            # external scripts are shell scripts (re-added by C.scripts) except the stale-data helper
+            if 'data-freshness.js' in src.group(1):
+                page_js.append(m.group(0))
+            continue
         if 'json' in m.group(1) or any(k in m.group(2) for k in SHELL_JS):
             continue
         # the old :root colour variables now live on .legacy (legacy_css), so chart scripts that read them from
