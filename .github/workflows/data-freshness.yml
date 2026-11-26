@@ -1,0 +1,51 @@
+name: Data freshness
+
+# Read-only daily check, deploys nothing, writes nothing, sends nothing itself.
+# Runs cloudflare-worker/src/features/data-freshness/checks.js (the same function the
+# Worker cron uses) against the live sites and fails (red run) when a daily data file
+# on GitHub main is too old or the Pulse did not arrive. Notes (Pulse fallback age,
+# funds-vs-bitcoin age) are printed but never fail the run.
+# GitHub emails a red run according to each account's own notification settings, so
+# this is a second signal only; the alert email comes from the Worker (DATA_ALERT_TO).
+# See audits/data-freshness-2026-11-26.md.
+
+on:
+  schedule:
+    - cron: '30 7 * * *' # 07:30 UTC = 08:30 CET (09:30 CEST)
+  workflow_dispatch:
+    inputs:
+      check_prod_copy:
+        description: 'Also compare virtuse.com/data/ with GitHub main'
+        type: boolean
+        default: false
+  # TEMPORARY, only to test this PR: remove before merge (a scheduled run only
+  # works once the file is on the default branch).
+  pull_request:
+    paths:
+      - 'cloudflare-worker/src/features/data-freshness/**'
+      - 'cloudflare-worker/scripts/data-freshness.mjs'
+      - '.github/workflows/data-freshness.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          sparse-checkout: |
+            cloudflare-worker/src/features
+            cloudflare-worker/scripts
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 22
+      - name: Check data freshness
+        env:
+          CHECK_PROD_COPY: ${{ inputs.check_prod_copy && '1' || '0' }}
+        run: node cloudflare-worker/scripts/data-freshness.mjs

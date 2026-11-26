@@ -14,6 +14,7 @@ import { createEmailCap } from './shared/email-cap.js';
 import { createKvLimiter } from './shared/rate-limiter.js';
 
 import { runBriefHealth } from './features/brief-health/handler.js';
+import { runDataFreshness } from './features/data-freshness/handler.js';
 import { handleEcosystemApply } from './features/ecosystem/handler.js';
 import { createBriefList } from './features/newsletter/brief-list.js';
 import { handleSubscribe } from './features/newsletter/subscribe-handler.js';
@@ -132,12 +133,17 @@ export function createWorker({ fetchImpl = (...args) => globalThis.fetch(...args
     async fetch(request, env) {
       return route(createContext(request, env, { fetchImpl, clock }));
     },
-    // Cron trigger (wrangler.toml [triggers], production only): the daily Brief check.
+    // Cron trigger (wrangler.toml [triggers], production only): the daily Brief check
+    // and the data freshness check. Returns the Brief check's result.
     async scheduled(event, rawEnv, execCtx) {
       const env = scopedEnv(rawEnv);
-      const run = runBriefHealth({ env, now: clock(), fetch: fetchImpl, services: createServices(env, fetchImpl) });
-      if (execCtx?.waitUntil) execCtx.waitUntil(run);
-      return run;
+      const now = clock();
+      const services = createServices(env, fetchImpl);
+      const run = runBriefHealth({ env, now, fetch: fetchImpl, services });
+      const data = runDataFreshness({ env, now, fetch: fetchImpl, services });
+      const both = Promise.allSettled([run, data]);
+      if (execCtx?.waitUntil) execCtx.waitUntil(both);
+      return both.then(() => run);
     },
   };
 }
