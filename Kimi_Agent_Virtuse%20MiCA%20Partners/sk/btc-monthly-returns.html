@@ -926,6 +926,7 @@
       <span class="footer-wordmark-text"><span class="wl">V</span><span class="wl">i</span><span class="wl">r</span><span class="wl">t</span><span class="wl">u</span><span class="wl">s</span><span class="wl">e</span></span>
     </div>
   </footer>
+<script src="../data-freshness.js?v=1"></script>
 <script>
 (function () {
   'use strict';
@@ -1053,6 +1054,7 @@
     }, false);
     h += '</tfoot>';
     table.innerHTML = h;
+    if (window.VBFresh) VBFresh.show(asOfEl.parentNode, data.asOf);
 
     var d = live || new Date(data.asOf + 'T00:00:00Z');
     asOfEl.textContent = (live ? 'Živá cena · ' : 'Údaje k ') +

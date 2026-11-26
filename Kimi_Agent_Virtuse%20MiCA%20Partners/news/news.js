@@ -260,7 +260,9 @@
     el.textContent = stale ? tr('deskUpdating') : '';
     el.hidden = !stale;
   }
-  /* Dateline under the logo: today's date in the desk's zone, on every load. */
+  /* Dateline under the logo: today's date in the desk's zone, on every load. The static HTML
+     has an empty, hidden <time> (a written date would be wrong for crawlers and no-JS readers
+     from the next day on), so this is the only place the date comes from. */
   function applyTodayStrip() {
     var t = $('todayDate');
     if (!t) return;
@@ -269,6 +271,7 @@
     t.textContent = LANG === 'sk'
       ? now.toLocaleDateString('sk-SK', { timeZone: DESK_TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
       : now.toLocaleDateString('en-GB', { timeZone: DESK_TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).replace(/^(\w+) /, '$1, ');
+    t.hidden = false;
   }
   /* "Desk updated 06:27" from the Pulse stamp (Bratislava time); the date is added when it is not today. */
   function applyDeskLine(iso) {
@@ -635,6 +638,7 @@
     paintGold();
     paintBanks(m.central_banks || {});
     paintCalendar(m);
+    if (window.VBFresh) VBFresh.show(document.querySelector('#numbers .pt-cols'), m.generated);
     if (lastTickerStats) renderTicker(lastTickerStats);
     if (lastPulseItems) renderPulse(lastPulseItems);
   }

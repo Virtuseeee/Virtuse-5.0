@@ -36,6 +36,9 @@ JS_V = '3'
 DATA_FILE = os.path.join(SITE, 'data', 'btc-monthly-returns.json')
 HUB = 'btc-monthly-returns.html'
 HUB_SRC = os.path.join(TOOLS, 'legacy', 'src', 'en', HUB)
+# Dataset contentUrl: GitHub main, the copy the daily Action keeps fresh. The file on virtuse.com
+# is only the last deployed copy (audits/data-freshness-2026-11-26.md, option C).
+DATA_URL = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/btc-monthly-returns.json'
 STATE = os.path.join(HERE, 'state.json')   # last complete month of the last build (not deployed: i18n-tools/)
 esc = html.escape
 
@@ -198,7 +201,7 @@ def dataset(name, desc, url, cover, asof):
     return {'@type': 'Dataset', 'name': name, 'description': desc, 'url': ORIGIN + url, 'dateModified': asof, 'temporalCoverage': cover,
             'variableMeasured': ['Bitcoin monthly return (USD)', 'Bitcoin month-end close (USD)'], 'creator': {'@id': ORIGIN + '/#org'},
             'isAccessibleForFree': True, 'inLanguage': 'en',
-            'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': ORIGIN + '/data/btc-monthly-returns.json'}]}
+            'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': DATA_URL}]}
 
 
 def build_month(R, m):
@@ -312,7 +315,7 @@ def build_hub(R):
          'url': ORIGIN + url, 'dateModified': R['asOf'], 'temporalCoverage': '%s-01/%s' % (R['firstMonth'], R['asOf']),
          'variableMeasured': ['Bitcoin monthly return (USD)', 'Bitcoin monthly return (EUR)', 'Bitcoin month-end close (USD)'],
          'creator': {'@id': ORIGIN + '/#org'}, 'isAccessibleForFree': True, 'inLanguage': 'en',
-         'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': ORIGIN + '/data/btc-monthly-returns.json'}]},
+         'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': DATA_URL}]},
         F.faq_ld([(q, a) for q, a in faq])]}
     block = '<!-- BTC-RETURNS-LD:START -->\n<script type="application/ld+json">%s</script>\n<!-- BTC-RETURNS-LD:END -->\n' % json.dumps(ld, ensure_ascii=False, indent=2)
     s = re.sub(r'<!-- BTC-RETURNS-LD:START -->.*?<!-- BTC-RETURNS-LD:END -->\n', '', s, flags=re.S)

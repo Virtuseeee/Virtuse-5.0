@@ -188,6 +188,7 @@
   function render() {
     returnsTable(); yearlyTable(); ratioTable(); tiles(); growthChart(); ratioChart();
     q('#bvgAsOf').textContent = I.c_asof.replace('{d}', dateStr(data.asOf));
+    if (window.VBFresh) VBFresh.show(q('#bvgAsOf').parentNode, data.asOf);
   }
   function setCcy(c) {
     ccy = c;
@@ -206,7 +207,12 @@
 
   function load(i) {
     var src = [CFG.raw, CFG.local];
-    if (i >= src.length) { q('#bvgAsOf').textContent = I.c_unavailable; return; }
+    if (i >= src.length) {
+      q('#bvgAsOf').textContent = I.c_unavailable;
+      // the tables stay as built: say how old they are (CFG.asOf = the build's data date)
+      if (window.VBFresh) VBFresh.show(q('#bvgAsOf').parentNode, CFG.asOf || null);
+      return;
+    }
     fetch(src[i], { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (d) { if (!d || !d.assets || !d.ratio) throw new Error('bad'); data = d; setCcy(ccy); })
       .catch(function () { load(i + 1); });

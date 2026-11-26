@@ -968,7 +968,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
         {
           "@type": "DataDownload",
           "encodingFormat": "application/json",
-          "contentUrl": "https://virtuse.com/data/btc-monthly-returns.json"
+          "contentUrl": "https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/btc-monthly-returns.json"
         }
       ]
     },
@@ -1430,6 +1430,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
   </div>
 </footer>
 
+<script src="data-freshness.js?v=1"></script>
 <script>
 (function () {
   'use strict';
@@ -1556,6 +1557,7 @@ body.nav-open .ham-line-2 { transform: translateY(-4px) rotate(-45deg); }
     }, false);
     h += '</tfoot>';
     table.innerHTML = h;
+    if (window.VBFresh) VBFresh.show(asOfEl.parentNode, data.asOf);
 
     var d = live || new Date(data.asOf + 'T00:00:00Z');
     asOfEl.textContent = (live ? 'Live price · ' : 'Data as of ') +

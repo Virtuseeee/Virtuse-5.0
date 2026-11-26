@@ -16,9 +16,13 @@ compatibility_date = "2026-08-14"
 # must be set up FIRST (cloudflare-worker/README.md "VAT and invoices"), or Checkout fails and nobody can pay.
 # The webhook emails the buyer a confirmation with the report PDF via Resend
 # (RESEND_API_KEY, RESEND_SEND_FROM; reply-to RESEND_REPLY_TO or info@virtuse.com).
-vars = { VERDICT_ENABLED = "0", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_PAYMENTS = "1", STRIPE_AUTOMATIC_TAX = "1", STRIPE_INVOICE = "1" }
+# DATA_ALERT_TO: recipient of the data freshness check (src/features/data-freshness/); the code
+# sends only to vasilisin@virtuse.com and to nobody else. CHECK_PROD_COPY "0": the copies on
+# virtuse.com/data/ are "last deployed" (Ras chose option C, 2026-11-26), so their lag is a note only.
+vars = { VERDICT_ENABLED = "0", VERDICT_MONTHLY_CAP_EUR = "15", VERDICT_PAYMENTS = "1", STRIPE_AUTOMATIC_TAX = "1", STRIPE_INVOICE = "1", DATA_ALERT_TO = "vasilisin@virtuse.com", CHECK_PROD_COPY = "0" }
 
-# Daily Brief health check (src/features/brief-health/): 06:40 UTC = 07:40 CET /
+# Daily Brief health check (src/features/brief-health/) and data freshness check
+# (src/features/data-freshness/): 06:40 UTC = 07:40 CET /
 # 08:40 CEST, after the 06:25 Bratislava Pulse publish. Problems are emailed to
 # BRIEF_ALERT_TO (else VERDICT_ALERT_TO, else info@virtuse.com); a healthy day sends nothing.
 # Production only: [env.staging] sets no crons.

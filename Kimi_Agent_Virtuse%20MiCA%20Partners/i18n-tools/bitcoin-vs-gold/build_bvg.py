@@ -21,7 +21,7 @@ import build_fee_index as F
 C, B, SITE, ORIGIN = F.C, F.B, F.SITE, F.ORIGIN
 LANGS = ['en', 'sk', 'cs', 'uk', 'ru', 'de', 'fr', 'es', 'pl', 'hu']
 PAGE = 'bitcoin-vs-gold.html'
-JS_V = '2'
+JS_V = '3'
 RAW = 'https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json'
 DATA = json.load(open(os.path.join(SITE, 'data', 'bitcoin-vs-commodities.json')))
 ASSETS = [a['id'] for a in DATA['assets']]
@@ -238,7 +238,7 @@ def build(L):
          'dateModified': DATA['asOf'], 'temporalCoverage': '2016-01-01/..',
          'variableMeasured': ['Bitcoin', 'Gold', 'Silver', 'WTI crude oil', 'Copper', 'Platinum', 'Commodities basket', 'BTC/gold ratio', 'BTC/silver ratio'],
          'creator': {'@id': ORIGIN + '/#org'}, 'isAccessibleForFree': True, 'inLanguage': L,
-         'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': ORIGIN + '/data/bitcoin-vs-commodities.json'}]},
+         'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'application/json', 'contentUrl': RAW}]},
         F.faq_ld([(F.plain(q), F.plain(a)) for q, a in faq])]}
     # OG image: own Slovak image, every other language the English one (og/README in i18n-tools/bitcoin-vs-gold/og)
     og_file = 'bitcoin-vs-gold-sk.jpg' if L == 'sk' else 'bitcoin-vs-gold.jpg'
@@ -262,7 +262,8 @@ def build(L):
 
     strings = {k: v for k, v in t.items() if k.startswith('c_')}
     cfg = {'raw': RAW, 'local': loc + 'data/bitcoin-vs-commodities.json' if L == 'en' else '/data/bitcoin-vs-commodities.json',
-           'lang': L, 'locale': B.LOCALE.get(L, 'en-US'), 'pctSpace': L in C.PCT_SPACE, 'colors': COLORS, 'legend': LEGEND, 'on': DEFAULT_ON, 'amount': AMOUNT}
+           'lang': L, 'locale': B.LOCALE.get(L, 'en-US'), 'pctSpace': L in C.PCT_SPACE, 'colors': COLORS, 'legend': LEGEND, 'on': DEFAULT_ON, 'amount': AMOUNT,
+           'asOf': DATA['asOf']}  # date of the static tables, for data-freshness.js when both sources fail
     asof = t['c_asof'].replace('{d}', date_str(DATA['asOf'], L))
     g, s = DATA['ratio']['gold'], DATA['ratio']['silver']
     btc = next(a for a in DATA['assets'] if a['id'] == 'btc'); gold = next(a for a in DATA['assets'] if a['id'] == 'gold')
@@ -368,7 +369,7 @@ def build(L):
            i18n=json.dumps(strings, ensure_ascii=False).replace('</', '<\\/'), cfg=json.dumps(cfg).replace('</', '<\\/'))
     # Bitcoin Data v3 accent system (handover 2026-10-25): accent = this page's card on the hub; newer site-v2 css/js
     sc = C.scripts('/')   # css/js cache-busters: one sitewide value, set in C.finalize (speed.py)
-    out += sc.replace('<script src="/site-v2.js', '<script src="/bitcoin-vs-gold.js?v=%s" defer></script>\n<script src="/site-v2.js' % JS_V, 1)
+    out += sc.replace('<script src="/site-v2.js', '<script src="/data-freshness.js?v=1" defer></script>\n<script src="/bitcoin-vs-gold.js?v=%s" defer></script>\n<script src="/site-v2.js' % JS_V, 1)
     F.check_text(out, L)
     open(shell, 'w').write(C.finalize(out, shell))
     print('%-34s %6d bytes' % (page, len(out)))
@@ -401,7 +402,7 @@ def build_embed():
     script re-renders from the live JSON (raw.githubusercontent first, the site copy as fallback)."""
     t = json.load(open(os.path.join(HERE, 'en.json')))
     cfg = {'src': [RAW, '/data/bitcoin-vs-commodities.json'], 'cols': EMBED_COLS, 'months': F.MONTHS['en'],
-           'names': {a: t['c_a_' + a] for a in ASSETS}}
+           'names': {a: t['c_a_' + a] for a in ASSETS}, 'asOf': DATA['asOf']}
     utm = '?utm_source=embed&amp;utm_medium=referral&amp;utm_campaign=bitcoin_vs_gold'
     head_cells = ''.join('<th>%s</th>' % t[c] for c in ('c_col_ytd', 'c_col_1y', 'c_col_5y', 'c_col_10y'))
     out = '''<!DOCTYPE html>
@@ -409,7 +410,7 @@ def build_embed():
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Bitcoin vs gold, silver and oil: returns (embed)</title>
 <meta name="description" content="Embeddable Virtuse table: total return of Bitcoin, gold, silver, oil, copper, platinum and a commodities basket, year to date, 1, 5 and 10 years. Updated daily. Attribution required.">
 <meta name="robots" content="noindex, follow">
@@ -438,6 +439,7 @@ a {{ color: #f7931a; }}
   <div class="tw"><table><thead><tr><th class="a">{asset}</th>{head}</tr></thead><tbody id="rows">{rows}</tbody></table></div>
   <p>Source: <a href="{origin}/bitcoin-vs-gold.html{utm}" target="_blank" rel="noopener">Virtuse, Bitcoin vs gold, silver and oil</a>. Updated daily. Past performance does not guarantee future results. Not investment advice.</p>
 </div>
+<script src="/data-freshness.js?v=1"></script>
 <script>
 (function () {{
   var C = {cfg};
@@ -471,9 +473,10 @@ a {{ color: #f7931a; }}
     }});
     var p = d.asOf.split('-');
     document.getElementById('asof').textContent = 'Data as of ' + (+p[2]) + ' ' + C.months[+p[1] - 1] + ' ' + p[0];
+    if (window.VBFresh) VBFresh.show(document.getElementById('asof'), d.asOf, {{ lang: 'en', compact: true }});
   }}
   (function next(i) {{
-    if (i >= C.src.length) return;
+    if (i >= C.src.length) {{ if (window.VBFresh) VBFresh.show(document.getElementById('asof'), C.asOf, {{ lang: 'en', compact: true }}); return; }}
     fetch(C.src[i], {{ cache: 'no-cache' }}).then(function (r) {{ if (!r.ok) throw new Error(r.status); return r.json(); }})
       .then(render).catch(function () {{ next(i + 1); }});
   }})(0);

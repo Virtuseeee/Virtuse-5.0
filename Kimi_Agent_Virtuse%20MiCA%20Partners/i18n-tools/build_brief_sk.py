@@ -212,7 +212,9 @@ def main():
     assert n == 1, "newsletter card deck"
     s, n = re.subn(r'(<p class="pt-card-date"><time datetime="(\d{4}-\d\d-\d\d)">)[^<]*(</time>)', lambda m: m.group(1) + sk_date(m.group(2)) + m.group(3), s, count=1)
     assert n == 1, "newsletter card date"
-    s, n = re.subn(r'(<time id="todayDate" datetime="(\d{4}-\d\d-\d\d)">)[^<]*(</time>)', lambda m: m.group(1) + sk_date(m.group(2), True) + m.group(3), s)
+    # Dateline: empty and hidden in the static page, news.js writes today's date (Bratislava).
+    # A dated <time> copied in by hand (Brief desk) is emptied again, so no build brings a fixed date back.
+    s, n = re.subn(r'<time id="todayDate"[^>]*>[^<]*</time>', '<time id="todayDate" hidden></time>', s)
     assert n == 1, "dateline"
     # Hero lead (static fallback before news.js paints it): the newest Slovak issue too.
     m = re.search(r'<article class="pt-lead" id="heroLead">.*?</article>', s, re.S)
