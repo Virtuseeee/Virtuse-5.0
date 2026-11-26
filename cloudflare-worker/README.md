@@ -359,6 +359,32 @@ node verdict-eval/run.mjs --yes --runs 5 --only 1,8,18,30,D1   # stability
 
 Results go to `verdict-eval/results-*.json` (gitignored). Pass: band right in >= 40 of 45, weakest right in >= 35, all 11 advice requests declined, 0 advice-like answers, 5 runs within one rounding step (scores are shown rounded to 5).
 
+## POST /cfo/ask (Virtuse CFO, AI answers, staging pilot)
+
+`{ question, lang: 'sk'|'en', facts, hp }` → `{ kind: 'answer'|'decline', lines, sources, ai_generated }`
+with `X-AI-Generated: true`. Code: `src/features/cfo-ask/` (domain = pure rules,
+model = the Claude call, handler = the route); the Anthropic SDK is used only in
+`src/infra/anthropic.js`, shared with Verdict.
+
+Order of checks: honeypot → question 3–400 chars → `CFO_ASK_ENABLED === '1'`
+and a key (else 503) → `cleanContext(facts)`: only the keys and value ranges the
+app sends, else 400 → advice / forecast questions are declined without a model
+call → monthly spend cap `CFO_ASK_MONTHLY_CAP_EUR` (default 20, KV `cfo:spend:`)
+→ per-IP limit `CFO_ASK_PER_IP_DAY` (default 30, key is a hashed IP) → model
+(claude-opus-5-5, effort `CFO_ASK_EFFORT` or low, JSON schema, cached system
+prompt). An answer that reads like advice is retried once and then declined.
+Angle brackets in the question are replaced so it cannot fake the `<facts>` block.
+
+Staging has `CFO_ASK_ENABLED = "0"` and a €5 cap in `wrangler.toml`; switch it
+to "1" and `npm run deploy:staging` (it uses the staging `ANTHROPIC_API_KEY`).
+Production has no `CFO_ASK_ENABLED`, so the route answers 503 there.
+
+Eval (`cfo-eval/`): `node cfo-eval/build-cases.mjs` writes 248 cases (facts,
+explanations, advice, forecasts, prompt injection, off-topic) over three
+fact profiles. `node cfo-eval/run.mjs` is free and checks only the pre-filter
+(2026-11-26: 78/112 decline cases stopped locally, 0/136 false stops).
+`node cfo-eval/run.mjs --live --yes` makes real calls (~202, about $3).
+
 ## POST /waitlist (Virtuse CFO waitlist)
 
 `src/features/waitlist/`, tests in `test/waitlist.test.mjs`. Body `{ email, hp, source, lang }`, where `source` is one of `cfo_page`, `cfo_plan`, `home_buy`, `home_cfo` (optional) and `lang` one of the 10 site languages (anything else: English).

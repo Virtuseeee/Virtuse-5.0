@@ -6,12 +6,12 @@ const SPEND_TTL_SECONDS = 60 * 60 * 24 * 40;
 // that arrive together each see the others' share of the month's budget (audit B14).
 export const SPEND_RESERVE_EUR = 0.1;
 
-export function monthKey(now) {
-  return 'verdict:spend:' + new Date(now).toISOString().slice(0, 7);
+export function monthKey(now, prefix = 'verdict:spend:') {
+  return prefix + new Date(now).toISOString().slice(0, 7);
 }
 
-export function createSpendLedger(kv, now) {
-  const key = monthKey(now);
+export function createSpendLedger(kv, now, prefix) {
+  const key = monthKey(now, prefix);
   return {
     async spent() {
       return parseFloat((await kv.get(key)) || '0');

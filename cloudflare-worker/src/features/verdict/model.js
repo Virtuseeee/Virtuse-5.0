@@ -1,7 +1,7 @@
 // The Claude call behind Verdict: request shape, response parsing, cost.
 // Shared by the Worker (handler.js) and the offline eval (verdict-eval/run.mjs).
 
-import Anthropic from '@anthropic-ai/sdk';
+import { createMessage } from '../../infra/anthropic.js';
 import { SCHEMA, profileLines, systemPrompt } from './domain.js';
 
 export const VERDICT_MODEL = 'claude-opus-5-5';
@@ -33,12 +33,7 @@ export function readVerdictResponse(response) {
 
 // One call to Claude. Returns { out, usage } where out is the parsed JSON.
 export async function askClaude(env, text, lang, profile = {}) {
-  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, maxRetries: 1, timeout: 60_000 });
-  const response = await client.beta.messages.create({
-    ...verdictRequest(env, text, lang, profile),
-    betas: ['server-side-fallback-2026-07-01'],
-    fallbacks: 'default',
-  });
+  const response = await createMessage(env, verdictRequest(env, text, lang, profile), { timeout: 60_000 });
   return readVerdictResponse(response);
 }
 
