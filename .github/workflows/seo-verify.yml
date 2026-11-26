@@ -18,6 +18,10 @@ on:
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/bitcoin-inheritance/**'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/sell-vs-borrow-bitcoin/**'
       - 'Kimi_Agent_Virtuse%20MiCA%20Partners/de/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/bitcoin-glossary/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/sk/bitcoin-slovnik/**'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/glossary.js'
+      - 'Kimi_Agent_Virtuse%20MiCA%20Partners/glossary.css'
   push:
     paths:
       - 'seo-build/**'

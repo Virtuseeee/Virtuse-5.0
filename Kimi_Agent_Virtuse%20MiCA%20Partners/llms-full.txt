@@ -230,6 +230,12 @@ Formula: costPerPurchase = contribution * pct + fixed + monthly / (periodsPerYea
 - Have you tested recovery with a small amount? (15 pts): Do a full recovery drill on a small UTXO, with your heir watching, once a year.
 - Are exchange accounts, loans and automated plans documented? (15 pts): Maintain an inventory of platforms, account IDs and how balances should be claimed – inside your letter of instruction.
 
+## Bitcoin glossary
+
+- EN: https://virtuse.com/bitcoin-glossary/ (one anchor per term, e.g. https://virtuse.com/bitcoin-glossary/#mica)
+- SK: https://virtuse.com/sk/bitcoin-slovnik/
+- Built by seo-build/glossary.mjs from seo-build/data/glossary.json; EU, tax and macro terms cite an official source and a check date. No tax rates (see the country tax guides).
+
 ## Disclaimers
 
 - Indicative 2026 overview – not tax advice

@@ -5130,6 +5130,26 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/tax-agent.html"/>
   </url>
 <!-- TOOLS:END -->
+<!-- GLOSSARY:START -->
+  <url>
+    <loc>https://virtuse.com/bitcoin-glossary/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-glossary/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-slovnik/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-glossary/"/>
+  </url>
+  <url>
+    <loc>https://virtuse.com/sk/bitcoin-slovnik/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://virtuse.com/bitcoin-glossary/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://virtuse.com/sk/bitcoin-slovnik/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://virtuse.com/bitcoin-glossary/"/>
+  </url>
+<!-- GLOSSARY:END -->
 <!-- ECOSYSTEM:START -->
   <url>
     <loc>https://virtuse.com/ecosystem/</loc>

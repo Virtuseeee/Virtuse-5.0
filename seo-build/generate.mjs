@@ -5195,6 +5195,11 @@ ${Object.values(BUY_COUNTRY).map((pg) => `${pg.h1} (${pg.lang.toUpperCase()}): $
 - Stacking (live): ${ORIGIN}/stacking.html
 - Loan copilot (live): ${ORIGIN}/loan.html
 
+## Bitcoin glossary (EN/SK)
+
+- Bitcoin glossary: Bitcoin, custody, network, markets, EU rules (MiCA, Travel Rule, DAC8, AMLR), tax and macro terms, with official sources: ${ORIGIN}/bitcoin-glossary/
+- Bitcoin slovník (SK): ${ORIGIN}/sk/bitcoin-slovnik/
+
 ## Bitcoin data (updated daily)
 
 - Bitcoin vs gold, silver and commodities: YTD, 1, 5 and 10-year returns, every year since 2016, BTC/gold ratio (10 languages, e.g. ${ORIGIN}/sk/bitcoin-vs-gold.html): ${ORIGIN}/bitcoin-vs-gold.html
@@ -5316,6 +5321,12 @@ Formula: costPerPurchase = contribution * pct + fixed + monthly / (periodsPerYea
 ## Inheritance checklist (tax module)
 
 ${inh}
+
+## Bitcoin glossary
+
+- EN: ${ORIGIN}/bitcoin-glossary/ (one anchor per term, e.g. ${ORIGIN}/bitcoin-glossary/#mica)
+- SK: ${ORIGIN}/sk/bitcoin-slovnik/
+- Built by seo-build/glossary.mjs from seo-build/data/glossary.json; EU, tax and macro terms cite an official source and a check date. No tax rates (see the country tax guides).
 
 ## Disclaimers
 
@@ -5494,6 +5505,8 @@ function writeAll() {
 }
 
 const manifest = writeAll();
+// Bitcoin glossary (EN + SK): own builder, run here so CI builds and verifies it.
+await import('./glossary.mjs');
 console.log(JSON.stringify(manifest.counts, null, 2));
 console.log(`origin ${ORIGIN}`);
 console.log(`Wrote ${manifest.files.length} files into ${SITE_DIR_NAME}`);
