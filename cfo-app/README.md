@@ -5,11 +5,23 @@ Local-first wealth overview for investor and partner demos. Not deployed anywher
 ```bash
 cd cfo-app
 npm ci
-npm test        # 36 tests: CSV, imports, prices/FX, portfolio math, upload summary, vault
+npm test        # 43 tests: CSV, imports, prices/FX, portfolio math, upload summary, vault
 npm run prices  # refresh src/data/prices.json (ECB rates + last closes)
 npm run dev     # http://localhost:5181
 npm run build   # dist/
 ```
+
+## Screens (pilot layout)
+
+Sidebar app with seven screens, same structure as other AI-CFO products (overview, chat, research, alerts), our own copy and design:
+
+- **Prehľad / Overview** – net worth, investments, cash, debts; assets with allocation bar; today's moves; ask-your-CFO box; debts; Radar preview; Bitcoin facts.
+- **Opýtaj sa CFO / Ask your CFO** – chat with sessions (kept in memory only). Prototype answers are worked out on the device from the user's data (`src/core/ask.ts`) and cite their sources; questions about what to buy, sell or hold, or where prices go, get a fixed refusal. An AI model comes in phase 3 behind the same rules.
+- **Výskum / Research** – instruments the user holds with data from the price file, Virtuse guides; new research topics are queued for phase 3.
+- **Radar** – facts worth a look from the user's data (`src/core/radar.ts`): big daily moves, fees, concentration, debt share, cash share, own-wallet custody, stale or missing data. Thresholds are set by the user (stored in `localStorage`, no amounts).
+- **Portfólio** – every priced holding with share of assets, today's move and price basis; broker account cards.
+- **Transakcie** – Bitcoin movements from the Kraken export.
+- **Údaje a súkromie / Data and privacy** – BTC price, imports, manual assets and debts, encrypted vault, what would leave the device.
 
 ## What it does
 

@@ -42,9 +42,18 @@ async function quote(symbol) {
   const res = j.chart?.result?.[0]
   const closes = res?.indicators?.quote?.[0]?.close ?? []
   const times = res?.timestamp ?? []
-  for (let i = closes.length - 1; i >= 0; i--) {
-    if (closes[i] != null) {
-      return { price: Math.round(closes[i] * 10000) / 10000, currency: res.meta.currency, date: new Date(times[i] * 1000).toISOString().slice(0, 10) }
+  const pts = []
+  for (let i = 0; i < closes.length; i++) if (closes[i] != null) pts.push([times[i], closes[i]])
+  if (pts.length > 0) {
+    const [t, c] = pts[pts.length - 1]
+    const prev = pts.length > 1 ? pts[pts.length - 2][1] : null
+    const r4 = (n) => Math.round(n * 10000) / 10000
+    return {
+      price: r4(c),
+      prevClose: prev === null ? undefined : r4(prev),
+      changePct: prev ? Math.round(((c - prev) / prev) * 10000) / 100 : undefined,
+      currency: res.meta.currency,
+      date: new Date(t * 1000).toISOString().slice(0, 10),
     }
   }
   throw new Error(`no close for ${symbol}`)

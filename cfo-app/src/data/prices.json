@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-11-25T17:35Z",
+ "builtAt": "2026-11-26T08:35Z",
  "fx": {
   "source": "ECB euro reference rates",
   "date": "2026-11-25",
@@ -51,9 +51,11 @@
      "VWRA",
      "VWCE.MI"
     ],
-    "price": 158.72,
+    "price": 163.08,
+    "prevClose": 161.88,
+    "changePct": 0.74,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    },
    {
     "id": "VWRL",
@@ -65,9 +67,11 @@
      "VGWL.DE",
      "VWRL.NL"
     ],
-    "price": 153.42,
+    "price": 157.5,
+    "prevClose": 156.4,
+    "changePct": 0.7,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    },
    {
     "id": "IWDA",
@@ -81,9 +85,11 @@
      "IWDA.NL",
      "SWDA"
     ],
-    "price": 122.24,
+    "price": 125.405,
+    "prevClose": 124.565,
+    "changePct": 0.67,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    },
    {
     "id": "SXR8",
@@ -97,9 +103,11 @@
      "CSPX.L",
      "CSP1"
     ],
-    "price": 690.04,
+    "price": 709.52,
+    "prevClose": 705.18,
+    "changePct": 0.62,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    },
    {
     "id": "VUSA",
@@ -112,9 +120,11 @@
      "VUSA.L",
      "VUSA.DE"
     ],
-    "price": 121.157,
+    "price": 124.68,
+    "prevClose": 123.8,
+    "changePct": 0.71,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    },
    {
     "id": "EQQQ",
@@ -126,9 +136,11 @@
      "EQQQ.L",
      "EQQQ.UK"
     ],
-    "price": 558.9,
+    "price": 582.5,
+    "prevClose": 579.9,
+    "changePct": 0.45,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    },
    {
     "id": "XDWD",
@@ -138,9 +150,11 @@
      "XDWD",
      "XDWD.DE"
     ],
-    "price": 133.785,
+    "price": 137.215,
+    "prevClose": 136.44,
+    "changePct": 0.57,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    },
    {
     "id": "EIMI",
@@ -153,9 +167,11 @@
      "IS3N.DE",
      "EIMI.UK"
     ],
-    "price": 40.723,
+    "price": 42.37,
+    "prevClose": 42.1,
+    "changePct": 0.64,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    },
    {
     "id": "AAPL",
@@ -165,7 +181,9 @@
      "AAPL",
      "AAPL.US"
     ],
-    "price": 351.92,
+    "price": 355.58,
+    "prevClose": 354.07,
+    "changePct": 0.43,
     "currency": "USD",
     "date": "2026-11-25"
    },
@@ -177,7 +195,9 @@
      "MSFT",
      "MSFT.US"
     ],
-    "price": 486.52,
+    "price": 489.93,
+    "prevClose": 496.13,
+    "changePct": -1.25,
     "currency": "USD",
     "date": "2026-11-25"
    },
@@ -189,7 +209,9 @@
      "NVDA",
      "NVDA.US"
     ],
-    "price": 143.88,
+    "price": 149.3,
+    "prevClose": 155.38,
+    "changePct": -3.91,
     "currency": "USD",
     "date": "2026-11-25"
    },
@@ -201,7 +223,9 @@
      "MSTR",
      "MSTR.US"
     ],
-    "price": 75.31,
+    "price": 79.96,
+    "prevClose": 77.55,
+    "changePct": 3.11,
     "currency": "USD",
     "date": "2026-11-25"
    },
@@ -214,9 +238,11 @@
      "ASML.NL",
      "ASML.AS"
     ],
-    "price": 1131.6,
+    "price": 1159,
+    "prevClose": 1131.6,
+    "changePct": 2.42,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    },
    {
     "id": "BTC",
@@ -225,9 +251,11 @@
      "BTC",
      "XBT"
     ],
-    "price": 54057.6992,
+    "price": 55223.8516,
+    "prevClose": 55037.9297,
+    "changePct": 0.34,
     "currency": "EUR",
-    "date": "2026-11-25"
+    "date": "2026-11-26"
    }
   ]
  }

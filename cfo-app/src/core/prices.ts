@@ -10,6 +10,10 @@ export interface PricedInstrument {
   name: string
   aliases: string[]
   price: number
+  /** Close the trading day before, for the day's move. */
+  prevClose?: number
+  /** Day's move in percent. */
+  changePct?: number
   currency: string
   date: string
   stale?: boolean
@@ -52,6 +56,8 @@ export interface ValuedHolding extends Holding {
   valueEur: number
   basis: ValueBasis
   priceDate?: string
+  changePct?: number
+  instrumentName?: string
 }
 
 /**
@@ -65,7 +71,7 @@ export function valueHoldings(account: BrokerAccount, book: PriceBook | null): V
     const ins = findInstrument(h, book)
     if (ins) {
       const eur = toEur(h.quantity * ins.price, ins.currency, book)
-      if (eur !== null) return { ...h, valueEur: round2(eur), basis: 'price', priceDate: ins.date }
+      if (eur !== null) return { ...h, valueEur: round2(eur), basis: 'price', priceDate: ins.date, changePct: ins.changePct, instrumentName: ins.name }
     }
     if (h.value !== undefined) {
       const eur = toEur(h.value, h.currency, book)
