@@ -18,13 +18,6 @@ on:
         description: 'Also compare virtuse.com/data/ with GitHub main'
         type: boolean
         default: false
-  # TEMPORARY, only to test this PR: remove before merge (a scheduled run only
-  # works once the file is on the default branch).
-  pull_request:
-    paths:
-      - 'cloudflare-worker/src/features/data-freshness/**'
-      - 'cloudflare-worker/scripts/data-freshness.mjs'
-      - '.github/workflows/data-freshness.yml'
 
 permissions:
   contents: read
