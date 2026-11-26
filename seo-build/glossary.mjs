@@ -23,7 +23,7 @@ const CHROME = JSON.parse(fs.readFileSync(path.join(HERE, 'data/chrome-v2.json')
 const STR_DIR = path.join(HERE, 'data/glossary-strings');
 const ORIGIN = DEFAULT_ORIGIN;
 // Bump when /glossary.css or /glossary.js changes (they are cached for a year with ?v=).
-export const GLOSSARY_ASSET_V = '1';
+export const GLOSSARY_ASSET_V = '2';
 
 const ALL_LANGS = ['en', 'sk', 'cs', 'de', 'pl', 'hu', 'fr', 'es', 'uk', 'ru'];
 const OG_LOCALE = { en: 'en_US', sk: 'sk_SK' };
@@ -125,7 +125,11 @@ function chrome(l) {
   return { nav: sub(nav), foot: sub(v2.foot), brief };
 }
 
-// ---------- body ----------
+// ---------- body (Services layout: hpanel + seg filter in the hero, pcard2 cards with a topic accent) ----------
+// Topic accents follow the Services pages: custody = Custody (teal), network = Mining (yellow),
+// markets = Buy (green), tax = Tax (blue); EU rules indigo, macro purple, basics orange.
+const ACC = { basics: 'orange', custody: 'teal', network: 'yellow', markets: 'green', eu: 'indigo', tax: 'blue', macro: 'purple' };
+
 function termHtml(t, l) {
   const s = S[l], tx = s.terms[t.id], p = s.page;
   const links = t.links[l].map((h, i) => `<a href="${esc(h)}">${esc(tx.linkLabels[i])}</a>`).join(', ');
@@ -133,13 +137,18 @@ function termHtml(t, l) {
   const src = (t.sources || []).map((x) => `<a href="${esc(x.url)}" rel="noopener" target="_blank">${esc(x.title)}</a>`).join('; ');
   // Extra search words: the names of the "see also" terms (so "mica" also finds CASP).
   const keys = (t.see || []).map((x) => s.terms[x].name).join(' | ');
-  return `<div class="gl-term" id="${t.id}" data-cat="${t.cat}" data-k="${esc(keys)}">
-          <dt><dfn>${esc(tx.name)}</dfn><a class="gl-anchor" href="#${t.id}" aria-label="${esc(p.copy)}: ${esc(tx.name)}" title="${esc(p.copy)}">#</a><span class="gl-cat">${esc(s.cats[t.cat])}</span></dt>
-          <dd>
-            <p class="gl-def">${esc(tx.def)}</p>
-${tx.alt.length ? `            <p class="gl-meta"><span>${esc(p.also)}</span> ${esc(tx.alt.join(', '))}</p>\n` : ''}            <p class="gl-meta"><span>${esc(p.relatedOn)}</span> ${links}</p>
-${see ? `            <p class="gl-meta"><span>${esc(p.seeAlso)}</span> ${see}</p>\n` : ''}${src ? `            <p class="gl-meta gl-src"><span>${esc(p.source)}</span> ${src}</p>\n` : ''}          </dd>
-        </div>`;
+  const meta = [
+    tx.alt.length ? `<li><span>${esc(p.also)}</span> ${esc(tx.alt.join(', '))}</li>` : '',
+    `<li><span>${esc(p.relatedOn)}</span> ${links}</li>`,
+    see ? `<li><span>${esc(p.seeAlso)}</span> ${see}</li>` : '',
+    src ? `<li class="gl-src"><span>${esc(p.source)}</span> ${src}</li>` : ''
+  ].filter(Boolean).join('');
+  return `<article class="pcard2 ${ACC[t.cat]} gl-term" id="${t.id}" data-cat="${t.cat}" data-k="${esc(keys)}">
+          <div class="gl-head"><h3><dfn>${esc(tx.name)}</dfn></h3><a class="gl-anchor" href="#${t.id}" aria-label="${esc(p.copy)}: ${esc(tx.name)}" title="${esc(p.copy)}">#</a></div>
+          <div class="gl-cat"><i></i>${esc(s.cats[t.cat])}</div>
+          <p class="gl-def">${esc(tx.def)}</p>
+          <ul class="gl-meta">${meta}</ul>
+        </article>`;
 }
 
 function listHtml(l) {
@@ -149,12 +158,12 @@ function listHtml(l) {
     if (!groups.has(k)) groups.set(k, []);
     groups.get(k).push(t);
   }
-  return [...groups].map(([k, ts]) => `<section class="gl-group" id="letter-${k === '#' ? 'num' : k.toLowerCase()}" data-letter="${k}">
-      <h2 class="gl-letter">${k}</h2>
-      <dl class="gl-list">
+  return [...groups].map(([k, ts]) => `<div class="gl-group" id="letter-${k === '#' ? 'num' : k.toLowerCase()}" data-letter="${k}">
+      <h3 class="gl-letter">${k}</h3>
+      <div class="pgrid gl-grid">
         ${ts.map((t) => termHtml(t, l)).join('\n        ')}
-      </dl>
-    </section>`).join('\n    ');
+      </div>
+    </div>`).join('\n    ');
 }
 
 function toolsHtml(l) {
@@ -164,15 +173,24 @@ function toolsHtml(l) {
     ? `<a href="#letter-${c.toLowerCase()}">${c}</a>`
     : `<span aria-disabled="true">${c}</span>`).join('');
   const num = letters.has('#') ? '<a href="#letter-num">#</a>' : '';
-  const chips = [`<button type="button" class="gl-chip" data-cat="" aria-pressed="true">${esc(s.page.all)}</button>`,
-    ...DATA.categories.map((c) => `<button type="button" class="gl-chip" data-cat="${c}" aria-pressed="false">${esc(s.cats[c])}</button>`)].join('');
-  return `<div class="gl-tools" id="glTools">
+  const chips = [`<button type="button" class="seg-btn gl-chip on" data-cat="" aria-pressed="true">${esc(s.page.all)}</button>`,
+    ...DATA.categories.map((c) => `<button type="button" class="seg-btn gl-chip" data-cat="${c}" aria-pressed="false"><i class="gl-dot ${ACC[c]}"></i>${esc(s.cats[c])}</button>`)].join('');
+  return `<div class="hpanel blue gl-panel" id="glTools">
       <label class="gl-search" hidden><span class="sr-only">${esc(s.page.searchLabel)}</span><input type="search" id="glQ" name="q" placeholder="${esc(s.page.searchPlaceholder)}" autocomplete="off" spellcheck="false"></label>
-      <div class="gl-chips" role="group" aria-label="${esc(s.page.catsLabel)}" hidden>${chips}</div>
+      <div class="seg gl-chips" role="group" aria-label="${esc(s.page.catsLabel)}" hidden>${chips}</div>
       <nav class="gl-az" aria-label="${esc(s.page.azLabel)}">${num}${az}</nav>
       <p class="gl-count" id="glCount" hidden aria-live="polite" data-one="${esc(s.page.countOne)}" data-many="${esc(s.page.countMany)}" data-copied="${esc(s.page.copied)}">${esc(s.page.countMany.replace('{n}', N))}</p>
-      <p class="gl-empty" id="glEmpty" hidden>${esc(s.page.empty)}</p>
     </div>`;
+}
+
+function statsHtml(l) {
+  const p = S[l].page;
+  const sources = new Set(TERMS.flatMap((t) => (t.sources || []).map((x) => x.url))).size;
+  const items = [p.statTerms.replace('{n}', N), p.statTopics.replace('{c}', DATA.categories.length),
+    p.statSources.replace('{s}', sources), p.statReviewed.replace('{date}', fmtDate(REVIEWED, l))];
+  return `<div class="trust-strip ts-center">
+    <span class="ts-stats">${items.map((x) => `<span>${esc(x)}</span>`).join('')}</span>
+  </div>`;
 }
 
 const RELATED_HREF = {
@@ -252,23 +270,29 @@ ${hreflang}
 <link rel="stylesheet" href="/glossary.css?v=${GLOSSARY_ASSET_V}">
 <script type="application/ld+json">${jsonLd({ '@context': 'https://schema.org', '@graph': schemas(l) })}</script>
 ${CHROME[l].i18n ? CHROME[l].i18n + '\n' : ''}</head>
-<body class="page-buy page-eco page-gl no-split">
+<body class="page-buy page-gl no-split">
 <!-- generated by seo-build/glossary.mjs; edit seo-build/data/glossary*.json, not this file -->
 ${nav}
 
 <main class="wrap" id="top">
-  <div class="buy-hero2 eco-hero gl-hero">
+  <div class="buy-hero2 gl-hero">
     <nav class="eco-crumbs" aria-label="${CRUMBS_LABEL[l] || 'Breadcrumb'}">${crumbs}</nav>
     <div class="eyebrow blue"><i></i>${esc(p.eyebrow)}</div>
     <h1>${esc(p.h1)}. <span class="h1-grey">${esc(fill(p.h1Accent))}</span></h1>
     <p class="sp-lead">${esc(p.intro)}</p>
-    <p class="sp-lead gl-position">${esc(p.position)}</p>
-  </div>
-
-  <section class="gl-wrap" aria-label="${esc(p.crumb)}">
     ${toolsHtml(l)}
+    <div class="hp-fine">
+      <p>${esc(p.position)} ${esc(p.notAdvice)}</p>
+    </div>
+    <a class="hp-cta" href="#terms">${esc(p.browse)} <span aria-hidden="true">↓</span></a>
+  </div>
+  ${statsHtml(l)}
+
+  <section id="terms" class="gl-wrap">
+    <div class="sec-head one"><div class="sec-copy"><h2>${esc(p.termsH)} <span>${esc(p.termsSub)}</span></h2></div></div>
+    <p class="gl-empty" id="glEmpty" hidden>${esc(p.empty)}</p>
     ${listHtml(l)}
-    <p class="gl-reviewed">${esc(p.reviewed.replace('{date}', fmtDate(REVIEWED, l)))} ${esc(p.notAdvice)}</p>
+    <p class="gl-reviewed">${esc(p.reviewed.replace('{date}', fmtDate(REVIEWED, l)))}</p>
   </section>
 
   ${relatedHtml(l)}

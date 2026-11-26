@@ -29,6 +29,13 @@
     "notAdvice": "Vysvetlenia sú všeobecné informácie, nie investičné, právne ani daňové poradenstvo.",
     "relatedH": "Súvisiace nástroje",
     "relatedSub": "a návody",
+    "browse": "Prejsť na všetky pojmy",
+    "termsH": "Všetky pojmy.",
+    "termsSub": "Od A po Z, každé pravidlo so zdrojom.",
+    "statTerms": "Pojmy: {n}",
+    "statTopics": "Témy: {c}",
+    "statSources": "Prepojené zdroje: {s}",
+    "statReviewed": "Overené: {date}",
     "setName": "Bitcoin slovník Virtuse"
   },
   "related": [

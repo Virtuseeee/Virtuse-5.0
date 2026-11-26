@@ -463,7 +463,7 @@ if (/\d [%€]/.test(stripTags(checaEs))) fail('ES republica-checa has a plain s
     const hl = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/g)].map((m) => m[1]).sort().join(' ');
     if (hl !== [...langs, 'x-default'].sort().join(' ')) fail(`${rel} hreflang ${hl} (want ${langs.join(' ')} x-default)`);
     for (const x of langs) if (!html.includes(`hreflang="${x}" href="${ORIGIN}/${G.paths[x].replace(/index\.html$/, '')}"`)) fail(`${rel} missing hreflang ${x}`);
-    const terms = (html.match(/class="gl-term"/g) || []).length;
+    const terms = (html.match(/class="pcard2 [a-z]+ gl-term"/g) || []).length;
     if (terms !== n) fail(`${rel}: ${terms} terms rendered, data has ${n}`);
     for (const t of G.terms) if (!html.includes(`id="${t.id}"`)) fail(`${rel} missing anchor #${t.id}`);
     const ld = JSON.parse((html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/) || [])[1] || '{}');
@@ -471,7 +471,7 @@ if (/\d [%€]/.test(stripTags(checaEs))) fail('ES republica-checa has a plain s
     if (!set || set.hasDefinedTerm.length !== n) fail(`${rel} DefinedTermSet missing or incomplete`);
     const defs = [...html.matchAll(/<p class="gl-def">([^<]*)<\/p>/g)].map((m) => m[1].replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
     for (const d of set ? set.hasDefinedTerm : []) if (!defs.includes(d.description)) fail(`${rel} JSON-LD description differs from visible text: ${d['@id']}`);
-    for (const m of html.matchAll(/<div class="gl-term" id="[^"]+" data-cat="tax"[\s\S]*?<p class="gl-def">([^<]*)<\/p>/g)) if (/%/.test(m[1])) fail(`${rel}: tax rate in the glossary`);
+    for (const m of html.matchAll(/<article class="pcard2 [a-z]+ gl-term" id="[^"]+" data-cat="tax"[\s\S]*?<p class="gl-def">([^<]*)<\/p>/g)) if (/%/.test(m[1])) fail(`${rel}: tax rate in the glossary`);
     if (html.includes('sk/bitcoin-dane/cesko/dac8')) fail(`${rel} links sk/bitcoin-dane/cesko/dac8 (does not exist)`);
     if (html.replaceAll("location.hostname!=='staging.virtuse.com'", '').includes('staging.virtuse.com')) fail(`${rel} contains staging.virtuse.com`);
     if (!/<script src="\/glossary\.js\?v=\d+" defer><\/script>/.test(html)) fail(`${rel} missing glossary.js`);

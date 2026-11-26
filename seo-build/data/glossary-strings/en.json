@@ -29,6 +29,13 @@
     "notAdvice": "Definitions are general information, not investment, legal or tax advice.",
     "relatedH": "Related tools",
     "relatedSub": "and guides",
+    "browse": "Browse all terms",
+    "termsH": "All terms.",
+    "termsSub": "A to Z, each rule with its source.",
+    "statTerms": "{n} terms",
+    "statTopics": "{c} topics",
+    "statSources": "{s} official sources linked",
+    "statReviewed": "Reviewed {date}",
     "setName": "Virtuse Bitcoin glossary"
   },
   "related": [

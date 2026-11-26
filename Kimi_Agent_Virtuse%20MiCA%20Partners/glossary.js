@@ -46,7 +46,7 @@
   chips.forEach(function (c) {
     c.addEventListener('click', function () {
       cat = c.getAttribute('data-cat');
-      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); x.classList.toggle('on', x === c); });
       apply(false);
     });
   });
@@ -58,7 +58,7 @@
     var id = decodeURIComponent(location.hash.slice(1));
     var t = id && document.getElementById(id);
     if (!t || !t.classList.contains('gl-term')) return;
-    if (t.hidden) { q.value = ''; cat = ''; chips.forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-cat') === '' ? 'true' : 'false'); }); apply(true); }
+    if (t.hidden) { q.value = ''; cat = ''; chips.forEach(function (x) { var on = x.getAttribute('data-cat') === ''; x.setAttribute('aria-pressed', on ? 'true' : 'false'); x.classList.toggle('on', on); }); apply(true); }
     terms.forEach(function (x) { x.classList.remove('gl-hit'); });
     t.classList.add('gl-hit');
     t.scrollIntoView({ block: 'start' });
