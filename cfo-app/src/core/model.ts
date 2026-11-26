@@ -8,6 +8,8 @@ import type { BrokerAccount } from './brokers'
 import type { Goal } from './goals'
 import type { Rule } from './rules'
 import type { Snapshot } from './history'
+import type { BankAccount } from './bank'
+import type { Chat } from './chat'
 
 export type AssetClass =
   | 'bitcoin'
@@ -78,6 +80,10 @@ export interface Profile {
   rules?: Rule[]
   /** One net-worth snapshot per day the app was opened (own data only). */
   snapshots?: Snapshot[]
+  /** Bank accounts from statement CSVs (later: PSD2 sandbox). */
+  banks?: BankAccount[]
+  /** Ask-your-CFO chats, saved with the profile (encrypted). */
+  chats?: Chat[]
 }
 
 export function emptyProfile(label = ''): Profile {

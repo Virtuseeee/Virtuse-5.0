@@ -30,6 +30,6 @@ describe('Kraken ledgers import', () => {
   })
 
   it('rejects a file it does not know', () => {
-    expect(() => importCsv('date,amount\n2026-01-01,5')).toThrow(UnknownFormatError)
+    expect(() => importCsv('foo,bar\n1,2')).toThrow(UnknownFormatError)
   })
 })

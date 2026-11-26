@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ask, SUGGESTED, type Answer } from '../core/ask'
+import type { Chat, ChatMsg } from '../core/chat'
+import { cashFlow, type BankAccount } from '../core/bank'
 import type { BrokerAccount } from '../core/brokers'
 import * as F from '../core/format'
 import type { Lang } from '../core/format'
@@ -58,7 +60,7 @@ const dayClass = (n?: number) => (n === undefined ? '' : n > 0 ? 'up' : n < 0 ? 
 
 /* ------------------------------------------------------------- Dashboard */
 
-export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk, setup }: Ctx & { onAsk: (q: string) => void; setup: { chats: boolean; vault: boolean } }) {
+export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk, setup }: Ctx & { onAsk: (q: string) => void; setup: { vault: boolean } }) {
   const a = app(lang)
   const t = strings(lang)
   const [q, setQ] = useState('')
@@ -71,7 +73,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
   return (
     <>
       <Head eyebrow={a.nav.dashboard} title={mode === 'demo' ? <>{a.hello('Anna').replace('Anna', '')}<span className="grad">Anna</span></> : a.hello('')} lead={mode === 'demo' ? `${a.helloSub} ${t.demoBanner}` : a.helloSub} />
-      {mode === 'own' && <SetupCard lang={lang} go={go} done={[profile.txs.length > 0 || profile.brokers.length > 0, profile.manualAssets.length > 0 || profile.liabilities.length > 0, setup.chats, (profile.rules ?? []).length > 0, (profile.goals ?? []).length > 0, setup.vault]} />}
+      {mode === 'own' && <SetupCard lang={lang} go={go} done={[profile.txs.length > 0 || profile.brokers.length > 0 || (profile.banks ?? []).length > 0, profile.manualAssets.length > 0 || profile.liabilities.length > 0, (profile.chats ?? []).length > 0, (profile.rules ?? []).length > 0, (profile.goals ?? []).length > 0, setup.vault]} />}
       {!hasData ? (
         <Empty lang={lang} go={go} />
       ) : (
@@ -139,7 +141,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
               </ul>
             </div>
 
-            <div className="card span2 acc-pink">
+            <div className="card span4 acc-pink">
               <div className="card-head"><h2>{a.radarTitle}</h2><button className="link" onClick={() => go('radar')}>{a.radarAll}</button></div>
               {radar.length === 0 ? <p className="muted small">{a.radarEmpty}</p> : (
                 <ul className="radar-list">
@@ -148,6 +150,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
               )}
             </div>
 
+            <CashFlowCard lang={lang} banks={profile.banks ?? []} go={go} />
             <div className="card span2 acc-orange">
               <h2>{t.btcTitle}</h2>
               <dl className="facts">
@@ -163,6 +166,32 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
       )}
       <footer className="foot">{t.foot}</footer>
     </>
+  )
+}
+
+function CashFlowCard({ lang, banks, go }: { lang: Lang; banks: BankAccount[]; go: (p: Page) => void }) {
+  const a = app(lang)
+  const flows = useMemo(() => cashFlow(banks), [banks])
+  const now = new Date().toISOString().slice(0, 7)
+  const f = flows.filter((x) => x.month < now).pop() ?? flows[flows.length - 1]
+  if (!f) return <div className="card span2 acc-teal"><h2>{a.cashflowTitle}</h2><p className="muted small">{a.cashNone}</p><button className="ghost" style={{ marginTop: 12 }} onClick={() => go('data')}>{a.emptyCta}</button></div>
+  const cats = Object.entries(f.byCategory).filter(([c]) => c !== 'investing' && c !== 'transfers').sort((x, y) => (y[1] ?? 0) - (x[1] ?? 0)).slice(0, 5)
+  const max = Math.max(...cats.map(([, v]) => v ?? 0), 1)
+  return (
+    <div className="card span2 acc-teal">
+      <div className="card-head"><h2>{a.cashflowTitle}</h2><span className="k">{f.month}</span></div>
+      <div className="cf-tiles">
+        <div><span className="k">{a.cashIncome}</span><b className="up">{F.eur(f.incomeEur, lang)}</b></div>
+        <div><span className="k">{a.cashSpending}</span><b>{F.eur(f.spendingEur, lang)}</b></div>
+        <div><span className="k">{a.cashNet}</span><b className={f.netEur < 0 ? 'down' : ''}>{F.eur(f.netEur, lang)}</b></div>
+      </div>
+      <ul className="cf-bars">
+        {cats.map(([c, v]) => (
+          <li key={c}><span>{a.cats[c]}</span><i><em style={{ width: `${((v ?? 0) / max) * 100}%` }} /></i><b>{F.eur(v ?? 0, lang)}</b></li>
+        ))}
+      </ul>
+      {!!f.byCategory.investing && <p className="muted small">{a.cashInvesting}: {F.eur(f.byCategory.investing, lang)}</p>}
+    </div>
   )
 }
 
@@ -283,18 +312,11 @@ function Composer({ lang, onSend, mode, setMode, modes = ['chat', 'radar'], plac
 
 /* ------------------------------------------------------------- Ask */
 
-export interface ChatMsg {
-  role: 'user' | 'cfo'
-  text: string
-  answer?: Answer
-}
-export interface Chat {
-  id: string
-  title: string
-  msgs: ChatMsg[]
-}
+export type { Chat, ChatMsg } from '../core/chat'
 
-export function AskPage({ lang, profile, price, o, setProfile, chats, setChats, pending, pendingMode, clearPending }: Ctx & { chats: Chat[]; setChats: (fn: (c: Chat[]) => Chat[]) => void; pending: string; pendingMode: ComposerMode; clearPending: () => void }) {
+export function AskPage({ lang, profile, price, o, mode: appMode, setProfile, pending, pendingMode, clearPending }: Ctx & { pending: string; pendingMode: ComposerMode; clearPending: () => void }) {
+  const chats = profile.chats ?? []
+  const setChats = (fn: (c: Chat[]) => Chat[]) => setProfile((p) => ({ ...p, chats: fn(p.chats ?? []) }))
   const a = app(lang)
   const [activeId, setActiveId] = useState<string | null>(chats[0]?.id ?? null)
   const [mode, setMode] = useState<ComposerMode>(pendingMode)
@@ -394,7 +416,7 @@ export function AskPage({ lang, profile, price, o, setProfile, chats, setChats, 
             ))}
           </ul>
         )}
-        <p className="muted small">{a.chatsNotSaved}</p>
+        <p className="muted small">{appMode === 'own' ? a.chatsSaved : a.chatsNotSaved}</p>
       </aside>
     </section>
   )
@@ -479,6 +501,7 @@ function ruleLine(rule: Rule, actual: number | undefined, symbol: string | undef
     case 'networth_below': return sk ? `Čistý majetok ${F.eur(actual, lang)}` : `Net worth ${F.eur(actual, lang)}`
     case 'btc_fee_above': return sk ? `Poplatky ${F.pct(actual, lang, 2)} z nákupov` : `Fees ${F.pct(actual, lang, 2)} of buys`
     case 'cash_below': return sk ? `Hotovosť ${F.eur(actual, lang)}` : `Cash ${F.eur(actual, lang)}`
+    case 'expense_above': return `${symbol}: ${F.eur(actual, lang, 2)}`
   }
 }
 
@@ -773,13 +796,18 @@ export function GoalsPage({ lang, profile, price, setProfile }: Ctx) {
 
 export function TransactionsPage({ lang, profile }: Ctx) {
   const a = app(lang)
+  const [tab, setTab] = useState(profile.txs.length === 0 && (profile.banks ?? []).length ? 1 : 0)
   const [kind, setKind] = useState<string>('all')
   const txs = [...profile.txs].reverse().filter((x) => kind === 'all' || x.kind === kind)
   const kinds = ['all', ...new Set(profile.txs.map((x) => x.kind))]
+  const bankTxs = (profile.banks ?? []).flatMap((b) => b.txs).sort((x, y) => y.date.localeCompare(x.date))
+  const cats = ['all', ...new Set(bankTxs.map((x) => x.category))]
+  const [cat, setCat] = useState('all')
   return (
     <>
       <Head eyebrow={a.nav.transactions} title={a.titles.transactions} lead={a.txLead} />
-      {profile.txs.length === 0 ? <div className="card"><p className="muted">{a.txNone}</p></div> : (
+      <div className="tabs-line">{a.txTabs.map((x, i) => <button key={x} className={i === tab ? 'on' : ''} onClick={() => setTab(i)}>{x}</button>)}</div>
+      {tab === 0 && (profile.txs.length === 0 ? <div className="card"><p className="muted">{a.txNone}</p></div> : (
         <section className="card table-card">
           <div className="seg wrap">
             {kinds.map((k) => <button key={k} className={k === kind ? 'on' : ''} onClick={() => setKind(k)}>{k === 'all' ? a.all : a.txKinds[k]}</button>)}
@@ -799,14 +827,35 @@ export function TransactionsPage({ lang, profile }: Ctx) {
             </tbody>
           </table>
         </section>
-      )}
+      ))}
+      {tab === 1 && (bankTxs.length === 0 ? <div className="card"><p className="muted">{a.bankNone}</p></div> : (
+        <section className="card table-card">
+          <div className="seg wrap">
+            {cats.map((k) => <button key={k} className={k === cat ? 'on' : ''} onClick={() => setCat(k)}>{k === 'all' ? a.all : a.cats[k]}</button>)}
+          </div>
+          <table>
+            <thead><tr><th>{a.colDate}</th><th>{a.colDesc}</th><th>{a.colCat}</th><th className="r">{a.colAmount}</th></tr></thead>
+            <tbody>
+              {bankTxs.filter((x) => cat === 'all' || x.category === cat).map((x, i) => (
+                <tr key={i}>
+                  <td>{F.date(x.date, lang)}</td>
+                  <td>{x.description}</td>
+                  <td><small className="basis">{a.cats[x.category]}</small></td>
+                  <td className={`r ${x.amountEur > 0 ? 'up' : ''}`}>{F.eur(x.amountEur, lang, 2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      ))}
     </>
   )
 }
 
 /* ------------------------------------------------------------- Data & privacy */
 
-export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, onBroker, onVaultSaved }: Ctx & {
+export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, onBroker, onBank, onVaultSaved }: Ctx & {
+  onBank: (a: BankAccount) => void
   onVaultSaved: () => void
   setPrice: (n: number) => void
   own: Profile
@@ -825,7 +874,7 @@ export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, on
         <p className="card muted">{a.demoReadOnly}</p>
       ) : (
         <>
-          <ImportBox lang={lang} onTxs={(txs) => setOwn((p) => ({ ...p, txs }))} onBroker={onBroker} onNote={setNote} />
+          <ImportBox lang={lang} onTxs={(txs) => setOwn((p) => ({ ...p, txs }))} onBroker={onBroker} onBank={onBank} onNote={setNote} />
           {note && <p className="note" role="status">{note}</p>}
           <ManualBox lang={lang} profile={own} setProfile={setOwn} />
           <VaultBox lang={lang} profile={own} onOpen={(p) => setOwn(() => p)} onSaved={onVaultSaved} />

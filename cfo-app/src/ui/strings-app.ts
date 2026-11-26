@@ -76,7 +76,7 @@ const SK = {
   feeTh: 'Poplatky za Bitcoin od',
   concTh: 'Jedna pozícia tvorí od',
   cashTh: 'Hotovosť tvorí od',
-  kinds: { move: 'Pohyby', fees: 'Poplatky', concentration: 'Rozloženie', debt: 'Dlhy', cash: 'Hotovosť', data: 'Údaje', custody: 'Úschova', tax: 'Dane' } as Record<RadarItem['kind'], string>,
+  kinds: { move: 'Pohyby', fees: 'Poplatky', concentration: 'Rozloženie', debt: 'Dlhy', cash: 'Hotovosť', data: 'Údaje', custody: 'Úschova', tax: 'Dane', spending: 'Výdavky' } as Record<RadarItem['kind'], string>,
   // Portfolio
   portfolioLead: 'Všetko, čo má trhovú cenu: Bitcoin a pozície u brokerov.',
   colName: 'Nástroj',
@@ -101,7 +101,7 @@ const SK = {
   modeRadar: 'Radar',
   radarPh: 'Napr. daj vedieť, keď sa BTC pohne o viac ako 5 %',
   ruleAdded: (t: string) => `Pravidlo pridané do Radaru: „${t}“. Radar ho kontroluje pri každom otvorení aplikácie.`,
-  ruleNotUnderstood: 'Tomuto pravidlu nerozumiem. Skúste: pohyb o X %, podiel nad X %, čistý majetok pod X €, hotovosť pod X € alebo poplatky nad X %.',
+  ruleNotUnderstood: 'Tomuto pravidlu nerozumiem. Skúste: pohyb o X %, podiel nad X %, čistý majetok pod X €, hotovosť pod X €, poplatky nad X % alebo výdavok nad X €.',
   disclaimer: 'Virtuse CFO ukazuje fakty o vašich údajoch. Nie je to investičné, daňové ani právne poradenstvo.',
   history: 'História',
   search: 'Hľadať',
@@ -131,6 +131,7 @@ const SK = {
     ['Majetok', 'Daj vedieť, keď čistý majetok klesne pod 150 000 €'],
     ['Hotovosť', 'Daj vedieť, keď hotovosť klesne pod 10 000 €'],
     ['Poplatky', 'Daj vedieť, keď poplatky za Bitcoin prekročia 1 %'],
+    ['Výdavky', 'Daj vedieť pri výdavku nad 500 €'],
   ] as [string, string][],
   remove: 'Odstrániť',
   tabsPortfolio: ['Prehľad', 'Účty', 'Majetok', 'Záväzky'],
@@ -191,6 +192,19 @@ const SK = {
   taxSources: 'Zdroje',
   taxSourceLabels: ['Finančná správa: sadzby dane 2026', 'Finančná správa: príjmy z predaja kryptoaktív', 'Finančná správa: povinnosť podať priznanie za rok 2026', 'VšZP: zmeny od 1. 1. 2026 (16 %)'],
   taxWithheld: 'Zrazená daň z dividend u brokerov',
+  cashflowTitle: 'Príjmy a výdavky',
+  cashIncome: 'Príjmy',
+  cashSpending: 'Výdavky',
+  cashNet: 'Rozdiel',
+  cashInvesting: 'Investovanie (mimo výdavkov)',
+  cashNone: 'Načítajte bankový výpis a uvidíte príjmy a výdavky po mesiacoch.',
+  cats: { income: 'Príjem', groceries: 'Potraviny', housing: 'Bývanie a energie', transport: 'Doprava', eating_out: 'Jedlo vonku', subscriptions: 'Predplatné', shopping: 'Nákupy', health: 'Zdravie', investing: 'Investovanie', transfers: 'Prevody', cash: 'Hotovosť', other: 'Ostatné' } as Record<string, string>,
+  txTabs: ['Bitcoin', 'Banka'],
+  bankNone: 'Žiadny bankový výpis. Načítajte ho v sekcii Údaje a súkromie.',
+  colDesc: 'Popis',
+  colCat: 'Kategória',
+  colAmount: 'Suma',
+  chatsSaved: 'Rozhovory sa uložia spolu so zašifrovanými údajmi.',
   dataLead: 'Importy, ručne zadaný majetok, šifrované uloženie a to, čo by opustilo vaše zariadenie.',
 }
 
@@ -265,7 +279,7 @@ const EN: S = {
   feeTh: 'Bitcoin fees from',
   concTh: 'One holding is at least',
   cashTh: 'Cash is at least',
-  kinds: { move: 'Moves', fees: 'Fees', concentration: 'Mix', debt: 'Debts', cash: 'Cash', data: 'Data', custody: 'Custody', tax: 'Tax' },
+  kinds: { move: 'Moves', fees: 'Fees', concentration: 'Mix', debt: 'Debts', cash: 'Cash', data: 'Data', custody: 'Custody', tax: 'Tax', spending: 'Spending' },
   portfolioLead: 'Everything with a market price: Bitcoin and broker positions.',
   colName: 'Instrument',
   colWhere: 'Where',
@@ -287,7 +301,7 @@ const EN: S = {
   modeRadar: 'Radar',
   radarPh: 'E.g. tell me when BTC moves more than 5%',
   ruleAdded: (t: string) => `Rule added to Radar: “${t}”. Radar checks it every time you open the app.`,
-  ruleNotUnderstood: 'I do not understand this rule. Try: a move of X%, a share above X%, net worth below X €, cash below X € or fees above X%.',
+  ruleNotUnderstood: 'I do not understand this rule. Try: a move of X%, a share above X%, net worth below X €, cash below X €, fees above X% or an expense above X €.',
   disclaimer: 'Virtuse CFO shows facts about your data. It is not investment, tax or legal advice.',
   history: 'History',
   search: 'Search',
@@ -317,6 +331,7 @@ const EN: S = {
     ['Net worth', 'Tell me when net worth falls below 150,000 €'],
     ['Cash', 'Tell me when cash falls below 10,000 €'],
     ['Fees', 'Tell me when Bitcoin fees go above 1%'],
+    ['Spending', 'Tell me about any expense above 500 €'],
   ],
   remove: 'Remove',
   tabsPortfolio: ['Overview', 'Accounts', 'Assets', 'Debts'],
@@ -377,6 +392,19 @@ const EN: S = {
   taxSources: 'Sources',
   taxSourceLabels: ['Slovak tax office: 2026 tax rates', 'Slovak tax office: income from selling crypto-assets', 'Slovak tax office: filing duty for 2026', 'VšZP: changes from 1 Jan 2026 (16 %)'],
   taxWithheld: 'Tax withheld on dividends at brokers',
+  cashflowTitle: 'Income and spending',
+  cashIncome: 'Income',
+  cashSpending: 'Spending',
+  cashNet: 'Difference',
+  cashInvesting: 'Investing (not spending)',
+  cashNone: 'Load a bank statement to see income and spending by month.',
+  cats: { income: 'Income', groceries: 'Groceries', housing: 'Housing and utilities', transport: 'Transport', eating_out: 'Eating out', subscriptions: 'Subscriptions', shopping: 'Shopping', health: 'Health', investing: 'Investing', transfers: 'Transfers', cash: 'Cash', other: 'Other' },
+  txTabs: ['Bitcoin', 'Bank'],
+  bankNone: 'No bank statement. Load one under Data and privacy.',
+  colDesc: 'Description',
+  colCat: 'Category',
+  colAmount: 'Amount',
+  chatsSaved: 'Chats are saved with your encrypted data.',
   dataLead: 'Imports, assets you enter, encrypted saving and what would leave your device.',
 }
 
@@ -413,6 +441,10 @@ export function radarText(item: RadarItem, lang: Lang): { title: string; why: st
       return { title: sk ? `Hotovosť ${eur(v.eur)} tvorí ${pct(v.pct)} majetku.` : `Cash of ${eur(v.eur)} is ${pct(v.pct)} of your assets.`, why: sk ? 'Podiel hotovosti prekročil prah, ktorý ste nastavili.' : 'The cash share crossed the threshold you set.' }
     case 'own_wallet':
       return { title: sk ? `Bitcoin ste ${v.n}× vybrali z búrzy do vlastnej peňaženky.` : `You withdrew Bitcoin from the exchange to your own wallet ${v.n} times.`, why: sk ? 'Coiny vo vlastnej úschove počítame ako vaše, odpočítame len poplatok siete.' : 'Coins in your own custody count as yours; only the network fee is deducted.' }
+    case 'subscriptions':
+      return { title: sk ? `Predplatné za ${v.month}: ${eur(v.eur, 2)}.` : `Subscriptions in ${v.month}: ${eur(v.eur, 2)}.`, why: sk ? 'Súčet platieb, ktoré aplikácia zaradila ako predplatné, z bankového výpisu.' : 'Payments the app sorted as subscriptions, from your bank statement.' }
+    case 'spent_more':
+      return { title: sk ? `V ${v.month} boli výdavky o ${eur(v.eur)} vyššie ako príjmy.` : `In ${v.month} spending was ${eur(v.eur)} above income.`, why: sk ? 'Investovanie a prevody medzi vlastnými účtami sa do výdavkov nepočítajú.' : 'Investing and transfers between your own accounts are not counted as spending.' }
     case 'tax_due':
       return { title: sk ? `Za rok ${v.year} je zisk z predajov Bitcoinu ${eur(v.eur)}.` : `Your gain from Bitcoin sales in ${v.year} is ${eur(v.eur)}.`, why: sk ? `Daňové priznanie typu B do ${F.date(String(v.date), lang)}. Odhad je na obrazovke Dane.` : `Type B return due ${F.date(String(v.date), lang)}. The estimate is on the Tax screen.` }
     case 'prices_stale':

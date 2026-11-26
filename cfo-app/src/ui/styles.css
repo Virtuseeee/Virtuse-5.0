@@ -354,3 +354,14 @@ tbody tr:hover td { background: rgba(255,255,255,.02); }
 .due { margin-top: 12px; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--blue) 10%, transparent); border: 1px solid color-mix(in srgb, var(--blue) 30%, transparent); font-size: 14px; }
 .assume { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--muted); font-size: 14px; }
 .warn-line { margin-top: 12px; color: var(--orange); font-size: 14px; }
+.dash-grid .span4 { grid-column: 1 / -1; }
+.cf-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
+.cf-tiles > div { background: var(--inset); border-radius: 12px; padding: 12px; display: grid; gap: 4px; }
+.cf-tiles .k { color: var(--dim); }
+.cf-tiles b { font-size: 18px; font-variant-numeric: tabular-nums; }
+.cf-bars { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
+.cf-bars li { display: grid; grid-template-columns: 130px 1fr auto; gap: 10px; align-items: center; font-size: 14px; }
+.cf-bars i { height: 6px; background: var(--inset); border-radius: 999px; overflow: hidden; }
+.cf-bars em { display: block; height: 100%; background: var(--c); border-radius: 999px; }
+.cf-bars b { font-variant-numeric: tabular-nums; font-weight: 600; }
+@media (max-width: 860px) { .dash-grid .span4 { grid-column: auto; } .cf-bars li { grid-template-columns: 100px 1fr auto; } }

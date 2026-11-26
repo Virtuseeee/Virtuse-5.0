@@ -6,6 +6,7 @@ import { importKrakenLedgers } from '../core/importers/kraken'
 import { mergeAccount } from '../core/brokers'
 import { parseCsv, parseRows } from '../core/csv'
 import { importXtb } from '../core/importers/xtb'
+import { importBank } from '../core/importers/bank'
 import { SAMPLES } from './samples'
 
 /** Illustrative EUR price used for "today" in demo mode. */
@@ -78,6 +79,7 @@ export function annaProfile(): Profile {
       { id: 'g3', name: 'Splatiť hypotéku', kind: 'debt_free', target: 0, startDebt: 120_000 },
     ],
     rules: [{ id: 'r1', kind: 'move', symbol: 'BTC', value: 5, text: 'BTC sa pohne o viac ako 5 % za deň' }],
+    banks: [{ ...importBank(parseRows(SAMPLES.bank), 'Bežný účet'), id: 'b1' }],
     brokers: [mergeAccount(importXtb(parseRows(SAMPLES.xtbPositions)), importXtb(parseRows(SAMPLES.xtbCash)))],
   }
 }

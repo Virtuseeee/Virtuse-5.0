@@ -6,7 +6,7 @@ import { overview } from '../core/portfolio'
 import { DEFAULT_RADAR, radarItems } from '../core/radar'
 import { upsertSnapshot } from '../core/history'
 import { annaProfile } from '../data/demo'
-import { AskPage, DashboardPage, DataPage, GoalsPage, TaxPage, PortfolioPage, RadarPage, ResearchPage, TransactionsPage, type Chat } from './pages'
+import { AskPage, DashboardPage, DataPage, GoalsPage, TaxPage, PortfolioPage, RadarPage, ResearchPage, TransactionsPage } from './pages'
 import { BOOK, startPrice, type Mode } from './parts'
 import { app, type Page } from './strings-app'
 
@@ -48,7 +48,6 @@ export function App() {
   const [own, setOwn] = useState<Profile>(() => emptyProfile())
   const [price, setPrice] = useState(startPrice)
   const [prefs, setPrefsState] = useState(readPrefs)
-  const [chats, setChats] = useState<Chat[]>([])
   const [pendingQuestion, setPendingQuestion] = useState('')
   const [pendingMode, setPendingMode] = useState<'chat' | 'radar'>('chat')
   const [demo, setDemo] = useState<Profile>(() => annaProfile())
@@ -114,7 +113,6 @@ export function App() {
   }
   const switchMode = (m: Mode) => {
     setMode(m)
-    setChats([])
   }
 
   const ctx = { lang, profile, price, o, radar, go, mode, setProfile }
@@ -160,8 +158,8 @@ export function App() {
           <span className="brand"><span className="logo">Virtuse</span> <span className="muted">CFO</span></span>
           <span className="tag">{mode === 'demo' ? a.demoChip : a.ownChip}</span>
         </header>
-        {page === 'dashboard' && <DashboardPage {...ctx} onAsk={askWith} setup={{ chats: chats.length > 0, vault: vaultSaved }} />}
-        {page === 'ask' && <AskPage {...ctx} chats={chats} setChats={setChats} pending={pendingQuestion} pendingMode={pendingMode} clearPending={() => setPendingQuestion('')} />}
+        {page === 'dashboard' && <DashboardPage {...ctx} onAsk={askWith} setup={{ vault: vaultSaved }} />}
+        {page === 'ask' && <AskPage {...ctx} pending={pendingQuestion} pendingMode={pendingMode} clearPending={() => setPendingQuestion('')} />}
         {page === 'research' && <ResearchPage {...ctx} topics={topics} setTopics={setTopics} />}
         {page === 'radar' && <RadarPage {...ctx} prefs={prefs} setPrefs={setPrefs} onCreate={(q) => askWith(q, 'radar')} />}
         {page === 'portfolio' && <PortfolioPage {...ctx} />}
@@ -175,6 +173,7 @@ export function App() {
             own={own}
             setOwn={setOwn}
             onVaultSaved={() => setVaultSaved(true)}
+            onBank={(acc) => setOwn((p) => ({ ...p, banks: [...(p.banks ?? []).filter((b) => b.name !== acc.name), acc] }))}
             onBroker={(acc) => setOwn((p) => ({ ...p, brokers: [...p.brokers.filter((b) => b.source !== acc.source), mergeAccount(p.brokers.find((b) => b.source === acc.source), acc)] }))}
           />
         )}

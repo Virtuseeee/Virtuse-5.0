@@ -7,8 +7,9 @@ import type { Profile } from './model'
 import { overview } from './portfolio'
 import { revalue, type PriceBook } from './prices'
 import { skTaxYears } from './tax-sk'
+import { cashFlow } from './bank'
 
-export type RadarKind = 'move' | 'fees' | 'concentration' | 'debt' | 'cash' | 'data' | 'custody' | 'tax'
+export type RadarKind = 'move' | 'fees' | 'concentration' | 'debt' | 'cash' | 'data' | 'custody' | 'tax' | 'spending'
 
 export interface RadarItem {
   id: string
@@ -69,6 +70,14 @@ export function radarItems(profile: Profile, priceEur: number, book: PriceBook |
   const withdrawals = profile.txs.filter((t) => t.kind === 'withdrawal').length
   if (withdrawals > 0) {
     items.push({ id: 'custody', kind: 'custody', level: 'info', code: 'own_wallet', vars: { n: withdrawals } })
+  }
+
+  const flows = cashFlow(profile.banks ?? [])
+  const lastFull = flows.filter((f) => f.month < opts.today.slice(0, 7)).pop() ?? flows[flows.length - 1]
+  if (lastFull) {
+    const subs = lastFull.byCategory.subscriptions ?? 0
+    if (subs > 0) items.push({ id: `subs:${lastFull.month}`, kind: 'spending', level: 'info', code: 'subscriptions', vars: { eur: Math.round(subs * 100) / 100, month: lastFull.month } })
+    if (lastFull.netEur < 0) items.push({ id: `net:${lastFull.month}`, kind: 'spending', level: 'watch', code: 'spent_more', vars: { eur: Math.round(-lastFull.netEur), month: lastFull.month } })
   }
 
   const year = Number(opts.today.slice(0, 4))

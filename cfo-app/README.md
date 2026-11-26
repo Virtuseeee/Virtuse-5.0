@@ -5,7 +5,7 @@ Local-first wealth overview for investor and partner demos. Not deployed anywher
 ```bash
 cd cfo-app
 npm ci
-npm test        # 56 tests: CSV, imports, prices/FX, portfolio math, upload summary, vault
+npm test        # 67 tests: CSV, imports, prices/FX, portfolio math, upload summary, vault
 npm run prices  # refresh src/data/prices.json (ECB rates + last closes)
 npm run dev     # http://localhost:5181
 npm run build   # dist/
@@ -25,7 +25,9 @@ Sidebar app with eight screens, same structure as other AI-CFO products (overvie
 - **Radar** – facts worth a look from the user's data (`src/core/radar.ts`): big daily moves, fees, concentration, debt share, cash share, own-wallet custody, stale or missing data. Thresholds are set by the user (stored in `localStorage`, no amounts). Own rules from sentences or templates, shown as true now / not yet.
 - **Portfólio** – tabs Overview / Accounts / Assets / Debts, every priced holding with share of assets, today's move and price basis, asset-type grid.
 - Own-data overview shows a setup checklist with a percentage until all six steps are done.
-- **Transakcie** – Bitcoin movements from the Kraken export.
+- **Transakcie** – tabs Bitcoin (Kraken export) and Bank (statement lines with category filter).
+- Bank statements: generic CSV import (`src/core/bank.ts`, `src/core/importers/bank.ts`) for EUR accounts: Slovak/Czech/English column names, `;` or `,`, decimal commas, separate debit/credit columns, info lines above the header. Keyword categories; monthly cash flow with investing and own transfers kept apart from spending; the closing balance counts as cash. Overview card, Ask answers, Radar (subscriptions, month with spending above income) and an expense rule use it. The PSD2 sandbox will fill the same shape later.
+- Chats are part of the profile, so own-data chats are saved with the encrypted vault.
 - **Dane / Tax** – Slovak overview of Bitcoin sales per year (`src/core/tax-sk.ts`): FIFO cost, gain, § 8 base, 2026 band estimate and 16 % health contributions, filing deadline, official sources (same facts as `seo-build/data/tax-sources.json`). Assumptions shown on screen; stocks/ETFs left out until rules are checked.
 - Overview chart: Bitcoin value vs money put in, month by month, rebuilt from transactions and the month-end BTC/EUR closes in the price file; own data also records one net-worth snapshot a day in the (encrypted) profile.
 - **Ciele / Goals** – net worth, BTC, cash or debt payoff targets with progress from the user's numbers (`src/core/goals.ts`).

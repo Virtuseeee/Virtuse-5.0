@@ -3,6 +3,8 @@ import * as F from '../core/format'
 import type { Lang } from '../core/format'
 import { BROKER_NAMES, type BrokerAccount } from '../core/brokers'
 import { importCsv, UnknownFormatError } from '../core/importers'
+import { ForeignCurrencyError } from '../core/importers/bank'
+import type { BankAccount } from '../core/bank'
 import { type AssetClass, type Liability, type ManualAsset, type Profile } from '../core/model'
 import { forgetSealed, loadSealed, open, saveSealed, seal } from '../core/vault'
 import { annaKrakenCsv, DEMO_PRICE_EUR } from '../data/demo'
@@ -82,7 +84,7 @@ export function PriceBox({ lang, price, setPrice, book }: { lang: Lang; price: n
   )
 }
 
-export function ImportBox({ lang, onTxs, onBroker, onNote }: { lang: Lang; onTxs: (txs: Profile['txs']) => void; onBroker: (a: BrokerAccount) => void; onNote: (m: string) => void }) {
+export function ImportBox({ lang, onTxs, onBroker, onBank, onNote }: { lang: Lang; onTxs: (txs: Profile['txs']) => void; onBroker: (a: BrokerAccount) => void; onBank: (a: BankAccount) => void; onNote: (m: string) => void }) {
   const t = strings(lang)
   const input = useRef<HTMLInputElement>(null)
   function handle(texts: string[]) {
@@ -93,12 +95,15 @@ export function ImportBox({ lang, onTxs, onBroker, onNote }: { lang: Lang; onTxs
         if (r.kind === 'btc') {
           onTxs(r.txs)
           msgs.push(t.imported(r.txs.length, r.skipped))
+        } else if (r.kind === 'bank') {
+          onBank(r.account)
+          msgs.push(t.importedBank(r.account.txs.length, r.account.balanceEur !== undefined))
         } else {
           onBroker(r.account)
           msgs.push(t.importedBroker(BROKER_NAMES[r.account.source], r.account.has.positions ? r.account.holdings.length : -1))
         }
       } catch (e) {
-        msgs.push(e instanceof UnknownFormatError ? t.unknownFormat : t.readError)
+        msgs.push(e instanceof UnknownFormatError ? t.unknownFormat : e instanceof ForeignCurrencyError ? t.bankCurrency(e.currency) : t.readError)
       }
     }
     onNote(msgs.join(' '))
@@ -108,6 +113,7 @@ export function ImportBox({ lang, onTxs, onBroker, onNote }: { lang: Lang; onTxs
     ['XTB', [SAMPLES.xtbPositions, SAMPLES.xtbCash]],
     ['IBKR', [SAMPLES.ibkr]],
     ['Trading 212', [SAMPLES.t212]],
+    [t.bankSample, [SAMPLES.bank]],
   ]
   return (
     <section className="card">
