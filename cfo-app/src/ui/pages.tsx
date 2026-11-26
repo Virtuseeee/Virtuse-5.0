@@ -26,10 +26,11 @@ interface Ctx {
   setProfile: (fn: (p: Profile) => Profile) => void
 }
 
-function Head({ title, lead, right }: { title: string; lead?: string; right?: React.ReactNode }) {
+function Head({ eyebrow, title, lead, right }: { eyebrow?: string; title: React.ReactNode; lead?: string; right?: React.ReactNode }) {
   return (
     <header className="page-head">
       <div>
+        {eyebrow && <p className="eyebrow"><i />{eyebrow}</p>}
         <h1>{title}</h1>
         {lead && <p className="lead">{lead}</p>}
       </div>
@@ -66,20 +67,20 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
 
   return (
     <>
-      <Head title={a.hello(mode === 'demo' ? 'Anna' : '')} lead={mode === 'demo' ? t.demoBanner : undefined} />
+      <Head eyebrow={a.nav.dashboard} title={mode === 'demo' ? <>{a.hello('Anna').replace('Anna', '')}<span className="grad">Anna</span></> : a.hello('')} lead={mode === 'demo' ? `${a.helloSub} ${t.demoBanner}` : a.helloSub} />
       {mode === 'own' && <SetupCard lang={lang} go={go} done={[profile.txs.length > 0 || profile.brokers.length > 0, profile.manualAssets.length > 0 || profile.liabilities.length > 0, setup.chats, (profile.rules ?? []).length > 0, (profile.goals ?? []).length > 0, setup.vault]} />}
       {!hasData ? (
         <Empty lang={lang} go={go} />
       ) : (
         <>
           <section className="kpis">
-            <Tile label={t.netWorth} value={F.eur(o.netWorthEur, lang)} onClick={() => go('portfolio')} />
-            <Tile label={a.investments} value={F.eur(invest, lang)} sub={a.investmentsSub} onClick={() => go('portfolio')} />
-            <Tile label={a.cash} value={F.eur(cash, lang)} />
-            <Tile label={a.liabilities} value={F.eur(o.liabilitiesEur, lang)} onClick={() => go('data')} />
+            <Tile acc="orange" label={t.netWorth} value={F.eur(o.netWorthEur, lang)} onClick={() => go('portfolio')} />
+            <Tile acc="blue" label={a.investments} value={F.eur(invest, lang)} sub={a.investmentsSub} onClick={() => go('portfolio')} />
+            <Tile acc="teal" label={a.cash} value={F.eur(cash, lang)} />
+            <Tile acc="purple" label={a.liabilities} value={F.eur(o.liabilitiesEur, lang)} onClick={() => go('data')} />
           </section>
           <section className="dash-grid">
-            <div className="card">
+            <div className="card acc-orange">
               <h2>{a.assets}</h2>
               <div className="bar" aria-hidden="true">
                 {o.allocation.map((s) => <span key={s.assetClass} style={{ width: `${s.pct}%`, background: CLASS_COLOR[s.assetClass] }} />)}
@@ -97,7 +98,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
               </ul>
             </div>
 
-            <div className="card">
+            <div className="card acc-green">
               <h2>{a.movers}</h2>
               {movers.length === 0 ? <p className="muted small">{a.moversEmpty}</p> : (
                 <ul className="items">
@@ -113,7 +114,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
               <p className="muted small">{a.pricesAsOf(F.date(BOOK.prices.instruments[0]?.date ?? BOOK.fx.date, lang))}</p>
             </div>
 
-            <div className="card ask-widget">
+            <div className="card ask-widget acc-purple">
               <h2>{a.askTitle}</h2>
               <form onSubmit={(e) => { e.preventDefault(); if (q.trim()) onAsk(q.trim()) }}>
                 <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={a.askPlaceholder} aria-label={a.askTitle} />
@@ -124,7 +125,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
               </div>
             </div>
 
-            <div className="card">
+            <div className="card acc-indigo">
               <h2>{a.liabilities}</h2>
               <div className="lrow strong"><span>{a.allLiabilities}</span><b>{F.eur(o.liabilitiesEur, lang)}</b></div>
               <ul className="items">
@@ -134,7 +135,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
               </ul>
             </div>
 
-            <div className="card span2">
+            <div className="card span2 acc-pink">
               <div className="card-head"><h2>{a.radarTitle}</h2><button className="link" onClick={() => go('radar')}>{a.radarAll}</button></div>
               {radar.length === 0 ? <p className="muted small">{a.radarEmpty}</p> : (
                 <ul className="radar-list">
@@ -143,7 +144,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
               )}
             </div>
 
-            <div className="card span2">
+            <div className="card span2 acc-orange">
               <h2>{t.btcTitle}</h2>
               <dl className="facts">
                 <Fact k={t.held} v={F.btc(o.bitcoin.btc, lang)} />
@@ -161,7 +162,7 @@ export function DashboardPage({ lang, profile, price, o, radar, go, mode, onAsk,
   )
 }
 
-function Tile({ label, value, sub, onClick }: { label: string; value: string; sub?: string; onClick?: () => void }) {
+function Tile({ label, value, sub, onClick, acc }: { label: string; value: string; sub?: string; onClick?: () => void; acc: string }) {
   const inner = (
     <>
       <span className="k">{label}</span>
@@ -169,7 +170,7 @@ function Tile({ label, value, sub, onClick }: { label: string; value: string; su
       {sub && <span className="s">{sub}</span>}
     </>
   )
-  return onClick ? <button className="kpi clickable" onClick={onClick}>{inner}</button> : <div className="kpi">{inner}</div>
+  return onClick ? <button className={`kpi clickable acc-${acc}`} onClick={onClick}>{inner}</button> : <div className={`kpi acc-${acc}`}>{inner}</div>
 }
 
 function RadarRow({ item, lang }: { item: RadarItem; lang: Lang }) {
@@ -193,7 +194,7 @@ function SetupCard({ lang, go, done }: { lang: Lang; go: (p: Page) => void; done
   if (pct === 100) return null
   const target: Page[] = ['data', 'data', 'ask', 'radar', 'goals', 'data']
   return (
-    <section className="card setup">
+    <section className="card setup acc-yellow">
       <div className="setup-head">
         <div>
           <h2>{a.setupTitle(pct)}</h2>
@@ -310,7 +311,7 @@ export function AskPage({ lang, profile, price, o, setProfile, chats, setChats, 
     <section className="ask-layout2">
       <div className="chat2">
         <div className="chat-top">
-          <h1>{a.askTitle}</h1>
+          <div><p className="eyebrow"><i />{a.askTitle}</p><h1>{a.titles.ask}</h1></div>
           <button className="ghost" onClick={() => setActiveId(null)}>+ {a.newChat}</button>
         </div>
         <div className="msgs">
@@ -378,6 +379,7 @@ export function ResearchPage({ lang, profile, price, o, topics, setTopics }: Ctx
   return (
     <>
       <section className="research-hero">
+        <p className="eyebrow"><i />{a.nav.research}</p>
         <h1>{a.researchHero}</h1>
         <p className="muted">{a.researchSub}</p>
         <Composer lang={lang} onSend={(q) => add(q)} mode={mode} setMode={setMode} modes={['chat']} placeholder={a.newTopicPh} />
@@ -454,7 +456,7 @@ export function RadarPage({ lang, profile, price, radar, prefs, setPrefs, setPro
   ]
   return (
     <>
-      <Head title={a.radarTitle} lead={a.radarLead} right={<button onClick={() => onCreate('')}>{a.create} +</button>} />
+      <Head eyebrow={a.radarTitle} title={a.titles.radar} lead={a.radarLead} right={<button onClick={() => onCreate('')}>{a.create} +</button>} />
       <section className="how3">
         {a.radarHow.map(([h, p], i) => (
           <div key={h} className="card how3-card">
@@ -531,7 +533,7 @@ export function PortfolioPage({ lang, profile, price, o, go }: Ctx) {
   const basisLabel = (r: PortfolioRow) => (r.basis === 'btc' ? a.basisBtc : t.basis[r.basis])
   return (
     <>
-      <Head title={a.nav.portfolio} lead={a.portfolioLead} right={<button onClick={() => go('data')}>+ {a.addAssetType}</button>} />
+      <Head eyebrow={a.nav.portfolio} title={a.titles.portfolio} lead={a.portfolioLead} right={<button onClick={() => go('data')}>+ {a.addAssetType}</button>} />
       <div className="tabs-line">
         {a.tabsPortfolio.map((x, i) => <button key={x} className={i === tab ? 'on' : ''} onClick={() => setTab(i)}>{x}</button>)}
       </div>
@@ -604,7 +606,7 @@ export function GoalsPage({ lang, profile, price, setProfile }: Ctx) {
   const fmt = (g: Goal, n: number) => (g.kind === 'btc' ? F.btc(n, lang) : F.eur(n, lang))
   return (
     <>
-      <Head title={a.nav.goals} lead={a.goalsLead} />
+      <Head eyebrow={a.nav.goals} title={a.titles.goals} lead={a.goalsLead} />
       {progress.length === 0 ? <div className="card empty-state"><p className="muted">{a.noGoals}</p></div> : (
         <section className="goal-grid">
           {progress.map((p) => (
@@ -653,7 +655,7 @@ export function TransactionsPage({ lang, profile }: Ctx) {
   const kinds = ['all', ...new Set(profile.txs.map((x) => x.kind))]
   return (
     <>
-      <Head title={a.nav.transactions} lead={a.txLead} />
+      <Head eyebrow={a.nav.transactions} title={a.titles.transactions} lead={a.txLead} />
       {profile.txs.length === 0 ? <div className="card"><p className="muted">{a.txNone}</p></div> : (
         <section className="card table-card">
           <div className="seg wrap">
@@ -694,7 +696,7 @@ export function DataPage({ lang, profile, price, mode, setPrice, own, setOwn, on
   const summary = useMemo(() => buildSummary(profile, price, BOOK), [profile, price])
   return (
     <>
-      <Head title={a.nav.data} lead={a.dataLead} />
+      <Head eyebrow={a.nav.data} title={a.titles.data} lead={a.dataLead} />
       <PriceBox lang={lang} price={price} setPrice={setPrice} book={BOOK} />
       {mode === 'demo' ? (
         <p className="card muted">{a.demoReadOnly}</p>

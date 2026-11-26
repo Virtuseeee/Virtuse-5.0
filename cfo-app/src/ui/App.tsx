@@ -21,6 +21,9 @@ const ICONS: Record<Page, string> = {
   data: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z',
 }
 
+export const PAGE_ACC: Record<Page, string> = { dashboard: 'orange', ask: 'purple', research: 'blue', radar: 'pink', portfolio: 'green', transactions: 'teal', goals: 'yellow', data: 'indigo' }
+const SPOT = '.card, .kpi, .tmpl, .type-card, .how3-card'
+
 function readPrefs(): typeof DEFAULT_RADAR {
   try {
     return { ...DEFAULT_RADAR, ...JSON.parse(localStorage.getItem('vcfo-radar') ?? '{}') }
@@ -63,6 +66,26 @@ export function App() {
   useEffect(() => {
     document.documentElement.lang = lang
   }, [lang])
+  // Cursor spotlight on cards, as on virtuse.com (site-v2.js): .pm only once the pointer really moved.
+  useEffect(() => {
+    let raf = 0
+    let last: Element | null = null
+    const move = (e: PointerEvent) => {
+      const el = (e.target as Element | null)?.closest?.(SPOT) as HTMLElement | null
+      if (last && last !== el) last.classList.remove('pm')
+      last = el
+      if (!el || raf) return
+      raf = requestAnimationFrame(() => {
+        raf = 0
+        const r = el.getBoundingClientRect()
+        el.classList.add('spot', 'pm')
+        el.style.setProperty('--mx', `${e.clientX - r.left}px`)
+        el.style.setProperty('--my', `${e.clientY - r.top}px`)
+      })
+    }
+    document.addEventListener('pointermove', move, { passive: true })
+    return () => document.removeEventListener('pointermove', move)
+  }, [])
 
   const go = (p: Page) => {
     location.hash = p
@@ -97,7 +120,7 @@ export function App() {
         </div>
         <nav>
           {PAGES.map((p) => (
-            <a key={p} href={`#${p}`} className={p === page ? 'on' : ''} onClick={(e) => { e.preventDefault(); go(p) }}>
+            <a key={p} href={`#${p}`} className={`acc-${PAGE_ACC[p]} ${p === page ? 'on' : ''}`} onClick={(e) => { e.preventDefault(); go(p) }}>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d={ICONS[p]} /></svg>
               <span>{a.nav[p]}</span>
               {p === 'radar' && watchCount > 0 && <b className="badge">{watchCount}</b>}
@@ -120,7 +143,7 @@ export function App() {
         </div>
       </aside>
       <div className="scrim" onClick={() => setMenuOpen(false)} />
-      <main className="main">
+      <main className={`main acc-${PAGE_ACC[page]}`}>
         <header className="mobile-top">
           <button className="icon" onClick={() => setMenuOpen(true)} aria-label={a.menu}>☰</button>
           <span className="brand"><span className="logo">Virtuse</span> <span className="muted">CFO</span></span>

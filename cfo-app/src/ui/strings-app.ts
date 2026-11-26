@@ -7,6 +7,8 @@ export type Page = 'dashboard' | 'ask' | 'research' | 'radar' | 'portfolio' | 't
 const SK = {
   nav: { dashboard: 'Prehľad', ask: 'Opýtaj sa CFO', research: 'Výskum', radar: 'Radar', portfolio: 'Portfólio', transactions: 'Transakcie', goals: 'Ciele', data: 'Údaje a súkromie' } as Record<Page, string>,
   hello: (name: string) => (name ? `Dobrý deň, ${name}` : 'Váš prehľad'),
+  titles: { dashboard: '', ask: 'Opýtajte sa na svoje čísla.', research: '', radar: 'Čo sa deje s vaším majetkom.', portfolio: 'Všetko, čo vlastníte, v dnešných cenách.', transactions: 'Každý pohyb vášho Bitcoinu.', goals: 'Kam smerujete a kde ste dnes.', data: 'Vaše údaje zostávajú vo vašom zariadení.' } as Record<Page, string>,
+  helloSub: 'Tu je váš majetok dnes.',
   demoChip: 'Ukážka: Anna',
   ownChip: 'Vlastné údaje',
   proto: 'Prototyp',
@@ -161,6 +163,8 @@ type S = typeof SK
 const EN: S = {
   nav: { dashboard: 'Overview', ask: 'Ask your CFO', research: 'Research', radar: 'Radar', portfolio: 'Portfolio', transactions: 'Transactions', goals: 'Goals', data: 'Data and privacy' },
   hello: (name: string) => (name ? `Good day, ${name}` : 'Your overview'),
+  titles: { dashboard: '', ask: 'Ask about your own numbers.', research: '', radar: 'What is happening to your money.', portfolio: 'Everything you own, at today’s prices.', transactions: 'Every move of your Bitcoin.', goals: 'Where you are heading, and where you are today.', data: 'Your data stays on your device.' },
+  helloSub: 'Here is what you own today.',
   demoChip: 'Demo: Anna',
   ownChip: 'My data',
   proto: 'Prototype',

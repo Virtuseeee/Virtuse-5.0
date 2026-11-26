@@ -11,6 +11,10 @@ npm run dev     # http://localhost:5181
 npm run build   # dist/
 ```
 
+## Design
+
+Same language as the Services and Ecosystem pages on virtuse.com (`site-v2.css`): site tokens (#08090a, #141414 cards, Inter + JetBrains Mono), one accent per screen (Overview orange, Ask purple, Research blue, Radar pink, Portfolio green, Transactions teal, Goals yellow, Data indigo) via `--c`, cards with an accent corner glow and a metallic top edge, accent border and glow on hover, cursor spotlight (`.spot`, set in `App.tsx`), mono uppercase labels, pill buttons, Treasury-style tables, eyebrow + headline page heads.
+
 ## Screens (pilot layout)
 
 Sidebar app with eight screens, same structure as other AI-CFO products (overview, chat, research, alerts), our own copy and design:
