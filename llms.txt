@@ -47,6 +47,11 @@ Bitcoin kaufen in Österreich (DE): https://virtuse.com/de/bitcoin-kaufen/oester
 - Stacking (live): https://virtuse.com/stacking.html
 - Loan copilot (live): https://virtuse.com/loan.html
 
+## Bitcoin glossary (EN/SK)
+
+- Bitcoin glossary: Bitcoin, custody, network, markets, EU rules (MiCA, Travel Rule, DAC8, AMLR), tax and macro terms, with official sources: https://virtuse.com/bitcoin-glossary/
+- Bitcoin slovník (SK): https://virtuse.com/sk/bitcoin-slovnik/
+
 ## Bitcoin data (updated daily)
 
 - Bitcoin vs gold, silver and commodities: YTD, 1, 5 and 10-year returns, every year since 2016, BTC/gold ratio (10 languages, e.g. https://virtuse.com/sk/bitcoin-vs-gold.html): https://virtuse.com/bitcoin-vs-gold.html
