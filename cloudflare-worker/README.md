@@ -376,7 +376,7 @@ prompt). An answer that reads like advice is retried once and then declined.
 Angle brackets in the question are replaced so it cannot fake the `<facts>` block.
 
 Staging has `CFO_ASK_ENABLED = "1"` (since 2026-11-26), a €10 monthly cap and
-400 questions per IP a day in `wrangler.toml` (it uses the staging `ANTHROPIC_API_KEY`).
+30 questions per IP a day (400 only for the eval on 2026-11-26) in `wrangler.toml` (it uses the staging `ANTHROPIC_API_KEY`).
 Production has no `CFO_ASK_ENABLED`, so the route answers 503 there.
 
 Eval (`cfo-eval/`): `node cfo-eval/build-cases.mjs` writes 248 cases (facts,
