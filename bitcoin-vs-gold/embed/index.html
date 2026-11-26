@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Bitcoin vs gold, silver and oil: returns (embed)</title>
 <meta name="description" content="Embeddable Virtuse table: total return of Bitcoin, gold, silver, oil, copper, platinum and a commodities basket, year to date, 1, 5 and 10 years. Updated daily. Attribution required.">
 <meta name="robots" content="noindex, follow">
@@ -32,9 +32,10 @@ a { color: #f7931a; }
   <div class="tw"><table><thead><tr><th class="a">Asset</th><th>YTD</th><th>1 year</th><th>5 years</th><th>10 years</th></tr></thead><tbody id="rows"><tr><td class="a">WTI crude oil</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">145%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">131%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">192%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">84.6%</td></tr><tr><td class="a">Commodities basket</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">52.5%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">54.3%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">81.3%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">163%</td></tr><tr><td class="a">Copper</td><td style="background:rgba(46,160,90,0.19);color:#b8f0c8">11.7%</td><td style="background:rgba(46,160,90,0.29);color:#b8f0c8">24.4%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">41.9%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">183%</td></tr><tr class="btc"><td class="a">Bitcoin</td><td style="background:rgba(210,60,60,0.16);color:#ffc4c4">-7.3%</td><td style="background:rgba(210,60,60,0.31);color:#ffc4c4">-26.3%</td><td style="background:rgba(46,160,90,0.36);color:#b8f0c8">32.1%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">12,239%</td></tr><tr><td class="a">Gold</td><td style="background:rgba(210,60,60,0.16);color:#ffc4c4">-7.5%</td><td style="background:rgba(210,60,60,0.13);color:#ffc4c4">-3.2%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">119%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">203%</td></tr><tr><td class="a">Silver</td><td style="background:rgba(210,60,60,0.29);color:#ffc4c4">-24.4%</td><td style="background:rgba(46,160,90,0.18);color:#b8f0c8">10.3%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">116%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">193%</td></tr><tr><td class="a">Platinum</td><td style="background:rgba(210,60,60,0.30);color:#ffc4c4">-24.6%</td><td style="background:rgba(210,60,60,0.14);color:#ffc4c4">-5.1%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">44.7%</td><td style="background:rgba(46,160,90,0.42);color:#b8f0c8">56.8%</td></tr></tbody></table></div>
   <p>Source: <a href="https://virtuse.com/bitcoin-vs-gold.html?utm_source=embed&amp;utm_medium=referral&amp;utm_campaign=bitcoin_vs_gold" target="_blank" rel="noopener">Virtuse, Bitcoin vs gold, silver and oil</a>. Updated daily. Past performance does not guarantee future results. Not investment advice.</p>
 </div>
+<script src="/data-freshness.js?v=1"></script>
 <script>
 (function () {
-  var C = {"src": ["https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json", "/data/bitcoin-vs-commodities.json"], "cols": ["ytd", "y1", "y5", "y10"], "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "names": {"btc": "Bitcoin", "gold": "Gold", "silver": "Silver", "oil": "WTI crude oil", "copper": "Copper", "platinum": "Platinum", "basket": "Commodities basket"}};
+  var C = {"src": ["https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/bitcoin-vs-commodities.json", "/data/bitcoin-vs-commodities.json"], "cols": ["ytd", "y1", "y5", "y10"], "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "names": {"btc": "Bitcoin", "gold": "Gold", "silver": "Silver", "oil": "WTI crude oil", "copper": "Copper", "platinum": "Platinum", "basket": "Commodities basket"}, "asOf": "2026-10-23"};
   function pct(v) {
     if (v == null) return '–';
     var p = v * 100, d = Math.abs(p) < 100 ? 1 : 0;
@@ -65,9 +66,10 @@ a { color: #f7931a; }
     });
     var p = d.asOf.split('-');
     document.getElementById('asof').textContent = 'Data as of ' + (+p[2]) + ' ' + C.months[+p[1] - 1] + ' ' + p[0];
+    if (window.VBFresh) VBFresh.show(document.getElementById('asof'), d.asOf, { lang: 'en', compact: true });
   }
   (function next(i) {
-    if (i >= C.src.length) return;
+    if (i >= C.src.length) { if (window.VBFresh) VBFresh.show(document.getElementById('asof'), C.asOf, { lang: 'en', compact: true }); return; }
     fetch(C.src[i], { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(render).catch(function () { next(i + 1); });
   })(0);

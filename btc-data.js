@@ -161,6 +161,7 @@
         var y = r.returns[r.returns.length - 1] * 100;
         set('ytd-' + tk, '<span class="' + (y >= 0 ? 'up' : 'down') + '">' + pct(y, 1, true) + '</span>');
       });
+      if (window.VBFresh) VBFresh.show(box, d.asOf);
       ok('macro');
     }).catch(function () { fail('macro'); });
   }
@@ -176,6 +177,7 @@
       };
       set('g-ytd', pair('ytd')); set('g-1y', pair('y1'));
       set('g-ratio', nf(d.ratio.gold.current, 1) + ' <small>' + I.g_oz + '</small>');
+      if (window.VBFresh) VBFresh.show(box, d.asOf);
       ok('gold');
     }).catch(function () { fail('gold'); });
   }

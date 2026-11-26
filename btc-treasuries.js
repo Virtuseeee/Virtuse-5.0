@@ -75,6 +75,7 @@
     if (meta) {
       var asOf = d.as_of ? new Date(d.as_of + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }) : '';
       meta.textContent = d.count + ' public companies hold ' + fmt(d.total_btc) + ' BTC' + (asOf ? ', as of ' + asOf : '') + '. Source: CoinGecko. Holdings as the companies report them.';
+      if (window.VBFresh) VBFresh.show(meta, d.as_of, { lang: 'en' });
     }
     render();
   }

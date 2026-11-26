@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Asset class returns embed</title>
 <meta name="description" content="Embeddable Virtuse table: asset class returns, total return in USD, updated daily. Attribution required.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://virtuse.com/asset-returns/embed/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -37,6 +37,7 @@ a { color: #f7931a; }
   <p id="n"></p>
   <p>Source: <a href="https://virtuse.com/asset-returns.html?utm_source=embed&amp;utm_medium=referral&amp;utm_campaign=asset_returns" target="_blank" rel="noopener">Virtuse, Asset class returns</a>. Past performance does not guarantee future results. Not investment advice.</p>
 </div>
+<script src="/data-freshness.js?v=1"></script>
 <script>
 (function(){
 function e(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -48,9 +49,10 @@ function rows(d){var r=d.rows.slice().sort(function(a,b){var x=a.annualized,y=b.
 return r.map(function(x){return '<tr><td>'+e(x.name)+'</td><td>'+e(x.ticker)+'</td><td>'+pct(x.returns[x.returns.length-1])+'</td><td>'+pct(x.annualized)+'</td></tr>';}).join('');}
 function note(d){return '';}
 function show(d){if(!d)return;document.getElementById('h').innerHTML=head(d);document.getElementById('b').innerHTML=rows(d);
-var n=note(d);if(n)document.getElementById('n').textContent=n;document.getElementById('a').textContent=dt(d.asOf);}
+var n=note(d);if(n)document.getElementById('n').textContent=n;document.getElementById('a').textContent=dt(d.asOf);
+if(window.VBFresh)VBFresh.show(document.getElementById('a'),d.asOf,{lang:'en',compact:true});}
 function get(u){return fetch(u,{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});}
-if(window.fetch){get('https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json').catch(function(){return get('/data/asset-returns.json');}).then(show).catch(function(){});}
+if(window.fetch){get('https://raw.githubusercontent.com/Virtuseeee/Virtuse-5.0/main/Kimi_Agent_Virtuse%2520MiCA%2520Partners/data/asset-returns.json').catch(function(){return get('/data/asset-returns.json');}).then(show).catch(function(){if(window.VBFresh)VBFresh.show(document.getElementById('a'),'2026-11-20',{lang:'en',compact:true});});}
 })();
 </script>
 </body>
