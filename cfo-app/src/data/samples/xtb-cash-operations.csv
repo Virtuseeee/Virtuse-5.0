@@ -1,0 +1,12 @@
+Account number;12345678;;;;
+Currency;EUR;;;;
+;;;;;
+ID;Type;Time;Comment;Symbol;Amount
+1001;Deposit;02.02.2025 09:00:00;Transfer in;;5000.00
+1002;Stocks/ETF purchase;05.02.2025 10:01:12;OPEN BUY 40 @ 118.20;VWCE.DE;-4728.00
+1003;Deposit;10.03.2025 09:00:00;Transfer in;;3000.00
+1004;Stocks/ETF purchase;12.03.2025 15:22:05;OPEN BUY 5 @ 520.00;CSPX.UK;-2405.20
+1005;Deposit;02.06.2025 09:00:00;Transfer in;;2500.00
+1006;Stocks/ETF purchase;05.06.2025 10:03:40;OPEN BUY 20 @ 121.00;VWCE.DE;-2420.00
+1007;Free-funds interest;01.07.2025 00:00:00;Interest;;3.60
+1008;SEC fee;12.03.2025 15:22:05;Regulatory fee;CSPX.UK;-0.10
