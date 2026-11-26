@@ -22,8 +22,15 @@ export const CLASS_COLOR: Record<AssetClass, string> = {
 }
 const MANUAL_CLASSES: Exclude<AssetClass, 'bitcoin'>[] = ['cash', 'stocks', 'real_estate', 'pension', 'other']
 
-export const BOOK = priceData as PriceBook
-export const START_PRICE = Math.round(btcPriceEur(BOOK) ?? DEMO_PRICE_EUR)
+/** Price book in use. The bundled snapshot, replaced at start-up by the newer
+ * prices.json served next to the app (see main.tsx). ES module live binding. */
+export let BOOK = priceData as PriceBook
+export function setBook(b: PriceBook): void {
+  BOOK = b
+}
+export function startPrice(): number {
+  return Math.round(btcPriceEur(BOOK) ?? DEMO_PRICE_EUR)
+}
 
 let idSeq = 0
 const newId = () => `m${Date.now().toString(36)}${idSeq++}`

@@ -1,0 +1,81 @@
+name: CFO prices
+
+# Rebuilds the Virtuse CFO price file (ECB euro reference rates + last close for
+# the instruments in cfo-app/scripts/universe.json) every day, commits it to main
+# and publishes it to staging as cfo/prices.json. The app loads that file at
+# start-up when it is newer than the copy built into it, so prices stay fresh
+# without rebuilding the app. Everyone downloads the same file.
+
+on:
+  schedule:
+    - cron: '45 22 * * 1-5' # after the US close and the ECB fixing
+    - cron: '15 12 * * 0,6' # weekends: Bitcoin trades every day
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'cfo-app/scripts/build-prices.mjs'
+      - 'cfo-app/scripts/universe.json'
+      - '.github/workflows/cfo-prices.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cfo-prices
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: main
+          path: main
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+
+      - name: Build price file
+        working-directory: main/cfo-app
+        run: node scripts/build-prices.mjs
+
+      - name: Commit to main
+        id: commit
+        working-directory: main
+        run: |
+          git add cfo-app/src/data/prices.json cfo-app/public/prices.json
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          git config user.name "virtuse-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -m "Update CFO prices [skip ci]"
+          git pull --rebase origin main
+          git push origin main
+
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        if: steps.commit.outputs.changed == 'true'
+        with:
+          ref: gh-pages
+          path: pages
+
+      - name: Publish to staging (gh-pages)
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          # Only once the app itself is on staging.
+          [ -d pages/cfo ] || exit 0
+          cp main/cfo-app/public/prices.json pages/cfo/prices.json
+          cd pages
+          git config user.name "virtuse-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add cfo/prices.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Update CFO prices"
+          for i in 1 2 3; do
+            git pull --rebase origin gh-pages && git push origin gh-pages && break
+            git rebase --abort 2>/dev/null || true
+            [ "$i" = 3 ] && exit 1
+            sleep $((i * 10))
+          done

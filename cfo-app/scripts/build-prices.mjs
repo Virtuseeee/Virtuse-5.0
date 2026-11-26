@@ -5,7 +5,7 @@
 // asset-returns build). The final provider is a phase 0 decision.
 // Everyone downloads the same file, so it reveals nothing about a user.
 
-import { readFileSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 
 const UA = { 'User-Agent': 'Mozilla/5.0 (virtuse cfo prices build)' }
 const universe = JSON.parse(readFileSync(new URL('./universe.json', import.meta.url), 'utf8'))
@@ -84,4 +84,7 @@ const book = {
   prices: { source: 'Yahoo Finance (last close)', instruments },
 }
 writeFileSync(out, JSON.stringify(book, null, 1) + '\n')
+// Served next to the app; the app loads it at start-up (newer than the bundled copy).
+mkdirSync(new URL('../public/', import.meta.url), { recursive: true })
+writeFileSync(new URL('../public/prices.json', import.meta.url), JSON.stringify(book) + '\n')
 console.log(`ECB ${fx.date}, ${Object.keys(fx.rates).length} currencies; ${instruments.length} prices${failed.length ? `; failed: ${failed.join('; ')}` : ''}`)

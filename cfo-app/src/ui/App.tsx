@@ -6,7 +6,7 @@ import { overview } from '../core/portfolio'
 import { DEFAULT_RADAR, radarItems } from '../core/radar'
 import { annaProfile } from '../data/demo'
 import { AskPage, DashboardPage, DataPage, GoalsPage, PortfolioPage, RadarPage, ResearchPage, TransactionsPage, type Chat } from './pages'
-import { BOOK, START_PRICE, type Mode } from './parts'
+import { BOOK, startPrice, type Mode } from './parts'
 import { app, type Page } from './strings-app'
 
 const PAGES: Page[] = ['dashboard', 'ask', 'research', 'radar', 'portfolio', 'transactions', 'goals', 'data']
@@ -44,7 +44,7 @@ export function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [mode, setMode] = useState<Mode>('demo')
   const [own, setOwn] = useState<Profile>(() => emptyProfile())
-  const [price, setPrice] = useState(START_PRICE)
+  const [price, setPrice] = useState(startPrice)
   const [prefs, setPrefsState] = useState(readPrefs)
   const [chats, setChats] = useState<Chat[]>([])
   const [pendingQuestion, setPendingQuestion] = useState('')
