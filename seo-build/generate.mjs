@@ -1180,7 +1180,21 @@ const ACCENTS = [
 ];
 const accentFor = (relFile) => (ACCENTS.find(([re]) => re.test(relFile)) || [null, null])[1];
 
+// EN and SK tax + DAC8 pages: one line to the Bitcoin glossary (seo-build/glossary.mjs). Other languages
+// have no glossary yet, so they get no link.
+function glossaryLine(spec) {
+  const base = spec.lang === 'en' && /^bitcoin-tax\//.test(spec.relFile) ? 'bitcoin-glossary/'
+    : spec.lang === 'sk' && /^sk\/bitcoin-dane\//.test(spec.relFile) ? 'sk/bitcoin-slovnik/' : null;
+  if (!base) return '';
+  const u = (h) => esc(toRoot(spec.relFile, base) + h);
+  return spec.lang === 'en'
+    ? `<p class="gl-xref">Terms explained: <a href="${u('#dac8')}">DAC8</a>, <a href="${u('#casp')}">CASP</a>, <a href="${u('#travel-rule')}">Travel Rule</a> and more in the <a href="${u('')}">Bitcoin glossary</a>.</p>\n`
+    : `<p class="gl-xref">Vysvetlené pojmy: <a href="${u('#dac8')}">DAC8</a>, <a href="${u('#casp')}">CASP</a>, <a href="${u('#travel-rule')}">Travel Rule</a> a ďalšie nájdete v <a href="${u('')}">Bitcoin slovníku</a>.</p>\n`;
+}
+
 function pushPage(spec) {
+  const gl = glossaryLine(spec);
+  if (gl) spec = { ...spec, bodyHtml: spec.bodyHtml + gl };
   if (spec.guide && !spec.tools) spec = { ...spec, tools: guideTools(spec) };
   if (spec.lang === 'fr') spec = typoSpec(spec, nbspFr);
   if (spec.lang === 'es') spec = typoSpec(spec, nbspEs);
