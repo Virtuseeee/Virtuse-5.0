@@ -1,13 +1,29 @@
 {
- "generated": "2026-11-26T12:31:31.069Z",
+ "generated": "2026-11-27T04:26:51.353Z",
  "quotes": {
   "gold": {
-   "value": 3594.4,
+   "value": 3659.9,
    "prev": 3535.8,
-   "change_pct": 1.66,
-   "date": "2026-11-26",
+   "change_pct": 3.51,
+   "date": "2026-11-27",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/GC%3DF"
+  },
+  "eurusd": {
+   "value": 1.0979,
+   "prev": 1.097,
+   "change_pct": 0.08,
+   "date": "2026-11-27",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+  },
+  "brent": {
+   "value": 92.24,
+   "prev": 94.61,
+   "change_pct": -2.51,
+   "date": "2026-11-27",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
   "spx": {
    "value": 7182.78,
@@ -16,22 +32,6 @@
    "date": "2026-11-25",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
-  },
-  "eurusd": {
-   "value": 1.0975,
-   "prev": 1.0962,
-   "change_pct": 0.11,
-   "date": "2026-11-26",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
-  },
-  "brent": {
-   "value": 91.12,
-   "prev": 94.61,
-   "change_pct": -3.69,
-   "date": "2026-11-26",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
   "us10y": {
    "value": 4.848,
@@ -56,20 +56,20 @@
    "source": "U.S. Bureau of Labor Statistics, CPI-U",
    "source_url": "https://www.bls.gov/cpi/"
   },
-  "sk": {
-   "value": 2.9,
-   "month": "2026-10",
-   "flash": false,
-   "status_flag": null,
-   "source": "Eurostat, HICP SK",
-   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
-  },
   "ea": {
    "value": 4,
    "month": "2026-10",
    "flash": false,
    "status_flag": null,
    "source": "Eurostat, HICP euro area",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
+  },
+  "sk": {
+   "value": 2.9,
+   "month": "2026-10",
+   "flash": false,
+   "status_flag": null,
+   "source": "Eurostat, HICP SK",
    "source_url": "https://ec.europa.eu/eurostat/web/hicp"
   }
  },
@@ -96,7 +96,7 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 93,
     "meeting": "2026-12-09",
-    "as_of": "2026-11-26",
+    "as_of": "2026-11-27",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxfeddecision"
    }
@@ -123,7 +123,7 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 78,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-26",
+    "as_of": "2026-11-27",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
    }
@@ -132,7 +132,7 @@
    "rate": "2.50%",
    "low": 2.5,
    "high": 2.5,
-   "date": "2026-11-25",
+   "date": "2026-11-27",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -148,9 +148,9 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 95,
+    "prob": 97,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-26",
+    "as_of": "2026-11-27",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
    }
@@ -159,7 +159,7 @@
    "rate": "1.25%",
    "low": 1.25,
    "high": 1.25,
-   "date": "2026-11-24",
+   "date": "2026-11-25",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -177,7 +177,7 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 80,
     "meeting": "2026-12-18",
-    "as_of": "2026-11-26",
+    "as_of": "2026-11-27",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
    }
