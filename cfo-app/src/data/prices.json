@@ -145,44 +145,44 @@
   "2026-08": 67609,
   "2026-09": 73765,
   "2026-10": 69141,
-  "2026-11": 55181
+  "2026-11": 55967
  },
- "builtAt": "2026-11-26T11:16Z",
+ "builtAt": "2026-11-27T04:31Z",
  "fx": {
   "source": "ECB euro reference rates",
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "perEur": {
    "EUR": 1,
-   "USD": 1.0935,
-   "JPY": 174.22,
-   "CZK": 24.435,
-   "DKK": 7.4743,
-   "GBP": 0.8373,
-   "HUF": 373.44,
-   "PLN": 4.48,
-   "RON": 5.343,
-   "SEK": 11.2385,
-   "CHF": 0.9085,
-   "ISK": 137.2,
-   "NOK": 10.7778,
-   "TRY": 55.4163,
-   "AUD": 1.6644,
-   "BRL": 6.4531,
-   "CAD": 1.5591,
-   "CNY": 7.2999,
-   "HKD": 8.5709,
-   "IDR": 20055.72,
-   "ILS": 3.6948,
-   "INR": 100.859,
-   "KRW": 1471.19,
-   "MXN": 21.5422,
-   "MYR": 4.5047,
-   "NZD": 2.0046,
-   "PHP": 69.558,
-   "SGD": 1.4129,
-   "THB": 37.321,
-   "ZAR": 19.3514,
-   "GBX": 83.73
+   "USD": 1.0975,
+   "JPY": 174.79,
+   "CZK": 24.453,
+   "DKK": 7.4737,
+   "GBP": 0.83755,
+   "HUF": 372.23,
+   "PLN": 4.4838,
+   "RON": 5.344,
+   "SEK": 11.2025,
+   "CHF": 0.9153,
+   "ISK": 137,
+   "NOK": 10.718,
+   "TRY": 55.6177,
+   "AUD": 1.654,
+   "BRL": 6.3272,
+   "CAD": 1.5617,
+   "CNY": 7.3096,
+   "HKD": 8.6015,
+   "IDR": 20187.03,
+   "ILS": 3.6517,
+   "INR": 101.464,
+   "KRW": 1475.75,
+   "MXN": 21.5893,
+   "MYR": 4.519,
+   "NZD": 2.0033,
+   "PHP": 69.935,
+   "SGD": 1.4163,
+   "THB": 37.386,
+   "ZAR": 19.2646,
+   "GBX": 83.755
   }
  },
  "prices": {
@@ -199,11 +199,11 @@
      "VWRA",
      "VWCE.MI"
     ],
-    "price": 163,
-    "prevClose": 158.72,
-    "changePct": 2.7,
+    "price": 158.72,
+    "prevClose": 161.88,
+    "changePct": -1.95,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-25"
    },
    {
     "id": "VWRL",
@@ -215,11 +215,11 @@
      "VGWL.DE",
      "VWRL.NL"
     ],
-    "price": 157.36,
-    "prevClose": 153.42,
-    "changePct": 2.57,
+    "price": 153.42,
+    "prevClose": 156.4,
+    "changePct": -1.91,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-25"
    },
    {
     "id": "IWDA",
@@ -233,11 +233,11 @@
      "IWDA.NL",
      "SWDA"
     ],
-    "price": 125.375,
-    "prevClose": 122.24,
-    "changePct": 2.56,
+    "price": 122.24,
+    "prevClose": 124.565,
+    "changePct": -1.87,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-25"
    },
    {
     "id": "SXR8",
@@ -251,11 +251,11 @@
      "CSPX.L",
      "CSP1"
     ],
-    "price": 709.56,
-    "prevClose": 690.04,
-    "changePct": 2.83,
+    "price": 690.04,
+    "prevClose": 705.18,
+    "changePct": -2.15,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-25"
    },
    {
     "id": "VUSA",
@@ -268,11 +268,11 @@
      "VUSA.L",
      "VUSA.DE"
     ],
-    "price": 124.58,
-    "prevClose": 121.157,
-    "changePct": 2.83,
+    "price": 121.157,
+    "prevClose": 123.8,
+    "changePct": -2.13,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-25"
    },
    {
     "id": "EQQQ",
@@ -284,11 +284,11 @@
      "EQQQ.L",
      "EQQQ.UK"
     ],
-    "price": 581.3,
-    "prevClose": 558.9,
-    "changePct": 4.01,
+    "price": 558.9,
+    "prevClose": 579.9,
+    "changePct": -3.62,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-25"
    },
    {
     "id": "XDWD",
@@ -298,11 +298,11 @@
      "XDWD",
      "XDWD.DE"
     ],
-    "price": 137.22,
-    "prevClose": 133.785,
-    "changePct": 2.57,
+    "price": 133.785,
+    "prevClose": 136.44,
+    "changePct": -1.95,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-25"
    },
    {
     "id": "EIMI",
@@ -315,11 +315,11 @@
      "IS3N.DE",
      "EIMI.UK"
     ],
-    "price": 42.249,
-    "prevClose": 40.723,
-    "changePct": 3.75,
+    "price": 40.723,
+    "prevClose": 42.1,
+    "changePct": -3.27,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-25"
    },
    {
     "id": "AAPL",
@@ -386,11 +386,11 @@
      "ASML.NL",
      "ASML.AS"
     ],
-    "price": 1164,
-    "prevClose": 1131.6,
-    "changePct": 2.86,
+    "price": 1131.6,
+    "prevClose": 1201.2,
+    "changePct": -5.79,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-25"
    },
    {
     "id": "BTC",
@@ -399,11 +399,11 @@
      "BTC",
      "XBT"
     ],
-    "price": 55181.4805,
+    "price": 55966.6484,
     "prevClose": 55037.9297,
-    "changePct": 0.26,
+    "changePct": 1.69,
     "currency": "EUR",
-    "date": "2026-11-26"
+    "date": "2026-11-27"
    }
   ]
  }
