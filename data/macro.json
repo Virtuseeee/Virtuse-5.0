@@ -1,45 +1,45 @@
 {
- "generated": "2026-11-27T04:26:51.353Z",
+ "generated": "2026-11-28T04:08:07.745Z",
  "quotes": {
-  "gold": {
-   "value": 3659.9,
-   "prev": 3535.8,
-   "change_pct": 3.51,
+  "us10y": {
+   "value": 4.936,
+   "prev": 4.848,
+   "change_pct": 1.82,
    "date": "2026-11-27",
    "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
-  },
-  "eurusd": {
-   "value": 1.0979,
-   "prev": 1.097,
-   "change_pct": 0.08,
-   "date": "2026-11-27",
-   "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+   "source_url": "https://finance.yahoo.com/quote/%5ETNX"
   },
   "brent": {
-   "value": 92.24,
+   "value": 90.84,
    "prev": 94.61,
-   "change_pct": -2.51,
+   "change_pct": -3.98,
    "date": "2026-11-27",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/BZ%3DF"
   },
   "spx": {
-   "value": 7182.78,
-   "prev": 7201.09,
-   "change_pct": -0.25,
-   "date": "2026-11-25",
+   "value": 7297.49,
+   "prev": 7182.78,
+   "change_pct": 1.6,
+   "date": "2026-11-27",
    "source": "Yahoo Finance",
    "source_url": "https://finance.yahoo.com/quote/%5EGSPC"
   },
-  "us10y": {
-   "value": 4.848,
-   "prev": 4.904,
-   "change_pct": -1.14,
-   "date": "2026-11-25",
+  "eurusd": {
+   "value": 1.0972,
+   "prev": 1.097,
+   "change_pct": 0.02,
+   "date": "2026-11-27",
    "source": "Yahoo Finance",
-   "source_url": "https://finance.yahoo.com/quote/%5ETNX"
+   "source_url": "https://finance.yahoo.com/quote/EURUSD%3DX"
+  },
+  "gold": {
+   "value": 3668.5,
+   "prev": 3535.8,
+   "change_pct": 3.75,
+   "date": "2026-11-27",
+   "source": "Yahoo Finance",
+   "source_url": "https://finance.yahoo.com/quote/GC%3DF"
   }
  },
  "inflation": {
@@ -56,20 +56,20 @@
    "source": "U.S. Bureau of Labor Statistics, CPI-U",
    "source_url": "https://www.bls.gov/cpi/"
   },
-  "ea": {
-   "value": 4,
-   "month": "2026-10",
-   "flash": false,
-   "status_flag": null,
-   "source": "Eurostat, HICP euro area",
-   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
-  },
   "sk": {
    "value": 2.9,
    "month": "2026-10",
    "flash": false,
    "status_flag": null,
    "source": "Eurostat, HICP SK",
+   "source_url": "https://ec.europa.eu/eurostat/web/hicp"
+  },
+  "ea": {
+   "value": 4,
+   "month": "2026-10",
+   "flash": false,
+   "status_flag": null,
+   "source": "Eurostat, HICP euro area",
    "source_url": "https://ec.europa.eu/eurostat/web/hicp"
   }
  },
@@ -78,7 +78,7 @@
    "rate": "3.75–4.00%",
    "low": 3.75,
    "high": 4,
-   "date": "2026-11-24",
+   "date": "2026-11-25",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -94,9 +94,9 @@
    "expects": {
     "scenario": "Hike 25 bp",
     "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 93,
+    "prob": 94,
     "meeting": "2026-12-09",
-    "as_of": "2026-11-27",
+    "as_of": "2026-11-28",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxfeddecision"
    }
@@ -105,7 +105,7 @@
    "rate": "4.00%",
    "low": 4,
    "high": 4,
-   "date": "2026-11-25",
+   "date": "2026-11-26",
    "last_move": {
     "dir": "up",
     "bp": 25,
@@ -123,36 +123,9 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 78,
     "meeting": "2026-12-17",
-    "as_of": "2026-11-27",
+    "as_of": "2026-11-28",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionengland"
-   }
-  },
-  "ecb": {
-   "rate": "2.50%",
-   "low": 2.5,
-   "high": 2.5,
-   "date": "2026-11-27",
-   "last_move": {
-    "dir": "up",
-    "bp": 25,
-    "date": "2026-09-16",
-    "effective": true,
-    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
-   },
-   "label": "Deposit facility rate",
-   "source": "European Central Bank",
-   "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
-   "next_meeting": "2026-12-17",
-   "calendar_url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "expects": {
-    "scenario": "Hike 25 bp",
-    "scenario_sk": "Zvýšenie o 25 bp",
-    "prob": 97,
-    "meeting": "2026-12-17",
-    "as_of": "2026-11-27",
-    "source": "Kalshi prediction market",
-    "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
    }
   },
   "boj": {
@@ -177,9 +150,36 @@
     "scenario_sk": "Zvýšenie o 25 bp",
     "prob": 80,
     "meeting": "2026-12-18",
-    "as_of": "2026-11-27",
+    "as_of": "2026-11-28",
     "source": "Kalshi prediction market",
     "source_url": "https://kalshi.com/markets/kxcbdecisionjapan"
+   }
+  },
+  "ecb": {
+   "rate": "2.50%",
+   "low": 2.5,
+   "high": 2.5,
+   "date": "2026-11-28",
+   "last_move": {
+    "dir": "up",
+    "bp": 25,
+    "date": "2026-09-16",
+    "effective": true,
+    "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+   },
+   "label": "Deposit facility rate",
+   "source": "European Central Bank",
+   "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
+   "next_meeting": "2026-12-17",
+   "calendar_url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+   "expects": {
+    "scenario": "Hike 25 bp",
+    "scenario_sk": "Zvýšenie o 25 bp",
+    "prob": 97,
+    "meeting": "2026-12-17",
+    "as_of": "2026-11-28",
+    "source": "Kalshi prediction market",
+    "source_url": "https://kalshi.com/markets/kxcbdecisioneu"
    }
   }
  },
